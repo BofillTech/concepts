@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imperial 500 Motel — Wildwood Crest, New Jersey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --turq:#4ECDC4;
+  --turq-dark:#3AAFA9;
+  --navy:#16213E;
+  --navy-deep:#0F1729;
+  --orange:#FF6B35;
+  --orange-light:#FF9A6C;
+  --sand:#F7F3E9;
+  --sand-dark:#E8DFD0;
+  --white:#FFFFFF;
+  --text:#1A1A2E;
+  --text-light:#6B6B7B;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-body:'Source Serif 4',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--text);background:var(--sand);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* NAV */
+.i5-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease;}
+.i5-nav.scrolled{background:rgba(22,33,62,.95);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.15);padding:10px 40px;}
+.i5-nav-logo img{height:50px;width:auto;transition:height .3s;}
+.i5-nav.scrolled .i5-nav-logo img{height:40px;}
+.i5-nav-links{display:flex;align-items:center;gap:28px;}
+.i5-nav-links a{font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--white);transition:color .3s;letter-spacing:.02em;}
+.i5-nav-links a:hover{color:var(--turq);}
+.i5-nav-phone{font-family:var(--font-display);font-size:13px;font-weight:400;color:rgba(255,255,255,.7);}
+.i5-nav-cta{display:inline-block;padding:10px 24px;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--orange);color:var(--white);border-radius:6px;transition:all .3s;}
+.i5-nav-cta:hover{background:var(--turq);transform:translateY(-1px);}
+
+/* HERO */
+.i5-hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+.i5-hero-bg{position:absolute;inset:0;background:url('img/exterior-sunset.jpg') center/cover no-repeat;}
+.i5-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,23,41,.85) 0%,rgba(15,23,41,.3) 50%,rgba(15,23,41,.15) 100%);}
+.i5-hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:800px;}
+.i5-hero-tag{display:inline-block;padding:6px 16px;border:1px solid var(--turq);border-radius:4px;font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--turq);margin-bottom:20px;}
+.i5-hero h1{font-family:var(--font-display);font-size:clamp(42px,7vw,76px);font-weight:700;color:var(--white);line-height:.95;letter-spacing:-.03em;margin-bottom:20px;}
+.i5-hero h1 span{color:var(--turq);}
+.i5-hero-sub{font-family:var(--font-body);font-size:17px;color:rgba(255,255,255,.7);line-height:1.7;max-width:500px;margin-bottom:36px;}
+.i5-hero-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+.i5-hero-btn{display:inline-block;padding:16px 40px;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;transition:all .35s;}
+.i5-hero-btn.primary{background:var(--orange);color:var(--white);}
+.i5-hero-btn.primary:hover{background:var(--turq);transform:translateY(-2px);}
+.i5-hero-btn.secondary{border:2px solid rgba(255,255,255,.3);color:var(--white);background:transparent;}
+.i5-hero-btn.secondary:hover{border-color:var(--turq);color:var(--turq);}
+
+/* TAGLINE */
+.i5-tagline{background:var(--navy);padding:50px 60px;text-align:center;}
+.i5-tagline h2{font-family:var(--font-display);font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--white);letter-spacing:-.01em;}
+.i5-tagline h2 span{color:var(--turq);}
+
+/* ABOUT */
+.i5-about{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;}
+.i5-about-img{border-radius:12px;overflow:hidden;}
+.i5-about-img img{width:100%;height:420px;object-fit:cover;}
+.i5-label{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin-bottom:12px;}
+.i5-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);font-weight:700;color:var(--navy);line-height:1.1;margin-bottom:20px;letter-spacing:-.02em;}
+.i5-title em{font-family:var(--font-body);font-style:italic;font-weight:400;color:var(--turq-dark);}
+.i5-about p{font-size:15px;color:var(--text-light);line-height:1.8;}
+.i5-about p strong{color:var(--text);font-weight:600;}
+
+/* FULL IMAGE */
+.i5-full-img{width:100%;height:400px;overflow:hidden;}
+.i5-full-img img{width:100%;height:100%;object-fit:cover;}
+
+/* AMENITIES */
+.i5-amenities{padding:100px 60px;background:var(--white);max-width:1200px;margin:0 auto;}
+.i5-amenities-header{text-align:center;margin-bottom:60px;}
+.i5-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.i5-amenity{text-align:center;padding:30px 20px;border:1px solid var(--sand-dark);border-radius:12px;transition:all .3s;}
+.i5-amenity:hover{border-color:var(--turq);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.05);}
+.i5-amenity-icon{font-size:32px;margin-bottom:12px;}
+.i5-amenity h4{font-family:var(--font-display);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.i5-amenity p{font-size:12px;color:var(--text-light);line-height:1.5;}
+
+/* ROOMS */
+.i5-rooms{padding:100px 60px;max-width:1200px;margin:0 auto;}
+.i5-rooms-header{text-align:center;margin-bottom:60px;}
+.i5-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.i5-room{background:var(--white);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.i5-room:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
+.i5-room img{width:100%;height:200px;object-fit:cover;}
+.i5-room-body{padding:24px;}
+.i5-room h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.i5-room p{font-size:13px;color:var(--text-light);line-height:1.6;margin-bottom:14px;}
+.i5-room-link{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--orange);transition:color .2s;}
+.i5-room-link:hover{color:var(--turq);}
+
+/* GALLERY */
+.i5-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+.i5-gallery img{width:100%;height:240px;object-fit:cover;transition:transform .5s;}
+.i5-gallery img:hover{transform:scale(1.03);}
+
+/* QUOTE */
+.i5-quote{padding:80px 60px;background:var(--navy);text-align:center;}
+.i5-quote .i5-stars{color:var(--orange);font-size:18px;letter-spacing:3px;margin-bottom:20px;}
+.i5-quote blockquote{font-family:var(--font-body);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:var(--white);line-height:1.45;max-width:700px;margin:0 auto 16px;}
+.i5-quote cite{font-family:var(--font-display);font-size:13px;font-style:normal;font-weight:500;color:rgba(255,255,255,.5);}
+
+/* LOCATION */
+.i5-location{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;}
+.i5-location-img{border-radius:12px;overflow:hidden;}
+.i5-location-img img{width:100%;height:380px;object-fit:cover;}
+.i5-location-highlights{margin-top:24px;display:flex;flex-direction:column;gap:10px;}
+.i5-location-highlights span{font-family:var(--font-display);font-size:14px;color:var(--text-light);}
+.i5-location-highlights strong{color:var(--orange);font-weight:600;}
+
+/* CTA */
+.i5-cta{position:relative;padding:120px 60px;text-align:center;overflow:hidden;}
+.i5-cta-bg{position:absolute;inset:0;background:url('img/exterior-night.jpg') center/cover no-repeat;}
+.i5-cta-bg::after{content:'';position:absolute;inset:0;background:rgba(15,23,41,.8);}
+.i5-cta-content{position:relative;z-index:2;}
+.i5-cta h2{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:700;color:var(--white);line-height:1;margin-bottom:14px;letter-spacing:-.02em;}
+.i5-cta h2 span{color:var(--turq);}
+.i5-cta p{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.5);margin-bottom:36px;}
+.i5-cta .i5-hero-btn.primary{background:var(--orange);}
+.i5-cta .i5-phone{display:block;margin-top:18px;font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,.4);}
+.i5-cta .i5-phone a{color:var(--turq);}
+
+/* FOOTER */
+.i5-footer{background:var(--navy-deep);padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.4);}
+.i5-footer h4{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);margin-bottom:14px;}
+.i5-footer p{line-height:1.7;}
+.i5-footer ul{list-style:none;}
+.i5-footer li{margin-bottom:6px;}
+.i5-footer a{color:rgba(255,255,255,.4);transition:color .2s;}
+.i5-footer a:hover{color:var(--turq);}
+.i5-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+/* BOOKING BAR */
+.i5-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.i5-bar-inner{display:flex;align-items:center;gap:10px;background:var(--navy-deep);border-radius:8px;padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.3);pointer-events:all;}
+.i5-bar-inner label{font-family:var(--font-display);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.i5-bar-inner input[type="date"]{font-family:var(--font-display);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;border-radius:5px;outline:none;}
+.i5-bar-book{padding:10px 24px;background:var(--orange);color:var(--white);font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:background .3s;}
+.i5-bar-book:hover{background:var(--turq);}
+.i5-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.i5-nav-links a:not(.i5-nav-cta){display:none;}.i5-nav-phone{display:none;}
+.i5-about{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.i5-amenities-grid{grid-template-columns:repeat(2,1fr);}
+.i5-rooms-grid{grid-template-columns:1fr;}
+.i5-gallery{grid-template-columns:1fr 1fr;}
+.i5-location{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.i5-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.i5-nav{padding:12px 20px;}.i5-hero-content{padding:0 24px 90px;}
+.i5-amenities{padding:60px 24px;}.i5-amenities-grid{grid-template-columns:1fr 1fr;gap:12px;}
+.i5-rooms{padding:60px 24px;}.i5-quote{padding:60px 24px;}.i5-cta{padding:80px 24px;}
+.i5-gallery img{height:160px;}
+.i5-bar{padding:8px 12px;}.i5-bar-inner{width:100%;padding:8px 14px;}.i5-bar-field{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="i5-nav" id="i5-nav">
+  <a href="#" class="i5-nav-logo"><img src="img/logo.jpg" alt="Imperial 500 Motel"></a>
+  <div class="i5-nav-links">
+    <a href="#i5-rooms">Rooms</a>
+    <a href="#i5-amenities">Amenities</a>
+    <a href="#i5-location">Location</a>
+    <span class="i5-nav-phone"><a href="tel:6095226063">(609) 522-6063</a></span>
+    <a href="tel:6095226063" class="i5-nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="i5-hero">
+  <div class="i5-hero-bg"></div>
+  <div class="i5-hero-content">
+    <div class="i5-hero-tag">Wildwood Crest, New Jersey</div>
+    <h1>Where Families<br>Come <span>Back</span><br>Every Summer</h1>
+    <p class="i5-hero-sub">Family-owned for over 30 years. Steps from the award-winning free beach. Heated saltwater pool, ocean-view sun deck, and the cleanest rooms on the shore. Open late April through October.</p>
+    <div class="i5-hero-buttons">
+      <a href="tel:6095226063" class="i5-hero-btn primary">Call to Book</a>
+      <a href="https://www.imperial500.com/room_rates.html" class="i5-hero-btn secondary">View Rates</a>
+    </div>
+  </div>
+</section>
+
+<div class="i5-tagline">
+  <h2>"The best kept secret on the <span>Eastern Seaboard</span>" — TripAdvisor Guest</h2>
+</div>
+
+<section class="i5-about">
+  <div class="i5-about-img reveal">
+    <img src="img/pool-families.jpg" alt="Families enjoying the Imperial 500 pool" loading="lazy">
+  </div>
+  <div class="reveal">
+    <p class="i5-label">Our Story</p>
+    <h2 class="i5-title">Family Owned. <em>Guest Approved.</em></h2>
+    <p>We're a <strong>family owned and operated</strong> motel serving generations of happy families for over 30 years. We stand out from the rest because we strive on adding a personal touch, friendliness, and most importantly — <strong>CLEANLINESS!</strong><br><br>Located just steps from the award-winning free beach and 16 short blocks to the World Famous Wildwoods Boardwalk and amusement rides. We're also a short drive to Victorian Cape May.</p>
+  </div>
+</section>
+
+<div class="i5-full-img">
+  <img src="img/deck-ocean.jpg" alt="Sun deck with ocean views at Imperial 500" loading="lazy">
+</div>
+
+<section class="i5-amenities" id="i5-amenities" style="max-width:100%;background:var(--white);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="i5-amenities-header reveal">
+      <p class="i5-label">Amenities</p>
+      <h2 class="i5-title">Everything You Need for <em>Summer</em></h2>
+    </div>
+    <div class="i5-amenities-grid">
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🏊</div><h4>Heated Saltwater Pool</h4><p>Full-size with diving board + kiddie pool</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🌅</div><h4>Ocean-View Sun Deck</h4><p>Watch the sunrise from the upper deck</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🎱</div><h4>Game Room</h4><p>Pool tables, arcade games, air hockey</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🏖️</div><h4>Steps to Beach</h4><p>Award-winning free beach across the street</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🔥</div><h4>BBQ Grills</h4><p>Grill your catch of the day poolside</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🏓</div><h4>Shuffleboard & Horseshoes</h4><p>Plus corn hole — games for all ages</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">🍳</div><h4>Kitchenettes</h4><p>Full efficiency rooms with pots, pans, dishes</p></div>
+      <div class="i5-amenity reveal"><div class="i5-amenity-icon">📶</div><h4>Free WiFi & Parking</h4><p>Stay connected, park right at your door</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="i5-rooms" id="i5-rooms">
+  <div class="i5-rooms-header reveal">
+    <p class="i5-label">Accommodations</p>
+    <h2 class="i5-title">6 Room Types, <em>One Perfect Vacation</em></h2>
+  </div>
+  <div class="i5-rooms-grid">
+    <div class="i5-room reveal">
+      <img src="img/room-king.jpg" alt="King bed room at Imperial 500" loading="lazy">
+      <div class="i5-room-body">
+        <h3>1-Bed Motel Room</h3>
+        <p>Cozy room with queen or king bed, fridge, microwave, coffee maker, flat-screen TV, and private bath.</p>
+        <a href="https://www.imperial500.com/room_layouts.html" class="i5-room-link">View Layout →</a>
+      </div>
+    </div>
+    <div class="i5-room reveal">
+      <img src="img/room-back.jpg" alt="Two-bed suite at Imperial 500" loading="lazy">
+      <div class="i5-room-body">
+        <h3>2-Room Suite</h3>
+        <p>Separate bedroom plus living area. Perfect for families. Some units include twin and queen beds in the back bedroom.</p>
+        <a href="https://www.imperial500.com/room_layouts.html" class="i5-room-link">View Layout →</a>
+      </div>
+    </div>
+    <div class="i5-room reveal">
+      <img src="img/kitchenette.jpg" alt="Efficiency kitchenette at Imperial 500" loading="lazy">
+      <div class="i5-room-body">
+        <h3>3-Room Efficiency</h3>
+        <p>Full kitchen with stove, fridge, pots, pans, and dishes. Bedroom, living room, and dining space. Like a home at the shore.</p>
+        <a href="https://www.imperial500.com/room_layouts.html" class="i5-room-link">View Layout →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="i5-gallery">
+  <img src="img/pool-aerial.jpg" alt="Pool and balconies aerial view" loading="lazy">
+  <img src="img/balcony-ocean.jpg" alt="Balcony chairs with ocean view" loading="lazy">
+  <img src="img/kids-poolside.jpg" alt="Kids playing poolside" loading="lazy">
+  <img src="img/bathroom.jpg" alt="Retro teal tile bathroom" loading="lazy">
+</section>
+
+<section class="i5-quote reveal">
+  <p class="i5-stars">★ ★ ★ ★ ★</p>
+  <blockquote>"My family and I have been coming here for the last 10 plus years and nothing else in the area compares. Beyond clean rooms, beautiful pool, corn hole, pool table — this is a must-go spot for a summer vacation."</blockquote>
+  <cite>— TripAdvisor Guest Review</cite>
+</section>
+
+<section class="i5-location" id="i5-location">
+  <div class="reveal">
+    <p class="i5-label">Getting Here</p>
+    <h2 class="i5-title">The Heart of <em>Wildwood Crest</em></h2>
+    <p style="font-size:15px;color:var(--text-light);line-height:1.8;margin-bottom:20px;">6601 Atlantic Avenue<br>Wildwood Crest, NJ 08260</p>
+    <p style="font-size:15px;margin-bottom:4px;"><a href="tel:6095226063" style="color:var(--orange);font-weight:600;">(609) 522-6063</a></p>
+    <div class="i5-location-highlights">
+      <span><strong>Steps away</strong> from the award-winning free beach</span>
+      <span><strong>16 blocks</strong> to the Wildwoods Boardwalk & rides</span>
+      <span><strong>Short drive</strong> to Victorian Cape May</span>
+      <span><strong>Adjacent to</strong> Centennial Park (live music weekends)</span>
+      <span><strong>Nearby:</strong> bike rentals, fishing, tennis, golf</span>
+    </div>
+  </div>
+  <div class="i5-location-img reveal">
+    <img src="img/pool-evening.jpg" alt="Imperial 500 pool at golden hour" loading="lazy">
+  </div>
+</section>
+
+<section class="i5-cta">
+  <div class="i5-cta-bg"></div>
+  <div class="i5-cta-content reveal">
+    <h2>Your Shore <span>Summer</span><br>Starts Here</h2>
+    <p>Seasonal motel open late April — mid October. Book early — we fill up fast.</p>
+    <a href="tel:6095226063" class="i5-hero-btn primary">Call (609) 522-6063</a>
+    <span class="i5-phone">or visit <a href="https://www.imperial500.com/room_rates.html">imperial500.com</a> for rates</span>
+  </div>
+</section>
+
+<div class="i5-footer">
+  <div>
+    <img src="img/logo.jpg" alt="Imperial 500 Motel" style="height:45px;margin-bottom:14px;">
+    <h4>Imperial 500 Motel</h4>
+    <p>Family owned & operated for 30+ years.<br>Where friends and families meet.<br>Wildwood Crest, New Jersey.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.imperial500.com/room_layouts.html">Room Layouts</a></li>
+      <li><a href="https://www.imperial500.com/room_rates.html">Rooms & Rates</a></li>
+      <li><a href="https://www.imperial500.com/amenities.html">Amenities</a></li>
+      <li><a href="https://www.imperial500.com/discounts_specials.html">Specials</a></li>
+      <li><a href="https://www.imperial500.com/photo_gallery.html">Photo Gallery</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="tel:6095226063">(609) 522-6063</a></li>
+      <li><a href="https://www.imperial500.com/about.html">About Us</a></li>
+      <li><a href="https://www.facebook.com/Imperial500Motel" target="_blank">Facebook</a></li>
+      <li><a href="https://g.co/maps/u9yva" target="_blank">Google Maps</a></li>
+    </ul>
+  </div>
+  <div class="i5-footer-bottom">© 2026 Imperial 500 Motel. All rights reserved. | 6601 Atlantic Ave, Wildwood Crest, NJ 08260</div>
+</div>
+
+<div class="i5-bar">
+  <div class="i5-bar-inner">
+    <div class="i5-bar-field"><label>Check In</label><input type="date" id="i5-ci"></div>
+    <div class="i5-bar-field"><label>Check Out</label><input type="date" id="i5-co"></div>
+    <a href="tel:6095226063" class="i5-bar-book">Call to Book</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('i5-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#i5"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('i5-ci'),co=document.getElementById('i5-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>
