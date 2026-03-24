@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waterside Inn — Chincoteague Island, Virginia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sunset: #C2572A;
+  --sunset-light: #E8936A;
+  --navy: #1B2A3D;
+  --navy-deep: #0F1A28;
+  --cream: #FAF6F0;
+  --cream-dark: #EDE6DA;
+  --gold: #C4973B;
+  --text: #2C2C2C;
+  --text-light: #6B6560;
+  --white: #FFFFFF;
+  --font-display: 'Bodoni Moda', serif;
+  --font-body: 'Work Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: var(--cream); overflow-x: hidden; }
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* Scroll Animations */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+.reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s ease; }
+.nav.scrolled { background: rgba(250,246,240,0.97); backdrop-filter: blur(10px); box-shadow: 0 1px 20px rgba(0,0,0,0.08); padding: 14px 40px; }
+.nav-logo img { height: 45px; width: auto; transition: height 0.3s ease; filter: brightness(0) invert(1); }
+.nav.scrolled .nav-logo img { filter: none; height: 38px; }
+.nav-links { display: flex; align-items: center; gap: 32px; }
+.nav-links a { font-family: var(--font-body); font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); transition: color 0.3s; }
+.nav.scrolled .nav-links a { color: var(--text); }
+.nav-links a:hover { color: var(--gold); }
+.nav-phone { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.8); letter-spacing: 0.03em; }
+.nav.scrolled .nav-phone { color: var(--text-light); }
+.nav-book { display: inline-block; padding: 10px 28px; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; background: var(--sunset); color: var(--white); border: none; transition: all 0.3s; }
+.nav-book:hover { background: var(--gold); }
+.nav-mobile-toggle { display: none; background: none; border: none; cursor: pointer; }
+.nav-mobile-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: all 0.3s; }
+.nav.scrolled .nav-mobile-toggle span { background: var(--text); }
+
+/* HERO */
+.hero { position: relative; height: 100vh; min-height: 600px; overflow: hidden; display: flex; align-items: flex-end; }
+.hero-bg { position: absolute; inset: 0; background: url('https://watersideinn.biz/wp-content/uploads/Pics/sunset9.jpg') center/cover no-repeat; }
+.hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,26,40,0.7) 0%, rgba(15,26,40,0.2) 40%, rgba(15,26,40,0.1) 100%); }
+.hero-content { position: relative; z-index: 2; padding: 0 60px 80px; max-width: 700px; }
+.hero-eyebrow { font-family: var(--font-body); font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sunset-light); margin-bottom: 16px; }
+.hero-title { font-family: var(--font-display); font-size: clamp(42px, 6vw, 72px); font-weight: 400; color: var(--white); line-height: 1.05; margin-bottom: 20px; }
+.hero-title em { font-style: italic; color: var(--sunset-light); }
+.hero-sub { font-family: var(--font-body); font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.8); line-height: 1.6; max-width: 480px; margin-bottom: 36px; }
+.hero-cta { display: inline-block; padding: 16px 44px; font-family: var(--font-body); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; background: var(--sunset); color: var(--white); transition: all 0.35s; }
+.hero-cta:hover { background: var(--gold); transform: translateY(-2px); }
+.hero-scroll { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 2; }
+.hero-scroll span { display: block; width: 1px; height: 50px; background: rgba(255,255,255,0.4); margin: 0 auto; animation: scrollPulse 2s ease infinite; }
+@keyframes scrollPulse { 0%,100% { opacity: 0.3; height: 50px; } 50% { opacity: 1; height: 65px; } }
+
+/* ABOUT - Editorial Asymmetric */
+.about { padding: 120px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1300px; margin: 0 auto; }
+.about-text { }
+.section-eyebrow { font-family: var(--font-body); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sunset); margin-bottom: 16px; }
+.section-title { font-family: var(--font-display); font-size: clamp(32px, 4vw, 48px); font-weight: 400; color: var(--navy); line-height: 1.1; margin-bottom: 28px; }
+.section-title em { font-style: italic; color: var(--sunset); }
+.about-body { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--text-light); max-width: 480px; }
+.about-body strong { font-weight: 500; color: var(--text); }
+.about-img { position: relative; }
+.about-img img { width: 100%; height: 500px; object-fit: cover; }
+.about-img::after { content: ''; position: absolute; bottom: -20px; right: -20px; width: 60%; height: 60%; border: 1px solid var(--gold); z-index: -1; }
+
+/* ROOMS */
+.rooms { background: var(--navy-deep); padding: 120px 60px; }
+.rooms-header { text-align: center; max-width: 600px; margin: 0 auto 70px; }
+.rooms-header .section-eyebrow { color: var(--sunset-light); }
+.rooms-header .section-title { color: var(--cream); }
+.rooms-header p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.rooms-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1200px; margin: 0 auto; }
+.room-card { position: relative; overflow: hidden; aspect-ratio: 4/3; cursor: pointer; }
+.room-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+.room-card:hover img { transform: scale(1.06); }
+.room-card-overlay { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(15,26,40,0.85) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; }
+.room-card h3 { font-family: var(--font-display); font-size: 24px; font-weight: 400; color: var(--cream); margin-bottom: 6px; }
+.room-card p { font-size: 13px; font-weight: 300; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
+.room-card-link { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sunset-light); transition: color 0.3s; }
+.room-card-link:hover { color: var(--gold); }
+.room-feature { grid-column: 1 / -1; aspect-ratio: auto; display: grid; grid-template-columns: 1.2fr 1fr; }
+.room-feature img { height: 100%; min-height: 400px; }
+.room-feature-text { background: var(--navy); display: flex; flex-direction: column; justify-content: center; padding: 50px 60px; }
+.room-feature-text h3 { font-family: var(--font-display); font-size: 34px; color: var(--cream); margin-bottom: 16px; }
+.room-feature-text p { font-size: 14px; font-weight: 300; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+.room-feature-text ul { list-style: none; display: flex; gap: 24px; margin-bottom: 28px; }
+.room-feature-text li { font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--sunset-light); }
+.room-feature-text li::before { content: '— '; color: var(--gold); }
+
+/* AMENITIES */
+.amenities { padding: 120px 60px; max-width: 1200px; margin: 0 auto; }
+.amenities-layout { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+.amenities-left { position: sticky; top: 120px; }
+.amenity-list { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
+.amenity-item { display: flex; align-items: flex-start; gap: 16px; }
+.amenity-icon { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: var(--sunset); font-size: 18px; flex-shrink: 0; border: 1px solid var(--cream-dark); border-radius: 50%; }
+.amenity-item h4 { font-family: var(--font-body); font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 2px; }
+.amenity-item p { font-size: 13px; font-weight: 300; color: var(--text-light); line-height: 1.5; }
+.amenities-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.amenities-photos img { width: 100%; object-fit: cover; }
+.amenities-photos img:nth-child(1) { height: 280px; grid-column: 1/-1; }
+.amenities-photos img:nth-child(2) { height: 220px; }
+.amenities-photos img:nth-child(3) { height: 220px; }
+.amenities-photos img:nth-child(4) { height: 260px; grid-column: 1/-1; }
+
+/* PULL QUOTE */
+.pullquote { padding: 100px 60px; text-align: center; background: var(--cream-dark); }
+.pullquote blockquote { font-family: var(--font-display); font-size: clamp(24px, 3.5vw, 40px); font-weight: 400; font-style: italic; color: var(--navy); line-height: 1.35; max-width: 800px; margin: 0 auto 20px; }
+.pullquote cite { font-family: var(--font-body); font-size: 13px; font-weight: 500; font-style: normal; color: var(--text-light); letter-spacing: 0.08em; text-transform: uppercase; }
+.pullquote .stars { color: var(--gold); font-size: 16px; letter-spacing: 4px; margin-bottom: 24px; }
+
+/* LOCATION */
+.location { padding: 120px 60px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 80px; align-items: center; max-width: 1300px; margin: 0 auto; }
+.location-img { position: relative; }
+.location-img img { width: 100%; height: 440px; object-fit: cover; }
+.location-details h3 { font-size: 13px; font-weight: 500; color: var(--text-light); letter-spacing: 0.04em; margin-bottom: 6px; }
+.location-details p { font-size: 15px; margin-bottom: 24px; line-height: 1.7; color: var(--text); font-weight: 300; }
+.location-highlights { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
+.location-highlights span { font-size: 14px; color: var(--text-light); font-weight: 300; }
+.location-highlights span strong { font-weight: 500; color: var(--sunset); }
+
+/* FINAL CTA */
+.final-cta { position: relative; padding: 140px 60px; text-align: center; overflow: hidden; }
+.final-cta-bg { position: absolute; inset: 0; background: url('https://watersideinn.biz/wp-content/uploads/Amenities/dock7.jpg') center/cover no-repeat; }
+.final-cta-bg::after { content: ''; position: absolute; inset: 0; background: rgba(15,26,40,0.75); }
+.final-cta-content { position: relative; z-index: 2; }
+.final-cta h2 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 56px); font-weight: 400; color: var(--cream); line-height: 1.1; margin-bottom: 16px; }
+.final-cta h2 em { font-style: italic; color: var(--sunset-light); }
+.final-cta p { font-size: 15px; font-weight: 300; color: rgba(255,255,255,0.7); margin-bottom: 36px; }
+.final-cta .hero-cta { background: var(--sunset); }
+.final-cta .phone-line { display: block; margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.5); }
+.final-cta .phone-line a { color: var(--sunset-light); font-weight: 500; }
+
+/* FOOTER */
+footer { background: var(--navy-deep); padding: 60px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; color: rgba(255,255,255,0.5); font-size: 13px; }
+footer .footer-brand img { height: 40px; margin-bottom: 16px; filter: brightness(0) invert(1); opacity: 0.7; }
+footer .footer-brand p { line-height: 1.7; font-weight: 300; }
+footer h4 { font-family: var(--font-display); font-size: 16px; color: var(--cream); margin-bottom: 16px; font-weight: 400; }
+footer ul { list-style: none; }
+footer li { margin-bottom: 8px; }
+footer a { color: rgba(255,255,255,0.5); transition: color 0.3s; font-weight: 300; }
+footer a:hover { color: var(--sunset-light); }
+.footer-bottom { grid-column: 1/-1; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* BOTTOM BOOKING BAR — always visible */
+.booking-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 99; display: flex; justify-content: center; padding: 10px 20px; pointer-events: none; }
+.booking-bar-inner { display: flex; align-items: center; gap: 10px; background: var(--navy-deep); border-radius: 8px; padding: 10px 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.25); pointer-events: all; }
+.booking-bar-inner label { font-family: var(--font-body); font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+.booking-bar-inner input[type="date"] { font-family: var(--font-body); font-size: 13px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--cream); padding: 8px 12px; border-radius: 4px; outline: none; cursor: pointer; }
+.booking-bar-inner input[type="date"]:focus { border-color: var(--sunset-light); }
+.booking-bar-book { padding: 10px 28px; background: var(--sunset); color: var(--white); font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border: none; border-radius: 4px; cursor: pointer; transition: background 0.3s; }
+.booking-bar-book:hover { background: var(--gold); }
+.booking-bar-field { display: flex; flex-direction: column; gap: 2px; }
+body { padding-bottom: 70px; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .nav-links a:not(.nav-book) { display: none; }
+  .nav-phone { display: none; }
+  .about { grid-template-columns: 1fr; gap: 40px; padding: 80px 30px; }
+  .about-img::after { display: none; }
+  .rooms { padding: 80px 30px; }
+  .rooms-grid { grid-template-columns: 1fr; }
+  .room-feature { grid-template-columns: 1fr; }
+  .room-feature img { min-height: 280px; }
+  .room-feature-text { padding: 40px 30px; }
+  .room-feature-text ul { flex-wrap: wrap; gap: 12px; }
+  .amenities { padding: 80px 30px; }
+  .amenities-layout { grid-template-columns: 1fr; gap: 50px; }
+  .amenities-left { position: static; }
+  .location { grid-template-columns: 1fr; gap: 40px; padding: 80px 30px; }
+  footer { grid-template-columns: 1fr; padding: 40px 30px; }
+}
+@media (max-width: 768px) {
+  .nav { padding: 16px 20px; }
+  .nav.scrolled { padding: 12px 20px; }
+  .hero-content { padding: 0 24px 100px; }
+  .pullquote { padding: 70px 24px; }
+  .final-cta { padding: 100px 24px; }
+  .nav-book { display: none; }
+  .nav-mobile-toggle { display: block; }
+  .rooms-header { margin-bottom: 40px; }
+  .amenities-photos img:nth-child(1) { height: 200px; }
+  .amenities-photos img:nth-child(2),
+  .amenities-photos img:nth-child(3) { height: 160px; }
+  .booking-bar { padding: 8px 12px; }
+  .booking-bar-inner { width: 100%; border-radius: 6px; padding: 8px 12px; gap: 8px; }
+  .booking-bar-field { display: none; }
+  .booking-bar-inner::before { content: '📞 (757) 336-3434'; font-size: 13px; color: var(--cream); font-family: var(--font-body); font-weight: 500; margin-right: auto; }
+  .booking-bar-book { margin-left: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://watersideinn.biz/wp-content/uploads/2024/02/waterside_logo2.png" alt="Waterside Inn">
+  </a>
+  <div class="nav-links">
+    <a href="#rooms">Rooms</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#condos">Condos</a>
+    <a href="#location">Location</a>
+    <span class="nav-phone"><a href="tel:7573363434">(757) 336-3434</a></span>
+    <a href="https://res.windsurfercrs.com/ibe/index.aspx?propertyID=15905&nono=1" class="nav-book">Book Now</a>
+  </div>
+  <button class="nav-mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Chincoteague Island, Virginia</p>
+    <h1 class="hero-title">Where Every<br>Evening Ends in <em>Gold</em></h1>
+    <p class="hero-sub">A family-owned waterfront inn overlooking Chincoteague Bay. Private balconies. Wild ponies. Sunsets that stop you mid-sentence. Since 1987.</p>
+    <a href="https://res.windsurfercrs.com/ibe/index.aspx?propertyID=15905&nono=1" class="hero-cta">Check Availability</a>
+  </div>
+  <div class="hero-scroll"><span></span></div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-text reveal-left">
+    <p class="section-eyebrow">Our Story</p>
+    <h2 class="section-title">Nestled Amongst Rose Gardens &<br><em>Breathtaking Sunsets</em></h2>
+    <p class="about-body">Our unique family-owned and operated hotel has had the pleasure of hosting the island's visitors <strong>since 1987</strong>. Nestled amongst rose gardens and breathtaking sunsets overlooking the Chincoteague Bay, our property makes the perfect location for visitors looking to engage with the beauty and charm of the island.<br><br>The private marina is the perfect spot to view a <strong>rocket launch from Wallops Island</strong> or to cast a line in hope of snagging your favorite catch. We are a short walk or trolley ride to Historic Downtown Chincoteague.</p>
+  </div>
+  <div class="about-img reveal-right">
+    <img src="https://watersideinn.biz/wp-content/uploads/Pics/flowers1.jpg" alt="Rose gardens at Waterside Inn" loading="lazy">
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="rooms-header reveal">
+    <p class="section-eyebrow">Accommodations</p>
+    <h2 class="section-title" style="color: var(--cream)">Five Room Types,<br>One <em>Unforgettable</em> View</h2>
+    <p>Every room features a private waterfront balcony, microwave, mini-fridge, in-room coffee, Wi-Fi, and a vanity bathroom with two sinks.</p>
+  </div>
+  <div class="rooms-grid">
+    <!-- Featured Room -->
+    <div class="room-feature reveal">
+      <img src="https://watersideinn.biz/wp-content/uploads/Rooms/Diplomat/diplomat5.jpg" alt="The Diplomat Room" loading="lazy">
+      <div class="room-feature-text">
+        <h3>The Diplomat Room</h3>
+        <p>Wake up to panoramic water views from the comfort of your bed. Complete with private balconies and large picture windows, these rooms are located closest to our pier and swimming pool.</p>
+        <ul>
+          <li>Private Balcony</li>
+          <li>King Bed</li>
+          <li>Breakfast Included</li>
+        </ul>
+        <a href="https://res.windsurfercrs.com/ibe/details.aspx?hotelID=15905&lang=en-us&rmID=79233&voucher=&currID=1" class="room-card-link">Book This Room →</a>
+      </div>
+    </div>
+    <!-- Room Cards -->
+    <div class="room-card reveal">
+      <img src="https://watersideinn.biz/wp-content/uploads/Rooms/WaterViewQueen/viewqueen6.jpg" alt="Waterview Double Queen" loading="lazy">
+      <div class="room-card-overlay">
+        <h3>Waterview Double Queen</h3>
+        <p>Unobstructed bay views from your balcony</p>
+        <a href="https://res.windsurfercrs.com/ibe/details.aspx?hotelID=15905&lang=en-us&rmID=79235&voucher=&currID=1" class="room-card-link">View Room →</a>
+      </div>
+    </div>
+    <div class="room-card reveal">
+      <img src="https://watersideinn.biz/wp-content/uploads/Rooms/DeluxeQueen/dlxqueen5.jpg" alt="Deluxe Double Queen" loading="lazy">
+      <div class="room-card-overlay">
+        <h3>Deluxe Double Queen</h3>
+        <p>Third floor, adult-only. The most expansive sunset views.</p>
+        <a href="https://res.windsurfercrs.com/ibe/details.aspx?hotelID=15905&lang=en-us&rmID=79236&voucher=&currID=1" class="room-card-link">View Room →</a>
+      </div>
+    </div>
+    <div class="room-card reveal">
+      <img src="https://watersideinn.biz/wp-content/uploads/Rooms/StandardKing/stdking5.jpg" alt="Standard King" loading="lazy">
+      <div class="room-card-overlay">
+        <h3>Standard King</h3>
+        <p>Full water views across all three floors</p>
+        <a href="https://res.windsurfercrs.com/ibe/details.aspx?hotelID=15905&lang=en-us&rmID=79231&voucher=&currID=1" class="room-card-link">View Room →</a>
+      </div>
+    </div>
+    <div class="room-card reveal">
+      <img src="https://watersideinn.biz/wp-content/uploads/Rooms/StandardQueen/stdqueen1.jpg" alt="Standard Double Queen" loading="lazy">
+      <div class="room-card-overlay">
+        <h3>Standard Double Queen</h3>
+        <p>Cozy ground-floor with partial water views</p>
+        <a href="https://res.windsurfercrs.com/ibe/details.aspx?hotelID=15905&lang=en-us&rmID=79234&voucher=&currID=1" class="room-card-link">View Room →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="pullquote reveal">
+  <p class="stars">★ ★ ★ ★ ★</p>
+  <blockquote>"When I awoke at 6:30am to seagulls and waves crashing, I was in absolute awe of what I saw. I spent 75% of my time overlooking the channel, eating amazing local food. This is the place to stay."</blockquote>
+  <cite>— J. Dunlap, Guest Review</cite>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities" id="amenities">
+  <div class="amenities-layout">
+    <div class="amenities-left reveal-left">
+      <p class="section-eyebrow">Amenities</p>
+      <h2 class="section-title">Your Seaside<br><em>Haven</em></h2>
+      <div class="amenity-list">
+        <div class="amenity-item">
+          <div class="amenity-icon">⚓</div>
+          <div>
+            <h4>Private 220' Pier & Marina</h4>
+            <p>Fishing, crabbing, boat slips & trailer parking</p>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🏊</div>
+          <div>
+            <h4>Heated Waterfront Pool</h4>
+            <p>Private pool and sundeck overlooking the bay</p>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">♨</div>
+          <div>
+            <h4>Indoor Jacuzzi & Fitness</h4>
+            <p>Year-round relaxation and wellness</p>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🏓</div>
+          <div>
+            <h4>3 Pickleball Courts</h4>
+            <p>Brand-new Selkirk-sponsored courts, free equipment</p>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">☕</div>
+          <div>
+            <h4>Daily Breakfast</h4>
+            <p>Free grab-and-go with rotating hot & cold options</p>
+          </div>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-icon">🌹</div>
+          <div>
+            <h4>Rose Gardens</h4>
+            <p>Over 450 roses surrounding the property</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="amenities-photos reveal-right">
+      <img src="https://watersideinn.biz/wp-content/uploads/Amenities/dock2.jpg" alt="Private pier" loading="lazy">
+      <img src="https://watersideinn.biz/wp-content/uploads/Amenities/pool4.jpg" alt="Waterfront pool" loading="lazy">
+      <img src="https://watersideinn.biz/wp-content/uploads/Amenities/jacuzzi1.jpg" alt="Indoor jacuzzi" loading="lazy">
+      <img src="https://watersideinn.biz/wp-content/uploads/Amenities/pickleball2.jpg" alt="Pickleball courts" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- CONDOS -->
+<section class="about" id="condos" style="background: var(--cream-dark); max-width: 100%; padding-left: 60px; padding-right: 60px;">
+  <div style="max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+    <div class="about-img reveal-left" style="order: 1;">
+      <img src="https://watersideinn.biz/wp-content/uploads/2024/02/2022_Condo_Front_View-scaled.jpg" alt="Sunset Hill Condos" loading="lazy" style="height: 440px;">
+    </div>
+    <div class="about-text reveal-right" style="order: 2;">
+      <p class="section-eyebrow">Extended Stays</p>
+      <h2 class="section-title">Sunset Hill<br><em>Condos</em></h2>
+      <p class="about-body">For weekly and long-term rentals, consider our adjoining Victorian-style building with <strong>4 spacious units</strong>, 5 furnished porches, fully equipped kitchens, and dining areas. Lower-level units sleep 8 guests, upper-level units sleep 6. Perfect for taking in the island air and sunset views.</p>
+      <a href="https://watersideinn.biz/condos/" style="display:inline-block; margin-top:28px; padding:14px 36px; font-size:12px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; border:1px solid var(--sunset); color:var(--sunset); transition:all 0.3s;">View Condos →</a>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="location-img reveal-left">
+    <img src="https://watersideinn.biz/wp-content/uploads/Pics/rocket1.jpg" alt="Rocket launch view from Waterside Inn" loading="lazy">
+  </div>
+  <div class="location-details reveal-right">
+    <p class="section-eyebrow">Getting Here</p>
+    <h2 class="section-title">Virginia's <em>Eastern Shore</em></h2>
+    <h3>Address</h3>
+    <p>3761 S. Main Street<br>Chincoteague, VA 23336</p>
+    <h3>Contact</h3>
+    <p><a href="tel:7573363434" style="color:var(--sunset); font-weight:500;">(757) 336-3434</a><br>
+    <a href="mailto:reservations@watersidemotorinn.com" style="color:var(--text-light);">reservations@watersidemotorinn.com</a></p>
+    <div class="location-highlights">
+      <span><strong>200 yards</strong> to Pony Swim & Carnival Grounds</span>
+      <span><strong>10 min drive</strong> to Assateague Island Wildlife Refuge</span>
+      <span><strong>Short walk</strong> to Historic Downtown & restaurants</span>
+      <span><strong>15 min</strong> to NASA Wallops Flight Facility</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-content reveal">
+    <h2>Your Sunset<br><em>Awaits</em></h2>
+    <p>Every room. Every evening. Only at Waterside Inn.</p>
+    <a href="https://res.windsurfercrs.com/ibe/index.aspx?propertyID=15905&nono=1" class="hero-cta">Book Your Stay</a>
+    <span class="phone-line">Or call us at <a href="tel:7573363434">(757) 336-3434</a></span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="https://watersideinn.biz/wp-content/uploads/2024/02/waterside_logo2.png" alt="Waterside Inn">
+    <p>Family-owned & operated since 1987.<br>Chincoteague Island, Virginia.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://watersideinn.biz/rooms/">Rooms</a></li>
+      <li><a href="https://watersideinn.biz/condos/">Condos</a></li>
+      <li><a href="https://watersideinn.biz/171-2/">Specials</a></li>
+      <li><a href="https://watersideinn.biz/history/">History</a></li>
+      <li><a href="https://watersideinn.biz/contact-us/">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="tel:7573363434">(757) 336-3434</a></li>
+      <li><a href="tel:8778703434">(877) 870-3434</a></li>
+      <li><a href="mailto:reservations@watersidemotorinn.com">Email Us</a></li>
+      <li><a href="https://www.facebook.com/WatersideInn" target="_blank">Facebook</a></li>
+      <li><a href="https://www.instagram.com/watersideinnchincoteague/" target="_blank">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Waterside Inn. All rights reserved. | 3761 S. Main St, Chincoteague, VA 23336
+  </div>
+</footer>
+
+<!-- BOTTOM BOOKING BAR -->
+<div class="booking-bar">
+  <div class="booking-bar-inner">
+    <div class="booking-bar-field">
+      <label>Check In</label>
+      <input type="date" id="checkin">
+    </div>
+    <div class="booking-bar-field">
+      <label>Check Out</label>
+      <input type="date" id="checkout">
+    </div>
+    <a href="https://res.windsurfercrs.com/ibe/index.aspx?propertyID=15905&nono=1" class="booking-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+// Sticky nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Scroll reveal
+const observerOptions = { threshold: 0.12, rootMargin: '0px 0px -40px 0px' };
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+
+// Set default dates on booking bar
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(tomorrow.getDate() + 1);
+const fmt = d => d.toISOString().split('T')[0];
+const ci = document.getElementById('checkin');
+const co = document.getElementById('checkout');
+if (ci) ci.value = fmt(today);
+if (co) co.value = fmt(tomorrow);
+</script>
+</body>
+</html>
