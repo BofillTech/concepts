@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Island Inn — Atlantic Beach, North Carolina</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #1A7A6D;
+  --teal-light: #2AB09D;
+  --coral: #E06B4A;
+  --coral-light: #F09A82;
+  --sand: #F5EDE3;
+  --sand-dark: #E8D5B7;
+  --charcoal: #2D2D2D;
+  --charcoal-light: #5A5A5A;
+  --white: #FFFFFF;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Lora', serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--sand);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* NAV */
+.ii-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease;}
+.ii-nav.scrolled{background:rgba(245,237,227,.97);backdrop-filter:blur(10px);box-shadow:0 2px 20px rgba(0,0,0,.06);padding:12px 40px;}
+.ii-nav-brand{font-family:var(--font-display);font-size:22px;font-weight:800;color:var(--white);letter-spacing:-.02em;transition:color .3s;}
+.ii-nav.scrolled .ii-nav-brand{color:var(--charcoal);}
+.ii-nav-links{display:flex;align-items:center;gap:28px;}
+.ii-nav-links a{font-family:var(--font-display);font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--white);transition:color .3s;}
+.ii-nav.scrolled .ii-nav-links a{color:var(--charcoal);}
+.ii-nav-links a:hover{color:var(--coral-light);}
+.ii-nav-phone{font-family:var(--font-display);font-size:13px;font-weight:400;color:rgba(255,255,255,.8);}
+.ii-nav.scrolled .ii-nav-phone{color:var(--charcoal-light);}
+.ii-nav-book{display:inline-block;padding:10px 24px;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--coral);color:var(--white);border-radius:50px;transition:all .3s;}
+.ii-nav-book:hover{background:var(--teal);transform:translateY(-1px);}
+
+/* HERO */
+.ii-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(135deg, var(--teal) 0%, #0F5C52 50%, #1A3A35 100%);}
+.ii-hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></svg>') repeat;background-size:200px;animation:iiDrift 30s linear infinite;}
+@keyframes iiDrift{0%{background-position:0 0;}100%{background-position:200px 200px;}}
+.ii-hero-content{position:relative;z-index:2;max-width:800px;padding:0 40px;}
+.ii-hero-badge{display:inline-block;padding:8px 20px;border:1px solid rgba(255,255,255,.2);border-radius:50px;font-family:var(--font-display);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:28px;}
+.ii-hero h1{font-family:var(--font-display);font-size:clamp(40px,7vw,80px);font-weight:800;color:var(--white);line-height:1;margin-bottom:20px;letter-spacing:-.03em;}
+.ii-hero h1 span{display:block;font-family:var(--font-body);font-style:italic;font-weight:400;font-size:clamp(20px,3vw,32px);color:var(--coral-light);margin-top:12px;letter-spacing:0;}
+.ii-hero-sub{font-family:var(--font-body);font-size:17px;font-weight:400;color:rgba(255,255,255,.7);line-height:1.7;max-width:520px;margin:0 auto 40px;}
+.ii-hero-cta{display:inline-block;padding:18px 48px;font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--coral);color:var(--white);border-radius:50px;transition:all .35s;}
+.ii-hero-cta:hover{background:var(--white);color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.15);}
+.ii-hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);}
+.ii-hero-scroll span{display:block;width:24px;height:40px;border:2px solid rgba(255,255,255,.3);border-radius:12px;position:relative;}
+.ii-hero-scroll span::after{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:8px;background:rgba(255,255,255,.5);border-radius:2px;animation:iiScrollDot 1.5s ease infinite;}
+@keyframes iiScrollDot{0%,100%{opacity:1;top:6px;}50%{opacity:.3;top:18px;}}
+
+/* INTRO */
+.ii-intro{padding:100px 60px;max-width:900px;margin:0 auto;text-align:center;}
+.ii-intro h2{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:700;color:var(--charcoal);line-height:1.15;margin-bottom:24px;}
+.ii-intro h2 em{font-family:var(--font-body);font-style:italic;color:var(--teal);font-weight:400;}
+.ii-intro p{font-size:16px;line-height:1.8;color:var(--charcoal-light);max-width:640px;margin:0 auto;}
+
+/* FEATURES STRIP */
+.ii-features{background:var(--teal);padding:60px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap;}
+.ii-feature{text-align:center;color:var(--white);max-width:160px;}
+.ii-feature-icon{font-size:28px;margin-bottom:10px;}
+.ii-feature h4{font-family:var(--font-display);font-size:14px;font-weight:700;letter-spacing:.02em;margin-bottom:4px;}
+.ii-feature p{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.65);line-height:1.5;}
+
+/* ROOMS */
+.ii-rooms{padding:100px 60px;max-width:1200px;margin:0 auto;}
+.ii-rooms-header{text-align:center;margin-bottom:60px;}
+.ii-section-label{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);margin-bottom:12px;}
+.ii-section-title{font-family:var(--font-display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--charcoal);line-height:1.15;}
+.ii-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+.ii-room-card{background:var(--white);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.ii-room-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
+.ii-room-card-img{height:220px;background:linear-gradient(135deg,var(--sand-dark),var(--sand));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;color:var(--charcoal-light);letter-spacing:.04em;}
+.ii-room-card-body{padding:24px;}
+.ii-room-card h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:8px;}
+.ii-room-card p{font-size:14px;color:var(--charcoal-light);line-height:1.6;margin-bottom:16px;}
+.ii-room-card-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.ii-room-card-tags span{font-family:var(--font-display);font-size:11px;font-weight:500;padding:4px 10px;background:var(--sand);color:var(--teal);border-radius:20px;}
+.ii-room-card-link{font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--coral);letter-spacing:.02em;transition:color .2s;}
+.ii-room-card-link:hover{color:var(--teal);}
+
+/* QUOTE */
+.ii-quote{padding:80px 60px;background:var(--white);text-align:center;}
+.ii-quote blockquote{font-family:var(--font-body);font-style:italic;font-size:clamp(20px,3vw,30px);color:var(--charcoal);line-height:1.4;max-width:700px;margin:0 auto 16px;}
+.ii-quote cite{font-family:var(--font-display);font-size:13px;font-style:normal;font-weight:500;color:var(--charcoal-light);}
+.ii-quote .ii-stars{color:var(--coral);font-size:18px;letter-spacing:3px;margin-bottom:20px;}
+
+/* EXPLORE */
+.ii-explore{padding:100px 60px;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.ii-explore-text h2{font-family:var(--font-display);font-size:clamp(28px,3.5vw,38px);font-weight:700;color:var(--charcoal);line-height:1.15;margin-bottom:20px;}
+.ii-explore-text p{font-family:var(--font-body);font-size:15px;color:var(--charcoal-light);line-height:1.8;margin-bottom:24px;}
+.ii-explore-list{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.ii-explore-list li{font-family:var(--font-display);font-size:14px;font-weight:500;color:var(--charcoal);display:flex;align-items:center;gap:10px;}
+.ii-explore-list li::before{content:'';width:8px;height:8px;background:var(--coral);border-radius:50%;flex-shrink:0;}
+.ii-explore-visual{background:linear-gradient(135deg,var(--teal),#0F5C52);border-radius:20px;height:400px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-family:var(--font-display);font-size:14px;letter-spacing:.04em;padding:40px;text-align:center;}
+
+/* PET CALLOUT */
+.ii-pets{background:var(--coral);padding:60px;text-align:center;color:var(--white);}
+.ii-pets h3{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:800;margin-bottom:12px;}
+.ii-pets p{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto;}
+
+/* CTA */
+.ii-final-cta{padding:120px 60px;text-align:center;background:var(--charcoal);}
+.ii-final-cta h2{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--white);line-height:1.05;margin-bottom:16px;}
+.ii-final-cta p{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.5);margin-bottom:36px;}
+.ii-final-cta .ii-hero-cta{background:var(--coral);}
+.ii-final-cta .ii-hero-cta:hover{background:var(--teal);}
+.ii-final-cta .ii-phone{display:block;margin-top:20px;font-family:var(--font-display);font-size:14px;color:rgba(255,255,255,.4);}
+.ii-final-cta .ii-phone a{color:var(--coral-light);}
+
+/* FOOTER */
+.ii-footer{background:#1a1a1a;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.4);}
+.ii-footer h4{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);margin-bottom:14px;}
+.ii-footer p{line-height:1.7;}
+.ii-footer ul{list-style:none;}
+.ii-footer li{margin-bottom:6px;}
+.ii-footer a{color:rgba(255,255,255,.4);transition:color .2s;}
+.ii-footer a:hover{color:var(--coral-light);}
+.ii-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.25);}
+
+/* BOOKING BAR */
+.ii-booking-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.ii-booking-bar-inner{display:flex;align-items:center;gap:10px;background:var(--charcoal);border-radius:50px;padding:10px 20px;box-shadow:0 4px 24px rgba(0,0,0,.3);pointer-events:all;}
+.ii-booking-bar-inner label{font-family:var(--font-display);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.ii-booking-bar-inner input[type="date"]{font-family:var(--font-display);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;border-radius:8px;outline:none;}
+.ii-booking-bar-book{padding:10px 24px;background:var(--coral);color:var(--white);font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:50px;cursor:pointer;transition:background .3s;}
+.ii-booking-bar-book:hover{background:var(--teal);}
+.ii-booking-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.ii-nav-links a:not(.ii-nav-book){display:none;}
+.ii-nav-phone{display:none;}
+.ii-rooms-grid{grid-template-columns:1fr;}
+.ii-explore{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.ii-features{gap:30px;padding:40px 30px;}
+.ii-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.ii-nav{padding:14px 20px;}
+.ii-hero-content{padding:0 20px;}
+.ii-intro{padding:70px 24px;}
+.ii-rooms{padding:70px 24px;}
+.ii-quote{padding:60px 24px;}
+.ii-final-cta{padding:80px 24px;}
+.ii-booking-bar{padding:8px 12px;}
+.ii-booking-bar-inner{width:100%;padding:8px 16px;}
+.ii-booking-bar-field{display:none;}
+.ii-booking-bar-inner::before{content:'Call (252) 726-3780';font-family:var(--font-display);font-size:12px;color:rgba(255,255,255,.6);margin-right:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="ii-nav" id="ii-nav">
+  <a href="#" class="ii-nav-brand">Island Inn</a>
+  <div class="ii-nav-links">
+    <a href="#ii-rooms">Rooms</a>
+    <a href="#ii-explore">Explore</a>
+    <a href="#ii-contact">Contact</a>
+    <span class="ii-nav-phone"><a href="tel:2527263780">(252) 726-3780</a></span>
+    <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-nav-book">Book Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="ii-hero">
+  <div class="ii-hero-content">
+    <div class="ii-hero-badge">Atlantic Beach, North Carolina</div>
+    <h1>Swap Your Shoes<br>for Flip-Flops<span>Your Crystal Coast home away from home</span></h1>
+    <p class="ii-hero-sub">A freshly renovated, pet-friendly inn with island-themed rooms, a private pool, and kitchenettes — just three blocks from the best side of Atlantic Beach.</p>
+    <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-hero-cta">Book Your Stay</a>
+  </div>
+  <div class="ii-hero-scroll"><span></span></div>
+</section>
+
+<!-- INTRO -->
+<section class="ii-intro reveal">
+  <h2>A unique & intimate experience <em>that's hard to find in larger hotels</em></h2>
+  <p>At Island Inn, our freshly renovated rooms boast charming island-themed decor, guaranteeing that vacation feeling all year round. With the relaxed atmosphere of Atlantic Beach and our warm Southern hospitality, you'll never want to leave.</p>
+</section>
+
+<!-- FEATURES -->
+<section class="ii-features">
+  <div class="ii-feature reveal"><div class="ii-feature-icon">🏖️</div><h4>3 Blocks to Beach</h4><p>Short stroll to the best side of Atlantic Beach</p></div>
+  <div class="ii-feature reveal"><div class="ii-feature-icon">🏊</div><h4>Private Pool</h4><p>Exclusively for guests, fenced for privacy</p></div>
+  <div class="ii-feature reveal"><div class="ii-feature-icon">🐕</div><h4>Pet Friendly</h4><p>Bring every member of the family</p></div>
+  <div class="ii-feature reveal"><div class="ii-feature-icon">🍳</div><h4>Kitchenettes</h4><p>Prep snacks & drinks to take to the beach</p></div>
+  <div class="ii-feature reveal"><div class="ii-feature-icon">📶</div><h4>Free WiFi</h4><p>Stay connected throughout your stay</p></div>
+  <div class="ii-feature reveal"><div class="ii-feature-icon">🅿️</div><h4>Free Parking</h4><p>Convenient parking right at your door</p></div>
+</section>
+
+<!-- ROOMS -->
+<section class="ii-rooms" id="ii-rooms">
+  <div class="ii-rooms-header reveal">
+    <p class="ii-section-label">Accommodations</p>
+    <h2 class="ii-section-title">Rooms & Suites for Every Traveler</h2>
+  </div>
+  <div class="ii-rooms-grid">
+    <div class="ii-room-card reveal">
+      <div class="ii-room-card-img">Property photo — King Suite</div>
+      <div class="ii-room-card-body">
+        <h3>King Suite</h3>
+        <p>Spacious suite with king bed, pull-out sofas, full kitchenette, and patio. Perfect for families.</p>
+        <div class="ii-room-card-tags"><span>King Bed</span><span>Kitchenette</span><span>Patio</span></div>
+        <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-room-card-link">View Room →</a>
+      </div>
+    </div>
+    <div class="ii-room-card reveal">
+      <div class="ii-room-card-img">Property photo — Queen Room</div>
+      <div class="ii-room-card-body">
+        <h3>Queen Room</h3>
+        <p>Cozy room with two queen beds, microwave, fridge, coffee maker, and flat-screen TV. Island-themed decor.</p>
+        <div class="ii-room-card-tags"><span>2 Queens</span><span>Micro/Fridge</span><span>Patio</span></div>
+        <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-room-card-link">View Room →</a>
+      </div>
+    </div>
+    <div class="ii-room-card reveal">
+      <div class="ii-room-card-img">Property photo — Studio Apartment</div>
+      <div class="ii-room-card-body">
+        <h3>Studio Apartment</h3>
+        <p>Full kitchen with stove, spacious layout. Ideal for extended stays and couples who love to cook.</p>
+        <div class="ii-room-card-tags"><span>Full Kitchen</span><span>Extended Stay</span><span>Patio</span></div>
+        <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-room-card-link">View Room →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section class="ii-quote reveal">
+  <p class="ii-stars">★ ★ ★ ★ ★</p>
+  <blockquote>"People are very friendly. Check in was easy and the room was very clean! Perfect and easy walk to the beach — definitely go for the sunrise!"</blockquote>
+  <cite>— Guest Review, Booking.com (Rated 8.6)</cite>
+</section>
+
+<!-- EXPLORE -->
+<section class="ii-explore" id="ii-explore">
+  <div class="ii-explore-text reveal">
+    <p class="ii-section-label">Explore</p>
+    <h2 class="ii-section-title">So Much More Than Just a Beach Trip</h2>
+    <p>Atlantic Beach sits on North Carolina's stunning Crystal Coast — a haven for nature lovers, history buffs, and seafood enthusiasts. We're your basecamp for it all.</p>
+    <ul class="ii-explore-list">
+      <li>Fort Macon State Park — 2.3 miles</li>
+      <li>Pine Knoll Shores Aquarium — 10 min drive</li>
+      <li>Historic Beaufort — across the causeway</li>
+      <li>Shackleford Banks wild ponies</li>
+      <li>Deep sea fishing charters</li>
+      <li>Crystal Coast Brewing Company — next door</li>
+    </ul>
+  </div>
+  <div class="ii-explore-visual reveal">
+    Atlantic Beach / Crystal Coast<br>area photo placeholder
+  </div>
+</section>
+
+<!-- PET CALLOUT -->
+<section class="ii-pets reveal">
+  <h3>🐾 Yes, Bring Your Furry Friend</h3>
+  <p>We're proudly pet-friendly because we know vacation means the whole family. Ask about our pet-friendly rooms when you book.</p>
+</section>
+
+<!-- FINAL CTA -->
+<section class="ii-final-cta" id="ii-contact">
+  <div class="reveal">
+    <h2>Your Beach<br>Escape Awaits</h2>
+    <p>Three blocks to the sand. Island vibes in every room.</p>
+    <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-hero-cta">Check Availability</a>
+    <span class="ii-phone">Or call us at <a href="tel:2527263780">(252) 726-3780</a></span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="ii-footer">
+  <div>
+    <h4>Island Inn of Atlantic Beach</h4>
+    <p>215 W Fort Macon Rd<br>Atlantic Beach, NC 28512<br><br>A privately owned, pet-friendly inn with island-themed rooms and warm Southern hospitality.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.islandinnrentals.com/brochure/default.asp">All Rooms</a></li>
+      <li><a href="https://www.islandinnrentals.com/about-island-inn-and-atlantic-beach.asp">About</a></li>
+      <li><a href="https://www.islandinnrentals.com/crystal-coast-attrations.asp">Attractions</a></li>
+      <li><a href="https://www.islandinnrentals.com/contact-us.asp">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="tel:2527263780">(252) 726-3780</a></li>
+      <li><a href="mailto:reservations@islandinnrentals.com">Email Us</a></li>
+      <li><a href="https://www.facebook.com/IslandInnAtlanticBeachNC" target="_blank">Facebook</a></li>
+      <li><a href="https://www.instagram.com/islandinnofab/" target="_blank">Instagram</a></li>
+    </ul>
+  </div>
+  <div class="ii-footer-bottom">© 2026 Island Inn of Atlantic Beach. All rights reserved.</div>
+</div>
+
+<!-- BOOKING BAR -->
+<div class="ii-booking-bar">
+  <div class="ii-booking-bar-inner">
+    <div class="ii-booking-bar-field"><label>Check In</label><input type="date" id="ii-checkin"></div>
+    <div class="ii-booking-bar-field"><label>Check Out</label><input type="date" id="ii-checkout"></div>
+    <a href="https://www.islandinnrentals.com/brochure/default.asp" class="ii-booking-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+var iiNav=document.getElementById('ii-nav');
+window.addEventListener('scroll',function(){iiNav.classList.toggle('scrolled',window.scrollY>60);});
+var iiObs=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');iiObs.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){iiObs.observe(el);});
+document.querySelectorAll('a[href^="#ii"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function iif(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('ii-checkin'),co=document.getElementById('ii-checkout');
+if(ci)ci.value=iif(d);if(co)co.value=iif(d2);
+</script>
+</body>
+</html>

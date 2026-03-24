@@ -7,6 +7,7 @@ Production-quality homepage redesign concepts for prospective hotel clients. Eac
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
 | 1 | Waterside Inn | Chincoteague, VA | [watersideinn.biz](https://watersideinn.biz) | [View →](https://bofilltech.github.io/concepts/waterside-inn/) | A — Magazine/Editorial | Bodoni Moda + Work Sans | Mar 24, 2026 |
+| 2 | Island Inn of Atlantic Beach | Atlantic Beach, NC | [islandinnrentals.com](https://islandinnrentals.com) | [View →](https://bofilltech.github.io/concepts/island-inn/) | E — Warm Community | Outfit + Lora | Mar 24, 2026 |
 
 ## How It Works
 
