@@ -11,3 +11,4 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 3 | Imperial 500 | Wildwood Crest, NJ | [imperial500.com](https://imperial500.com) | [View →](https://bofilltech.github.io/concepts/imperial-500/) | C — Bold Typography-Led | Space Grotesk + Source Serif 4 | Mar 24 |
 | 4 | The Crossings | Ocean City, NJ | [thecrossingsocnj.com](https://thecrossingsocnj.com) | [View →](https://bofilltech.github.io/concepts/crossings/) | D — Minimal Luxury | Playfair Display + DM Sans | Mar 24 |
 | 5 | Park Regency Resort | Park City, UT | [parkregencyparkcity.com](https://parkregencyparkcity.com) | [View →](https://bofilltech.github.io/concepts/park-regency/) | B — Split-Screen Narrative | Cormorant Garamond + Inter | Mar 24 |
+| 6 | The Garrison | Wells, ME | [garrisonofmaine.com](https://garrisonofmaine.com) | [View →](https://bofilltech.github.io/concepts/garrison/) | F — Classic/Heritage | EB Garamond + Raleway | Mar 24 |

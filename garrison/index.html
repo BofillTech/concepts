@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Garrison — Wells, Maine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1B3A5C;
+  --navy-deep:#0E2240;
+  --gold:#C9A96E;
+  --gold-light:#DABB87;
+  --cream:#FAF7F2;
+  --cream-dark:#EDE7DB;
+  --white:#FFFFFF;
+  --charcoal:#2A2A2A;
+  --gray:#7A7A7A;
+  --font-display:'EB Garamond',serif;
+  --font-body:'Raleway',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--cream);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.gn-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+.gn-nav.scrolled{background:rgba(250,247,242,.97);backdrop-filter:blur(10px);box-shadow:0 1px 16px rgba(0,0,0,.06);padding:12px 48px;}
+.gn-nav-logo img{height:50px;width:auto;transition:height .3s;}
+.gn-nav.scrolled .gn-nav-logo img{height:40px;}
+.gn-nav-links{display:flex;align-items:center;gap:28px;}
+.gn-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--white);transition:color .3s;}
+.gn-nav.scrolled .gn-nav-links a{color:var(--navy);}
+.gn-nav-links a:hover{color:var(--gold);}
+.gn-nav-phone{font-size:12px;color:rgba(255,255,255,.7);}
+.gn-nav.scrolled .gn-nav-phone{color:var(--gray);}
+.gn-nav-cta{padding:10px 24px;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--white);transition:all .3s;}
+.gn-nav-cta:hover{background:var(--navy);transform:translateY(-1px);}
+
+/* HERO */
+.gn-hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden;}
+.gn-hero-bg{position:absolute;inset:0;background:url('img/grounds.jpg') center/cover no-repeat;}
+.gn-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,34,64,.8) 0%,rgba(14,34,64,.25) 50%,rgba(14,34,64,.1) 100%);}
+.gn-hero-content{position:relative;z-index:2;padding:0 60px 80px;max-width:700px;}
+.gn-hero-tag{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.gn-hero h1{font-family:var(--font-display);font-size:clamp(38px,6vw,66px);font-weight:400;color:var(--white);line-height:1.08;margin-bottom:20px;}
+.gn-hero h1 em{font-style:italic;color:var(--gold-light);}
+.gn-hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7;max-width:480px;margin-bottom:36px;}
+.gn-btn{display:inline-block;padding:15px 40px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .35s;}
+.gn-btn-fill{background:var(--gold);color:var(--white);}
+.gn-btn-fill:hover{background:var(--white);color:var(--navy);transform:translateY(-2px);}
+.gn-btn-ghost{border:1px solid rgba(255,255,255,.3);color:var(--white);margin-left:14px;}
+.gn-btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+
+.gn-intro{padding:100px 60px;max-width:850px;margin:0 auto;text-align:center;}
+.gn-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.gn-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,40px);font-weight:400;color:var(--navy);line-height:1.2;margin-bottom:20px;}
+.gn-title em{font-style:italic;color:var(--gold);}
+.gn-intro p{font-size:15px;color:var(--gray);line-height:1.8;max-width:620px;margin:0 auto;}
+
+.gn-full-img{width:100%;height:420px;overflow:hidden;}
+.gn-full-img img{width:100%;height:100%;object-fit:cover;}
+
+/* ROOMS */
+.gn-rooms{padding:100px 60px;max-width:1100px;margin:0 auto;}
+.gn-rooms-header{text-align:center;margin-bottom:60px;}
+.gn-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.gn-room{background:var(--white);overflow:hidden;border:1px solid var(--cream-dark);transition:transform .3s,box-shadow .3s;}
+.gn-room:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);}
+.gn-room img{width:100%;height:220px;object-fit:cover;}
+.gn-room-body{padding:28px;}
+.gn-room h3{font-family:var(--font-display);font-size:24px;font-weight:500;color:var(--navy);margin-bottom:8px;}
+.gn-room p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+.gn-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--gold);transition:color .2s;}
+.gn-room-link:hover{color:var(--navy);}
+
+/* AMENITIES */
+.gn-amenities{padding:80px 60px;background:var(--navy-deep);text-align:center;}
+.gn-amenities .gn-label{color:var(--gold-light);}
+.gn-amenities .gn-title{color:var(--cream);}
+.gn-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:40px auto 0;}
+.gn-amenity{color:var(--cream);}
+.gn-amenity-icon{font-size:28px;margin-bottom:10px;}
+.gn-amenity h4{font-family:var(--font-body);font-size:13px;font-weight:700;margin-bottom:4px;}
+.gn-amenity p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5;}
+
+.gn-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.gn-gallery img{width:100%;height:240px;object-fit:cover;}
+
+.gn-quote{padding:80px 60px;text-align:center;background:var(--cream-dark);}
+.gn-quote blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--navy);line-height:1.4;max-width:700px;margin:0 auto 16px;}
+.gn-quote cite{font-family:var(--font-body);font-size:12px;font-style:normal;font-weight:600;color:var(--gray);letter-spacing:.04em;text-transform:uppercase;}
+
+/* LOCATION */
+.gn-location{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;}
+.gn-location-img{overflow:hidden;}
+.gn-location-img img{width:100%;height:380px;object-fit:cover;}
+.gn-location p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px;}
+.gn-highlights{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.gn-highlights span{font-size:14px;color:var(--gray);}
+.gn-highlights strong{color:var(--gold);font-weight:600;}
+
+.gn-cta{position:relative;padding:120px 60px;text-align:center;overflow:hidden;}
+.gn-cta-bg{position:absolute;inset:0;background:url('img/beach.jpg') center/cover no-repeat;}
+.gn-cta-bg::after{content:'';position:absolute;inset:0;background:rgba(14,34,64,.7);}
+.gn-cta-content{position:relative;z-index:2;}
+.gn-cta h2{font-family:var(--font-display);font-size:clamp(30px,4.5vw,50px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:14px;}
+.gn-cta h2 em{font-style:italic;color:var(--gold-light);}
+.gn-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:32px;}
+.gn-cta .gn-phone{display:block;margin-top:18px;font-size:13px;color:rgba(255,255,255,.35);}
+.gn-cta .gn-phone a{color:var(--gold-light);}
+
+.gn-footer{background:#0A1828;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
+.gn-footer h4{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.gn-footer p{line-height:1.7;}
+.gn-footer ul{list-style:none;}
+.gn-footer li{margin-bottom:6px;}
+.gn-footer a{color:rgba(255,255,255,.35);transition:color .2s;}
+.gn-footer a:hover{color:var(--gold);}
+.gn-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+.gn-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.gn-bar-inner{display:flex;align-items:center;gap:10px;background:var(--navy-deep);padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.25);pointer-events:all;}
+.gn-bar-inner label{font-family:var(--font-body);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.gn-bar-inner input[type="date"]{font-family:var(--font-body);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;outline:none;}
+.gn-bar-book{padding:10px 24px;background:var(--gold);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
+.gn-bar-book:hover{background:var(--navy);}
+.gn-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+@media(max-width:1024px){
+.gn-nav-links a:not(.gn-nav-cta){display:none;}.gn-nav-phone{display:none;}
+.gn-rooms-grid{grid-template-columns:1fr;}.gn-amenities-grid{grid-template-columns:repeat(2,1fr);}
+.gn-gallery{grid-template-columns:1fr 1fr;}.gn-location{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.gn-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.gn-nav{padding:14px 20px;}.gn-hero-content{padding:0 24px 80px;}
+.gn-intro{padding:60px 24px;}.gn-rooms{padding:60px 24px;}.gn-amenities{padding:60px 24px;}
+.gn-quote{padding:60px 24px;}.gn-cta{padding:80px 24px;}.gn-gallery img{height:160px;}
+.gn-amenities-grid{grid-template-columns:1fr 1fr;gap:20px;}
+.gn-bar{padding:8px 12px;}.gn-bar-inner{width:100%;}.gn-bar-field{display:none;}
+.gn-btn-ghost{margin-left:0;margin-top:12px;display:block;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav class="gn-nav" id="gn-nav">
+  <a href="#" class="gn-nav-logo"><img src="img/logo.png" alt="The Garrison"></a>
+  <div class="gn-nav-links">
+    <a href="#gn-rooms">Rooms</a>
+    <a href="#gn-amenities">Amenities</a>
+    <a href="#gn-location">Location</a>
+    <span class="gn-nav-phone"><a href="tel:8006463497">1.800.646.3497</a></span>
+    <a href="http://reserve1.resnexus.com/resnexus/reserve/?ID=2011" class="gn-nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="gn-hero">
+  <div class="gn-hero-bg"></div>
+  <div class="gn-hero-content">
+    <p class="gn-hero-tag">Wells, Maine</p>
+    <h1>Ten Acres of<br><em>Maine Coastline</em></h1>
+    <p class="gn-hero-sub">Motel rooms, luxury suites, and private cottages on a grassy hillside overlooking the Rachel Carson Wildlife Refuge and the Atlantic Ocean. Your Maine vacation starts here.</p>
+    <a href="http://reserve1.resnexus.com/resnexus/reserve/?ID=2011" class="gn-btn gn-btn-fill">Book Your Stay</a>
+    <a href="https://www.garrisonofmaine.com/rates-reservations/" class="gn-btn gn-btn-ghost">View Rates</a>
+  </div>
+</section>
+
+<section class="gn-intro reveal">
+  <p class="gn-label">Welcome</p>
+  <h2 class="gn-title">Sweeping views, manicured gardens, <em>and the sound of the sea</em></h2>
+  <p>The Garrison is situated on a grassy hill with sweeping views of the Rachel Carson Wildlife Refuge and Atlantic Ocean beyond. Enjoy 10 acres of manicured lawns and colorful gardens, a sparkling 44-foot pool, and a central location on Maine's southern coast — minutes from Wells Beach, Ogunquit, and Kennebunkport.</p>
+</section>
+
+<div class="gn-full-img">
+  <img src="img/pool-view.jpg" alt="Pool overlooking the Rachel Carson Wildlife Refuge" loading="lazy">
+</div>
+
+<section class="gn-rooms" id="gn-rooms">
+  <div class="gn-rooms-header reveal">
+    <p class="gn-label">Accommodations</p>
+    <h2 class="gn-title">Three Ways to Stay on <em>the Maine Coast</em></h2>
+  </div>
+  <div class="gn-rooms-grid">
+    <div class="gn-room reveal">
+      <img src="img/suites.jpg" alt="Two-Story Luxury Suites" loading="lazy">
+      <div class="gn-room-body">
+        <h3>Luxury Suites</h3>
+        <p>Two-story suites with private balconies, sweeping ocean views, and spacious living areas. The ultimate Maine getaway.</p>
+        <a href="https://www.garrisonofmaine.com/accommodations/luxury-suites/" class="gn-room-link">View Suites →</a>
+      </div>
+    </div>
+    <div class="gn-room reveal">
+      <img src="img/cottages.jpg" alt="Private Vacation Cottages" loading="lazy">
+      <div class="gn-room-body">
+        <h3>Private Cottages</h3>
+        <p>Standard and deluxe cottages set among landscaped grounds. A home away from home with the charm of coastal Maine.</p>
+        <a href="https://www.garrisonofmaine.com/accommodations/private-vacation-cottages/" class="gn-room-link">View Cottages →</a>
+      </div>
+    </div>
+    <div class="gn-room reveal">
+      <img src="img/pool.jpg" alt="Motel Rooms and Efficiencies" loading="lazy">
+      <div class="gn-room-body">
+        <h3>Motel & Efficiencies</h3>
+        <p>Comfortable guest rooms and efficiency units with all the essentials. Perfect for a couple's getaway or weekend retreat.</p>
+        <a href="https://www.garrisonofmaine.com/accommodations/guest-room-efficiencies/" class="gn-room-link">View Rooms →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gn-amenities" id="gn-amenities">
+  <div class="reveal">
+    <p class="gn-label">Amenities</p>
+    <h2 class="gn-title">Relax, Explore, <em>Repeat</em></h2>
+  </div>
+  <div class="gn-amenities-grid">
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🏊</div><h4>44-Foot Pool</h4><p>Surrounded by lounging deck with ocean views</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🏖️</div><h4>Sandy Beaches</h4><p>Wells, Drakes Island, Footbridge & Ogunquit</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🌿</div><h4>10 Acres</h4><p>Manicured lawns and colorful gardens</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🚌</div><h4>Trolley Service</h4><p>Pick-up at The Garrison to area beaches & shops</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🌅</div><h4>Ocean Views</h4><p>Rachel Carson Wildlife Refuge & Atlantic</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🍽️</div><h4>Restaurants</h4><p>Walking distance to excellent dining</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🅿️</div><h4>Free Parking</h4><p>Convenient on-site parking</p></div>
+    <div class="gn-amenity reveal"><div class="gn-amenity-icon">🔥</div><h4>BBQ Grills</h4><p>Grill your lobster catch on site</p></div>
+  </div>
+</section>
+
+<section class="gn-gallery">
+  <img src="img/beach.jpg" alt="Wells Beach sunset" loading="lazy">
+  <img src="img/harbor.jpg" alt="Wells Harbor sunset" loading="lazy">
+  <img src="img/pool-ocean.jpg" alt="Pool with ocean view" loading="lazy">
+  <img src="img/cottages.jpg" alt="Garrison Cottages" loading="lazy">
+</section>
+
+<section class="gn-quote reveal">
+  <blockquote>"The sound of the ocean, the smell of the sand, the cool fresh breezes and warm sunny skies — you'll find all of this and more at The Garrison."</blockquote>
+  <cite>— The Garrison</cite>
+</section>
+
+<section class="gn-location" id="gn-location">
+  <div class="reveal">
+    <p class="gn-label">Location</p>
+    <h2 class="gn-title">Southern Maine's <em>Coastal Gem</em></h2>
+    <p>1099 Post Road (U.S. Route 1)<br>Wells, Maine 04090</p>
+    <p><a href="tel:8006463497" style="color:var(--gold);font-weight:600;">1.800.646.3497</a><br><a href="tel:2076463497" style="color:var(--gray);">Local: 207.646.3497</a></p>
+    <div class="gn-highlights">
+      <span><strong>Minutes to</strong> Wells Beach, Drakes Island & Footbridge Beach</span>
+      <span><strong>Short drive</strong> to Ogunquit Village & Perkins Cove</span>
+      <span><strong>Nearby</strong> Kennebunkport & Cape Neddick</span>
+      <span><strong>On-site</strong> trolley pick-up to beaches & shopping</span>
+      <span><strong>Overlooking</strong> Rachel Carson Wildlife Refuge</span>
+    </div>
+  </div>
+  <div class="gn-location-img reveal">
+    <img src="img/harbor.jpg" alt="Wells Harbor at sunset" loading="lazy">
+  </div>
+</section>
+
+<section class="gn-cta">
+  <div class="gn-cta-bg"></div>
+  <div class="gn-cta-content reveal">
+    <h2>Your Maine<br><em>Getaway</em> Awaits</h2>
+    <p>Cottages, suites, and ocean views on 10 acres of coastal Maine.</p>
+    <a href="http://reserve1.resnexus.com/resnexus/reserve/?ID=2011" class="gn-btn gn-btn-fill">Check Availability</a>
+    <span class="gn-phone">Or call <a href="tel:8006463497">1.800.646.3497</a></span>
+  </div>
+</section>
+
+<div class="gn-footer">
+  <div>
+    <img src="img/logo.png" alt="The Garrison" style="height:45px;margin-bottom:14px;">
+    <h4>The Garrison</h4>
+    <p>Motel, suites & cottages on 10 acres of Maine's southern coast. Overlooking the Rachel Carson Wildlife Refuge and Atlantic Ocean.</p>
+  </div>
+  <div>
+    <h4>Accommodations</h4>
+    <ul>
+      <li><a href="https://www.garrisonofmaine.com/accommodations/luxury-suites/">Luxury Suites</a></li>
+      <li><a href="https://www.garrisonofmaine.com/accommodations/private-vacation-cottages/">Private Cottages</a></li>
+      <li><a href="https://www.garrisonofmaine.com/accommodations/guest-room-efficiencies/">Motel & Efficiencies</a></li>
+      <li><a href="https://www.garrisonofmaine.com/rates-reservations/">Rates & Reservations</a></li>
+      <li><a href="https://www.garrisonofmaine.com/specials-packages/">Specials & Packages</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:8006463497">1.800.646.3497</a></li>
+      <li><a href="tel:2076463497">207.646.3497</a></li>
+      <li><a href="https://www.garrisonofmaine.com/contact-us/">Email Us</a></li>
+      <li><a href="https://www.facebook.com/GarrisonSuites" target="_blank">Facebook</a></li>
+      <li><a href="https://www.garrisonofmaine.com/directions-map/">Directions & Map</a></li>
+    </ul>
+  </div>
+  <div class="gn-footer-bottom">© 2026 The Garrison. All rights reserved. | 1099 Post Rd, Wells, Maine 04090</div>
+</div>
+
+<div class="gn-bar">
+  <div class="gn-bar-inner">
+    <div class="gn-bar-field"><label>Check In</label><input type="date" id="gn-ci"></div>
+    <div class="gn-bar-field"><label>Check Out</label><input type="date" id="gn-co"></div>
+    <a href="http://reserve1.resnexus.com/resnexus/reserve/?ID=2011" class="gn-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('gn-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#gn"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('gn-ci'),co=document.getElementById('gn-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>
