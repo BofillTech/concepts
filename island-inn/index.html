@@ -45,9 +45,9 @@ a{text-decoration:none;color:inherit;}
 .ii-nav-book:hover{background:var(--teal);transform:translateY(-1px);}
 
 /* HERO */
-.ii-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(135deg, var(--teal) 0%, #0F5C52 50%, #1A3A35 100%);}
-.ii-hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="0.5"/></svg>') repeat;background-size:200px;animation:iiDrift 30s linear infinite;}
-@keyframes iiDrift{0%{background-position:0 0;}100%{background-position:200px 200px;}}
+.ii-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:url('img/exterior-palms.jpg') center/cover no-repeat;}
+.ii-hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:1;}
+
 .ii-hero-content{position:relative;z-index:2;max-width:800px;padding:0 40px;}
 .ii-hero-badge{display:inline-block;padding:8px 20px;border:1px solid rgba(255,255,255,.2);border-radius:50px;font-family:var(--font-display);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:28px;}
 .ii-hero h1{font-family:var(--font-display);font-size:clamp(40px,7vw,80px);font-weight:800;color:var(--white);line-height:1;margin-bottom:20px;letter-spacing:-.03em;}
@@ -81,7 +81,7 @@ a{text-decoration:none;color:inherit;}
 .ii-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
 .ii-room-card{background:var(--white);border-radius:16px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
 .ii-room-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
-.ii-room-card-img{height:220px;background:linear-gradient(135deg,var(--sand-dark),var(--sand));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:13px;color:var(--charcoal-light);letter-spacing:.04em;}
+.ii-room-card-img{height:220px;object-fit:cover;width:100%;}
 .ii-room-card-body{padding:24px;}
 .ii-room-card h3{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--charcoal);margin-bottom:8px;}
 .ii-room-card p{font-size:14px;color:var(--charcoal-light);line-height:1.6;margin-bottom:16px;}
@@ -111,7 +111,9 @@ a{text-decoration:none;color:inherit;}
 .ii-pets p{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.85);max-width:500px;margin:0 auto;}
 
 /* CTA */
-.ii-final-cta{padding:120px 60px;text-align:center;background:var(--charcoal);}
+.ii-final-cta{padding:120px 60px;text-align:center;background:url('img/exterior-boardwalk.jpg') center/cover no-repeat;position:relative;}
+.ii-final-cta::before{content:'';position:absolute;inset:0;background:rgba(45,45,45,.8);}
+.ii-final-cta>div{position:relative;z-index:2;}
 .ii-final-cta h2{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:800;color:var(--white);line-height:1.05;margin-bottom:16px;}
 .ii-final-cta p{font-family:var(--font-body);font-size:16px;color:rgba(255,255,255,.5);margin-bottom:36px;}
 .ii-final-cta .ii-hero-cta{background:var(--coral);}
@@ -193,6 +195,11 @@ body{padding-bottom:70px;}
   <p>At Island Inn, our freshly renovated rooms boast charming island-themed decor, guaranteeing that vacation feeling all year round. With the relaxed atmosphere of Atlantic Beach and our warm Southern hospitality, you'll never want to leave.</p>
 </section>
 
+<!-- POOL IMAGE -->
+<section style="width:100%;height:400px;overflow:hidden;">
+  <img src="img/pool-main.jpg" alt="Island Inn private pool" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+</section>
+
 <!-- FEATURES -->
 <section class="ii-features">
   <div class="ii-feature reveal"><div class="ii-feature-icon">🏖️</div><h4>3 Blocks to Beach</h4><p>Short stroll to the best side of Atlantic Beach</p></div>
@@ -211,7 +218,7 @@ body{padding-bottom:70px;}
   </div>
   <div class="ii-rooms-grid">
     <div class="ii-room-card reveal">
-      <div class="ii-room-card-img">Property photo — King Suite</div>
+      <img class="ii-room-card-img" src="img/room-king-suite.jpg" alt="King Suite at Island Inn" loading="lazy" style="object-fit:cover;">
       <div class="ii-room-card-body">
         <h3>King Suite</h3>
         <p>Spacious suite with king bed, pull-out sofas, full kitchenette, and patio. Perfect for families.</p>
@@ -220,7 +227,7 @@ body{padding-bottom:70px;}
       </div>
     </div>
     <div class="ii-room-card reveal">
-      <div class="ii-room-card-img">Property photo — Queen Room</div>
+      <img class="ii-room-card-img" src="img/room-queen-kitchen.jpg" alt="Queen Room at Island Inn" loading="lazy" style="object-fit:cover;">
       <div class="ii-room-card-body">
         <h3>Queen Room</h3>
         <p>Cozy room with two queen beds, microwave, fridge, coffee maker, and flat-screen TV. Island-themed decor.</p>
@@ -229,7 +236,7 @@ body{padding-bottom:70px;}
       </div>
     </div>
     <div class="ii-room-card reveal">
-      <div class="ii-room-card-img">Property photo — Studio Apartment</div>
+      <img class="ii-room-card-img" src="img/room-king-green.jpg" alt="Studio Apartment at Island Inn" loading="lazy" style="object-fit:cover;">
       <div class="ii-room-card-body">
         <h3>Studio Apartment</h3>
         <p>Full kitchen with stove, spacious layout. Ideal for extended stays and couples who love to cook.</p>
@@ -247,6 +254,14 @@ body{padding-bottom:70px;}
   <cite>— Guest Review, Booking.com (Rated 8.6)</cite>
 </section>
 
+<!-- GALLERY -->
+<section style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;">
+  <img src="img/room-king-bed.jpg" alt="King bed room" loading="lazy" style="width:100%;height:220px;object-fit:cover;">
+  <img src="img/room-kitchen-full.jpg" alt="Full kitchen" loading="lazy" style="width:100%;height:220px;object-fit:cover;">
+  <img src="img/exterior-building.jpg" alt="Island Inn building" loading="lazy" style="width:100%;height:220px;object-fit:cover;">
+  <img src="img/pool-tables.jpg" alt="Pool picnic area" loading="lazy" style="width:100%;height:220px;object-fit:cover;">
+</section>
+
 <!-- EXPLORE -->
 <section class="ii-explore" id="ii-explore">
   <div class="ii-explore-text reveal">
@@ -262,8 +277,8 @@ body{padding-bottom:70px;}
       <li>Crystal Coast Brewing Company — next door</li>
     </ul>
   </div>
-  <div class="ii-explore-visual reveal">
-    Atlantic Beach / Crystal Coast<br>area photo placeholder
+  <div class="ii-explore-visual reveal" style="padding:0;overflow:hidden;">
+    <img src="img/pool-palms.jpg" alt="Island Inn pool area" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:20px;">
   </div>
 </section>
 
