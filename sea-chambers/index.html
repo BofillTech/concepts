@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sea Chambers — Ogunquit, Maine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ocean:#2B5F8A;
+  --ocean-deep:#1A3D5C;
+  --ocean-light:#5B9BD5;
+  --mist:#F4F7FA;
+  --warm:#F8F5F0;
+  --sand:#E8DFD0;
+  --white:#FFFFFF;
+  --dark:#1E1E2A;
+  --gray:#6E7B8B;
+  --font-display:'Libre Baskerville',serif;
+  --font-body:'Nunito Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--dark);background:var(--warm);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.sc-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+.sc-nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 16px rgba(0,0,0,.06);padding:12px 48px;}
+.sc-nav-logo img{height:48px;width:auto;transition:height .3s;filter:brightness(0) invert(1);}
+.sc-nav.scrolled .sc-nav-logo img{height:38px;filter:none;}
+.sc-nav-links{display:flex;align-items:center;gap:28px;}
+.sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);transition:color .3s;}
+.sc-nav.scrolled .sc-nav-links a{color:var(--dark);}
+.sc-nav-links a:hover{color:var(--ocean-light);}
+.sc-nav-phone{font-size:12px;color:rgba(255,255,255,.7);}
+.sc-nav.scrolled .sc-nav-phone{color:var(--gray);}
+.sc-nav-cta{padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
+.sc-nav-cta:hover{background:var(--ocean-deep);}
+
+/* HERO - CINEMATIC */
+.sc-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.sc-hero-bg{position:absolute;inset:0;background:url('img/pool-ocean.jpg') center/cover no-repeat;}
+.sc-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,61,92,.7) 0%,rgba(26,61,92,.35) 40%,rgba(26,61,92,.2) 100%);}
+.sc-hero-content{position:relative;z-index:2;max-width:700px;padding:0 40px;}
+.sc-hero-tag{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:20px;}
+.sc-hero h1{font-family:var(--font-display);font-size:clamp(36px,5.5vw,60px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:10px;}
+.sc-hero h1 em{font-style:italic;display:block;font-size:clamp(20px,3vw,30px);color:var(--ocean-light);margin-top:10px;}
+.sc-hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin:20px auto 36px;}
+.sc-btn{display:inline-block;padding:15px 40px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:all .35s;}
+.sc-btn-fill{background:var(--ocean);color:var(--white);}
+.sc-btn-fill:hover{background:var(--white);color:var(--ocean);transform:translateY(-2px);}
+.sc-btn-ghost{border:1px solid rgba(255,255,255,.3);color:var(--white);margin-left:14px;}
+.sc-btn-ghost:hover{border-color:var(--ocean-light);color:var(--ocean-light);}
+
+/* PERKS STRIP */
+.sc-perks{background:var(--ocean-deep);padding:40px 60px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;}
+.sc-perk{color:rgba(255,255,255,.8);font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.02em;}
+.sc-perk strong{color:var(--white);display:block;font-size:14px;margin-bottom:2px;}
+
+/* INTRO */
+.sc-intro{padding:100px 60px;max-width:850px;margin:0 auto;text-align:center;}
+.sc-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);margin-bottom:14px;}
+.sc-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);font-weight:400;color:var(--dark);line-height:1.2;margin-bottom:20px;}
+.sc-title em{font-style:italic;color:var(--ocean);}
+.sc-intro p{font-size:15px;color:var(--gray);line-height:1.8;max-width:620px;margin:0 auto;}
+
+.sc-full-img{width:100%;height:400px;overflow:hidden;}
+.sc-full-img img{width:100%;height:100%;object-fit:cover;}
+
+/* ROOMS */
+.sc-rooms{padding:100px 60px;max-width:1100px;margin:0 auto;}
+.sc-rooms-header{text-align:center;margin-bottom:60px;}
+.sc-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.sc-room{background:var(--white);overflow:hidden;border-radius:6px;transition:transform .3s,box-shadow .3s;}
+.sc-room:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);}
+.sc-room img{width:100%;height:210px;object-fit:cover;}
+.sc-room-body{padding:24px;}
+.sc-room h3{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:8px;}
+.sc-room p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+.sc-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--ocean);letter-spacing:.02em;}
+.sc-room-link:hover{color:var(--ocean-deep);}
+
+/* AMENITIES */
+.sc-amenities{padding:80px 60px;background:var(--mist);}
+.sc-amenities-header{text-align:center;margin-bottom:50px;}
+.sc-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1000px;margin:0 auto;}
+.sc-amenity{text-align:center;}
+.sc-amenity-icon{font-size:28px;margin-bottom:10px;}
+.sc-amenity h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+.sc-amenity p{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* QUOTE */
+.sc-quote{padding:80px 60px;text-align:center;background:var(--ocean);color:var(--white);}
+.sc-quote blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,3vw,28px);font-weight:400;line-height:1.4;max-width:650px;margin:0 auto 16px;}
+.sc-quote cite{font-family:var(--font-body);font-size:12px;font-style:normal;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.04em;text-transform:uppercase;}
+
+/* LOCATION */
+.sc-location{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;}
+.sc-location-img{border-radius:6px;overflow:hidden;}
+.sc-location-img img{width:100%;height:360px;object-fit:cover;}
+.sc-location p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px;}
+.sc-highlights{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.sc-highlights span{font-size:14px;color:var(--gray);}
+.sc-highlights strong{color:var(--ocean);font-weight:600;}
+
+/* CTA */
+.sc-cta{padding:120px 60px;text-align:center;background:var(--dark);}
+.sc-cta h2{font-family:var(--font-display);font-size:clamp(30px,4.5vw,48px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:6px;}
+.sc-cta h2 em{font-style:italic;color:var(--ocean-light);}
+.sc-cta p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:32px;}
+.sc-cta .sc-phone{display:block;margin-top:18px;font-size:13px;color:rgba(255,255,255,.3);}
+.sc-cta .sc-phone a{color:var(--ocean-light);}
+
+.sc-footer{background:#111118;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
+.sc-footer h4{font-family:var(--font-display);font-size:17px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.sc-footer p{line-height:1.7;}
+.sc-footer ul{list-style:none;}
+.sc-footer li{margin-bottom:6px;}
+.sc-footer a{color:rgba(255,255,255,.35);transition:color .2s;}
+.sc-footer a:hover{color:var(--ocean-light);}
+.sc-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+.sc-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.sc-bar-inner{display:flex;align-items:center;gap:10px;background:var(--ocean-deep);border-radius:5px;padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.25);pointer-events:all;}
+.sc-bar-inner label{font-family:var(--font-body);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.sc-bar-inner input[type="date"]{font-family:var(--font-body);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;border-radius:3px;outline:none;}
+.sc-bar-book{padding:10px 24px;background:var(--ocean);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:3px;cursor:pointer;transition:background .3s;}
+.sc-bar-book:hover{background:var(--ocean-light);}
+.sc-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+@media(max-width:1024px){
+.sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}
+.sc-rooms-grid{grid-template-columns:1fr;}.sc-amenities-grid{grid-template-columns:repeat(2,1fr);}
+.sc-location{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.sc-perks{gap:24px;padding:30px;}.sc-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.sc-nav{padding:14px 20px;}.sc-hero-content{padding:0 20px;}.sc-intro{padding:60px 24px;}
+.sc-rooms{padding:60px 24px;}.sc-amenities{padding:60px 24px;}.sc-amenities-grid{grid-template-columns:1fr 1fr;gap:20px;}
+.sc-quote{padding:60px 24px;}.sc-cta{padding:80px 24px;}
+.sc-perks{flex-direction:column;gap:16px;}.sc-btn-ghost{margin-left:0;margin-top:12px;}
+.sc-bar{padding:8px 12px;}.sc-bar-inner{width:100%;}.sc-bar-field{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="sc-nav" id="sc-nav">
+  <a href="#" class="sc-nav-logo"><img src="img/logo.jpg" alt="Sea Chambers"></a>
+  <div class="sc-nav-links">
+    <a href="#sc-rooms">Rooms</a>
+    <a href="#sc-amenities">Amenities</a>
+    <a href="#sc-location">Location</a>
+    <span class="sc-nav-phone"><a href="tel:2076469311">207.646.9311</a></span>
+    <a href="https://reservations.seachambers.com" class="sc-nav-cta">Book Online</a>
+  </div>
+</nav>
+
+<section class="sc-hero">
+  <div class="sc-hero-bg"></div>
+  <div class="sc-hero-content">
+    <p class="sc-hero-tag">Ogunquit, Maine</p>
+    <h1>Wake Up<br>on the Water<em>— where the ocean is your backyard —</em></h1>
+    <p class="sc-hero-sub">Oceanfront rooms, heated pool, hot tub, and fire pits overlooking the Atlantic. Steps from Marginal Way and the heart of Ogunquit Village. A yearly tradition for generations.</p>
+    <a href="https://reservations.seachambers.com" class="sc-btn sc-btn-fill">Book Your Stay</a>
+    <a href="https://www.seachambers.com/rooms/" class="sc-btn sc-btn-ghost">View Rooms</a>
+  </div>
+</section>
+
+<div class="sc-perks">
+  <div class="sc-perk"><strong>Ocean View Rooms</strong>Most rooms face the Atlantic</div>
+  <div class="sc-perk"><strong>Free Breakfast</strong>Continental breakfast daily</div>
+  <div class="sc-perk"><strong>Pool & Hot Tub</strong>Heated, ocean view</div>
+  <div class="sc-perk"><strong>Fire Pits</strong>Two ocean view fire pits</div>
+  <div class="sc-perk"><strong>No Resort Fees</strong>Room rate + tax, that's it</div>
+</div>
+
+<section class="sc-intro reveal">
+  <p class="sc-label">Welcome</p>
+  <h2 class="sc-title">Unobstructed ocean views and <em>a yearly tradition for generations</em></h2>
+  <p>Sea Chambers is perfectly located near the downtown entrance of Marginal Way and the heart of Ogunquit Village, just a short walk to Ogunquit Beach. Park your car upon arrival and leave it for your entire stay. Newly remodeled guestrooms, suites, and apartments — most with ocean views.</p>
+</section>
+
+<div class="sc-full-img">
+  <img src="img/aerial.jpg" alt="Aerial view of Sea Chambers on the oceanfront" loading="lazy">
+</div>
+
+<section class="sc-rooms" id="sc-rooms">
+  <div class="sc-rooms-header reveal">
+    <p class="sc-label">Accommodations</p>
+    <h2 class="sc-title">Newly Remodeled <em>Rooms & Suites</em></h2>
+  </div>
+  <div class="sc-rooms-grid">
+    <div class="sc-room reveal">
+      <img src="img/room-king.jpg" alt="King room with ocean view" loading="lazy">
+      <div class="sc-room-body">
+        <h3>King Guest Room</h3>
+        <p>Newly remodeled with hardwood floors, king bed, kitchenette, and ocean views. Bright, coastal-inspired decor.</p>
+        <a href="https://www.seachambers.com/rooms/" class="sc-room-link">View Room →</a>
+      </div>
+    </div>
+    <div class="sc-room reveal">
+      <img src="img/room-suite.jpg" alt="Suite with exposed brick" loading="lazy">
+      <div class="sc-room-body">
+        <h3>Ocean View Suite</h3>
+        <p>Exposed brick accents, king bed, sitting area, kitchenette, and flat-screen TV. Charming New England character.</p>
+        <a href="https://www.seachambers.com/rooms/" class="sc-room-link">View Suite →</a>
+      </div>
+    </div>
+    <div class="sc-room reveal">
+      <img src="img/room-double.jpg" alt="Double queen room" loading="lazy">
+      <div class="sc-room-body">
+        <h3>Double Queen Room</h3>
+        <p>Two queen beds, kitchenette, sitting area, and ocean views. Ideal for families exploring the coast.</p>
+        <a href="https://www.seachambers.com/rooms/" class="sc-room-link">View Room →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sc-amenities" id="sc-amenities">
+  <div class="sc-amenities-header reveal">
+    <p class="sc-label">Amenities & Perks</p>
+    <h2 class="sc-title">Everything Included, <em>No Hidden Fees</em></h2>
+  </div>
+  <div class="sc-amenities-grid">
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🏊</div><h4>Heated Pool</h4><p>Ocean view seasonal outdoor pool</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">♨️</div><h4>Hot Tub</h4><p>Soak with the sound of the waves</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🔥</div><h4>Fire Pits</h4><p>Two ocean view fire pits for evening</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🥐</div><h4>Free Breakfast</h4><p>Continental breakfast included daily</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🚶</div><h4>Marginal Way</h4><p>Steps from the famous coastal walk</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">⚓</div><h4>Floating Dock</h4><p>Oceanfront deck and floating dock</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🏖️</div><h4>Ogunquit Beach</h4><p>Short walk to the sand</p></div>
+    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🅿️</div><h4>Park & Walk</h4><p>Free parking — leave your car all stay</p></div>
+  </div>
+</section>
+
+<section class="sc-quote reveal">
+  <blockquote>"Sea Chambers' unobstructed ocean views and friendly staff have made us a yearly tradition for generations of vacationers."</blockquote>
+  <cite>— Sea Chambers</cite>
+</section>
+
+<section class="sc-location" id="sc-location">
+  <div class="reveal">
+    <p class="sc-label">Location</p>
+    <h2 class="sc-title">The Heart of <em>Ogunquit Village</em></h2>
+    <p>67 Shore Road<br>Ogunquit, Maine 03907</p>
+    <p><a href="tel:2076469311" style="color:var(--ocean);font-weight:600;">207.646.9311</a><br><a href="mailto:lodging@seachambers.com" style="color:var(--gray);">lodging@seachambers.com</a></p>
+    <div class="sc-highlights">
+      <span><strong>Steps from</strong> Marginal Way entrance</span>
+      <span><strong>Short walk</strong> to Ogunquit Beach</span>
+      <span><strong>Heart of</strong> Ogunquit Village shops & dining</span>
+      <span><strong>Season:</strong> March 26 – November 15, 2026</span>
+    </div>
+  </div>
+  <div class="sc-location-img reveal">
+    <img src="img/breakfast.jpg" alt="Sea Chambers breakfast room" loading="lazy">
+  </div>
+</section>
+
+<section class="sc-cta">
+  <div class="reveal">
+    <h2>Your Oceanfront<br><em>Escape</em> Awaits</h2>
+    <p>Wake up on the water in Ogunquit, Maine.</p>
+    <a href="https://reservations.seachambers.com" class="sc-btn sc-btn-fill">Check Availability</a>
+    <span class="sc-phone">Or call <a href="tel:2076469311">207.646.9311</a></span>
+  </div>
+</section>
+
+<div class="sc-footer">
+  <div>
+    <img src="img/logo.jpg" alt="Sea Chambers" style="height:40px;margin-bottom:14px;">
+    <h4>Sea Chambers</h4>
+    <p>Oceanfront motel on Shore Road in Ogunquit, Maine. Unobstructed ocean views, heated pool, hot tub, fire pits, and complimentary breakfast.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.seachambers.com/rooms/">Rooms</a></li>
+      <li><a href="https://www.seachambers.com/breakfast/">Breakfast</a></li>
+      <li><a href="https://www.seachambers.com/pool/">Pool & Hot Tub</a></li>
+      <li><a href="https://www.seachambers.com/faq/">Perks & FAQ</a></li>
+      <li><a href="https://www.seachambers.com/gift-certificates/">Gift Certificates</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:2076469311">207.646.9311</a></li>
+      <li><a href="mailto:lodging@seachambers.com">lodging@seachambers.com</a></li>
+      <li><a href="https://www.seachambers.com/contactus/">Contact Form</a></li>
+      <li><a href="https://www.seachambers.com/sea-chambers-webcam/">Live Webcam</a></li>
+    </ul>
+  </div>
+  <div class="sc-footer-bottom">© 2026 Sea Chambers. All rights reserved. | 67 Shore Road, Ogunquit, Maine 03907</div>
+</div>
+
+<div class="sc-bar">
+  <div class="sc-bar-inner">
+    <div class="sc-bar-field"><label>Check In</label><input type="date" id="sc-ci"></div>
+    <div class="sc-bar-field"><label>Check Out</label><input type="date" id="sc-co"></div>
+    <a href="https://reservations.seachambers.com" class="sc-bar-book">Book Online</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('sc-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#sc"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('sc-ci'),co=document.getElementById('sc-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>
