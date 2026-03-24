@@ -44,7 +44,7 @@ a{text-decoration:none;color:inherit;}
 
 /* HERO - CINEMATIC */
 .sc-hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
-.sc-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/room46poolview.jpg') center/cover no-repeat;}
+.sc-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/Aerial-rooms-page-website-2026.jpg') center/cover no-repeat;}
 .sc-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,61,92,.7) 0%,rgba(26,61,92,.35) 40%,rgba(26,61,92,.2) 100%);}
 .sc-hero-content{position:relative;z-index:2;max-width:700px;padding:0 40px;}
 .sc-hero-tag{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:20px;}
@@ -85,14 +85,20 @@ a{text-decoration:none;color:inherit;}
 .sc-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--ocean);letter-spacing:.02em;}
 .sc-room-link:hover{color:var(--ocean-deep);}
 
-/* AMENITIES */
+/* AMENITIES - PHOTO CARDS */
 .sc-amenities{padding:80px 60px;background:var(--mist);}
 .sc-amenities-header{text-align:center;margin-bottom:50px;}
-.sc-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1000px;margin:0 auto;}
-.sc-amenity{text-align:center;}
-.sc-amenity-icon{font-size:28px;margin-bottom:10px;}
-.sc-amenity h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--dark);margin-bottom:4px;}
-.sc-amenity p{font-size:12px;color:var(--gray);line-height:1.5;}
+.sc-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto;}
+.sc-amenity{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;}
+.sc-amenity img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.sc-amenity:hover img{transform:scale(1.05);}
+.sc-amenity-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;}
+.sc-amenity h4{font-family:var(--font-body);font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.sc-amenity p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.4;}
+.sc-amenity-extras{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:20px auto 0;text-align:center;}
+.sc-amenity-extra{padding:20px 12px;}
+.sc-amenity-extra h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--dark);margin-bottom:3px;}
+.sc-amenity-extra p{font-size:12px;color:var(--gray);}
 
 /* QUOTE */
 .sc-quote{padding:80px 60px;text-align:center;background:var(--ocean);color:var(--white);}
@@ -136,13 +142,13 @@ body{padding-bottom:70px;}
 
 @media(max-width:1024px){
 .sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}
-.sc-rooms-grid{grid-template-columns:1fr;}.sc-amenities-grid{grid-template-columns:repeat(2,1fr);}
+.sc-rooms-grid{grid-template-columns:1fr;}.sc-amenities-grid{grid-template-columns:repeat(2,1fr);}.sc-amenity-extras{grid-template-columns:repeat(2,1fr);}
 .sc-location{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
 .sc-perks{gap:24px;padding:30px;}.sc-footer{grid-template-columns:1fr;padding:40px 30px;}
 }
 @media(max-width:768px){
 .sc-nav{padding:14px 20px;}.sc-hero-content{padding:0 20px;}.sc-intro{padding:60px 24px;}
-.sc-rooms{padding:60px 24px;}.sc-amenities{padding:60px 24px;}.sc-amenities-grid{grid-template-columns:1fr 1fr;gap:20px;}
+.sc-rooms{padding:60px 24px;}.sc-amenities{padding:60px 24px;}.sc-amenities-grid{grid-template-columns:1fr 1fr;gap:12px;}.sc-amenity-extras{grid-template-columns:1fr 1fr;}
 .sc-quote{padding:60px 24px;}.sc-cta{padding:80px 24px;}
 .sc-perks{flex-direction:column;gap:16px;}.sc-btn-ghost{margin-left:0;margin-top:12px;}
 .sc-bar{padding:8px 12px;}.sc-bar-inner{width:100%;}.sc-bar-field{display:none;}
@@ -188,7 +194,7 @@ body{padding-bottom:70px;}
 </section>
 
 <div class="sc-full-img">
-  <img src="img/aerial.jpg" alt="Aerial view of Sea Chambers on the oceanfront" loading="lazy">
+  <img src="https://bofilltech.com/wp-content/uploads/2026/03/Website-2026-Oceanside-Building.jpg" alt="Sea Chambers Oceanside Building" loading="lazy">
 </div>
 
 <section class="sc-rooms" id="sc-rooms">
@@ -230,14 +236,28 @@ body{padding-bottom:70px;}
     <h2 class="sc-title">Everything Included, <em>No Hidden Fees</em></h2>
   </div>
   <div class="sc-amenities-grid">
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🏊</div><h4>Heated Pool</h4><p>Ocean view seasonal outdoor pool</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">♨️</div><h4>Hot Tub</h4><p>Soak with the sound of the waves</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🔥</div><h4>Fire Pits</h4><p>Two ocean view fire pits for evening</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🥐</div><h4>Free Breakfast</h4><p>Continental breakfast included daily</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🚶</div><h4>Marginal Way</h4><p>Steps from the famous coastal walk</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">⚓</div><h4>Floating Dock</h4><p>Oceanfront deck and floating dock</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🏖️</div><h4>Ogunquit Beach</h4><p>Short walk to the sand</p></div>
-    <div class="sc-amenity reveal"><div class="sc-amenity-icon">🅿️</div><h4>Park & Walk</h4><p>Free parking — leave your car all stay</p></div>
+    <div class="sc-amenity reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/room46poolview.jpg" alt="Heated ocean view pool" loading="lazy">
+      <div class="sc-amenity-overlay"><h4>Heated Pool</h4><p>Ocean view seasonal outdoor pool</p></div>
+    </div>
+    <div class="sc-amenity reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/outdoorhottub.jpg" alt="Ocean view hot tub" loading="lazy">
+      <div class="sc-amenity-overlay"><h4>Hot Tub</h4><p>Soak with the sound of the waves</p></div>
+    </div>
+    <div class="sc-amenity reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Firepit-1-day-768x576-1-1.jpg" alt="Ocean view fire pits" loading="lazy">
+      <div class="sc-amenity-overlay"><h4>Fire Pits</h4><p>Two ocean view fire pits for evenings</p></div>
+    </div>
+    <div class="sc-amenity reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakastroomfromdoor.jpg" alt="Continental breakfast room" loading="lazy">
+      <div class="sc-amenity-overlay"><h4>Free Breakfast</h4><p>Continental breakfast included daily</p></div>
+    </div>
+  </div>
+  <div class="sc-amenity-extras">
+    <div class="sc-amenity-extra reveal"><h4>Marginal Way</h4><p>Steps from the famous coastal walk</p></div>
+    <div class="sc-amenity-extra reveal"><h4>Floating Dock</h4><p>Oceanfront deck and dock access</p></div>
+    <div class="sc-amenity-extra reveal"><h4>Ogunquit Beach</h4><p>Short walk to the sand</p></div>
+    <div class="sc-amenity-extra reveal"><h4>Park & Walk</h4><p>Free parking — leave your car all stay</p></div>
   </div>
 </section>
 
