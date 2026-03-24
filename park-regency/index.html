@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Park Regency Resort — Park City, Utah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --slate:#2C3E50;
+  --slate-deep:#1A252F;
+  --copper:#C17F59;
+  --copper-light:#D4A07A;
+  --stone:#F2EDE8;
+  --stone-dark:#DDD5CB;
+  --charcoal:#1C1C1C;
+  --white:#FFFFFF;
+  --gray:#7B8794;
+  --font-display:'Cormorant Garamond',serif;
+  --font-body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--stone);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* NAV */
+.pr-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
+.pr-nav.scrolled{background:rgba(26,37,47,.95);backdrop-filter:blur(12px);box-shadow:0 2px 20px rgba(0,0,0,.2);padding:12px 48px;}
+.pr-nav-logo img{height:38px;width:auto;transition:height .3s;}
+.pr-nav.scrolled .pr-nav-logo img{height:32px;}
+.pr-nav-links{display:flex;align-items:center;gap:28px;}
+.pr-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--white);transition:color .3s;}
+.pr-nav-links a:hover{color:var(--copper-light);}
+.pr-nav-phone{font-size:12px;color:rgba(255,255,255,.6);}
+.pr-nav-cta{display:inline-block;padding:10px 24px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--copper);color:var(--white);transition:all .3s;}
+.pr-nav-cta:hover{background:var(--copper-light);transform:translateY(-1px);}
+
+/* HERO - FULL BLEED */
+.pr-hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.pr-hero-bg{position:absolute;inset:0;background:url('img/exterior.jpg') center/cover no-repeat;}
+.pr-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,37,47,.9) 0%,rgba(26,37,47,.6) 50%,rgba(26,37,47,.3) 100%);}
+.pr-hero-content{position:relative;z-index:2;padding:0 60px;max-width:600px;}
+.pr-hero-tag{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--copper-light);margin-bottom:20px;}
+.pr-hero h1{font-family:var(--font-display);font-size:clamp(40px,6vw,68px);font-weight:400;color:var(--white);line-height:1.05;margin-bottom:20px;}
+.pr-hero h1 em{font-style:italic;color:var(--copper-light);}
+.pr-hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;max-width:440px;margin-bottom:36px;}
+.pr-btn{display:inline-block;padding:15px 40px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .35s;}
+.pr-btn-fill{background:var(--copper);color:var(--white);}
+.pr-btn-fill:hover{background:var(--copper-light);transform:translateY(-2px);}
+.pr-btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--white);margin-left:14px;}
+.pr-btn-ghost:hover{border-color:var(--copper);color:var(--copper-light);}
+
+/* SPLIT SECTION */
+.pr-split{display:grid;grid-template-columns:1fr 1fr;min-height:500px;}
+.pr-split-img{overflow:hidden;}
+.pr-split-img img{width:100%;height:100%;min-height:500px;object-fit:cover;}
+.pr-split-text{display:flex;flex-direction:column;justify-content:center;padding:80px 60px;}
+.pr-split-text.dark{background:var(--slate-deep);color:var(--white);}
+.pr-split-text.dark .pr-label{color:var(--copper-light);}
+.pr-split-text.dark p{color:rgba(255,255,255,.6);}
+.pr-split-text.light{background:var(--stone);}
+.pr-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin-bottom:14px;}
+.pr-title{font-family:var(--font-display);font-size:clamp(26px,3vw,38px);font-weight:400;color:inherit;line-height:1.15;margin-bottom:20px;}
+.pr-title em{font-style:italic;color:var(--copper);}
+.pr-split-text.dark .pr-title em{color:var(--copper-light);}
+.pr-split-text p{font-size:15px;font-weight:300;line-height:1.8;color:var(--gray);}
+
+/* AMENITIES */
+.pr-amenities{padding:100px 60px;background:var(--white);text-align:center;}
+.pr-amenities-header{margin-bottom:50px;}
+.pr-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;max-width:1000px;margin:0 auto;}
+.pr-amenity{text-align:center;}
+.pr-amenity-icon{font-size:28px;margin-bottom:10px;}
+.pr-amenity h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--slate);margin-bottom:4px;letter-spacing:.02em;}
+.pr-amenity p{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* ROOMS */
+.pr-rooms{padding:100px 60px;max-width:1100px;margin:0 auto;}
+.pr-rooms-header{text-align:center;margin-bottom:60px;}
+.pr-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pr-room{background:var(--white);overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.pr-room:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
+.pr-room img{width:100%;height:200px;object-fit:cover;}
+.pr-room-body{padding:24px;}
+.pr-room h3{font-family:var(--font-display);font-size:22px;font-weight:500;color:var(--slate);margin-bottom:8px;}
+.pr-room p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+.pr-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;color:var(--copper);transition:color .2s;}
+.pr-room-link:hover{color:var(--slate);}
+
+/* GALLERY */
+.pr-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.pr-gallery img{width:100%;height:240px;object-fit:cover;}
+
+/* QUOTE */
+.pr-quote{padding:80px 60px;background:var(--slate-deep);text-align:center;}
+.pr-quote blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,3vw,30px);font-weight:400;color:var(--white);line-height:1.4;max-width:700px;margin:0 auto 16px;}
+.pr-quote cite{font-family:var(--font-body);font-size:12px;font-style:normal;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:.04em;}
+
+/* CTA */
+.pr-cta{position:relative;padding:120px 60px;text-align:center;overflow:hidden;}
+.pr-cta-bg{position:absolute;inset:0;background:url('img/pool.jpg') center/cover no-repeat;}
+.pr-cta-bg::after{content:'';position:absolute;inset:0;background:rgba(26,37,47,.8);}
+.pr-cta-content{position:relative;z-index:2;}
+.pr-cta h2{font-family:var(--font-display);font-size:clamp(30px,4.5vw,50px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:14px;}
+.pr-cta h2 em{font-style:italic;color:var(--copper-light);}
+.pr-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:32px;}
+.pr-cta .pr-phone{display:block;margin-top:18px;font-size:13px;color:rgba(255,255,255,.35);}
+.pr-cta .pr-phone a{color:var(--copper-light);}
+
+/* FOOTER */
+.pr-footer{background:#141C24;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
+.pr-footer h4{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.pr-footer p{line-height:1.7;}
+.pr-footer ul{list-style:none;}
+.pr-footer li{margin-bottom:6px;}
+.pr-footer a{color:rgba(255,255,255,.35);transition:color .2s;}
+.pr-footer a:hover{color:var(--copper-light);}
+.pr-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+/* BAR */
+.pr-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.pr-bar-inner{display:flex;align-items:center;gap:10px;background:var(--slate-deep);padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.3);pointer-events:all;}
+.pr-bar-inner label{font-family:var(--font-body);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.pr-bar-inner input[type="date"]{font-family:var(--font-body);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;outline:none;}
+.pr-bar-book{padding:10px 24px;background:var(--copper);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
+.pr-bar-book:hover{background:var(--copper-light);}
+.pr-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+@media(max-width:1024px){
+.pr-nav-links a:not(.pr-nav-cta){display:none;}.pr-nav-phone{display:none;}
+.pr-split{grid-template-columns:1fr;}.pr-split-img img{min-height:300px;height:300px;}
+.pr-split-text{padding:60px 30px;}
+.pr-amenities-grid{grid-template-columns:repeat(2,1fr);gap:24px;}
+.pr-rooms-grid{grid-template-columns:1fr;}
+.pr-gallery{grid-template-columns:1fr 1fr;}
+.pr-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.pr-nav{padding:14px 20px;}.pr-hero-content{padding:0 24px;}
+.pr-amenities{padding:60px 24px;}.pr-rooms{padding:60px 24px;}
+.pr-quote{padding:60px 24px;}.pr-cta{padding:80px 24px;}
+.pr-gallery img{height:160px;}
+.pr-bar{padding:8px 12px;}.pr-bar-inner{width:100%;}.pr-bar-field{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="pr-nav" id="pr-nav">
+  <a href="#" class="pr-nav-logo"><img src="img/logo.avif" alt="Park Regency Resort"></a>
+  <div class="pr-nav-links">
+    <a href="#pr-rooms">Rooms</a>
+    <a href="#pr-amenities">Amenities</a>
+    <a href="#pr-location">Location</a>
+    <span class="pr-nav-phone"><a href="tel:4356457531">435.645.7531</a></span>
+    <a href="https://parkregencyparkcityreservations.alderwoodgroup.com/" class="pr-nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="pr-hero">
+  <div class="pr-hero-bg"></div>
+  <div class="pr-hero-content">
+    <p class="pr-hero-tag">Park City, Utah</p>
+    <h1>Where the<br>Mountain Meets <em>Main Street</em></h1>
+    <p class="pr-hero-sub">Legendary ski slopes. Historic Main Street. World-class adventure. Condo-style suites with full kitchens, indoor pool, and hot tub — your basecamp for every season in Park City.</p>
+    <a href="https://parkregencyparkcityreservations.alderwoodgroup.com/" class="pr-btn pr-btn-fill">Book Your Stay</a>
+    <a href="https://www.parkregencyparkcity.com/rooms" class="pr-btn pr-btn-ghost">View Rooms</a>
+  </div>
+</section>
+
+<section class="pr-split">
+  <div class="pr-split-img reveal"><img src="img/pool.jpg" alt="Park Regency indoor pool" loading="lazy"></div>
+  <div class="pr-split-text dark reveal">
+    <p class="pr-label">Year-Round Retreat</p>
+    <h2 class="pr-title">Après-Ski Starts <em>Right Here</em></h2>
+    <p>Our glass-enclosed indoor pool and hot tub area is the perfect place to unwind after a day on the slopes — or a summer hike through the Wasatch. Warm up, cool down, and let the mountain air do the rest.</p>
+  </div>
+</section>
+
+<section class="pr-split">
+  <div class="pr-split-text light reveal">
+    <p class="pr-label">Our Story</p>
+    <h2 class="pr-title">More Than a Hotel — <em>a Mountain Home</em></h2>
+    <p>The Park Regency beckons you to visit the mountain town of Park City with its legendary ski slopes, historic Main Street, and world-class adventure opportunities. Full kitchens, spacious living areas, and resort amenities make every stay feel like coming home to the mountains.</p>
+  </div>
+  <div class="pr-split-img reveal"><img src="img/lobby.jpg" alt="Park Regency lobby" loading="lazy"></div>
+</section>
+
+<section class="pr-amenities" id="pr-amenities">
+  <div class="pr-amenities-header reveal">
+    <p class="pr-label">Amenities</p>
+    <h2 class="pr-title">Everything for <em>Every Season</em></h2>
+  </div>
+  <div class="pr-amenities-grid">
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">🏊</div><h4>Indoor Pool & Hot Tub</h4><p>Glass-enclosed year-round relaxation</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">💪</div><h4>Fitness Center</h4><p>Weights, cardio, and more</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">🍳</div><h4>Full Kitchens</h4><p>Cook like home in every suite</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">🔥</div><h4>BBQ Grills</h4><p>On-site grills for summer cookouts</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">🅿️</div><h4>Free Parking</h4><p>Convenient on-site parking</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">⛷️</div><h4>Ski Access</h4><p>Minutes to Park City & Deer Valley</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">📶</div><h4>Free WiFi</h4><p>Stay connected throughout</p></div>
+    <div class="pr-amenity reveal"><div class="pr-amenity-icon">🛗</div><h4>Elevator Access</h4><p>Convenient access to all floors</p></div>
+  </div>
+</section>
+
+<section class="pr-rooms" id="pr-rooms">
+  <div class="pr-rooms-header reveal">
+    <p class="pr-label">Accommodations</p>
+    <h2 class="pr-title">Mountain Suites with <em>Full Kitchens</em></h2>
+  </div>
+  <div class="pr-rooms-grid">
+    <div class="pr-room reveal">
+      <img src="img/front-desk.jpg" alt="One Bedroom Suite" loading="lazy">
+      <div class="pr-room-body">
+        <h3>One Bedroom</h3>
+        <p>Sleeps 4. King bed, queen sofa sleeper, full kitchen, one bathroom. Perfect for couples.</p>
+        <a href="https://www.parkregencyparkcity.com/rooms" class="pr-room-link">View Suite →</a>
+      </div>
+    </div>
+    <div class="pr-room reveal">
+      <img src="img/lobby-alt.jpg" alt="One Bedroom Deluxe" loading="lazy">
+      <div class="pr-room-body">
+        <h3>One Bed Deluxe</h3>
+        <p>Sleeps 6. King bed, twin bunks, queen sofa sleeper, full kitchen, two bathrooms. Great for families.</p>
+        <a href="https://www.parkregencyparkcity.com/rooms" class="pr-room-link">View Suite →</a>
+      </div>
+    </div>
+    <div class="pr-room reveal">
+      <img src="img/fitness.jpg" alt="Two Bedroom Suite" loading="lazy">
+      <div class="pr-room-body">
+        <h3>Two Bedroom</h3>
+        <p>Sleeps 6. Two king beds, queen sofa sleeper, full kitchen, two bathrooms. Room for the whole crew.</p>
+        <a href="https://www.parkregencyparkcity.com/rooms" class="pr-room-link">View Suite →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pr-gallery">
+  <img src="img/pool-alt.jpg" alt="Indoor pool" loading="lazy">
+  <img src="img/lobby.jpg" alt="Lobby lounge" loading="lazy">
+  <img src="img/fitness.jpg" alt="Fitness center" loading="lazy">
+  <img src="img/exterior-wide.jpg" alt="Park Regency exterior" loading="lazy">
+</section>
+
+<section class="pr-quote reveal">
+  <blockquote>"The Park Regency beckons you to visit the mountain town of Park City — legendary ski slopes, historic Main Street, and world-class adventure await."</blockquote>
+  <cite>— Park Regency Resort</cite>
+</section>
+
+<section class="pr-split" id="pr-location">
+  <div class="pr-split-img reveal"><img src="img/exterior.jpg" alt="Park Regency entrance" loading="lazy"></div>
+  <div class="pr-split-text dark reveal">
+    <p class="pr-label">Location</p>
+    <h2 class="pr-title">Prospector Avenue, <em>Park City</em></h2>
+    <p style="margin-bottom:20px;">1710 Prospector Avenue<br>Park City, UT 84060</p>
+    <p style="margin-bottom:20px;"><a href="tel:4356457531" style="color:var(--copper-light);font-weight:500;">Front Desk: 435.645.7531</a><br><a href="tel:8447274412" style="color:rgba(255,255,255,.5);">Reservations: 844.727.4412</a></p>
+    <p><strong style="color:var(--copper-light);">Minutes to</strong> Park City Mountain & Deer Valley<br><strong style="color:var(--copper-light);">Steps to</strong> Historic Main Street shops & dining<br><strong style="color:var(--copper-light);">Summer:</strong> mountain biking, hiking, festivals<br><strong style="color:var(--copper-light);">Winter:</strong> world-class skiing & snowboarding</p>
+  </div>
+</section>
+
+<section class="pr-cta">
+  <div class="pr-cta-bg"></div>
+  <div class="pr-cta-content reveal">
+    <h2>Your Mountain<br><em>Adventure</em> Awaits</h2>
+    <p>Condo-style suites. Full kitchens. Every season.</p>
+    <a href="https://parkregencyparkcityreservations.alderwoodgroup.com/" class="pr-btn pr-btn-fill">Check Availability</a>
+    <span class="pr-phone">Or call <a href="tel:8447274412">844.727.4412</a></span>
+  </div>
+</section>
+
+<div class="pr-footer">
+  <div>
+    <img src="img/logo.avif" alt="Park Regency Resort" style="height:36px;margin-bottom:14px;">
+    <h4>Park Regency Resort</h4>
+    <p>Condo-style resort suites in Park City, Utah. Full kitchens, indoor pool, and year-round mountain adventure.<br><br>Professionally managed by Getaways Resort Management.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.parkregencyparkcity.com/rooms">Rooms</a></li>
+      <li><a href="https://www.parkregencyparkcity.com/facilities-amenities">Amenities</a></li>
+      <li><a href="https://www.parkregencyparkcity.com/local-activities">Local Activities</a></li>
+      <li><a href="https://www.parkregencyparkcity.com/faq">FAQ</a></li>
+      <li><a href="https://www.parkregencyparkcity.com/contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:4356457531">Front Desk: 435.645.7531</a></li>
+      <li><a href="tel:8447274412">Reservations: 844.727.4412</a></li>
+      <li><a href="mailto:CentralReservations@GetAwaysResorts.com">Email Reservations</a></li>
+      <li><a href="https://www.facebook.com/ParkRegencyUtah/" target="_blank">Facebook</a></li>
+    </ul>
+  </div>
+  <div class="pr-footer-bottom">© 2026 Park Regency Resort. All rights reserved. | 1710 Prospector Ave, Park City, UT 84060</div>
+</div>
+
+<div class="pr-bar">
+  <div class="pr-bar-inner">
+    <div class="pr-bar-field"><label>Check In</label><input type="date" id="pr-ci"></div>
+    <div class="pr-bar-field"><label>Check Out</label><input type="date" id="pr-co"></div>
+    <a href="https://parkregencyparkcityreservations.alderwoodgroup.com/" class="pr-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('pr-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#pr"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('pr-ci'),co=document.getElementById('pr-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>
