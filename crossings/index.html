@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crossings — Ocean City, New Jersey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#2B6CB0;
+  --blue-light:#4A9BD9;
+  --blue-pale:#E8F0FE;
+  --sky:#F0F7FF;
+  --white:#FFFFFF;
+  --sand:#FAF8F5;
+  --charcoal:#1C1C1C;
+  --gray:#6B7280;
+  --gray-light:#9CA3AF;
+  --border:#E5E7EB;
+  --font-display:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--charcoal);background:var(--white);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* NAV */
+.cx-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s ease;background:transparent;}
+.cx-nav.scrolled{background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 1px 16px rgba(0,0,0,.06);padding:12px 48px;}
+.cx-nav-logo img{height:44px;width:auto;transition:height .3s;}
+.cx-nav.scrolled .cx-nav-logo img{height:36px;}
+.cx-nav-links{display:flex;align-items:center;gap:30px;}
+.cx-nav-links a{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--white);transition:color .3s;letter-spacing:.01em;}
+.cx-nav.scrolled .cx-nav-links a{color:var(--charcoal);}
+.cx-nav-links a:hover{color:var(--blue-light);}
+.cx-nav-phone{font-size:13px;color:rgba(255,255,255,.7);}
+.cx-nav.scrolled .cx-nav-phone{color:var(--gray);}
+.cx-nav-cta{display:inline-block;padding:10px 26px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--blue);color:var(--white);border-radius:4px;transition:all .3s;}
+.cx-nav-cta:hover{background:var(--blue-light);transform:translateY(-1px);}
+
+/* HERO - SPLIT */
+.cx-hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;}
+.cx-hero-img{background:url('img/exterior-sign.jpg') center/cover no-repeat;position:relative;}
+.cx-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(255,255,255,.05) 100%);}
+.cx-hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 60px;background:var(--charcoal);}
+.cx-hero-badge{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--blue-light);margin-bottom:24px;}
+.cx-hero h1{font-family:var(--font-display);font-size:clamp(36px,4.5vw,56px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:20px;}
+.cx-hero h1 em{font-style:italic;color:var(--blue-light);}
+.cx-hero-sub{font-family:var(--font-body);font-size:16px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.7;max-width:440px;margin-bottom:36px;}
+.cx-hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.cx-btn{display:inline-block;padding:14px 36px;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;transition:all .3s;}
+.cx-btn-fill{background:var(--blue);color:var(--white);}
+.cx-btn-fill:hover{background:var(--blue-light);transform:translateY(-2px);}
+.cx-btn-outline{border:1px solid rgba(255,255,255,.2);color:var(--white);}
+.cx-btn-outline:hover{border-color:var(--blue-light);color:var(--blue-light);}
+
+/* INTRO */
+.cx-intro{padding:100px 60px;max-width:800px;margin:0 auto;text-align:center;}
+.cx-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.cx-section-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);font-weight:400;color:var(--charcoal);line-height:1.2;margin-bottom:20px;}
+.cx-section-title em{font-style:italic;color:var(--blue);}
+.cx-intro p{font-size:15px;color:var(--gray);line-height:1.8;max-width:600px;margin:0 auto;}
+
+/* FULL WIDTH IMAGE */
+.cx-full-img{width:100%;height:380px;overflow:hidden;}
+.cx-full-img img{width:100%;height:100%;object-fit:cover;}
+
+/* AMENITIES */
+.cx-amenities{padding:100px 60px;background:var(--sky);text-align:center;}
+.cx-amenities-header{margin-bottom:50px;}
+.cx-amenities-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:900px;margin:0 auto;}
+.cx-amenity{padding:32px 24px;background:var(--white);border-radius:8px;border:1px solid var(--border);transition:border-color .3s,transform .3s;}
+.cx-amenity:hover{border-color:var(--blue-light);transform:translateY(-2px);}
+.cx-amenity-icon{font-size:28px;margin-bottom:12px;}
+.cx-amenity h4{font-family:var(--font-body);font-size:14px;font-weight:700;color:var(--charcoal);margin-bottom:4px;}
+.cx-amenity p{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* ROOMS */
+.cx-rooms{padding:100px 60px;max-width:1100px;margin:0 auto;}
+.cx-rooms-header{text-align:center;margin-bottom:60px;}
+.cx-rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.cx-room{background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.cx-room:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.06);}
+.cx-room img{width:100%;height:200px;object-fit:cover;}
+.cx-room-body{padding:24px;}
+.cx-room h3{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--charcoal);margin-bottom:8px;}
+.cx-room p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+.cx-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;transition:color .2s;}
+.cx-room-link:hover{color:var(--blue-light);}
+
+/* QUOTE */
+.cx-quote{padding:80px 60px;text-align:center;background:var(--blue);color:var(--white);}
+.cx-quote blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,3vw,30px);font-weight:400;line-height:1.4;max-width:700px;margin:0 auto 16px;}
+.cx-quote cite{font-family:var(--font-body);font-size:13px;font-style:normal;font-weight:500;color:rgba(255,255,255,.6);}
+
+/* GALLERY */
+.cx-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.cx-gallery img{width:100%;height:220px;object-fit:cover;}
+
+/* LOCATION */
+.cx-location{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;}
+.cx-location p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:20px;}
+.cx-location-highlights{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.cx-location-highlights span{font-family:var(--font-body);font-size:14px;color:var(--gray);}
+.cx-location-highlights strong{color:var(--blue);font-weight:600;}
+.cx-location-img{border-radius:8px;overflow:hidden;}
+.cx-location-img img{width:100%;height:380px;object-fit:cover;}
+
+/* CTA */
+.cx-cta{padding:120px 60px;text-align:center;background:var(--charcoal);}
+.cx-cta h2{font-family:var(--font-display);font-size:clamp(30px,4.5vw,48px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:14px;}
+.cx-cta h2 em{font-style:italic;color:var(--blue-light);}
+.cx-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:32px;}
+.cx-cta .cx-btn-fill{background:var(--blue);}
+.cx-cta .cx-phone{display:block;margin-top:18px;font-size:14px;color:rgba(255,255,255,.3);}
+.cx-cta .cx-phone a{color:var(--blue-light);}
+
+/* FOOTER */
+.cx-footer{background:#0f0f0f;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
+.cx-footer h4{font-family:var(--font-display);font-size:16px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.cx-footer p{line-height:1.7;}
+.cx-footer ul{list-style:none;}
+.cx-footer li{margin-bottom:6px;}
+.cx-footer a{color:rgba(255,255,255,.35);transition:color .2s;}
+.cx-footer a:hover{color:var(--blue-light);}
+.cx-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+/* BOOKING BAR */
+.cx-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.cx-bar-inner{display:flex;align-items:center;gap:10px;background:var(--charcoal);border-radius:6px;padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.25);pointer-events:all;}
+.cx-bar-inner label{font-family:var(--font-body);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.cx-bar-inner input[type="date"]{font-family:var(--font-body);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;border-radius:4px;outline:none;}
+.cx-bar-book{padding:10px 24px;background:var(--blue);color:var(--white);font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:background .3s;}
+.cx-bar-book:hover{background:var(--blue-light);}
+.cx-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+@media(max-width:1024px){
+.cx-hero{grid-template-columns:1fr;min-height:auto;}
+.cx-hero-img{height:50vh;min-height:300px;}
+.cx-hero-content{padding:60px 30px;}
+.cx-nav-links a:not(.cx-nav-cta){display:none;}.cx-nav-phone{display:none;}
+.cx-amenities-grid{grid-template-columns:1fr 1fr;}
+.cx-rooms-grid{grid-template-columns:1fr;}
+.cx-gallery{grid-template-columns:1fr 1fr;}
+.cx-location{grid-template-columns:1fr;gap:40px;padding:80px 30px;}
+.cx-footer{grid-template-columns:1fr;padding:40px 30px;}
+}
+@media(max-width:768px){
+.cx-nav{padding:14px 20px;}.cx-intro{padding:60px 24px;}.cx-amenities{padding:60px 24px;}
+.cx-amenities-grid{grid-template-columns:1fr;}.cx-rooms{padding:60px 24px;}
+.cx-quote{padding:60px 24px;}.cx-cta{padding:80px 24px;}.cx-gallery img{height:160px;}
+.cx-bar{padding:8px 12px;}.cx-bar-inner{width:100%;}.cx-bar-field{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="cx-nav" id="cx-nav">
+  <a href="#" class="cx-nav-logo"><img src="img/logo.avif" alt="The Crossings"></a>
+  <div class="cx-nav-links">
+    <a href="#cx-rooms">Rooms</a>
+    <a href="#cx-amenities">Amenities</a>
+    <a href="#cx-location">Location</a>
+    <span class="cx-nav-phone"><a href="tel:6093984433">(609) 398-4433</a></span>
+    <a href="https://reservation.asiwebres.com/SearchAvailability.aspx?id=c0465204bec94f029e2510b51ee9492f" class="cx-nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="cx-hero">
+  <div class="cx-hero-img"></div>
+  <div class="cx-hero-content">
+    <p class="cx-hero-badge">Ocean City, New Jersey</p>
+    <h1>America's Favorite<br>Family <em>Resort</em></h1>
+    <p class="cx-hero-sub">70 beautifully appointed condominiums steps from Ocean City's beaches, boardwalk, restaurants, and shopping. Daily and weekly rentals in the heart of it all.</p>
+    <div class="cx-hero-actions">
+      <a href="https://reservation.asiwebres.com/SearchAvailability.aspx?id=c0465204bec94f029e2510b51ee9492f" class="cx-btn cx-btn-fill">Book Your Stay</a>
+      <a href="https://www.thecrossingsocnj.com/rates" class="cx-btn cx-btn-outline">View Rates</a>
+    </div>
+  </div>
+</section>
+
+<section class="cx-intro reveal">
+  <p class="cx-label">Welcome</p>
+  <h2 class="cx-section-title">The sound of the ocean, the smell of the sand, <em>the cool fresh breezes</em></h2>
+  <p>The Crossings is a delightful condominium-hotel resort located in beautiful Ocean City, NJ. You'll find tastefully appointed accommodations among our 70 privately owned units, available for daily or weekly rental. Perfect for a laid-back family vacation or couples' getaway at the shore.</p>
+</section>
+
+<div class="cx-full-img">
+  <img src="img/pool.jpg" alt="The Crossings heated outdoor pool" loading="lazy">
+</div>
+
+<section class="cx-amenities" id="cx-amenities">
+  <div class="cx-amenities-header reveal">
+    <p class="cx-label">Amenities</p>
+    <h2 class="cx-section-title">Everything for a <em>Perfect</em> Stay</h2>
+  </div>
+  <div class="cx-amenities-grid">
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">🏊</div><h4>Heated Pool</h4><p>Spacious outdoor pool with sundeck and loungers</p></div>
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">🏖️</div><h4>Steps to Beach</h4><p>Ocean City's award-winning beaches just steps away</p></div>
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">🍳</div><h4>Full Kitchenettes</h4><p>Refrigerator and cooking essentials in every unit</p></div>
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">🅿️</div><h4>Free Parking</h4><p>One car per unit, right on the property</p></div>
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">📺</div><h4>Satellite TV</h4><p>Stay entertained on rainy beach days</p></div>
+    <div class="cx-amenity reveal"><div class="cx-amenity-icon">❄️</div><h4>A/C & Heat</h4><p>Climate-controlled for every season</p></div>
+  </div>
+</section>
+
+<section class="cx-rooms" id="cx-rooms">
+  <div class="cx-rooms-header reveal">
+    <p class="cx-label">Accommodations</p>
+    <h2 class="cx-section-title">70 Coastal-Inspired <em>Condominiums</em></h2>
+  </div>
+  <div class="cx-rooms-grid">
+    <div class="cx-room reveal">
+      <img src="img/room-double.jpg" alt="Double bed room" loading="lazy">
+      <div class="cx-room-body">
+        <h3>Coastal Double</h3>
+        <p>Two beds with coastal blue decor, kitchenette, satellite TV, and private bath. Ideal for families.</p>
+        <a href="https://www.thecrossingsocnj.com/rooms" class="cx-room-link">View Room →</a>
+      </div>
+    </div>
+    <div class="cx-room reveal">
+      <img src="img/room-studio.jpg" alt="Studio efficiency" loading="lazy">
+      <div class="cx-room-body">
+        <h3>Studio Efficiency</h3>
+        <p>Open-plan living with bed, kitchenette, and hardwood floors. Everything you need in one comfortable space.</p>
+        <a href="https://www.thecrossingsocnj.com/rooms" class="cx-room-link">View Room →</a>
+      </div>
+    </div>
+    <div class="cx-room reveal">
+      <img src="img/room-suite.jpg" alt="One-bedroom suite" loading="lazy">
+      <div class="cx-room-body">
+        <h3>One-Bedroom Suite</h3>
+        <p>Separate bedroom, living area with sofa, full kitchen, and dining. A home away from home at the shore.</p>
+        <a href="https://www.thecrossingsocnj.com/rooms" class="cx-room-link">View Room →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cx-quote reveal">
+  <blockquote>"A family vacation creates memories that last a lifetime. You'll find all of this and more at The Crossings in beautiful Ocean City."</blockquote>
+  <cite>— The Crossings</cite>
+</section>
+
+<section class="cx-gallery">
+  <img src="img/exterior-grasses.jpg" alt="The Crossings exterior" loading="lazy">
+  <img src="img/lobby.jpg" alt="Front desk and lobby" loading="lazy">
+  <img src="img/lounge.jpg" alt="Guest lounge" loading="lazy">
+  <img src="img/pool-alt.jpg" alt="Pool area" loading="lazy">
+</section>
+
+<section class="cx-location" id="cx-location">
+  <div class="reveal">
+    <p class="cx-label">Location</p>
+    <h2 class="cx-section-title">In the Heart of <em>Ocean City</em></h2>
+    <p>3420 Haven Avenue<br>Ocean City, NJ 08226</p>
+    <p><a href="tel:6093984433" style="color:var(--blue);font-weight:600;">(609) 398-4433</a><br>
+    <a href="tel:8002578811" style="color:var(--gray);">Toll Free: (800) 257-8811</a></p>
+    <div class="cx-location-highlights">
+      <span><strong>Steps away</strong> from Ocean City beaches</span>
+      <span><strong>Walking distance</strong> to the scenic boardwalk</span>
+      <span><strong>Surrounded by</strong> restaurants and unique shopping</span>
+      <span><strong>Easy access</strong> from Garden State Parkway Exit 25</span>
+    </div>
+  </div>
+  <div class="cx-location-img reveal">
+    <img src="img/exterior-grasses.jpg" alt="The Crossings exterior with landscaping" loading="lazy">
+  </div>
+</section>
+
+<section class="cx-cta">
+  <div class="reveal">
+    <h2>Your Shore<br><em>Getaway</em> Awaits</h2>
+    <p>Daily and weekly rentals available. Book early for summer.</p>
+    <a href="https://reservation.asiwebres.com/SearchAvailability.aspx?id=c0465204bec94f029e2510b51ee9492f" class="cx-btn cx-btn-fill">Check Availability</a>
+    <span class="cx-phone">Or call <a href="tel:8002578811">(800) 257-8811</a></span>
+  </div>
+</section>
+
+<div class="cx-footer">
+  <div>
+    <img src="img/logo.avif" alt="The Crossings" style="height:40px;margin-bottom:14px;filter:brightness(10);">
+    <h4>The Crossings</h4>
+    <p>70 privately owned condominiums in beautiful Ocean City, NJ. Daily and weekly rentals steps from the beach and boardwalk.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.thecrossingsocnj.com/rooms">Rooms</a></li>
+      <li><a href="https://www.thecrossingsocnj.com/rates">Rates & Specials</a></li>
+      <li><a href="https://www.thecrossingsocnj.com/amenities">Amenities</a></li>
+      <li><a href="https://www.thecrossingsocnj.com/about-us">About Us</a></li>
+      <li><a href="https://www.thecrossingsocnj.com/contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:6093984433">(609) 398-4433</a></li>
+      <li><a href="tel:8002578811">(800) 257-8811</a></li>
+      <li><a href="https://www.facebook.com/thecrossingsocnj/" target="_blank">Facebook</a></li>
+      <li><a href="https://g.co/maps/thecrossingsocnj" target="_blank">Google Maps</a></li>
+    </ul>
+  </div>
+  <div class="cx-footer-bottom">© 2026 The Crossings. All rights reserved. | 3420 Haven Ave, Ocean City, NJ 08226</div>
+</div>
+
+<div class="cx-bar">
+  <div class="cx-bar-inner">
+    <div class="cx-bar-field"><label>Check In</label><input type="date" id="cx-ci"></div>
+    <div class="cx-bar-field"><label>Check Out</label><input type="date" id="cx-co"></div>
+    <a href="https://reservation.asiwebres.com/SearchAvailability.aspx?id=c0465204bec94f029e2510b51ee9492f" class="cx-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('cx-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#cx"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('cx-ci'),co=document.getElementById('cx-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>
