@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bare Naked Bakery — 100% Gluten & Nut Free</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#A52422;
+  --red-light:#C83B39;
+  --red-dark:#7B1B19;
+  --cream:#FFF9F3;
+  --cream-dark:#F0E6D8;
+  --warm:#F5E6D0;
+  --brown:#3E2723;
+  --brown-light:#6D4C41;
+  --white:#FFFFFF;
+  --text:#2D2019;
+  --gray:#8B7D6B;
+  --font-display:'Fraunces',serif;
+  --font-body:'Poppins',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--text);background:var(--cream);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.bnb-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;background:var(--cream);box-shadow:0 1px 12px rgba(0,0,0,.06);transition:padding .3s;}
+.bnb-nav.scrolled{padding:10px 48px;}
+.bnb-nav-logo img{height:56px;width:auto;transition:height .3s;}
+.bnb-nav.scrolled .bnb-nav-logo img{height:44px;}
+.bnb-nav-links{display:flex;align-items:center;gap:24px;}
+.bnb-nav-links a{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--brown);transition:color .3s;}
+.bnb-nav-links a:hover{color:var(--red);}
+.bnb-nav-cta{display:inline-block;padding:10px 24px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--red);color:var(--white);border-radius:50px;transition:all .3s;}
+.bnb-nav-cta:hover{background:var(--red-dark);transform:translateY(-1px);}
+.bnb-nav-free{display:inline-block;padding:3px 12px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--warm);color:var(--brown-light);border-radius:20px;}
+
+/* HERO */
+.bnb-hero{padding:140px 60px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;}
+.bnb-hero-text h1{font-family:var(--font-display);font-size:clamp(36px,5vw,56px);font-weight:800;color:var(--brown);line-height:1.05;margin-bottom:16px;}
+.bnb-hero-text h1 em{font-style:italic;color:var(--red);}
+.bnb-hero-text .bnb-tagline{font-family:var(--font-display);font-size:18px;font-weight:400;font-style:italic;color:var(--red);margin-bottom:16px;}
+.bnb-hero-text p{font-size:15px;font-weight:300;color:var(--gray);line-height:1.7;margin-bottom:28px;max-width:460px;}
+.bnb-hero-badges{display:flex;gap:10px;margin-bottom:28px;flex-wrap:wrap;}
+.bnb-badge{padding:6px 16px;font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:50px;border:2px solid var(--red);color:var(--red);}
+.bnb-hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+.bnb-btn{display:inline-block;padding:14px 32px;font-family:var(--font-body);font-size:13px;font-weight:600;letter-spacing:.02em;border-radius:50px;transition:all .3s;}
+.bnb-btn-red{background:var(--red);color:var(--white);}
+.bnb-btn-red:hover{background:var(--red-dark);transform:translateY(-2px);}
+.bnb-btn-outline{border:2px solid var(--brown);color:var(--brown);}
+.bnb-btn-outline:hover{border-color:var(--red);color:var(--red);}
+.bnb-hero-img{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.bnb-hero-img img{width:100%;border-radius:16px;object-fit:cover;}
+.bnb-hero-img img:first-child{height:280px;grid-column:1/-1;}
+.bnb-hero-img img:nth-child(2){height:200px;}
+.bnb-hero-img img:nth-child(3){height:200px;}
+
+/* MENU STRIP */
+.bnb-menu-strip{background:var(--red);padding:50px 60px;text-align:center;}
+.bnb-menu-strip h2{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--white);margin-bottom:24px;}
+.bnb-menu-cats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.bnb-menu-cat{padding:10px 24px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--white);border:2px solid rgba(255,255,255,.3);border-radius:50px;transition:all .3s;}
+.bnb-menu-cat:hover{background:rgba(255,255,255,.15);border-color:var(--white);}
+
+/* PRODUCTS */
+.bnb-products{padding:80px 60px;max-width:1200px;margin:0 auto;}
+.bnb-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:12px;}
+.bnb-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);font-weight:700;color:var(--brown);line-height:1.15;margin-bottom:20px;}
+.bnb-title em{font-style:italic;color:var(--red);}
+.bnb-products-header{text-align:center;margin-bottom:50px;}
+.bnb-products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.bnb-product{background:var(--white);border-radius:16px;overflow:hidden;text-align:center;transition:transform .3s,box-shadow .3s;}
+.bnb-product:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
+.bnb-product img{width:100%;height:200px;object-fit:cover;}
+.bnb-product-body{padding:18px;}
+.bnb-product h3{font-family:var(--font-display);font-size:17px;font-weight:600;color:var(--brown);margin-bottom:4px;}
+.bnb-product p{font-size:12px;color:var(--gray);}
+
+/* STORY */
+.bnb-story{padding:80px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;}
+.bnb-story-img{border-radius:16px;overflow:hidden;}
+.bnb-story-img img{width:100%;height:400px;object-fit:cover;}
+.bnb-story p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px;}
+.bnb-story p strong{color:var(--text);font-weight:600;}
+
+/* LOCATIONS */
+.bnb-locations{padding:80px 60px;background:var(--warm);text-align:center;}
+.bnb-locations-header{margin-bottom:50px;}
+.bnb-locations-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1100px;margin:0 auto;}
+.bnb-loc{background:var(--white);border-radius:12px;padding:28px 20px;transition:transform .3s,box-shadow .3s;}
+.bnb-loc:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.06);}
+.bnb-loc h4{font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--brown);margin-bottom:6px;}
+.bnb-loc p{font-size:12px;color:var(--gray);line-height:1.5;margin-bottom:12px;}
+.bnb-loc-link{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--red);}
+
+/* ORDER METHODS */
+.bnb-order{padding:80px 60px;max-width:1000px;margin:0 auto;text-align:center;}
+.bnb-order-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.bnb-order-card{padding:36px 24px;background:var(--white);border-radius:16px;border:2px solid var(--cream-dark);transition:border-color .3s;}
+.bnb-order-card:hover{border-color:var(--red);}
+.bnb-order-card h3{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--brown);margin-bottom:8px;}
+.bnb-order-card p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:16px;}
+
+/* CTA */
+.bnb-cta{padding:80px 60px;background:var(--brown);text-align:center;}
+.bnb-cta h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--white);line-height:1.1;margin-bottom:12px;}
+.bnb-cta h2 em{font-style:italic;color:var(--red-light);}
+.bnb-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:28px;}
+.bnb-cta .bnb-phone{display:block;margin-top:16px;font-size:13px;color:rgba(255,255,255,.3);}
+.bnb-cta .bnb-phone a{color:var(--red-light);}
+
+.bnb-footer{background:#1A1208;padding:40px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:12px;color:rgba(255,255,255,.35);}
+.bnb-footer h4{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--white);margin-bottom:12px;}
+.bnb-footer p{line-height:1.7;}
+.bnb-footer ul{list-style:none;}
+.bnb-footer li{margin-bottom:5px;}
+.bnb-footer a{color:rgba(255,255,255,.35);transition:color .2s;}
+.bnb-footer a:hover{color:var(--red-light);}
+.bnb-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:16px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
+
+@media(max-width:1024px){
+.bnb-hero{grid-template-columns:1fr;padding:120px 30px 60px;gap:40px;}
+.bnb-nav-links a:not(.bnb-nav-cta){display:none;}.bnb-nav-free{display:none;}
+.bnb-products-grid{grid-template-columns:repeat(2,1fr);}
+.bnb-story{grid-template-columns:1fr;gap:30px;padding:60px 30px;}
+.bnb-locations-grid{grid-template-columns:repeat(2,1fr);}
+.bnb-order-grid{grid-template-columns:1fr;}
+.bnb-footer{grid-template-columns:1fr;padding:30px;}
+}
+@media(max-width:768px){
+.bnb-nav{padding:10px 20px;}.bnb-hero-img{grid-template-columns:1fr;}
+.bnb-hero-img img:first-child{height:200px;}.bnb-hero-img img:nth-child(2),.bnb-hero-img img:nth-child(3){display:none;}
+.bnb-menu-strip{padding:30px 20px;}.bnb-products{padding:50px 20px;}
+.bnb-products-grid{grid-template-columns:1fr 1fr;gap:12px;}
+.bnb-locations{padding:50px 20px;}.bnb-locations-grid{grid-template-columns:1fr;}
+.bnb-order{padding:50px 20px;}.bnb-cta{padding:60px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="bnb-nav" id="bnb-nav">
+  <a href="#" class="bnb-nav-logo"><img src="img/logo.webp" alt="Bare Naked Bakery"></a>
+  <div class="bnb-nav-links">
+    <span class="bnb-nav-free">Free Shipping $50+</span>
+    <a href="#bnb-menu">Menu</a>
+    <a href="#bnb-locations">Locations</a>
+    <a href="#bnb-story">Our Story</a>
+    <a href="https://bare-naked-bakery.myshopify.com/" class="bnb-nav-cta">Order Now</a>
+  </div>
+</nav>
+
+<section class="bnb-hero">
+  <div class="bnb-hero-text reveal">
+    <p class="bnb-tagline">The Yummy Without the Tummy!</p>
+    <h1>New York's First<br><em>100% Gluten &<br>Nut Free</em> Bakery</h1>
+    <p>Breads, bagels, muffins, cookies, cakes — all made fresh daily from scratch. Full cafe with paninis, pizza, soups, and more. 5 locations across Long Island.</p>
+    <div class="bnb-badges">
+      <span class="bnb-badge">Gluten Free</span>
+      <span class="bnb-badge">Nut Free</span>
+      <span class="bnb-badge">Vegan Options</span>
+      <span class="bnb-badge">Kosher</span>
+    </div>
+    <div class="bnb-hero-actions">
+      <a href="https://bare-naked-bakery.myshopify.com/" class="bnb-btn bnb-btn-red">Order Online</a>
+      <a href="#bnb-locations" class="bnb-btn bnb-btn-outline">Find a Location</a>
+    </div>
+  </div>
+  <div class="bnb-hero-img reveal">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/IMG_12692_1024x.jpg" alt="Bare Naked Bakery chocolate shadow cake" loading="lazy">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/414F18A4-1262-4062-B1BF-9C6B6602BB95_0ab2d1aa-0393-4a3a-b71c-ccfaeb30654b_1024x.jpg" alt="Rainbow cookies" loading="lazy">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/0F334156-6DE6-4D32-B479-976FBE468B0B_1_105_c_1024x.jpg" alt="Gluten free donut" loading="lazy">
+  </div>
+</section>
+
+<section class="bnb-menu-strip" id="bnb-menu">
+  <h2>What Are You Craving?</h2>
+  <div class="bnb-menu-cats">
+    <a href="https://bare-naked-bakery.myshopify.com/collections/house-cakes" class="bnb-menu-cat">Cakes & Pies</a>
+    <a href="https://bare-naked-bakery.myshopify.com/collections/sweet-treats" class="bnb-menu-cat">Sweet Treats</a>
+    <a href="https://bare-naked-bakery.myshopify.com/collections/breads-bagels" class="bnb-menu-cat">Breads & Bagels</a>
+    <a href="https://bare-naked-bakery.myshopify.com/collections/sweet-loaves" class="bnb-menu-cat">Muffins & Loaves</a>
+    <a href="https://bare-naked-bakery.myshopify.com/collections/platters-gift-baskets" class="bnb-menu-cat">Platters & Gifts</a>
+    <a href="https://bare-naked-bakery.myshopify.com/collections/catering" class="bnb-menu-cat">Catering</a>
+  </div>
+</section>
+
+<section class="bnb-products">
+  <div class="bnb-products-header reveal">
+    <p class="bnb-label">Fan Favorites</p>
+    <h2 class="bnb-title">Everything Made <em>Fresh Daily</em></h2>
+  </div>
+  <div class="bnb-products-grid">
+    <div class="bnb-product reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Subject19_1024x.png" alt="Chocolate Fudge Cake" loading="lazy">
+      <div class="bnb-product-body"><h3>Chocolate Fudge Cake</h3><p>Rich, decadent, 100% GF</p></div>
+    </div>
+    <div class="bnb-product reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/414F18A4-1262-4062-B1BF-9C6B6602BB95_0ab2d1aa-0393-4a3a-b71c-ccfaeb30654b_1024x.jpg" alt="Rainbow Cookies" loading="lazy">
+      <div class="bnb-product-body"><h3>Rainbow Cookies</h3><p>Classic tri-color layers</p></div>
+    </div>
+    <div class="bnb-product reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/ScreenShot2020-06-20at8.44.57PM_1024x.png" alt="Apple Turnover" loading="lazy">
+      <div class="bnb-product-body"><h3>Apple Turnover</h3><p>Flaky, warm, homemade</p></div>
+    </div>
+    <div class="bnb-product reveal">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/b86821cb-7903-1e40-8d92-fc64aca50cfa_1024x.png" alt="Cake Balls" loading="lazy">
+      <div class="bnb-product-body"><h3>Cake Balls</h3><p>Bite-sized bliss</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="bnb-story" id="bnb-story">
+  <div class="bnb-story-img reveal">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/774FE3D2-6519-44A4-A3C1-93151E95142F_0d26ed86-08a3-4645-967d-2dbe86b2657e_1024x.jpg" alt="Linzer tart" loading="lazy">
+  </div>
+  <div class="reveal">
+    <p class="bnb-label">Our Story</p>
+    <h2 class="bnb-title">It Started <em>on a Farm</em></h2>
+    <p>Bare Naked Bakery was founded on a small farm in East Meadow, New York in 2008. We believe that <strong>food should be safe and delicious</strong> in an environment that's warm and cozy.</p>
+    <p>Creating a safe place for our guests — especially kids — to enjoy food without worry is the primary aim here. You'll hear the chopping of fruits and vegetables, smell our homemade cookies in the oven, and see our bakers working around the clock.</p>
+    <p>Over 15 years later, we continue to fulfill the needs of our guests with a menu of <strong>farm fresh, prepared-to-order food</strong> on our home-baked breads and dough. These are the traditions we established on a farm years ago that we still passionately follow today.</p>
+  </div>
+</section>
+
+<section class="bnb-locations" id="bnb-locations">
+  <div class="bnb-locations-header reveal">
+    <p class="bnb-label">Visit Us</p>
+    <h2 class="bnb-title">5 Locations Across <em>Long Island</em></h2>
+  </div>
+  <div class="bnb-locations-grid">
+    <div class="bnb-loc reveal">
+      <h4>Bellmore</h4>
+      <p>2572 Merrick Rd<br>Bellmore, NY 11710</p>
+      <a href="https://barenakedbakery.com/bellmore-3" class="bnb-loc-link">Details →</a>
+    </div>
+    <div class="bnb-loc reveal">
+      <h4>Plainview</h4>
+      <p>164 Manetto Hill Rd<br>Plainview, NY 11803</p>
+      <a href="https://barenakedbakery.com/plainview-2" class="bnb-loc-link">Details →</a>
+    </div>
+    <div class="bnb-loc reveal">
+      <h4>Garden City</h4>
+      <p>156 7th Street<br>Garden City, NY 11530</p>
+      <a href="https://barenakedbakery.com/garden-city" class="bnb-loc-link">Details →</a>
+    </div>
+    <div class="bnb-loc reveal">
+      <h4>Huntington</h4>
+      <p>Huntington, NY</p>
+      <a href="https://barenakedbakery.com/huntington" class="bnb-loc-link">Details →</a>
+    </div>
+    <div class="bnb-loc reveal">
+      <h4>Shirley</h4>
+      <p>Shirley, NY</p>
+      <a href="https://barenakedbakery.com/shirley" class="bnb-loc-link">Details →</a>
+    </div>
+  </div>
+</section>
+
+<section class="bnb-order">
+  <div class="reveal">
+    <p class="bnb-label">How to Order</p>
+    <h2 class="bnb-title">Three Ways to Get <em>Your Fix</em></h2>
+  </div>
+  <div class="bnb-order-grid">
+    <div class="bnb-order-card reveal">
+      <h3>🚚 Nationwide Shipping</h3>
+      <p>Free shipping on orders $50+. Use code FREESHIP at checkout.</p>
+      <a href="https://barenakedbakery.com/nationwide-shipping" class="bnb-btn bnb-btn-red" style="padding:10px 24px;font-size:12px;">Shop Now</a>
+    </div>
+    <div class="bnb-order-card reveal">
+      <h3>🏪 In-Store Pickup</h3>
+      <p>Order online, pick up at your favorite location. Fresh and ready.</p>
+      <a href="https://barenakedbakery.com/location-order-page" class="bnb-btn bnb-btn-red" style="padding:10px 24px;font-size:12px;">Order Here</a>
+    </div>
+    <div class="bnb-order-card reveal">
+      <h3>🏠 Local Delivery</h3>
+      <p>Delivered to your door in select Long Island areas.</p>
+      <a href="https://barenakedbakery.com/delivery" class="bnb-btn bnb-btn-red" style="padding:10px 24px;font-size:12px;">Order Here</a>
+    </div>
+  </div>
+</section>
+
+<section class="bnb-cta">
+  <div class="reveal">
+    <h2>The Yummy<br>Without the <em>Tummy</em></h2>
+    <p>100% Gluten Free. 100% Nut Free. 100% Delicious.</p>
+    <a href="https://bare-naked-bakery.myshopify.com/" class="bnb-btn bnb-btn-red">Order Online</a>
+    <span class="bnb-phone">Bellmore: <a href="tel:5168097370">(516) 809-7370</a> | Plainview: <a href="tel:5165130598">(516) 513-0598</a></span>
+  </div>
+</section>
+
+<div class="bnb-footer">
+  <div>
+    <img src="img/logo.webp" alt="Bare Naked Bakery" style="height:50px;margin-bottom:12px;">
+    <h4>Bare Naked Bakery</h4>
+    <p>New York's first 100% gluten and nut free bakery. Founded on a small farm in 2008. Breads, bagels, cakes, cookies, and a full cafe — all made fresh daily.</p>
+  </div>
+  <div>
+    <h4>Shop</h4>
+    <ul>
+      <li><a href="https://bare-naked-bakery.myshopify.com/collections/house-cakes">Cakes & Pies</a></li>
+      <li><a href="https://bare-naked-bakery.myshopify.com/collections/sweet-treats">Sweet Treats</a></li>
+      <li><a href="https://bare-naked-bakery.myshopify.com/collections/breads-bagels">Breads & Bagels</a></li>
+      <li><a href="https://bare-naked-bakery.myshopify.com/collections/platters-gift-baskets">Platters & Gifts</a></li>
+      <li><a href="https://barenakedbakery.com/wholesale-catalog">Wholesale</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Connect</h4>
+    <ul>
+      <li><a href="tel:5168097370">Bellmore: (516) 809-7370</a></li>
+      <li><a href="tel:5165130598">Plainview: (516) 513-0598</a></li>
+      <li><a href="https://barenakedbakery.com/contact-us">Contact Us</a></li>
+      <li><a href="https://www.facebook.com/BareNakedBakery/" target="_blank">Facebook</a></li>
+      <li><a href="https://barenakedbakery.com/our-story">Our Story</a></li>
+    </ul>
+  </div>
+  <div class="bnb-footer-bottom">© 2026 Bare Naked Bakery. All rights reserved. | 100% Gluten Free & Nut Free</div>
+</div>
+
+<script>
+var n=document.getElementById('bnb-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#bnb"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+</script>
+</body>
+</html>
