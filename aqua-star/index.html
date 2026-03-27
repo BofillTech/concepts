@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aquastar Inn — Westerly, Rhode Island</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --aqua:#00A8A8;
+  --aqua-deep:#007B7B;
+  --aqua-light:#33D6D6;
+  --navy:#0D2137;
+  --sand:#FBF7F0;
+  --sand-dark:#EDE5D6;
+  --golden:#E8A940;
+  --white:#FFFFFF;
+  --text:#1A1A2E;
+  --gray:#7A7F8D;
+  --font-display:'Sora',sans-serif;
+  --font-body:'Merriweather',serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--text);background:var(--sand);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+.as-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;background:rgba(13,33,55,.9);backdrop-filter:blur(10px);}
+.as-nav.scrolled{padding:10px 48px;box-shadow:0 2px 20px rgba(0,0,0,.15);}
+.as-nav-logo img{height:52px;width:auto;transition:height .3s;}
+.as-nav.scrolled .as-nav-logo img{height:42px;}
+.as-nav-links{display:flex;align-items:center;gap:26px;}
+.as-nav-links a{font-family:var(--font-display);font-size:13px;font-weight:500;color:var(--white);transition:color .3s;letter-spacing:.01em;}
+.as-nav-links a:hover{color:var(--aqua-light);}
+.as-nav-phone{font-size:13px;color:rgba(255,255,255,.6);}
+.as-nav-cta{display:inline-block;padding:10px 24px;font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--aqua);color:var(--white);border-radius:6px;transition:all .3s;}
+.as-nav-cta:hover{background:var(--golden);transform:translateY(-1px);}
+
+/* HERO */
+.as-hero{position:relative;min-height:75vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:linear-gradient(135deg,var(--navy) 0%,#0A3D5C 50%,var(--aqua-deep) 100%);}
+.as-hero-content{position:relative;z-index:2;max-width:700px;padding:100px 40px 60px;}
+.as-hero-tag{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--aqua-light);margin-bottom:20px;}
+.as-hero h1{font-family:var(--font-display);font-size:clamp(36px,5.5vw,58px);font-weight:800;color:var(--white);line-height:1;margin-bottom:16px;letter-spacing:-.02em;}
+.as-hero h1 span{color:var(--aqua-light);}
+.as-hero-sub{font-family:var(--font-body);font-size:16px;font-weight:400;color:rgba(255,255,255,.6);line-height:1.7;max-width:520px;margin:0 auto 32px;}
+.as-btn{display:inline-block;padding:14px 36px;font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:6px;transition:all .35s;}
+.as-btn-fill{background:var(--golden);color:var(--navy);}
+.as-btn-fill:hover{background:var(--aqua-light);transform:translateY(-2px);}
+.as-btn-ghost{border:2px solid rgba(255,255,255,.25);color:var(--white);margin-left:14px;}
+.as-btn-ghost:hover{border-color:var(--aqua-light);color:var(--aqua-light);}
+.as-hero-note{margin-top:20px;font-family:var(--font-display);font-size:12px;color:rgba(255,255,255,.35);}
+
+/* INTRO */
+.as-intro{padding:80px 60px;max-width:850px;margin:0 auto;text-align:center;}
+.as-label{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua);margin-bottom:12px;}
+.as-title{font-family:var(--font-display);font-size:clamp(24px,3.5vw,36px);font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:20px;}
+.as-title em{font-family:var(--font-body);font-style:italic;font-weight:400;color:var(--aqua-deep);}
+.as-intro p{font-size:15px;color:var(--gray);line-height:1.8;max-width:620px;margin:0 auto;}
+
+/* PHOTO PLACEHOLDER */
+.as-photo-placeholder{width:100%;height:380px;background:linear-gradient(135deg,var(--sand-dark),var(--sand));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:14px;color:var(--gray);letter-spacing:.04em;}
+
+/* AMENITIES */
+.as-amenities{padding:80px 60px;background:var(--navy);text-align:center;}
+.as-amenities .as-label{color:var(--aqua-light);}
+.as-amenities .as-title{color:var(--white);}
+.as-amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:1000px;margin:40px auto 0;}
+.as-amenity{color:var(--white);}
+.as-amenity-icon{font-size:28px;margin-bottom:10px;}
+.as-amenity h4{font-family:var(--font-display);font-size:14px;font-weight:700;margin-bottom:4px;}
+.as-amenity p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5;}
+
+/* NEARBY */
+.as-nearby{padding:80px 60px;max-width:1000px;margin:0 auto;}
+.as-nearby-header{text-align:center;margin-bottom:50px;}
+.as-nearby-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.as-nearby-card{background:var(--white);border-radius:10px;padding:30px 24px;text-align:center;border:1px solid var(--sand-dark);transition:transform .3s,border-color .3s;}
+.as-nearby-card:hover{transform:translateY(-3px);border-color:var(--aqua);}
+.as-nearby-card h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.as-nearby-card p{font-size:13px;color:var(--gray);line-height:1.6;}
+
+/* CTA */
+.as-cta{padding:100px 60px;background:linear-gradient(135deg,var(--aqua-deep),var(--navy));text-align:center;}
+.as-cta h2{font-family:var(--font-display);font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--white);line-height:1.05;margin-bottom:12px;}
+.as-cta h2 span{color:var(--aqua-light);}
+.as-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:28px;}
+.as-cta .as-phone{display:block;margin-top:16px;font-size:14px;color:rgba(255,255,255,.35);}
+.as-cta .as-phone a{color:var(--aqua-light);}
+
+.as-footer{background:#081420;padding:40px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:12px;color:rgba(255,255,255,.3);}
+.as-footer h4{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--white);margin-bottom:12px;}
+.as-footer p{line-height:1.7;}
+.as-footer ul{list-style:none;}
+.as-footer li{margin-bottom:5px;}
+.as-footer a{color:rgba(255,255,255,.3);transition:color .2s;}
+.as-footer a:hover{color:var(--aqua-light);}
+.as-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:16px;text-align:center;font-size:11px;color:rgba(255,255,255,.15);}
+
+.as-bar{position:fixed;bottom:0;left:0;right:0;z-index:99;display:flex;justify-content:center;padding:10px 20px;pointer-events:none;}
+.as-bar-inner{display:flex;align-items:flex-end;gap:10px;background:var(--navy);border-radius:8px;padding:10px 18px;box-shadow:0 4px 24px rgba(0,0,0,.3);pointer-events:all;}
+.as-bar-inner label{font-family:var(--font-display);font-size:10px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;}
+.as-bar-inner input[type="date"]{font-family:var(--font-display);font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);color:var(--white);padding:7px 10px;border-radius:5px;outline:none;}
+.as-bar-book{padding:10px 24px;background:var(--golden);color:var(--navy);font-family:var(--font-display);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:background .3s;}
+.as-bar-book:hover{background:var(--aqua-light);}
+.as-bar-field{display:flex;flex-direction:column;gap:2px;}
+body{padding-bottom:70px;}
+
+@media(max-width:1024px){
+.as-nav-links a:not(.as-nav-cta){display:none;}.as-nav-phone{display:none;}
+.as-amenities-grid{grid-template-columns:repeat(2,1fr);}
+.as-nearby-grid{grid-template-columns:1fr;}
+.as-footer{grid-template-columns:1fr;padding:30px;}
+}
+@media(max-width:768px){
+.as-nav{padding:12px 20px;}.as-hero-content{padding:80px 20px 50px;}
+.as-intro{padding:50px 24px;}.as-amenities{padding:50px 24px;}.as-nearby{padding:50px 24px;}
+.as-cta{padding:60px 24px;}.as-btn-ghost{margin-left:0;margin-top:12px;display:block;text-align:center;}
+.as-bar{padding:8px 12px;}.as-bar-inner{width:100%;}.as-bar-field{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav class="as-nav" id="as-nav">
+  <a href="#" class="as-nav-logo"><img src="img/logo.png" alt="Aquastar Inn"></a>
+  <div class="as-nav-links">
+    <a href="#as-amenities">Amenities</a>
+    <a href="#as-nearby">Explore</a>
+    <a href="#as-contact">Contact</a>
+    <span class="as-nav-phone"><a href="tel:4015962892">401-596-2892</a></span>
+    <a href="https://reservation.asiwebres.com/v2/RoomAvailability.aspx?id=8a0b260708184736b85663912e1e7345" class="as-nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<section class="as-hero">
+  <div class="as-hero-content">
+    <p class="as-hero-tag">Westerly, Rhode Island</p>
+    <h1>Sand. Sun. <span>Swim.</span><br>Your Coastal Escape</h1>
+    <p class="as-hero-sub">A charming New England inn with flowered gardens, a sparkling 55-foot fish-shaped pool, and pristine beaches just minutes away. Seasonal stays from Memorial Day through Labor Day.</p>
+    <a href="https://reservation.asiwebres.com/v2/RoomAvailability.aspx?id=8a0b260708184736b85663912e1e7345" class="as-btn as-btn-fill">Book Your Room</a>
+    <a href="https://www.aquastarinn.com/special_packages.html" class="as-btn as-btn-ghost">View Specials</a>
+    <p class="as-hero-note">Open Memorial Day – Labor Day</p>
+  </div>
+</section>
+
+<section class="as-intro reveal">
+  <p class="as-label">Welcome</p>
+  <h2 class="as-title">Fall in Love with <em>Flowered Gardens & Coastal Charm</em></h2>
+  <p>From the moment you arrive at Aquastar Inn you'll fall in love with the flowered gardens, beautiful landscaping, and colorful umbrellas surrounding our sparkling 55-foot fish-shaped swimming pool. Centrally located near downtown Westerly, wine shops, restaurants, and the spectacular Rhode Island coastline.</p>
+</section>
+
+<div class="as-photo-placeholder">Your property photos will go here — upload in next chat</div>
+
+<section class="as-amenities" id="as-amenities">
+  <div class="reveal">
+    <p class="as-label">What We Offer</p>
+    <h2 class="as-title" style="color:var(--white);">Everything for a <em style="color:var(--aqua-light);">Perfect Summer</em></h2>
+  </div>
+  <div class="as-amenities-grid">
+    <div class="as-amenity reveal"><div class="as-amenity-icon">🏊</div><h4>Fish-Shaped Pool</h4><p>Sparkling 55-foot pool surrounded by gardens</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">🏖️</div><h4>Nearby Beaches</h4><p>Misquamicut, Watch Hill & more minutes away</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">🌺</div><h4>Landscaped Grounds</h4><p>Flowered gardens, picnic area with grills</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">📶</div><h4>Free WiFi</h4><p>In-room and lobby connectivity</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">❄️</div><h4>Air Conditioning</h4><p>Cool, comfortable rooms</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">📺</div><h4>Cable TV</h4><p>Flat screens with movie channels</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">🅿️</div><h4>Free Parking</h4><p>Convenient on-site parking</p></div>
+    <div class="as-amenity reveal"><div class="as-amenity-icon">🚭</div><h4>Non-Smoking</h4><p>All rooms are non-smoking</p></div>
+  </div>
+</section>
+
+<section class="as-nearby" id="as-nearby">
+  <div class="as-nearby-header reveal">
+    <p class="as-label">Explore</p>
+    <h2 class="as-title">Southern Rhode Island's <em>Best Adventures</em></h2>
+  </div>
+  <div class="as-nearby-grid">
+    <div class="as-nearby-card reveal"><h3>Misquamicut Beach</h3><p>Miles of pristine sandy beach, surf, and family fun just minutes away.</p></div>
+    <div class="as-nearby-card reveal"><h3>Watch Hill</h3><p>Charming seaside village with the historic Flying Horse Carousel and upscale shopping.</p></div>
+    <div class="as-nearby-card reveal"><h3>Block Island</h3><p>Ferry from nearby Point Judith to the island's dramatic bluffs and beaches.</p></div>
+    <div class="as-nearby-card reveal"><h3>Downtown Westerly</h3><p>Wine shops, restaurants, arts scene, and New England charm.</p></div>
+    <div class="as-nearby-card reveal"><h3>Burlingame State Park</h3><p>Over 3,000 acres of hiking trails, freshwater swimming, and camping.</p></div>
+    <div class="as-nearby-card reveal"><h3>Fishing & Golf</h3><p>Charter boats, pier fishing, and several courses within a short drive.</p></div>
+  </div>
+</section>
+
+<section class="as-cta" id="as-contact">
+  <div class="reveal">
+    <h2>Your Rhode Island<br><span>Summer</span> Starts Here</h2>
+    <p>Seasonal inn open Memorial Day through Labor Day.</p>
+    <a href="https://reservation.asiwebres.com/v2/RoomAvailability.aspx?id=8a0b260708184736b85663912e1e7345" class="as-btn as-btn-fill">Check Availability</a>
+    <span class="as-phone">Or call <a href="tel:4015962892">401-596-2892</a></span>
+  </div>
+</section>
+
+<div class="as-footer">
+  <div>
+    <img src="img/logo.png" alt="Aquastar Inn" style="height:48px;margin-bottom:12px;">
+    <h4>Aquastar Inn</h4>
+    <p>110 Post Road<br>Westerly, RI 02891<br><br>A charming coastal New England inn with gardens, pool, and beaches nearby.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="https://www.aquastarinn.com/">Home</a></li>
+      <li><a href="https://www.aquastarinn.com/photogallery.html">Photo Gallery</a></li>
+      <li><a href="https://www.aquastarinn.com/attractions.html">Things to Do</a></li>
+      <li><a href="https://www.aquastarinn.com/special_packages.html">Special Packages</a></li>
+      <li><a href="https://www.aquastarinn.com/map_directions.html">Directions</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <ul>
+      <li><a href="tel:4015962892">401-596-2892</a></li>
+      <li><a href="https://www.aquastarinn.com/map_directions.html">Get Directions</a></li>
+    </ul>
+  </div>
+  <div class="as-footer-bottom">© 2026 Aquastar Inn. All rights reserved. | 110 Post Rd, Westerly, RI 02891</div>
+</div>
+
+<div class="as-bar">
+  <div class="as-bar-inner">
+    <div class="as-bar-field"><label>Check In</label><input type="date" id="as-ci"></div>
+    <div class="as-bar-field"><label>Check Out</label><input type="date" id="as-co"></div>
+    <a href="https://reservation.asiwebres.com/v2/RoomAvailability.aspx?id=8a0b260708184736b85663912e1e7345" class="as-bar-book">Book Now</a>
+  </div>
+</div>
+
+<script>
+var n=document.getElementById('as-nav');
+window.addEventListener('scroll',function(){n.classList.toggle('scrolled',window.scrollY>60);});
+var o=new IntersectionObserver(function(e){e.forEach(function(en){if(en.isIntersecting){en.target.classList.add('visible');o.unobserve(en.target);}});},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){o.observe(el);});
+document.querySelectorAll('a[href^="#as"]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();var t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+var d=new Date(),d2=new Date(d);d2.setDate(d2.getDate()+1);
+function f(x){return x.toISOString().split('T')[0];}
+var ci=document.getElementById('as-ci'),co=document.getElementById('as-co');
+if(ci)ci.value=f(d);if(co)co.value=f(d2);
+</script>
+</body>
+</html>

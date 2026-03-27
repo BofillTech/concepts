@@ -14,3 +14,4 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 6 | The Garrison | Wells, ME | [garrisonofmaine.com](https://garrisonofmaine.com) | [View →](https://bofilltech.github.io/concepts/garrison/) | F — Classic/Heritage | EB Garamond + Raleway | Mar 24 |
 | 7 | Sea Chambers | Ogunquit, ME | [seachambers.com](https://seachambers.com) | [View →](https://bofilltech.github.io/concepts/sea-chambers/) | Cinematic Coastal | Libre Baskerville + Nunito Sans | Mar 24 |
 | 8 | Bare Naked Bakery | Long Island, NY | [barenakedbakery.com](https://barenakedbakery.com) | [View →](https://bofilltech.github.io/concepts/bare-naked-bakery/) | Warm Artisan | Fraunces + Poppins | Mar 25 |
+| 9 | Aquastar Inn | Westerly, RI | [aquastarinn.com](https://aquastarinn.com) | [View →](https://bofilltech.github.io/concepts/aqua-star/) | Coastal New England | Sora + Merriweather | Mar 27 |
