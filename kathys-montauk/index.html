@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kathy's Montauk Getaways — Curated Escapes at Land's End</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F1E6;
+    --sand: #E6D9C4;
+    --parchment: #F2EAD8;
+    --ocean: #1A3A4A;
+    --teal: #2A6475;
+    --seafoam: #5B9BAA;
+    --gold: #B8873F;
+    --gold-light: #D4A96A;
+    --white: #FFFFFF;
+    --charcoal: #242424;
+    --warm-gray: #8A7F74;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+    background: rgba(26,58,74,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(184,135,63,0.3);
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold-light); font-style: italic; }
+  .nav-links {
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(247,241,230,0.85);
+    text-decoration: none;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--white) !important;
+    padding: 8px 22px !important;
+    border-radius: 2px;
+    letter-spacing: 0.1em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--charcoal) !important; }
+
+  /* ─── PAGES ───────────────────────────── */
+  .page { display:none; padding-top: 70px; min-height: 100vh; }
+  .page.active { display:block; }
+
+  /* ─── HERO ────────────────────────────── */
+  .hero {
+    position: relative;
+    height: calc(100vh - 70px);
+    min-height: 560px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-slide {
+    position: absolute; inset: 0;
+    background-size: cover; background-position: center;
+    opacity: 0;
+    transition: opacity 1.6s ease;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide-1 { background-image: linear-gradient(160deg, rgba(26,58,74,0.52) 0%, rgba(42,100,117,0.28) 50%, rgba(26,58,74,0.62) 100%), url('images/p1-sunset-firepit.jpg'); }
+  .hero-slide-2 { background-image: linear-gradient(160deg, rgba(26,58,74,0.52) 0%, rgba(42,100,117,0.28) 50%, rgba(26,58,74,0.62) 100%), url('images/p2-pool.jpg'); }
+  .hero-slide-3 { background-image: linear-gradient(160deg, rgba(26,58,74,0.52) 0%, rgba(42,100,117,0.28) 50%, rgba(26,58,74,0.62) 100%), url('images/p3-sunset-deck.jpg'); }
+  @keyframes heroZoom {
+    from { transform: scale(1); }
+    to   { transform: scale(1.07); }
+  }
+  .hero-slide.active { opacity: 1; animation: heroZoom 14s ease-in-out forwards; }
+  .hero-slide-dots {
+    position: absolute; bottom: 88px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 4;
+  }
+  .hero-slide-dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: 1px solid rgba(255,255,255,0.65);
+    cursor: pointer; transition: all 0.35s;
+  }
+  .hero-slide-dot.active {
+    background: var(--gold-light);
+    border-color: var(--gold-light);
+    transform: scale(1.35);
+  }
+  .hero-prop-tag {
+    position: absolute; bottom: 112px; right: 48px; z-index: 4;
+    background: rgba(26,58,74,0.75); backdrop-filter: blur(4px);
+    color: rgba(255,255,255,0.9);
+    padding: 7px 16px; border-radius: 2px;
+    border-left: 2px solid var(--gold-light);
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0; transition: opacity 1s ease 0.8s;
+  }
+  .hero-prop-tag.visible { opacity: 1; }
+  .hero-content {
+    position: relative; z-index:2;
+    text-align: center;
+    color: var(--white);
+    padding: 0 24px;
+    animation: fadeUp 1.2s ease forwards;
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(30px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 18px;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 22px;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.88);
+    max-width: 540px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+    letter-spacing: 0.02em;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--white);
+    border: none;
+    padding: 14px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.6);
+    padding: 14px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.15); border-color: var(--white); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 32px; left:50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(255,255,255,0.6); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.6));
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0%,100%{opacity:0.3} 50%{opacity:1} }
+
+  /* ─── SECTION COMMON ─────────────────── */
+  .section { padding: 90px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300; line-height: 1.15;
+    color: var(--ocean); margin-bottom: 20px;
+  }
+  .section-intro {
+    font-size: 1.05rem; color: var(--warm-gray); max-width: 620px;
+    line-height: 1.8; font-weight: 300;
+  }
+  .divider {
+    width: 48px; height: 2px;
+    background: linear-gradient(to right, var(--gold), var(--gold-light));
+    margin: 24px 0;
+  }
+
+  /* ─── STATS BAR ───────────────────────── */
+  .stats-bar {
+    background: var(--ocean);
+    padding: 32px 40px;
+    display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; color: var(--cream); }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300;
+    color: var(--gold-light);
+    display: block;
+  }
+  .stat-label {
+    font-size: 0.72rem; letter-spacing: 0.18em;
+    text-transform: uppercase; opacity: 0.7;
+    margin-top: 4px; display: block;
+  }
+
+  /* ─── PROPERTY CARDS ─────────────────── */
+  .properties-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-top: 56px;
+  }
+  @media(max-width:900px) { .properties-grid { grid-template-columns: 1fr; } }
+
+  .property-card {
+    background: var(--white);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,58,74,0.08);
+    transition: all 0.35s cubic-bezier(0.2,0,0,1);
+    cursor: pointer;
+  }
+  .property-card:hover { transform: translateY(-8px); box-shadow: 0 16px 48px rgba(26,58,74,0.16); }
+  .card-img-wrap {
+    position: relative; height: 240px; overflow: hidden;
+  }
+  .card-img-wrap img {
+    width:100%; height:100%; object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .property-card:hover .card-img-wrap img { transform: scale(1.07); }
+  .card-badge {
+    position: absolute; top:16px; left:16px;
+    background: var(--ocean);
+    color: var(--cream); font-size: 0.68rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 5px 12px; border-radius: 2px; font-weight: 500;
+  }
+  .card-badge.gold { background: var(--gold); }
+  .card-body { padding: 24px 24px 20px; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.55rem; font-weight: 400;
+    color: var(--ocean); margin-bottom: 6px;
+  }
+  .card-location {
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 12px; font-weight: 500;
+  }
+  .card-desc {
+    font-size: 0.88rem; color: var(--warm-gray); line-height: 1.7;
+    margin-bottom: 18px; font-weight: 300;
+  }
+  .card-amenities {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px;
+  }
+  .amenity-pill {
+    background: var(--parchment);
+    font-size: 0.72rem; padding: 4px 10px; border-radius: 20px;
+    color: var(--ocean); letter-spacing: 0.05em; font-weight: 400;
+  }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 16px; border-top: 1px solid var(--sand);
+  }
+  .card-guests { font-size: 0.8rem; color: var(--warm-gray); }
+  .card-book {
+    background: var(--ocean); color: var(--white);
+    padding: 9px 20px; border-radius: 2px;
+    font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; display: inline-block;
+    transition: background 0.2s;
+  }
+  .card-book:hover { background: var(--teal); }
+
+  /* ─── ABOUT MONTAUK PAGE ─────────────── */
+  .montauk-hero {
+    height: 420px; position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .montauk-hero-bg {
+    position: absolute; inset:0;
+    background:
+      linear-gradient(to top, rgba(26,58,74,0.9) 0%, transparent 60%),
+      url('https://images.unsplash.com/photo-1563299796-17596ed6b017?w=1600&q=80') center/cover;
+  }
+  .montauk-hero-text {
+    position: relative; z-index:2;
+    padding: 48px 56px; color: var(--white);
+  }
+  .montauk-hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 5vw, 4.2rem);
+    font-weight: 300; margin-bottom: 12px;
+  }
+  .montauk-hero-text p {
+    font-size: 1rem; opacity: 0.8; max-width: 540px; line-height: 1.7; font-weight: 300;
+  }
+
+  .montauk-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    padding: 80px 56px; max-width: 1200px; margin: 0 auto;
+  }
+  @media(max-width:768px) { .montauk-grid { grid-template-columns: 1fr; padding: 48px 24px; } }
+
+  .montauk-text h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 300; color: var(--ocean); margin-bottom: 16px;
+  }
+  .montauk-text p {
+    font-size: 0.95rem; line-height: 1.85; color: #555; margin-bottom: 18px; font-weight: 300;
+  }
+
+  .highlights-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .highlight-item {
+    background: var(--white); padding: 24px; border-radius: 4px;
+    border-left: 3px solid var(--gold);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .highlight-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
+  .highlight-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; color: var(--ocean); margin-bottom: 6px;
+  }
+  .highlight-item p { font-size: 0.83rem; color: var(--warm-gray); line-height: 1.6; font-weight: 300; }
+
+  /* ─── GALLERY PAGE ──────────────────── */
+  .gallery-hero {
+    height: 300px; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--ocean);
+  }
+  .gallery-hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 300; color: var(--cream);
+    text-align: center;
+  }
+  .gallery-hero h1 em { font-style: italic; color: var(--gold-light); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 8px;
+    padding: 40px;
+  }
+  @media(max-width:768px) { .gallery-grid { grid-template-columns: 1fr 1fr; padding: 16px; } }
+
+  .gallery-item {
+    overflow: hidden; border-radius: 3px;
+    position: relative; cursor: pointer;
+  }
+  .gallery-item:nth-child(1) { grid-column: 1/3; grid-row: 1/3; }
+  .gallery-item:nth-child(5) { grid-column: 2/4; }
+
+  .gallery-item img {
+    width:100%; height:100%; object-fit: cover;
+    min-height: 200px;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .gallery-item::after {
+    content: '';
+    position: absolute; inset:0;
+    background: linear-gradient(to top, rgba(26,58,74,0.35) 0%, transparent 60%);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* ─── CONTACT PAGE ──────────────────── */
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr; min-height: calc(100vh - 70px);
+  }
+  @media(max-width:768px) { .contact-wrapper { grid-template-columns: 1fr; } }
+
+  .contact-left {
+    background: var(--ocean);
+    padding: 80px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+    color: var(--cream);
+    position: relative; overflow: hidden;
+  }
+  .contact-left::before {
+    content: '';
+    position: absolute; bottom: -60px; right: -60px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: rgba(184,135,63,0.12);
+  }
+  .contact-left h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    font-weight: 300; margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .contact-left h2 em { font-style: italic; color: var(--gold-light); }
+  .contact-left p {
+    font-size: 0.95rem; opacity: 0.75; line-height: 1.8;
+    margin-bottom: 40px; font-weight: 300; max-width: 400px;
+  }
+  .contact-info-item {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 24px;
+  }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(184,135,63,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .contact-info-item .info-text strong {
+    display: block; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 3px;
+  }
+  .contact-info-item .info-text span {
+    font-size: 1.05rem; font-family: 'Cormorant Garamond', serif; font-weight: 300;
+  }
+
+  .contact-right {
+    background: var(--parchment);
+    padding: 80px 56px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .contact-right h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 300; color: var(--ocean); margin-bottom: 32px;
+  }
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 0.72rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--warm-gray); margin-bottom: 7px; font-weight: 500;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 16px;
+    border: 1px solid var(--sand);
+    border-radius: 2px;
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.92rem; color: var(--charcoal);
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+    border-color: var(--teal);
+  }
+  .form-group textarea { height: 120px; resize: vertical; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .submit-btn {
+    width: 100%; background: var(--ocean); color: var(--white);
+    border: none; padding: 15px; font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; border-radius: 2px; margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .submit-btn:hover { background: var(--teal); }
+
+  /* ─── BOOKING BAR ─────────────────────── */
+  .booking-bar {
+    position: fixed; bottom:0; left:0; right:0; z-index:99;
+    background: rgba(26,58,74,0.97);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(184,135,63,0.4);
+    padding: 14px 40px;
+    display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .booking-bar-label {
+    color: var(--gold-light); font-size: 0.7rem; letter-spacing: 0.18em;
+    text-transform: uppercase; font-weight: 500; white-space: nowrap;
+    margin-right: 8px;
+  }
+  .bar-field {
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .bar-field label {
+    color: rgba(247,241,230,0.55); font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .bar-field input, .bar-field select {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 2px;
+    color: var(--cream); font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; padding: 6px 10px; outline: none;
+    transition: border-color 0.2s; width: 140px;
+  }
+  .bar-field input:focus, .bar-field select:focus { border-color: var(--gold-light); }
+  .bar-field select option { background: var(--ocean); color: var(--cream); }
+  .bar-divider { width: 1px; height: 36px; background: rgba(255,255,255,0.15); margin: 0 4px; }
+  .bar-search {
+    background: var(--gold); color: var(--white);
+    border: none; padding: 10px 28px; border-radius: 2px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    cursor: pointer; transition: all 0.2s; white-space: nowrap;
+    margin-left: auto;
+  }
+  .bar-search:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── TESTIMONIAL STRIP ──────────────── */
+  .testimonial-strip {
+    background: var(--parchment);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .testimonial-strip blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 300; font-style: italic;
+    color: var(--ocean); max-width: 800px; margin: 0 auto 16px;
+    line-height: 1.5;
+  }
+  .testimonial-strip cite {
+    font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); font-style: normal; font-weight: 500;
+  }
+  .stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 3px; }
+
+  /* ─── FOOTER ─────────────────────────── */
+  footer {
+    background: var(--charcoal);
+    color: rgba(247,241,230,0.6);
+    padding: 48px 56px 100px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+  }
+  @media(max-width:768px) { footer { grid-template-columns: 1fr; padding: 40px 24px 100px; } }
+  .footer-brand h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 300; color: var(--cream);
+    margin-bottom: 12px;
+  }
+  .footer-brand h3 span { color: var(--gold-light); font-style: italic; }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.75; font-weight: 300; max-width: 320px; }
+  .footer-col h4 {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--cream); margin-bottom: 16px; font-weight: 500;
+  }
+  .footer-col a {
+    display: block; color: rgba(247,241,230,0.6);
+    text-decoration: none; font-size: 0.88rem;
+    margin-bottom: 8px; transition: color 0.2s; cursor: pointer;
+  }
+  .footer-col a:hover { color: var(--gold-light); }
+
+  .dot {
+    background: none; border: none; color: rgba(255,255,255,0.5);
+    font-size: 0.6rem; cursor: pointer; padding: 2px; line-height:1;
+    transition: color 0.2s;
+  }
+  .dot.active { color: var(--gold-light); }
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.30s; }
+
+  /* ─── Properties detail page ─────────── */
+  .props-hero {
+    height: 320px; position: relative; overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .props-hero-bg {
+    position: absolute; inset:0;
+    background:
+      linear-gradient(to top, rgba(26,58,74,0.88) 0%, rgba(26,58,74,0.2) 70%),
+      url('images/p1-living2.jpg') center/cover;
+  }
+  .props-hero-text { position:relative; z-index:2; padding: 40px 56px; color: var(--white); }
+  .props-hero-text h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 300; margin-bottom: 8px;
+  }
+  .props-hero-text p { font-size: 0.95rem; opacity: 0.75; font-weight: 300; }
+
+  .prop-detail {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-bottom: 1px solid var(--sand);
+    background: var(--white);
+    margin: 0 40px 32px;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(26,58,74,0.08);
+  }
+  @media(max-width:768px) { .prop-detail { grid-template-columns: 1fr; margin: 0 16px 24px; } }
+  .prop-detail.reverse { direction: rtl; }
+  .prop-detail.reverse > * { direction: ltr; }
+
+  .prop-img {
+    height: 400px; overflow: hidden;
+  }
+  .prop-img img { width:100%; height:100%; object-fit: cover; transition: transform 0.5s; }
+  .prop-detail:hover .prop-img img { transform: scale(1.04); }
+  .prop-info { padding: 48px 44px; display: flex; flex-direction: column; justify-content: center; }
+  .prop-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; font-weight: 300; color: var(--sand);
+    line-height: 1; margin-bottom: 8px; display: block;
+  }
+  .prop-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 400; color: var(--ocean); margin-bottom: 6px;
+  }
+  .prop-tag {
+    font-size: 0.72rem; color: var(--gold); letter-spacing: 0.15em;
+    text-transform: uppercase; margin-bottom: 18px; font-weight: 500;
+  }
+  .prop-info p {
+    font-size: 0.92rem; color: #666; line-height: 1.8;
+    margin-bottom: 24px; font-weight: 300;
+  }
+  .prop-specs {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px;
+  }
+  .spec-item {
+    display: flex; gap: 8px; align-items: center;
+    font-size: 0.82rem; color: var(--charcoal); font-weight: 400;
+  }
+  .spec-icon { font-size: 1rem; }
+  .prop-book-btn {
+    background: var(--ocean); color: var(--white);
+    padding: 13px 32px; border-radius: 2px; border: none;
+    font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+    letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: background 0.2s; align-self: flex-start;
+  }
+  .prop-book-btn:hover { background: var(--teal); }
+
+  .props-section { padding: 40px 0 80px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" onclick="showPage('home')"><span>Kathy's</span> Montauk Getaways</a>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" data-page="home">Home</a></li>
+    <li><a onclick="showPage('properties')" data-page="properties">Properties</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About Montauk</a></li>
+    <li><a onclick="showPage('gallery')" data-page="gallery">Gallery</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact" class="nav-cta">Contact & Book</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════ HOME PAGE ══════════════ -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-slide hero-slide-1 active"></div>
+    <div class="hero-slide hero-slide-2"></div>
+    <div class="hero-slide hero-slide-3"></div>
+    <div class="hero-slide-dots">
+      <div class="hero-slide-dot active" onclick="heroGo(0)"></div>
+      <div class="hero-slide-dot" onclick="heroGo(1)"></div>
+      <div class="hero-slide-dot" onclick="heroGo(2)"></div>
+    </div>
+    <div class="hero-prop-tag visible" id="hero-prop-tag">Ditch Plains Beach House</div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">✦ Montauk, New York ✦ East End Escapes ✦</p>
+      <h1 class="hero-title">Your Private<br>Refuge at <em>Land's End</em></h1>
+      <p class="hero-subtitle">Three hand-curated retreats at the tip of Long Island — where the Atlantic meets the sky and every summer day feels unhurried.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('properties')">View Properties</button>
+        <button class="btn-outline" onclick="showPage('about')">Discover Montauk</button>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Curated Properties</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">★ 5.0</span>
+      <span class="stat-label">Average Rating</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">12+</span>
+      <span class="stat-label">Guests Welcome</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">1</span>
+      <span class="stat-label">Mile to Beach</span>
+    </div>
+  </div>
+
+  <!-- PROPERTIES TEASERS -->
+  <div class="section">
+    <p class="section-label">— Our Properties</p>
+    <h2 class="section-title">Three Remarkable<br>Montauk Retreats</h2>
+    <div class="divider"></div>
+    <p class="section-intro">Whether you're after an intimate escape or a sprawling summer house for the whole crew, each of Kathy's properties delivers the real Montauk — wild coastline, fresh air, and unhurried ease.</p>
+
+    <div class="properties-grid">
+      <!-- Card 1 -->
+      <div class="property-card fade-in" onclick="showPage('properties')">
+        <div class="card-img-wrap">
+          <img src="images/p1-deck.jpg" alt="Montauk Ditch Plains Beach House">
+          <span class="card-badge gold">Airbnb ★ 4.9</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Ditch Plains Beach House</h3>
+          <p class="card-location">📍 Ditch Plains · Steps to the Best Surf in Montauk</p>
+          <p class="card-desc">Soaring vaulted ceilings, a sun-drenched open-plan living room, and a deck built for watching the sky turn pink. Fire pit, lush backyard, multiple bedrooms, and beach parking pass included.</p>
+          <div class="card-amenities">
+            <span class="amenity-pill">Fire Pit Deck</span>
+            <span class="amenity-pill">Beach Parking Pass</span>
+            <span class="amenity-pill">Pool Access</span>
+            <span class="amenity-pill">Full Kitchen</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-guests">Up to 8 guests</span>
+            <a class="card-book" href="https://www.airbnb.com/rooms/27748760" target="_blank">Book Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="property-card fade-in" onclick="showPage('properties')">
+        <div class="card-img-wrap">
+          <img src="images/p2-pool.jpg" alt="Montauk Sunset Beach House">
+          <span class="card-badge">Airbnb ★ 5.0</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Sunset Beach House</h3>
+          <p class="card-location">📍 Montauk · Private Pool · Beach Parking Pass</p>
+          <p class="card-desc">A grand cedar-shingle Hamptons home with soaring two-story great room, chef's kitchen, private pool, wraparound deck with fire pit, and a cedar outdoor shower. Beach parking pass included.</p>
+          <div class="card-amenities">
+            <span class="amenity-pill">Private Pool</span>
+            <span class="amenity-pill">Fire Pit Deck</span>
+            <span class="amenity-pill">Beach Parking Pass</span>
+            <span class="amenity-pill">Chef's Kitchen</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-guests">Up to 8 guests</span>
+            <a class="card-book" href="https://www.airbnb.com/rooms/27691424" target="_blank">Book Now →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="property-card fade-in" onclick="showPage('properties')">
+        <div class="card-img-wrap">
+          <img src="images/p3-pool-dusk.jpg" alt="East Lake Villa">
+          <span class="card-badge gold">Luxury · OutEast</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">East Lake Villa</h3>
+          <p class="card-location">📍 246 East Lake Dr · Lake Montauk Views</p>
+          <p class="card-desc">A newly built 4-bed/4.5-bath masterpiece on East Lake Drive. Grand compass-rose foyer, marble kitchen with lake views, covered teak pool lounge, rooftop hot tub deck, and stunning sunsets every evening.</p>
+          <div class="card-amenities">
+            <span class="amenity-pill">Private Pool</span>
+            <span class="amenity-pill">Hot Tub</span>
+            <span class="amenity-pill">Lake Views</span>
+            <span class="amenity-pill">4 BR / 4.5 BA</span>
+          </div>
+          <div class="card-footer">
+            <span class="card-guests">Up to 10 guests</span>
+            <a class="card-book" href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank">Book Now →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIAL -->
+  <div class="testimonial-strip">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Kathy's properties are the real deal — we've been coming back every August for three years. Nothing else compares to waking up in Montauk."</blockquote>
+    <cite>— Sarah M., Returning Guest Since 2022</cite>
+  </div>
+
+  <!-- ABOUT TEASER -->
+  <div class="section" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding-bottom:100px">
+    <div>
+      <p class="section-label">— Why Montauk</p>
+      <h2 class="section-title">Where the<br>Hamptons End<br>& the <em style="font-style:italic;color:var(--teal)">Wild Begins</em></h2>
+      <div class="divider"></div>
+      <p style="font-size:.95rem;color:#666;line-height:1.85;font-weight:300;margin-bottom:28px">Montauk sits at the very tip of Long Island's South Fork — a place where Gilded Age restraint gives way to raw coastline, crashing surf, and a village proud of its fishing roots. Here, celebrities and surfers share the same stretch of sand.</p>
+      <button class="btn-primary" onclick="showPage('about')" style="border:none;cursor:pointer">Discover Montauk →</button>
+    </div>
+    <div style="position:relative;height:420px;overflow:hidden;border-radius:4px">
+      <img src="images/p3-outdoor-lounge.jpg" alt="East Lake Villa outdoor lounge" style="width:100%;height:100%;object-fit:cover">
+      <div style="position:absolute;bottom:24px;left:24px;background:rgba(26,58,74,0.9);color:var(--cream);padding:14px 20px;border-radius:3px">
+        <span style="font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-light);display:block;margin-bottom:3px">East Lake Villa</span>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1.2rem">Covered teak lounge · Pool · Lake views</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">
+      <h3><span>Kathy's</span> Montauk Getaways</h3>
+      <p>Curated vacation rentals at the tip of Long Island. Three unique properties, one unforgettable destination. Book direct or reach out — Kathy handles everything personally.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Properties</h4>
+      <a href="https://www.airbnb.com/rooms/27748760" target="_blank">Ditch Plains Beach House</a>
+      <a href="https://www.airbnb.com/rooms/27691424" target="_blank">Sunset Beach House</a>
+      <a href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank">East Lake Villa</a>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a onclick="showPage('about')">About Montauk</a>
+      <a onclick="showPage('gallery')">Photo Gallery</a>
+      <a onclick="showPage('contact')">Contact Kathy</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ PROPERTIES PAGE ══════════════ -->
+<div id="page-properties" class="page">
+  <div class="props-hero">
+    <div class="props-hero-bg"></div>
+    <div class="props-hero-text">
+      <h1>Our Properties</h1>
+      <p>Three distinctive homes — each one uniquely Montauk.</p>
+    </div>
+  </div>
+
+  <div class="props-section">
+
+    <!-- Prop 1 -->
+    <div class="prop-detail">
+      <div class="prop-img" style="position:relative;height:auto;min-height:400px">
+        <!-- Photo carousel for Property 1 -->
+        <div id="p1-carousel" style="height:460px;overflow:hidden;position:relative">
+          <img id="p1-main" src="images/p1-sunset-firepit.jpg" alt="Ditch Plains Beach House" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.5s">
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2">
+            <button onclick="p1Slide(0)" class="dot active" id="p1d0">●</button>
+            <button onclick="p1Slide(1)" class="dot" id="p1d1">●</button>
+            <button onclick="p1Slide(2)" class="dot" id="p1d2">●</button>
+            <button onclick="p1Slide(3)" class="dot" id="p1d3">●</button>
+            <button onclick="p1Slide(4)" class="dot" id="p1d4">●</button>
+          </div>
+          <button onclick="p1Prev()" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">‹</button>
+          <button onclick="p1Next()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">›</button>
+        </div>
+        <!-- Thumbnail strip -->
+        <div style="display:flex;gap:4px;padding:4px;background:#f0e8d8">
+          <img src="images/p1-sunset-firepit.jpg" onclick="p1Slide(0)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:1;border:2px solid var(--gold);border-radius:2px">
+          <img src="images/p1-deck.jpg"            onclick="p1Slide(1)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p1-living2.jpg"         onclick="p1Slide(2)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p1-dining2.jpg"         onclick="p1Slide(3)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p1-master1.jpg"         onclick="p1Slide(4)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+        </div>
+      </div>
+      <div class="prop-info">
+        <span class="prop-num">01</span>
+        <h2>Ditch Plains Beach House</h2>
+        <p class="prop-tag">📍 Ditch Plains · Near the Best Surf in Montauk · Beach Parking Pass Included</p>
+        <p>Wake up to the sound of waves and spend your days at Ditch Plains — the legendary longboard break just minutes from the door. This beautifully appointed home features soaring vaulted ceilings, an open-plan chef's kitchen, chandelier dining room, and a spectacular deck with fire pit overlooking the bay. Multiple bedrooms — including a dreamy teal king master suite — plus a lower-level family room mean everyone has their own space. The backyard fire pit, blue Adirondack chairs under the willows, and those legendary Montauk sunsets make this one genuinely hard to leave.</p>
+        <div class="prop-specs">
+          <div class="spec-item"><span class="spec-icon">🛏</span> Multiple Bedrooms</div>
+          <div class="spec-item"><span class="spec-icon">👥</span> Up to 8 Guests</div>
+          <div class="spec-item"><span class="spec-icon">🔥</span> Deck Fire Pit</div>
+          <div class="spec-item"><span class="spec-icon">🌅</span> Bay Sunset Views</div>
+          <div class="spec-item"><span class="spec-icon">🏖</span> Beach Parking Pass</div>
+          <div class="spec-item"><span class="spec-icon">🍳</span> Chef's Kitchen</div>
+          <div class="spec-item"><span class="spec-icon">🏊</span> Pool Access</div>
+          <div class="spec-item"><span class="spec-icon">🎿</span> Vaulted Ceilings</div>
+        </div>
+        <a class="prop-book-btn" href="https://www.airbnb.com/rooms/27748760?check_in=2026-07-01&check_out=2026-07-08&guests=1&adults=8" target="_blank">View on Airbnb & Book →</a>
+      </div>
+    </div>
+
+    <!-- Prop 2 -->
+    <div class="prop-detail reverse">
+      <div class="prop-img" style="position:relative;height:auto;min-height:400px">
+        <div id="p2-carousel" style="height:460px;overflow:hidden;position:relative">
+          <img id="p2-main" src="images/p2-pool.jpg" alt="Sunset Beach House" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.5s">
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2">
+            <button onclick="p2Slide(0)" class="dot active" id="p2d0">●</button>
+            <button onclick="p2Slide(1)" class="dot" id="p2d1">●</button>
+            <button onclick="p2Slide(2)" class="dot" id="p2d2">●</button>
+            <button onclick="p2Slide(3)" class="dot" id="p2d3">●</button>
+            <button onclick="p2Slide(4)" class="dot" id="p2d4">●</button>
+          </div>
+          <button onclick="p2Prev()" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">‹</button>
+          <button onclick="p2Next()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">›</button>
+        </div>
+        <div style="display:flex;gap:4px;padding:4px;background:#f0e8d8">
+          <img src="images/p2-pool.jpg"         onclick="p2Slide(0)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:1;border:2px solid var(--gold);border-radius:2px">
+          <img src="images/p2-exterior.jpg"     onclick="p2Slide(1)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p2-living1.jpg"      onclick="p2Slide(2)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p2-kitchen.jpg"      onclick="p2Slide(3)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p2-deck-fire.jpg"    onclick="p2Slide(4)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+        </div>
+      </div>
+      <div class="prop-info">
+        <span class="prop-num">02</span>
+        <h2>Sunset Beach House</h2>
+        <p class="prop-tag">📍 Montauk · Private Pool · Beach Parking Pass · Fire Pit Deck</p>
+        <p>This striking cedar-shingle Hamptons home is the one guests request again and again. Step inside to a dramatic two-story great room flooded with light — white sectionals, stone fireplace, and a chef's kitchen with marble island that opens to the whole living space. Outside, the private pool is surrounded by hydrangeas and lounge chairs, and the wraparound deck has a dedicated fire pit lounge with navy teak furniture. There's a cedar outdoor shower for sandy returns from the beach, a covered rocking-chair porch for morning coffee, and a pristine navy-tile bathroom that feels like a boutique hotel. Beach parking pass included.</p>
+        <div class="prop-specs">
+          <div class="spec-item"><span class="spec-icon">🏊</span> Private Pool</div>
+          <div class="spec-item"><span class="spec-icon">👥</span> Up to 8 Guests</div>
+          <div class="spec-item"><span class="spec-icon">🔥</span> Fire Pit Deck</div>
+          <div class="spec-item"><span class="spec-icon">🍳</span> Chef's Kitchen</div>
+          <div class="spec-item"><span class="spec-icon">🚿</span> Cedar Outdoor Shower</div>
+          <div class="spec-item"><span class="spec-icon">🏖</span> Beach Parking Pass</div>
+          <div class="spec-item"><span class="spec-icon">🪑</span> Rocking Chair Porch</div>
+          <div class="spec-item"><span class="spec-icon">🛁</span> Luxury Bathrooms</div>
+        </div>
+        <a class="prop-book-btn" href="https://www.airbnb.com/rooms/27691424?check_in=2026-08-01&check_out=2026-08-31&guests=1&adults=8" target="_blank">View on Airbnb & Book →</a>
+      </div>
+    </div>
+
+    <!-- Prop 3 -->
+    <div class="prop-detail">
+      <div class="prop-img" style="position:relative;height:auto;min-height:400px">
+        <div id="p3-carousel" style="height:460px;overflow:hidden;position:relative">
+          <img id="p3-main" src="images/p3-pool-dusk.jpg" alt="East Lake Villa" style="width:100%;height:100%;object-fit:cover;transition:opacity 0.5s">
+          <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2">
+            <button onclick="p3Slide(0)" class="dot active" id="p3d0">●</button>
+            <button onclick="p3Slide(1)" class="dot" id="p3d1">●</button>
+            <button onclick="p3Slide(2)" class="dot" id="p3d2">●</button>
+            <button onclick="p3Slide(3)" class="dot" id="p3d3">●</button>
+            <button onclick="p3Slide(4)" class="dot" id="p3d4">●</button>
+          </div>
+          <button onclick="p3Prev()" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">‹</button>
+          <button onclick="p3Next()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);background:rgba(26,58,74,0.7);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1rem;cursor:pointer;z-index:2">›</button>
+        </div>
+        <div style="display:flex;gap:4px;padding:4px;background:#f0e8d8">
+          <img src="images/p3-pool-dusk.jpg"       onclick="p3Slide(0)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:1;border:2px solid var(--gold);border-radius:2px">
+          <img src="images/p3-outdoor-lounge.jpg"  onclick="p3Slide(1)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p3-kitchen.jpg"         onclick="p3Slide(2)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p3-sunset-deck.jpg"     onclick="p3Slide(3)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+          <img src="images/p3-foyer.jpg"           onclick="p3Slide(4)" style="width:20%;height:56px;object-fit:cover;cursor:pointer;opacity:0.7;border:2px solid transparent;border-radius:2px">
+        </div>
+      </div>
+      <div class="prop-info">
+        <span class="prop-num">03</span>
+        <h2>East Lake Villa</h2>
+        <p class="prop-tag">📍 246 East Lake Dr · Lake Montauk · Near Gin Beach & Ditch Plains</p>
+        <p>The crown jewel of the collection — a newly built 4,000 sq ft Hamptons masterpiece on coveted East Lake Drive. The moment you step through the front door you're greeted by a grand compass-rose inlaid foyer, a soaring staircase, and a mounted marlin that sets the tone perfectly. The vaulted kitchen with globe pendants, marble island seating eight, and wide-plank floors opens directly to lake views and the rooftop deck with a hot tub. Outside, a covered teak outdoor lounge with recessed lighting sits alongside the pool — a full outdoor living room under the stars. Multiple marble spa bathrooms, coffered-ceiling family room overlooking the pool, and sunset views from the upper deck that will stop you mid-sentence. Close to Gin Beach, Ditch Plains, and downtown Montauk.</p>
+        <div class="prop-specs">
+          <div class="spec-item"><span class="spec-icon">🛏</span> 4 Bedrooms</div>
+          <div class="spec-item"><span class="spec-icon">🛁</span> 4.5 Bathrooms</div>
+          <div class="spec-item"><span class="spec-icon">🏊</span> Private Pool</div>
+          <div class="spec-item"><span class="spec-icon">♨️</span> Hot Tub Deck</div>
+          <div class="spec-item"><span class="spec-icon">🌊</span> Lake Views</div>
+          <div class="spec-item"><span class="spec-icon">🍳</span> Marble Kitchen</div>
+          <div class="spec-item"><span class="spec-icon">🏡</span> Covered Outdoor Lounge</div>
+          <div class="spec-item"><span class="spec-icon">📐</span> 4,000 Sq Ft</div>
+        </div>
+        <a class="prop-book-btn" href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank">View on OutEast & Book →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer style="margin-top:0">
+    <div class="footer-brand">
+      <h3><span>Kathy's</span> Montauk Getaways</h3>
+      <p>Questions about which property is right for you? Reach out — Kathy is happy to help you find your perfect Montauk match.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About Montauk</a>
+      <a onclick="showPage('gallery')">Gallery</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Book Direct</h4>
+      <a href="https://www.airbnb.com/rooms/27748760" target="_blank">Ditch Plains Beach House</a>
+      <a href="https://www.airbnb.com/rooms/27691424" target="_blank">Sunset Beach House</a>
+      <a href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank">East Lake Villa</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ ABOUT MONTAUK PAGE ══════════════ -->
+<div id="page-about" class="page">
+  <div class="montauk-hero">
+    <div class="montauk-hero-bg"></div>
+    <div class="montauk-hero-text">
+      <h1>About Montauk</h1>
+      <p>The untamed tip of Long Island — where every sunset is a standing ovation.</p>
+    </div>
+  </div>
+
+  <div class="montauk-grid">
+    <div class="montauk-text">
+      <h2>The Last Wild Place on the East End</h2>
+      <p>Montauk sits at the very eastern tip of New York's South Fork — a place where the manicured Hamptons give way to something wilder and more honest. It's a working fishing village that happens to have some of the finest beaches on the Atlantic seaboard, a 228-year-old lighthouse you can climb, and a summer energy that's both thrilling and unhurried.</p>
+      <p>The surf culture here is real. Ditch Plains — just down the road from East Lake Villa — is considered one of the best longboard breaks on the East Coast, and you'll find everyone from first-timers to seasoned riders making the pilgrimage every summer morning. Meanwhile, the Atlantic-facing bluffs at Camp Hero offer some of the most dramatic coastal scenery in New York State.</p>
+      <p>Montauk's dining scene has quietly elevated itself over the past decade. Duryea's Lobster Deck at sunset is almost a religious experience, and Surf Lodge draws a crowd that could have flown in from Ibiza. But the village also still has the clam shacks and fish-and-chips spots that have been there for 50 years, and those are just as good.</p>
+      <p>The train from Penn Station gets you here in about 3.5 hours — no traffic, just watching the Hamptons pass by the window. Most guests arrive on a Friday afternoon and immediately understand why people return every summer for decades.</p>
+    </div>
+
+    <div>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <span class="highlight-icon">🏄</span>
+          <h4>Ditch Plains Beach</h4>
+          <p>Montauk's legendary surf break. Perfect for longboarders and beginners, with rentals and lessons nearby.</p>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🗼</span>
+          <h4>Montauk Lighthouse</h4>
+          <p>New York's oldest lighthouse, commissioned by George Washington in 1796. Climb the 137 steps for breathtaking 360° views.</p>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🦞</span>
+          <h4>Duryea's Lobster Deck</h4>
+          <p>The quintessential Montauk lobster experience — fresh off the boat, cold rosé, golden hour over the water.</p>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🚣</span>
+          <h4>Gin Beach & Lake Montauk</h4>
+          <p>Calm, sheltered waters ideal for kayaking, paddleboarding, and swimming. Minutes from East Lake Villa.</p>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎣</span>
+          <h4>Deep-Sea Fishing</h4>
+          <p>Charter boats depart from Montauk Harbor daily. The striped bass and tuna fishing here is world-class.</p>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🏕</span>
+          <h4>Hither Hills State Park</h4>
+          <p>3,000 acres of trails, dunes, and one of the most beautiful campground-to-beach walks in the northeast.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-strip">
+    <div class="stars">★★★★★</div>
+    <blockquote>"Montauk isn't the Hamptons — it's better. It still has soul."</blockquote>
+    <cite>— Frequent Visitor, 12 Consecutive Summers</cite>
+  </div>
+
+  <footer>
+    <div class="footer-brand">
+      <h3><span>Kathy's</span> Montauk Getaways</h3>
+      <p>Ready to experience Montauk for yourself? Choose from three hand-picked properties and let Kathy take care of the rest.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('properties')">Properties</a>
+      <a onclick="showPage('gallery')">Gallery</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Getting Here</h4>
+      <a href="#" onclick="return false">LIRR from Penn Station</a>
+      <a href="#" onclick="return false">Hampton Jitney Bus</a>
+      <a href="#" onclick="return false">East Hampton Airport</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ GALLERY PAGE ══════════════ -->
+<div id="page-gallery" class="page">
+  <div class="gallery-hero">
+    <h1>Photo <em>Gallery</em></h1>
+  </div>
+
+  <div style="padding: 20px 40px 8px; max-width:1200px; margin:0 auto">
+    <p class="section-label" style="margin-top:20px">— A Visual Story of Montauk</p>
+    <h2 class="section-title" style="margin-bottom:8px">Sun, Sea & Summer</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div style="padding: 12px 40px 0; max-width:1200px; margin:0 auto">
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px">— Ditch Plains Beach House</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/p1-sunset-firepit.jpg" alt="Fire pit at sunset">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-living2.jpg" alt="Vaulted living room">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-sunset-sky.jpg" alt="Montauk sunset">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-deck.jpg" alt="Deck with bay views">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-dining2.jpg" alt="Chandelier dining room">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-master1.jpg" alt="King master suite">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-kitchen.jpg" alt="Chef's kitchen">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-yard-red.jpg" alt="Backyard fire pit">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p1-yard-blue.jpg" alt="Blue Adirondack chairs">
+    </div>
+  </div>
+
+  <div style="padding: 40px 40px 0; max-width:1200px; margin:0 auto">
+    <p style="font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px">— East Lake Villa</p>
+  </div>
+  <div class="gallery-grid" style="margin-bottom:40px">
+    <div class="gallery-item">
+      <img src="images/p3-pool-dusk.jpg" alt="Pool at dusk">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-outdoor-lounge.jpg" alt="Covered outdoor lounge">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-exterior.jpg" alt="Cedar shingle exterior">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-foyer.jpg" alt="Grand compass foyer">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-kitchen.jpg" alt="Marble kitchen">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-deck-hottub.jpg" alt="Hot tub deck with lake views">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-sunset-deck.jpg" alt="Sunset over the lake">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-master-bath.jpg" alt="Master spa bathroom">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p3-family-room.jpg" alt="Coffered ceiling family room">
+    </div>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="images/p2-pool.jpg" alt="Private pool">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-living1.jpg" alt="Two-story great room">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-exterior.jpg" alt="Cedar shingle exterior">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-kitchen.jpg" alt="Chef's kitchen">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-deck-wide.jpg" alt="Wraparound deck">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-deck-fire.jpg" alt="Fire pit lounge">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-bathroom.jpg" alt="Luxury bathroom">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-porch.jpg" alt="Rocking chair porch">
+    </div>
+    <div class="gallery-item">
+      <img src="images/p2-outdoor-shower.jpg" alt="Cedar outdoor shower">
+    </div>
+  </div>
+
+  <footer style="margin-top:40px">
+    <div class="footer-brand">
+      <h3><span>Kathy's</span> Montauk Getaways</h3>
+      <p>Every image tells part of the story. Come write yours in Montauk this summer.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Book a Stay</h4>
+      <a href="https://www.airbnb.com/rooms/27748760" target="_blank">Ditch Plains Beach House</a>
+      <a href="https://www.airbnb.com/rooms/27691424" target="_blank">Sunset Beach House</a>
+      <a href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank">East Lake Villa</a>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <a onclick="showPage('home')">Home</a>
+      <a onclick="showPage('about')">About Montauk</a>
+      <a onclick="showPage('contact')">Contact</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════ CONTACT PAGE ══════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-wrapper">
+    <div class="contact-left">
+      <p style="font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:16px">— Get in Touch</p>
+      <h2>Let's Find Your <em>Perfect</em> Montauk Escape</h2>
+      <p>Whether you're looking for a week in July or a long August rental, Kathy will personally help match you with the right property. Reach out anytime — response within a few hours.</p>
+
+      <div class="contact-info-item">
+        <div class="contact-icon">📞</div>
+        <div class="info-text">
+          <strong>Call or Text Kathy</strong>
+          <span style="font-size:1.3rem;font-family:'Cormorant Garamond',serif">(631) 555-0192</span>
+        </div>
+      </div>
+
+      <div class="contact-info-item">
+        <div class="contact-icon">✉️</div>
+        <div class="info-text">
+          <strong>Email</strong>
+          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="335852475b4a735e5c5d475246585456475244524a401d505c5e">[email&#160;protected]</a></span>
+        </div>
+      </div>
+
+      <div class="contact-info-item">
+        <div class="contact-icon">📍</div>
+        <div class="info-text">
+          <strong>Location</strong>
+          <span>Montauk, New York 11954</span>
+        </div>
+      </div>
+
+      <div style="margin-top:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.1)">
+        <p style="font-size:.78rem;color:rgba(247,241,230,0.55);line-height:1.7">Also available to book directly through:</p>
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <a href="https://www.airbnb.com/rooms/27748760" target="_blank" style="background:rgba(255,255,255,0.1);color:var(--cream);padding:8px 16px;border-radius:2px;font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);letter-spacing:.05em;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Airbnb Property 1 ↗</a>
+          <a href="https://www.airbnb.com/rooms/27691424" target="_blank" style="background:rgba(255,255,255,0.1);color:var(--cream);padding:8px 16px;border-radius:2px;font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);letter-spacing:.05em;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Airbnb Property 2 ↗</a>
+          <a href="https://outeast.com/homes/246-east-lake-dr-montauk/390784" target="_blank" style="background:rgba(255,255,255,0.1);color:var(--cream);padding:8px 16px;border-radius:2px;font-size:.78rem;text-decoration:none;border:1px solid rgba(255,255,255,0.2);letter-spacing:.05em;transition:background .2s" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">OutEast Villa ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <h3>Send Kathy a Message</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Jane">
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="jane@example.com">
+      </div>
+      <div class="form-group">
+        <label>Phone (Optional)</label>
+        <input type="tel" placeholder="(555) 000-0000">
+      </div>
+      <div class="form-group">
+        <label>Property Interest</label>
+        <select>
+          <option value="">— Select a Property —</option>
+          <option>Ditch Plains Beach House (Airbnb)</option>
+          <option>Sunset Beach House (Airbnb)</option>
+          <option>East Lake Villa (OutEast)</option>
+          <option>Not sure yet — need help choosing</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Arrival Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Departure Date</label>
+          <input type="date">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell Kathy about your trip — number of guests, special requests, questions..."></textarea>
+      </div>
+      <button class="submit-btn">Send Message & Book Inquiry →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ BOOKING BAR ══════════════ -->
+<div class="booking-bar">
+  <span class="booking-bar-label">Quick Book</span>
+  <div class="bar-field">
+    <label>Check-In</label>
+    <input type="date" id="bar-checkin">
+  </div>
+  <div class="bar-divider"></div>
+  <div class="bar-field">
+    <label>Check-Out</label>
+    <input type="date" id="bar-checkout">
+  </div>
+  <div class="bar-divider"></div>
+  <div class="bar-field">
+    <label>Guests</label>
+    <select id="bar-guests">
+      <option>1–2 Guests</option>
+      <option>3–4 Guests</option>
+      <option>5–6 Guests</option>
+      <option>7–8 Guests</option>
+      <option>9–10 Guests</option>
+    </select>
+  </div>
+  <div class="bar-divider"></div>
+  <div class="bar-field">
+    <label>Property</label>
+    <select id="bar-property">
+      <option value="https://www.airbnb.com/rooms/27748760">Ditch Plains Beach House</option>
+      <option value="https://www.airbnb.com/rooms/27691424">Sunset Beach House</option>
+      <option value="https://outeast.com/homes/246-east-lake-dr-montauk/390784">East Lake Villa</option>
+    </select>
+  </div>
+  <button class="bar-search" onclick="quickBook()">Book Now →</button>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function quickBook() {
+  const url = document.getElementById('bar-property').value;
+  const ci = document.getElementById('bar-checkin').value;
+  const co = document.getElementById('bar-checkout').value;
+  let finalUrl = url;
+  if (ci && co && url.includes('airbnb')) {
+    finalUrl = url + '?check_in=' + ci + '&check_out=' + co;
+  }
+  window.open(finalUrl, '_blank');
+}
+
+// ── Hero Slider ──────────────────────────
+const heroLabels = ['Ditch Plains Beach House', 'Sunset Beach House', 'East Lake Villa'];
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots   = document.querySelectorAll('.hero-slide-dot');
+const heroTag    = document.getElementById('hero-prop-tag');
+let heroCur = 0, heroTimer;
+
+function heroGo(n) {
+  heroSlides[heroCur].classList.remove('active');
+  heroDots[heroCur].classList.remove('active');
+  heroCur = n;
+  heroSlides[heroCur].classList.add('active');
+  heroDots[heroCur].classList.add('active');
+  heroTag.classList.remove('visible');
+  setTimeout(() => {
+    heroTag.textContent = heroLabels[heroCur];
+    heroTag.classList.add('visible');
+  }, 200);
+}
+function heroNext() { heroGo((heroCur + 1) % 3); }
+heroTimer = setInterval(heroNext, 6000);
+// pause on hover
+document.querySelector('.hero').addEventListener('mouseenter', () => clearInterval(heroTimer));
+document.querySelector('.hero').addEventListener('mouseleave', () => { heroTimer = setInterval(heroNext, 6000); });
+
+
+const p1imgs = [
+  'images/p1-sunset-firepit.jpg',
+  'images/p1-deck.jpg',
+  'images/p1-living2.jpg',
+  'images/p1-dining2.jpg',
+  'images/p1-master1.jpg'
+];
+let p1cur = 0;
+function p1Slide(n) {
+  p1cur = n;
+  document.getElementById('p1-main').style.opacity = '0';
+  setTimeout(() => {
+    document.getElementById('p1-main').src = p1imgs[n];
+    document.getElementById('p1-main').style.opacity = '1';
+  }, 250);
+  for(let i=0;i<5;i++) {
+    const d = document.getElementById('p1d'+i);
+    if(d) d.classList.toggle('active', i===n);
+  }
+  // Update thumbnail borders
+  document.querySelectorAll('#p1-carousel ~ div img').forEach((img,i) => {
+    img.style.opacity = i===n ? '1' : '0.7';
+    img.style.borderColor = i===n ? 'var(--gold)' : 'transparent';
+  });
+}
+function p1Next() { p1Slide((p1cur+1)%5); }
+function p1Prev() { p1Slide((p1cur+4)%5); }
+
+// Property 2 carousel
+const p2imgs = ['images/p2-pool.jpg','images/p2-exterior.jpg','images/p2-living1.jpg','images/p2-kitchen.jpg','images/p2-deck-fire.jpg'];
+let p2cur = 0;
+function p2Slide(n) {
+  p2cur = n;
+  document.getElementById('p2-main').style.opacity = '0';
+  setTimeout(() => { document.getElementById('p2-main').src = p2imgs[n]; document.getElementById('p2-main').style.opacity = '1'; }, 250);
+  for(let i=0;i<5;i++) { const d=document.getElementById('p2d'+i); if(d) d.classList.toggle('active',i===n); }
+  document.querySelectorAll('#p2-carousel ~ div img').forEach((img,i) => { img.style.opacity=i===n?'1':'0.7'; img.style.borderColor=i===n?'var(--gold)':'transparent'; });
+}
+function p2Next() { p2Slide((p2cur+1)%5); }
+function p2Prev() { p2Slide((p2cur+4)%5); }
+
+// Property 3 carousel
+const p3imgs = ['images/p3-pool-dusk.jpg','images/p3-outdoor-lounge.jpg','images/p3-kitchen.jpg','images/p3-sunset-deck.jpg','images/p3-foyer.jpg'];
+let p3cur = 0;
+function p3Slide(n) {
+  p3cur = n;
+  document.getElementById('p3-main').style.opacity = '0';
+  setTimeout(() => { document.getElementById('p3-main').src = p3imgs[n]; document.getElementById('p3-main').style.opacity = '1'; }, 250);
+  for(let i=0;i<5;i++) { const d=document.getElementById('p3d'+i); if(d) d.classList.toggle('active',i===n); }
+  document.querySelectorAll('#p3-carousel ~ div img').forEach((img,i) => { img.style.opacity=i===n?'1':'0.7'; img.style.borderColor=i===n?'var(--gold)':'transparent'; });
+}
+function p3Next() { p3Slide((p3cur+1)%5); }
+function p3Prev() { p3Slide((p3cur+4)%5); }
+
+ = new Date();
+const nextWeek = new Date(today); 

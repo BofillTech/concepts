@@ -15,3 +15,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 7 | Sea Chambers | Ogunquit, ME | [seachambers.com](https://seachambers.com) | [View →](https://bofilltech.github.io/concepts/sea-chambers/) | Cinematic Coastal | Libre Baskerville + Nunito Sans | Mar 24 |
 | 8 | Bare Naked Bakery | Long Island, NY | [barenakedbakery.com](https://barenakedbakery.com) | [View →](https://bofilltech.github.io/concepts/bare-naked-bakery/) | Warm Artisan | Fraunces + Poppins | Mar 25 |
 | 9 | Aquastar Inn | Westerly, RI | [aquastarinn.com](https://aquastarinn.com) | [View →](https://bofilltech.github.io/concepts/aqua-star/) | Coastal New England | Sora + Merriweather | Mar 27 |
+
+### Kathy's Montauk Getaways
+- **URL**: https://bofilltech.github.io/concepts/kathys-montauk/
+- **Type**: Vacation Rental Portfolio Site
+- **Properties**: Ditch Plains Beach House, Sunset Beach House, East Lake Villa
