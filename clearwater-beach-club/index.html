@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clearwater Beach Club — Atlantic Beach, NY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0c1a35;--teal:#1480a0;--teal-lt:#1aa8cc;--sand:#f3ede4;
+    --cream:#faf8f4;--gold:#c8962c;--gold-lt:#e5b84a;--white:#ffffff;
+    --txt:#516070;--fd:'Cormorant Garamond',Georgia,serif;--fu:'Montserrat',sans-serif;
+  }
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--fu);background:var(--cream);color:var(--navy);overflow-x:hidden;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+
+  /* NAV */
+  #nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;
+    justify-content:space-between;padding:26px 56px;transition:padding .4s,background .4s,box-shadow .4s;}
+  #nav.s{padding:15px 56px;background:#fff;box-shadow:0 2px 28px rgba(0,0,0,.07);}
+  .nlogo img{height:50px;width:auto;filter:brightness(0) invert(1);transition:filter .4s;}
+  #nav.s .nlogo img{filter:none;}
+  .nlinks{display:flex;gap:38px;list-style:none;}
+  .nlinks a{font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:rgba(255,255,255,.9);transition:color .3s;}
+  #nav.s .nlinks a{color:var(--navy);}
+  .nlinks a:hover{color:var(--gold-lt);}
+  #nav.s .nlinks a:hover{color:var(--teal);}
+  .njoin{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    padding:11px 28px;border:1.5px solid rgba(255,255,255,.65);color:#fff;transition:all .3s;}
+  #nav.s .njoin{border-color:var(--navy);color:var(--navy);}
+  .njoin:hover{background:#fff;color:var(--navy)!important;}
+  #nav.s .njoin:hover{background:var(--navy);color:#fff!important;}
+  .nburg{display:none;background:none;border:none;cursor:pointer;color:#fff;font-size:22px;}
+  #nav.s .nburg{color:var(--navy);}
+
+  /* HERO */
+  .hero{height:100vh;min-height:680px;position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;text-align:center;}
+  .hbg{position:absolute;inset:0;
+    background:url('https://clearwaterbeachclub.com/wp-content/uploads/2023/04/D2307CDC-1EB4-46E0-AF4E-38D925239CB8-1600x1200.jpeg') center/cover no-repeat;
+    transform:scale(1.06);transition:transform 10s ease-out;will-change:transform;}
+  .hbg.on{transform:scale(1.01);}
+  .hov{position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(8,18,44,.32) 0%,rgba(8,18,44,.15) 40%,rgba(8,18,44,.65) 100%);}
+  .hc{position:relative;z-index:2;padding:0 24px;}
+  .hey{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.3em;
+    text-transform:uppercase;color:var(--gold-lt);margin-bottom:22px;
+    opacity:0;animation:up .9s ease .4s forwards;}
+  .hero h1{font-family:var(--fd);font-size:clamp(52px,9vw,108px);font-weight:300;
+    line-height:1;color:#fff;margin-bottom:24px;opacity:0;animation:up .9s ease .65s forwards;}
+  .hero h1 em{font-style:italic;color:rgba(255,255,255,.82);}
+  .hsub{font-size:11.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;
+    color:rgba(255,255,255,.68);margin-bottom:50px;opacity:0;animation:up .9s ease .85s forwards;}
+  .hbtns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .9s ease 1.05s forwards;}
+  .bsolid{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;padding:15px 44px;background:#fff;color:var(--navy);transition:background .3s,color .3s;}
+  .bsolid:hover{background:var(--gold);color:#fff;}
+  .bghost{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;padding:15px 44px;border:1.5px solid rgba(255,255,255,.58);
+    color:#fff;transition:all .3s;}
+  .bghost:hover{background:rgba(255,255,255,.12);border-color:#fff;}
+  .hscr{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    color:rgba(255,255,255,.5);font-size:9px;letter-spacing:.25em;text-transform:uppercase;}
+  .hscr::before{content:'';width:1px;height:52px;
+    background:linear-gradient(to bottom,transparent,rgba(255,255,255,.5));
+    animation:pulse 2.2s ease-in-out infinite;}
+
+  /* MARQUEE */
+  .mbar{background:var(--navy);padding:17px 0;overflow:hidden;}
+  .mtrack{display:flex;white-space:nowrap;animation:mq 34s linear infinite;}
+  .mi{font-family:var(--fd);font-size:14px;font-style:italic;font-weight:300;
+    color:rgba(255,255,255,.42);letter-spacing:.06em;flex-shrink:0;padding:0 34px;}
+  .ms{color:var(--gold);font-style:normal;margin-left:34px;}
+
+  /* INTRO */
+  .intro{padding:130px 24px;text-align:center;max-width:860px;margin:0 auto;}
+  .lbl{display:block;font-size:9.5px;font-weight:600;letter-spacing:.32em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:22px;}
+  .intro h2{font-family:var(--fd);font-size:clamp(34px,5vw,60px);font-weight:300;
+    line-height:1.2;color:var(--navy);margin-bottom:34px;}
+  .intro h2 em{font-style:italic;}
+  .rule{width:56px;height:1px;background:var(--gold);margin:0 auto 36px;}
+  .intro p{font-size:14.5px;line-height:1.95;font-weight:300;color:var(--txt);max-width:700px;margin:0 auto 20px;}
+
+  /* TRIO */
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:0 3px;}
+  .tc{position:relative;height:560px;overflow:hidden;cursor:pointer;}
+  .tc img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+  .tc:hover img{transform:scale(1.07);}
+  .tcs{position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(8,18,44,.88) 0%,rgba(8,18,44,.08) 58%);transition:background .4s;}
+  .tc:hover .tcs{background:linear-gradient(to top,rgba(8,18,44,.92) 0%,rgba(8,18,44,.22) 58%);}
+  .tcb{position:absolute;bottom:0;left:0;right:0;padding:40px 34px;}
+  .tcn{font-family:var(--fd);font-size:64px;font-weight:300;color:rgba(255,255,255,.08);line-height:1;margin-bottom:-18px;}
+  .tct{font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .tc h3{font-family:var(--fd);font-size:26px;font-weight:400;color:#fff;line-height:1.2;margin-bottom:12px;}
+  .tc p{font-size:13px;font-weight:300;line-height:1.75;color:rgba(255,255,255,.62);
+    max-height:0;overflow:hidden;transition:max-height .5s,opacity .4s;opacity:0;}
+  .tc:hover p{max-height:80px;opacity:1;}
+
+  /* SPLITS */
+  .split{display:grid;grid-template-columns:1fr 1fr;min-height:660px;}
+  .split.fl{direction:rtl;}
+  .split.fl>*{direction:ltr;}
+  .si{position:relative;overflow:hidden;}
+  .si img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease;}
+  .split:hover .si img{transform:scale(1.04);}
+  .st{display:flex;align-items:center;padding:80px 88px;background:var(--sand);}
+  .st.dk{background:var(--navy);}
+  .st.dk .lbl{color:var(--gold);}
+  .st.dk h2{color:#fff;}
+  .st.dk p{color:rgba(255,255,255,.62);}
+  .st.dk .larr{color:var(--gold);border-color:var(--gold);}
+  .sin{max-width:480px;}
+  .st h2{font-family:var(--fd);font-size:clamp(30px,3.5vw,50px);font-weight:300;
+    line-height:1.22;color:var(--navy);margin-bottom:24px;}
+  .st h2 em{font-style:italic;}
+  .st p{font-size:14px;line-height:1.92;font-weight:300;color:var(--txt);margin-bottom:34px;}
+  .larr{display:inline-flex;align-items:center;gap:10px;font-size:10.5px;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--teal);
+    padding-bottom:3px;border-bottom:1px solid var(--teal);transition:gap .3s;}
+  .larr::after{content:'→';}
+  .larr:hover{gap:18px;}
+
+  /* STRIP */
+  .strip{display:grid;grid-template-columns:2fr 1fr 1fr;height:440px;gap:3px;}
+  .sph{overflow:hidden;}
+  .sph img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+  .sph:hover img{transform:scale(1.06);}
+
+  /* AMENITIES */
+  .amen{padding:120px 56px;background:var(--cream);text-align:center;}
+  .ahd{max-width:580px;margin:0 auto 76px;}
+  .ahd h2{font-family:var(--fd);font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--navy);margin-bottom:18px;}
+  .ahd p{font-size:14px;line-height:1.9;font-weight:300;color:var(--txt);}
+  .agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:44px;max-width:1200px;margin:0 auto;}
+  .ai{text-align:center;}
+  .aico{width:64px;height:64px;margin:0 auto 20px;border:1px solid rgba(20,128,160,.25);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;
+    transition:border-color .3s,background .3s;}
+  .ai:hover .aico{border-color:var(--teal);background:rgba(20,128,160,.06);}
+  .ai h4{font-family:var(--fd);font-size:20px;font-weight:400;color:var(--navy);margin-bottom:10px;}
+  .ai p{font-size:13px;line-height:1.72;font-weight:300;color:var(--txt);}
+
+  /* LIFESTYLE PAIR */
+  .lpair{display:grid;grid-template-columns:1fr 1fr;height:500px;}
+  .lp{overflow:hidden;}
+  .lp img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease;}
+  .lp:hover img{transform:scale(1.05);}
+
+  /* CAMP */
+  .camp{background:var(--navy);padding:110px 24px;text-align:center;position:relative;overflow:hidden;}
+  .campbg{position:absolute;inset:0;
+    background:url('https://clearwaterbeachclub.com/wp-content/uploads/2023/03/Aug23.jpg') center/cover no-repeat;
+    opacity:.15;}
+  .campc{position:relative;z-index:2;}
+  .camp .lbl{color:var(--gold);}
+  .camp h2{font-family:var(--fd);font-size:clamp(36px,5.5vw,72px);font-weight:300;color:#fff;margin-bottom:24px;}
+  .camp h2 em{font-style:italic;}
+  .camp p{font-size:14.5px;line-height:1.92;font-weight:300;color:rgba(255,255,255,.62);max-width:580px;margin:0 auto 44px;}
+  .bgold{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;padding:15px 44px;background:var(--gold);color:#fff;transition:background .3s;}
+  .bgold:hover{background:var(--gold-lt);}
+
+  /* LOCATION */
+  .loc{display:grid;grid-template-columns:1fr 1fr;max-width:1400px;margin:0 auto;
+    padding:120px 56px;gap:88px;align-items:center;}
+  .lct h2{font-family:var(--fd);font-size:clamp(32px,4vw,54px);font-weight:300;
+    line-height:1.18;color:var(--navy);margin-bottom:24px;}
+  .lct h2 em{font-style:italic;}
+  .lct p{font-size:14px;line-height:1.92;font-weight:300;color:var(--txt);margin-bottom:16px;}
+  .lsts{display:flex;border-top:1px solid rgba(20,128,160,.18);margin:30px 0;}
+  .lst{flex:1;padding:24px 0;border-right:1px solid rgba(20,128,160,.14);}
+  .lst:last-child{border-right:none;padding-left:24px;}
+  .lst:first-child{padding-right:24px;}
+  .sbn{font-family:var(--fd);font-size:52px;font-weight:300;color:var(--teal);line-height:1;}
+  .sbsm{font-size:12px;font-weight:400;color:var(--txt);letter-spacing:.04em;margin-top:4px;}
+  .ladr{font-size:14px;font-weight:300;color:var(--txt);line-height:1.8;}
+  .ladr a{color:var(--teal);}
+  .lmap{height:480px;overflow:hidden;}
+  .lmap iframe{width:100%;height:100%;border:none;}
+
+  /* CTA */
+  .cta{position:relative;height:620px;display:flex;align-items:center;
+    justify-content:center;text-align:center;overflow:hidden;}
+  .ctabg{position:absolute;inset:0;
+    background:url('https://clearwaterbeachclub.com/wp-content/uploads/2023/02/Hex-Iceanview-Pic-2.jpg') center/cover no-repeat;
+    filter:brightness(.32) saturate(1.1);}
+  .ctac{position:relative;z-index:2;padding:0 24px;}
+  .ctac .lbl{color:var(--gold);}
+  .ctac h2{font-family:var(--fd);font-size:clamp(42px,7vw,88px);font-weight:300;
+    line-height:1.06;color:#fff;margin-bottom:24px;}
+  .ctac h2 em{font-style:italic;}
+  .ctac p{font-size:12px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;
+    color:rgba(255,255,255,.6);margin-bottom:48px;}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:rgba(255,255,255,.5);padding:80px 56px 36px;}
+  .ftp{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;max-width:1300px;
+    margin:0 auto;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.08);}
+  .flog img{height:44px;width:auto;filter:brightness(0) invert(1);opacity:.75;margin-bottom:20px;}
+  .ftag{font-family:var(--fd);font-size:17px;font-style:italic;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:18px;}
+  .fdsc{font-size:12.5px;line-height:1.85;font-weight:300;color:rgba(255,255,255,.38);margin-bottom:22px;}
+  .fsoc{display:flex;gap:12px;}
+  .fsoc a{width:34px;height:34px;border:1px solid rgba(255,255,255,.18);
+    display:flex;align-items:center;justify-content:center;font-size:12px;
+    color:rgba(255,255,255,.45);transition:all .3s;}
+  .fsoc a:hover{border-color:var(--gold);color:var(--gold);}
+  .fc h5{font-size:9.5px;font-weight:600;letter-spacing:.26em;text-transform:uppercase;color:#fff;margin-bottom:22px;}
+  .fc ul{list-style:none;}
+  .fc li{margin-bottom:10px;}
+  .fc a{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);transition:color .3s;}
+  .fc a:hover{color:#fff;}
+  .ci{font-size:13px;font-weight:300;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:10px;}
+  .fbt{display:flex;justify-content:space-between;align-items:center;
+    max-width:1300px;margin:36px auto 0;font-size:11px;color:rgba(255,255,255,.28);letter-spacing:.04em;}
+  .fbt a{color:rgba(255,255,255,.38);}
+  .fbt a:hover{color:#fff;}
+
+  /* STICKY */
+  #sticky{position:fixed;bottom:0;left:0;right:0;z-index:199;background:var(--navy);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:13px 56px;border-top:2px solid var(--gold);
+    transform:translateY(100%);transition:transform .4s cubic-bezier(.25,.46,.45,.94);}
+  #sticky.on{transform:translateY(0);}
+  .scpy{font-family:var(--fd);font-size:17px;font-style:italic;color:rgba(255,255,255,.65);}
+  .sph2 a{font-size:12px;letter-spacing:.08em;color:rgba(255,255,255,.7);transition:color .3s;}
+  .sph2 a:hover{color:#fff;}
+
+  /* REVEAL */
+  .rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;}
+  .rv.vis{opacity:1;transform:translateY(0);}
+  .rvl{opacity:0;transform:translateX(-32px);transition:opacity .8s ease,transform .8s ease;}
+  .rvl.vis{opacity:1;transform:translateX(0);}
+  .rvr{opacity:0;transform:translateX(32px);transition:opacity .8s ease,transform .8s ease;}
+  .rvr.vis{opacity:1;transform:translateX(0);}
+
+  /* ANIMATIONS */
+  @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes pulse{0%,100%{transform:scaleY(1);opacity:.6}50%{transform:scaleY(.5);opacity:.2}}
+  @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* RESPONSIVE */
+  @media(max-width:1100px){
+    #nav{padding:20px 28px;}#nav.s{padding:13px 28px;}
+    .nlinks{display:none;}.nburg{display:block;}
+    .trio{grid-template-columns:1fr;}.tc{height:420px;}
+    .split,.split.fl{grid-template-columns:1fr;direction:ltr;}
+    .si{height:400px;}.st{padding:58px 36px;}
+    .strip{grid-template-columns:1fr;grid-template-rows:repeat(3,280px);height:auto;}
+    .agrid{grid-template-columns:repeat(2,1fr);gap:34px;}
+    .lpair{grid-template-columns:1fr;height:auto;}.lp{height:320px;}
+    .loc{grid-template-columns:1fr;padding:80px 32px;gap:48px;}
+    .ftp{grid-template-columns:1fr 1fr;gap:36px;}
+    #sticky{padding:12px 22px;}.scpy{display:none;}
+    .amen{padding:80px 28px;}
+  }
+  @media(max-width:680px){
+    .intro{padding:80px 24px;}.agrid{grid-template-columns:1fr;}
+    .ftp{grid-template-columns:1fr;}
+    .fbt{flex-direction:column;gap:10px;text-align:center;}
+    .hero h1{font-size:clamp(44px,13vw,80px);}
+    .lsts{flex-direction:column;}
+    .lst{border-right:none;border-bottom:1px solid rgba(20,128,160,.14);padding:18px 0;}
+    .lst:last-child{border-bottom:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nlogo">
+    <img src="https://clearwaterbeachclub.com/wp-content/themes/clearwater-beach-club/images/clearwater-headerlogo.png" alt="Clearwater Beach Club">
+  </a>
+  <ul class="nlinks">
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#cabanas">Cabanas</a></li>
+    <li><a href="#camp">Camp</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#join" class="njoin">Join Now</a>
+  <button class="nburg" id="burg">☰</button>
+</nav>
+
+<section class="hero">
+  <div class="hbg" id="hbg"></div>
+  <div class="hov"></div>
+  <div class="hc">
+    <span class="hey">Atlantic Beach, New York &nbsp;·&nbsp; Est. 1960</span>
+    <h1>Where <em>Summer</em><br>Finds Its Shore</h1>
+    <p class="hsub">Long Island's Premier Private Beach &amp; Pool Club</p>
+    <div class="hbtns">
+      <a href="#join" class="bsolid">Inquire About Membership</a>
+      <a href="#amenities" class="bghost">Explore the Club</a>
+    </div>
+  </div>
+  <div class="hscr">Discover</div>
+</section>
+
+<div class="mbar">
+  <div class="mtrack">
+    <span class="mi">Private Beach<span class="ms">·</span></span>
+    <span class="mi">Olympic Pool<span class="ms">·</span></span>
+    <span class="mi">Ocean Front Cabanas<span class="ms">·</span></span>
+    <span class="mi">Beach Bar &amp; Dining<span class="ms">·</span></span>
+    <span class="mi">Camp Clearwater<span class="ms">·</span></span>
+    <span class="mi">Valet Parking<span class="ms">·</span></span>
+    <span class="mi">Only 30 Minutes from Manhattan<span class="ms">·</span></span>
+    <span class="mi">Private Beach<span class="ms">·</span></span>
+    <span class="mi">Olympic Pool<span class="ms">·</span></span>
+    <span class="mi">Ocean Front Cabanas<span class="ms">·</span></span>
+    <span class="mi">Beach Bar &amp; Dining<span class="ms">·</span></span>
+    <span class="mi">Camp Clearwater<span class="ms">·</span></span>
+    <span class="mi">Valet Parking<span class="ms">·</span></span>
+    <span class="mi">Only 30 Minutes from Manhattan<span class="ms">·</span></span>
+  </div>
+</div>
+
+<section class="intro rv">
+  <span class="lbl">Welcome to Clearwater</span>
+  <h2>New York's Best-Kept<br><em>Summer Secret</em></h2>
+  <div class="rule"></div>
+  <p>Clearwater Beach Club is a private membership club set along the majestic Atlantic Ocean in Atlantic Beach, New York — offering Long Island's largest private beach, where families return summer after summer to create memories that last a lifetime.</p>
+  <p>From ocean-front cabanas to an Olympic-size pool, every detail is crafted for total service in a family-casual atmosphere. Like a summer vacation right in your own backyard.</p>
+</section>
+
+<section id="cabanas" class="trio">
+  <div class="tc">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/Oceanfront.jpg" alt="Ocean Front Cabanas" loading="lazy">
+    <div class="tcs"></div>
+    <div class="tcb">
+      <div class="tcn">01</div>
+      <div class="tct">Membership Option</div>
+      <h3>Ocean Front Cabanas</h3>
+      <p>Steps from the Atlantic, with private changing rooms and hot &amp; cold running water. No foot traffic. Attendants at your service all day.</p>
+    </div>
+  </div>
+  <div class="tc">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/Court-Cabanas.jpg" alt="Court Cabanas" loading="lazy">
+    <div class="tcs"></div>
+    <div class="tcb">
+      <div class="tcn">02</div>
+      <div class="tct">Membership Option</div>
+      <h3>Court Cabanas</h3>
+      <p>Located around Clearwater's 'Sand Courts' — sunny side, shady side, family courts, adult courts, and singles courts all available.</p>
+    </div>
+  </div>
+  <div class="tc">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/Pool-Lockers.jpg" alt="Pool Lockers" loading="lazy">
+    <div class="tcs"></div>
+    <div class="tcb">
+      <div class="tcn">03</div>
+      <div class="tct">Membership Option</div>
+      <h3>Pool Lockers</h3>
+      <p>Poolside lockers with hot &amp; cold shower — perfect for the single, couple, or family who wants full club access at an accessible entry point.</p>
+    </div>
+  </div>
+</section>
+
+<section id="amenities" class="split">
+  <div class="si rvl">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/02/feature001.jpg" alt="Private Beach" loading="lazy">
+  </div>
+  <div class="st rvr">
+    <div class="sin">
+      <span class="lbl">The Beach</span>
+      <h2>Long Island's <em>Largest</em><br>Private Beach</h2>
+      <p>Atlantic Beach is a small, beautiful village on the Atlantic Ocean — accessible only to residents and beach club members. Just 24 miles from the Queens Midtown Tunnel, your perfect beach day is closer than you think.</p>
+      <p>Catch the wave, not the traffic.</p>
+      <a href="#join" class="larr">Inquire About Membership</a>
+    </div>
+  </div>
+</section>
+
+<section class="split fl">
+  <div class="si rvr">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/pool_view.jpg" alt="Olympic Pool" loading="lazy">
+  </div>
+  <div class="st dk rvl">
+    <div class="sin">
+      <span class="lbl">The Pool</span>
+      <h2>Olympic-Size Pool &amp;<br><em>Instructional Swim</em></h2>
+      <p>Whether you're doing laps in our full-size Olympic pool or watching the kids splash in the kiddie pool, our aquatic facilities are a cornerstone of the Clearwater experience. Professional swim instruction available throughout the season.</p>
+      <a href="#amenities" class="larr">Explore All Amenities</a>
+    </div>
+  </div>
+</section>
+
+<div id="dining" class="strip">
+  <div class="sph">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/IMG_0772-395x445.jpg" alt="Restaurant" loading="lazy">
+  </div>
+  <div class="sph">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/IMG_0726-395x445.jpg" alt="Beach Bar" loading="lazy">
+  </div>
+  <div class="sph">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/02/cabana-inside.jpg" alt="Cabana" loading="lazy">
+  </div>
+</div>
+
+<section class="amen">
+  <div class="ahd rv">
+    <span class="lbl">Everything You Need</span>
+    <h2>A Complete <em>Club Experience</em></h2>
+    <p>From sunrise to sunset — everything that makes a perfect summer day, for every member of the family.</p>
+  </div>
+  <div class="agrid">
+    <div class="ai rv"><div class="aico">🏖</div><h4>Private Beach</h4><p>Long Island's largest private beach on the majestic Atlantic Ocean</p></div>
+    <div class="ai rv"><div class="aico">🏊</div><h4>Olympic Pool</h4><p>Full-size Olympic pool and kiddie pool with swim instruction</p></div>
+    <div class="ai rv"><div class="aico">🍽</div><h4>Restaurant &amp; Bar</h4><p>Outdoor dining and a full beachside bar open daily all summer</p></div>
+    <div class="ai rv"><div class="aico">🚗</div><h4>Valet Parking</h4><p>Convenient valet service for all members every day</p></div>
+  </div>
+</section>
+
+<div class="lpair">
+  <div class="lp">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/03/amenities-img1.jpg" alt="Club Amenities" loading="lazy">
+  </div>
+  <div class="lp">
+    <img src="https://clearwaterbeachclub.com/wp-content/uploads/2023/02/beach-view.jpg" alt="Beachfront" loading="lazy">
+  </div>
+</div>
+
+<section id="camp" class="camp">
+  <div class="campbg"></div>
+  <div class="campc rv">
+    <span class="lbl">For the Next Generation</span>
+    <h2>Camp <em>Clearwater</em></h2>
+    <p>Where kids discover the pure joy of summer on the Atlantic Ocean. Our program offers a structured, fun, and safe environment for children to make lifelong friends and memories — arts, games, and endless beach days.</p>
+    <a href="https://clearwaterbeachclub.com/camp-clearwater/" class="bgold">Learn About Camp</a>
+  </div>
+</section>
+
+<section id="contact" class="loc">
+  <div class="lct rvl">
+    <span class="lbl">Find Us</span>
+    <h2>Your Escape,<br><em>Thirty Minutes</em> Away</h2>
+    <p>Located in Atlantic Beach — a beautiful village on the Atlantic Ocean, west of Long Beach and south of JFK airport. Accessible only to residents and beach club members.</p>
+    <div class="lsts">
+      <div class="lst"><div class="sbn">30</div><div class="sbsm">Minutes from Manhattan</div></div>
+      <div class="lst"><div class="sbn">24</div><div class="sbsm">Miles from Queens Midtown Tunnel</div></div>
+    </div>
+    <div class="ladr">1875 Ocean Blvd., Atlantic Beach, NY 11509<br><a href="tel:5162395511">(516) 239-5511</a></div>
+  </div>
+  <div class="lmap rvr">
+    <iframe src="https://maps.google.com/maps?q=1875+Ocean+Blvd+Atlantic+Beach+NY+11509&output=embed" allowfullscreen loading="lazy" title="Map"></iframe>
+  </div>
+</section>
+
+<section id="join" class="cta">
+  <div class="ctabg"></div>
+  <div class="ctac rv">
+    <span class="lbl">Membership 2025</span>
+    <h2>Make This Summer<br><em>Unforgettable</em></h2>
+    <p>Inquire about ocean front cabanas, court cabanas &amp; locker memberships</p>
+    <a href="https://clearwaterbeachclub.com/contact/" class="bsolid">Inquire About Membership</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ftp">
+    <div>
+      <div class="flog"><img src="https://clearwaterbeachclub.com/wp-content/themes/clearwater-beach-club/images/clearwater-headerlogo.png" alt="Clearwater Beach Club"></div>
+      <p class="ftag">Where summer finds its shore.</p>
+      <p class="fdsc">A private membership club on the Atlantic Ocean in Atlantic Beach, NY — offering Long Island's largest private beach and complete family amenities since 1960.</p>
+      <div class="fsoc">
+        <a href="https://www.facebook.com/ClearWaterBeachClubNY">f</a>
+        <a href="https://www.instagram.com/clearwaterbeachclub">ig</a>
+        <a href="https://twitter.com/clearwaterbclub">tw</a>
+      </div>
+    </div>
+    <div class="fc">
+      <h5>The Club</h5>
+      <ul>
+        <li><a href="https://clearwaterbeachclub.com/amenities/">Amenities</a></li>
+        <li><a href="https://clearwaterbeachclub.com/cabanas/">Cabanas</a></li>
+        <li><a href="https://clearwaterbeachclub.com/gallery/">Gallery</a></li>
+        <li><a href="https://clearwaterbeachclub.com/restaurant/">Restaurant</a></li>
+        <li><a href="https://clearwaterbeachclub.com/camp-clearwater/">Camp Clearwater</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Membership</h5>
+      <ul>
+        <li><a href="https://clearwaterbeachclub.com/why-choose-us/">Why Choose Us</a></li>
+        <li><a href="https://clearwaterbeachclub.com/testimonials/">Testimonials</a></li>
+        <li><a href="https://clearwaterbeachclub.com/resources/">Resources</a></li>
+        <li><a href="https://clearwaterbeachclub.com/contact/">Join Now</a></li>
+      </ul>
+    </div>
+    <div class="fc">
+      <h5>Contact</h5>
+      <div class="ci">1875 Ocean Blvd.<br>Atlantic Beach, NY 11509</div>
+      <div class="ci"><a href="tel:5162395511">(516) 239-5511</a></div>
+      <div class="ci"><a href="https://clearwaterbeachclub.com/contact/">Email Us</a></div>
+    </div>
+  </div>
+  <div class="fbt">
+    <span>© 2025 Clearwater Beach Club · All Rights Reserved</span>
+    <span>Site Design by <a href="https://bofilltech.com">Bofill Technologies</a></span>
+  </div>
+</footer>
+
+<div id="sticky">
+  <span class="scpy">Long Island's Top Private Beach &amp; Pool Club</span>
+  <span class="sph2"><a href="tel:5162395511">(516) 239-5511</a></span>
+  <a href="https://clearwaterbeachclub.com/contact/" class="bgold">Inquire About Membership</a>
+</div>
+
+<script>
+const nav=document.getElementById('nav'),stk=document.getElementById('sticky'),hbg=document.getElementById('hbg');
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY;
+  nav.classList.toggle('s',s>60);
+  stk.classList.toggle('on',s>400);
+  if(hbg&&s<window.innerHeight) hbg.style.transform=`scale(1.01) translateY(${s*.25}px)`;
+},{passive:true});
+window.addEventListener('load',()=>{ if(hbg) hbg.classList.add('on'); });
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
