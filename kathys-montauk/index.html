@@ -38,26 +38,27 @@
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 40px;
     height: 70px;
-    background: rgba(26,58,74,0.96);
+    background: rgba(255,255,255,0.97);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(184,135,63,0.3);
+    border-bottom: 1px solid rgba(58,143,163,0.2);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07);
     transition: all 0.3s;
   }
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.35rem;
     font-weight: 600;
-    color: var(--cream);
+    color: var(--ocean);
     letter-spacing: 0.02em;
     cursor: pointer;
     text-decoration: none;
   }
-  .nav-logo span { color: var(--gold-light); font-style: italic; }
+  .nav-logo span { color: var(--gold); font-style: italic; }
   .nav-links {
     display: flex; gap: 36px; list-style: none;
   }
   .nav-links a {
-    color: rgba(247,241,230,0.85);
+    color: rgba(26,58,74,0.75);
     text-decoration: none;
     font-size: 0.82rem;
     letter-spacing: 0.12em;
@@ -66,16 +67,16 @@
     transition: color 0.2s;
     cursor: pointer;
   }
-  .nav-links a:hover, .nav-links a.active { color: var(--gold-light); }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
   .nav-cta {
-    background: var(--gold);
+    background: var(--ocean) !important;
     color: var(--white) !important;
     padding: 8px 22px !important;
     border-radius: 2px;
     letter-spacing: 0.1em !important;
     transition: background 0.2s !important;
   }
-  .nav-cta:hover { background: var(--gold-light) !important; color: var(--charcoal) !important; }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--white) !important; }
 
   /* ─── PAGES ───────────────────────────── */
   .page { display:none; padding-top: 70px; min-height: 100vh; }
@@ -1350,9 +1351,6 @@ function showPage(id) {
     a.classList.toggle('active', a.dataset.page === id);
   });
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-  window.open(finalUrl, '_blank');
 }
 
 // ── Hero Slider ──────────────────────────
