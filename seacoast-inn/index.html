@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seacoast Inn — Hyannis, Cape Cod</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1b2d4a;
+      --teal: #3a8b8a;
+      --teal-light: #5aaeac;
+      --cream: #f7f2ea;
+      --sand: #c9b99a;
+      --warm-white: #fdfaf5;
+      --charcoal: #2c2c2c;
+      --gold: #c4973b;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Instrument Sans', system-ui, sans-serif;
+      --font-italic: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--warm-white);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 72px;
+      background: transparent;
+      transition: background 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: var(--navy);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #fff;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .nav-logo span {
+      color: var(--teal-light);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--teal-light); }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .nav-phone {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--teal-light); }
+    .nav-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.25);
+    }
+    .nav-book {
+      background: var(--teal);
+      color: #fff !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+      white-space: nowrap;
+    }
+    .nav-book:hover { background: var(--teal-light) !important; color: #fff !important; }
+
+    /* mobile menu */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: 0.3s;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 24px 40px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+    }
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.seacoastcapecod.com/wp-content/uploads/slidemotelwide.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.06);
+      animation: heroZoom 8s ease forwards;
+    }
+    @keyframes heroZoom {
+      from { transform: scale(1.06); }
+      to { transform: scale(1.0); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(27,45,74,0.45) 0%,
+        rgba(27,45,74,0.2) 40%,
+        rgba(27,45,74,0.65) 100%
+      );
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 0;
+      left: 0; right: 0;
+      padding: 0 60px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s ease forwards;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      max-width: 700px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.65s ease forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 460px;
+      line-height: 1.65;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.85s ease forwards;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.05s ease forwards;
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-1px); }
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.6);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 32px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: border-color 0.25s, background 0.25s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* phone chip bottom-right */
+    .hero-phone {
+      position: absolute;
+      bottom: 40px;
+      right: 60px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      opacity: 0;
+      animation: fadeIn 1s 1.2s ease forwards;
+    }
+    .hero-phone:hover { color: #fff; }
+
+    /* scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeIn 1s 1.4s ease forwards;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.4);
+      animation: scrollLine 1.5s 1.5s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%,100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 0.9; transform: scaleY(0.5); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      background: var(--navy);
+      padding: 28px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .intro-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+    }
+    .intro-strip-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(58,139,138,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .intro-strip-icon svg { width: 16px; height: 16px; fill: var(--teal-light); }
+    .strip-divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* ── WELCOME ── */
+    .welcome {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 600px;
+    }
+    .welcome-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 6s ease;
+    }
+    .welcome-image:hover img { transform: scale(1.04); }
+    .welcome-text {
+      background: var(--cream);
+      padding: 80px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .section-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.15;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .section-body {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: #555;
+      max-width: 480px;
+      margin-bottom: 36px;
+    }
+    .welcome-quote {
+      font-family: var(--font-italic);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--navy);
+      border-left: 3px solid var(--teal);
+      padding-left: 20px;
+      margin-top: 32px;
+      line-height: 1.5;
+    }
+
+    /* ── ROOMS ── */
+    .rooms {
+      padding: 100px 60px;
+      background: var(--warm-white);
+    }
+    .rooms-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .rooms-header .section-title { font-size: clamp(2rem, 4vw, 3.2rem); }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .room-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .room-card:first-child {
+      grid-column: span 2;
+    }
+    .room-card-img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .room-card:first-child .room-card-img {
+      aspect-ratio: 16/9;
+    }
+    .room-card:hover .room-card-img { transform: scale(1.05); }
+    .room-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(27,45,74,0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .room-card:hover .room-card-overlay { opacity: 1; }
+    .room-card-always {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 20px 28px;
+      background: linear-gradient(to top, rgba(27,45,74,0.7) 0%, transparent 100%);
+    }
+    .room-name {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .room-tag {
+      font-size: 0.72rem;
+      color: var(--teal-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .room-detail {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    .room-link {
+      color: var(--teal-light);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-bottom: 1px solid var(--teal-light);
+      padding-bottom: 2px;
+    }
+    /* bottom room cards fixed aspect */
+    .room-card:not(:first-child) .room-card-img {
+      aspect-ratio: 3/4;
+    }
+
+    /* ── LOCATION FEATURE ── */
+    .location {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+    .location-text {
+      background: var(--navy);
+      padding: 80px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .location-text .section-label { color: var(--teal-light); }
+    .location-text .section-title { color: #fff; }
+    .location-text .section-body { color: rgba(255,255,255,0.7); }
+    .location-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .location-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .location-list li::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--teal-light);
+      margin-top: 10px;
+      flex-shrink: 0;
+    }
+    .location-image {
+      position: relative;
+      overflow: hidden;
+    }
+    .location-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .location-image-badge {
+      position: absolute;
+      bottom: 32px;
+      left: 32px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 18px;
+      border-radius: 2px;
+    }
+
+    /* ── AMENITIES ── */
+    .amenities {
+      padding: 100px 60px;
+      background: var(--cream);
+    }
+    .amenities-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .amenities-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+      gap: 40px;
+    }
+    .amenities-header .section-title { margin-bottom: 0; }
+    .amenities-header p {
+      max-width: 340px;
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.65;
+      text-align: right;
+    }
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--sand);
+    }
+    .amenity-item {
+      background: var(--cream);
+      padding: 40px 30px;
+      transition: background 0.3s;
+    }
+    .amenity-item:hover { background: var(--warm-white); }
+    .amenity-icon {
+      width: 44px;
+      height: 44px;
+      margin-bottom: 20px;
+    }
+    .amenity-icon svg { width: 100%; height: 100%; }
+    .amenity-name {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .amenity-desc {
+      font-size: 0.82rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ── EXPERIENCE BANNER ── */
+    .experience {
+      position: relative;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .experience-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.seacoastcapecod.com/wp-content/uploads/sliderjfkmuseum.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.45);
+    }
+    .experience-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 80px 40px;
+    }
+    .experience-content .section-label { color: var(--teal-light); }
+    .experience-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .experience-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+    .experience-body {
+      color: rgba(255,255,255,0.75);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    /* ── GALLERY STRIP ── */
+    .gallery-strip {
+      display: flex;
+      height: 320px;
+      overflow: hidden;
+    }
+    .gallery-strip-item {
+      flex: 1;
+      overflow: hidden;
+      position: relative;
+    }
+    .gallery-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-strip-item:hover img { transform: scale(1.08); }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      background: var(--navy);
+      padding: 100px 60px;
+      text-align: center;
+    }
+    .cta-final .section-label { color: var(--teal-light); }
+    .cta-final-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta-final-title em { font-style: italic; color: var(--sand); }
+    .cta-final p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+    .cta-final-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111d2e;
+      padding: 60px 60px 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 48px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      margin-bottom: 24px;
+      max-width: 280px;
+    }
+    .footer-contact a {
+      display: block;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.82rem;
+      line-height: 2;
+      transition: color 0.2s;
+    }
+    .footer-contact a:hover { color: var(--teal-light); }
+    .footer-col-title {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+      margin-bottom: 20px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.75rem;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+    /* ── BOOKING BAR ── */
+    .booking-bar-wrap {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 90;
+    }
+    .booking-bar {
+      display: inline-flex;
+      align-items: center;
+      background: var(--navy);
+      border: 1px solid rgba(90,174,172,0.35);
+      border-radius: 4px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.45);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .booking-bar-field {
+      display: flex;
+      flex-direction: column;
+      padding: 10px 18px;
+      gap: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .booking-bar-field:hover { background: rgba(255,255,255,0.06); }
+    .booking-bar-field-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal-light);
+    }
+    .booking-bar-field input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      width: 110px;
+    }
+    .booking-bar-field input::-webkit-calendar-picker-indicator {
+      filter: invert(1) opacity(0.4);
+      cursor: pointer;
+    }
+    .booking-bar-sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .booking-bar-btn {
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      padding: 0 24px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      align-self: stretch;
+      transition: background 0.2s;
+      border-radius: 0;
+    }
+    .booking-bar-btn:hover { background: var(--teal-light); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .rooms-grid { grid-template-columns: 1fr 1fr; }
+      .room-card:first-child { grid-column: span 2; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+      .amenities-header { flex-direction: column; align-items: flex-start; }
+      .amenities-header p { text-align: left; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero-content { padding: 0 24px 100px; }
+      .hero-phone { display: none; }
+      .intro-strip { padding: 20px 24px; gap: 16px; flex-wrap: wrap; justify-content: center; }
+      .strip-divider { display: none; }
+      .welcome { grid-template-columns: 1fr; }
+      .welcome-image { height: 300px; }
+      .welcome-text { padding: 60px 32px; }
+      .rooms { padding: 70px 24px; }
+      .rooms-grid { grid-template-columns: 1fr; }
+      .room-card:first-child { grid-column: span 1; }
+      .room-card-always { opacity: 1; }
+      .room-card-overlay { opacity: 1; }
+      .location { grid-template-columns: 1fr; }
+      .location-image { height: 300px; }
+      .location-text { padding: 60px 32px; }
+      .amenities { padding: 70px 24px; }
+      .amenities-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-strip { height: 200px; }
+      .cta-final { padding: 70px 24px; }
+      footer { padding: 48px 24px 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .booking-bar-wrap { bottom: 12px; left: 16px; right: 16px; transform: none; }
+      .booking-bar { width: 100%; }
+      .booking-bar-field input { width: 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a class="nav-logo" href="#">Seacoast <span>Inn</span></a>
+    <ul class="nav-links">
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#attractions">Attractions</a></li>
+      <li><a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-room-rates/">Rates</a></li>
+      <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-ma-motel-contact-information/">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a href="tel:15087753828" class="nav-phone">📞 508-775-3828</a>
+      <div class="nav-divider"></div>
+      <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn" class="nav-book">Book Now</a>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#rooms" onclick="toggleMenu()">Rooms</a>
+    <a href="#location" onclick="toggleMenu()">Location</a>
+    <a href="#amenities" onclick="toggleMenu()">Amenities</a>
+    <a href="#attractions" onclick="toggleMenu()">Attractions</a>
+    <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn">Reserve Now →</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-img" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Hyannis · Cape Cod · Massachusetts</p>
+      <h1 class="hero-title">Your <em>Cape Cod</em><br>Address</h1>
+      <p class="hero-sub">In the heart of downtown Hyannis. Walk to the harbor, ferries, shops and restaurants. 26 comfortable rooms, most with kitchenettes.</p>
+      <div class="hero-ctas">
+        <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn" class="btn-primary">Reserve Your Room</a>
+        <a href="#rooms" class="btn-outline">View Rooms</a>
+      </div>
+    </div>
+    <a href="tel:15087753828" class="hero-phone">508-775-3828</a>
+  </section>
+
+  <!-- INTRO STRIP -->
+  <div class="intro-strip">
+    <div class="intro-strip-item">
+      <div class="intro-strip-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      </div>
+      33 Ocean Street, Downtown Hyannis
+    </div>
+    <div class="strip-divider"></div>
+    <div class="intro-strip-item">
+      <div class="intro-strip-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm1 17.93V18h-2v1.93A8.001 8.001 0 014.07 13H6v-2H4.07A8.001 8.001 0 0111 4.07V6h2V4.07A8.001 8.001 0 0119.93 11H18v2h1.93A8.001 8.001 0 0113 19.93z"/></svg>
+      </div>
+      Walk to Nantucket & Vineyard Ferries
+    </div>
+    <div class="strip-divider"></div>
+    <div class="intro-strip-item">
+      <div class="intro-strip-icon">
+        <svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg>
+      </div>
+      26 Guest Rooms · Most with Kitchenettes
+    </div>
+    <div class="strip-divider"></div>
+    <div class="intro-strip-item">
+      <div class="intro-strip-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+      </div>
+      Free Coffee All Day · No Long-Term Contract
+    </div>
+  </div>
+
+  <!-- WELCOME -->
+  <section class="welcome">
+    <div class="welcome-image">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/virtualtourimageseacoastinn.jpg" alt="Seacoast Inn interior corridor" loading="lazy">
+    </div>
+    <div class="welcome-text">
+      <p class="section-label reveal">Welcome to the Seacoast Inn</p>
+      <h2 class="section-title reveal reveal-delay-1">Hyannis at Your<br><em>Doorstep</em></h2>
+      <p class="section-body reveal reveal-delay-2">
+        Our central location in downtown Hyannis gives you immediate access to everything Cape Cod has to offer. Step out the front door and you're minutes from Hyannis Harbor, the ferry terminals to Nantucket and Martha's Vineyard, Main Street's shops and restaurants, and all the character of this beloved New England town.
+      </p>
+      <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn" class="btn-primary reveal reveal-delay-3" style="align-self:flex-start; background:var(--navy);">Check Availability</a>
+      <blockquote class="welcome-quote reveal reveal-delay-3">
+        "The hub of the Lower Cape — and we're right at its heart."
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ROOMS -->
+  <section class="rooms" id="rooms">
+    <div class="rooms-header">
+      <p class="section-label reveal">Guest Rooms</p>
+      <h2 class="section-title reveal reveal-delay-1">Comfortable Rooms,<br><em>Thoughtfully Appointed</em></h2>
+    </div>
+    <div class="rooms-grid">
+      <div class="room-card">
+        <img class="room-card-img" src="https://www.seacoastcapecod.com/wp-content/uploads/sliderroom12.jpg" alt="King Room with teal walls" loading="lazy">
+        <div class="room-card-always">
+          <div class="room-name">King Suites</div>
+          <div class="room-tag">Signature Room</div>
+        </div>
+        <div class="room-card-overlay">
+          <p class="room-detail">Beautifully appointed king rooms featuring our signature teal palette, flat-screen TV, and air conditioning. Spacious and relaxing.</p>
+          <a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-kitchenette-rooms/" class="room-link">View Details →</a>
+        </div>
+      </div>
+      <div class="room-card">
+        <img class="room-card-img" src="https://www.seacoastcapecod.com/wp-content/uploads/slider10kitchenette.jpg" alt="Room with kitchenette" loading="lazy">
+        <div class="room-card-always">
+          <div class="room-name">Double Rooms</div>
+          <div class="room-tag">Two Double Beds</div>
+        </div>
+        <div class="room-card-overlay">
+          <p class="room-detail">Two comfortable double beds — perfect for families or groups exploring the Cape together.</p>
+          <a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-kitchenette-rooms/" class="room-link">View Details →</a>
+        </div>
+      </div>
+      <div class="room-card">
+        <img class="room-card-img" src="https://www.seacoastcapecod.com/wp-content/uploads/slidemotelwide.jpg" alt="Kitchenette efficiency" loading="lazy">
+        <div class="room-card-always">
+          <div class="room-name">Kitchenette Suites</div>
+          <div class="room-tag">Extended Stay</div>
+        </div>
+        <div class="room-card-overlay">
+          <p class="room-detail">Full kitchenette efficiency — cook your own meals and feel at home for as long as you stay.</p>
+          <a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-kitchenette-rooms/" class="room-link">View Details →</a>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;" class="reveal">
+      <a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-room-rates/" class="btn-primary" style="background:var(--navy);">View All Rooms & Rates</a>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location" id="location">
+    <div class="location-text">
+      <p class="section-label reveal">Location</p>
+      <h2 class="section-title reveal reveal-delay-1">The Cape,<br><em>All Around You</em></h2>
+      <p class="section-body reveal reveal-delay-2">Hyannis is the gateway to everything — and Seacoast Inn puts you right at the center of it. No car needed to reach the best of the Cape.</p>
+      <ul class="location-list reveal reveal-delay-2">
+        <li>Hyannis Harbor & ferry terminals — 5 min walk</li>
+        <li>Main Street shops & restaurants — steps away</li>
+        <li>Nantucket & Martha's Vineyard ferries — same block</li>
+        <li>Cape Cod beaches — easy short drive</li>
+        <li>JFK Hyannis Museum — walking distance</li>
+      </ul>
+      <div style="margin-top:36px;" class="reveal reveal-delay-3">
+        <a href="https://www.seacoastcapecod.com/hyannis-cape-cod-attractions-beaches-restaurants/" class="btn-outline" style="border-color:rgba(255,255,255,0.4); color:#fff;">Explore Attractions</a>
+      </div>
+    </div>
+    <div class="location-image" id="location">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/sliderjfkmuseum.jpg" alt="Hyannis Cape Cod waterfront" loading="lazy">
+      <div class="location-image-badge">33 Ocean Street · Hyannis, MA</div>
+    </div>
+  </section>
+
+  <!-- AMENITIES -->
+  <section class="amenities" id="amenities">
+    <div class="amenities-inner">
+      <div class="amenities-header">
+        <div>
+          <p class="section-label reveal">What's Included</p>
+          <h2 class="section-title reveal reveal-delay-1">Everything You Need,<br><em>Nothing Extra to Pay For</em></h2>
+        </div>
+        <p class="reveal reveal-delay-2">Every stay at the Seacoast Inn comes with thoughtful extras that make your Cape Cod visit easier and more comfortable.</p>
+      </div>
+      <div class="amenities-grid">
+        <div class="amenity-item reveal">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <div class="amenity-name">Free Coffee</div>
+          <div class="amenity-desc">Fresh coffee in our welcoming lobby lounge, available all day, every day.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-1">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M21 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953l7.108-4.062A1.125 1.125 0 0121 8.688v8.123zM11.25 16.811c0 .864-.933 1.405-1.683.977l-7.108-4.062a1.125 1.125 0 010-1.953L9.567 7.71a1.125 1.125 0 011.683.977v8.123z"/></svg>
+          </div>
+          <div class="amenity-name">Flat-Screen TV</div>
+          <div class="amenity-desc">Every room has cable flat-screen TV for your entertainment comfort.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-2">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
+          </div>
+          <div class="amenity-name">Air Conditioning</div>
+          <div class="amenity-desc">Stay cool all summer long with in-room air conditioning throughout.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-3">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0l4.179 2.25L12 21.75 2.25 16.5l4.179-2.25m11.142 0l-5.571 3-5.571-3"/></svg>
+          </div>
+          <div class="amenity-name">Kitchenettes</div>
+          <div class="amenity-desc">Almost all rooms feature a full kitchenette — cook in and feel right at home.</div>
+        </div>
+        <div class="amenity-item reveal">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z"/></svg>
+          </div>
+          <div class="amenity-name">Guest Utility Room</div>
+          <div class="amenity-desc">Laundry facilities, ice machine, and beach chairs & toys for all guests.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-1">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12.53 18.22l-.53.53-.53-.53a.75.75 0 011.06 0z"/></svg>
+          </div>
+          <div class="amenity-name">Free Wi-Fi</div>
+          <div class="amenity-desc">Stay connected throughout your Cape Cod getaway with complimentary wireless internet.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-2">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12"/></svg>
+          </div>
+          <div class="amenity-name">Free Parking</div>
+          <div class="amenity-desc">Convenient on-site parking for all guests at no additional charge.</div>
+        </div>
+        <div class="amenity-item reveal reveal-delay-3">
+          <div class="amenity-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.5"><path d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"/></svg>
+          </div>
+          <div class="amenity-name">Prime Location</div>
+          <div class="amenity-desc">Downtown Hyannis — everything is walkable. No rental car needed.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE BANNER -->
+  <section class="experience" id="attractions">
+    <div class="experience-bg"></div>
+    <div class="experience-content">
+      <p class="section-label reveal">The Cape Awaits</p>
+      <h2 class="experience-title reveal reveal-delay-1">Explore <em>Nantucket,<br>Martha's Vineyard</em> & Beyond</h2>
+      <p class="experience-body reveal reveal-delay-2">From our front door, you're moments from Cape Cod's most celebrated experiences — island ferry departures, harbourside dining, pristine beaches, and the charm of New England's most beloved peninsula.</p>
+      <div class="reveal reveal-delay-3">
+        <a href="https://www.seacoastcapecod.com/hyannis-cape-cod-attractions-beaches-restaurants/" class="btn-primary">See Area Attractions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY STRIP -->
+  <div class="gallery-strip">
+    <div class="gallery-strip-item">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/sliderroom12.jpg" alt="King room" loading="lazy">
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/slider10kitchenette.jpg" alt="Kitchenette room" loading="lazy">
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/sliderjfkmuseum.jpg" alt="Hyannis attractions" loading="lazy">
+    </div>
+    <div class="gallery-strip-item">
+      <img src="https://www.seacoastcapecod.com/wp-content/uploads/slidemotelwide.jpg" alt="Seacoast Inn exterior" loading="lazy">
+    </div>
+  </div>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <p class="section-label reveal">Ready to Visit?</p>
+    <h2 class="cta-final-title reveal reveal-delay-1">Book Your <em>Cape Cod Stay</em></h2>
+    <p class="reveal reveal-delay-2">Reserve online in minutes or call us directly. Month-to-month, no long-term commitments — just great stays in the heart of Hyannis.</p>
+    <div class="cta-final-btns reveal reveal-delay-3">
+      <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn" class="btn-primary">Reserve Online</a>
+      <a href="tel:18004664100" class="btn-outline" style="border-color:rgba(255,255,255,0.4); color:#fff;">Call Toll Free: 1-800-466-4100</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Seacoast Inn</div>
+        <p class="footer-tagline">In the heart of downtown Hyannis, Cape Cod. Your gateway to the islands and everything the Cape has to offer.</p>
+        <div class="footer-contact">
+          <a href="tel:15087753828">508-775-3828</a>
+          <a href="tel:18004664100">1-800-466-4100 (Toll Free)</a>
+          <a href="https://maps.google.com/?q=33+Ocean+Street+Hyannis+MA" target="_blank">33 Ocean Street, Hyannis, MA 02601</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-kitchenette-rooms/">Guest Rooms</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-room-rates/">Rates</a></li>
+          <li><a href="https://live.ipms247.com/booking/book-rooms-seacoastinn">Reserve Online</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-ma-motel-virtual-tour/">Virtual Tour</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-ma-cape-cod-motel-location-amenities/">Location & Amenities</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Explore</div>
+        <ul class="footer-links">
+          <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-attractions-beaches-restaurants/">Cape Cod Attractions</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-attractions-beaches-restaurants/">Beaches</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-attractions-beaches-restaurants/">Restaurants Nearby</a></li>
+          <li><a href="https://www.seacoastcapecod.com/hyannis-cape-cod-ma-motel-contact-information/">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Seacoast Inn · Hyannis, Cape Cod, MA 02601</span>
+      <span>Website by <a href="https://bofilltech.com" target="_blank">Bofill Technologies</a></span>
+    </div>
+  </footer>
+
+  <!-- BOOKING BAR -->
+  <div class="booking-bar-wrap">
+    <div class="booking-bar">
+      <div class="booking-bar-field">
+        <span class="booking-bar-field-label">Check-in</span>
+        <input type="date" id="checkin" placeholder="Select date">
+      </div>
+      <div class="booking-bar-sep"></div>
+      <div class="booking-bar-field">
+        <span class="booking-bar-field-label">Check-out</span>
+        <input type="date" id="checkout" placeholder="Select date">
+      </div>
+      <div class="booking-bar-sep"></div>
+      <a href="https://live.ipms247.com/booking/book-rooms-seacoastinn" class="booking-bar-btn">Book Now</a>
+    </div>
+  </div>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // Mobile menu
+    function toggleMenu() {
+      document.getElementById('mobileNav').classList.toggle('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
