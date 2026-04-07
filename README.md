@@ -18,6 +18,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 10 | Clearwater Beach Club | Atlantic Beach, NY | [clearwaterbeachclub.com](https://clearwaterbeachclub.com) | [View →](https://bofilltech.github.io/concepts/clearwater-beach-club/) | D — Minimal Luxury / Editorial | Cormorant Garamond + Montserrat | Apr 25 |
 | 11 | Seacoast Inn | Hyannis, MA | [seacoastcapecod.com](https://seacoastcapecod.com) | [View →](https://bofilltech.github.io/concepts/seacoast-inn/) | A — Magazine/Editorial | DM Serif Display + Instrument Sans | Apr 26 |
 
+| 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
+
 ### Kathy's Montauk Getaways
 - **URL**: https://bofilltech.github.io/concepts/kathys-montauk/
 - **Type**: Vacation Rental Portfolio Site
