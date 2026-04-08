@@ -19,6 +19,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 12 | Greenport in Bloom | Greenport, NY | [agrocouncil.org](https://agrocouncil.org) | [View →](https://bofilltech.github.io/concepts/cherryblossom2026/) | Festival Page Redesign | Georgia + Arial | Apr 26 |
 | 11 | Seacoast Inn | Hyannis, MA | [seacoastcapecod.com](https://seacoastcapecod.com) | [View →](https://bofilltech.github.io/concepts/seacoast-inn/) | A — Magazine/Editorial | DM Serif Display + Instrument Sans | Apr 26 |
 
+| 13 | Watson's Regency Suites | Ocean City, NJ | [watsonsregency.com](https://watsonsregency.com) | [View →](https://bofilltech.github.io/concepts/watsons-regency/) | B — Split-Screen Narrative | EB Garamond + Josefin Sans | Apr 26 |
+
 | 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
 
 ### Kathy's Montauk Getaways
