@@ -16,7 +16,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 8 | Bare Naked Bakery | Long Island, NY | [barenakedbakery.com](https://barenakedbakery.com) | [View →](https://bofilltech.github.io/concepts/bare-naked-bakery/) | Warm Artisan | Fraunces + Poppins | Mar 25 |
 | 9 | Aquastar Inn | Westerly, RI | [aquastarinn.com](https://aquastarinn.com) | [View →](https://bofilltech.github.io/concepts/aqua-star/) | Coastal New England | Sora + Merriweather | Mar 27 |
 | 10 | Clearwater Beach Club | Atlantic Beach, NY | [clearwaterbeachclub.com](https://clearwaterbeachclub.com) | [View →](https://bofilltech.github.io/concepts/clearwater-beach-club/) | D — Minimal Luxury / Editorial | Cormorant Garamond + Montserrat | Apr 25 |
-| 12 | Greenport in Bloom | Greenport, NY | [agrocouncil.org](https://agrocouncil.org) | [View →](https://bofilltech.github.io/concepts/greenport-in-bloom/) | Festival Page Redesign | Georgia + Arial | Apr 26 |
+| 12 | Greenport in Bloom | Greenport, NY | [agrocouncil.org](https://agrocouncil.org) | [View →](https://bofilltech.github.io/concepts/cherryblossom2026/) | Festival Page Redesign | Georgia + Arial | Apr 26 |
 | 11 | Seacoast Inn | Hyannis, MA | [seacoastcapecod.com](https://seacoastcapecod.com) | [View →](https://bofilltech.github.io/concepts/seacoast-inn/) | A — Magazine/Editorial | DM Serif Display + Instrument Sans | Apr 26 |
 
 | 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
