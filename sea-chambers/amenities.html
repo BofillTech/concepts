@@ -18,7 +18,10 @@
 .sc-nav-phone{font-size:12px;color:rgba(255,255,255,.6);}
 .sc-nav-cta{padding:9px 22px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
 .sc-nav-cta:hover{background:var(--ocean-light);}
-.sc-page-hero{padding:100px 60px 50px;background:var(--ocean-deep);text-align:center;}
+.sc-page-hero{position:relative;height:40vh;min-height:260px;overflow:hidden;text-align:center;display:flex;align-items:center;justify-content:center;}
+.sc-page-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/room46poolview.jpg') center/cover no-repeat;}
+.sc-page-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,61,92,.75) 0%,rgba(26,61,92,.3) 60%);}
+.sc-page-hero-content{position:relative;z-index:2;padding:80px 40px 40px;}
 .sc-page-hero h1{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--white);margin-bottom:10px;}
 .sc-page-hero p{font-size:15px;color:rgba(255,255,255,.6);}
 .sc-content{padding:60px;max-width:1000px;margin:0 auto;}
@@ -46,7 +49,7 @@
 .sc-footer a{color:rgba(255,255,255,.35);transition:color .2s;}.sc-footer a:hover{color:var(--ocean-light);}
 .sc-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
 @media(max-width:1024px){.sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}.sc-photo-grid{grid-template-columns:1fr;}.sc-amenity-section{grid-template-columns:1fr;}.sc-perks-grid{grid-template-columns:1fr;}.sc-footer{grid-template-columns:1fr;}}
-@media(max-width:768px){.sc-nav{padding:12px 20px;}.sc-page-hero{padding:80px 24px 40px;}.sc-content{padding:40px 24px;}.sc-footer{padding:30px 24px;}}
+@media(max-width:768px){.sc-nav{padding:12px 20px;}.sc-page-hero{height:30vh;min-height:200px;}.sc-content{padding:40px 24px;}.sc-footer{padding:30px 24px;}}
 </style>
 </head>
 <body>
@@ -55,6 +58,7 @@
   <div class="sc-nav-links">
     <a href="rooms.html">Rooms</a>
     <a href="amenities.html" class="active">Amenities</a>
+    <a href="gallery.html">Gallery</a>
     <a href="faq.html">FAQ</a>
     <a href="contact.html">Contact</a>
     <a href="webcam.html">Webcam</a>
@@ -64,8 +68,11 @@
 </nav>
 
 <section class="sc-page-hero">
-  <h1>Amenities & Perks</h1>
-  <p>Everything you need for a perfect stay — all included, no hidden fees</p>
+  <div class="sc-page-hero-bg"></div>
+  <div class="sc-page-hero-content">
+    <h1>Amenities & Perks</h1>
+    <p>Everything you need for a perfect stay — all included, no hidden fees</p>
+  </div>
 </section>
 
 <section class="sc-content">
@@ -174,6 +181,13 @@
     <li><strong>No Resort Fees</strong> — Only room rate plus state tax</li>
   </ul>
 
+  <hr class="sc-divider">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0;">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/alladirondacksandflag1200px.jpg" alt="Adirondack chairs overlooking the ocean at Sea Chambers" style="border-radius:10px;height:280px;object-fit:cover;width:100%;" loading="lazy">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakfastroomcoffeeandhearth.jpg" alt="24-hour coffee machines in the breakfast room" style="border-radius:10px;height:280px;object-fit:cover;width:100%;" loading="lazy">
+  </div>
+
   <div style="text-align:center;margin-top:40px;">
     <a href="https://reservations.seachambers.com" style="display:inline-block;padding:16px 40px;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;">Book Your Stay</a>
   </div>
@@ -182,7 +196,8 @@
 
 <div class="sc-footer">
   <div><img src="img/logo.jpg" alt="Sea Chambers" style="height:40px;margin-bottom:14px;"><h4>Sea Chambers</h4><p>Oceanfront motel on Shore Road in Ogunquit, Maine.</p></div>
-  <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="faq.html">Perks & FAQ</a></li><li><a href="webcam.html">Live Webcam</a></li></ul></div>
+  <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="gallery.html">Gallery</a>
+    <a href="faq.html">Perks & FAQ</a></li><li><a href="webcam.html">Live Webcam</a></li></ul></div>
   <div><h4>Contact</h4><ul><li><a href="tel:2076469311">207.646.9311</a></li><li><a href="mailto:lodging@seachambers.com">lodging@seachambers.com</a></li><li>67 Shore Road, Ogunquit, ME 03907</li></ul></div>
   <div class="sc-footer-bottom">© 2026 Sea Chambers. All rights reserved.</div>
 </div>
