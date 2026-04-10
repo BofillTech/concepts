@@ -9,11 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ocean:#2B5F8A;
-  --ocean-deep:#1A3D5C;
+  --ocean:#2D5680;
+  --ocean-deep:#2A4764;
   --ocean-light:#5B9BD5;
-  --mist:#F4F7FA;
-  --warm:#F8F5F0;
+  --mist:#FDFBF2;
+  --warm:#F9F9EF;
   --sand:#E8DFD0;
   --white:#FFFFFF;
   --dark:#1E1E2A;
@@ -31,8 +31,12 @@ a{text-decoration:none;color:inherit;}
 
 .sc-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;}
 .sc-nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 16px rgba(0,0,0,.06);padding:12px 48px;}
-.sc-nav-logo img{height:48px;width:auto;transition:height .3s;filter:brightness(0) invert(1);}
-.sc-nav.scrolled .sc-nav-logo img{height:38px;filter:none;}
+.sc-nav-logo img{height:48px;width:auto;transition:height .3s;}
+.sc-nav-logo .logo-white{display:block;}
+.sc-nav-logo .logo-dark{display:none;}
+.sc-nav.scrolled .sc-nav-logo img{height:38px;}
+.sc-nav.scrolled .sc-nav-logo .logo-white{display:none;}
+.sc-nav.scrolled .sc-nav-logo .logo-dark{display:block;}
 .sc-nav-links{display:flex;align-items:center;gap:28px;}
 .sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);transition:color .3s;}
 .sc-nav.scrolled .sc-nav-links a{color:var(--dark);}
@@ -45,7 +49,7 @@ a{text-decoration:none;color:inherit;}
 /* HERO - CINEMATIC */
 .sc-hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
 .sc-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/alladirondacksandflag1200px.jpg') center/cover no-repeat;}
-.sc-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,61,92,.75) 0%,rgba(26,61,92,.3) 50%,rgba(26,61,92,.15) 100%);}
+.sc-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,71,100,.75) 0%,rgba(42,71,100,.3) 50%,rgba(42,71,100,.15) 100%);}
 .sc-hero-content{position:relative;z-index:2;max-width:700px;padding:0 40px;}
 .sc-hero-tag{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:20px;}
 .sc-hero h1{font-family:var(--font-display);font-size:clamp(36px,5.5vw,60px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:10px;}
@@ -158,7 +162,7 @@ body{padding-bottom:70px;}
 <body>
 
 <nav class="sc-nav" id="sc-nav">
-  <a href="#" class="sc-nav-logo"><img src="img/logo.jpg" alt="Sea Chambers"></a>
+  <a href="#" class="sc-nav-logo"><img src="img/logo-white.png" alt="Sea Chambers" class="logo-white"><img src="img/logo-dark.png" alt="Sea Chambers" class="logo-dark"></a>
   <div class="sc-nav-links">
     <a href="rooms.html">Rooms</a>
     <a href="amenities.html">Amenities</a>
@@ -298,7 +302,7 @@ body{padding-bottom:70px;}
 
 <div class="sc-footer">
   <div>
-    <img src="img/logo.jpg" alt="Sea Chambers" style="height:40px;margin-bottom:14px;">
+    <img src="img/logo-white.png" alt="Sea Chambers" style="height:50px;margin-bottom:14px;">
     <h4>Sea Chambers</h4>
     <p>Oceanfront motel on Shore Road in Ogunquit, Maine. Unobstructed ocean views, heated pool, hot tub, fire pits, and complimentary breakfast.</p>
   </div>
