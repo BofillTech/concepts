@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrace By The Sea — Ogunquit, Maine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2b3c;
+    --navy-deep: #0f1c2b;
+    --seafoam: #7aada4;
+    --seafoam-light: #a8ccc7;
+    --sand: #e8dcc8;
+    --sand-warm: #f4ede0;
+    --cream: #faf7f2;
+    --white: #ffffff;
+    --charcoal: #2c3340;
+    --mist: #c8d8d4;
+    --gold: #b89a6a;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Josefin Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    background: rgba(15,28,43,0.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 2px 24px rgba(0,0,0,0.18);
+    transition: background 0.4s;
+  }
+  .nav-logo img {
+    height: 52px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    object-fit: contain;
+  }
+  .nav-logo-text {
+    color: white;
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    display: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover { color: var(--mist); }
+  .nav-book-btn {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: white !important;
+    padding: 9px 24px;
+    font-size: 10px !important;
+    letter-spacing: 0.18em;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s;
+    text-decoration: none !important;
+  }
+  .nav-book-btn:hover { background: rgba(255,255,255,0.12); border-color: white; }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span { display: block; width: 24px; height: 1.5px; background: white; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 640px;
+    overflow: hidden;
+  }
+  .hero-slides { position: absolute; inset: 0; }
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.8s ease;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(15,28,43,0.3) 0%, rgba(15,28,43,0.15) 40%, rgba(15,28,43,0.58) 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 80px 24px 160px;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.4s forwards;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(48px, 7vw, 98px);
+    line-height: 1.0;
+    color: white;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.65s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--mist); }
+  .hero-sub {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.78);
+    max-width: 520px;
+    line-height: 1.9;
+    opacity: 0;
+    animation: fadeUp 1.1s 0.9s forwards;
+  }
+  .hero-dots {
+    position: absolute;
+    bottom: 156px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+  }
+  .hero-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .hero-dot.active { background: white; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== BOOKING BAR ===== */
+  .booking-bar-wrapper {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 90;
+  }
+  .booking-bar {
+    background: rgba(15,28,43,0.96);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: stretch;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+    white-space: nowrap;
+  }
+  .booking-field {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 28px;
+    border-right: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .booking-field:hover { background: rgba(255,255,255,0.05); }
+  .booking-field label {
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 5px;
+    cursor: pointer;
+  }
+  .booking-field input[type="date"] {
+    background: none;
+    border: none;
+    color: white;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    outline: none;
+    width: 134px;
+  }
+  .booking-field input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1) opacity(0.4); }
+  .booking-bar-btn {
+    background: var(--seafoam);
+    color: white;
+    border: none;
+    padding: 0 38px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+  .booking-bar-btn:hover { background: #6a9d94; }
+
+  /* ===== INTRO BAND ===== */
+  .intro-band {
+    background: var(--navy);
+    color: white;
+    padding: 26px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+  .intro-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.68);
+  }
+  .intro-item svg { opacity: 0.55; flex-shrink: 0; }
+
+  /* ===== WELCOME ===== */
+  .welcome { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .welcome-image { position: relative; overflow: hidden; }
+  .welcome-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 8s ease; }
+  .welcome-image:hover img { transform: scale(1.04); }
+  .welcome-text {
+    background: var(--sand-warm);
+    padding: 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .section-label {
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--seafoam);
+    margin-bottom: 20px;
+  }
+  .welcome-text h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(34px, 3.5vw, 54px);
+    line-height: 1.18;
+    color: var(--navy);
+    margin-bottom: 28px;
+  }
+  .welcome-text h2 em { font-style: italic; color: var(--seafoam); }
+  .welcome-text p {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 13.5px;
+    line-height: 2.1;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    max-width: 440px;
+  }
+  .text-link {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--navy);
+    padding-bottom: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.25s, border-color 0.25s;
+    margin-top: 12px;
+  }
+  .text-link:hover { color: var(--seafoam); border-color: var(--seafoam); }
+
+  /* ===== AMENITIES ===== */
+  .amenities-strip { background: var(--cream); padding: 80px 64px; text-align: center; }
+  .amenities-strip h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 3vw, 46px);
+    color: var(--navy);
+    margin-bottom: 56px;
+    line-height: 1.2;
+  }
+  .amenities-strip h2 em { font-style: italic; color: var(--seafoam); }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid rgba(26,43,60,0.1);
+  }
+  .amenity-card {
+    padding: 44px 32px;
+    border-right: 1px solid rgba(26,43,60,0.1);
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .amenity-card:last-child { border-right: none; }
+  .amenity-card:hover { background: var(--sand-warm); }
+  .amenity-icon {
+    width: 44px; height: 44px;
+    background: var(--seafoam-light);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+  }
+  .amenity-icon svg { width: 20px; height: 20px; stroke: var(--navy); fill: none; stroke-width: 1.5; }
+  .amenity-card h3 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .amenity-card p {
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    font-weight: 200;
+    line-height: 1.9;
+    color: #5a6470;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== BUILDINGS ===== */
+  .buildings { background: var(--navy-deep); padding: 92px 64px; text-align: center; }
+  .buildings .section-label { color: var(--seafoam-light); margin-bottom: 14px; }
+  .buildings h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 3.5vw, 52px);
+    color: white;
+    margin-bottom: 12px;
+    line-height: 1.18;
+  }
+  .buildings h2 em { font-style: italic; color: var(--mist); }
+  .buildings-intro {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.06em;
+    line-height: 2;
+    max-width: 580px;
+    margin: 0 auto 60px;
+  }
+  .buildings-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .buildings-grid-row2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 2px;
+    max-width: 66.66%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .building-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; }
+  .building-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+    filter: brightness(0.72);
+  }
+  .building-card:hover img { transform: scale(1.07); filter: brightness(0.58); }
+  .building-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 36px 28px;
+    background: linear-gradient(to top, rgba(10,20,32,0.88) 0%, transparent 55%);
+  }
+  .building-tag {
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 8px;
+  }
+  .building-name {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .building-desc {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+  .building-link {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.4);
+    padding: 8px 20px;
+    text-decoration: none;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .building-link:hover { background: rgba(255,255,255,0.1); border-color: white; }
+  .btn-outline-white {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: white;
+    border: 1px solid rgba(255,255,255,0.5);
+    padding: 13px 32px;
+    text-decoration: none;
+    transition: background 0.25s;
+    margin-top: 44px;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  /* ===== MOSAIC ===== */
+  .mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 320px 320px;
+    gap: 4px;
+    background: var(--sand);
+    padding: 4px;
+  }
+  .mosaic-item { overflow: hidden; position: relative; }
+  .mosaic-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: brightness(0.88);
+  }
+  .mosaic-item:hover img { transform: scale(1.06); filter: brightness(0.72); }
+  .mosaic-item.tall { grid-row: span 2; }
+  .mosaic-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px 20px 16px;
+    background: linear-gradient(to top, rgba(15,28,43,0.72) 0%, transparent 100%);
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .mosaic-item:hover .mosaic-caption { opacity: 1; }
+
+  /* ===== BREAKFAST ===== */
+  .breakfast { display: grid; grid-template-columns: 1fr 1fr; min-height: 480px; }
+  .breakfast-text {
+    background: var(--navy);
+    padding: 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+  }
+  .breakfast-text .section-label { color: var(--seafoam-light); }
+  .breakfast-text h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 3vw, 48px);
+    color: white;
+    margin: 16px 0 22px;
+    line-height: 1.18;
+  }
+  .breakfast-text h2 em { font-style: italic; color: var(--mist); }
+  .breakfast-text p {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 13px;
+    line-height: 2.1;
+    color: rgba(255,255,255,0.68);
+    max-width: 400px;
+  }
+  .breakfast-image { position: relative; overflow: hidden; }
+  .breakfast-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ===== LOCATION ===== */
+  .location { background: var(--sand-warm); padding: 92px 64px; text-align: center; }
+  .location h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 3.5vw, 52px);
+    color: var(--navy);
+    margin-bottom: 18px;
+    line-height: 1.2;
+  }
+  .location h2 em { font-style: italic; color: var(--seafoam); }
+  .location > p {
+    font-family: var(--font-body);
+    font-weight: 200;
+    font-size: 13.5px;
+    line-height: 2.1;
+    color: var(--charcoal);
+    max-width: 620px;
+    margin: 0 auto 56px;
+  }
+  .location-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .loc-number {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--seafoam);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .loc-label {
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta { position: relative; height: 420px; overflow: hidden; text-align: center; }
+  .final-cta img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.48); }
+  .final-cta-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 24px;
+    color: white;
+  }
+  .final-cta h2 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(30px, 4vw, 56px);
+    line-height: 1.15;
+  }
+  .final-cta h2 em { font-style: italic; color: var(--mist); }
+  .btn-cta {
+    display: inline-block;
+    background: var(--seafoam);
+    color: white;
+    font-family: var(--font-body);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    text-decoration: none;
+    transition: background 0.25s;
+    margin-top: 8px;
+  }
+  .btn-cta:hover { background: #6a9d94; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy-deep);
+    color: rgba(255,255,255,0.6);
+    padding: 64px 64px 100px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+  }
+  .footer-brand img { height: 44px; filter: brightness(0) invert(1); opacity: 0.75; margin-bottom: 20px; display: block; object-fit: contain; }
+  .footer-brand p { font-size: 12px; line-height: 2; font-weight: 200; color: rgba(255,255,255,0.45); max-width: 260px; }
+  .footer-col h4 {
+    font-family: var(--font-body);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mist);
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 10px; }
+  .footer-col ul li a, .footer-col address a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 200;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover, .footer-col address a:hover { color: rgba(255,255,255,0.88); }
+  .footer-col address { font-style: normal; font-size: 12px; line-height: 2; font-weight: 200; color: rgba(255,255,255,0.5); }
+  .footer-bottom {
+    background: var(--navy-deep);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 20px 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.1em;
+  }
+  .footer-social { display: flex; gap: 20px; }
+  .footer-social a {
+    color: rgba(255,255,255,0.4);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-social a:hover { color: rgba(255,255,255,0.8); }
+
+  /* ===== REVEAL ===== */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px; left: 0; right: 0;
+    background: rgba(10,20,32,0.98);
+    z-index: 99;
+    padding: 32px 32px 48px;
+    flex-direction: column;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: white; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    nav { padding: 0 32px; }
+    .welcome { grid-template-columns: 1fr; }
+    .welcome-image { height: 380px; }
+    .welcome-text { padding: 56px 48px; }
+    .amenities-grid { grid-template-columns: 1fr 1fr; }
+    .amenity-card:nth-child(2) { border-right: none; }
+    .amenity-card:nth-child(3) { border-top: 1px solid rgba(26,43,60,0.1); }
+    .amenity-card:nth-child(4) { border-right: none; border-top: 1px solid rgba(26,43,60,0.1); }
+    .buildings-grid { grid-template-columns: 1fr 1fr; }
+    .buildings-grid-row2 { max-width: 100%; }
+    .breakfast { grid-template-columns: 1fr; }
+    .breakfast-image { height: 320px; order: -1; }
+    .breakfast-text { padding: 56px 48px; }
+    .location-features { grid-template-columns: 1fr 1fr; }
+    footer { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .mosaic { grid-template-columns: 1fr 1fr; }
+    .mosaic-item.tall { grid-row: span 1; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .nav-links, .nav-book-btn { display: none; }
+    .nav-hamburger { display: flex; }
+    .amenities-strip { padding: 56px 24px; }
+    .amenities-grid { grid-template-columns: 1fr; }
+    .amenity-card { border-right: none !important; border-bottom: 1px solid rgba(26,43,60,0.1); }
+    .buildings { padding: 64px 24px; }
+    .buildings-grid, .buildings-grid-row2 { grid-template-columns: 1fr; max-width: 100%; }
+    .building-card { aspect-ratio: 4/3; }
+    .welcome-text { padding: 48px 28px; }
+    .location { padding: 64px 28px; }
+    .location-features { grid-template-columns: 1fr; gap: 32px; }
+    footer { grid-template-columns: 1fr; padding: 48px 28px 100px; gap: 28px; }
+    .footer-bottom { flex-direction: column; gap: 12px; padding: 20px 28px; }
+    .intro-band { padding: 20px 24px; gap: 20px; }
+    .booking-bar-wrapper { width: calc(100% - 32px); }
+    .booking-bar { flex-direction: column; }
+    .booking-field { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .booking-field input[type="date"] { width: 100%; }
+    .booking-bar-btn { min-height: 52px; }
+    .mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <div class="nav-logo">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/terraceheaderfeb2016.jpg" alt="Terrace By The Sea" onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block'">
+    <span class="nav-logo-text">Terrace By The Sea</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="https://www.terracebythesea.com/all-ogunquit-maine-bed-and-breakfast-inn-accommodations/">Accommodations</a></li>
+    <li><a href="https://www.terracebythesea.com/ogunquit-maine-hotel-motel-inn-ocean-view/">Amenities</a></li>
+    <li><a href="https://www.terracebythesea.com/ogunquit-maine-attractions-restaurants-and-beaches/">Nearby</a></li>
+    <li><a href="https://www.terracebythesea.com/ogunquit-maine-weddings/">Weddings</a></li>
+    <li><a href="https://www.terracebythesea.com/ogunquit-maine-motel-directions/">Contact</a></li>
+    <li><a href="https://terracebythesea.client.innroad.com/" class="nav-book-btn" target="_blank">Reserve</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="https://www.terracebythesea.com/all-ogunquit-maine-bed-and-breakfast-inn-accommodations/">Accommodations</a>
+  <a href="https://www.terracebythesea.com/ogunquit-maine-hotel-motel-inn-ocean-view/">Amenities</a>
+  <a href="https://www.terracebythesea.com/ogunquit-maine-attractions-restaurants-and-beaches/">Nearby</a>
+  <a href="https://www.terracebythesea.com/ogunquit-maine-weddings/">Weddings</a>
+  <a href="https://www.terracebythesea.com/ogunquit-maine-motel-directions/">Contact</a>
+  <a href="https://terracebythesea.client.innroad.com/" target="_blank">Reserve Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/04/homeimagejuly2025.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/04/lawn-and-ocean-from-deck.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/04/slideflowersfencetobeach.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/04/nirvanaslidemarginalway600px.jpg')"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Ogunquit, Maine</p>
+    <h1 class="hero-title">Where the <em>Ocean</em><br>Meets Home</h1>
+    <p class="hero-sub">Directly overlooking Ogunquit Beach, Terrace By The Sea offers a rare combination of colonial inn elegance and coastal ease — steps from the sand, wrapped in spectacular views.</p>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" onclick="goToSlide(0)"></div>
+    <div class="hero-dot" onclick="goToSlide(1)"></div>
+    <div class="hero-dot" onclick="goToSlide(2)"></div>
+    <div class="hero-dot" onclick="goToSlide(3)"></div>
+  </div>
+</section>
+
+<!-- INTRO BAND -->
+<div class="intro-band">
+  <div class="intro-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+    Five Distinct Buildings
+  </div>
+  <div class="intro-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+    Steps to Ogunquit Beach
+  </div>
+  <div class="intro-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+    Breakfast Included
+  </div>
+  <div class="intro-item">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    207-646-3232
+  </div>
+</div>
+
+<!-- WELCOME -->
+<section class="welcome">
+  <div class="welcome-image">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/cryoutcolumntwochairstoocean.jpg" alt="Ocean View Lawn" loading="lazy">
+  </div>
+  <div class="welcome-text">
+    <p class="section-label reveal">A Special Place in Ogunquit</p>
+    <h2 class="reveal reveal-delay-1">A Place Apart from<br>the <em>Everyday</em></h2>
+    <p class="reveal reveal-delay-2">Terrace By The Sea combines deluxe motel comfort with the warmth of a Colonial inn — set peacefully between Beach Street and Wharf Lane, directly across from the Ogunquit River beach.</p>
+    <p class="reveal reveal-delay-3">Our ocean view lawn is one of Ogunquit's finest vantage points. Beautifully landscaped grounds invite you to slow down, breathe in the salt air, and linger a little longer.</p>
+    <a href="https://www.terracebythesea.com/ogunquit-maine-inn-lodging-virtual-photography-tour/" class="text-link reveal reveal-delay-4" target="_blank">Explore the property &rarr;</a>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities-strip">
+  <p class="section-label reveal">What Awaits You</p>
+  <h2 class="reveal reveal-delay-1">The Terrace <em>Experience</em></h2>
+  <div class="amenities-grid">
+    <div class="amenity-card reveal">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+      </div>
+      <h3>Ocean Views</h3>
+      <p>Most rooms overlook the Ogunquit River and Atlantic — panoramic vistas from your private deck or sitting area.</p>
+    </div>
+    <div class="amenity-card reveal reveal-delay-1">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      </div>
+      <h3>Breakfast Daily</h3>
+      <p>Begin each morning with our complimentary expanded continental breakfast, served on the wrap-around ocean view porch.</p>
+    </div>
+    <div class="amenity-card reveal reveal-delay-2">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="3"/><path d="M6 22v-4a6 6 0 0112 0v4M3 14h18"/></svg>
+      </div>
+      <h3>Outdoor Pool</h3>
+      <p>A quietly situated seasonal pool tucked within beautifully landscaped grounds — your private retreat between beach days.</p>
+    </div>
+    <div class="amenity-card reveal reveal-delay-3">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <h3>Walk Everywhere</h3>
+      <p>Ogunquit Beach, the Marginal Way, Perkins Cove shops, and the finest Maine restaurants — all within easy strolling distance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDINGS -->
+<section class="buildings">
+  <p class="section-label reveal">Five Distinct Buildings</p>
+  <h2 class="reveal reveal-delay-1">Find Your <em>Perfect</em> Room</h2>
+  <p class="buildings-intro reveal reveal-delay-2">From Colonial inn suites to deluxe motel rooms and private cottages, Terrace By The Sea offers something for every kind of traveler. Each building has its own character — all share the same spectacular setting.</p>
+  <div class="buildings-grid reveal">
+    <div class="building-card">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/flowers-by-walk.jpg" alt="Main Inn" loading="lazy">
+      <div class="building-card-overlay">
+        <p class="building-tag">Colonial Elegance</p>
+        <h3 class="building-name">The Main Inn</h3>
+        <p class="building-desc">Charm and ocean views in our historic Colonial inn with wrap-around porch and parlor.</p>
+        <a href="https://www.terracebythesea.com/ogunquit-maine-bed-and-breakfast-inn-accommodations/" class="building-link">View Rooms</a>
+      </div>
+    </div>
+    <div class="building-card">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/flowers-and-rear-building.jpg" alt="Deluxe Motel" loading="lazy">
+      <div class="building-card-overlay">
+        <p class="building-tag">Modern Comfort</p>
+        <h3 class="building-name">Deluxe Motel</h3>
+        <p class="building-desc">Spacious, well-appointed rooms with private decks and unobstructed ocean views.</p>
+        <a href="https://www.terracebythesea.com/ogunquit-maine-deluxe-motel-rooms/" class="building-link">View Rooms</a>
+      </div>
+    </div>
+    <div class="building-card">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/pool-opposite-view.jpg" alt="The Suites" loading="lazy">
+      <div class="building-card-overlay">
+        <p class="building-tag">Extra Space</p>
+        <h3 class="building-name">The Suites</h3>
+        <p class="building-desc">Efficiency suites with added amenities — ideal for longer stays and family visits.</p>
+        <a href="https://www.terracebythesea.com/ogunquit-maine-motel-efficiency-room-suites/" class="building-link">View Suites</a>
+      </div>
+    </div>
+  </div>
+  <div class="buildings-grid-row2 reveal reveal-delay-1">
+    <div class="building-card">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/deckviewtosouth.jpg" alt="Side Motel & Cottage" loading="lazy">
+      <div class="building-card-overlay">
+        <p class="building-tag">Coastal Seclusion</p>
+        <h3 class="building-name">Side Motel &amp; Cottage</h3>
+        <p class="building-desc">A quieter retreat within the property, including a charming private cottage.</p>
+        <a href="https://www.terracebythesea.com/ogunquit-maine-motel-cottage-rooms/" class="building-link">View Rooms</a>
+      </div>
+    </div>
+    <div class="building-card">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/800viewtohotelfrombeach.jpg" alt="Court Motel" loading="lazy">
+      <div class="building-card-overlay">
+        <p class="building-tag">Beach Street Location</p>
+        <h3 class="building-name">Court Motel</h3>
+        <p class="building-desc">Prime Beach Street location — closest building to the sand, perfect for beach lovers.</p>
+        <a href="https://www.terracebythesea.com/ogunquit-maine-hotel-on-beach-street/" class="building-link">View Rooms</a>
+      </div>
+    </div>
+  </div>
+  <a href="https://www.terracebythesea.com/all-ogunquit-maine-bed-and-breakfast-inn-accommodations/" class="btn-outline-white reveal reveal-delay-2">View All Accommodations</a>
+</section>
+
+<!-- MOSAIC -->
+<div class="mosaic">
+  <div class="mosaic-item tall">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/slideflowersfencetobeach.jpg" alt="Grounds" loading="lazy">
+    <div class="mosaic-caption">Waterfront Grounds</div>
+  </div>
+  <div class="mosaic-item">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/adirondacksandview.jpg" alt="Adirondack Chairs" loading="lazy">
+    <div class="mosaic-caption">Adirondack Chairs</div>
+  </div>
+  <div class="mosaic-item">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/poolfromgate.jpg" alt="Pool" loading="lazy">
+    <div class="mosaic-caption">Outdoor Pool</div>
+  </div>
+  <div class="mosaic-item">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/chairsandoceanview.jpg" alt="Ocean View" loading="lazy">
+    <div class="mosaic-caption">River &amp; Ocean View</div>
+  </div>
+  <div class="mosaic-item">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/800walkwaytobeachlookingsouth.jpg" alt="Path to Beach" loading="lazy">
+    <div class="mosaic-caption">Path to the Beach</div>
+  </div>
+</div>
+
+<!-- BREAKFAST -->
+<section class="breakfast">
+  <div class="breakfast-text">
+    <p class="section-label reveal">Included With Every Stay</p>
+    <h2 class="reveal reveal-delay-1">Mornings Begin<br>on the <em>Ocean Porch</em></h2>
+    <p class="reveal reveal-delay-2">Each morning, step out to our sweeping wrap-around porch — where a complimentary expanded continental breakfast is served with a panoramic view of the Ogunquit River and the Atlantic beyond. A quiet ritual that sets the tone for the perfect Maine day.</p>
+  </div>
+  <div class="breakfast-image">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/slidebreakfastporch.jpg" alt="Breakfast Porch" loading="lazy">
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location">
+  <p class="section-label reveal">Perfectly Placed</p>
+  <h2 class="reveal reveal-delay-1">The Heart of <em>Ogunquit</em></h2>
+  <p class="reveal reveal-delay-2">Directly overlooking Ogunquit Beach, our property puts the best of coastal Maine within easy reach. Step through our grounds and you're there — no car needed.</p>
+  <div class="location-features">
+    <div class="reveal">
+      <div class="loc-number">2 min</div>
+      <div class="loc-label">Walk to the Beach</div>
+    </div>
+    <div class="reveal reveal-delay-1">
+      <div class="loc-number">5</div>
+      <div class="loc-label">Buildings on Property</div>
+    </div>
+    <div class="reveal reveal-delay-2">
+      <div class="loc-number">&infin;</div>
+      <div class="loc-label">Ocean Views</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <img src="https://bofilltech.com/wp-content/uploads/2026/04/nirvanaslidemarginalway600px.jpg" alt="Marginal Way" loading="lazy">
+  <div class="final-cta-content">
+    <p class="section-label">Your Maine Escape Awaits</p>
+    <h2>Ready to <em>Return</em><br>to the Sea?</h2>
+    <a href="https://terracebythesea.client.innroad.com/" class="btn-cta" target="_blank">Check Availability</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/04/terraceheaderfeb2016.jpg" alt="Terrace By The Sea">
+    <p>A special place in the heart of Ogunquit, Maine. Deluxe motel comfort with colonial inn elegance, directly overlooking Ogunquit Beach.</p>
+  </div>
+  <div class="footer-col">
+    <h4>Accommodations</h4>
+    <ul>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-bed-and-breakfast-inn-accommodations/">The Main Inn</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-deluxe-motel-rooms/">Deluxe Motel</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-motel-cottage-rooms/">Side Motel & Cottage</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-hotel-on-beach-street/">Court Motel</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-motel-efficiency-room-suites/">The Suites</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Explore</h4>
+    <ul>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-hotel-motel-inn-ocean-view/">Amenities</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-motel-pool/">Our Pool</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-weddings/">Weddings</a></li>
+      <li><a href="https://www.terracebythesea.com/ogunquit-maine-motel-rates/">Rates</a></li>
+      <li><a href="https://www.terracebythesea.com/gift-certificates/">Gift Certificates</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>Find Us</h4>
+    <address>
+      23 Wharf Lane<br>
+      Ogunquit, Maine 03907<br><br>
+      <a href="tel:2076463232">207-646-3232</a>
+    </address>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>&copy; 2025 Terrace By The Sea. All rights reserved.</span>
+  <div class="footer-social">
+    <a href="https://www.facebook.com/TerraceOgunquit" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/watch?v=Gek-lAB1DSM" target="_blank">YouTube</a>
+  </div>
+</div>
+
+<!-- BOOKING BAR -->
+<div class="booking-bar-wrapper">
+  <div class="booking-bar">
+    <div class="booking-field">
+      <label for="checkin">Check In</label>
+      <input type="date" id="checkin" name="checkin">
+    </div>
+    <div class="booking-field">
+      <label for="checkout">Check Out</label>
+      <input type="date" id="checkout" name="checkout">
+    </div>
+    <button class="booking-bar-btn" onclick="window.open('https://terracebythesea.client.innroad.com/','_blank')">Reserve</button>
+  </div>
+</div>
+
+<script>
+  // Hero slider
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0, timer;
+  function goToSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = n;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(() => goToSlide((current + 1) % slides.length), 5500);
+  }
+  timer = setInterval(() => goToSlide((current + 1) % slides.length), 5500);
+
+  // Scroll reveals
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Mobile menu
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  // Date defaults
+  const today = new Date(), tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const fmt = d => d.toISOString().split('T')[0];
+  const ci = document.getElementById('checkin'), co = document.getElementById('checkout');
+  ci.value = fmt(today); co.value = fmt(tomorrow);
+  ci.min = fmt(today); co.min = fmt(tomorrow);
+  ci.addEventListener('change', e => {
+    const next = new Date(e.target.value); next.setDate(next.getDate() + 1);
+    co.min = fmt(next);
+    if (co.value <= e.target.value) co.value = fmt(next);
+  });
+</script>
+</body>
+</html>
