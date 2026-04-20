@@ -23,6 +23,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
 
+| 14 | Foundry Lane | Retail / Gifting Boutique | (new brand, Shopify) | [View →](https://bofilltech.github.io/concepts/foundry-lane/) | D — Minimal Luxury (Retail) | Cormorant Garamond + Jost | Apr 20 |
+
 ### Kathy's Montauk Getaways
 - **URL**: https://bofilltech.github.io/concepts/kathys-montauk/
 - **Type**: Vacation Rental Portfolio Site

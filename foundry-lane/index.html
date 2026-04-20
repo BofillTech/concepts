@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Foundry Lane — Thoughtfully Curated Gifts</title>
+<meta name="description" content="A curated gifting boutique. Considered pieces for home, for self, and for giving." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Coastal palette from client inspiration */
+    --mountain-air:     #C8D4D5;  /* soft blue-gray */
+    --winter-walk:      #BFB5A6;  /* warm beige */
+    --clean-slate:      #D5D0C7;  /* light warm gray */
+    --windfresh-white:  #EFEAE0;  /* cream */
+    --fresh-eucalyptus: #9EA89E;  /* sage green */
+    --fae-blush:        #D8B6B8;  /* dusty pink */
+
+    --ink:        #2C2824;        /* warm charcoal for text */
+    --ink-muted:  #5C544B;
+    --ink-soft:   #8A8175;
+    --paper:      #FBF8F1;        /* near-white page background */
+    --rule:       #E3DED2;
+
+    --container: 1320px;
+    --gutter: clamp(20px, 4vw, 48px);
+
+    --f-display: "Cormorant Garamond", Georgia, serif;
+    --f-body:    "Jost", -apple-system, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+
+  /* Type scale */
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+  h1, h2, h3 { font-family: var(--f-display); font-weight: 400; color: var(--ink); margin: 0; line-height: 1.08; letter-spacing: -0.005em; }
+  .display-xl { font-size: clamp(48px, 7.5vw, 104px); font-weight: 300; letter-spacing: -0.015em; }
+  .display-l  { font-size: clamp(38px, 5.5vw, 72px);  font-weight: 300; }
+  .display-m  { font-size: clamp(30px, 3.8vw, 48px);  font-weight: 400; }
+  .display-s  { font-size: clamp(22px, 2.4vw, 30px);  font-weight: 500; }
+  .italic-serif { font-family: var(--f-display); font-style: italic; font-weight: 300; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ============================================ ANNOUNCEMENT BAR */
+  .announce {
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+    padding: 10px var(--gutter);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .announce span { opacity: 0.88; }
+
+  /* ============================================ NAVIGATION */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251, 248, 241, 0.96);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease, padding 0.3s ease;
+  }
+  .nav.scrolled { border-bottom-color: var(--rule); }
+  .nav-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 32px;
+    padding: 26px var(--gutter);
+    max-width: var(--container);
+    margin: 0 auto;
+    transition: padding 0.3s ease;
+  }
+  .nav.scrolled .nav-inner { padding-top: 16px; padding-bottom: 16px; }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .nav-links.left { justify-self: start; }
+  .nav-links.right { justify-self: end; }
+  .nav-links a {
+    position: relative;
+    padding-bottom: 3px;
+    transition: color 0.2s;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0;
+    height: 1px;
+    background: var(--ink);
+    transition: width 0.35s cubic-bezier(.77,0,.18,1);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .brand {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(24px, 2.6vw, 32px);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .brand em { font-style: italic; font-weight: 400; letter-spacing: 0.04em; text-transform: none; }
+
+  .cart-icon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .cart-count {
+    background: var(--fresh-eucalyptus);
+    color: var(--paper);
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .mobile-toggle {
+    display: none;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* ============================================ HERO */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(48px, 8vw, 110px);
+    padding-bottom: clamp(60px, 9vw, 140px);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: clamp(32px, 6vw, 96px);
+    align-items: center;
+  }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero-eyebrow { margin-bottom: 28px; display: inline-block; }
+  .hero-headline {
+    margin-bottom: 32px;
+  }
+  .hero-headline .line {
+    display: block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: reveal 1.1s cubic-bezier(.22,.61,.36,1) forwards;
+  }
+  .hero-headline .line:nth-child(1) { animation-delay: 0.2s; }
+  .hero-headline .line:nth-child(2) { animation-delay: 0.4s; font-style: italic; font-weight: 300; color: var(--fresh-eucalyptus); }
+  .hero-headline .line:nth-child(3) { animation-delay: 0.6s; }
+
+  .hero-sub {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 480px;
+    margin: 0 0 48px;
+    opacity: 0;
+    animation: reveal 1.1s cubic-bezier(.22,.61,.36,1) 0.85s forwards;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: reveal 1.1s cubic-bezier(.22,.61,.36,1) 1s forwards;
+  }
+
+  @keyframes reveal {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 36px;
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 400;
+    border-radius: 999px;
+    transition: all 0.35s cubic-bezier(.22,.61,.36,1);
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .btn-primary:hover {
+    background: var(--fresh-eucalyptus);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 17px 4px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .btn-ghost:hover { color: var(--fresh-eucalyptus); border-bottom-color: var(--fresh-eucalyptus); }
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+  .btn .arrow { transition: transform 0.3s ease; }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  /* Hero imagery — stacked / overlapped editorial arrangement */
+  .hero-visual {
+    position: relative;
+    aspect-ratio: 5/6;
+    opacity: 0;
+    animation: reveal 1.4s cubic-bezier(.22,.61,.36,1) 0.4s forwards;
+  }
+  .hero-img {
+    position: absolute;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-img-main {
+    inset: 0 24% 14% 0;
+    box-shadow: 0 30px 60px -30px rgba(44,40,36,0.25);
+  }
+  .hero-img-accent {
+    width: 46%;
+    aspect-ratio: 3/4;
+    right: 0;
+    bottom: 0;
+    box-shadow: 0 20px 40px -20px rgba(44,40,36,0.3);
+    border: 8px solid var(--paper);
+  }
+  .hero-tag {
+    position: absolute;
+    top: 24px;
+    left: -32px;
+    background: var(--fae-blush);
+    color: var(--ink);
+    padding: 9px 22px;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    display: none; /* decorative, hidden on small screens */
+  }
+
+  /* ============================================ BRAND STATEMENT */
+  .brand-statement {
+    padding: clamp(80px, 10vw, 140px) 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    background: var(--windfresh-white);
+  }
+  .brand-statement-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .brand-statement .eyebrow { margin-bottom: 28px; display: inline-block; }
+  .brand-statement p {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0;
+  }
+  .brand-statement p em { color: var(--fresh-eucalyptus); font-weight: 400; }
+
+  /* ============================================ SHOP BY MOOD (curated collections) */
+  .section {
+    padding: clamp(80px, 9vw, 140px) 0;
+  }
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 64px;
+  }
+  .section-header .lede { max-width: 460px; color: var(--ink-muted); font-size: 16px; }
+  .section-header-center { text-align: center; display: block; }
+  .section-header-center .eyebrow { margin-bottom: 20px; display: inline-block; }
+  .section-header-center .lede { margin: 18px auto 0; }
+
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+  .mood-card {
+    position: relative;
+    padding: 28px 28px 32px;
+    border-radius: 8px;
+    transition: transform 0.5s cubic-bezier(.22,.61,.36,1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+  }
+  .mood-card:nth-child(1) { background: var(--winter-walk); color: var(--ink); }
+  .mood-card:nth-child(2) { background: var(--fae-blush); color: var(--ink); }
+  .mood-card:nth-child(3) { background: var(--fresh-eucalyptus); color: var(--paper); }
+  .mood-card:hover { transform: translateY(-6px); }
+
+  .mood-img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 26px;
+    background: rgba(255,255,255,0.4);
+  }
+  .mood-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(.22,.61,.36,1);
+  }
+  .mood-card:hover .mood-img img { transform: scale(1.04); }
+
+  .mood-title { font-family: var(--f-display); font-weight: 400; font-size: 28px; margin-bottom: 10px; }
+  .mood-desc { font-size: 14px; line-height: 1.55; opacity: 0.78; margin-bottom: 22px; flex-grow: 1; }
+  .mood-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding-bottom: 6px;
+    border-bottom: 1px solid currentColor;
+    align-self: flex-start;
+  }
+
+  /* ============================================ NEW ARRIVALS (product grid) */
+  .products {
+    background: var(--paper);
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+  }
+  .product {
+    display: block;
+    position: relative;
+  }
+  .product-media {
+    position: relative;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    background: var(--clean-slate);
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+  .product-media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(.22,.61,.36,1);
+  }
+  .product:hover .product-media img { transform: scale(1.04); }
+
+  .product-badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: var(--mountain-air);
+    color: var(--ink);
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+
+  .product-favorite {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(251, 248, 241, 0.92);
+    display: grid; place-items: center;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .product:hover .product-favorite { opacity: 1; transform: translateY(0); }
+  .product-favorite:hover { background: var(--paper); }
+
+  .product-quick-add {
+    position: absolute;
+    left: 12px; right: 12px; bottom: 12px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    padding: 13px;
+    border-radius: 2px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s, transform 0.35s, background 0.2s;
+  }
+  .product:hover .product-quick-add { opacity: 1; transform: translateY(0); }
+  .product-quick-add:hover { background: var(--fresh-eucalyptus); }
+
+  .product-name {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: 18px;
+    margin: 0 0 6px;
+  }
+  .product-meta {
+    font-size: 13px;
+    color: var(--ink-muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .product-price { font-weight: 400; color: var(--ink); }
+
+  .section-footer { margin-top: 64px; text-align: center; }
+
+  /* ============================================ GIFT CONCIERGE */
+  .concierge {
+    background: var(--mountain-air);
+    color: var(--ink);
+    padding: clamp(80px, 10vw, 140px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .concierge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 6vw, 100px);
+    align-items: center;
+  }
+  .concierge h2 { margin-bottom: 28px; color: var(--ink); }
+  .concierge .eyebrow { color: var(--ink-muted); margin-bottom: 24px; display: inline-block; }
+  .concierge p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+    max-width: 520px;
+    margin: 0 0 36px;
+  }
+  .concierge-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px;
+    display: grid;
+    gap: 14px;
+  }
+  .concierge-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .concierge-list li::before {
+    content: "";
+    width: 16px;
+    height: 1px;
+    background: var(--ink);
+    flex-shrink: 0;
+    margin-top: 12px;
+  }
+
+  .concierge-visual {
+    aspect-ratio: 4/5;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .concierge-visual img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ============================================ ABOUT BLURB */
+  .about {
+    padding: clamp(80px, 10vw, 140px) 0;
+    text-align: center;
+    background: var(--windfresh-white);
+  }
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .about .eyebrow { margin-bottom: 32px; display: inline-block; }
+  .about-copy {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: clamp(20px, 2.1vw, 26px);
+    line-height: 1.7;
+    color: var(--ink);
+  }
+  .about-copy em { color: var(--fresh-eucalyptus); font-style: italic; }
+  .about-copy + .about-copy { margin-top: 28px; }
+  .about .signature {
+    margin-top: 40px;
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-muted);
+  }
+
+  /* ============================================ INSTAGRAM FEED */
+  .insta {
+    padding: clamp(60px, 7vw, 100px) 0 clamp(30px, 4vw, 60px);
+    text-align: center;
+  }
+  .insta h2 {
+    font-size: clamp(32px, 4vw, 48px);
+    margin-bottom: 12px;
+  }
+  .insta h2 em { font-style: italic; font-weight: 300; color: var(--fresh-eucalyptus); }
+  .insta-sub { color: var(--ink-muted); margin-bottom: 48px; }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+  }
+  .insta-tile {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    background: var(--clean-slate);
+  }
+  .insta-tile img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 1s cubic-bezier(.22,.61,.36,1), filter 0.4s;
+  }
+  .insta-tile:hover img { transform: scale(1.06); filter: brightness(0.9); }
+
+  /* ============================================ NEWSLETTER */
+  .newsletter {
+    background: var(--ink);
+    color: var(--paper);
+    padding: clamp(70px, 8vw, 120px) 0;
+    text-align: center;
+  }
+  .newsletter h2 {
+    color: var(--paper);
+    margin-bottom: 16px;
+  }
+  .newsletter h2 em { color: var(--fae-blush); font-style: italic; font-weight: 300; }
+  .newsletter-sub {
+    color: rgba(251,248,241,0.7);
+    max-width: 480px;
+    margin: 0 auto 40px;
+  }
+  .newsletter-form {
+    display: flex;
+    max-width: 520px;
+    margin: 0 auto;
+    gap: 0;
+    border-bottom: 1px solid rgba(251,248,241,0.3);
+    transition: border-color 0.3s;
+  }
+  .newsletter-form:focus-within { border-bottom-color: var(--fae-blush); }
+  .newsletter-form input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: var(--paper);
+    font-family: inherit;
+    font-size: 15px;
+    padding: 14px 4px;
+    letter-spacing: 0.03em;
+    outline: none;
+  }
+  .newsletter-form input::placeholder { color: rgba(251,248,241,0.55); }
+  .newsletter-form button {
+    color: var(--paper);
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    padding: 14px 8px;
+    transition: color 0.2s;
+  }
+  .newsletter-form button:hover { color: var(--fae-blush); }
+
+  /* ============================================ FOOTER */
+  .footer {
+    padding: clamp(60px, 7vw, 90px) 0 32px;
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: clamp(30px, 5vw, 80px);
+    margin-bottom: 64px;
+  }
+  .footer-col h4 {
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 18px;
+    font-family: var(--f-body);
+  }
+  .footer-col ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+  .footer-col a { font-size: 14px; color: var(--ink-muted); transition: color 0.2s; }
+  .footer-col a:hover { color: var(--fresh-eucalyptus); }
+  .footer-brand {
+    font-family: var(--f-display);
+    font-weight: 300;
+    font-size: 32px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .footer-tag {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-muted);
+    margin: 0 0 24px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .footer-social a {
+    width: 36px; height: 36px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: var(--ink-muted);
+    transition: all 0.25s;
+  }
+  .footer-social a:hover {
+    background: var(--fresh-eucalyptus);
+    border-color: var(--fresh-eucalyptus);
+    color: var(--paper);
+  }
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+    letter-spacing: 0.04em;
+  }
+
+  /* ============================================ PLACEHOLDER IMAGERY */
+  .placeholder-img {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .placeholder-img::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.35) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(0,0,0,0.04) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .ph-deco {
+    width: 52%;
+    max-width: 200px;
+    height: auto;
+    color: rgba(44, 40, 36, 0.3);
+    position: relative;
+    z-index: 1;
+  }
+  .ph-deco-sm { width: 40%; }
+  .ph-label {
+    position: absolute;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(44, 40, 36, 0.4);
+    z-index: 1;
+  }
+  .ph-sage      { background: linear-gradient(135deg, #A8B2A8 0%, #9EA89E 60%, #8A9488 100%); }
+  .ph-sage      .ph-deco { color: rgba(255,255,255,0.55); }
+  .ph-sage      .ph-label { color: rgba(255,255,255,0.65); }
+  .ph-blush     { background: linear-gradient(135deg, #E4C6C8 0%, #D8B6B8 60%, #C9A5A7 100%); }
+  .ph-blush     .ph-deco { color: rgba(255,255,255,0.55); }
+  .ph-blush     .ph-label { color: rgba(44,40,36,0.45); }
+  .ph-cream     { background: linear-gradient(135deg, #F5EFE3 0%, #EFEAE0 60%, #E3DCCC 100%); }
+  .ph-paper     { background: linear-gradient(135deg, #E8E2D4 0%, #DFD8C8 60%, #D3CBBA 100%); }
+  .ph-clean     { background: linear-gradient(135deg, #E0DBD2 0%, #D5D0C7 60%, #C9C4BA 100%); }
+  .ph-mountain  { background: linear-gradient(135deg, #D4DEDF 0%, #C8D4D5 60%, #B8C5C6 100%); }
+  .ph-mountain  .ph-deco { color: rgba(44,40,36,0.35); }
+
+  /* Hero-specific placeholder adjustments */
+  .hero-img-main .ph-deco { width: 40%; }
+  .hero-img-main .ph-label { bottom: 20px; }
+  .hero-img-accent .ph-deco { width: 50%; }
+  .hero-img-accent .ph-label { font-size: 8px; }
+
+  /* Insta tile label hidden for cleaner feed */
+  .insta-tile .ph-label { display: none; }
+
+  /* Product placeholder label smaller */
+  .product-media .ph-label { bottom: 10px; font-size: 8px; }
+
+
+  @media (max-width: 1024px) {
+    .mood-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+    .hero-visual { aspect-ratio: 4/3; max-width: 560px; margin: 0 auto; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); }
+    .concierge-grid { grid-template-columns: 1fr; }
+    .section-header { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .nav-inner { grid-template-columns: 1fr auto 1fr; padding: 18px var(--gutter); }
+    .nav-links { display: none; }
+    .mobile-toggle { display: inline-flex; justify-self: start; }
+    .cart-icon .label { display: none; }
+    .nav-links.right { display: flex; justify-self: end; gap: 0; }
+    .brand { font-size: 18px; letter-spacing: 0.2em; }
+    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-ctas { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .btn { width: auto; }
+  }
+
+  /* Fade-in on scroll */
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.9s ease-out, transform 0.9s ease-out; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+  <span>Complimentary gift wrap on orders over $150 &nbsp;·&nbsp; Free ground shipping in the US</span>
+</div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <div class="nav-links left">
+      <a href="#shop">Shop</a>
+      <a href="#concierge">Gift Inquiry</a>
+      <a href="#about">About</a>
+    </div>
+    <button class="mobile-toggle" aria-label="Open menu">Menu</button>
+    <a class="brand" href="#">Foundry <em>Lane</em></a>
+    <div class="nav-links right">
+      <a href="#">Favorites</a>
+      <a href="#" class="cart-icon"><span class="label">Cart</span><span class="cart-count">0</span></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow hero-eyebrow">A Curated Gifting Boutique</span>
+        <h1 class="display-xl hero-headline">
+          <span class="line">Thoughtful gifts,</span>
+          <span class="line italic-serif">beautifully</span>
+          <span class="line">curated.</span>
+        </h1>
+        <p class="hero-sub">
+          A considered collection of pieces for home, for self, and for giving &mdash;
+          assembled with care in the spirit of a small coastal town.
+        </p>
+        <div class="hero-ctas">
+          <a href="#shop" class="btn btn-primary">Shop the Collection <span class="arrow">→</span></a>
+          <a href="#concierge" class="btn btn-ghost">Start a Gift Inquiry</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-img hero-img-main placeholder-img ph-sage" aria-label="Hero lifestyle photography">
+          <svg class="ph-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round">
+              <path d="M100 40 Q 130 55 140 90 Q 145 130 115 150 Q 100 160 85 150 Q 55 130 60 90 Q 70 55 100 40 Z"/>
+              <path d="M100 60 Q 100 120 100 150"/>
+              <path d="M100 80 Q 85 85 75 95"/>
+              <path d="M100 90 Q 115 95 125 105"/>
+              <path d="M100 105 Q 85 110 78 120"/>
+              <path d="M100 115 Q 115 120 122 130"/>
+              <circle cx="100" cy="50" r="5"/>
+            </g>
+          </svg>
+          <span class="ph-label">Lifestyle photography</span>
+        </div>
+        <div class="hero-img hero-img-accent placeholder-img ph-blush" aria-label="Product detail photography">
+          <svg class="ph-deco" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round">
+              <rect x="55" y="75" width="90" height="80" rx="2"/>
+              <path d="M100 75 L 100 155"/>
+              <path d="M55 100 L 145 100"/>
+              <path d="M85 75 Q 85 60 100 55 Q 115 60 115 75"/>
+            </g>
+          </svg>
+          <span class="ph-label">Product detail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND STATEMENT -->
+<section class="brand-statement">
+  <div class="container">
+    <div class="brand-statement-inner">
+      <span class="eyebrow">Our Philosophy</span>
+      <p>Every piece tells a story. We source slowly, <em>choose with care</em>, and wrap every order as if we were giving it ourselves.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP BY MOOD -->
+<section class="section" id="shop">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <span class="eyebrow">Shop by Mood</span>
+        <h2 class="display-l" style="margin-top:14px;">Curated <em class="italic-serif">collections</em></h2>
+      </div>
+      <p class="lede">
+        Three worlds, one sensibility. Each collection is assembled around a feeling &mdash;
+        what to keep, what to share, what to give.
+      </p>
+    </div>
+
+    <div class="mood-grid">
+      <a class="mood-card" href="#">
+        <div class="mood-img placeholder-img ph-cream">
+          <svg class="ph-deco" viewBox="0 0 200 200" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- ceramic vase -->
+              <path d="M80 70 L 80 80 Q 60 95 60 125 Q 60 160 100 165 Q 140 160 140 125 Q 140 95 120 80 L 120 70 Z"/>
+              <line x1="75" y1="70" x2="125" y2="70" stroke-width="1"/>
+              <!-- stems -->
+              <path d="M95 70 Q 92 55 88 40"/>
+              <path d="M105 70 Q 108 50 112 35"/>
+              <path d="M100 70 Q 100 45 100 30"/>
+              <!-- leaves -->
+              <ellipse cx="84" cy="45" rx="4" ry="8" transform="rotate(-25 84 45)"/>
+              <ellipse cx="114" cy="42" rx="4" ry="8" transform="rotate(25 114 42)"/>
+              <circle cx="100" cy="30" r="3"/>
+            </g>
+          </svg>
+          <span class="ph-label">For Home</span>
+        </div>
+        <h3 class="mood-title">For Home</h3>
+        <p class="mood-desc">Layered textures, soft neutrals, and timeless finishing touches that make a house feel considered.</p>
+        <span class="mood-link">Browse collection <span>→</span></span>
+      </a>
+
+      <a class="mood-card" href="#">
+        <div class="mood-img placeholder-img ph-paper">
+          <svg class="ph-deco" viewBox="0 0 200 200" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- pendant necklace -->
+              <path d="M60 60 Q 100 120 140 60" stroke-width="0.8"/>
+              <circle cx="100" cy="130" r="12"/>
+              <path d="M100 125 L 100 135 M95 130 L 105 130"/>
+              <circle cx="100" cy="130" r="20" stroke-dasharray="1 2"/>
+            </g>
+          </svg>
+          <span class="ph-label">For Self</span>
+        </div>
+        <h3 class="mood-title">For Self</h3>
+        <p class="mood-desc">Refined accessories and everyday luxuries with an easy, feminine feel &mdash; worn slowly and often.</p>
+        <span class="mood-link">Browse collection <span>→</span></span>
+      </a>
+
+      <a class="mood-card" href="#">
+        <div class="mood-img placeholder-img ph-paper">
+          <svg class="ph-deco" viewBox="0 0 200 200" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- wrapped gift -->
+              <rect x="55" y="80" width="90" height="75" rx="2"/>
+              <line x1="100" y1="80" x2="100" y2="155" stroke-width="1"/>
+              <line x1="55" y1="100" x2="145" y2="100" stroke-width="1"/>
+              <!-- bow -->
+              <path d="M100 80 Q 80 60 85 70 Q 90 80 100 80 Q 110 80 115 70 Q 120 60 100 80 Z" stroke-width="0.8"/>
+              <circle cx="100" cy="80" r="3"/>
+            </g>
+          </svg>
+          <span class="ph-label">For Giving</span>
+        </div>
+        <h3 class="mood-title">For Giving</h3>
+        <p class="mood-desc">Thoughtful pieces wrapped in warmth, beauty, and understated charm &mdash; ready to be received.</p>
+        <span class="mood-link">Browse collection <span>→</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section products">
+  <div class="container">
+    <div class="section-header section-header-center">
+      <span class="eyebrow">New This Week</span>
+      <h2 class="display-l" style="margin-top:14px;">Fresh <em class="italic-serif">arrivals</em></h2>
+      <p class="lede">Newly selected, always seasonal, quietly special.</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1: Candle -->
+      <a class="product" href="#">
+        <div class="product-media placeholder-img ph-clean">
+          <span class="product-badge">New</span>
+          <button class="product-favorite" aria-label="Add to favorites">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9.5C.5 7 4 3 8 4.5 10 5.2 12 7 12 7s2-1.8 4-2.5C20 3 23.5 7 21.5 11.5 19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <svg class="ph-deco" viewBox="0 0 200 240" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- candle jar -->
+              <rect x="70" y="100" width="60" height="110" rx="3"/>
+              <line x1="70" y1="130" x2="130" y2="130" stroke-width="0.4"/>
+              <!-- wick & flame -->
+              <line x1="100" y1="100" x2="100" y2="85"/>
+              <path d="M100 85 Q 93 75 100 60 Q 107 75 100 85 Z"/>
+              <!-- glow rings -->
+              <circle cx="100" cy="72" r="18" stroke-dasharray="1 3" opacity="0.5"/>
+            </g>
+          </svg>
+          <span class="ph-label">Product photo</span>
+          <button class="product-quick-add">Quick Add</button>
+        </div>
+        <h4 class="product-name">Hand-poured Soy Candle</h4>
+        <div class="product-meta">
+          <span>Cardamom &amp; Oak</span>
+          <span class="product-price">$42</span>
+        </div>
+      </a>
+
+      <!-- Product 2: Linen throw -->
+      <a class="product" href="#">
+        <div class="product-media placeholder-img ph-clean">
+          <button class="product-favorite" aria-label="Add to favorites">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9.5C.5 7 4 3 8 4.5 10 5.2 12 7 12 7s2-1.8 4-2.5C20 3 23.5 7 21.5 11.5 19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <svg class="ph-deco" viewBox="0 0 200 240" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- folded throw with tassels -->
+              <path d="M45 90 Q 100 75 155 90 L 155 170 Q 100 185 45 170 Z"/>
+              <path d="M45 110 Q 100 95 155 110" stroke-width="0.4"/>
+              <path d="M45 130 Q 100 115 155 130" stroke-width="0.4"/>
+              <path d="M45 150 Q 100 135 155 150" stroke-width="0.4"/>
+              <!-- tassels -->
+              <line x1="55" y1="170" x2="53" y2="185"/>
+              <line x1="70" y1="172" x2="68" y2="187"/>
+              <line x1="85" y1="174" x2="83" y2="189"/>
+              <line x1="115" y1="174" x2="117" y2="189"/>
+              <line x1="130" y1="172" x2="132" y2="187"/>
+              <line x1="145" y1="170" x2="147" y2="185"/>
+            </g>
+          </svg>
+          <span class="ph-label">Product photo</span>
+          <button class="product-quick-add">Quick Add</button>
+        </div>
+        <h4 class="product-name">Linen Throw</h4>
+        <div class="product-meta">
+          <span>Stonewashed Oat</span>
+          <span class="product-price">$138</span>
+        </div>
+      </a>
+
+      <!-- Product 3: Vase -->
+      <a class="product" href="#">
+        <div class="product-media placeholder-img ph-clean">
+          <span class="product-badge">Bestseller</span>
+          <button class="product-favorite" aria-label="Add to favorites">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9.5C.5 7 4 3 8 4.5 10 5.2 12 7 12 7s2-1.8 4-2.5C20 3 23.5 7 21.5 11.5 19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <svg class="ph-deco" viewBox="0 0 200 240" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- bud vase -->
+              <path d="M85 110 L 85 130 Q 70 145 70 175 Q 70 200 100 205 Q 130 200 130 175 Q 130 145 115 130 L 115 110 Z"/>
+              <line x1="80" y1="110" x2="120" y2="110" stroke-width="1"/>
+              <!-- single stem -->
+              <path d="M100 110 Q 98 80 100 55"/>
+              <!-- small bloom -->
+              <circle cx="100" cy="50" r="7"/>
+              <path d="M100 50 L 96 45 M100 50 L 104 45 M100 50 L 100 42"/>
+              <ellipse cx="95" cy="70" rx="3" ry="6" transform="rotate(-20 95 70)"/>
+            </g>
+          </svg>
+          <span class="ph-label">Product photo</span>
+          <button class="product-quick-add">Quick Add</button>
+        </div>
+        <h4 class="product-name">Ceramic Bud Vase</h4>
+        <div class="product-meta">
+          <span>Petite · Matte Clay</span>
+          <span class="product-price">$58</span>
+        </div>
+      </a>
+
+      <!-- Product 4: Ring -->
+      <a class="product" href="#">
+        <div class="product-media placeholder-img ph-clean">
+          <button class="product-favorite" aria-label="Add to favorites">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-4.5-9.5-9.5C.5 7 4 3 8 4.5 10 5.2 12 7 12 7s2-1.8 4-2.5C20 3 23.5 7 21.5 11.5 19 16.5 12 21 12 21z"/></svg>
+          </button>
+          <svg class="ph-deco" viewBox="0 0 200 240" aria-hidden="true">
+            <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+              <!-- signet ring -->
+              <ellipse cx="100" cy="140" rx="40" ry="42" stroke-width="1"/>
+              <ellipse cx="100" cy="140" rx="32" ry="34" stroke-width="0.5"/>
+              <!-- signet top -->
+              <ellipse cx="100" cy="108" rx="18" ry="14" stroke-width="1"/>
+              <text x="100" y="114" font-family="serif" font-size="14" font-style="italic" text-anchor="middle" fill="currentColor">L</text>
+              <!-- sparkle -->
+              <path d="M140 80 L 140 88 M136 84 L 144 84" stroke-width="0.8"/>
+              <path d="M60 100 L 60 106 M57 103 L 63 103" stroke-width="0.5"/>
+            </g>
+          </svg>
+          <span class="ph-label">Product photo</span>
+          <button class="product-quick-add">Quick Add</button>
+        </div>
+        <h4 class="product-name">Gold Signet Ring</h4>
+        <div class="product-meta">
+          <span>14k · Monogram</span>
+          <span class="product-price">$186</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="section-footer">
+      <a href="#" class="btn btn-outline">Shop All New Arrivals <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CONCIERGE -->
+<section class="concierge" id="concierge">
+  <div class="container">
+    <div class="concierge-grid">
+      <div>
+        <span class="eyebrow">Concierge Gifting</span>
+        <h2 class="display-l" style="margin-top:14px;">Tell us a little, and we&rsquo;ll take <em class="italic-serif">care of the rest.</em></h2>
+        <p>Our concierge gifting service is designed to make thoughtful giving effortless. Share a few details &mdash; the occasion, the person, a sense of what they love &mdash; and we&rsquo;ll curate something truly special.</p>
+        <ul class="concierge-list">
+          <li>Personally selected by our team</li>
+          <li>Beautifully wrapped and delivered</li>
+          <li>A handwritten note, at your request</li>
+          <li>One-to-one service, start to finish</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Start a Gift Inquiry <span class="arrow">→</span></a>
+      </div>
+      <div class="concierge-visual placeholder-img ph-paper">
+        <svg class="ph-deco" viewBox="0 0 200 250" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="0.6" stroke-linecap="round">
+            <!-- large wrapped gift -->
+            <rect x="30" y="80" width="140" height="120" rx="3"/>
+            <line x1="100" y1="80" x2="100" y2="200" stroke-width="1.2"/>
+            <line x1="30" y1="120" x2="170" y2="120" stroke-width="1.2"/>
+            <!-- elaborate bow -->
+            <path d="M100 80 Q 65 50 70 65 Q 80 85 100 80 Q 120 85 130 65 Q 135 50 100 80 Z" stroke-width="1"/>
+            <circle cx="100" cy="80" r="5"/>
+            <!-- ribbon tails -->
+            <path d="M95 80 Q 85 100 78 115 L 82 115" stroke-width="0.6"/>
+            <path d="M105 80 Q 115 100 122 115 L 118 115" stroke-width="0.6"/>
+            <!-- sprig of greenery tucked under bow -->
+            <path d="M100 85 Q 100 100 100 115" opacity="0.7"/>
+            <ellipse cx="95" cy="95" rx="2" ry="4" transform="rotate(-20 95 95)" opacity="0.7"/>
+            <ellipse cx="105" cy="98" rx="2" ry="4" transform="rotate(20 105 98)" opacity="0.7"/>
+            <ellipse cx="95" cy="105" rx="2" ry="4" transform="rotate(-20 95 105)" opacity="0.7"/>
+          </g>
+        </svg>
+        <span class="ph-label">Concierge gifting</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <span class="eyebrow">Our Story</span>
+      <p class="about-copy">It all began with a <em>simple idea</em> &mdash; that a well-chosen gift should feel as beautiful to give as it does to receive.</p>
+      <p class="about-copy">Foundry Lane is a thoughtful curation of pieces from makers we love, wrapped and ready to be shared. A place where treasured finds meet a warm welcome.</p>
+      <p class="signature">&mdash; with love, the Foundry Lane team</p>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="insta">
+  <div class="container">
+    <h2 class="display-l">Follow along on <em>Instagram</em></h2>
+    <p class="insta-sub">@foundrylane &mdash; hoping to inspire, even for a moment.</p>
+    <div class="insta-grid">
+      <a class="insta-tile placeholder-img ph-sage" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><path d="M30 15 Q 38 23 35 33 Q 30 42 25 33 Q 22 23 30 15 Z"/><line x1="30" y1="33" x2="30" y2="48"/></g></svg></a>
+      <a class="insta-tile placeholder-img ph-blush" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><rect x="18" y="22" width="24" height="20" rx="1"/><line x1="30" y1="22" x2="30" y2="42"/><line x1="18" y1="28" x2="42" y2="28"/></g></svg></a>
+      <a class="insta-tile placeholder-img ph-cream" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><path d="M22 20 L 22 22 Q 18 26 18 34 Q 18 42 30 44 Q 42 42 42 34 Q 42 26 38 22 L 38 20 Z"/><path d="M30 20 Q 30 13 30 8"/><circle cx="30" cy="8" r="2"/></g></svg></a>
+      <a class="insta-tile placeholder-img ph-paper" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><ellipse cx="30" cy="36" rx="10" ry="11"/><ellipse cx="30" cy="28" rx="5" ry="4"/></g></svg></a>
+      <a class="insta-tile placeholder-img ph-mountain" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><circle cx="30" cy="30" r="14"/><path d="M22 30 L 28 35 L 38 25"/></g></svg></a>
+      <a class="insta-tile placeholder-img ph-clean" href="#"><svg class="ph-deco ph-deco-sm" viewBox="0 0 60 60" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="0.5"><path d="M20 40 Q 30 20 40 40" /><circle cx="30" cy="25" r="2"/><line x1="20" y1="40" x2="40" y2="40"/></g></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="container">
+    <h2 class="display-m">Good things come to those who <em>subscribe.</em></h2>
+    <p class="newsletter-sub">New arrivals, seasonal edits, and the occasional love letter.</p>
+    <form class="newsletter-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Thank you ✓';">
+      <input type="email" placeholder="Your email address" required>
+      <button type="submit">Subscribe →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-brand">Foundry <em style="font-style:italic;">Lane</em></div>
+        <p class="footer-tag">Thoughtfully curated gifts, for every occasion.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" aria-label="Pinterest">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 11c0-2 1.5-3 3-3s3 1 3 3-1 3-3 3"/></svg>
+          </a>
+          <a href="#" aria-label="Email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">For Home</a></li>
+          <li><a href="#">For Self</a></li>
+          <li><a href="#">For Giving</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li><a href="#">Gift Inquiry</a></li>
+          <li><a href="#">Shipping &amp; Returns</a></li>
+          <li><a href="#">Gift Wrap</a></li>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>Main Street</li>
+          <li>Monday&ndash;Saturday</li>
+          <li>10am&ndash;6pm</li>
+          <li><a href="#">Directions →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Foundry Lane. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a> &nbsp;·&nbsp; Site by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.section, .brand-statement, .concierge, .about, .insta, .newsletter')
+    .forEach(el => { el.classList.add('reveal'); io.observe(el); });
+</script>
+
+</body>
+</html>
