@@ -6,8 +6,13 @@
 <title>Sea Chambers — Ogunquit, Maine</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <style>
+@font-face{
+  font-family:'Cronder';
+  src:url('img/fonts/CRONDERegular.ttf') format('truetype');
+  font-weight:400;font-style:normal;font-display:swap;
+}
 :root{
   --ocean:#2D5680;
   --ocean-deep:#2A4764;
@@ -18,8 +23,8 @@
   --white:#FFFFFF;
   --dark:#1E1E2A;
   --gray:#6E7B8B;
-  --font-display:'Libre Baskerville',serif;
-  --font-body:'Nunito Sans',sans-serif;
+  --font-display:'Cronder','Libre Baskerville',serif;
+  --font-body:'Jost',sans-serif;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -38,40 +43,54 @@ a{text-decoration:none;color:inherit;}
 .sc-nav.scrolled .sc-nav-logo .logo-white{display:none;}
 .sc-nav.scrolled .sc-nav-logo .logo-dark{display:block;}
 .sc-nav-links{display:flex;align-items:center;gap:28px;}
-.sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--white);transition:color .3s;}
+.sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--white);transition:color .3s;}
 .sc-nav.scrolled .sc-nav-links a{color:var(--dark);}
 .sc-nav-links a:hover{color:var(--ocean-light);}
-.sc-nav-phone{font-size:12px;color:rgba(255,255,255,.7);}
+.sc-nav-phone{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.7);letter-spacing:.04em;}
 .sc-nav.scrolled .sc-nav-phone{color:var(--gray);}
-.sc-nav-cta{padding:10px 24px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
+.sc-nav-cta{padding:11px 26px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
 .sc-nav-cta:hover{background:var(--ocean-deep);}
 
-/* HERO - CINEMATIC */
-.sc-hero{position:relative;min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
-.sc-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/alladirondacksandflag1200px.jpg') center/cover no-repeat;}
-.sc-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,71,100,.75) 0%,rgba(42,71,100,.3) 50%,rgba(42,71,100,.15) 100%);}
-.sc-hero-content{position:relative;z-index:2;max-width:700px;padding:0 40px;}
-.sc-hero-tag{font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ocean-light);margin-bottom:20px;}
-.sc-hero h1{font-family:var(--font-display);font-size:clamp(36px,5.5vw,60px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:10px;}
-.sc-hero h1 em{font-style:italic;display:block;font-size:clamp(20px,3vw,30px);color:var(--ocean-light);margin-top:10px;}
-.sc-hero-sub{font-size:15px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.7;max-width:520px;margin:20px auto 36px;}
-.sc-btn{display:inline-block;padding:15px 40px;font-family:var(--font-body);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:3px;transition:all .35s;}
+/* HERO - CINEMATIC WITH SLIDER */
+.sc-hero{position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+.sc-slider{position:absolute;inset:0;}
+.sc-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;animation:sliderFade 42s infinite;will-change:opacity;}
+.sc-slide:nth-child(1){animation-delay:0s;}
+.sc-slide:nth-child(2){animation-delay:7s;}
+.sc-slide:nth-child(3){animation-delay:14s;}
+.sc-slide:nth-child(4){animation-delay:21s;}
+.sc-slide:nth-child(5){animation-delay:28s;}
+.sc-slide:nth-child(6){animation-delay:35s;}
+@keyframes sliderFade{
+  0%{opacity:0;}
+  2%{opacity:1;}
+  16%{opacity:1;}
+  19%{opacity:0;}
+  100%{opacity:0;}
+}
+.sc-hero-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(30,30,42,.72) 0%,rgba(42,71,100,.35) 45%,rgba(42,71,100,.2) 100%);}
+.sc-hero-content{position:relative;z-index:2;max-width:760px;padding:0 40px;}
+.sc-hero-tag{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--white);opacity:.85;margin-bottom:22px;}
+.sc-hero h1{font-family:var(--font-display);font-size:clamp(44px,7vw,84px);font-weight:400;color:var(--white);line-height:.96;margin-bottom:14px;letter-spacing:.02em;text-transform:uppercase;}
+.sc-hero h1 em{font-style:normal;display:block;font-family:var(--font-body);font-weight:300;font-size:clamp(15px,1.8vw,20px);color:var(--white);opacity:.75;margin-top:22px;letter-spacing:.14em;text-transform:uppercase;}
+.sc-hero-sub{font-family:var(--font-body);font-size:15px;font-weight:300;color:rgba(255,255,255,.8);line-height:1.7;max-width:540px;margin:26px auto 36px;}
+.sc-btn{display:inline-block;padding:15px 40px;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:3px;transition:all .35s;}
 .sc-btn-fill{background:var(--ocean);color:var(--white);}
 .sc-btn-fill:hover{background:var(--white);color:var(--ocean);transform:translateY(-2px);}
-.sc-btn-ghost{border:1px solid rgba(255,255,255,.3);color:var(--white);margin-left:14px;}
-.sc-btn-ghost:hover{border-color:var(--ocean-light);color:var(--ocean-light);}
+.sc-btn-ghost{border:1px solid rgba(255,255,255,.4);color:var(--white);margin-left:14px;}
+.sc-btn-ghost:hover{border-color:var(--white);background:rgba(255,255,255,.1);}
 
 /* PERKS STRIP */
-.sc-perks{background:var(--ocean-deep);padding:40px 60px;display:flex;justify-content:center;gap:48px;flex-wrap:wrap;text-align:center;}
-.sc-perk{color:rgba(255,255,255,.8);font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.02em;}
-.sc-perk strong{color:var(--white);display:block;font-size:14px;margin-bottom:2px;}
+.sc-perks{background:var(--ocean-deep);padding:44px 60px;display:flex;justify-content:center;gap:56px;flex-wrap:wrap;text-align:center;}
+.sc-perk{font-family:var(--font-body);color:rgba(255,255,255,.75);font-size:12px;font-weight:400;letter-spacing:.02em;}
+.sc-perk strong{font-family:var(--font-body);color:var(--white);display:block;font-size:11px;margin-bottom:5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;}
 
 /* INTRO */
 .sc-intro{padding:100px 60px;max-width:850px;margin:0 auto;text-align:center;}
-.sc-label{font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ocean);margin-bottom:14px;}
-.sc-title{font-family:var(--font-display);font-size:clamp(26px,3.5vw,38px);font-weight:400;color:var(--dark);line-height:1.2;margin-bottom:20px;}
-.sc-title em{font-style:italic;color:var(--ocean);}
-.sc-intro p{font-size:15px;color:var(--gray);line-height:1.8;max-width:620px;margin:0 auto;}
+.sc-label{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ocean);margin-bottom:16px;}
+.sc-title{font-family:var(--font-display);font-size:clamp(28px,4.2vw,46px);font-weight:400;color:var(--dark);line-height:1.08;margin-bottom:22px;letter-spacing:.02em;text-transform:uppercase;}
+.sc-title em{font-style:normal;color:var(--ocean);display:block;}
+.sc-intro p{font-family:var(--font-body);font-size:15px;color:var(--gray);line-height:1.8;max-width:620px;margin:0 auto;}
 
 .sc-full-img{width:100%;height:400px;overflow:hidden;}
 .sc-full-img img{width:100%;height:100%;object-fit:cover;}
@@ -84,9 +103,9 @@ a{text-decoration:none;color:inherit;}
 .sc-room:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.06);}
 .sc-room img{width:100%;height:210px;object-fit:cover;}
 .sc-room-body{padding:24px;}
-.sc-room h3{font-family:var(--font-display);font-size:20px;font-weight:400;color:var(--dark);margin-bottom:8px;}
-.sc-room p{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
-.sc-room-link{font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--ocean);letter-spacing:.02em;}
+.sc-room h3{font-family:var(--font-body);font-size:20px;font-weight:600;color:var(--dark);margin-bottom:8px;letter-spacing:-.01em;}
+.sc-room p{font-family:var(--font-body);font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:14px;}
+.sc-room-link{font-family:var(--font-body);font-size:11px;font-weight:600;color:var(--ocean);letter-spacing:.12em;text-transform:uppercase;}
 .sc-room-link:hover{color:var(--ocean-deep);}
 
 /* AMENITIES - PHOTO CARDS */
@@ -97,37 +116,37 @@ a{text-decoration:none;color:inherit;}
 .sc-amenity img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
 .sc-amenity:hover img{transform:scale(1.05);}
 .sc-amenity-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 50%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px;}
-.sc-amenity h4{font-family:var(--font-body);font-size:15px;font-weight:700;color:var(--white);margin-bottom:3px;}
-.sc-amenity p{font-size:12px;color:rgba(255,255,255,.65);line-height:1.4;}
+.sc-amenity h4{font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--white);margin-bottom:4px;letter-spacing:-.01em;}
+.sc-amenity p{font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.75);line-height:1.4;}
 .sc-amenity-extras{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:20px auto 0;text-align:center;}
 .sc-amenity-extra{padding:20px 12px;}
-.sc-amenity-extra h4{font-family:var(--font-body);font-size:13px;font-weight:700;color:var(--dark);margin-bottom:3px;}
-.sc-amenity-extra p{font-size:12px;color:var(--gray);}
+.sc-amenity-extra h4{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--dark);margin-bottom:4px;letter-spacing:.04em;text-transform:uppercase;}
+.sc-amenity-extra p{font-family:var(--font-body);font-size:12px;color:var(--gray);}
 
 /* QUOTE */
-.sc-quote{padding:80px 60px;text-align:center;background:var(--ocean);color:var(--white);}
-.sc-quote blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,3vw,28px);font-weight:400;line-height:1.4;max-width:650px;margin:0 auto 16px;}
-.sc-quote cite{font-family:var(--font-body);font-size:12px;font-style:normal;font-weight:600;color:rgba(255,255,255,.5);letter-spacing:.04em;text-transform:uppercase;}
+.sc-quote{padding:90px 60px;text-align:center;background:var(--ocean);color:var(--white);}
+.sc-quote blockquote{font-family:var(--font-body);font-style:italic;font-weight:300;font-size:clamp(20px,2.6vw,28px);line-height:1.5;max-width:720px;margin:0 auto 18px;}
+.sc-quote cite{font-family:var(--font-body);font-size:11px;font-style:normal;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.18em;text-transform:uppercase;}
 
 /* LOCATION */
 .sc-location{padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto;}
 .sc-location-img{border-radius:6px;overflow:hidden;}
-.sc-location-img img{width:100%;height:360px;object-fit:cover;}
-.sc-location p{font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px;}
-.sc-highlights{display:flex;flex-direction:column;gap:10px;margin-top:20px;}
+.sc-location-img img{width:100%;height:420px;object-fit:cover;}
+.sc-location p{font-family:var(--font-body);font-size:15px;color:var(--gray);line-height:1.8;margin-bottom:16px;}
+.sc-highlights{display:flex;flex-direction:column;gap:12px;margin-top:22px;font-family:var(--font-body);}
 .sc-highlights span{font-size:14px;color:var(--gray);}
-.sc-highlights strong{color:var(--ocean);font-weight:600;}
+.sc-highlights strong{color:var(--ocean);font-weight:600;letter-spacing:.04em;}
 
 /* CTA */
 .sc-cta{padding:120px 60px;text-align:center;background:var(--dark);}
-.sc-cta h2{font-family:var(--font-display);font-size:clamp(30px,4.5vw,48px);font-weight:400;color:var(--white);line-height:1.1;margin-bottom:6px;}
-.sc-cta h2 em{font-style:italic;color:var(--ocean-light);}
-.sc-cta p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:32px;}
-.sc-cta .sc-phone{display:block;margin-top:18px;font-size:13px;color:rgba(255,255,255,.3);}
+.sc-cta h2{font-family:var(--font-display);font-size:clamp(34px,5.5vw,58px);font-weight:400;color:var(--white);line-height:1;margin-bottom:10px;letter-spacing:.02em;text-transform:uppercase;}
+.sc-cta h2 em{font-style:normal;color:var(--ocean-light);display:block;}
+.sc-cta p{font-family:var(--font-body);font-size:14px;color:rgba(255,255,255,.55);margin:20px 0 32px;letter-spacing:.02em;}
+.sc-cta .sc-phone{display:block;margin-top:18px;font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.35);}
 .sc-cta .sc-phone a{color:var(--ocean-light);}
 
-.sc-footer{background:#111118;padding:50px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
-.sc-footer h4{font-family:var(--font-display);font-size:17px;font-weight:400;color:var(--white);margin-bottom:14px;}
+.sc-footer{background:#111118;padding:60px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.4);}
+.sc-footer h4{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--white);margin-bottom:16px;letter-spacing:.16em;text-transform:uppercase;}
 .sc-footer p{line-height:1.7;}
 .sc-footer ul{list-style:none;}
 .sc-footer li{margin-bottom:6px;}
@@ -176,13 +195,21 @@ body{padding-bottom:70px;}
 </nav>
 
 <section class="sc-hero">
-  <div class="sc-hero-bg"></div>
+  <div class="sc-slider">
+    <div class="sc-slide" style="background-image:url('img/hero/slide-1-pool-ocean.jpg');"></div>
+    <div class="sc-slide" style="background-image:url('img/hero/slide-2-adirondack-sunrise.jpg');"></div>
+    <div class="sc-slide" style="background-image:url('img/hero/slide-3-firepit.jpg');"></div>
+    <div class="sc-slide" style="background-image:url('img/hero/slide-4-flag-beach.jpg');"></div>
+    <div class="sc-slide" style="background-image:url('img/hero/slide-5-deck-view.jpg');"></div>
+    <div class="sc-slide" style="background-image:url('img/hero/slide-6-sunset-deck.jpg');"></div>
+  </div>
+  <div class="sc-hero-overlay"></div>
   <div class="sc-hero-content">
-    <p class="sc-hero-tag">Ogunquit, Maine</p>
-    <h1>Wake Up<br>on the Water<em>— where the ocean is your backyard —</em></h1>
+    <p class="sc-hero-tag">Ogunquit · Maine</p>
+    <h1>Wake Up<br>on the Water<em>Where the ocean is your backyard</em></h1>
     <p class="sc-hero-sub">Oceanfront rooms, heated pool, hot tub, and fire pits overlooking the Atlantic. Steps from Marginal Way and the heart of Ogunquit Village. A yearly tradition for generations.</p>
     <a href="https://reservations.seachambers.com" class="sc-btn sc-btn-fill">Book Your Stay</a>
-    <a href="https://www.seachambers.com/rooms/" class="sc-btn sc-btn-ghost">View Rooms</a>
+    <a href="#sc-rooms" class="sc-btn sc-btn-ghost">View Rooms</a>
   </div>
 </section>
 
@@ -201,7 +228,7 @@ body{padding-bottom:70px;}
 </section>
 
 <div class="sc-full-img">
-  <img src="https://bofilltech.com/wp-content/uploads/2026/03/room46poolview.jpg" alt="Sea Chambers pool overlooking the ocean" loading="lazy">
+  <img src="img/terrace-ramp.jpg" alt="Top of Sea Chambers terrace looking toward the ocean" loading="lazy">
 </div>
 
 <section class="sc-rooms" id="sc-rooms">
@@ -244,7 +271,7 @@ body{padding-bottom:70px;}
   </div>
   <div class="sc-amenities-grid">
     <div class="sc-amenity reveal">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/room46poolview.jpg" alt="Heated ocean view pool" loading="lazy">
+      <img src="img/room-46-pool.jpg" alt="Heated ocean view pool" loading="lazy">
       <div class="sc-amenity-overlay"><h4>Heated Pool</h4><p>Ocean view seasonal outdoor pool</p></div>
     </div>
     <div class="sc-amenity reveal">
@@ -252,7 +279,7 @@ body{padding-bottom:70px;}
       <div class="sc-amenity-overlay"><h4>Hot Tub</h4><p>Soak with the sound of the waves</p></div>
     </div>
     <div class="sc-amenity reveal">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Firepit-1-day-768x576-1-1.jpg" alt="Ocean view fire pits" loading="lazy">
+      <img src="img/firepit-dusk.jpg" alt="Ocean view fire pits at dusk" loading="lazy">
       <div class="sc-amenity-overlay"><h4>Fire Pits</h4><p>Two ocean view fire pits for evenings</p></div>
     </div>
     <div class="sc-amenity reveal">
@@ -287,7 +314,7 @@ body{padding-bottom:70px;}
     </div>
   </div>
   <div class="sc-location-img reveal">
-    <img src="https://bofilltech.com/wp-content/uploads/2026/03/outdoorhottub.jpg" alt="Sea Chambers ocean view hot tub" loading="lazy">
+    <img src="img/building-wide.jpg" alt="Sea Chambers property with Adirondack chairs overlooking the Atlantic" loading="lazy">
   </div>
 </section>
 
