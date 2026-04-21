@@ -21,6 +21,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 13 | Watson's Regency Suites | Ocean City, NJ | [watsonsregency.com](https://watsonsregency.com) | [View →](https://bofilltech.github.io/concepts/watsons-regency/) | B — Split-Screen Narrative | EB Garamond + Josefin Sans | Apr 26 |
 
+| 15 | The Garlands on Nantucket Sound | Dennis Port, MA | [thegarlandscapecod.com](https://www.thegarlandscapecod.com/) | [View →](https://bofilltech.github.io/concepts/the-garlands/) | Editorial Coastal | Fraunces + DM Sans | Apr 21 |
+
 | 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
 
 | 14 | Foundry Lane | Retail / Gifting Boutique | (new brand, Shopify) | [View →](https://bofilltech.github.io/concepts/foundry-lane/) | D — Minimal Luxury (Retail) | Cormorant Garamond + Jost | Apr 20 |
