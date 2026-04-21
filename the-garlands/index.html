@@ -710,7 +710,85 @@ img { max-width: 100%; display: block; }
   letter-spacing: .08em;
 }
 
+/* ---------- BOOKING BAR ---------- */
+.booking-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 90;
+  background: rgba(15, 41, 66, 0.97);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: .6rem var(--gutter);
+  padding-bottom: calc(.6rem + env(safe-area-inset-bottom, 0px));
+  transform: translateY(100%);
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+}
+.booking-bar.in { transform: translateY(0); }
+.booking-bar__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: .75rem;
+  align-items: center;
+}
+.booking-bar__field {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  padding: .35rem .75rem;
+  border-right: 1px solid rgba(255,255,255,.1);
+}
+.booking-bar__field:nth-child(2) { border-right: none; }
+.booking-bar__field label {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--seafoam);
+  font-weight: 500;
+}
+.booking-bar__field input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-family: var(--sans);
+  font-size: .88rem;
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  color-scheme: dark;
+  width: 100%;
+}
+.booking-bar__field input::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(.5);
+  cursor: pointer;
+}
+.booking-bar__btn {
+  background: var(--coral);
+  color: #fff;
+  text-decoration: none;
+  padding: .9rem 1.75rem;
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: background .3s ease, transform .3s ease;
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.booking-bar__btn:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+body { padding-bottom: 74px; }
+
 /* ---------- MEDIA QUERIES ---------- */
+@media (max-width: 480px) {
+  .booking-bar__field { padding: .25rem .5rem; }
+  .booking-bar__btn { padding: .9rem 1.1rem; font-size: .7rem; letter-spacing: .15em; }
+  .booking-bar__inner { gap: .35rem; }
+  body { padding-bottom: 80px; }
+}
 @media (min-width: 640px) {
   .amenities__grid { grid-template-columns: repeat(3, 1fr); }
 }
@@ -757,10 +835,9 @@ img { max-width: 100%; display: block; }
     <span>on Nantucket Sound</span>
   </a>
   <ul class="nav__links">
-    <li><a href="#about">Welcome</a></li>
-    <li><a href="#units">The Units</a></li>
+    <li><a href="#units">Rooms</a></li>
     <li><a href="#amenities">Amenities</a></li>
-    <li><a href="#location">Location</a></li>
+    <li><a href="#gallery">Gallery</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav__cta">
@@ -799,7 +876,7 @@ img { max-width: 100%; display: block; }
 </section>
 
 <!-- GALLERY STRIP -->
-<section class="strip">
+<section class="strip" id="gallery">
   <div class="strip__inner">
     <div class="strip__grid reveal">
       <div class="strip__item"><img src="./stairs_property.jpg" alt="The Garlands from the beach"></div>
@@ -1056,12 +1133,51 @@ img { max-width: 100%; display: block; }
   </div>
 </footer>
 
+<!-- BOTTOM BOOKING BAR -->
+<div class="booking-bar" id="bookingBar">
+  <div class="booking-bar__inner">
+    <div class="booking-bar__field">
+      <label for="bb-checkin">Check In</label>
+      <input type="date" id="bb-checkin" name="checkin">
+    </div>
+    <div class="booking-bar__field">
+      <label for="bb-checkout">Check Out</label>
+      <input type="date" id="bb-checkout" name="checkout">
+    </div>
+    <a href="https://www.thegarlandscapecod.com/services-4" class="booking-bar__btn" id="bb-book">Book</a>
+  </div>
+</div>
+
 <script>
   // Sticky nav
   const nav = document.getElementById('nav');
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 40);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  // Reveal booking bar after scrolling past hero
+  const bar = document.getElementById('bookingBar');
+  const showBar = () => {
+    const triggerY = window.innerHeight * 0.6;
+    bar.classList.toggle('in', window.scrollY > triggerY);
+  };
+  window.addEventListener('scroll', showBar, { passive: true });
+  showBar();
+
+  // Default check-in = today, check-out = tomorrow
+  const today = new Date();
+  const tomorrow = new Date(Date.now() + 86400000);
+  const iso = d => d.toISOString().split('T')[0];
+  const ci = document.getElementById('bb-checkin');
+  const co = document.getElementById('bb-checkout');
+  ci.min = iso(today);
+  co.min = iso(tomorrow);
+  ci.addEventListener('change', () => {
+    const next = new Date(ci.value);
+    next.setDate(next.getDate() + 1);
+    co.min = iso(next);
+    if (co.value && new Date(co.value) <= new Date(ci.value)) co.value = iso(next);
+  });
 
   // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
