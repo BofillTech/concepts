@@ -23,6 +23,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 15 | The Garlands on Nantucket Sound | Dennis Port, MA | [thegarlandscapecod.com](https://www.thegarlandscapecod.com/) | [View →](https://bofilltech.github.io/concepts/the-garlands/) | Editorial Coastal | Fraunces + DM Sans | Apr 21 |
 
+| 16 | East Norwich Inn | East Norwich, NY | [eastnorwichinnli.com](https://eastnorwichinnli.com/) | [View →](https://bofilltech.github.io/concepts/east-norwich-inn/) | F — Classic/Heritage (Tudor) | Fraunces + DM Sans | Apr 21 |
+
 | 11 | Baileys Harbor Yacht Club Resort | Baileys Harbor, WI | [bhycr.com](https://www.bhycr.com) | [View →](https://bofilltech.github.io/concepts/baileys-harbor-yacht-club/) | D — Minimal Luxury | Cormorant Garamond + Montserrat | Apr 26 |
 
 | 14 | Foundry Lane | Retail / Gifting Boutique | (new brand, Shopify) | [View →](https://bofilltech.github.io/concepts/foundry-lane/) | D — Minimal Luxury (Retail) | Cormorant Garamond + Jost | Apr 20 |
