@@ -33,3 +33,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 - **URL**: https://bofilltech.github.io/concepts/kathys-montauk/
 - **Type**: Vacation Rental Portfolio Site
 - **Properties**: Ditch Plains Beach House, Sunset Beach House, East Lake Villa
+
+| 17 | WRC Building Maintenance Corp. | Bronx, NY | (prospect — no current site) | [View →](https://bofilltech.github.io/concepts/wrc-building-maintenance/) | Editorial Architectural (B2B — non-hospitality) | Fraunces + DM Sans | Apr 22 |
