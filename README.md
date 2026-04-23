@@ -35,3 +35,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 - **Properties**: Ditch Plains Beach House, Sunset Beach House, East Lake Villa
 
 | 17 | WRC Building Maintenance Corp. | Bronx, NY | (prospect — no current site) | [View →](https://bofilltech.github.io/concepts/wrc-building-maintenance/) | Editorial Architectural (B2B — non-hospitality) | Fraunces + DM Sans | Apr 22 |
+
+| 18 | Drossos Motel | Greenport, NY | [drossosmotel.com](http://www.drossosmotel.com/) | [View →](https://bofilltech.github.io/concepts/drossos-motel/) | Nostalgic Roadside / Vintage Poster | Abril Fatface + Karla | Apr 23 |
