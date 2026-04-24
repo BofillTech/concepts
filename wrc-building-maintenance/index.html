@@ -553,107 +553,170 @@ nav .container {
   .service-card { padding: 36px 28px; }
 }
 
-/* ============ PILLARS: WORK, RESPECT, COMMITMENT ============ */
-.pillars {
-  background: var(--forest-deep);
-  color: var(--ivory);
+/* ============ WHO WE ARE + STRENGTHS ============ */
+.who-we-are {
+  background: var(--cream);
   position: relative;
   overflow: hidden;
 }
-.pillars::before {
+.who-we-are::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.who-header {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 2;
+}
+.who-left .section-title {
+  margin-bottom: 0;
+}
+.who-body {
+  font-size: 18px;
+  color: var(--stone);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.strengths-header {
+  margin-bottom: 56px;
+  padding-top: 56px;
+  border-top: 1px solid rgba(31, 78, 61, 0.12);
+  position: relative;
+  z-index: 2;
+}
+.strengths-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: clamp(32px, 4vw, 44px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--forest);
+  margin-top: 16px;
+}
+.strengths-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(31, 78, 61, 0.1);
+  border: 1px solid rgba(31, 78, 61, 0.1);
+  position: relative;
+  z-index: 2;
+}
+.strength {
+  background: var(--cream);
+  padding: 40px 32px;
+  transition: all 0.3s ease;
+}
+.strength:hover {
+  background: var(--ivory);
+}
+.strength-num {
+  font-family: 'Fraunces', serif;
+  font-size: 13px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+}
+.strength-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.strength-desc {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .who-header {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+  .strengths-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .strengths-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ HOW WE WORK ============ */
+.how-we-work {
+  background: var(--forest-deep);
+  color: var(--ivory);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+.how-we-work::before {
   content: "";
   position: absolute;
   top: -200px;
   left: 50%;
   transform: translateX(-50%);
-  width: 1200px;
-  height: 1200px;
+  width: 1100px;
+  height: 1100px;
   border: 1px solid var(--gold);
   border-radius: 50%;
-  opacity: 0.1;
+  opacity: 0.12;
   pointer-events: none;
 }
-.pillars .section-title { color: var(--ivory); }
-.pillars .section-intro { color: rgba(250, 247, 240, 0.7); }
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48px;
-  margin-top: 40px;
+.how-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
   position: relative;
   z-index: 2;
 }
-.pillar {
-  padding-top: 32px;
-  border-top: 1px solid rgba(201, 160, 100, 0.3);
+.how-we-work .section-eyebrow {
+  color: var(--gold-light);
+  justify-content: center;
 }
-.pillar-letter {
+.how-we-work .section-eyebrow::before {
+  background: var(--gold-light);
+}
+.how-title {
   font-family: 'Fraunces', serif;
-  font-size: 120px;
-  font-weight: 300;
-  color: var(--gold);
-  line-height: 0.8;
-  margin-bottom: 28px;
-  font-variation-settings: "opsz" 144;
-}
-.pillar-word {
-  font-family: 'Fraunces', serif;
-  font-size: 28px;
-  font-weight: 500;
-  color: var(--ivory);
-  margin-bottom: 16px;
-  letter-spacing: -0.01em;
-}
-.pillar-text {
-  font-size: 16px;
-  color: rgba(250, 247, 240, 0.75);
-  line-height: 1.65;
-}
-
-@media (max-width: 900px) {
-  .pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .pillar-letter { font-size: 88px; }
-}
-
-/* ============ APPROACH / QUOTE ============ */
-.approach {
-  background: var(--ivory);
-  padding: 120px 0;
-}
-.approach .container {
-  max-width: 1000px;
-}
-.approach-quote {
-  font-family: 'Fraunces', serif;
-  font-style: italic;
   font-weight: 400;
-  font-size: clamp(28px, 3.5vw, 44px);
-  line-height: 1.3;
-  color: var(--forest);
-  margin-bottom: 40px;
-  letter-spacing: -0.01em;
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--ivory);
+  margin-bottom: 32px;
 }
-.approach-quote::before {
-  content: "“";
-  font-size: 120px;
-  line-height: 0.7;
+.how-title em {
+  font-style: italic;
   color: var(--gold);
-  display: block;
-  margin-bottom: 0;
-  font-family: 'Fraunces', serif;
 }
-.approach-attr {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--stone);
+.how-body {
+  font-size: 19px;
+  color: rgba(250, 247, 240, 0.8);
+  line-height: 1.7;
+  max-width: 740px;
+  margin: 0 auto;
 }
-.approach-attr strong {
-  color: var(--forest);
-  font-weight: 600;
+@media (max-width: 768px) {
+  .how-we-work { padding: 80px 0; }
 }
 
 /* ============ PROJECTS ============ */
@@ -723,18 +786,18 @@ nav .container {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
-  transition: transform 0.6s ease;
+  transition: transform 0.8s ease;
 }
 .project-card:hover .project-visual {
-  transform: scale(1.05);
+  transform: scale(1.06);
 }
 .project-visual svg {
-  width: 65%;
-  height: 65%;
+  width: 85%;
+  height: 85%;
   stroke: var(--gold);
   fill: none;
   stroke-width: 1.2;
-  opacity: 0.35;
+  opacity: 0.3;
   transition: opacity 0.4s ease;
 }
 .project-card:hover .project-visual svg {
@@ -744,7 +807,7 @@ nav .container {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(13, 31, 24, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(13, 31, 24, 0.55) 0%, transparent 35%, transparent 55%, rgba(13, 31, 24, 0.92) 100%);
   z-index: 1;
 }
 .project-content {
@@ -753,35 +816,19 @@ nav .container {
   padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   z-index: 2;
-}
-.project-sector {
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-}
-.project-sector::before {
-  content: "";
-  width: 30px;
-  height: 1px;
-  background: var(--gold);
 }
 .project-info {
   margin-top: auto;
 }
 .project-name {
   font-family: 'Fraunces', serif;
-  font-size: 28px;
+  font-size: 30px;
   line-height: 1.15;
   font-weight: 500;
   color: var(--ivory);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   letter-spacing: -0.01em;
   max-width: 400px;
 }
@@ -791,17 +838,20 @@ nav .container {
   align-items: end;
   gap: 20px;
   padding-top: 16px;
-  border-top: 1px solid rgba(201, 160, 100, 0.3);
+  border-top: 1px solid rgba(201, 160, 100, 0.35);
 }
 .project-location {
-  font-size: 13px;
-  color: rgba(250, 247, 240, 0.75);
-  letter-spacing: 0.05em;
+  font-size: 12px;
+  color: var(--gold-light);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 .project-arrow {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--gold);
   transition: transform 0.3s ease;
+  line-height: 1;
 }
 .project-card:hover .project-arrow {
   transform: translateX(6px);
@@ -900,71 +950,65 @@ nav .container {
   background: var(--white);
   position: relative;
   transition: all 0.3s ease;
+  text-align: center;
 }
 .cert-card:hover {
   border-color: var(--gold);
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(20, 49, 40, 0.08);
 }
-.cert-badge {
-  width: 72px;
-  height: 72px;
-  margin-bottom: 28px;
+.cert-seal {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  position: relative;
 }
-.cert-badge::before {
-  content: "";
-  position: absolute;
-  inset: -6px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  opacity: 0.4;
-}
-.cert-badge svg {
-  width: 32px;
-  height: 32px;
-  stroke: var(--forest);
-  fill: none;
-  stroke-width: 1.5;
+.cert-seal svg {
+  width: 100%;
+  height: 100%;
 }
 .cert-title {
   font-family: 'Fraunces', serif;
   font-size: 22px;
   font-weight: 500;
   color: var(--forest);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   line-height: 1.25;
 }
 .cert-issuer {
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--gold);
-  margin-bottom: 20px;
-  font-weight: 500;
+  margin-bottom: 12px;
+  font-weight: 600;
 }
 .cert-details {
   font-size: 14px;
   color: var(--stone);
   line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
 }
 .cert-meta {
   margin-top: 24px;
   padding-top: 20px;
   border-top: 1px solid rgba(31, 78, 61, 0.1);
-  display: flex;
-  justify-content: space-between;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-size: 13px;
   color: var(--stone);
 }
-.cert-meta strong { color: var(--forest); font-weight: 600; }
+.cert-valid strong {
+  color: var(--forest);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--gold);
+}
 
 @media (max-width: 900px) {
   .certs-grid { grid-template-columns: 1fr; }
@@ -1217,7 +1261,7 @@ footer {
     <div>
       <a href="tel:9292273344">(929) 227-3344</a>
       &nbsp;&middot;&nbsp;
-      <a href="mailto:info@wrcbuildingmaintenance.com">info@wrcbuildingmaintenance.com</a>
+      <a href="mailto:wrcbuildingmaintenance@gmail.com">wrcbuildingmaintenance@gmail.com</a>
     </div>
   </div>
 </div>
@@ -1229,12 +1273,11 @@ footer {
       <img src="wrc-logo-nav.png" alt="WRC Building Maintenance">
     </a>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
+      <li><a href="about/">About</a></li>
+      <li><a href="services/">Services</a></li>
       <li><a href="projects/">Projects</a></li>
-      <li><a href="#approach">Our Approach</a></li>
-      <li><a href="#clients">Clients</a></li>
       <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact" class="btn gold">Request a Quote</a></li>
+      <li><a href="contact/" class="btn gold">Contact Us</a></li>
     </ul>
     <button class="mobile-toggle" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -1246,17 +1289,18 @@ footer {
 <section class="hero">
   <div class="container">
     <div class="hero-content">
-      <div class="hero-eyebrow">Commercial &middot; Residential &middot; Since 2014</div>
-      <h1>Buildings maintained with <em>work, respect</em> & commitment.</h1>
+      <div class="hero-eyebrow">Certified MWBE &middot; Commercial &amp; Residential</div>
+      <h1><em>Work</em> you can count on. <em>Respect</em> you deserve. <em>Commitment</em> you'll see.</h1>
       <p class="hero-sub">
-        WRC Building Maintenance is a minority- and women-owned subcontractor serving
-        commercial and residential properties across New York. For over a decade, we've
-        been trusted by general contractors, property managers, and institutions to
-        deliver spaces that look, feel, and function their best.
+        A Certified Women &amp; Minority-Owned Business serving New York. With more than ten years
+        of trusted service, WRC Building Maintenance delivers comprehensive maintenance and
+        project support for commercial and residential properties &mdash; from routine janitorial
+        operations to post-construction cleaning, construction labor management, painting &amp;
+        wallcovering, and punch-list trades.
       </p>
       <div class="hero-ctas">
-        <a href="#contact" class="btn">Request a Quote</a>
-        <a href="#services" class="btn outline">Our Services</a>
+        <a href="contact/" class="btn gold">Contact Us</a>
+        <a href="services/" class="btn outline">Our Services</a>
       </div>
       <div class="hero-stats">
         <div>
@@ -1274,7 +1318,7 @@ footer {
       </div>
     </div>
     <div class="hero-visual">
-      <span class="hero-arch-label">Est. Bronx, NY</span>
+      <span class="hero-arch-label">Mamaroneck, NY</span>
       <div class="hero-image">
         <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;display:block;background:linear-gradient(180deg, #F2EDE0 0%, #E8E0CD 45%, #C9A064 100%);">
           <!-- Grid texture -->
@@ -1400,10 +1444,10 @@ footer {
 <section class="section services" id="services">
   <div class="container">
     <div class="section-eyebrow">What We Do</div>
-    <h2 class="section-title">A full-service maintenance partner for <em>every stage</em> of a property's life.</h2>
+    <h2 class="section-title">Integrated <em>construction &amp; maintenance</em> services for every stage of a property's life.</h2>
     <p class="section-intro">
       From turnover cleans during active construction to ongoing janitorial programs that keep
-      occupied buildings looking their best — our team adapts to the scope, schedule, and standard
+      occupied buildings looking their best &mdash; our team adapts to the scope, schedule, and standard
       your project demands.
     </p>
 
@@ -1502,71 +1546,82 @@ footer {
         <h3 class="service-title">Painting &amp; Wallcovering</h3>
         <p class="service-desc">Interior painting and wallcovering installation with clean edges and clean sites — refreshes that hold up to daily wear and high-traffic use.</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <!-- 08 Flexible / Custom -->
-      <div class="service-card">
-        <div class="service-num">08</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="24" cy="24" r="4"/>
-            <path d="M24 4 L24 14 M24 34 L24 44 M4 24 L14 24 M34 24 L44 24"/>
-            <path d="M10 10 L17 17 M38 10 L31 17 M10 38 L17 31 M38 38 L31 31"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Custom Scope &amp; Project Support</h3>
-        <p class="service-desc">Have a specialty request or mixed-scope project? We scope it, price it fairly, and assign a dedicated team — every project gets our full attention.</p>
+<!-- ========== WHO WE ARE + STRENGTHS ========== -->
+<section class="section who-we-are" id="about">
+  <div class="container">
+    <div class="who-header">
+      <div class="who-left">
+        <div class="section-eyebrow">Who We Are</div>
+        <h2 class="section-title">A certified MWBE operating <em>throughout New York</em>.</h2>
+      </div>
+      <div class="who-right">
+        <p class="who-body">
+          WRC Building Maintenance is a certified Women- and Minority-Owned Business (MWBE)
+          operating throughout New York. Our organization is built on disciplined processes,
+          skilled field teams, and accountable project oversight. We partner closely with clients
+          to deliver consistent, compliant, and professionally managed services across every
+          engagement.
+        </p>
+        <a href="about/" class="btn outline">Read More About Us</a>
+      </div>
+    </div>
+
+    <div class="strengths-header">
+      <div class="section-eyebrow">Our Strengths</div>
+      <h3 class="strengths-title">What sets us <em>apart</em>.</h3>
+    </div>
+
+    <div class="strengths-grid">
+      <div class="strength">
+        <div class="strength-num">01</div>
+        <h4 class="strength-title">Licensed &amp; MBE Certified</h4>
+        <p class="strength-desc">Approved for public and private construction and maintenance projects across NYC, NY State, and the Port Authority of NY &amp; NJ.</p>
+      </div>
+      <div class="strength">
+        <div class="strength-num">02</div>
+        <h4 class="strength-title">Multi-Trade Workforce</h4>
+        <p class="strength-desc">Skilled laborers, painters, carpenters, wallcovering installers, and punch-list technicians &mdash; all under one roof.</p>
+      </div>
+      <div class="strength">
+        <div class="strength-num">03</div>
+        <h4 class="strength-title">Labor &amp; Site Support</h4>
+        <p class="strength-desc">Construction staffing and coordination for active and close-out phases &mdash; integrated with your GC's schedule and standards.</p>
+      </div>
+      <div class="strength">
+        <div class="strength-num">04</div>
+        <h4 class="strength-title">Integrated Services</h4>
+        <p class="strength-desc">Construction support, finishing trades, post-construction cleaning, and ongoing maintenance &mdash; one vendor, one point of accountability.</p>
+      </div>
+      <div class="strength">
+        <div class="strength-num">05</div>
+        <h4 class="strength-title">Scalable Operations</h4>
+        <p class="strength-desc">Workforce flexibility aligned with project scope and scheduling requirements &mdash; we match crew size to what the job demands.</p>
+      </div>
+      <div class="strength">
+        <div class="strength-num">06</div>
+        <h4 class="strength-title">Client Accountability</h4>
+        <p class="strength-desc">Professional communication, compliance, and project oversight at every stage &mdash; no surprises, no dropped hand-offs.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== PILLARS ========== -->
-<section class="section pillars" id="approach">
+<!-- ========== HOW WE WORK ========== -->
+<section class="how-we-work">
   <div class="container">
-    <div class="section-eyebrow">Our Approach</div>
-    <h2 class="section-title">Three principles — built into <em>every contract</em>, every crew, every day.</h2>
-    <p class="section-intro">
-      Our tagline isn't a marketing line — it's how we hire, train, and show up on your site.
-    </p>
-
-    <div class="pillars-grid">
-      <div class="pillar">
-        <div class="pillar-letter">W</div>
-        <h3 class="pillar-word">Work.</h3>
-        <p class="pillar-text">
-          Hands-on, detail-oriented, and accountable. We staff each project with experienced
-          crews who know what good looks like — and who take pride in doing it right the first time.
-        </p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-letter">R</div>
-        <h3 class="pillar-word">Respect.</h3>
-        <p class="pillar-text">
-          For your property, your timeline, and the people in it. Our teams protect finishes,
-          communicate clearly with site supervision, and leave every space better than they found it.
-        </p>
-      </div>
-      <div class="pillar">
-        <div class="pillar-letter">C</div>
-        <h3 class="pillar-word">Commitment.</h3>
-        <p class="pillar-text">
-          We stay with a project from kickoff to final walkthrough — and well beyond. Dependable
-          scheduling, transparent communication, and long-term partnerships are how we measure success.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== APPROACH QUOTE ========== -->
-<section class="approach">
-  <div class="container">
-    <p class="approach-quote">
-      Our dedicated and experienced staff accommodates projects of any size — bringing the same
-      standard of appearance and care to every space we maintain.
-    </p>
-    <div class="approach-attr">
-      <strong>WRC Building Maintenance</strong> &middot; Serving New York Since 2014
+    <div class="how-inner">
+      <div class="section-eyebrow">How We Work</div>
+      <h2 class="how-title">A structured approach to <em>reliable</em> service delivery.</h2>
+      <p class="how-body">
+        Every project is managed through a defined, disciplined process designed to ensure
+        consistency, quality control, and on-time completion. Our team operates with clear
+        communication, coordinated oversight, and a strong commitment to meeting client
+        requirements at every stage of the engagement.
+      </p>
     </div>
   </div>
 </section>
@@ -1581,106 +1636,16 @@ footer {
       </div>
       <div class="projects-header-right">
         <p class="projects-count">
-          From <strong>healthcare</strong> to <strong>hospitality</strong>, <strong>corporate</strong> to <strong>retail</strong> — a look at recent work.
+          From <strong>healthcare</strong> to <strong>hospitality</strong>, <strong>corporate</strong> to <strong>retail</strong> &mdash; a look at recent work.
         </p>
       </div>
     </div>
 
     <div class="projects-grid">
-      <!-- 01 Stony Brook -->
+      <!-- Citigroup -->
       <a href="projects/" class="project-card">
         <div class="project-visual">
-          <!-- Healthcare / hospital building silhouette -->
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <rect x="30" y="60" width="140" height="110"/>
-            <rect x="50" y="80" width="20" height="25"/>
-            <rect x="85" y="80" width="30" height="25"/>
-            <rect x="130" y="80" width="20" height="25"/>
-            <rect x="50" y="120" width="20" height="25"/>
-            <rect x="130" y="120" width="20" height="25"/>
-            <path d="M85 115 L115 115 M100 100 L100 130" stroke-width="3"/>
-            <rect x="85" y="140" width="30" height="30"/>
-            <path d="M70 60 L70 40 L130 40 L130 60"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-sector">Healthcare</div>
-          <div class="project-info">
-            <h3 class="project-name">Stony Brook Children's Hospital Expansion</h3>
-            <div class="project-meta">
-              <span class="project-location">Long Island, NY</span>
-              <span class="project-arrow">→</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 02 Wegmans -->
-      <a href="projects/" class="project-card">
-        <div class="project-visual">
-          <!-- Retail storefront silhouette -->
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <rect x="20" y="50" width="160" height="120"/>
-            <path d="M20 80 L180 80"/>
-            <path d="M40 50 L40 30 L160 30 L160 50"/>
-            <rect x="40" y="95" width="35" height="75"/>
-            <rect x="85" y="95" width="30" height="45"/>
-            <rect x="125" y="95" width="35" height="75"/>
-            <path d="M40 170 L40 140 L75 140 L75 170"/>
-            <circle cx="100" cy="155" r="2" fill="currentColor" stroke="none"/>
-            <circle cx="140" cy="155" r="2" fill="currentColor" stroke="none"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-sector">Retail &middot; Commercial</div>
-          <div class="project-info">
-            <h3 class="project-name">Wegmans Supermarket</h3>
-            <div class="project-meta">
-              <span class="project-location">Connecticut</span>
-              <span class="project-arrow">→</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 03 Harper -->
-      <a href="projects/" class="project-card">
-        <div class="project-visual">
-          <!-- Hotel high-rise silhouette -->
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <rect x="60" y="20" width="80" height="150"/>
-            <g>
-              <line x1="75" y1="40" x2="75" y2="160"/>
-              <line x1="90" y1="40" x2="90" y2="160"/>
-              <line x1="110" y1="40" x2="110" y2="160"/>
-              <line x1="125" y1="40" x2="125" y2="160"/>
-              <line x1="60" y1="50" x2="140" y2="50"/>
-              <line x1="60" y1="70" x2="140" y2="70"/>
-              <line x1="60" y1="90" x2="140" y2="90"/>
-              <line x1="60" y1="110" x2="140" y2="110"/>
-              <line x1="60" y1="130" x2="140" y2="130"/>
-              <line x1="60" y1="150" x2="140" y2="150"/>
-            </g>
-            <rect x="40" y="170" width="120" height="10"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-sector">Hospitality</div>
-          <div class="project-info">
-            <h3 class="project-name">The Harper New York</h3>
-            <div class="project-meta">
-              <span class="project-location">New York, NY</span>
-              <span class="project-arrow">→</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- 04 Citigroup -->
-      <a href="projects/" class="project-card">
-        <div class="project-visual">
-          <!-- Corporate campus silhouette -->
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
             <rect x="20" y="100" width="60" height="70"/>
             <rect x="85" y="70" width="50" height="100"/>
             <rect x="140" y="95" width="45" height="75"/>
@@ -1698,12 +1663,92 @@ footer {
           </svg>
         </div>
         <div class="project-content">
-          <div class="project-sector">Corporate</div>
           <div class="project-info">
-            <h3 class="project-name">Citigroup Armonk Conference Center</h3>
+            <h3 class="project-name">The Citigroup Armonk Conference Center</h3>
             <div class="project-meta">
-              <span class="project-location">Armonk, NY</span>
-              <span class="project-arrow">→</span>
+              <span class="project-location">Armonk, NY &middot; Corporate</span>
+              <span class="project-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- The Harper -->
+      <a href="projects/" class="project-card">
+        <div class="project-visual">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect x="60" y="20" width="80" height="150"/>
+            <g>
+              <line x1="75" y1="40" x2="75" y2="160"/>
+              <line x1="90" y1="40" x2="90" y2="160"/>
+              <line x1="110" y1="40" x2="110" y2="160"/>
+              <line x1="125" y1="40" x2="125" y2="160"/>
+              <line x1="60" y1="50" x2="140" y2="50"/>
+              <line x1="60" y1="70" x2="140" y2="70"/>
+              <line x1="60" y1="90" x2="140" y2="90"/>
+              <line x1="60" y1="110" x2="140" y2="110"/>
+              <line x1="60" y1="130" x2="140" y2="130"/>
+              <line x1="60" y1="150" x2="140" y2="150"/>
+            </g>
+            <rect x="40" y="170" width="120" height="10"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">The Harper New York</h3>
+            <div class="project-meta">
+              <span class="project-location">Upper East Side, NY &middot; Hospitality</span>
+              <span class="project-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Wegmans -->
+      <a href="projects/" class="project-card">
+        <div class="project-visual">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect x="20" y="50" width="160" height="120"/>
+            <path d="M20 80 L180 80"/>
+            <path d="M40 50 L40 30 L160 30 L160 50"/>
+            <rect x="40" y="95" width="35" height="75"/>
+            <rect x="85" y="95" width="30" height="45"/>
+            <rect x="125" y="95" width="35" height="75"/>
+            <path d="M40 170 L40 140 L75 140 L75 170"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">Wegmans Supermarket</h3>
+            <div class="project-meta">
+              <span class="project-location">Norwalk, CT &middot; Retail</span>
+              <span class="project-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- Stony Brook -->
+      <a href="projects/" class="project-card">
+        <div class="project-visual">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect x="30" y="60" width="140" height="110"/>
+            <rect x="50" y="80" width="20" height="25"/>
+            <rect x="85" y="80" width="30" height="25"/>
+            <rect x="130" y="80" width="20" height="25"/>
+            <rect x="50" y="120" width="20" height="25"/>
+            <rect x="130" y="120" width="20" height="25"/>
+            <path d="M85 115 L115 115 M100 100 L100 130" stroke-width="3"/>
+            <rect x="85" y="140" width="30" height="30"/>
+            <path d="M70 60 L70 40 L130 40 L130 60"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">Stony Brook Children's Hospital Expansion</h3>
+            <div class="project-meta">
+              <span class="project-location">Long Island, NY &middot; Healthcare</span>
+              <span class="project-arrow">&rarr;</span>
             </div>
           </div>
         </div>
@@ -1767,67 +1812,113 @@ footer {
 <section class="section certs" id="certifications">
   <div class="container">
     <div class="section-eyebrow">Certifications</div>
-    <h2 class="section-title">Certified where it counts — across <em>city, state, and regional</em> authorities.</h2>
+    <h2 class="section-title">Certified where it counts &mdash; across <em>city, state, and regional</em> authorities.</h2>
     <p class="section-intro">
       WRC is a recognized Minority- and Women-Owned Business Enterprise at every level of
-      government procurement — giving our clients direct access to diversity goals and incentive programs.
+      government procurement &mdash; giving our clients direct access to diversity goals and incentive programs.
     </p>
 
     <div class="certs-grid">
       <div class="cert-card">
-        <div class="cert-badge">
-          <svg viewBox="0 0 48 48">
-            <path d="M12 18 L24 8 L36 18 L36 38 L12 38 Z"/>
-            <path d="M20 38 L20 26 L28 26 L28 38"/>
+        <div class="cert-seal">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="curve-nyc-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
+              <path id="curve-nyc-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
+            </defs>
+            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
+            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
+              <textPath href="#curve-nyc-top" startOffset="50%" text-anchor="middle">NYC SMALL BUSINESS SERVICES</textPath>
+            </text>
+            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
+              <textPath href="#curve-nyc-bot" startOffset="50%" text-anchor="middle">CERTIFIED MWBE</textPath>
+            </text>
+            <!-- NYC emblem: simple building silhouette -->
+            <rect x="48" y="50" width="10" height="24" fill="#1F4E3D"/>
+            <rect x="62" y="44" width="10" height="30" fill="#1F4E3D"/>
+            <rect x="76" y="54" width="8" height="20" fill="#1F4E3D"/>
+            <rect x="38" y="58" width="8" height="16" fill="#1F4E3D"/>
+            <path d="M 30,76 L 90,76" stroke="#B48D4F" stroke-width="1.5"/>
+            <text x="60" y="90" font-family="Fraunces, serif" font-size="9" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">M/WBE</text>
           </svg>
         </div>
         <div class="cert-issuer">NYC Small Business Services</div>
-        <h3 class="cert-title">M/WBE Certificate</h3>
+        <h3 class="cert-title">Minority Women-Owned Business</h3>
         <p class="cert-details">
-          Certified Minority Women-Owned Business Enterprise by the New York City Department
-          of Small Business Services.
+          Certified M/WBE by the New York City Department of Small Business Services &mdash;
+          recognized across all five boroughs for municipal contracting opportunities.
         </p>
         <div class="cert-meta">
-          <span>Cert #<strong> MWCERT2025-675</strong></span>
-          <span>Valid Through <strong>8/31/2030</strong></span>
+          <span class="cert-valid"><strong>Valid through</strong> Aug 31, 2030</span>
         </div>
       </div>
 
       <div class="cert-card">
-        <div class="cert-badge">
-          <svg viewBox="0 0 48 48">
-            <path d="M8 40 L8 16 L24 6 L40 16 L40 40 Z"/>
-            <path d="M8 40 L40 40 M16 40 L16 24 L32 24 L32 40"/>
+        <div class="cert-seal">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="curve-nys-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
+              <path id="curve-nys-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
+            </defs>
+            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
+            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
+              <textPath href="#curve-nys-top" startOffset="50%" text-anchor="middle">EMPIRE STATE DEVELOPMENT</textPath>
+            </text>
+            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
+              <textPath href="#curve-nys-bot" startOffset="50%" text-anchor="middle">NEW YORK STATE MBE</textPath>
+            </text>
+            <!-- Shield / state emblem -->
+            <path d="M 60,42 L 75,46 L 75,62 Q 75,72 60,78 Q 45,72 45,62 L 45,46 Z" fill="#1F4E3D"/>
+            <path d="M 60,48 L 70,51 L 70,62 Q 70,68 60,72 Q 50,68 50,62 L 50,51 Z" fill="#B48D4F"/>
+            <text x="60" y="65" font-family="Fraunces, serif" font-size="9" font-weight="700" fill="#FAF7F0" text-anchor="middle">NY</text>
+            <text x="60" y="93" font-family="Fraunces, serif" font-size="9" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">MBE</text>
           </svg>
         </div>
         <div class="cert-issuer">Empire State Development</div>
-        <h3 class="cert-title">NY State MBE</h3>
+        <h3 class="cert-title">New York State MBE</h3>
         <p class="cert-details">
-          Minority Business Enterprise certification from New York State's Division of
-          Minority and Women's Business Development.
+          Minority Business Enterprise certification from the NYS Division of Minority
+          and Women's Business Development &mdash; eligible for all state agency procurements.
         </p>
         <div class="cert-meta">
-          <span>File ID <strong>#73114</strong></span>
-          <span>Valid Through <strong>1/7/2030</strong></span>
+          <span class="cert-valid"><strong>Valid through</strong> Jan 7, 2030</span>
         </div>
       </div>
 
       <div class="cert-card">
-        <div class="cert-badge">
-          <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="18"/>
-            <path d="M10 24 L38 24 M24 6 C18 14 18 34 24 42 M24 6 C30 14 30 34 24 42"/>
+        <div class="cert-seal">
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="curve-panynj-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
+              <path id="curve-panynj-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
+            </defs>
+            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
+            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
+            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
+              <textPath href="#curve-panynj-top" startOffset="50%" text-anchor="middle">PORT AUTHORITY NY &amp; NJ</textPath>
+            </text>
+            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
+              <textPath href="#curve-panynj-bot" startOffset="50%" text-anchor="middle">MWBE CONSTRUCTION</textPath>
+            </text>
+            <!-- Infrastructure emblem: bridge/roadway -->
+            <circle cx="60" cy="58" r="14" fill="none" stroke="#1F4E3D" stroke-width="2"/>
+            <path d="M 46,58 L 74,58" stroke="#1F4E3D" stroke-width="2"/>
+            <path d="M 60,44 L 60,72" stroke="#1F4E3D" stroke-width="2"/>
+            <path d="M 50,48 Q 60,54 70,48" fill="none" stroke="#B48D4F" stroke-width="1.5"/>
+            <path d="M 50,68 Q 60,62 70,68" fill="none" stroke="#B48D4F" stroke-width="1.5"/>
+            <text x="60" y="92" font-family="Fraunces, serif" font-size="8" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">Regional</text>
           </svg>
         </div>
-        <div class="cert-issuer">Port Authority NY &amp; NJ</div>
+        <div class="cert-issuer">Port Authority of NY &amp; NJ</div>
         <h3 class="cert-title">Regional MWBE</h3>
         <p class="cert-details">
           MWBE-certified for construction services with The Port Authority of New York
-          &amp; New Jersey for infrastructure and facility projects.
+          &amp; New Jersey for airport, bridge, tunnel, and facility projects.
         </p>
         <div class="cert-meta">
-          <span>Construction Certified</span>
-          <span>Valid Through <strong>12/8/2030</strong></span>
+          <span class="cert-valid"><strong>Valid through</strong> Dec 8, 2030</span>
         </div>
       </div>
     </div>
@@ -1839,46 +1930,45 @@ footer {
   <div class="container">
     <div>
       <div class="section-eyebrow">Get in Touch</div>
-      <h2 class="section-title">Tell us about <em>your project</em>.</h2>
+      <h2 class="section-title">Let's discuss your <em>project needs</em>.</h2>
       <p class="contact-intro">
-        Whether you're planning a post-construction turnover, an ongoing janitorial
-        program, or a one-time specialty clean — we'd love to hear the details and
-        get you a quote.
+        Connect with our team to request proposals, discuss project requirements, or obtain
+        service information. WRC Building Maintenance provides responsive support and
+        professionally managed solutions across building services and construction support.
       </p>
 
       <div class="contact-details">
         <div class="contact-row">
           <div class="contact-label">Phone</div>
           <div class="contact-value">
-            <a href="tel:9292273344">(929) 227-3344</a><br>
-            <a href="tel:3479722028">(347) 972-2028</a>
+            <a href="tel:9292273344">(929) 227-3344</a>
           </div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Email</div>
           <div class="contact-value">
-            <a href="mailto:info@wrcbuildingmaintenance.com">info@wrcbuildingmaintenance.com</a>
+            <a href="mailto:wrcbuildingmaintenance@gmail.com">wrcbuildingmaintenance@gmail.com</a>
           </div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Office</div>
           <div class="contact-value">
-            1402 Blondell Avenue, Ste 103<br>
-            Bronx, NY 10461
+            109 Spencer Place<br>
+            Mamaroneck, NY 10543
           </div>
         </div>
         <div class="contact-row">
           <div class="contact-label">Leadership</div>
           <div class="contact-value">
-            Jadelin Rosario, <em style="color: rgba(250, 247, 240, 0.7); font-style: italic;">President</em><br>
-            Alexander Barboza, <em style="color: rgba(250, 247, 240, 0.7); font-style: italic;">Vice President</em>
+            Jadelin Rosario, <span style="color: rgba(250, 247, 240, 0.7); font-style: italic;">President</span><br>
+            Alexander Barboza, <span style="color: rgba(250, 247, 240, 0.7); font-style: italic;">Vice President</span>
           </div>
         </div>
       </div>
     </div>
 
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a design concept — the form is not yet wired up.');">
-      <h3>Request a Quote</h3>
+    <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a design concept &mdash; the form is not yet wired up.');">
+      <h3>Contact Us</h3>
       <p class="form-sub">We'll get back to you within one business day.</p>
 
       <div class="form-row">
@@ -1928,7 +2018,7 @@ footer {
         <textarea placeholder="Location, scope, timing, and anything else helpful..."></textarea>
       </div>
 
-      <button type="submit" class="btn gold">Send Request</button>
+      <button type="submit" class="btn gold">Send Message</button>
     </form>
   </div>
 </section>
@@ -1939,41 +2029,41 @@ footer {
     <div class="footer-top">
       <div class="footer-brand">
         <img src="wrc-logo.png" alt="WRC Building Maintenance">
-        <p class="footer-tag">Commercial &amp; residential building maintenance serving New York with work, respect, and commitment since 2014.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="#services">Janitorial Services</a></li>
-          <li><a href="#services">Post-Construction</a></li>
-          <li><a href="#services">Floor Maintenance</a></li>
-          <li><a href="#services">Window Cleaning</a></li>
-          <li><a href="#services">Labor Management</a></li>
-          <li><a href="#services">Painting</a></li>
-        </ul>
+        <p class="footer-tag">A certified Women- and Minority-Owned Business delivering integrated construction &amp; maintenance services across New York.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#approach">Our Approach</a></li>
-          <li><a href="#clients">Clients</a></li>
+          <li><a href="about/">About Us</a></li>
+          <li><a href="services/">Services</a></li>
+          <li><a href="projects/">Projects</a></li>
           <li><a href="#certifications">Certifications</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/">Janitorial Services</a></li>
+          <li><a href="services/">Post-Construction</a></li>
+          <li><a href="services/">Floor Maintenance</a></li>
+          <li><a href="services/">Window Cleaning</a></li>
+          <li><a href="services/">Labor Management</a></li>
+          <li><a href="services/">Painting &amp; Wallcovering</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li>1402 Blondell Ave, Ste 103</li>
-          <li>Bronx, NY 10461</li>
+          <li>109 Spencer Place</li>
+          <li>Mamaroneck, NY 10543</li>
           <li><a href="tel:9292273344">(929) 227-3344</a></li>
-          <li><a href="tel:3479722028">(347) 972-2028</a></li>
-          <li><a href="mailto:info@wrcbuildingmaintenance.com">info@wrcbuildingmaintenance.com</a></li>
+          <li><a href="mailto:wrcbuildingmaintenance@gmail.com">wrcbuildingmaintenance@gmail.com</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <div>© 2026 WRC Building Maintenance Corp. All rights reserved.</div>
+      <div>© 2026 WRC Building Maintenance Corp. &middot; Established 2023 &middot; All rights reserved.</div>
       <div>NYC MWBE · NY State MBE · Port Authority NY/NJ Certified</div>
     </div>
   </div>

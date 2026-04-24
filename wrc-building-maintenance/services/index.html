@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — WRC Building Maintenance | Integrated Construction & Maintenance</title>
+<meta name="description" content="Integrated construction and maintenance services: janitorial, post-construction cleaning, floor maintenance, window cleaning, labor management, and painting & wallcovering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --forest: #1F4E3D;
+  --forest-dark: #143128;
+  --forest-deep: #0D1F18;
+  --gold: #B48D4F;
+  --gold-light: #C9A064;
+  --gold-soft: #E8D3A8;
+  --ivory: #FAF7F0;
+  --cream: #F2EDE0;
+  --sand: #E8E0CD;
+  --charcoal: #1A1F1D;
+  --stone: #5A5E58;
+  --mist: #9A9D96;
+  --white: #FFFFFF;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ivory);
+  color: var(--charcoal);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container { max-width: 1400px; margin: 0 auto; padding: 0 40px; }
+@media (max-width: 768px) { .container { padding: 0 24px; } }
+
+/* Top bar */
+.top-bar { background: var(--forest-deep); color: var(--sand); font-size: 13px; padding: 10px 0; letter-spacing: 0.03em; }
+.top-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.top-bar .badges { display: flex; gap: 24px; flex-wrap: wrap; }
+.top-bar .badge { display: inline-flex; align-items: center; gap: 8px; color: var(--gold-soft); }
+.top-bar .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+.top-bar a { color: var(--gold-light); text-decoration: none; font-weight: 500; }
+.top-bar a:hover { color: var(--gold-soft); }
+
+/* Nav */
+nav { position: sticky; top: 0; background: rgba(250, 247, 240, 0.96); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 100; border-bottom: 1px solid rgba(31, 78, 61, 0.08); }
+nav .container { display: flex; align-items: center; justify-content: space-between; padding-top: 20px; padding-bottom: 20px; }
+.nav-logo img { height: 64px; width: auto; display: block; }
+.nav-links { display: flex; gap: 40px; list-style: none; align-items: center; }
+.nav-links a { color: var(--charcoal); text-decoration: none; font-weight: 500; font-size: 15px; letter-spacing: 0.01em; position: relative; transition: color 0.2s ease; }
+.nav-links a:hover { color: var(--forest); }
+.nav-links a.active { color: var(--forest); }
+.nav-links a.active::after,
+.nav-links a:not(.btn):hover::after { content: ""; position: absolute; bottom: -4px; left: 0; width: 100%; height: 1px; background: var(--gold); }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: var(--forest); color: var(--ivory); text-decoration: none; font-weight: 500; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; border: none; cursor: pointer; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; }
+.btn:hover { background: var(--gold); color: var(--forest-deep); transform: translateY(-1px); }
+.btn.outline { background: transparent; color: var(--forest); border: 1.5px solid var(--forest); }
+.btn.outline:hover { background: var(--forest); color: var(--ivory); }
+.btn.gold { background: var(--gold); color: var(--forest-deep); font-weight: 600; }
+.btn.gold:hover { background: var(--forest); color: var(--ivory); }
+
+.mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+.mobile-toggle span { display: block; width: 26px; height: 2px; background: var(--forest); margin: 5px 0; }
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-logo img { height: 52px; }
+}
+
+/* Page hero */
+.page-hero { position: relative; padding: 100px 0 80px; background: var(--ivory); overflow: hidden; }
+.page-hero::before { content: ""; position: absolute; top: -100px; right: -150px; width: 700px; height: 700px; border: 1px solid var(--gold); border-radius: 50%; opacity: 0.1; pointer-events: none; }
+.page-hero::after { content: ""; position: absolute; bottom: -200px; left: -100px; width: 500px; height: 500px; border: 1px solid var(--forest); border-radius: 50%; opacity: 0.06; pointer-events: none; }
+.breadcrumb { display: inline-flex; align-items: center; gap: 14px; color: var(--gold); font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 28px; }
+.breadcrumb::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
+.breadcrumb a { color: var(--stone); text-decoration: none; }
+.breadcrumb a:hover { color: var(--gold); }
+.page-hero h1 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(48px, 7vw, 84px); line-height: 1.05; letter-spacing: -0.02em; color: var(--forest); margin-bottom: 32px; max-width: 900px; }
+.page-hero h1 em { font-style: italic; color: var(--gold); }
+.page-hero-intro { font-size: 19px; color: var(--stone); max-width: 680px; line-height: 1.6; }
+
+/* Section */
+.section { padding: 120px 0; position: relative; }
+@media (max-width: 768px) { .section { padding: 80px 0; } }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 14px; color: var(--gold); font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 20px; }
+.section-eyebrow::before { content: ""; width: 40px; height: 1px; background: var(--gold); }
+.section-title { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(36px, 5vw, 56px); line-height: 1.1; letter-spacing: -0.015em; color: var(--forest); margin-bottom: 24px; max-width: 800px; }
+.section-title em { font-style: italic; color: var(--gold); }
+
+/* CTA band */
+.cta-band { background: var(--forest); color: var(--ivory); padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+.cta-band::before { content: ""; position: absolute; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; border: 1px solid var(--gold); border-radius: 50%; opacity: 0.12; }
+.cta-band h2 { font-family: 'Fraunces', serif; font-weight: 400; font-size: clamp(36px, 5vw, 52px); line-height: 1.1; margin-bottom: 24px; max-width: 800px; margin-left: auto; margin-right: auto; letter-spacing: -0.01em; position: relative; z-index: 2; }
+.cta-band h2 em { font-style: italic; color: var(--gold); }
+.cta-band p { font-size: 18px; color: rgba(250, 247, 240, 0.8); max-width: 560px; margin: 0 auto 40px; position: relative; z-index: 2; }
+.cta-band-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2; }
+.cta-band .btn.outline { border-color: var(--gold-light); color: var(--gold-light); }
+.cta-band .btn.outline:hover { background: var(--gold); color: var(--forest-deep); border-color: var(--gold); }
+
+/* Footer */
+footer { background: var(--forest-deep); color: var(--sand); padding: 80px 0 32px; }
+.footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+.footer-brand img { height: 80px; width: auto; margin-bottom: 24px; filter: brightness(0) invert(1); opacity: 0.95; }
+.footer-tag { font-family: 'Fraunces', serif; font-style: italic; font-size: 17px; color: var(--gold-soft); line-height: 1.5; max-width: 320px; }
+.footer-col h4 { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 500; color: var(--gold); margin-bottom: 20px; letter-spacing: 0.02em; }
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; font-size: 14px; color: rgba(232, 224, 205, 0.8); line-height: 1.5; }
+.footer-col a { color: rgba(232, 224, 205, 0.8); text-decoration: none; transition: color 0.2s ease; }
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom { padding-top: 32px; border-top: 1px solid rgba(201, 160, 100, 0.15); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: rgba(232, 224, 205, 0.6); letter-spacing: 0.05em; }
+.footer-bottom a { color: rgba(232, 224, 205, 0.6); text-decoration: none; }
+.footer-bottom a:hover { color: var(--gold); }
+@media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; } }
+@media (max-width: 600px) { .footer-top { grid-template-columns: 1fr; } }
+
+
+/* Services page */
+.services-intro {
+  padding: 80px 0 60px;
+  background: var(--ivory);
+}
+.services-intro p {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-size: clamp(22px, 2.5vw, 28px);
+  color: var(--forest);
+  line-height: 1.45;
+  max-width: 900px;
+  letter-spacing: -0.01em;
+}
+
+.service-detail {
+  padding: 80px 0;
+  border-top: 1px solid rgba(31, 78, 61, 0.12);
+}
+.service-detail:first-of-type { border-top: 0; }
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+}
+.service-detail-left {
+  position: sticky;
+  top: 140px;
+}
+.service-number-big {
+  font-family: 'Fraunces', serif;
+  font-size: 96px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 0.8;
+  margin-bottom: 20px;
+  font-variation-settings: "opsz" 144;
+  letter-spacing: -0.02em;
+}
+.service-detail-title {
+  font-family: 'Fraunces', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3.5vw, 40px);
+  line-height: 1.1;
+  color: var(--forest);
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.service-icon-large {
+  width: 64px; height: 64px;
+  stroke: var(--forest);
+  fill: none;
+  stroke-width: 1.3;
+  margin-top: 8px;
+}
+.service-detail-desc {
+  font-size: 17px;
+  color: var(--stone);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.service-features li {
+  padding: 14px 0 14px 28px;
+  border-bottom: 1px solid rgba(31, 78, 61, 0.1);
+  font-size: 15px;
+  color: var(--charcoal);
+  position: relative;
+}
+.service-features li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 22px;
+  width: 16px; height: 1px;
+  background: var(--gold);
+}
+.service-features li:last-child { border-bottom: 0; }
+@media (max-width: 900px) {
+  .service-detail-grid { grid-template-columns: 1fr; gap: 32px; }
+  .service-detail-left { position: static; }
+  .service-number-big { font-size: 72px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="badges">
+      <span class="badge">NYC MWBE Certified</span>
+      <span class="badge">NY State MBE</span>
+      <span class="badge">Port Authority NY/NJ</span>
+    </div>
+    <div>
+      <a href="tel:9292273344">(929) 227-3344</a>
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:wrcbuildingmaintenance@gmail.com">wrcbuildingmaintenance@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <a href="../" class="nav-logo"><img src="wrc-logo-nav.png" alt="WRC Building Maintenance"></a>
+    <ul class="nav-links">
+      <li><a href="../about/">About</a></li>
+      <li><a href="../services/" class="active">Services</a></li>
+      <li><a href="../projects/">Projects</a></li>
+      <li><a href="../#certifications">Certifications</a></li>
+      <li><a href="../contact/" class="btn gold">Contact Us</a></li>
+    </ul>
+    <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="../">Home</a> &middot; Services</div>
+    <h1>Integrated construction <em>&amp; maintenance</em> services.</h1>
+    <p class="page-hero-intro">
+      A multi-disciplinary organization delivering maintenance, labor, and finishing trade
+      solutions &mdash; helping clients achieve operational and project objectives across every
+      stage of a property's life.
+    </p>
+  </div>
+</section>
+
+<!-- INTRO QUOTE -->
+<section class="services-intro">
+  <div class="container">
+    <p>
+      WRC serves as an innovative provider of integrated building services and construction
+      support, helping clients achieve operational and project objectives through a
+      multi-disciplinary organization.
+    </p>
+  </div>
+</section>
+
+<!-- SERVICES DETAIL -->
+<div class="container">
+
+  <section class="service-detail" id="janitorial">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">01</div>
+        <h2 class="service-detail-title">Janitorial Services</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><path d="M8 40 L24 14 L40 40 Z M14 40 L34 40 M18 30 L30 30"/><circle cx="24" cy="10" r="3"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Recurring cleaning programs for commercial offices, residential properties, and
+          institutional facilities &mdash; tailored to your schedule and standards. From daily
+          porter service to weekly, monthly, or custom frequencies, our crews show up dependably
+          and leave every space in top condition.
+        </p>
+        <ul class="service-features">
+          <li>Daily, weekly, or custom-frequency service plans</li>
+          <li>Trained, insured, and uniformed crews</li>
+          <li>Commercial office and residential building programs</li>
+          <li>Institutional facilities: schools, healthcare, offices</li>
+          <li>Supervisor walkthroughs and quality audits</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="post-construction">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">02</div>
+        <h2 class="service-detail-title">Post-Construction Cleaning</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><path d="M10 22 L24 10 L38 22 L38 40 L10 40 Z"/><path d="M18 40 L18 28 L30 28 L30 40"/><path d="M14 16 L10 22 M34 16 L38 22"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Rough, interim, and detailed cleans that transform dusty build sites into ready-to-hand-over
+          spaces. We coordinate directly with GCs, project managers, and owner reps to hit punch-list
+          milestones and deliver units, floors, or whole buildings that are walkthrough-ready.
+        </p>
+        <ul class="service-features">
+          <li>Rough clean during active construction</li>
+          <li>Interim cleans between trades</li>
+          <li>Detailed final clean for handover</li>
+          <li>Individual units or full-floor / full-building scopes</li>
+          <li>Healthcare-grade preparation when required</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="floor-maintenance">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">03</div>
+        <h2 class="service-detail-title">Floor Maintenance</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><path d="M6 36 L42 36 M10 30 L38 30 M14 24 L34 24"/><path d="M22 12 L28 12 M20 16 L30 16 M18 20 L32 20"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Stripping, waxing, polishing, and deep-cleaning across hardwood, tile, stone, concrete,
+          and carpet &mdash; preserving finishes and extending floor life. Our floor programs are
+          built around manufacturer specifications and the realities of your traffic patterns.
+        </p>
+        <ul class="service-features">
+          <li>Hardwood, laminate, and luxury vinyl care</li>
+          <li>Tile, stone, and concrete polishing and refinishing</li>
+          <li>Strip-and-wax programs for VCT</li>
+          <li>Carpet cleaning, extraction, and restoration</li>
+          <li>Scheduled maintenance programs for high-traffic areas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="final-cleaning">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">04</div>
+        <h2 class="service-detail-title">Final Construction Cleaning</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><path d="M8 24 L20 36 L40 14"/><circle cx="24" cy="24" r="20"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Punch-list ready detail work that meets owner walkthroughs and handover standards &mdash;
+          the last 10% that turns a project into a finished space. We focus on the surfaces
+          reviewers actually touch: glass, hardware, trim, and finished millwork.
+        </p>
+        <ul class="service-features">
+          <li>Glass, mirror, and finished-surface detail</li>
+          <li>Hardware, fixture, and trim detailing</li>
+          <li>Finished millwork and cabinetry care</li>
+          <li>Punch-list pre-walk and coordination</li>
+          <li>Handover-ready documentation on request</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="window-cleaning">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">05</div>
+        <h2 class="service-detail-title">Interior Window Cleaning</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><rect x="8" y="8" width="32" height="32"/><path d="M24 8 L24 40 M8 24 L40 24"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Streak-free, detail-oriented interior glass care for storefronts, lobbies, and occupied
+          office environments &mdash; on schedule, without disruption. Our crews know how to work
+          around tenants, guests, and daily operations.
+        </p>
+        <ul class="service-features">
+          <li>Storefront and lobby programs</li>
+          <li>Occupied office interior glass</li>
+          <li>Conference rooms and glass partitions</li>
+          <li>After-hours and weekend scheduling available</li>
+          <li>Coordination with exterior window cleaning vendors</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="labor-management">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">06</div>
+        <h2 class="service-detail-title">Construction Labor Management</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><circle cx="16" cy="18" r="5"/><circle cx="32" cy="18" r="5"/><path d="M8 38 C8 30 12 28 16 28 C20 28 24 30 24 38"/><path d="M24 38 C24 30 28 28 32 28 C36 28 40 30 40 38"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Skilled, supervised labor support &mdash; staging, site coordination, daily housekeeping,
+          punch-list technicians &mdash; that keeps general contractor timelines on track. We scale
+          crew size up and down to match project pace.
+        </p>
+        <ul class="service-features">
+          <li>Skilled laborers, painters, carpenters, wallcovering installers</li>
+          <li>Punch-list technicians for close-out phases</li>
+          <li>Daily site housekeeping and material staging</li>
+          <li>Flexible crew size matched to project tempo</li>
+          <li>Supervised teams with direct GC coordination</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="service-detail" id="painting">
+    <div class="service-detail-grid">
+      <div class="service-detail-left">
+        <div class="service-number-big">07</div>
+        <h2 class="service-detail-title">Painting &amp; Wallcovering</h2>
+        <svg class="service-icon-large" viewBox="0 0 48 48"><path d="M12 8 L36 8 L36 20 L12 20 Z"/><path d="M24 20 L24 28 L28 28 L28 40 L20 40 L20 28 L24 28"/></svg>
+      </div>
+      <div>
+        <p class="service-detail-desc">
+          Interior painting and wallcovering installation with clean edges and clean sites &mdash;
+          refreshes that hold up to daily wear and high-traffic use. Our crews handle everything
+          from single-room repaints to multi-floor rollouts.
+        </p>
+        <ul class="service-features">
+          <li>Commercial interior painting and touch-ups</li>
+          <li>Wallcovering installation (vinyl, fabric, specialty)</li>
+          <li>Color consultations and specification matching</li>
+          <li>Clean-site protocols for occupied spaces</li>
+          <li>Multi-floor and portfolio-wide rollouts</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="container">
+    <h2>Need a partner for <em>your next project</em>?</h2>
+    <p>Whether it's a one-time scope or an ongoing program, we'd love to hear about it. Tell us the details and we'll get back to you within one business day.</p>
+    <div class="cta-band-btns">
+      <a href="../contact/" class="btn gold">Contact Us</a>
+      <a href="../services/" class="btn outline">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="wrc-logo.png" alt="WRC Building Maintenance">
+        <p class="footer-tag">A certified Women- and Minority-Owned Business delivering integrated construction &amp; maintenance services across New York.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about/">About Us</a></li>
+          <li><a href="../services/">Services</a></li>
+          <li><a href="../projects/">Projects</a></li>
+          <li><a href="../#certifications">Certifications</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services/">Janitorial Services</a></li>
+          <li><a href="../services/">Post-Construction</a></li>
+          <li><a href="../services/">Floor Maintenance</a></li>
+          <li><a href="../services/">Window Cleaning</a></li>
+          <li><a href="../services/">Labor Management</a></li>
+          <li><a href="../services/">Painting &amp; Wallcovering</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>109 Spencer Place</li>
+          <li>Mamaroneck, NY 10543</li>
+          <li><a href="tel:9292273344">(929) 227-3344</a></li>
+          <li><a href="mailto:wrcbuildingmaintenance@gmail.com">wrcbuildingmaintenance@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 WRC Building Maintenance Corp. &middot; Established 2023 &middot; All rights reserved.</div>
+      <div>NYC MWBE &middot; NY State MBE &middot; Port Authority NY/NJ Certified</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
