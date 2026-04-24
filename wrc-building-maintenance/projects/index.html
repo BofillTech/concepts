@@ -336,6 +336,35 @@ nav .container {
   letter-spacing: 0.2em;
   color: var(--gold);
   z-index: 2;
+  text-transform: uppercase;
+}
+.entry-badge {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.entry-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  background: var(--forest-deep);
+  border-radius: 50%;
+  animation: entry-badge-pulse 1.8s ease-in-out infinite;
+}
+@keyframes entry-badge-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 .project-entry-visual::before {
   content: "";
@@ -579,6 +608,7 @@ footer {
       <li><a href="../about/">About</a></li>
       <li><a href="../services/">Services</a></li>
       <li><a href="../projects/" class="active">Projects</a></li>
+      <li><a href="../before-after/">Before &amp; After</a></li>
       <li><a href="../#certifications">Certifications</a></li>
       <li><a href="../contact/" class="btn gold">Contact Us</a></li>
     </ul>
@@ -606,6 +636,49 @@ footer {
 <!-- ========== PROJECT LIST ========== -->
 <section class="project-list">
   <div class="container">
+
+    <!-- 34 Main Street Yonkers — CURRENT -->
+    <article class="project-entry current-project">
+      <div class="project-entry-visual" data-num="Current · Final Cleaning">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <rect x="25" y="50" width="150" height="135"/>
+          <g>
+            <line x1="45" y1="70" x2="45" y2="175"/>
+            <line x1="65" y1="70" x2="65" y2="175"/>
+            <line x1="85" y1="70" x2="85" y2="175"/>
+            <line x1="105" y1="70" x2="105" y2="175"/>
+            <line x1="125" y1="70" x2="125" y2="175"/>
+            <line x1="145" y1="70" x2="145" y2="175"/>
+            <line x1="155" y1="70" x2="155" y2="175"/>
+            <line x1="25" y1="90" x2="175" y2="90"/>
+            <line x1="25" y1="110" x2="175" y2="110"/>
+            <line x1="25" y1="130" x2="175" y2="130"/>
+            <line x1="25" y1="150" x2="175" y2="150"/>
+          </g>
+          <rect x="85" y="155" width="30" height="30"/>
+          <path d="M15 50 L100 18 L185 50"/>
+          <circle cx="100" cy="34" r="3" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="entry-badge">Active Now</span>
+      </div>
+      <div class="project-entry-info">
+        <div class="project-entry-sector">Current Project &middot; Multi-Family</div>
+        <h2 class="project-entry-name">34 Main Street</h2>
+        <p class="project-entry-desc">
+          Final construction cleaning on an active build in downtown Yonkers &mdash; working
+          alongside Macquesten Development to deliver the property walkthrough-ready on schedule.
+          Every surface, every finish, every detail cleaned to handover standard.
+        </p>
+        <div class="project-entry-details">
+          <div class="detail-label">Location</div>
+          <div class="detail-value">Yonkers, NY 10701</div>
+          <div class="detail-label">General Contractor</div>
+          <div class="detail-value">Macquesten</div>
+          <div class="detail-label">Services</div>
+          <div class="detail-value">Final Construction Cleaning &middot; Punch-List Detail &middot; Handover Prep</div>
+        </div>
+      </div>
+    </article>
 
     <!-- 01 Stony Brook -->
     <article class="project-entry">
@@ -792,6 +865,7 @@ footer {
           <li><a href="../about/">About Us</a></li>
           <li><a href="../services/">Services</a></li>
           <li><a href="./">Projects</a></li>
+          <li><a href="../before-after/">Before &amp; After</a></li>
           <li><a href="../#certifications">Certifications</a></li>
           <li><a href="../contact/">Contact</a></li>
         </ul>

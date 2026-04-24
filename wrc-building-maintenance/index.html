@@ -761,8 +761,36 @@ nav .container {
 }
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.project-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--gold);
+  color: var(--forest-deep);
+  padding: 6px 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.project-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--forest-deep);
+  border-radius: 50%;
+  animation: badge-pulse 1.8s ease-in-out infinite;
+}
+@keyframes badge-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
 }
 .project-card {
   position: relative;
@@ -824,13 +852,13 @@ nav .container {
 }
 .project-name {
   font-family: 'Fraunces', serif;
-  font-size: 30px;
+  font-size: 24px;
   line-height: 1.15;
   font-weight: 500;
   color: var(--ivory);
   margin-bottom: 16px;
   letter-spacing: -0.01em;
-  max-width: 400px;
+  max-width: 340px;
 }
 .project-meta {
   display: flex;
@@ -875,6 +903,9 @@ nav .container {
   .projects-grid { grid-template-columns: 1fr; }
   .project-name { font-size: 24px; }
   .project-content { padding: 32px; }
+}
+@media (min-width: 901px) and (max-width: 1200px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 
@@ -958,12 +989,20 @@ nav .container {
   box-shadow: 0 20px 40px rgba(20, 49, 40, 0.08);
 }
 .cert-seal {
-  width: 140px;
+  width: 180px;
   height: 140px;
   margin: 0 auto 32px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 12px;
+}
+.cert-seal img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 .cert-seal svg {
   width: 100%;
@@ -1276,6 +1315,7 @@ footer {
       <li><a href="about/">About</a></li>
       <li><a href="services/">Services</a></li>
       <li><a href="projects/">Projects</a></li>
+      <li><a href="before-after/">Before &amp; After</a></li>
       <li><a href="#certifications">Certifications</a></li>
       <li><a href="contact/" class="btn gold">Contact Us</a></li>
     </ul>
@@ -1642,6 +1682,40 @@ footer {
     </div>
 
     <div class="projects-grid">
+      <!-- 34 Main St Yonkers — CURRENT -->
+      <a href="projects/" class="project-card">
+        <div class="project-badge">Current Project</div>
+        <div class="project-visual">
+          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect x="30" y="50" width="140" height="130"/>
+            <g>
+              <line x1="50" y1="70" x2="50" y2="170"/>
+              <line x1="70" y1="70" x2="70" y2="170"/>
+              <line x1="90" y1="70" x2="90" y2="170"/>
+              <line x1="110" y1="70" x2="110" y2="170"/>
+              <line x1="130" y1="70" x2="130" y2="170"/>
+              <line x1="150" y1="70" x2="150" y2="170"/>
+              <line x1="30" y1="90" x2="170" y2="90"/>
+              <line x1="30" y1="110" x2="170" y2="110"/>
+              <line x1="30" y1="130" x2="170" y2="130"/>
+              <line x1="30" y1="150" x2="170" y2="150"/>
+            </g>
+            <rect x="85" y="150" width="30" height="30"/>
+            <path d="M20 50 L100 20 L180 50"/>
+            <circle cx="100" cy="35" r="3" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <div class="project-content">
+          <div class="project-info">
+            <h3 class="project-name">34 Main Street</h3>
+            <div class="project-meta">
+              <span class="project-location">Yonkers, NY &middot; Final Cleaning</span>
+              <span class="project-arrow">&rarr;</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
       <!-- Citigroup -->
       <a href="projects/" class="project-card">
         <div class="project-visual">
@@ -1821,32 +1895,12 @@ footer {
     <div class="certs-grid">
       <div class="cert-card">
         <div class="cert-seal">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <path id="curve-nyc-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
-              <path id="curve-nyc-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
-            </defs>
-            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
-            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
-              <textPath href="#curve-nyc-top" startOffset="50%" text-anchor="middle">NYC SMALL BUSINESS SERVICES</textPath>
-            </text>
-            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
-              <textPath href="#curve-nyc-bot" startOffset="50%" text-anchor="middle">CERTIFIED MWBE</textPath>
-            </text>
-            <!-- NYC emblem: simple building silhouette -->
-            <rect x="48" y="50" width="10" height="24" fill="#1F4E3D"/>
-            <rect x="62" y="44" width="10" height="30" fill="#1F4E3D"/>
-            <rect x="76" y="54" width="8" height="20" fill="#1F4E3D"/>
-            <rect x="38" y="58" width="8" height="16" fill="#1F4E3D"/>
-            <path d="M 30,76 L 90,76" stroke="#B48D4F" stroke-width="1.5"/>
-            <text x="60" y="90" font-family="Fraunces, serif" font-size="9" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">M/WBE</text>
-          </svg>
+          <img src="cert-nyc-mbe.png" alt="NYC Small Business Services MBE Certified">
         </div>
         <div class="cert-issuer">NYC Small Business Services</div>
-        <h3 class="cert-title">Minority Women-Owned Business</h3>
+        <h3 class="cert-title">Minority Business Enterprise</h3>
         <p class="cert-details">
-          Certified M/WBE by the New York City Department of Small Business Services &mdash;
+          Certified MBE by the New York City Department of Small Business Services &mdash;
           recognized across all five boroughs for municipal contracting opportunities.
         </p>
         <div class="cert-meta">
@@ -1856,25 +1910,7 @@ footer {
 
       <div class="cert-card">
         <div class="cert-seal">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <path id="curve-nys-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
-              <path id="curve-nys-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
-            </defs>
-            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
-            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
-              <textPath href="#curve-nys-top" startOffset="50%" text-anchor="middle">EMPIRE STATE DEVELOPMENT</textPath>
-            </text>
-            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
-              <textPath href="#curve-nys-bot" startOffset="50%" text-anchor="middle">NEW YORK STATE MBE</textPath>
-            </text>
-            <!-- Shield / state emblem -->
-            <path d="M 60,42 L 75,46 L 75,62 Q 75,72 60,78 Q 45,72 45,62 L 45,46 Z" fill="#1F4E3D"/>
-            <path d="M 60,48 L 70,51 L 70,62 Q 70,68 60,72 Q 50,68 50,62 L 50,51 Z" fill="#B48D4F"/>
-            <text x="60" y="65" font-family="Fraunces, serif" font-size="9" font-weight="700" fill="#FAF7F0" text-anchor="middle">NY</text>
-            <text x="60" y="93" font-family="Fraunces, serif" font-size="9" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">MBE</text>
-          </svg>
+          <img src="cert-nys-mbe.png" alt="NY State Division of Minority and Women's Business Development">
         </div>
         <div class="cert-issuer">Empire State Development</div>
         <h3 class="cert-title">New York State MBE</h3>
@@ -1889,32 +1925,12 @@ footer {
 
       <div class="cert-card">
         <div class="cert-seal">
-          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <path id="curve-panynj-top" d="M 60,60 m -46,0 a 46,46 0 0,1 92,0" fill="none"/>
-              <path id="curve-panynj-bot" d="M 60,60 m -44,8 a 44,44 0 0,0 88,0" fill="none"/>
-            </defs>
-            <circle cx="60" cy="60" r="55" fill="none" stroke="#1F4E3D" stroke-width="1.5"/>
-            <circle cx="60" cy="60" r="50" fill="none" stroke="#B48D4F" stroke-width="0.8"/>
-            <text font-family="DM Sans, sans-serif" font-size="7" font-weight="600" letter-spacing="2" fill="#1F4E3D">
-              <textPath href="#curve-panynj-top" startOffset="50%" text-anchor="middle">PORT AUTHORITY NY &amp; NJ</textPath>
-            </text>
-            <text font-family="DM Sans, sans-serif" font-size="6" font-weight="500" letter-spacing="3" fill="#B48D4F">
-              <textPath href="#curve-panynj-bot" startOffset="50%" text-anchor="middle">MWBE CONSTRUCTION</textPath>
-            </text>
-            <!-- Infrastructure emblem: bridge/roadway -->
-            <circle cx="60" cy="58" r="14" fill="none" stroke="#1F4E3D" stroke-width="2"/>
-            <path d="M 46,58 L 74,58" stroke="#1F4E3D" stroke-width="2"/>
-            <path d="M 60,44 L 60,72" stroke="#1F4E3D" stroke-width="2"/>
-            <path d="M 50,48 Q 60,54 70,48" fill="none" stroke="#B48D4F" stroke-width="1.5"/>
-            <path d="M 50,68 Q 60,62 70,68" fill="none" stroke="#B48D4F" stroke-width="1.5"/>
-            <text x="60" y="92" font-family="Fraunces, serif" font-size="8" font-weight="600" fill="#1F4E3D" text-anchor="middle" font-style="italic">Regional</text>
-          </svg>
+          <img src="cert-portauthority.png" alt="Port Authority of NY and NJ Minority-Owned Business Enterprise Certified">
         </div>
         <div class="cert-issuer">Port Authority of NY &amp; NJ</div>
-        <h3 class="cert-title">Regional MWBE</h3>
+        <h3 class="cert-title">Regional MBE</h3>
         <p class="cert-details">
-          MWBE-certified for construction services with The Port Authority of New York
+          Minority-Owned Business Enterprise certified with The Port Authority of New York
           &amp; New Jersey for airport, bridge, tunnel, and facility projects.
         </p>
         <div class="cert-meta">
@@ -2037,6 +2053,7 @@ footer {
           <li><a href="about/">About Us</a></li>
           <li><a href="services/">Services</a></li>
           <li><a href="projects/">Projects</a></li>
+          <li><a href="before-after/">Before &amp; After</a></li>
           <li><a href="#certifications">Certifications</a></li>
           <li><a href="contact/">Contact</a></li>
         </ul>
