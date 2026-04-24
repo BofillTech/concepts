@@ -260,6 +260,106 @@ footer { background: var(--forest-deep); color: var(--sand); padding: 80px 0 32p
 }
 @media (max-width: 900px) { .team-grid { grid-template-columns: 1fr; } }
 
+/* ============ CERTIFICATIONS ============ */
+.section-intro {
+  font-size: 17px;
+  color: var(--stone);
+  max-width: 640px;
+  margin-bottom: 64px;
+}
+.certs {
+  background: var(--ivory);
+  position: relative;
+}
+.certs::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.cert-card {
+  border: 1px solid rgba(31, 78, 61, 0.15);
+  padding: 48px 36px;
+  background: var(--white);
+  position: relative;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+.cert-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(20, 49, 40, 0.08);
+}
+.cert-seal {
+  width: 180px;
+  height: 140px;
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+.cert-seal img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.cert-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.cert-issuer {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.cert-details {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.cert-meta {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(31, 78, 61, 0.1);
+  font-size: 13px;
+  color: var(--stone);
+}
+.cert-valid strong {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 11px;
+  display: block;
+  margin-bottom: 4px;
+  color: var(--gold);
+}
+@media (max-width: 900px) {
+  .certs-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -289,7 +389,7 @@ footer { background: var(--forest-deep); color: var(--sand); padding: 80px 0 32p
       <li><a href="../services/">Services</a></li>
       <li><a href="../projects/">Projects</a></li>
       <li><a href="../before-after/">Before &amp; After</a></li>
-      <li><a href="../#certifications">Certifications</a></li>
+      <li><a href="#certifications">Certifications</a></li>
       <li><a href="../contact/">Contact</a></li>
     </ul>
     <button class="mobile-toggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -378,6 +478,65 @@ footer { background: var(--forest-deep); color: var(--sand); padding: 80px 0 32p
           a key role in maintaining service reliability, operational consistency, and long-term
           client relationships.
         </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CERTIFICATIONS ========== -->
+<section class="section certs" id="certifications">
+  <div class="container">
+    <div class="section-eyebrow">Certifications</div>
+    <h2 class="section-title">Certified where it counts &mdash; across <em>city, state, and regional</em> authorities.</h2>
+    <p class="section-intro">
+      WRC is a recognized Minority- and Women-Owned Business Enterprise at every level of
+      government procurement &mdash; giving our clients direct access to diversity goals and incentive programs.
+    </p>
+
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-seal">
+          <img src="../cert-nyc-mbe.png" alt="NYC Small Business Services MBE Certified">
+        </div>
+        <div class="cert-issuer">NYC Small Business Services</div>
+        <h3 class="cert-title">Minority Business Enterprise</h3>
+        <p class="cert-details">
+          Certified MBE by the New York City Department of Small Business Services &mdash;
+          recognized across all five boroughs for municipal contracting opportunities.
+        </p>
+        <div class="cert-meta">
+          <span class="cert-valid"><strong>Valid through</strong> Aug 31, 2030</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-seal">
+          <img src="../cert-nys-mbe.png" alt="NY State Division of Minority and Women's Business Development">
+        </div>
+        <div class="cert-issuer">Empire State Development</div>
+        <h3 class="cert-title">New York State MBE</h3>
+        <p class="cert-details">
+          Minority Business Enterprise certification from the NYS Division of Minority
+          and Women's Business Development &mdash; eligible for all state agency procurements.
+        </p>
+        <div class="cert-meta">
+          <span class="cert-valid"><strong>Valid through</strong> Jan 7, 2030</span>
+        </div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-seal">
+          <img src="../cert-portauthority.png" alt="Port Authority of NY and NJ Minority-Owned Business Enterprise Certified">
+        </div>
+        <div class="cert-issuer">Port Authority of NY &amp; NJ</div>
+        <h3 class="cert-title">Regional MBE</h3>
+        <p class="cert-details">
+          Minority-Owned Business Enterprise certified with The Port Authority of New York
+          &amp; New Jersey for airport, bridge, tunnel, and facility projects.
+        </p>
+        <div class="cert-meta">
+          <span class="cert-valid"><strong>Valid through</strong> Dec 8, 2030</span>
+        </div>
       </div>
     </div>
   </div>
