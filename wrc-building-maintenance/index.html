@@ -553,6 +553,123 @@ nav .container {
   .service-card { padding: 36px 28px; }
 }
 
+/* ============ SERVICES COMPACT ============ */
+.services-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.service-compact-card {
+  background: var(--ivory);
+  padding: 32px 24px;
+  border: 1px solid rgba(31, 78, 61, 0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+.service-compact-card:hover {
+  background: var(--forest);
+  color: var(--ivory);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(31, 78, 61, 0.15);
+}
+.service-compact-card h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 8px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+.service-compact-card:hover h3 {
+  color: var(--ivory);
+}
+.service-compact-card p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+.service-compact-card:hover p {
+  color: rgba(250, 247, 240, 0.8);
+}
+.services-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+@media (max-width: 900px) {
+  .services-compact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .services-compact-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ STRENGTHS COMPACT ============ */
+.strengths {
+  background: var(--cream);
+  position: relative;
+}
+.strengths::before {
+  content: "";
+  position: absolute;
+  top: -150px;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.strengths-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.strength-compact {
+  background: var(--ivory);
+  padding: 32px 24px;
+  border: 1px solid rgba(31, 78, 61, 0.08);
+  transition: all 0.3s ease;
+}
+.strength-compact:hover {
+  background: var(--forest);
+  color: var(--ivory);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(31, 78, 61, 0.15);
+}
+.strength-compact .strength-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: 8px;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+.strength-compact:hover .strength-title {
+  color: var(--ivory);
+}
+.strength-compact .strength-desc {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.5;
+  transition: color 0.3s ease;
+}
+.strength-compact:hover .strength-desc {
+  color: rgba(250, 247, 240, 0.8);
+}
+
+@media (max-width: 900px) {
+  .strengths-compact-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .strengths-compact-grid { grid-template-columns: 1fr; }
+}
+
 /* ============ WHO WE ARE + STRENGTHS ============ */
 .who-we-are {
   background: var(--cream);
@@ -1519,166 +1636,78 @@ nav .container { gap: 24px; }
 <!-- ========== SERVICES ========== -->
 <section class="section services" id="services">
   <div class="container">
-    <div class="section-eyebrow">What We Do</div>
-    <h2 class="section-title">Integrated <em>construction &amp; maintenance</em> services for every stage of a property's life.</h2>
+    <div class="section-eyebrow">Our Services</div>
+    <h2 class="section-title">Integrated maintenance and construction support — <em>delivered with precision</em>.</h2>
     <p class="section-intro">
-      From turnover cleans during active construction to ongoing janitorial programs that keep
-      occupied buildings looking their best &mdash; our team adapts to the scope, schedule, and standard
-      your project demands.
+      From daily janitorial to specialized post-construction cleanup, WRC provides comprehensive building
+      services across commercial and residential properties.
     </p>
 
-    <div class="services-grid">
-      <!-- 01 Janitorial -->
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 40 L24 14 L40 40 Z M14 40 L34 40 M18 30 L30 30"/>
-            <circle cx="24" cy="10" r="3"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Janitorial Services</h3>
-        <p class="service-desc">Recurring cleaning programs for commercial offices, residential properties, and institutional facilities — tailored to your schedule and standards.</p>
+    <div class="services-compact-grid">
+      <div class="service-compact-card">
+        <h3>Janitorial Services</h3>
+        <p>Daily cleaning, maintenance, and sanitation for commercial facilities</p>
       </div>
+      <div class="service-compact-card">
+        <h3>Post-Construction Cleaning</h3>
+        <p>Comprehensive cleanup following construction and renovation work</p>
+      </div>
+      <div class="service-compact-card">
+        <h3>Floor Maintenance</h3>
+        <p>Specialized floor care including stripping, waxing, and restoration</p>
+      </div>
+      <div class="service-compact-card">
+        <h3>Final Construction Cleaning</h3>
+        <p>Move-in ready cleaning for new construction and renovations</p>
+      </div>
+      <div class="service-compact-card">
+        <h3>Interior Window Cleaning</h3>
+        <p>Professional streak-free cleaning for interior glass surfaces</p>
+      </div>
+      <div class="service-compact-card">
+        <h3>Construction Labor Management</h3>
+        <p>Skilled labor coordination and workforce management</p>
+      </div>
+      <div class="service-compact-card">
+        <h3>Painting & Wallcovering</h3>
+        <p>Interior and exterior painting with wallcovering installation</p>
+      </div>
+    </div>
 
-      <!-- 02 Post-Construction -->
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 22 L24 10 L38 22 L38 40 L10 40 Z"/>
-            <path d="M18 40 L18 28 L30 28 L30 40"/>
-            <path d="M14 16 L10 22 M34 16 L38 22"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Post-Construction Cleaning</h3>
-        <p class="service-desc">Rough, interim, and detailed cleans that transform dusty build sites into ready-to-hand-over spaces, from individual units to entire floors.</p>
-      </div>
-
-      <!-- 03 Floor Maintenance -->
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 36 L42 36 M10 30 L38 30 M14 24 L34 24"/>
-            <path d="M22 12 L28 12 M20 16 L30 16 M18 20 L32 20"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Floor Maintenance</h3>
-        <p class="service-desc">Stripping, waxing, polishing, and deep-cleaning across hardwood, tile, stone, concrete, and carpet — preserving finishes and extending floor life.</p>
-      </div>
-
-      <!-- 04 Final Construction Cleaning -->
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M8 24 L20 36 L40 14"/>
-            <circle cx="24" cy="24" r="20"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Final Construction Cleaning</h3>
-        <p class="service-desc">Punch-list ready detail work that meets owner walkthroughs and handover standards — the last 10% that turns a project into a finished space.</p>
-      </div>
-
-      <!-- 05 Window Cleaning -->
-      <div class="service-card">
-        <div class="service-num">05</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <rect x="8" y="8" width="32" height="32"/>
-            <path d="M24 8 L24 40 M8 24 L40 24"/>
-            <path d="M32 14 L38 14 M34 18 L36 18" stroke-width="2"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Interior Window Cleaning</h3>
-        <p class="service-desc">Streak-free, detail-oriented interior glass care for storefronts, lobbies, and occupied office environments — on schedule, without disruption.</p>
-      </div>
-
-      <!-- 06 Construction Labor Management -->
-      <div class="service-card">
-        <div class="service-num">06</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="16" cy="18" r="5"/>
-            <circle cx="32" cy="18" r="5"/>
-            <path d="M8 38 C8 30 12 28 16 28 C20 28 24 30 24 38"/>
-            <path d="M24 38 C24 30 28 28 32 28 C36 28 40 30 40 38"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Construction Labor Management</h3>
-        <p class="service-desc">Skilled, supervised labor support — staging, site coordination, daily housekeeping — that keeps general contractor timelines on track.</p>
-      </div>
-
-      <!-- 07 Painting & Wallcovering -->
-      <div class="service-card">
-        <div class="service-num">07</div>
-        <div class="service-icon">
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 8 L36 8 L36 20 L12 20 Z"/>
-            <path d="M24 20 L24 28 L28 28 L28 40 L20 40 L20 28 L24 28"/>
-          </svg>
-        </div>
-        <h3 class="service-title">Painting &amp; Wallcovering</h3>
-        <p class="service-desc">Interior painting and wallcovering installation with clean edges and clean sites — refreshes that hold up to daily wear and high-traffic use.</p>
-      </div>
+    <div class="services-cta">
+      <a href="services/" class="btn outline">See All Services</a>
     </div>
   </div>
 </section>
 
-<!-- ========== WHO WE ARE + STRENGTHS ========== -->
-<section class="section who-we-are" id="about">
+<!-- ========== WHAT SETS US APART ========== -->
+<section class="section strengths" id="strengths">
   <div class="container">
-    <div class="who-header">
-      <div class="who-left">
-        <div class="section-eyebrow">Who We Are</div>
-        <h2 class="section-title">A certified MWBE operating <em>throughout New York</em>.</h2>
-      </div>
-      <div class="who-right">
-        <p class="who-body">
-          WRC Building Maintenance is a certified Women- and Minority-Owned Business (MWBE)
-          operating throughout New York. Our organization is built on disciplined processes,
-          skilled field teams, and accountable project oversight. We partner closely with clients
-          to deliver consistent, compliant, and professionally managed services across every
-          engagement.
-        </p>
-        <a href="about/" class="btn outline">Read More About Us</a>
-      </div>
-    </div>
+    <div class="section-eyebrow">Our Strengths</div>
+    <h2 class="section-title">What sets us <em>apart</em>.</h2>
 
-    <div class="strengths-header">
-      <div class="section-eyebrow">Our Strengths</div>
-      <h3 class="strengths-title">What sets us <em>apart</em>.</h3>
-    </div>
-
-    <div class="strengths-grid">
-      <div class="strength">
-        <div class="strength-num">01</div>
+    <div class="strengths-compact-grid">
+      <div class="strength-compact">
         <h4 class="strength-title">Licensed &amp; MBE Certified</h4>
         <p class="strength-desc">Approved for public and private construction and maintenance projects across NYC, NY State, and the Port Authority of NY &amp; NJ.</p>
       </div>
-      <div class="strength">
-        <div class="strength-num">02</div>
+      <div class="strength-compact">
         <h4 class="strength-title">Multi-Trade Workforce</h4>
         <p class="strength-desc">Skilled laborers, painters, carpenters, wallcovering installers, and punch-list technicians &mdash; all under one roof.</p>
       </div>
-      <div class="strength">
-        <div class="strength-num">03</div>
+      <div class="strength-compact">
         <h4 class="strength-title">Labor &amp; Site Support</h4>
         <p class="strength-desc">Construction staffing and coordination for active and close-out phases &mdash; integrated with your GC's schedule and standards.</p>
       </div>
-      <div class="strength">
-        <div class="strength-num">04</div>
+      <div class="strength-compact">
         <h4 class="strength-title">Integrated Services</h4>
         <p class="strength-desc">Construction support, finishing trades, post-construction cleaning, and ongoing maintenance &mdash; one vendor, one point of accountability.</p>
       </div>
-      <div class="strength">
-        <div class="strength-num">05</div>
+      <div class="strength-compact">
         <h4 class="strength-title">Scalable Operations</h4>
         <p class="strength-desc">Workforce flexibility aligned with project scope and scheduling requirements &mdash; we match crew size to what the job demands.</p>
       </div>
-      <div class="strength">
-        <div class="strength-num">06</div>
+      <div class="strength-compact">
         <h4 class="strength-title">Client Accountability</h4>
         <p class="strength-desc">Professional communication, compliance, and project oversight at every stage &mdash; no surprises, no dropped hand-offs.</p>
       </div>
@@ -1808,56 +1837,6 @@ nav .container { gap: 24px; }
             <h3 class="project-name">The Harper New York</h3>
             <div class="project-meta">
               <span class="project-location">Upper East Side, NY &middot; Hospitality</span>
-              <span class="project-arrow">&rarr;</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Wegmans -->
-      <a href="projects/" class="project-card">
-        <div class="project-visual">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect x="20" y="50" width="160" height="120"/>
-            <path d="M20 80 L180 80"/>
-            <path d="M40 50 L40 30 L160 30 L160 50"/>
-            <rect x="40" y="95" width="35" height="75"/>
-            <rect x="85" y="95" width="30" height="45"/>
-            <rect x="125" y="95" width="35" height="75"/>
-            <path d="M40 170 L40 140 L75 140 L75 170"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-info">
-            <h3 class="project-name">Wegmans Supermarket</h3>
-            <div class="project-meta">
-              <span class="project-location">Norwalk, CT &middot; Retail</span>
-              <span class="project-arrow">&rarr;</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Stony Brook -->
-      <a href="projects/" class="project-card">
-        <div class="project-visual">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-            <rect x="30" y="60" width="140" height="110"/>
-            <rect x="50" y="80" width="20" height="25"/>
-            <rect x="85" y="80" width="30" height="25"/>
-            <rect x="130" y="80" width="20" height="25"/>
-            <rect x="50" y="120" width="20" height="25"/>
-            <rect x="130" y="120" width="20" height="25"/>
-            <path d="M85 115 L115 115 M100 100 L100 130" stroke-width="3"/>
-            <rect x="85" y="140" width="30" height="30"/>
-            <path d="M70 60 L70 40 L130 40 L130 60"/>
-          </svg>
-        </div>
-        <div class="project-content">
-          <div class="project-info">
-            <h3 class="project-name">Stony Brook Children's Hospital Expansion</h3>
-            <div class="project-meta">
-              <span class="project-location">Long Island, NY &middot; Healthcare</span>
               <span class="project-arrow">&rarr;</span>
             </div>
           </div>
