@@ -41,3 +41,6 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 19 | Marginal Way House Hotel | Ogunquit, ME | [marginalwayhouse.com](https://marginalwayhouse.com) | [View →](https://bofilltech.github.io/concepts/marginal-way/) | A — Magazine/Editorial (Heritage Coastal) | Fraunces + DM Sans | Apr 25 |
 
 | 20 | Pelham Bay Home Center | Bronx, NY | [pelhambayhomecenter.com](https://pelhambayhomecenter.com) | [View →](https://bofilltech.github.io/concepts/pelham-bay-home-center/) | Editorial Showroom (Retail/B2C — non-hospitality) | Playfair Display + Manrope | Apr 25 |
+
+| 21 | White Bay Villas — Getting Here Page | Jost Van Dyke, BVI | [jostvandyke.com](https://www.jostvandyke.com/) | [View →](https://bofilltech.github.io/concepts/wbv-getting-here/) | New Utility Page (existing client) — Brand-aligned per WBV guide | Fraunces + DM Sans | Apr 25 |
+
