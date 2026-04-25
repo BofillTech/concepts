@@ -44,3 +44,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 21 | White Bay Villas — Getting Here Page | Jost Van Dyke, BVI | [jostvandyke.com](https://www.jostvandyke.com/) | [View →](https://bofilltech.github.io/concepts/wbv-getting-here/) | New Utility Page (existing client) — Brand-aligned per WBV guide | Fraunces + DM Sans | Apr 25 |
 
+| 22 | White Bay Villas — Eat & Drink Guide | Jost Van Dyke, BVI | [jostvandyke.com](https://www.jostvandyke.com/) | [View →](https://bofilltech.github.io/concepts/wbv-jvd-guide/) | New Utility Page (existing client) — Interactive F&B map with filterable venues | Fraunces + DM Sans | Apr 25 |
+
