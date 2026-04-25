@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marginal Way House Hotel — Ogunquit, Maine's Finest Location Overlooking the Sea</title>
+<meta name="description" content="A historic seaside inn at the gateway of Ogunquit's Marginal Way. Oceanfront rooms, gardens, and porches steps from the beach.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0F1B26;
+  --ink-soft:#1E2D3D;
+  --gold:#C8A055;
+  --gold-deep:#A88440;
+  --gold-light:#E4CB94;
+  --parchment:#F8F3E9;
+  --parchment-warm:#F2EAD8;
+  --seaglass:#A8C0B7;
+  --charcoal:#2C3338;
+  --muted:#6B7480;
+  --line:rgba(15,27,38,0.12);
+  --line-gold:rgba(200,160,85,0.25);
+  --shadow-soft:0 2px 24px rgba(15,27,38,0.06);
+  --shadow-card:0 8px 40px rgba(15,27,38,0.10);
+  --font-display:'Fraunces',Georgia,serif;
+  --font-body:'DM Sans',-apple-system,sans-serif;
+  --transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.7;
+  color:var(--charcoal);
+  background:var(--parchment);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  padding-bottom:64px; /* space for sticky booking bar */
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none;transition:var(--transition)}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ─── NAVIGATION ─── */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  padding:20px 48px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(248,243,233,0);
+  transition:var(--transition);
+}
+.nav.scrolled{
+  background:rgba(248,243,233,0.97);
+  padding:14px 48px;
+  box-shadow:var(--shadow-soft);
+  backdrop-filter:saturate(140%) blur(12px);
+  -webkit-backdrop-filter:saturate(140%) blur(12px);
+}
+.nav-logo{display:flex;align-items:center;gap:12px}
+.nav-logo img{
+  height:58px;
+  width:auto;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,0.25));
+  transition:var(--transition);
+}
+.nav.scrolled .nav-logo img{height:48px;filter:none}
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:38px;
+  list-style:none;
+}
+.nav-links a{
+  font-family:var(--font-body);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:#FFF;
+  position:relative;
+  padding:6px 0;
+}
+.nav.scrolled .nav-links a{color:var(--ink)}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:50%;
+  width:0;
+  height:1px;
+  background:var(--gold);
+  transition:var(--transition);
+}
+.nav-links a:hover::after{left:0;width:100%}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-phone{
+  font-family:var(--font-display);
+  font-size:0.92rem;
+  font-weight:500;
+  letter-spacing:0.04em;
+  color:#FFF;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.nav.scrolled .nav-phone{color:var(--ink)}
+.nav-phone svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.6}
+.nav-book{
+  font-family:var(--font-body);
+  font-size:0.74rem;
+  font-weight:600;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--gold);
+  padding:13px 24px;
+  border:1px solid var(--gold);
+  border-radius:1px;
+  transition:var(--transition);
+  white-space:nowrap;
+}
+.nav-book:hover{background:transparent;color:#FFF;border-color:#FFF}
+.nav.scrolled .nav-book:hover{color:var(--ink);border-color:var(--ink);background:transparent}
+.nav-toggle{display:none}
+
+/* ─── HERO ─── */
+.hero{
+  position:relative;
+  height:100vh;
+  min-height:680px;
+  width:100%;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/architecture-marginal-way-houseDSC01055-qlzk7v8g5k2ttam0tui9z8d3cet4484hjiljx3hlvk.jpg');
+  background-size:cover;
+  background-position:center 40%;
+  filter:brightness(0.78) saturate(1.05);
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(15,27,38,0.55) 0%, rgba(15,27,38,0.25) 35%, rgba(15,27,38,0.15) 65%, rgba(15,27,38,0.55) 100%);
+}
+.hero-grain{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle at 50% 50%, rgba(232,202,148,0.08) 0%, transparent 70%);
+  mix-blend-mode:overlay;
+}
+.hero-content{
+  position:relative;
+  z-index:2;
+  height:100%;
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 48px;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding-bottom:120px;
+  color:#FFF;
+}
+.hero-eyebrow{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--font-body);
+  font-size:0.7rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:24px;
+  opacity:0;
+  animation:fadeUp 1s 0.2s forwards;
+}
+.hero-eyebrow::before{
+  content:'';
+  width:48px;height:1px;
+  background:var(--gold);
+}
+.hero-headline{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.8rem, 7vw, 6rem);
+  line-height:0.98;
+  letter-spacing:-0.02em;
+  max-width:18ch;
+  margin-bottom:28px;
+  opacity:0;
+  animation:fadeUp 1.2s 0.4s forwards;
+  font-variation-settings:"opsz" 144, "SOFT" 100;
+}
+.hero-headline em{
+  font-style:italic;
+  font-weight:300;
+  color:var(--gold-light);
+}
+.hero-sub{
+  font-size:1.05rem;
+  font-weight:300;
+  letter-spacing:0.02em;
+  max-width:48ch;
+  color:rgba(255,255,255,0.88);
+  margin-bottom:44px;
+  opacity:0;
+  animation:fadeUp 1.2s 0.7s forwards;
+}
+.hero-cta-row{
+  display:flex;
+  align-items:center;
+  gap:24px;
+  flex-wrap:wrap;
+  opacity:0;
+  animation:fadeUp 1.2s 0.95s forwards;
+}
+.btn-primary{
+  font-family:var(--font-body);
+  font-size:0.78rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--gold);
+  padding:18px 36px;
+  border:1px solid var(--gold);
+  border-radius:1px;
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  transition:var(--transition);
+}
+.btn-primary:hover{background:var(--gold-deep);border-color:var(--gold-deep);transform:translateY(-2px)}
+.btn-primary svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.btn-ghost{
+  font-family:var(--font-body);
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:#FFF;
+  border:1px solid rgba(255,255,255,0.5);
+  padding:18px 32px;
+  border-radius:1px;
+  transition:var(--transition);
+}
+.btn-ghost:hover{border-color:#FFF;background:rgba(255,255,255,0.08)}
+
+.hero-scroll{
+  position:absolute;
+  bottom:34px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;
+  font-family:var(--font-body);
+  font-size:0.65rem;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.7);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  pointer-events:none;
+}
+.hero-scroll::after{
+  content:'';
+  width:1px;height:40px;
+  background:linear-gradient(to bottom, rgba(255,255,255,0.7), transparent);
+  animation:scrollPulse 2.4s ease-in-out infinite;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{transform:scaleY(0.4);opacity:0.4}50%{transform:scaleY(1);opacity:1}}
+
+/* ─── EDITORIAL DIVIDER ─── */
+.divider-ornament{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  padding:28px 0;
+  color:var(--gold);
+}
+.divider-ornament::before,.divider-ornament::after{
+  content:'';
+  width:60px;
+  height:1px;
+  background:var(--gold);
+  opacity:0.5;
+}
+.divider-ornament svg{width:14px;height:14px}
+
+/* ─── WELCOME / EDITORIAL OPENING ─── */
+.welcome{
+  padding:140px 48px 100px;
+  background:var(--parchment);
+}
+.welcome-inner{
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:96px;
+  align-items:center;
+}
+.welcome-text{position:relative}
+.welcome-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:28px;
+}
+.welcome-text h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.2rem, 4vw, 3.6rem);
+  line-height:1.05;
+  letter-spacing:-0.015em;
+  color:var(--ink);
+  margin-bottom:32px;
+  font-variation-settings:"opsz" 144;
+}
+.welcome-text h2 em{font-style:italic;color:var(--gold-deep)}
+.welcome-text p{
+  font-size:1.05rem;
+  line-height:1.85;
+  color:var(--charcoal);
+  margin-bottom:22px;
+  max-width:52ch;
+}
+.welcome-text p.lead{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:300;
+  line-height:1.5;
+  font-style:italic;
+  color:var(--ink);
+}
+.welcome-signature{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  margin-top:36px;
+  padding-top:28px;
+  border-top:1px solid var(--line-gold);
+}
+.welcome-signature-text{
+  font-family:var(--font-display);
+  font-size:0.95rem;
+  font-style:italic;
+  color:var(--ink-soft);
+}
+.welcome-signature-mark{
+  font-family:var(--font-display);
+  font-size:0.7rem;
+  letter-spacing:0.3em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  font-weight:500;
+}
+
+.welcome-photo{
+  position:relative;
+}
+.welcome-photo .main-img{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.welcome-photo .main-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.2s ease;
+}
+.welcome-photo:hover .main-img img{transform:scale(1.04)}
+.welcome-photo .accent-img{
+  position:absolute;
+  bottom:-50px;
+  left:-60px;
+  width:42%;
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border:8px solid var(--parchment);
+  box-shadow:var(--shadow-card);
+  z-index:2;
+}
+.welcome-photo .accent-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+.welcome-photo .corner-mark{
+  position:absolute;
+  top:-22px;
+  right:-22px;
+  width:90px;height:90px;
+  border:1px solid var(--gold);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--font-display);
+  font-size:0.65rem;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  text-align:center;
+  background:var(--parchment);
+  z-index:3;
+}
+.welcome-photo .corner-mark span{font-style:italic;text-transform:none;letter-spacing:0;font-size:1.3rem;color:var(--ink);font-weight:300;display:block;margin-top:2px}
+
+/* ─── MARGINAL WAY FEATURE ─── */
+.feature-mw{
+  position:relative;
+  padding:120px 0;
+  background:var(--ink);
+  color:#FFF;
+  overflow:hidden;
+}
+.feature-mw::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url('https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/L1240623-qm00wdekc84h10cfax2wf73dl8zwmz34fqlsbz44qo.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:0.22;
+  filter:saturate(0.8);
+}
+.feature-mw-inner{
+  position:relative;
+  z-index:2;
+  max-width:1160px;
+  margin:0 auto;
+  padding:0 48px;
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:80px;
+  align-items:center;
+}
+.feature-mw-numeral{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:9rem;
+  line-height:0.85;
+  color:var(--gold);
+  font-variation-settings:"opsz" 144;
+  font-style:italic;
+}
+.feature-mw-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:24px;
+}
+.feature-mw h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2rem, 4vw, 3.4rem);
+  line-height:1.08;
+  letter-spacing:-0.015em;
+  margin-bottom:28px;
+  max-width:22ch;
+  font-variation-settings:"opsz" 144;
+}
+.feature-mw h2 em{font-style:italic;color:var(--gold-light)}
+.feature-mw p{
+  font-size:1.05rem;
+  line-height:1.85;
+  color:rgba(255,255,255,0.82);
+  max-width:54ch;
+  margin-bottom:18px;
+}
+.feature-mw .stat-row{
+  display:flex;
+  gap:48px;
+  margin-top:40px;
+  padding-top:32px;
+  border-top:1px solid rgba(200,160,85,0.3);
+}
+.stat{display:flex;flex-direction:column;gap:6px}
+.stat-num{
+  font-family:var(--font-display);
+  font-size:2rem;
+  font-weight:400;
+  color:var(--gold-light);
+  font-variation-settings:"opsz" 144;
+  font-style:italic;
+}
+.stat-lbl{
+  font-family:var(--font-body);
+  font-size:0.7rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,0.6);
+}
+
+/* ─── ROOMS ─── */
+.rooms{
+  padding:140px 48px 120px;
+  background:var(--parchment);
+}
+.rooms-inner{max-width:1320px;margin:0 auto}
+.rooms-header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:end;
+  margin-bottom:80px;
+}
+.rooms-header-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:24px;
+}
+.rooms-header h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.2rem, 4.5vw, 3.8rem);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  font-variation-settings:"opsz" 144;
+}
+.rooms-header h2 em{font-style:italic;color:var(--gold-deep)}
+.rooms-header-text{
+  font-size:1.02rem;
+  line-height:1.85;
+  color:var(--muted);
+  max-width:42ch;
+}
+.rooms-grid{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:8px 6px;
+}
+.room-card{
+  position:relative;
+  background:#FFF;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  transition:var(--transition);
+}
+.room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-card)}
+.room-card-img{
+  position:relative;
+  aspect-ratio:4/3;
+  overflow:hidden;
+  background:var(--ink-soft);
+}
+.room-card-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1s ease;
+}
+.room-card:hover .room-card-img img{transform:scale(1.06)}
+.room-card-badge{
+  position:absolute;
+  top:20px;left:20px;
+  background:rgba(248,243,233,0.95);
+  color:var(--ink);
+  padding:7px 14px;
+  font-family:var(--font-body);
+  font-size:0.62rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+.room-card-body{padding:32px 32px 36px;flex:1;display:flex;flex-direction:column}
+.room-card h3{
+  font-family:var(--font-display);
+  font-size:1.85rem;
+  font-weight:400;
+  letter-spacing:-0.015em;
+  color:var(--ink);
+  margin-bottom:12px;
+  font-variation-settings:"opsz" 144;
+}
+.room-card p{
+  font-size:0.96rem;
+  color:var(--muted);
+  line-height:1.7;
+  margin-bottom:24px;
+  flex:1;
+}
+.room-card-link{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  align-self:flex-start;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--gold);
+  transition:var(--transition);
+}
+.room-card-link::after{
+  content:'→';
+  font-size:1rem;
+  transition:transform 0.3s ease;
+}
+.room-card-link:hover{color:var(--ink)}
+.room-card-link:hover::after{transform:translateX(6px)}
+
+/* ─── GALLERY STRIP ─── */
+.gallery{
+  padding:60px 0 120px;
+  background:var(--parchment);
+}
+.gallery-header{
+  max-width:1320px;
+  margin:0 auto 60px;
+  padding:0 48px;
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:40px;
+  flex-wrap:wrap;
+}
+.gallery-header-text h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2rem, 3.6vw, 3rem);
+  letter-spacing:-0.015em;
+  color:var(--ink);
+  font-variation-settings:"opsz" 144;
+}
+.gallery-header-text h2 em{font-style:italic;color:var(--gold-deep)}
+.gallery-header-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:18px;
+}
+.gallery-strip{
+  display:grid;
+  grid-template-columns:repeat(12, 1fr);
+  gap:6px;
+  padding:0 12px;
+}
+.gallery-tile{
+  overflow:hidden;
+  background:var(--ink-soft);
+  position:relative;
+}
+.gallery-tile img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.2s ease;
+}
+.gallery-tile:hover img{transform:scale(1.06)}
+/* arrangement: editorial mosaic */
+.gallery-tile.t1{grid-column:span 5;aspect-ratio:5/4}
+.gallery-tile.t2{grid-column:span 4;aspect-ratio:4/4}
+.gallery-tile.t3{grid-column:span 3;aspect-ratio:3/4}
+.gallery-tile.t4{grid-column:span 4;aspect-ratio:4/3}
+.gallery-tile.t5{grid-column:span 5;aspect-ratio:5/3}
+.gallery-tile.t6{grid-column:span 3;aspect-ratio:3/3}
+
+/* ─── EXPERIENCE / AMENITIES ─── */
+.experience{
+  padding:140px 48px;
+  background:var(--parchment-warm);
+  position:relative;
+}
+.experience-inner{max-width:1280px;margin:0 auto}
+.experience-header{
+  text-align:center;
+  margin-bottom:80px;
+}
+.experience-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-deep);
+  margin-bottom:24px;
+}
+.experience-header h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.2rem, 4.5vw, 3.6rem);
+  line-height:1.05;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+  max-width:18ch;
+  margin:0 auto 24px;
+  font-variation-settings:"opsz" 144;
+}
+.experience-header h2 em{font-style:italic;color:var(--gold-deep)}
+.experience-header p{
+  max-width:54ch;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:1.02rem;
+  line-height:1.85;
+}
+.experience-grid{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:1px;
+  background:var(--line-gold);
+  border:1px solid var(--line-gold);
+}
+.experience-item{
+  background:var(--parchment-warm);
+  padding:48px 36px;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  transition:var(--transition);
+}
+.experience-item:hover{background:var(--parchment)}
+.experience-icon{
+  width:42px;height:42px;
+  color:var(--gold-deep);
+}
+.experience-icon svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.2}
+.experience-item h4{
+  font-family:var(--font-display);
+  font-size:1.4rem;
+  font-weight:400;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+  font-variation-settings:"opsz" 144;
+}
+.experience-item p{
+  font-size:0.95rem;
+  line-height:1.7;
+  color:var(--muted);
+}
+
+/* ─── LOCATION / FINAL CTA ─── */
+.cta-final{
+  position:relative;
+  padding:160px 48px;
+  background:var(--ink);
+  color:#FFF;
+  overflow:hidden;
+  text-align:center;
+}
+.cta-final::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background-image:url('https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/architecture-exterior-marginal-way-houseDSC01167-qm00vdop4irkrtsb3hn2sg3v0lvyih5bmttc3gl3b4.jpg');
+  background-size:cover;
+  background-position:center;
+  opacity:0.32;
+  filter:saturate(0.85);
+}
+.cta-final::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(15,27,38,0.6) 0%, rgba(15,27,38,0.85) 100%);
+}
+.cta-final-inner{
+  position:relative;
+  z-index:2;
+  max-width:780px;
+  margin:0 auto;
+}
+.cta-final-eyebrow{
+  font-family:var(--font-body);
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.32em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:28px;
+}
+.cta-final h2{
+  font-family:var(--font-display);
+  font-weight:300;
+  font-size:clamp(2.4rem, 5.5vw, 4.4rem);
+  line-height:1.02;
+  letter-spacing:-0.02em;
+  margin-bottom:30px;
+  font-variation-settings:"opsz" 144;
+}
+.cta-final h2 em{font-style:italic;color:var(--gold-light)}
+.cta-final p{
+  font-size:1.08rem;
+  line-height:1.8;
+  color:rgba(255,255,255,0.8);
+  max-width:54ch;
+  margin:0 auto 44px;
+}
+.cta-final-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:28px;
+  flex-wrap:wrap;
+}
+.cta-final-phone{
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--gold-light);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* ─── FOOTER ─── */
+.footer{
+  background:var(--ink-soft);
+  color:rgba(255,255,255,0.7);
+  padding:80px 48px 40px;
+}
+.footer-inner{
+  max-width:1280px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:64px;
+  align-items:start;
+}
+.footer-brand img{height:60px;margin-bottom:24px;filter:brightness(1.05)}
+.footer-brand p{
+  font-size:0.92rem;
+  line-height:1.75;
+  color:rgba(255,255,255,0.62);
+  max-width:32ch;
+}
+.footer h5{
+  font-family:var(--font-body);
+  font-size:0.7rem;
+  font-weight:600;
+  letter-spacing:0.28em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+  margin-bottom:22px;
+}
+.footer ul{list-style:none}
+.footer ul li{margin-bottom:10px}
+.footer ul a{
+  font-size:0.95rem;
+  color:rgba(255,255,255,0.78);
+  transition:var(--transition);
+}
+.footer ul a:hover{color:var(--gold-light)}
+.footer-contact p{
+  font-size:0.95rem;
+  line-height:1.8;
+  color:rgba(255,255,255,0.78);
+  margin-bottom:6px;
+}
+.footer-contact a{color:rgba(255,255,255,0.78);transition:var(--transition)}
+.footer-contact a:hover{color:var(--gold-light)}
+.footer-bottom{
+  max-width:1280px;
+  margin:60px auto 0;
+  padding-top:32px;
+  border-top:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:16px;
+}
+.footer-bottom p{font-size:0.82rem;color:rgba(255,255,255,0.4)}
+
+/* ─── BOTTOM BOOKING BAR ─── */
+.book-bar{
+  position:fixed;
+  bottom:0;left:0;right:0;
+  z-index:90;
+  background:var(--ink);
+  border-top:1px solid var(--gold);
+  padding:10px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  box-shadow:0 -8px 30px rgba(15,27,38,0.25);
+}
+.book-bar-field{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:6px 18px;
+  border-right:1px solid rgba(200,160,85,0.25);
+  min-width:140px;
+}
+.book-bar-field:last-of-type{border-right:none}
+.book-bar-label{
+  font-family:var(--font-body);
+  font-size:0.6rem;
+  font-weight:500;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--gold-light);
+}
+.book-bar-input{
+  font-family:var(--font-display);
+  font-size:0.92rem;
+  font-weight:400;
+  color:#FFF;
+  background:transparent;
+  border:none;
+  outline:none;
+  padding:0;
+  width:100%;
+  cursor:pointer;
+}
+.book-bar-input::-webkit-calendar-picker-indicator{filter:invert(1);opacity:0.5;cursor:pointer}
+.book-bar-btn{
+  font-family:var(--font-body);
+  font-size:0.74rem;
+  font-weight:600;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:var(--gold);
+  border:1px solid var(--gold);
+  padding:14px 32px;
+  margin-left:8px;
+  transition:var(--transition);
+  white-space:nowrap;
+}
+.book-bar-btn:hover{background:var(--gold-deep);border-color:var(--gold-deep)}
+
+/* ─── REVEALS ─── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1s ease, transform 1s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width:1100px){
+  .welcome-inner{grid-template-columns:1fr;gap:80px}
+  .welcome-photo .accent-img{left:0;bottom:-40px;width:38%}
+  .feature-mw-inner{grid-template-columns:1fr;gap:32px}
+  .feature-mw-numeral{font-size:6rem}
+  .footer-inner{grid-template-columns:1fr 1fr;gap:48px}
+}
+@media (max-width:880px){
+  .nav{padding:16px 24px}
+  .nav.scrolled{padding:12px 24px}
+  .nav-links{display:none}
+  .nav-toggle{
+    display:flex;flex-direction:column;gap:5px;
+    background:none;border:none;cursor:pointer;padding:8px;
+  }
+  .nav-toggle span{width:22px;height:1.5px;background:#FFF;transition:var(--transition)}
+  .nav.scrolled .nav-toggle span{background:var(--ink)}
+  .nav-phone{display:none}
+  .nav-mobile{
+    position:fixed;top:0;right:-100%;width:80%;max-width:340px;height:100vh;
+    background:var(--ink);padding:80px 36px 48px;
+    transition:right 0.5s cubic-bezier(0.2,0.8,0.2,1);
+    z-index:99;
+    display:flex;flex-direction:column;gap:24px;
+  }
+  .nav-mobile.open{right:0}
+  .nav-mobile a{
+    font-family:var(--font-display);font-size:1.4rem;font-weight:400;
+    color:#FFF;padding:8px 0;border-bottom:1px solid rgba(200,160,85,0.2);
+  }
+  .nav-mobile-phone{
+    margin-top:auto;font-family:var(--font-display);font-size:1.1rem;
+    color:var(--gold-light);font-style:italic;
+  }
+  .nav-mobile-close{
+    position:absolute;top:24px;right:24px;font-size:1.6rem;color:#FFF;
+    background:none;border:none;cursor:pointer;
+  }
+  .hero{min-height:600px;height:90vh}
+  .hero-content{padding:0 24px 100px}
+  .hero-headline{font-size:2.6rem}
+  .welcome,.rooms,.experience,.cta-final{padding-left:24px;padding-right:24px}
+  .welcome{padding-top:90px;padding-bottom:80px}
+  .rooms,.experience{padding-top:90px;padding-bottom:90px}
+  .rooms-grid{grid-template-columns:1fr}
+  .rooms-header{grid-template-columns:1fr;gap:24px}
+  .gallery-header{padding:0 24px}
+  .gallery-strip{grid-template-columns:repeat(6,1fr);padding:0 6px}
+  .gallery-tile{grid-column:span 3 !important;aspect-ratio:4/3 !important}
+  .experience-grid{grid-template-columns:1fr;border:none}
+  .experience-item{border-bottom:1px solid var(--line-gold)}
+  .footer{padding:60px 24px 32px}
+  .footer-inner{grid-template-columns:1fr;gap:36px}
+  .feature-mw{padding:80px 0}
+  .feature-mw-inner{padding:0 24px}
+  .cta-final{padding:100px 24px}
+  /* Booking bar mobile */
+  .book-bar{padding:8px 12px;gap:6px}
+  .book-bar-field{padding:6px 10px;min-width:0;flex:1}
+  .book-bar-label{font-size:0.55rem;letter-spacing:0.18em}
+  .book-bar-input{font-size:0.82rem}
+  .book-bar-btn{padding:12px 18px;margin-left:4px;font-size:0.7rem}
+  body{padding-bottom:74px}
+}
+@media (max-width:540px){
+  .hero-cta-row{flex-direction:column;align-items:stretch;gap:14px}
+  .btn-primary,.btn-ghost{justify-content:center}
+  .feature-mw .stat-row{flex-direction:column;gap:24px}
+  .gallery-tile{grid-column:span 6 !important}
+  .welcome-photo .corner-mark{width:72px;height:72px;font-size:0.55rem;top:-12px;right:-12px}
+  .welcome-photo .corner-mark span{font-size:1.1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/MarginalWay_Logo2017-1.png" alt="Marginal Way House Hotel">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="https://marginalwayhouse.com/specials/">Specials</a></li>
+    <li><a href="https://marginalwayhouse.com/directions/">Directions</a></li>
+    <li><a href="https://marginalwayhouse.com/contact/">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:2076468801" class="nav-phone">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      207-646-8801
+    </a>
+    <a href="https://marginalwayhousehotel.client.innroad.com" class="nav-book" target="_blank" rel="noopener">Book Now</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="navMobile">
+  <button class="nav-mobile-close" id="navClose" aria-label="Close menu">×</button>
+  <a href="#rooms">Rooms</a>
+  <a href="#experience">Experience</a>
+  <a href="#gallery">Gallery</a>
+  <a href="https://marginalwayhouse.com/specials/">Specials</a>
+  <a href="https://marginalwayhouse.com/directions/">Directions</a>
+  <a href="https://marginalwayhouse.com/contact/">Contact</a>
+  <a href="https://marginalwayhousehotel.client.innroad.com" class="nav-book" style="background:var(--gold);color:var(--ink);text-align:center;padding:14px;margin-top:24px">Book Now</a>
+  <a href="tel:2076468801" class="nav-mobile-phone">207-646-8801</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Ogunquit, Maine · Est. on the sea</span>
+    <h1 class="hero-headline">Where the <em>Marginal Way</em><br>begins.</h1>
+    <p class="hero-sub">A historic seaside inn on the very edge of Ogunquit Beach, at the gateway of one of New England's most beloved coastal walks.</p>
+    <div class="hero-cta-row">
+      <a href="https://marginalwayhousehotel.client.innroad.com" class="btn-primary" target="_blank" rel="noopener">
+        Reserve your stay
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#rooms" class="btn-ghost">View rooms</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ═══════════ WELCOME ═══════════ -->
+<section class="welcome">
+  <div class="welcome-inner">
+    <div class="welcome-text reveal">
+      <p class="welcome-eyebrow">— A Welcome from the Sea</p>
+      <h2>Ogunquit's finest <em>location</em>, overlooking the sea.</h2>
+      <p class="lead">Set on a quiet bend of Wharf Lane, the Marginal Way House has welcomed guests to the Maine coast for generations.</p>
+      <p>Wraparound porches face the surf. Salt air drifts through plantation shutters. Beyond the lawn, sailboats slip across the cove and the Marginal Way unfolds toward Perkins Cove — one of the most photographed coastal walks in America.</p>
+      <p>Every room here is steps from Ogunquit Beach. Every morning begins with the sound of the Atlantic.</p>
+      <div class="welcome-signature">
+        <span class="welcome-signature-mark">— Since 1873</span>
+      </div>
+    </div>
+    <div class="welcome-photo reveal">
+      <div class="corner-mark">Overlooking<span>the Sea</span></div>
+      <div class="main-img">
+        <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/architecture-marginal-way-houseDSC01055-qlzk7v8g5k2ttam0tui9z8d3cet4484hjiljx3hlvk.jpg" alt="The Marginal Way House facade overlooking the sea" loading="lazy">
+      </div>
+      <div class="accent-img">
+        <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/L1240623-qm00wdekc84h10cfax2wf73dl8zwmz34fqlsbz44qo.jpg" alt="Garden and ocean view from the property" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ MARGINAL WAY FEATURE ═══════════ -->
+<section class="feature-mw">
+  <div class="feature-mw-inner">
+    <div class="feature-mw-numeral">01</div>
+    <div class="reveal">
+      <p class="feature-mw-eyebrow">— A walk into legend</p>
+      <h2>The path begins <em>at our door.</em></h2>
+      <p>The Marginal Way is a 1.25-mile cliffside walk that winds from Ogunquit Beach to the lobster shacks of Perkins Cove. It traces tide pools, weather-beaten benches, and views that have inspired painters for over a century.</p>
+      <p>Our property sits at the trailhead — close enough that you can step from your porch to the path before the morning fog has lifted from the rocks.</p>
+      <div class="stat-row">
+        <div class="stat">
+          <span class="stat-num">1.25</span>
+          <span class="stat-lbl">Miles of coastline</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">3 min</span>
+          <span class="stat-lbl">Walk to the beach</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">150+</span>
+          <span class="stat-lbl">Years on Wharf Lane</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROOMS ═══════════ -->
+<section class="rooms" id="rooms">
+  <div class="rooms-inner">
+    <div class="rooms-header">
+      <div class="reveal">
+        <p class="rooms-header-eyebrow">— Accommodations</p>
+        <h2>Four houses,<br>one <em>quiet shore.</em></h2>
+      </div>
+      <p class="rooms-header-text reveal">From sunlit rooms in the original Main House to the airy decks of the Wharf House on the cove, every room at Marginal Way is steps from the sand.</p>
+    </div>
+
+    <div class="rooms-grid">
+
+      <a href="https://marginalwayhouse.com/room-type/main-house/" class="room-card reveal">
+        <div class="room-card-img">
+          <span class="room-card-badge">Original 1873</span>
+          <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/architecture-marginal-way-houseDSC01055-600x600.jpg" alt="Main House at Marginal Way" loading="lazy">
+        </div>
+        <div class="room-card-body">
+          <h3>The Main House</h3>
+          <p>Classic seaside rooms in the original 1873 inn — wraparound porches, pitched ceilings, and sweeping ocean views from the upper floors.</p>
+          <span class="room-card-link">Explore the Main House</span>
+        </div>
+      </a>
+
+      <a href="https://marginalwayhouse.com/room-type/carriage-house/" class="room-card reveal">
+        <div class="room-card-img">
+          <span class="room-card-badge">Garden side</span>
+          <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/architecture-marginal-way-houseDSC01170-600x600.jpg" alt="Carriage House" loading="lazy">
+        </div>
+        <div class="room-card-body">
+          <h3>The Carriage House</h3>
+          <p>Comfortable, quiet rooms tucked beside the gardens — a few steps from the pool, the lawn, and the sea wall beyond.</p>
+          <span class="room-card-link">Explore the Carriage House</span>
+        </div>
+      </a>
+
+      <a href="https://marginalwayhouse.com/room-type/dockside-deckhouse/" class="room-card reveal">
+        <div class="room-card-img">
+          <span class="room-card-badge">On the cove</span>
+          <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/architecture-marginal-way-houseDSC01138-600x600.jpg" alt="Dockside Deckhouse" loading="lazy">
+        </div>
+        <div class="room-card-body">
+          <h3>The Dockside Deckhouse</h3>
+          <p>Private decks looking straight out over the cove. Listen to the rigging at twilight, watch the sailboats come in with the tide.</p>
+          <span class="room-card-link">Explore the Dockside Deckhouse</span>
+        </div>
+      </a>
+
+      <a href="https://marginalwayhouse.com/room-type/wharf-house/" class="room-card reveal">
+        <div class="room-card-img">
+          <span class="room-card-badge">Waterfront</span>
+          <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/architecture-marginal-way-houseDSC01207-600x600.jpg" alt="Wharf House" loading="lazy">
+        </div>
+        <div class="room-card-body">
+          <h3>The Wharf House</h3>
+          <p>Our waterfront house — refined, light-filled rooms perched directly above the harbor with the very best views on the property.</p>
+          <span class="room-card-link">Explore the Wharf House</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALLERY STRIP ═══════════ -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="gallery-header-text reveal">
+      <p class="gallery-header-eyebrow">— Around the property</p>
+      <h2>A <em>quiet anthology</em> of Maine.</h2>
+    </div>
+  </div>
+  <div class="gallery-strip">
+    <div class="gallery-tile t1 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/L1240623-qm00wdekc84h10cfax2wf73dl8zwmz34fqlsbz44qo.jpg" alt="Garden and ocean view" loading="lazy">
+    </div>
+    <div class="gallery-tile t2 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/architecture-exterior-marginal-way-houseDSC01167-qm00vdop4irkrtsb3hn2sg3v0lvyih5bmttc3gl3b4.jpg" alt="Property exterior architecture" loading="lazy">
+    </div>
+    <div class="gallery-tile t3 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/107L1240601-qlzkf98rvo6z2xvmojhp2v8jggdzmkgiw37yqej6yo.jpg" alt="Coastal scene" loading="lazy">
+    </div>
+    <div class="gallery-tile t4 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/fence-qlzk2b0tpugr4couaxyqq4vwtc7xkp1nrzn4p5qgow.jpg" alt="Property and fence overlooking sea" loading="lazy">
+    </div>
+    <div class="gallery-tile t5 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/403_DSC05914-qm017htt7ncmew6scq5yxe1qne69q18rysimrumf40.jpg" alt="Room interior" loading="lazy">
+    </div>
+    <div class="gallery-tile t6 reveal">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/elementor/thumbs/203-marginal-way-houseDSC01585-1-qm00vo0x7p5qbjdaf43z1vhxjugzv5adc8zodi5reo.jpg" alt="Guest room view" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ EXPERIENCE ═══════════ -->
+<section class="experience" id="experience">
+  <div class="experience-inner">
+    <div class="experience-header reveal">
+      <p class="experience-eyebrow">— The Experience</p>
+      <h2>The simple <em>luxuries</em> of a New England coast.</h2>
+      <p>Quiet, well-appointed details set against one of the most beautiful coastlines in America. Everything you need — nothing in the way of the view.</p>
+    </div>
+
+    <div class="experience-grid">
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><path d="M2 12 C 6 8, 10 16, 14 12 S 22 8, 22 12"/><path d="M2 17 C 6 13, 10 21, 14 17 S 22 13, 22 17"/></svg>
+        </div>
+        <h4>Oceanfront grounds</h4>
+        <p>Manicured lawns, garden beds, and Adirondack chairs facing directly onto the Atlantic surf.</p>
+      </div>
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+        </div>
+        <h4>Wraparound porches</h4>
+        <p>Generous covered porches with white wicker, the perfect perch for morning coffee or evening cocktails.</p>
+      </div>
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <h4>Steps from the beach</h4>
+        <p>A three-minute walk to Ogunquit Beach — three miles of soft white sand stretching to the horizon.</p>
+      </div>
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><path d="M4 22h16M5 22V8l7-5 7 5v14M9 14h6v8M9 22v-8"/></svg>
+        </div>
+        <h4>Historic charm</h4>
+        <p>Original architectural details, hardwood floors, and period appointments thoughtfully blended with modern comforts.</p>
+      </div>
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 6c4 0 4 3 8 3s4-3 8-3M3 12c4 0 4 3 8 3s4-3 8-3M3 18c4 0 4 3 8 3s4-3 8-3"/></svg>
+        </div>
+        <h4>Marginal Way access</h4>
+        <p>The trailhead is at our doorstep — 1.25 miles of cliffside walking from beach to Perkins Cove.</p>
+      </div>
+      <div class="experience-item reveal">
+        <div class="experience-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2 L13 5 L17 5 L14 7 L15 11 L12 9 L9 11 L10 7 L7 5 L11 5 Z"/><path d="M12 14v8M8 22h8"/></svg>
+        </div>
+        <h4>Sister property</h4>
+        <p>Guests enjoy preferred access to our sister property — Terrace by the Sea — for added pool and amenity privileges.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FINAL CTA ═══════════ -->
+<section class="cta-final">
+  <div class="cta-final-inner reveal">
+    <p class="cta-final-eyebrow">— Reserve your stay</p>
+    <h2>Begin your <em>walk</em><br>at Marginal Way.</h2>
+    <p>Rooms book quickly through summer and the foliage season. Reserve directly for our best available rates and a personal welcome on arrival.</p>
+    <div class="cta-final-row">
+      <a href="https://marginalwayhousehotel.client.innroad.com" class="btn-primary" target="_blank" rel="noopener">
+        Check availability
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="tel:2076468801" class="cta-final-phone">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        or call 207-646-8801
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="https://marginalwayhouse.com/wp-content/uploads/2017/01/MarginalWay_Logo2017-1.png" alt="Marginal Way House Hotel">
+      <p>An historic Ogunquit inn on the Maine coast. Family-welcomed and ocean-loved since the 1800s.</p>
+    </div>
+    <div>
+      <h5>Visit</h5>
+      <ul>
+        <li><a href="https://marginalwayhouse.com/room-type/main-house/">Main House</a></li>
+        <li><a href="https://marginalwayhouse.com/room-type/carriage-house/">Carriage House</a></li>
+        <li><a href="https://marginalwayhouse.com/room-type/dockside-deckhouse/">Dockside Deckhouse</a></li>
+        <li><a href="https://marginalwayhouse.com/room-type/wharf-house/">Wharf House</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Information</h5>
+      <ul>
+        <li><a href="https://marginalwayhouse.com/specials/">Specials</a></li>
+        <li><a href="https://marginalwayhouse.com/directions/">Directions</a></li>
+        <li><a href="https://marginalwayhouse.com/contact/">Contact</a></li>
+        <li><a href="https://marginalwayhouse.com/terms/">Terms & policies</a></li>
+        <li><a href="https://www.terracebythesea.com/">Terrace by the Sea</a></li>
+      </ul>
+    </div>
+    <div class="footer-contact">
+      <h5>Reach us</h5>
+      <p>22-24 Wharf Lane<br>PO Box 697<br>Ogunquit, ME 03907</p>
+      <p style="margin-top:14px"><a href="tel:2076468801">207-646-8801</a></p>
+      <p><a href="mailto:info@marginalwayhouse.com">info@marginalwayhouse.com</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Marginal Way House Hotel. All rights reserved.</p>
+    <p>Ogunquit, Maine</p>
+  </div>
+</footer>
+
+<!-- ═══════════ BOTTOM BOOKING BAR ═══════════ -->
+<div class="book-bar">
+  <div class="book-bar-field">
+    <span class="book-bar-label">Check in</span>
+    <input type="date" class="book-bar-input" id="checkIn">
+  </div>
+  <div class="book-bar-field">
+    <span class="book-bar-label">Check out</span>
+    <input type="date" class="book-bar-input" id="checkOut">
+  </div>
+  <button class="book-bar-btn" onclick="bookNow()">Book</button>
+</div>
+
+<script>
+// ─── Sticky nav scroll behavior ───
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>40)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ─── Mobile nav ───
+const navToggle=document.getElementById('navToggle');
+const navMobile=document.getElementById('navMobile');
+const navClose=document.getElementById('navClose');
+navToggle&&navToggle.addEventListener('click',()=>navMobile.classList.add('open'));
+navClose&&navClose.addEventListener('click',()=>navMobile.classList.remove('open'));
+navMobile.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navMobile.classList.remove('open')));
+
+// ─── Scroll reveals ───
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}});
+},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ─── Booking bar: pass dates to innroad ───
+const today=new Date();
+const tomorrow=new Date(today);tomorrow.setDate(today.getDate()+1);
+const fmt=d=>d.toISOString().split('T')[0];
+document.getElementById('checkIn').value=fmt(today);
+document.getElementById('checkOut').value=fmt(tomorrow);
+
+function bookNow(){
+  const ci=document.getElementById('checkIn').value;
+  const co=document.getElementById('checkOut').value;
+  // innRoad accepts arrival/departure params
+  const url=`https://marginalwayhousehotel.client.innroad.com?arrivalDate=${ci}&departureDate=${co}`;
+  window.open(url,'_blank','noopener');
+}
+
+// keep checkout >= checkin + 1
+document.getElementById('checkIn').addEventListener('change',(e)=>{
+  const ci=new Date(e.target.value);
+  const co=document.getElementById('checkOut');
+  if(new Date(co.value)<=ci){
+    const next=new Date(ci);next.setDate(ci.getDate()+1);
+    co.value=fmt(next);
+  }
+});
+</script>
+
+</body>
+</html>

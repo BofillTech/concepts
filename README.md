@@ -37,3 +37,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 17 | WRC Building Maintenance Corp. | Bronx, NY | (prospect — no current site) | [View →](https://bofilltech.github.io/concepts/wrc-building-maintenance/) | Editorial Architectural (B2B — non-hospitality) | Fraunces + DM Sans | Apr 22 |
 
 | 18 | Drossos Motel | Greenport, NY | [drossosmotel.com](http://www.drossosmotel.com/) | [View →](https://bofilltech.github.io/concepts/drossos-motel/) | Nostalgic Roadside / Vintage Poster | Abril Fatface + Karla | Apr 23 |
+
+| 19 | Marginal Way House Hotel | Ogunquit, ME | [marginalwayhouse.com](https://marginalwayhouse.com) | [View →](https://bofilltech.github.io/concepts/marginal-way/) | A — Magazine/Editorial (Heritage Coastal) | Fraunces + DM Sans | Apr 25 |
