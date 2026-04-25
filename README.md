@@ -39,3 +39,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 18 | Drossos Motel | Greenport, NY | [drossosmotel.com](http://www.drossosmotel.com/) | [View →](https://bofilltech.github.io/concepts/drossos-motel/) | Nostalgic Roadside / Vintage Poster | Abril Fatface + Karla | Apr 23 |
 
 | 19 | Marginal Way House Hotel | Ogunquit, ME | [marginalwayhouse.com](https://marginalwayhouse.com) | [View →](https://bofilltech.github.io/concepts/marginal-way/) | A — Magazine/Editorial (Heritage Coastal) | Fraunces + DM Sans | Apr 25 |
+
+| 20 | Pelham Bay Home Center | Bronx, NY | [pelhambayhomecenter.com](https://pelhambayhomecenter.com) | [View →](https://bofilltech.github.io/concepts/pelham-bay-home-center/) | Editorial Showroom (Retail/B2C — non-hospitality) | Playfair Display + Manrope | Apr 25 |
