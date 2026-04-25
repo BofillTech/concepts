@@ -95,6 +95,28 @@
     if(path.indexOf(a.getAttribute('href').split('/').filter(Boolean).pop()) > -1) a.parentElement.classList.add('active');
   });
 
+  // Dropdown click toggles
+  document.querySelectorAll('.nav-links > li').forEach(function(li){
+    var link = li.querySelector('a');
+    var menu = li.querySelector('.nav-dropdown-menu');
+    if(!menu) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+      if(!isOpen) li.classList.add('open');
+    });
+  });
+  // Close dropdowns on outside click or Escape
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-links')){
+      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape') document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+  });
+
   // Mobile menu
   document.getElementById('hamburger').addEventListener('click', function(){
     document.getElementById('mobileMenu').classList.toggle('open');
