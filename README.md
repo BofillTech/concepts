@@ -48,3 +48,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 23 | Harborside Resort Motel | Montauk, NY | [montaukharborside.com](https://www.montaukharborside.com/) | [View →](https://bofilltech.github.io/concepts/harborside/) | B/E — Split-Screen + Warm Community (Editorial Coastal) | Fraunces + Manrope | Apr 26 |
 
+| 24 | Hither House Cottages | Montauk, NY | [hitherhouse.com](https://www.hitherhouse.com/) | [View →](https://bofilltech.github.io/concepts/hither-house/) | A — Magazine/Editorial (Hilltop Cottage) | Fraunces + DM Sans | Apr 26 |
+
