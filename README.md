@@ -46,6 +46,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 22 | White Bay Villas — Eat & Drink Guide | Jost Van Dyke, BVI | [jostvandyke.com](https://www.jostvandyke.com/) | [View →](https://bofilltech.github.io/concepts/wbv-jvd-guide/) | New Utility Page (existing client) — Interactive F&B map with filterable venues | Fraunces + DM Sans | Apr 25 |
 
+| 24 | Ocean Vista Resort | Amagansett, NY | [oceanvistaresort.com](https://oceanvistaresort.com) | [View →](https://bofilltech.github.io/concepts/ocean-vista/) | Coastal Editorial Minimalism | Italiana + Albert Sans | Apr 27 |
+
 | 23 | Harborside Resort Motel | Montauk, NY | [montaukharborside.com](https://www.montaukharborside.com/) | [View →](https://bofilltech.github.io/concepts/harborside/) | B/E — Split-Screen + Warm Community (Editorial Coastal) | Fraunces + Manrope | Apr 26 |
 
 | 24 | Hither House Cottages | Montauk, NY | [hitherhouse.com](https://www.hitherhouse.com/) | [View →](https://bofilltech.github.io/concepts/hither-house/) | A — Magazine/Editorial (Hilltop Cottage) | Fraunces + DM Sans | Apr 26 |
