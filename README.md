@@ -54,3 +54,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 25 | The Sag Harbor Inn | Sag Harbor, NY | [sagharborinn.com](https://sagharborinn.com/) | [View →](https://bofilltech.github.io/concepts/sag-harbor-inn/) | A/D — Editorial Luxury (Refined Coastal Heritage) — fully semantic + JSON-LD Hotel schema, OG/Twitter tags, ARIA landmarks | Fraunces + Plus Jakarta Sans | Apr 27 |
 
+| 26 | Surfside Inn & Restaurant | Montauk, NY | [surfsideinnmontauk.com](http://surfsideinnmontauk.com/) | [View →](https://bofilltech.github.io/concepts/surfside-inn/) | A — Magazine/Editorial (Coastal Heritage) — phone in nav, minimal bottom booking bar, oversized italic display | Fraunces + DM Sans | Apr 27 |
+
