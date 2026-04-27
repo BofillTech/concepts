@@ -104,6 +104,73 @@ a{color:inherit;text-decoration:none}
 }
 .btn-book:hover::before{transform:translateX(100%)}
 
+/* ─── RESERVE DROPDOWN ─── */
+.nav-reserve{position:relative;display:inline-block}
+.btn-book-dropdown{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 18px 11px 20px;
+  background:var(--blue);color:#fff;
+  font-family:inherit;font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
+  border:none;cursor:pointer;border-radius:0;
+  transition:background 0.25s ease, transform 0.25s ease;
+  position:relative;overflow:hidden;
+}
+.btn-book-dropdown:hover{background:var(--blue-deep);transform:translateY(-1px)}
+.dropdown-chev{
+  width:10px;height:7px;flex-shrink:0;
+  transition:transform 0.3s ease;
+}
+.nav-reserve:hover .dropdown-chev,
+.nav-reserve.open .dropdown-chev{transform:rotate(180deg)}
+.reserve-dropdown{
+  position:absolute;top:calc(100% + 14px);right:0;
+  min-width:240px;background:#fff;
+  border:1px solid var(--line);
+  box-shadow:0 24px 60px -16px rgba(15,37,48,0.28), 0 4px 12px rgba(15,37,48,0.06);
+  opacity:0;visibility:hidden;
+  transform:translateY(-10px);
+  transition:opacity 0.25s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index:100;
+}
+.reserve-dropdown::before{
+  /* invisible bridge so hover doesn't break in the gap */
+  content:'';position:absolute;top:-14px;left:0;right:0;height:14px;
+}
+.reserve-dropdown::after{
+  /* small triangle pointing up to the button */
+  content:'';position:absolute;top:-6px;right:24px;
+  width:10px;height:10px;background:#fff;
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+  transform:rotate(45deg);
+}
+.nav-reserve:hover .reserve-dropdown,
+.nav-reserve.open .reserve-dropdown{
+  opacity:1;visibility:visible;transform:translateY(0);
+}
+.reserve-option{
+  display:block;padding:18px 22px;
+  border-bottom:1px solid var(--line);
+  transition:background 0.2s ease;
+  position:relative;
+}
+.reserve-option:last-child{border-bottom:none}
+.reserve-option:hover{background:var(--blue-pale)}
+.reserve-option strong{
+  font-family:'Fraunces',serif;font-weight:500;font-size:17px;
+  color:var(--teal);letter-spacing:-0.01em;
+  margin-bottom:5px;display:block;line-height:1.1;
+}
+.reserve-option span{
+  font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;
+}
+.reserve-option::after{
+  content:'→';position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  color:var(--blue);font-size:14px;opacity:0;
+  transition:opacity 0.25s ease, right 0.25s ease;
+}
+.reserve-option:hover::after{opacity:1;right:18px}
+
 /* ─── HERO ─── */
 .hero{
   position:relative;height:92vh;min-height:620px;width:100%;overflow:hidden;
@@ -627,7 +694,24 @@ a{color:inherit;text-decoration:none}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
       631.668.5958
     </a>
-    <a href="tel:6316685958" class="btn-book">Reservations</a>
+    <div class="nav-reserve" id="navReserve">
+      <button class="btn-book-dropdown" id="reserveBtn" aria-haspopup="true" aria-expanded="false">
+        Reservations
+        <svg class="dropdown-chev" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 1.5L6 6.5L11 1.5"/>
+        </svg>
+      </button>
+      <div class="reserve-dropdown" id="reserveDropdown" role="menu">
+        <a href="tel:6316685958" class="reserve-option" role="menuitem">
+          <strong>Reserve a Table</strong>
+          <span>Dinner · From 5PM</span>
+        </a>
+        <a href="tel:6316685958" class="reserve-option" role="menuitem">
+          <strong>Book a Room</strong>
+          <span>Oceanfront Stay</span>
+        </a>
+      </div>
+    </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
@@ -638,6 +722,8 @@ a{color:inherit;text-decoration:none}
   <a href="#experience">Bar &amp; Patio</a>
   <a href="#rooms">Rooms</a>
   <a href="#location">Visit</a>
+  <a href="tel:6316685958" style="font-size:18px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue-light);margin-top:12px;font-family:'DM Sans',sans-serif">Reserve a Table</a>
+  <a href="tel:6316685958" style="font-size:18px;letter-spacing:0.16em;text-transform:uppercase;color:var(--blue-light);font-family:'DM Sans',sans-serif">Book a Room</a>
   <a href="tel:6316685958" class="menu-overlay-phone">631.668.5958</a>
 </div>
 
@@ -888,6 +974,27 @@ const menuToggle = document.getElementById('menuToggle');
 const menuOverlay = document.getElementById('menuOverlay');
 menuToggle.addEventListener('click', () => menuOverlay.classList.toggle('open'));
 menuOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menuOverlay.classList.remove('open')));
+
+// Reservation dropdown — click toggle + outside close (works on touch)
+const reserveBtn = document.getElementById('reserveBtn');
+const navReserve = document.getElementById('navReserve');
+reserveBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  const isOpen = navReserve.classList.toggle('open');
+  reserveBtn.setAttribute('aria-expanded', isOpen);
+});
+document.addEventListener('click', (e) => {
+  if (!navReserve.contains(e.target)) {
+    navReserve.classList.remove('open');
+    reserveBtn.setAttribute('aria-expanded', 'false');
+  }
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    navReserve.classList.remove('open');
+    reserveBtn.setAttribute('aria-expanded', 'false');
+  }
+});
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
