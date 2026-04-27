@@ -50,3 +50,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 24 | Hither House Cottages | Montauk, NY | [hitherhouse.com](https://www.hitherhouse.com/) | [View →](https://bofilltech.github.io/concepts/hither-house/) | A — Magazine/Editorial (Hilltop Cottage) | Fraunces + DM Sans | Apr 26 |
 
+| 25 | The Sag Harbor Inn | Sag Harbor, NY | [sagharborinn.com](https://sagharborinn.com/) | [View →](https://bofilltech.github.io/concepts/sag-harbor-inn/) | A/D — Editorial Luxury (Refined Coastal Heritage) — fully semantic + JSON-LD Hotel schema, OG/Twitter tags, ARIA landmarks | Fraunces + Plus Jakarta Sans | Apr 27 |
+
