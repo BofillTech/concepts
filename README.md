@@ -58,3 +58,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 27 | Montauk Dazies | Montauk, NY | [mtkdazies.com](https://mtkdazies.com) | [View →](https://bofilltech.github.io/concepts/montauk-dazies/) | Editorial Coastal Boutique (Retail/Non-Hospitality) — typography-led, daisy SVG motif, embedded Google Maps | Fraunces + DM Sans | Apr 27 |
 
+| 28 | Saffire — Thai Beach Bar & Restaurant | Narragansett, RI | (new restaurant — inside AquaBlue Hotel, One Beach Street) | [View →](https://bofilltech.github.io/concepts/saffire/) | Multi-Page Restaurant Site (9 pages) — dark warm aesthetic, Thai beach concept, full menus with allergen system | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
+
