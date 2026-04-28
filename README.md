@@ -61,4 +61,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 28 | Saffire — Thai Beach Bar & Restaurant | Narragansett, RI | (new restaurant — inside AquaBlue Hotel, One Beach Street) | [View →](https://bofilltech.github.io/concepts/saffire/) | Multi-Page Restaurant Site (9 pages) — dark warm aesthetic, Thai beach concept, full menus with allergen system | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
 
 | 29 | Sunrise Guest House | Montauk, NY | [sunrisebnb.com](http://sunrisebnb.com/) | [View →](https://bofilltech.github.io/concepts/sunrise-guest-house/) | A — Magazine/Editorial (The unHampton — beachy unpretentious B&B) | Fraunces + DM Sans | Apr 28 |
+| 30 | Colonial Shores Resort | Hampton Bays, NY | [colonialshoresny.com](https://www.colonialshoresny.com/) | [View →](https://bofilltech.github.io/concepts/colonial-shores/) | A — Magazine/Editorial (Bayfront Coastal Luxury) — numbered sections, italic display accents, full-bleed cinematic break | Fraunces + Manrope | Apr 28 |
 

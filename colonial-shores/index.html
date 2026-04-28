@@ -1,0 +1,2044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colonial Shores Resort — Hampton Bays, NY</title>
+<meta name="description" content="A bayfront retreat on Tiana Bay in the Hamptons. Motel rooms, suites, and waterfront bungalows on Long Island's south fork.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bay-deep: #1e3a4c;
+  --bay-night: #0f2230;
+  --salt: #f6f0e6;
+  --salt-warm: #efe6d4;
+  --sand: #e0d3b8;
+  --driftwood: #b8a583;
+  --charcoal: #1a1a1a;
+  --charcoal-soft: #2c2c2c;
+  --brass: #c08552;
+  --brass-deep: #a66b3d;
+  --bay-mist: #9bb1bf;
+  --sage: #8b9d8b;
+  --hairline: rgba(26, 26, 26, 0.12);
+  --hairline-light: rgba(246, 240, 230, 0.18);
+
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --max: 1400px;
+  --gutter: clamp(20px, 5vw, 80px);
+  --section: clamp(80px, 12vw, 160px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--charcoal);
+  background: var(--salt);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--brass); color: var(--salt); }
+
+/* Subtle grain texture overlay for atmosphere */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ==================== TYPOGRAPHY ==================== */
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--charcoal);
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--brass);
+  display: inline-block;
+}
+
+.numeral {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: var(--brass);
+}
+
+.display {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 9vw, 144px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144;
+}
+
+.display em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--brass);
+}
+
+/* ==================== NAVIGATION ==================== */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 24px var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav.scrolled {
+  background: rgba(246, 240, 230, 0.96);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+  padding: 14px var(--gutter);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.nav-brand {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.02em;
+  color: var(--salt);
+  font-variation-settings: "opsz" 60;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-brand small {
+  font-family: var(--sans);
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.7;
+}
+
+.nav.scrolled .nav-brand { color: var(--charcoal); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 38px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--salt);
+  position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
+}
+
+.nav.scrolled .nav-links a { color: var(--charcoal-soft); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.nav-phone {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--salt);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.nav-phone svg { width: 14px; height: 14px; }
+
+.nav.scrolled .nav-phone { color: var(--charcoal-soft); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border: 1px solid;
+  cursor: pointer;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--charcoal);
+  transform: translateY(101%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.btn:hover::before { transform: translateY(0); }
+
+.btn-primary {
+  background: var(--brass);
+  border-color: var(--brass);
+  color: var(--salt);
+}
+
+.btn-primary::before { background: var(--brass-deep); }
+
+.btn-light {
+  border-color: var(--salt);
+  color: var(--salt);
+}
+
+.btn-light::before { background: var(--salt); }
+.btn-light:hover { color: var(--charcoal); }
+
+.btn-dark {
+  border-color: var(--charcoal);
+  color: var(--charcoal);
+}
+
+.btn-dark:hover { color: var(--salt); }
+
+.btn-arrow {
+  width: 14px;
+  height: 8px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--salt);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled .menu-toggle span { background: var(--charcoal); }
+
+/* ==================== HERO ==================== */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bay-night);
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  animation: heroZoom 14s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(15,34,48,0.5) 0%, rgba(15,34,48,0.15) 30%, rgba(15,34,48,0.45) 80%, rgba(15,34,48,0.7) 100%);
+  z-index: 2;
+}
+
+.hero-inner {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(80px, 12vw, 140px);
+  color: var(--salt);
+}
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-meta .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--brass);
+  border-radius: 50%;
+}
+
+.hero-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(56px, 11vw, 180px);
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144;
+  max-width: 14ch;
+  color: var(--salt);
+  opacity: 0;
+  animation: fadeUp 1.2s 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--sand);
+}
+
+.hero-bottom {
+  margin-top: 48px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.hero-sub {
+  max-width: 420px;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeUp 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-sub::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--brass);
+  margin-bottom: 18px;
+}
+
+.hero-cta {
+  opacity: 0;
+  animation: fadeUp 1s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--salt);
+  opacity: 0;
+  animation: fadeUp 1s 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.scroll-cue .line {
+  width: 1px;
+  height: 36px;
+  background: var(--salt);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-cue .line::after {
+  content: '';
+  position: absolute;
+  top: -36px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--brass);
+  animation: scrollLine 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0% { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ==================== BOOKING WIDGET (slim) ==================== */
+
+.booking-widget {
+  position: relative;
+  z-index: 10;
+  margin: -60px var(--gutter) 0;
+  background: var(--salt);
+  border: 1px solid var(--hairline);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 0;
+  align-items: end;
+  max-width: var(--max);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -60px;
+  box-shadow: 0 30px 60px -30px rgba(15,34,48,0.25);
+}
+
+.bw-field {
+  padding: 0 24px;
+  border-right: 1px solid var(--hairline);
+}
+
+.bw-field:first-child { padding-left: 0; }
+.bw-field:nth-last-child(2) { border-right: none; padding-right: 24px; }
+
+.bw-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 6px;
+}
+
+.bw-value {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--charcoal);
+  font-variation-settings: "opsz" 30;
+}
+
+.bw-value input,
+.bw-value select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  width: 100%;
+  outline: none;
+}
+
+.bw-cta {
+  padding-left: 28px;
+}
+
+/* ==================== SECTIONS ==================== */
+
+section { position: relative; z-index: 5; }
+
+.section {
+  padding: var(--section) var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: clamp(40px, 6vw, 80px);
+  flex-wrap: wrap;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 88px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144;
+  max-width: 18ch;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--brass);
+}
+
+.section-meta {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--charcoal-soft);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.section-meta-no {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--brass);
+  letter-spacing: 0.05em;
+  text-transform: none;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ==================== WELCOME ==================== */
+
+.welcome {
+  background: var(--salt);
+}
+
+.welcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 120px);
+  align-items: center;
+}
+
+.welcome-image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+
+.welcome-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.welcome-image:hover img { transform: scale(1.04); }
+
+.welcome-image::after {
+  content: 'Tiana Bay';
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--salt);
+  letter-spacing: 0.05em;
+}
+
+.welcome-text {
+  padding: 20px 0;
+}
+
+.welcome-text .eyebrow { margin-bottom: 32px; }
+
+.welcome-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 64px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 96;
+}
+
+.welcome-headline em {
+  font-style: italic;
+  color: var(--brass);
+}
+
+.welcome-body p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--charcoal-soft);
+  margin-bottom: 20px;
+  max-width: 52ch;
+}
+
+.welcome-quote {
+  margin-top: 40px;
+  padding-left: 24px;
+  border-left: 2px solid var(--brass);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.4;
+  color: var(--charcoal);
+  max-width: 32ch;
+}
+
+/* ==================== ROOMS ==================== */
+
+.rooms {
+  background: var(--salt-warm);
+  position: relative;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(40px, 6vw, 80px) clamp(30px, 4vw, 60px);
+}
+
+.room-card {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-card:nth-child(even) { padding-top: clamp(40px, 8vw, 80px); }
+
+.room-card-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  margin-bottom: 24px;
+  background: var(--bay-night);
+}
+
+.room-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.room-card:hover .room-card-image img { transform: scale(1.05); }
+
+.room-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(15,34,48,0.3) 100%);
+  pointer-events: none;
+}
+
+.room-num {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 2;
+  background: var(--salt);
+  padding: 8px 14px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--charcoal);
+  letter-spacing: 0.04em;
+}
+
+.room-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+}
+
+.room-meta-size { color: var(--brass); }
+
+.room-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 72;
+}
+
+.room-desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--charcoal-soft);
+  margin-bottom: 18px;
+  max-width: 44ch;
+}
+
+.room-link {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--charcoal);
+  transition: gap 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.room-link:hover {
+  gap: 16px;
+  color: var(--brass);
+  border-color: var(--brass);
+}
+
+/* ==================== THE BAY (full-bleed cinematic) ==================== */
+
+.bay-cinematic {
+  position: relative;
+  height: 90vh;
+  min-height: 600px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bay-night);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bay-cinematic-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+.bay-cinematic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,34,48,0.5) 0%, rgba(15,34,48,0.7) 100%);
+}
+
+.bay-cinematic-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 var(--gutter);
+  max-width: 1100px;
+  color: var(--salt);
+}
+
+.bay-cinematic .eyebrow {
+  color: var(--sand);
+  margin-bottom: 32px;
+}
+
+.bay-cinematic .eyebrow::before {
+  background: var(--sand);
+}
+
+.bay-cinematic-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 6vw, 92px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variation-settings: "opsz" 144;
+  margin-bottom: 32px;
+}
+
+.bay-cinematic-headline em {
+  font-style: italic;
+  color: var(--sand);
+}
+
+.bay-cinematic-body {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 56ch;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ==================== AMENITIES ==================== */
+
+.amenities {
+  background: var(--bay-deep);
+  color: var(--salt);
+}
+
+.amenities .section-title { color: var(--salt); }
+.amenities .section-meta { color: var(--bay-mist); }
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--hairline-light);
+}
+
+.amenity {
+  padding: 48px 32px 48px 0;
+  border-bottom: 1px solid var(--hairline-light);
+  border-right: 1px solid var(--hairline-light);
+  position: relative;
+  transition: background 0.4s ease;
+}
+
+.amenity:nth-child(4n) { border-right: none; padding-right: 0; }
+.amenity:hover { background: rgba(192, 133, 82, 0.06); }
+
+.amenity-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 24px;
+  color: var(--brass);
+}
+
+.amenity-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+}
+
+.amenity-name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+  color: var(--salt);
+  font-variation-settings: "opsz" 60;
+}
+
+.amenity-desc {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--bay-mist);
+}
+
+/* ==================== GALLERY ==================== */
+
+.gallery {
+  background: var(--salt);
+  padding-top: var(--section);
+  padding-bottom: var(--section);
+}
+
+.gallery-head {
+  padding: 0 var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto clamp(40px, 6vw, 80px);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  padding: 0 var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover img { transform: scale(1.06); }
+
+.g1 { grid-column: span 7; aspect-ratio: 3/2; }
+.g2 { grid-column: span 5; aspect-ratio: 3/2; }
+.g3 { grid-column: span 4; aspect-ratio: 3/4; }
+.g4 { grid-column: span 4; aspect-ratio: 3/4; }
+.g5 { grid-column: span 4; aspect-ratio: 3/4; }
+.g6 { grid-column: span 12; aspect-ratio: 21/9; }
+
+/* ==================== REVIEWS / TRUST ==================== */
+
+.trust {
+  background: var(--salt-warm);
+  padding: clamp(60px, 8vw, 100px) var(--gutter);
+  text-align: center;
+}
+
+.trust-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.trust-stars {
+  font-family: var(--serif);
+  color: var(--brass);
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+}
+
+.trust-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(22px, 3vw, 34px);
+  line-height: 1.4;
+  color: var(--charcoal);
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 60;
+}
+
+.trust-quote::before,
+.trust-quote::after {
+  color: var(--brass);
+  font-style: normal;
+  margin: 0 4px;
+}
+
+.trust-quote::before { content: '“'; }
+.trust-quote::after { content: '”'; }
+
+.trust-source {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  font-weight: 500;
+}
+
+.trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin-top: 48px;
+  flex-wrap: wrap;
+  padding-top: 48px;
+  border-top: 1px solid var(--hairline);
+}
+
+.trust-badge {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+}
+
+.trust-badge strong {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--brass);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ==================== LOCATION ==================== */
+
+.location {
+  background: var(--salt);
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(40px, 6vw, 80px);
+  align-items: center;
+}
+
+.location-text .eyebrow { margin-bottom: 32px; }
+
+.location-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+  font-variation-settings: "opsz" 96;
+}
+
+.location-headline em {
+  font-style: italic;
+  color: var(--brass);
+}
+
+.location-address {
+  font-family: var(--serif);
+  font-size: 19px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  color: var(--charcoal);
+}
+
+.location-address strong {
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.location-contacts {
+  margin-bottom: 36px;
+}
+
+.location-contacts li {
+  list-style: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 14px;
+}
+
+.location-contacts li:last-child { border-bottom: none; }
+
+.location-contacts .lbl {
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  font-weight: 500;
+}
+
+.location-map {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bay-deep);
+  overflow: hidden;
+}
+
+.location-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(20%) contrast(0.95) sepia(8%);
+}
+
+/* ==================== FINAL CTA ==================== */
+
+.final-cta {
+  position: relative;
+  height: 80vh;
+  min-height: 540px;
+  overflow: hidden;
+  background: var(--bay-night);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 var(--gutter);
+  color: var(--salt);
+}
+
+.final-cta-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.final-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15,34,48,0.4) 0%, rgba(15,34,48,0.7) 100%);
+}
+
+.final-cta-content { position: relative; z-index: 2; }
+
+.final-cta .eyebrow { color: var(--sand); margin-bottom: 32px; }
+.final-cta .eyebrow::before { background: var(--sand); }
+
+.final-cta-headline {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 108px);
+  line-height: 1;
+  letter-spacing: -0.025em;
+  margin-bottom: 40px;
+  max-width: 18ch;
+  margin-left: auto;
+  margin-right: auto;
+  font-variation-settings: "opsz" 144;
+}
+
+.final-cta-headline em {
+  font-style: italic;
+  color: var(--sand);
+}
+
+.final-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.final-cta-phone {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--sand);
+  letter-spacing: 0.04em;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer {
+  background: var(--bay-night);
+  color: var(--bay-mist);
+  padding: clamp(60px, 8vw, 100px) var(--gutter) 32px;
+  position: relative;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: clamp(30px, 5vw, 80px);
+  padding-bottom: 60px;
+  border-bottom: 1px solid var(--hairline-light);
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 32px;
+  color: var(--salt);
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 96;
+}
+
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--sand);
+  max-width: 36ch;
+}
+
+.footer-col h4 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 20px;
+}
+
+.footer-col ul { list-style: none; }
+
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  font-family: var(--sans);
+}
+
+.footer-col a {
+  color: var(--bay-mist);
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover { color: var(--salt); }
+
+.footer-bottom {
+  padding-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--bay-mist);
+}
+
+.footer-bottom-credit {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--sand);
+  text-transform: none;
+}
+
+/* ==================== STICKY MOBILE BOOKING BAR ==================== */
+
+.sticky-book {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  background: var(--bay-night);
+  border-top: 1px solid var(--brass);
+  padding: 14px 20px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sticky-book a {
+  color: var(--salt);
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sticky-book .sticky-phone svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.sticky-book .sticky-cta {
+  background: var(--brass);
+  padding: 12px 20px;
+  border: 1px solid var(--brass);
+  flex-shrink: 0;
+}
+
+/* ==================== SCROLL ANIMATIONS ==================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.in > * { opacity: 1; transform: translateY(0); }
+.reveal-stagger.in > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay: 0.3s; }
+.reveal-stagger.in > *:nth-child(5) { transition-delay: 0.4s; }
+.reveal-stagger.in > *:nth-child(6) { transition-delay: 0.5s; }
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 1024px) {
+  .nav-links { gap: 24px; }
+  .booking-widget { grid-template-columns: 1fr 1fr 1fr auto; }
+  .bw-field:nth-child(4) { display: none; }
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+  .amenity:nth-child(2n) { border-right: none; padding-right: 0; }
+  .amenity:nth-child(odd) { border-right: 1px solid var(--hairline-light); }
+}
+
+@media (max-width: 768px) {
+  body { padding-bottom: 70px; }
+
+  .nav-links, .nav-phone { display: none; }
+  .menu-toggle { display: flex; }
+
+  .hero { min-height: 580px; }
+  .hero-bottom { flex-direction: column; align-items: stretch; }
+
+  .booking-widget {
+    grid-template-columns: 1fr;
+    margin-top: -40px;
+    padding: 24px;
+    gap: 4px;
+  }
+  .bw-field {
+    padding: 16px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .bw-field:nth-last-child(2) { border-bottom: none; padding-bottom: 16px; }
+  .bw-cta { padding-left: 0; padding-top: 16px; }
+  .bw-cta .btn { width: 100%; justify-content: center; }
+
+  .welcome-grid,
+  .location-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rooms-grid { grid-template-columns: 1fr; }
+  .room-card:nth-child(even) { padding-top: 0; }
+
+  .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .g1, .g2, .g3, .g4, .g5 { grid-column: span 1; aspect-ratio: 1; }
+  .g6 { grid-column: span 2; aspect-ratio: 16/9; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+
+  .sticky-book { display: flex; }
+
+  .nav.scrolled { padding: 12px var(--gutter); }
+}
+
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .trust-badges { gap: 24px; }
+}
+
+/* Mobile menu overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: var(--bay-night);
+  z-index: 200;
+  padding: 80px var(--gutter) 40px;
+  transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-menu.open { transform: translateX(0); }
+
+.mobile-menu-close {
+  position: absolute;
+  top: 24px;
+  right: var(--gutter);
+  background: none;
+  border: none;
+  color: var(--salt);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-menu ul { list-style: none; flex-grow: 1; }
+
+.mobile-menu li {
+  border-bottom: 1px solid var(--hairline-light);
+  padding: 18px 0;
+}
+
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--salt);
+  font-variation-settings: "opsz" 60;
+}
+
+.mobile-menu-footer {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mobile-menu-footer .nav-phone {
+  color: var(--salt);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: 0.02em;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-brand">Colonial Shores <small>Hampton Bays</small></a>
+
+  <ul class="nav-links">
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#bay">The Bay</a></li>
+    <li><a href="#amenities">Amenities</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Contact</a></li>
+  </ul>
+
+  <div class="nav-actions">
+    <a href="tel:+16317280011" class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      631-728-0011
+    </a>
+    <a href="https://www.colonialshoresny.com/" class="btn btn-primary">
+      Reserve
+      <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">×</button>
+  <ul>
+    <li><a href="#rooms" class="mm-link">Rooms</a></li>
+    <li><a href="#bay" class="mm-link">The Bay</a></li>
+    <li><a href="#amenities" class="mm-link">Amenities</a></li>
+    <li><a href="#gallery" class="mm-link">Gallery</a></li>
+    <li><a href="#location" class="mm-link">Contact</a></li>
+  </ul>
+  <div class="mobile-menu-footer">
+    <a href="tel:+16317280011" class="nav-phone">631-728-0011</a>
+    <a href="https://www.colonialshoresny.com/" class="btn btn-primary">Reserve</a>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <img class="hero-image" src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/8abc0460-1549-4f4b-9304-bac2a1fd3484.jpg?auto=format,compress&w=2400&q=82" alt="Colonial Shores Resort on Tiana Bay" onerror="this.style.background='linear-gradient(135deg,#1e3a4c,#0f2230)';this.style.opacity='1';">
+
+  <div class="hero-inner">
+    <div class="hero-meta">
+      <span>Hampton Bays, NY</span>
+      <span class="dot"></span>
+      <span>On Tiana Bay</span>
+      <span class="dot"></span>
+      <span>Est. circa 1950</span>
+    </div>
+
+    <h1 class="hero-headline">A Bayfront <em>Reverie</em><br>in the Hamptons.</h1>
+
+    <div class="hero-bottom">
+      <p class="hero-sub">
+        Motel rooms, modern suites, and waterfront cottages — all looking out over the still water of Tiana Bay. Come for the view. Stay for the comfort. Return for the experience.
+      </p>
+      <div class="hero-cta">
+        <a href="https://www.colonialshoresny.com/" class="btn btn-light">
+          Check Availability
+          <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    Scroll
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ==================== BOOKING WIDGET ==================== -->
+<form class="booking-widget" id="bookingWidget" onsubmit="event.preventDefault(); window.location.href='https://www.colonialshoresny.com/';">
+  <div class="bw-field">
+    <div class="bw-label">Arrival</div>
+    <div class="bw-value"><input type="date" required></div>
+  </div>
+  <div class="bw-field">
+    <div class="bw-label">Departure</div>
+    <div class="bw-value"><input type="date" required></div>
+  </div>
+  <div class="bw-field">
+    <div class="bw-label">Guests</div>
+    <div class="bw-value">
+      <select>
+        <option>2 Guests</option>
+        <option>1 Guest</option>
+        <option>3 Guests</option>
+        <option>4 Guests</option>
+        <option>5 Guests</option>
+        <option>6+ Guests</option>
+      </select>
+    </div>
+  </div>
+  <div class="bw-field">
+    <div class="bw-label">Room</div>
+    <div class="bw-value">
+      <select>
+        <option>Any Room</option>
+        <option>Motel Room</option>
+        <option>One-Bedroom Suite</option>
+        <option>Two-Bedroom Suite</option>
+        <option>Bungalow</option>
+        <option>Waterfront Bungalow</option>
+      </select>
+    </div>
+  </div>
+  <div class="bw-cta">
+    <button class="btn btn-primary" type="submit">
+      Search
+      <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+    </button>
+  </div>
+</form>
+
+<!-- ==================== WELCOME ==================== -->
+<section class="welcome section reveal">
+  <div class="welcome-grid">
+    <div class="welcome-image">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/d85bcc1a-7d0a-4f13-88da-261529950f16.jpg?auto=format,compress&fit=crop&crop=entropy&w=1200&h=1500&q=82" alt="Waterfront cottage at Colonial Shores Resort">
+    </div>
+
+    <div class="welcome-text">
+      <span class="eyebrow">Nº 01 — A Welcome</span>
+      <h2 class="welcome-headline">Your home away<br>from home, on the <em>quiet side</em><br>of the Hamptons.</h2>
+      <div class="welcome-body">
+        <p>Nestled along the serene shores of Tiana Bay, Colonial Shores offers the perfect blend of comfort, convenience, and coastal charm. Whether you're here for a peaceful weekend getaway or a longer escape from the everyday, our relaxing atmosphere and beautiful views create a stay you won't soon forget.</p>
+        <p>Choose from a deluxe bayfront motel room, a modern one or two-bedroom suite, or a spacious bungalow with its own private deck — all just minutes from the ocean, Main Street, and everything the East End has to offer.</p>
+      </div>
+      <p class="welcome-quote">Come for the view.<br>Stay for the comfort.<br>Return for the experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ROOMS ==================== -->
+<section class="rooms section reveal" id="rooms">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Nº 02 — Accommodations</span>
+      <h2 class="section-title" style="margin-top:24px;">Twenty-four ways to stay,<br>each <em>looking at the bay</em>.</h2>
+    </div>
+    <div class="section-meta">
+      <span class="section-meta-no">Featured rooms</span>
+      Bayfront & Poolside
+    </div>
+  </div>
+
+  <div class="rooms-grid reveal-stagger">
+    <article class="room-card">
+      <div class="room-card-image">
+        <span class="room-num"><em>Nº 01 ·</em> Waterfront</span>
+        <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/d85bcc1a-7d0a-4f13-88da-261529950f16.jpg?auto=format,compress&fit=crop&crop=entropy&w=1200&h=900&q=82" alt="Waterfront Bungalow">
+      </div>
+      <div class="room-meta">
+        <span>Bungalow</span>
+        <span class="room-meta-size">600 sq ft</span>
+      </div>
+      <h3 class="room-name">The Waterfront Bungalow</h3>
+      <p class="room-desc">A queen bed, sofa bed, full kitchen, and a private balcony that opens directly onto Tiana Bay. The room you'll think about for weeks after you leave.</p>
+      <a href="https://www.colonialshoresny.com/rooms/bungalow-water-front-10.html" class="room-link">
+        View this room
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+    </article>
+
+    <article class="room-card">
+      <div class="room-card-image">
+        <span class="room-num"><em>Nº 02 ·</em> Family</span>
+        <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/8baded1b-4d99-48ff-ae23-0b25039add7f.jpeg?auto=format,compress&fit=crop&crop=entropy&w=1200&h=900&q=82" alt="Family Bungalow">
+      </div>
+      <div class="room-meta">
+        <span>Two Bedrooms · Sleeps 6</span>
+        <span class="room-meta-size">600 sq ft</span>
+      </div>
+      <h3 class="room-name">The Family Bungalow</h3>
+      <p class="room-desc">Two bedrooms — a queen and twin beds — plus a sofa bed, a full kitchen, and a living room. Built for slow weekends and bigger groups.</p>
+      <a href="https://www.colonialshoresny.com/rooms/family-bungalow-8.html" class="room-link">
+        View this room
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+    </article>
+
+    <article class="room-card">
+      <div class="room-card-image">
+        <span class="room-num"><em>Nº 03 ·</em> Suite</span>
+        <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/0369f1a4-ee70-4455-bbf2-f3062804eed2.jpg?auto=format,compress&fit=crop&crop=entropy&w=1200&h=900&q=82" alt="One-Bedroom Suite">
+      </div>
+      <div class="room-meta">
+        <span>One Bedroom · Sleeps 4</span>
+        <span class="room-meta-size">600 sq ft</span>
+      </div>
+      <h3 class="room-name">The One-Bedroom Suite</h3>
+      <p class="room-desc">Queen bed, sofa bed, full kitchen, living room, flat-screen — and a view of the pool or the bay, depending on the unit. Just-renovated and ready.</p>
+      <a href="https://www.colonialshoresny.com/rooms/one-bedroom-suite-12.html" class="room-link">
+        View this room
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+    </article>
+
+    <article class="room-card">
+      <div class="room-card-image">
+        <span class="room-num"><em>Nº 04 ·</em> Bayview</span>
+        <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/2b7bc138-fcbd-4254-ba47-e1bdafe54b49.jpg?auto=format,compress&fit=crop&crop=entropy&w=1200&h=900&q=82" alt="Single Room with Sea View">
+      </div>
+      <div class="room-meta">
+        <span>Motel Room · Sleeps 2</span>
+        <span class="room-meta-size">500 sq ft</span>
+      </div>
+      <h3 class="room-name">The Bayview Motel Room</h3>
+      <p class="room-desc">The classic Colonial Shores experience — a clean, comfortable room with air conditioning, flat-screen, microwave, and a window that frames the bay.</p>
+      <a href="https://www.colonialshoresny.com/rooms/single-room-with-sea-view-18.html" class="room-link">
+        View this room
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ==================== THE BAY ==================== -->
+<section class="bay-cinematic" id="bay">
+  <img class="bay-cinematic-image" src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/002f8a0c-579e-4045-8803-64988b4388fd.jpg?auto=format,compress&w=2400&q=82" alt="Tiana Bay">
+
+  <div class="bay-cinematic-content reveal">
+    <span class="eyebrow">Nº 03 — The Setting</span>
+    <h2 class="bay-cinematic-headline">Mornings begin<br>poolside. Afternoons<br>unfold on the <em>bay</em>.</h2>
+    <p class="bay-cinematic-body">
+      Tiana Bay is the calmer, quieter water of the Hamptons — a wide, protected inlet a short paddle from the Atlantic, framed by salt marsh and sailboats. From the dock, you can see why we don't think we need to say much more.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== AMENITIES ==================== -->
+<section class="amenities section reveal" id="amenities">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow" style="color:var(--sand);">Nº 04 — On Property</span>
+      <h2 class="section-title" style="margin-top:24px;">Everything you'd want,<br><em>nothing you wouldn't</em>.</h2>
+    </div>
+    <div class="section-meta">
+      <span class="section-meta-no">A short list</span>
+      <span style="color:var(--bay-mist);">By design</span>
+    </div>
+  </div>
+
+  <div class="amenities-grid">
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><path d="M2 22c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0 4-2 6 0M2 16c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0 4-2 6 0M2 10c2-2 4-2 6 0s4 2 6 0 4-2 6 0 4 2 6 0 4-2 6 0"/></svg>
+      </div>
+      <h3 class="amenity-name">Direct Bay Access</h3>
+      <p class="amenity-desc">Wade in, paddle out, or just sit on the dock and watch the boats go by.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><rect x="4" y="10" width="24" height="14" rx="2"/><path d="M8 10V6h16v4M12 16v4M20 16v4"/></svg>
+      </div>
+      <h3 class="amenity-name">Outdoor Pool</h3>
+      <p class="amenity-desc">A heated pool overlooking Tiana Bay — the unofficial center of every summer afternoon.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><path d="M16 8c2-3 5-4 8-2 4 3 1 9-2 11l-6 6-6-6c-3-2-6-8-2-11 3-2 6-1 8 2z"/></svg>
+      </div>
+      <h3 class="amenity-name">Private Decks</h3>
+      <p class="amenity-desc">Most cottages have their own. A morning coffee outside changes everything.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><path d="M16 4v8M16 4l-4 4M16 4l4 4M4 16h24M28 16l-4-4M28 16l-4 4M16 28v-8M16 28l-4-4M16 28l4-4M4 16l4-4M4 16l4 4"/></svg>
+      </div>
+      <h3 class="amenity-name">Free Wi-Fi</h3>
+      <p class="amenity-desc">Throughout the property — for the work you can't quite leave behind.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><path d="M6 14c0-5 5-9 10-9s10 4 10 9v8H6zM10 22v4M22 22v4M14 14h4"/></svg>
+      </div>
+      <h3 class="amenity-name">Full Kitchens</h3>
+      <p class="amenity-desc">In every suite and bungalow. Cook in. Eat out. Or both.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="18" rx="1"/><path d="M2 24h28M12 4v4M20 4v4"/></svg>
+      </div>
+      <h3 class="amenity-name">Central Air & Cable</h3>
+      <p class="amenity-desc">In all units. Flat-screen TVs, climate control, the basics done well.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M16 4v24M4 16h24M8 8c4 4 12 4 16 0M8 24c4-4 12-4 16 0"/></svg>
+      </div>
+      <h3 class="amenity-name">Minutes to the Ocean</h3>
+      <p class="amenity-desc">Ponquogue and Tiana beaches are a short drive — no traffic, no stress.</p>
+    </div>
+
+    <div class="amenity">
+      <div class="amenity-icon">
+        <svg viewBox="0 0 32 32"><path d="M6 26V12l10-6 10 6v14M12 26v-8h8v8M16 6v6"/></svg>
+      </div>
+      <h3 class="amenity-name">Family-Owned</h3>
+      <p class="amenity-desc">Run by people who actually live here. Ask us anything about Hampton Bays.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== GALLERY ==================== -->
+<section class="gallery" id="gallery">
+  <div class="gallery-head reveal">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Nº 05 — A Look Around</span>
+        <h2 class="section-title" style="margin-top:24px;">Six frames<br><em>from a long weekend</em>.</h2>
+      </div>
+      <div class="section-meta">
+        <span class="section-meta-no">Real photos</span>
+        From the property
+      </div>
+    </div>
+  </div>
+
+  <div class="gallery-grid reveal">
+    <div class="gallery-item g1">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/bac400e1-1322-4a46-be6c-45f738067e83.jpg?auto=format,compress&fit=crop&crop=entropy&w=1400&h=940&q=82" alt="Property view">
+    </div>
+    <div class="gallery-item g2">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/26bc9f6a-2f80-433f-bac9-cea04962bf6a.jpg?auto=format,compress&fit=crop&crop=entropy&w=1000&h=666&q=82" alt="Room interior">
+    </div>
+    <div class="gallery-item g3">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/adcdae88-b9b5-45c2-b9de-fa202db8fc61.jpg?auto=format,compress&fit=crop&crop=entropy&w=800&h=1066&q=82" alt="Pool area">
+    </div>
+    <div class="gallery-item g4">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/2c472ee7-ae17-4c04-9b32-5474fc565d13.jpeg?auto=format,compress&fit=crop&crop=entropy&w=800&h=1066&q=82" alt="Bungalow interior">
+    </div>
+    <div class="gallery-item g5">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/e5f9c675-cf2b-4c83-80aa-3310b97f3b4e.jpeg?auto=format,compress&fit=crop&crop=entropy&w=800&h=1066&q=82" alt="Two-bedroom suite">
+    </div>
+    <div class="gallery-item g6">
+      <img src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/43cee05f-9001-4a0d-80da-9facd6647a19.jpg?auto=format,compress&fit=crop&crop=entropy&w=2000&h=857&q=82" alt="Wide bay view">
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TRUST ==================== -->
+<section class="trust reveal">
+  <div class="trust-inner">
+    <div class="trust-stars">★ ★ ★ ★ ★</div>
+    <p class="trust-quote">A real Hamptons gem on the bay — quiet, family-run, with views that speak for themselves.</p>
+    <p class="trust-source">— Recent guests, Booking.com & TripAdvisor</p>
+
+    <div class="trust-badges">
+      <div class="trust-badge">
+        <strong>Booking.com</strong>
+        <span>Verified Property</span>
+      </div>
+      <div class="trust-badge">
+        <strong>TripAdvisor</strong>
+        <span>Reviewed since 2003</span>
+      </div>
+      <div class="trust-badge">
+        <strong>Family-Owned</strong>
+        <span>The Hamptons</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LOCATION ==================== -->
+<section class="location section reveal" id="location">
+  <div class="location-grid">
+    <div class="location-text">
+      <span class="eyebrow">Nº 06 — Find Us</span>
+      <h2 class="location-headline">On Tiana Bay,<br>in <em>Hampton Bays</em>.</h2>
+
+      <p class="location-address">
+        <strong>Colonial Shores Resort</strong>
+        83 W Tiana Road<br>
+        Hampton Bays, NY 11946
+      </p>
+
+      <ul class="location-contacts">
+        <li>
+          <span class="lbl">Telephone</span>
+          <a href="tel:+16317280011">+1 631-728-0011</a>
+        </li>
+        <li>
+          <span class="lbl">Fax</span>
+          <span>631-728-0897</span>
+        </li>
+        <li>
+          <span class="lbl">Email</span>
+          <a href="mailto:colonialshores@aol.com">colonialshores@aol.com</a>
+        </li>
+      </ul>
+
+      <a href="https://maps.google.com/?q=Colonial+Shores+Resort+83+W+Tiana+Rd+Hampton+Bays+NY" class="btn btn-dark" target="_blank">
+        Get Directions
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+    </div>
+
+    <div class="location-map">
+      <iframe
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-72.555%2C40.855%2C-72.529%2C40.867&amp;layer=mapnik&amp;marker=40.8608%2C-72.5421"
+        loading="lazy"
+        title="Colonial Shores Resort location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FINAL CTA ==================== -->
+<section class="final-cta">
+  <img class="final-cta-image" src="https://webbox.imgix.net/images/oqvsdjnfwavppepg/adcdae88-b9b5-45c2-b9de-fa202db8fc61.jpg?auto=format,compress&w=2400&q=82" alt="">
+
+  <div class="final-cta-content reveal">
+    <span class="eyebrow">A Reservation</span>
+    <h2 class="final-cta-headline">Your weekend on the <em>bay</em> begins here.</h2>
+    <div class="final-cta-actions">
+      <a href="https://www.colonialshoresny.com/" class="btn btn-light">
+        Check Availability
+        <svg class="btn-arrow" viewBox="0 0 14 8"><path d="M0 4h12M9 1l3 3-3 3"/></svg>
+      </a>
+      <a href="tel:+16317280011" class="final-cta-phone">— or call 631-728-0011</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Colonial Shores</div>
+        <p class="footer-tagline">A bayfront retreat on Tiana Bay — Hampton Bays, NY. Family-owned since the days when the Hamptons were quieter.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Property</h4>
+        <ul>
+          <li><a href="#rooms">Rooms & Suites</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="https://www.colonialshoresny.com/promotions.html">Specials</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit</h4>
+        <ul>
+          <li>83 W Tiana Road</li>
+          <li>Hampton Bays, NY 11946</li>
+          <li><a href="tel:+16317280011">631-728-0011</a></li>
+          <li><a href="mailto:colonialshores@aol.com">colonialshores@aol.com</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="https://www.facebook.com/Colonial-Shores-Page-108300119735501/" target="_blank">Facebook</a></li>
+          <li><a href="https://www.booking.com/hotel/us/colonial-shores-motel.html" target="_blank">Booking.com</a></li>
+          <li><a href="https://www.tripadvisor.com/Hotel_Review-g47855-d93208-Reviews-Colonial_Shores_Resort-Hampton_Bays_Southampton_Long_Island_New_York.html" target="_blank">TripAdvisor</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Colonial Shores Resort · All Rights Reserved</span>
+      <span class="footer-bottom-credit">A concept by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== STICKY MOBILE BOOK BAR ==================== -->
+<div class="sticky-book">
+  <a href="tel:+16317280011" class="sticky-phone">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call
+  </a>
+  <a href="https://www.colonialshoresny.com/" class="sticky-cta">Reserve →</a>
+</div>
+
+<script>
+// Sticky nav
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+}, { passive: true });
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const menuClose = document.getElementById('menuClose');
+const mobileMenu = document.getElementById('mobileMenu');
+
+menuToggle?.addEventListener('click', () => mobileMenu.classList.add('open'));
+menuClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+document.querySelectorAll('.mm-link').forEach(link =>
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'))
+);
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => observer.observe(el));
+
+// Set year
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Default booking dates: today + 1 day
+const today = new Date();
+const tomorrow = new Date(today);
+tomorrow.setDate(today.getDate() + 1);
+const fmt = (d) => d.toISOString().split('T')[0];
+const dateInputs = document.querySelectorAll('.bw-field input[type=date]');
+if (dateInputs.length === 2) {
+  dateInputs[0].value = fmt(today);
+  dateInputs[1].value = fmt(tomorrow);
+  dateInputs[0].min = fmt(today);
+}
+</script>
+
+</body>
+</html>
