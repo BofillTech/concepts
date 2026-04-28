@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Montauk Dazies — Coastal Boutique on Montauk Highway</title>
+  <meta name="description" content="A curated women's boutique in downtown Montauk. Swimwear, summer dresses, and accessories with that easy coastal feel. 769 Montauk Hwy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF5E9;
+      --cream-deep: #F2EAD3;
+      --paper: #FFFCF5;
+      --navy: #1B2845;
+      --navy-soft: #2E3D5C;
+      --daisy: #F2B541;
+      --daisy-deep: #E09F2A;
+      --sage: #C9D2BC;
+      --coral: #E8A39B;
+      --line: rgba(27, 40, 69, 0.12);
+      --display: 'Fraunces', Georgia, serif;
+      --body: 'DM Sans', system-ui, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--body);
+      background: var(--cream);
+      color: var(--navy);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ───── Nav ───── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 22px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+    .nav.scrolled {
+      background: rgba(250, 245, 233, 0.96);
+      backdrop-filter: blur(12px);
+      padding: 14px 32px;
+      box-shadow: 0 1px 0 var(--line);
+    }
+    .nav-logo {
+      font-family: var(--display);
+      font-weight: 500;
+      font-size: 22px;
+      font-style: italic;
+      letter-spacing: -0.01em;
+      color: var(--navy);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-logo::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: radial-gradient(circle, var(--daisy) 35%, white 36%, white 100%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px var(--daisy-deep) inset, 0 0 0 1px var(--navy);
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .nav-links a:hover { opacity: 0.5; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: var(--navy);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+    }
+    .nav-cta:hover { background: var(--daisy-deep); color: var(--navy); }
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; }
+
+    @media (max-width: 880px) {
+      .nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px;
+        margin-left: 12px;
+      }
+      .menu-toggle span {
+        width: 22px; height: 1.5px;
+        background: var(--navy);
+        transition: 0.2s;
+      }
+      .nav-cta { padding: 9px 18px; font-size: 12px; }
+      .mobile-menu {
+        position: fixed;
+        top: 60px; left: 0; right: 0;
+        background: var(--cream);
+        padding: 24px;
+        box-shadow: 0 8px 24px rgba(27,40,69,0.08);
+        transform: translateY(-130%);
+        transition: transform 0.35s ease;
+      }
+      .mobile-menu.open { transform: translateY(0); }
+      .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+      .mobile-menu a {
+        color: var(--navy); text-decoration: none;
+        font-size: 16px; font-weight: 500;
+        letter-spacing: 0.04em; text-transform: uppercase;
+      }
+    }
+
+    /* ───── Hero ───── */
+    .hero {
+      min-height: 100vh;
+      padding: 140px 32px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      background: var(--cream);
+      overflow: hidden;
+    }
+    .hero-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 36px; height: 1px;
+      background: var(--navy-soft);
+    }
+    .hero-title {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(56px, 11vw, 168px);
+      line-height: 0.92;
+      letter-spacing: -0.035em;
+      color: var(--navy);
+      margin-bottom: 36px;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--daisy-deep);
+      font-variation-settings: "opsz" 144;
+    }
+    .hero-sub {
+      max-width: 540px;
+      font-size: clamp(17px, 1.6vw, 19px);
+      line-height: 1.55;
+      color: var(--navy-soft);
+      margin-bottom: 44px;
+      font-weight: 400;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      background: var(--navy);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      background: var(--daisy-deep);
+      color: var(--navy);
+      transform: translateY(-2px);
+    }
+    .btn-link {
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 16px 8px;
+      border-bottom: 1px solid var(--navy);
+      transition: all 0.2s;
+    }
+    .btn-link:hover { color: var(--daisy-deep); border-color: var(--daisy-deep); }
+
+    /* daisy decoration */
+    .daisy-deco {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.55;
+    }
+    .daisy-1 { top: 18%; right: -40px; width: 220px; transform: rotate(-12deg); }
+    .daisy-2 { bottom: 8%; left: -30px; width: 140px; transform: rotate(28deg); opacity: 0.4; }
+
+    .hero-meta {
+      position: absolute;
+      bottom: 40px;
+      right: 32px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      display: none;
+    }
+    @media (min-width: 1024px) { .hero-meta { display: block; } }
+
+    /* ───── Section base ───── */
+    section { padding: 120px 32px; position: relative; }
+    .container { max-width: 1240px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: '✻';
+      color: var(--daisy-deep);
+      font-size: 14px;
+    }
+    .section-title {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(38px, 5.5vw, 76px);
+      line-height: 1;
+      letter-spacing: -0.025em;
+      color: var(--navy);
+      margin-bottom: 32px;
+    }
+    .section-title em { font-style: italic; color: var(--daisy-deep); font-weight: 400; }
+
+    /* ───── About ───── */
+    .about {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-text p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--navy-soft);
+      margin-bottom: 18px;
+    }
+    .about-text p:first-of-type::first-letter {
+      font-family: var(--display);
+      font-size: 64px;
+      font-weight: 400;
+      float: left;
+      line-height: 0.85;
+      padding: 8px 12px 0 0;
+      color: var(--daisy-deep);
+      font-style: italic;
+    }
+    .about-visual {
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(135deg, var(--cream-deep) 0%, var(--sage) 100%);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .about-visual svg { width: 60%; opacity: 0.8; }
+    @media (max-width: 880px) {
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-visual { aspect-ratio: 4 / 3; order: -1; }
+    }
+
+    /* ───── Categories / What you'll find ───── */
+    .categories {
+      background: var(--cream);
+    }
+    .cat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .cat-header p {
+      max-width: 380px;
+      color: var(--navy-soft);
+      font-size: 17px;
+      line-height: 1.6;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 24px;
+    }
+    .cat-card {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 32px;
+      color: var(--paper);
+      transition: transform 0.4s ease;
+      cursor: pointer;
+    }
+    .cat-card:hover { transform: translateY(-6px); }
+    .cat-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(27,40,69,0.0) 30%, rgba(27,40,69,0.85) 100%);
+      z-index: 1;
+    }
+    .cat-card > * { position: relative; z-index: 2; }
+    .cat-card.swim {
+      background: linear-gradient(135deg, #5A7895 0%, #2E3D5C 100%);
+    }
+    .cat-card.dresses {
+      background: linear-gradient(135deg, #E8A39B 0%, #C97870 100%);
+    }
+    .cat-card.accessories {
+      background: linear-gradient(135deg, #F2B541 0%, #C99025 100%);
+    }
+    .cat-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: rgba(255,252,245,0.2);
+      border: 1px solid rgba(255,252,245,0.4);
+      border-radius: 50px;
+      width: fit-content;
+      margin-bottom: 16px;
+      backdrop-filter: blur(4px);
+    }
+    .cat-name {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .cat-desc {
+      font-size: 14px;
+      line-height: 1.55;
+      opacity: 0.9;
+      max-width: 280px;
+    }
+    .cat-featured {
+      position: absolute;
+      top: 24px; right: 24px;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      background: var(--daisy);
+      color: var(--navy);
+      border-radius: 50px;
+      z-index: 2;
+      font-weight: 500;
+    }
+    @media (max-width: 880px) {
+      .cat-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ───── Featured Brand: Tai Swim ───── */
+    .feature-brand {
+      background: var(--navy);
+      color: var(--paper);
+      padding: 100px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-brand .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .feature-brand .section-eyebrow {
+      color: var(--daisy);
+    }
+    .feature-brand .section-eyebrow::before { color: var(--daisy); }
+    .feature-brand h2 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .feature-brand h2 em { font-style: italic; color: var(--daisy); }
+    .feature-brand p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(255,252,245,0.78);
+      margin-bottom: 24px;
+    }
+    .feature-brand .btn-primary {
+      background: var(--daisy);
+      color: var(--navy);
+    }
+    .feature-brand .btn-primary:hover {
+      background: var(--paper);
+    }
+    .brand-visual {
+      aspect-ratio: 1 / 1;
+      background: linear-gradient(135deg, #4A6B8A 0%, #1B2845 100%);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, rgba(242,181,65,0.18) 0%, transparent 50%);
+    }
+    .brand-visual span {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(40px, 6vw, 80px);
+      color: var(--paper);
+      letter-spacing: -0.02em;
+    }
+    .brand-visual span em {
+      color: var(--daisy);
+      font-weight: 400;
+    }
+    @media (max-width: 880px) {
+      .feature-brand .container { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    /* ───── Visit ───── */
+    .visit {
+      background: var(--paper);
+      padding: 120px 32px;
+    }
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .visit-info { padding-top: 12px; }
+    .visit-info .section-title { margin-bottom: 40px; }
+    .info-block {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .info-block:last-child { border-bottom: 1px solid var(--line); }
+    .info-label {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+      margin-bottom: 10px;
+    }
+    .info-value {
+      font-family: var(--display);
+      font-weight: 400;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .info-value a {
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .info-value a:hover { color: var(--daisy-deep); }
+    .hours-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      padding: 4px 0;
+      border-bottom: 1px dotted rgba(27,40,69,0.15);
+    }
+    .hours-list .day { color: var(--navy-soft); }
+    .hours-list .time { color: var(--navy); font-weight: 500; }
+    .hours-list .closed { color: var(--coral); }
+
+    .map-card {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: var(--cream-deep);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 36px;
+      color: var(--paper);
+    }
+    .map-card iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      border: 0;
+      filter: saturate(0.85) contrast(0.95);
+    }
+    .map-overlay {
+      position: relative;
+      z-index: 2;
+      background: rgba(27,40,69,0.92);
+      backdrop-filter: blur(8px);
+      padding: 24px 28px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .map-overlay-icon {
+      width: 38px; height: 38px;
+      background: var(--daisy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--navy);
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .map-overlay-text { font-size: 14px; line-height: 1.4; }
+    .map-overlay-text strong { display: block; font-weight: 500; margin-bottom: 2px; }
+    .map-overlay-text span { color: rgba(255,252,245,0.7); font-size: 13px; }
+
+    @media (max-width: 880px) {
+      .visit-grid { grid-template-columns: 1fr; gap: 48px; }
+      .map-card { aspect-ratio: 4 / 4; order: -1; }
+    }
+
+    /* ───── Connect ───── */
+    .connect {
+      background: var(--cream);
+      text-align: center;
+      padding: 140px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .connect h2 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(40px, 7vw, 96px);
+      line-height: 1;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .connect h2 em { font-style: italic; color: var(--daisy-deep); }
+    .connect p {
+      font-size: 18px;
+      color: var(--navy-soft);
+      margin-bottom: 40px;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .connect-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 40px;
+      background: var(--navy);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 50px;
+      transition: all 0.25s;
+    }
+    .connect-cta:hover { background: var(--daisy-deep); color: var(--navy); }
+    .connect-handle {
+      display: block;
+      margin-top: 24px;
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 22px;
+      color: var(--daisy-deep);
+      text-decoration: none;
+    }
+    .connect .daisy-deco {
+      opacity: 0.4;
+    }
+    .connect .daisy-3 { top: 8%; left: 6%; width: 110px; transform: rotate(-22deg); }
+    .connect .daisy-4 { bottom: 12%; right: 8%; width: 90px; transform: rotate(40deg); }
+
+    /* ───── Footer ───── */
+    footer {
+      background: var(--navy);
+      color: var(--paper);
+      padding: 80px 32px 32px;
+    }
+    .foot-top {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,252,245,0.15);
+    }
+    .foot-brand {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+    .foot-brand em { color: var(--daisy); }
+    .foot-tagline { color: rgba(255,252,245,0.7); font-size: 15px; line-height: 1.6; max-width: 320px; }
+    .foot-col h4 {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--daisy);
+      margin-bottom: 18px;
+      font-weight: 500;
+    }
+    .foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .foot-col a {
+      color: rgba(255,252,245,0.85);
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    .foot-col a:hover { color: var(--daisy); }
+    .foot-bottom {
+      max-width: 1240px;
+      margin: 32px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      color: rgba(255,252,245,0.5);
+    }
+    @media (max-width: 880px) {
+      .foot-top { grid-template-columns: 1fr; gap: 32px; }
+    }
+
+    /* ───── Reveal animation ───── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ NAV ═══ -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Montauk Daizes</a>
+    <ul class="nav-links">
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#connect">Connect</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="#visit" class="nav-cta">Shop Now</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="#connect">Connect</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <!-- decorative SVG daisies -->
+    <svg class="daisy-deco daisy-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(100,100)">
+        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
+          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
+          <ellipse cx="0" cy="58" rx="14" ry="46"/>
+          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
+          <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
+          <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
+          <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
+        </g>
+        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
+        <circle cx="-6" cy="-4" r="2" fill="#1B2845" opacity="0.4"/>
+        <circle cx="6" cy="2" r="2" fill="#1B2845" opacity="0.4"/>
+        <circle cx="0" cy="6" r="1.5" fill="#1B2845" opacity="0.4"/>
+      </g>
+    </svg>
+    <svg class="daisy-deco daisy-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(100,100)">
+        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
+          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
+          <ellipse cx="0" cy="58" rx="14" ry="46"/>
+          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
+          <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
+          <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
+          <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
+        </g>
+        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
+      </g>
+    </svg>
+
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">Boutique · Downtown Montauk</div>
+        <h1 class="hero-title">
+          Coastal style,<br>
+          easy <em>summer</em> days.
+        </h1>
+        <p class="hero-sub">
+          A curated women's boutique on Montauk Highway. Swimwear, sun-soaked dresses, and the kind of accessories that look better at the beach.
+        </p>
+        <div class="hero-actions">
+          <a href="#visit" class="btn-primary">Visit the Shop →</a>
+          <a href="https://www.instagram.com/montaukdazies/" class="btn-link" target="_blank" rel="noopener">Follow @montaukdazies</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta">769 Montauk Hwy · Est. Boutique</div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <div class="section-eyebrow">The Boutique</div>
+          <h2 class="section-title">A little shop with a <em>lot of personality</em>.</h2>
+          <p>
+            Tucked along Montauk Highway, Daizes is the kind of place locals send their friends to. The selection is small on purpose &mdash; thoughtfully curated, easy to wear, and chosen with that effortless coastal feel in mind.
+          </p>
+          <p>
+            Stop in for a swimsuit, leave with a whole summer wardrobe. The staff knows the inventory, knows the fit, and isn't afraid to tell you when something just isn't it.
+          </p>
+        </div>
+        <div class="about-visual reveal">
+          <!-- Big stylized daisy as placeholder for owner / interior shot -->
+          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g transform="translate(150,150)">
+              <g fill="#FFFCF5" stroke="#1B2845" stroke-width="2">
+                <ellipse cx="0" cy="-90" rx="22" ry="72"/>
+                <ellipse cx="0" cy="90" rx="22" ry="72"/>
+                <ellipse cx="-90" cy="0" rx="72" ry="22"/>
+                <ellipse cx="90" cy="0" rx="72" ry="22"/>
+                <ellipse cx="-64" cy="-64" rx="22" ry="72" transform="rotate(45,-64,-64)"/>
+                <ellipse cx="64" cy="-64" rx="22" ry="72" transform="rotate(-45,64,-64)"/>
+                <ellipse cx="-64" cy="64" rx="22" ry="72" transform="rotate(-45,-64,64)"/>
+                <ellipse cx="64" cy="64" rx="22" ry="72" transform="rotate(45,64,64)"/>
+              </g>
+              <circle cx="0" cy="0" r="34" fill="#F2B541" stroke="#1B2845" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CATEGORIES ═══ -->
+  <section class="categories" id="shop">
+    <div class="container">
+      <div class="cat-header reveal">
+        <div>
+          <div class="section-eyebrow">What You'll Find</div>
+          <h2 class="section-title">Built for <em>beach days</em><br>and the nights after.</h2>
+        </div>
+        <p>From bikinis to breezy dresses to the small accessories that pull a look together &mdash; every piece is chosen to live well in salt air.</p>
+      </div>
+
+      <div class="cat-grid">
+        <div class="cat-card swim reveal">
+          <span class="cat-featured">Featured: Tai Swim Co.</span>
+          <span class="cat-tag">Swimwear</span>
+          <h3 class="cat-name">Bikinis &amp;<br>Cover-Ups</h3>
+          <p class="cat-desc">Suits that survive the surf and the rooftop bar. Tai Swim Co. and other curated favorites.</p>
+        </div>
+        <div class="cat-card dresses reveal">
+          <span class="cat-tag">Apparel</span>
+          <h3 class="cat-name">Dresses &amp;<br>Sets</h3>
+          <p class="cat-desc">Light layers for hot days. Easy silhouettes, real-life fits.</p>
+        </div>
+        <div class="cat-card accessories reveal">
+          <span class="cat-tag">Finishing Touches</span>
+          <h3 class="cat-name">Accessories</h3>
+          <p class="cat-desc">Hats, jewelry, bags &mdash; the small things that make the outfit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURED BRAND ═══ -->
+  <section class="feature-brand">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-eyebrow">Now Carrying</div>
+        <h2>Tai Swim Co. <em>at Daizes</em>.</h2>
+        <p>
+          Beloved Hawaiian-born swim brand Tai Swim Co. is on the racks. Sustainable, beautifully cut, made for actual ocean swimming &mdash; not just the photo of it.
+        </p>
+        <p style="margin-bottom: 32px;">Limited quantities. Restocked through the season.</p>
+        <a href="#visit" class="btn-primary">Come See It →</a>
+      </div>
+      <div class="brand-visual reveal">
+        <span>Tai <em>Swim</em><br>Co.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VISIT ═══ -->
+  <section class="visit" id="visit">
+    <div class="container">
+      <div class="visit-grid">
+        <div class="visit-info reveal">
+          <div class="section-eyebrow">Find Us</div>
+          <h2 class="section-title">Come <em>say hi</em>.</h2>
+
+          <div class="info-block">
+            <div class="info-label">Address</div>
+            <div class="info-value">
+              <a href="https://maps.google.com/?q=769+Montauk+Hwy+Montauk+NY+11954" target="_blank" rel="noopener">
+                769 Montauk Highway<br>Montauk, NY 11954
+              </a>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">Phone</div>
+            <div class="info-value"><a href="tel:+16316686000">(631) 668-6000</a></div>
+          </div>
+
+          <div class="info-block">
+            <div class="info-label">Hours</div>
+            <ul class="hours-list" style="margin-top: 14px;">
+              <li><span class="day">Monday</span><span class="time">11&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Tuesday</span><span class="time">10&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Wednesday</span><span class="time">10&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Thursday</span><span class="time">10&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Friday</span><span class="time">10&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Saturday</span><span class="time">10&nbsp;AM &ndash; 7&nbsp;PM</span></li>
+              <li><span class="day">Sunday</span><span class="time closed">Closed</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="map-card reveal">
+          <iframe
+            src="https://maps.google.com/maps?q=769+Montauk+Hwy+Montauk+NY+11954&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Map to Montauk Daizes"></iframe>
+          <div class="map-overlay">
+            <div class="map-overlay-icon">↗</div>
+            <div class="map-overlay-text">
+              <strong>Get directions</strong>
+              <span>769 Montauk Hwy &middot; tap to open in Maps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONNECT ═══ -->
+  <section class="connect" id="connect">
+    <svg class="daisy-deco daisy-3" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(100,100)">
+        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
+          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
+          <ellipse cx="0" cy="58" rx="14" ry="46"/>
+          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="58" cy="0" rx="46" ry="14"/>
+        </g>
+        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
+      </g>
+    </svg>
+    <svg class="daisy-deco daisy-4" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g transform="translate(100,100)">
+        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
+          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
+          <ellipse cx="0" cy="58" rx="14" ry="46"/>
+          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="58" cy="0" rx="46" ry="14"/>
+          <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
+          <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
+          <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
+          <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
+        </g>
+        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
+      </g>
+    </svg>
+
+    <div class="reveal" style="position: relative; z-index: 2;">
+      <div class="section-eyebrow" style="justify-content: center;">Stay In Touch</div>
+      <h2>See what's <em>new</em> on the racks.</h2>
+      <p>New arrivals, restocks, and the occasional sunny outfit-of-the-day &mdash; all over on Instagram.</p>
+      <a href="https://www.instagram.com/montaukdazies/" class="connect-cta" target="_blank" rel="noopener">
+        Follow on Instagram →
+      </a>
+      <a href="https://www.instagram.com/montaukdazies/" class="connect-handle" target="_blank" rel="noopener">@montaukdazies</a>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Montauk <em>Daizes</em></div>
+        <p class="foot-tagline">A curated women's boutique on Montauk Highway. Swimwear, summer dresses, and easy coastal style.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <ul>
+          <li><a href="https://maps.google.com/?q=769+Montauk+Hwy+Montauk+NY+11954" target="_blank" rel="noopener">769 Montauk Hwy</a></li>
+          <li><a href="https://maps.google.com/?q=769+Montauk+Hwy+Montauk+NY+11954" target="_blank" rel="noopener">Montauk, NY 11954</a></li>
+          <li><a href="tel:+16316686000">(631) 668-6000</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/montaukdazies/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.facebook.com/montaukdazies/" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.yelp.com/biz/montauk-dazies-montauk" target="_blank" rel="noopener">Yelp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year">2026</span> Montauk Daizes. All rights reserved.</span>
+      <span>Designed by <a href="https://bofilltech.com" target="_blank" rel="noopener" style="color: var(--daisy); text-decoration: none;">Bofill Technologies</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 24);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.addEventListener('click', e => {
+      if (e.target.tagName === 'A') mobileMenu.classList.remove('open');
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
