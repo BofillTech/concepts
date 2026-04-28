@@ -900,7 +900,7 @@
     .footer-brand{ grid-column: span 2; }
   }
 
-  /* ---------- Slim sticky booking bar ---------- */
+  /* ---------- Minimal bottom booking bar ---------- */
   .book-bar{
     position: fixed;
     bottom: 0; left: 0; right: 0;
@@ -909,53 +909,91 @@
     color: var(--paper);
     z-index: 60;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 var(--pad);
-    box-shadow: 0 -2px 24px rgba(0,0,0,0.15);
-    border-top: 1px solid rgba(251,248,241, 0.1);
+    align-items: stretch;
+    box-shadow: 0 -2px 24px rgba(0,0,0,0.18);
+    border-top: 1px solid rgba(251,248,241, 0.08);
   }
-  .book-bar-msg{
-    font-size: 11px;
-    font-weight: 500;
+  .book-field{
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 22px;
+    border-right: 1px solid rgba(251,248,241, 0.1);
+    cursor: pointer;
+    transition: background var(--t-fast);
+    position: relative;
+  }
+  .book-field:hover{ background: rgba(251,248,241, 0.04); }
+  .book-field-icon{
+    flex: 0 0 auto;
+    width: 18px; height: 18px;
+    color: var(--sun);
+  }
+  .book-field-icon svg{ width: 100%; height: 100%; }
+  .book-field-text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+    min-width: 0;
+  }
+  .book-field-label{
+    font-size: 9px;
+    font-weight: 600;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--dune);
+    margin-bottom: 3px;
   }
-  .book-bar-msg .em{ color: var(--paper); font-family: var(--display); font-size: 14px; letter-spacing: 1px; text-transform: none; margin-left: 8px; }
-  .book-bar-actions{
-    display: flex;
-    align-items: center;
-    gap: 18px;
-  }
-  .book-bar-phone{
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
+  .book-field-value{
+    font-family: var(--display);
+    font-size: 15px;
     color: var(--paper);
-    transition: color var(--t-fast);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
-  .book-bar-phone:hover{ color: var(--sun); }
-  .book-bar-phone svg{ width: 14px; height: 14px; }
+  .book-field input{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+
   .book-bar-cta{
+    flex: 0 0 auto;
     background: var(--sun);
     color: var(--ink);
-    padding: 10px 22px;
+    padding: 0 32px;
     font-size: 11px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
     transition: background var(--t-fast);
+    border: none;
   }
   .book-bar-cta:hover{ background: var(--paper); }
+  .book-bar-cta svg{ width: 12px; height: 12px; transition: transform var(--t-fast); }
+  .book-bar-cta:hover svg{ transform: translateX(3px); }
 
   @media (max-width: 640px){
-    .book-bar-msg{ display: none; }
-    .book-bar{ justify-content: space-between; }
-    .book-bar-actions{ width: 100%; justify-content: space-between; }
+    .book-field{ padding: 0 14px; gap: 10px; }
+    .book-field-icon{ display: none; }
+    .book-field-label{ font-size: 8px; letter-spacing: 1.5px; }
+    .book-field-value{ font-size: 13px; }
+    .book-bar-cta{ padding: 0 18px; font-size: 10px; letter-spacing: 1.5px; }
+    .book-bar-cta svg{ display: none; }
+  }
+  @media (max-width: 380px){
+    .book-field-label{ display: none; }
   }
 </style>
 </head>
@@ -1366,20 +1404,45 @@
   </div>
 </footer>
 
-<!-- Slim sticky booking bar -->
-<div class="book-bar">
-  <div class="book-bar-msg">
-    On the ocean<span class="em">·</span><span class="em">Amagansett, NY</span>
-  </div>
-  <div class="book-bar-actions">
-    <a href="tel:+16312673448" class="book-bar-phone">
-      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M2 3c0-1 1-2 2-2 0 0 1 0 1 2l1 2-2 1c0 1 1 3 3 4l1-2 2 1c2 0 2 1 2 1 0 1-1 2-2 2C5 12 2 9 2 3z"/>
+<!-- Minimal bottom booking bar -->
+<div class="book-bar" role="region" aria-label="Booking bar">
+  <label class="book-field" for="bb-checkin">
+    <span class="book-field-icon">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2" y="4" width="14" height="12" rx="1"/>
+        <line x1="2" y1="8" x2="16" y2="8"/>
+        <line x1="6" y1="2" x2="6" y2="6"/>
+        <line x1="12" y1="2" x2="12" y2="6"/>
       </svg>
-      (631) 267-3448
-    </a>
-    <a href="https://oceanvistaresort.client.innroad.com/" class="book-bar-cta" target="_blank" rel="noopener">Book Now</a>
-  </div>
+    </span>
+    <span class="book-field-text">
+      <span class="book-field-label">Check In</span>
+      <span class="book-field-value" id="bb-checkin-display">Add Date</span>
+    </span>
+    <input type="date" id="bb-checkin" aria-label="Check-in date">
+  </label>
+
+  <label class="book-field" for="bb-checkout">
+    <span class="book-field-icon">
+      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.4">
+        <rect x="2" y="4" width="14" height="12" rx="1"/>
+        <line x1="2" y1="8" x2="16" y2="8"/>
+        <line x1="6" y1="2" x2="6" y2="6"/>
+        <line x1="12" y1="2" x2="12" y2="6"/>
+        <path d="M6 12l2 2 4-4"/>
+      </svg>
+    </span>
+    <span class="book-field-text">
+      <span class="book-field-label">Check Out</span>
+      <span class="book-field-value" id="bb-checkout-display">Add Date</span>
+    </span>
+    <input type="date" id="bb-checkout" aria-label="Check-out date">
+  </label>
+
+  <button type="button" class="book-bar-cta" id="bb-book">
+    Book Now
+    <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 6h8M7 2l4 4-4 4"/></svg>
+  </button>
 </div>
 
 <script>
@@ -1417,6 +1480,45 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Booking bar
+  const ci = document.getElementById('bb-checkin');
+  const co = document.getElementById('bb-checkout');
+  const ciDisp = document.getElementById('bb-checkin-display');
+  const coDisp = document.getElementById('bb-checkout-display');
+  const bookBtn = document.getElementById('bb-book');
+  const fmt = (iso) => {
+    if (!iso) return 'Add Date';
+    const d = new Date(iso + 'T00:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  };
+  const today = new Date();
+  const tomorrow = new Date(today.getTime() + 86400000);
+  const toISO = (d) => d.toISOString().slice(0, 10);
+  ci.min = toISO(today);
+  co.min = toISO(tomorrow);
+  ci.addEventListener('change', () => {
+    ciDisp.textContent = fmt(ci.value);
+    if (ci.value) {
+      const next = new Date(ci.value + 'T00:00:00');
+      next.setDate(next.getDate() + 1);
+      co.min = toISO(next);
+      if (!co.value || co.value <= ci.value) {
+        co.value = toISO(next);
+        coDisp.textContent = fmt(co.value);
+      }
+    }
+  });
+  co.addEventListener('change', () => { coDisp.textContent = fmt(co.value); });
+  bookBtn.addEventListener('click', () => {
+    const base = 'https://oceanvistaresort.client.innroad.com/';
+    let url = base;
+    if (ci.value && co.value) {
+      const params = new URLSearchParams({ arrivalDate: ci.value, departureDate: co.value });
+      url = base + '?' + params.toString();
+    }
+    window.open(url, '_blank', 'noopener');
+  });
 </script>
 
 </body>
