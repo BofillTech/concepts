@@ -56,5 +56,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 26 | Surfside Inn & Restaurant | Montauk, NY | [surfsideinnmontauk.com](http://surfsideinnmontauk.com/) | [View →](https://bofilltech.github.io/concepts/surfside-inn/) | A — Magazine/Editorial (Coastal Heritage) — phone in nav, minimal bottom booking bar, oversized italic display | Fraunces + DM Sans | Apr 27 |
 
-| 27 | Montauk Daizes | Montauk, NY | [mtkdazies.com](https://mtkdazies.com) | [View →](https://bofilltech.github.io/concepts/montauk-dazies/) | Editorial Coastal Boutique (Retail/Non-Hospitality) — typography-led, daisy SVG motif, embedded Google Maps | Fraunces + DM Sans | Apr 27 |
+| 27 | Montauk Dazies | Montauk, NY | [mtkdazies.com](https://mtkdazies.com) | [View →](https://bofilltech.github.io/concepts/montauk-dazies/) | Editorial Coastal Boutique (Retail/Non-Hospitality) — typography-led, daisy SVG motif, embedded Google Maps | Fraunces + DM Sans | Apr 27 |
 

@@ -8,6 +8,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+  <!--
+    ═══════════════════════════════════════════════════════════════════
+    PHOTO PLACEHOLDERS — All images sourced from Unsplash (royalty-free,
+    commercial use, no attribution required). Each <img> below is marked
+    with a [PLACEHOLDER] comment block so you can search-and-replace
+    when real Montauk Dazies photos are available.
+
+    Replace these 6 photos with real ones:
+      1. HERO_IMAGE          — Storefront exterior or interior wide shot
+      2. ABOUT_IMAGE          — Boutique interior / Kanani in shop
+      3. CATEGORY_SWIM        — Swimwear on rack / Tai Swim flat-lay
+      4. CATEGORY_DRESSES     — Dresses on rack / dress detail shot
+      5. CATEGORY_ACCESSORIES — Hats, jewelry, or bags on display
+      6. TAI_SWIM_FEATURE     — Tai Swim Co. lifestyle / coastal shot
+    ═══════════════════════════════════════════════════════════════════
+  -->
+
   <style>
     :root {
       --cream: #FAF5E9;
@@ -23,11 +41,8 @@
       --display: 'Fraunces', Georgia, serif;
       --body: 'DM Sans', system-ui, sans-serif;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
-
     body {
       font-family: var(--body);
       background: var(--cream);
@@ -40,13 +55,9 @@
 
     /* ───── Nav ───── */
     .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 22px 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       transition: all 0.3s ease;
       background: transparent;
     }
@@ -58,52 +69,33 @@
     }
     .nav-logo {
       font-family: var(--display);
-      font-weight: 500;
-      font-size: 22px;
-      font-style: italic;
-      letter-spacing: -0.01em;
-      color: var(--navy);
+      font-weight: 500; font-size: 22px; font-style: italic;
+      letter-spacing: -0.01em; color: var(--navy);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      display: flex; align-items: center; gap: 8px;
     }
     .nav-logo::before {
-      content: '';
-      display: inline-block;
-      width: 14px;
-      height: 14px;
+      content: ''; display: inline-block;
+      width: 14px; height: 14px;
       background: radial-gradient(circle, var(--daisy) 35%, white 36%, white 100%);
       border-radius: 50%;
       box-shadow: 0 0 0 2px var(--daisy-deep) inset, 0 0 0 1px var(--navy);
     }
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
     .nav-links a {
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      color: var(--navy); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.04em; text-transform: uppercase;
       transition: opacity 0.2s;
     }
     .nav-links a:hover { opacity: 0.5; }
     .nav-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
       padding: 10px 22px;
-      background: var(--navy);
-      color: var(--paper);
+      background: var(--navy); color: var(--paper);
       text-decoration: none;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
       border-radius: 50px;
       transition: all 0.25s ease;
     }
@@ -114,21 +106,13 @@
       .nav { padding: 16px 20px; }
       .nav-links { display: none; }
       .menu-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        padding: 8px;
-        margin-left: 12px;
+        display: flex; flex-direction: column; gap: 4px;
+        padding: 8px; margin-left: 12px;
       }
-      .menu-toggle span {
-        width: 22px; height: 1.5px;
-        background: var(--navy);
-        transition: 0.2s;
-      }
+      .menu-toggle span { width: 22px; height: 1.5px; background: var(--navy); transition: 0.2s; }
       .nav-cta { padding: 9px 18px; font-size: 12px; }
       .mobile-menu {
-        position: fixed;
-        top: 60px; left: 0; right: 0;
+        position: fixed; top: 60px; left: 0; right: 0;
         background: var(--cream);
         padding: 24px;
         box-shadow: 0 8px 24px rgba(27,40,69,0.08);
@@ -148,51 +132,36 @@
     .hero {
       min-height: 100vh;
       padding: 140px 32px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      background: var(--cream);
-      overflow: hidden;
-    }
-    .hero-grid {
-      max-width: 1280px;
-      margin: 0 auto;
-      width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 48px;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 60px;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
       position: relative;
-      z-index: 2;
     }
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; padding: 120px 20px 60px; gap: 40px; }
+    }
+    .hero-content { position: relative; z-index: 2; }
     .hero-eyebrow {
-      font-size: 13px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--navy-soft);
       margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      display: flex; align-items: center; gap: 14px;
     }
-    .hero-eyebrow::before {
-      content: '';
-      width: 36px; height: 1px;
-      background: var(--navy-soft);
-    }
+    .hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--navy-soft); }
     .hero-title {
       font-family: var(--display);
       font-weight: 300;
-      font-size: clamp(56px, 11vw, 168px);
+      font-size: clamp(56px, 9vw, 132px);
       line-height: 0.92;
       letter-spacing: -0.035em;
       color: var(--navy);
       margin-bottom: 36px;
     }
     .hero-title em {
-      font-style: italic;
-      font-weight: 400;
-      color: var(--daisy-deep);
+      font-style: italic; font-weight: 400; color: var(--daisy-deep);
       font-variation-settings: "opsz" 144;
     }
     .hero-sub {
@@ -204,85 +173,63 @@
       font-weight: 400;
     }
     .hero-actions {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      align-items: center;
+      display: flex; gap: 16px; flex-wrap: wrap; align-items: center;
     }
     .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      display: inline-flex; align-items: center; gap: 12px;
       padding: 18px 36px;
-      background: var(--navy);
-      color: var(--paper);
+      background: var(--navy); color: var(--paper);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
       border-radius: 50px;
       transition: all 0.25s ease;
     }
     .btn-primary:hover {
-      background: var(--daisy-deep);
-      color: var(--navy);
+      background: var(--daisy-deep); color: var(--navy);
       transform: translateY(-2px);
     }
     .btn-link {
-      color: var(--navy);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
+      color: var(--navy); text-decoration: none;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
       padding: 16px 8px;
       border-bottom: 1px solid var(--navy);
       transition: all 0.2s;
     }
     .btn-link:hover { color: var(--daisy-deep); border-color: var(--daisy-deep); }
 
-    /* daisy decoration */
-    .daisy-deco {
+    /* Hero image — [PLACEHOLDER: HERO_IMAGE] */
+    .hero-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 30px 60px -20px rgba(27,40,69,0.15);
+    }
+    .hero-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-image .daisy-overlay {
       position: absolute;
+      bottom: -30px; right: -30px;
+      width: 140px;
       pointer-events: none;
-      opacity: 0.55;
+      z-index: 2;
     }
-    .daisy-1 { top: 18%; right: -40px; width: 220px; transform: rotate(-12deg); }
-    .daisy-2 { bottom: 8%; left: -30px; width: 140px; transform: rotate(28deg); opacity: 0.4; }
-
-    .hero-meta {
-      position: absolute;
-      bottom: 40px;
-      right: 32px;
-      font-size: 12px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--navy-soft);
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      display: none;
-    }
-    @media (min-width: 1024px) { .hero-meta { display: block; } }
 
     /* ───── Section base ───── */
     section { padding: 120px 32px; position: relative; }
     .container { max-width: 1240px; margin: 0 auto; }
     .section-eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--navy-soft);
       margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      display: flex; align-items: center; gap: 12px;
     }
-    .section-eyebrow::before {
-      content: '✻';
-      color: var(--daisy-deep);
-      font-size: 14px;
-    }
+    .section-eyebrow::before { content: '✻'; color: var(--daisy-deep); font-size: 14px; }
     .section-title {
       font-family: var(--display);
       font-weight: 300;
@@ -295,10 +242,7 @@
     .section-title em { font-style: italic; color: var(--daisy-deep); font-weight: 400; }
 
     /* ───── About ───── */
-    .about {
-      background: var(--paper);
-      border-top: 1px solid var(--line);
-    }
+    .about { background: var(--paper); border-top: 1px solid var(--line); }
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -306,15 +250,13 @@
       align-items: center;
     }
     .about-text p {
-      font-size: 18px;
-      line-height: 1.7;
+      font-size: 18px; line-height: 1.7;
       color: var(--navy-soft);
       margin-bottom: 18px;
     }
     .about-text p:first-of-type::first-letter {
       font-family: var(--display);
-      font-size: 64px;
-      font-weight: 400;
+      font-size: 64px; font-weight: 400;
       float: left;
       line-height: 0.85;
       padding: 8px 12px 0 0;
@@ -323,37 +265,32 @@
     }
     .about-visual {
       aspect-ratio: 4 / 5;
-      background: linear-gradient(135deg, var(--cream-deep) 0%, var(--sage) 100%);
-      border-radius: 4px;
+      border-radius: 6px;
       position: relative;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      box-shadow: 0 20px 40px -15px rgba(27,40,69,0.12);
     }
-    .about-visual svg { width: 60%; opacity: 0.8; }
+    .about-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     @media (max-width: 880px) {
       .about-grid { grid-template-columns: 1fr; gap: 48px; }
       .about-visual { aspect-ratio: 4 / 3; order: -1; }
     }
 
-    /* ───── Categories / What you'll find ───── */
-    .categories {
-      background: var(--cream);
-    }
+    /* ───── Categories ───── */
+    .categories { background: var(--cream); }
     .cat-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      display: flex; justify-content: space-between; align-items: flex-end;
       margin-bottom: 64px;
-      flex-wrap: wrap;
-      gap: 24px;
+      flex-wrap: wrap; gap: 24px;
     }
     .cat-header p {
       max-width: 380px;
       color: var(--navy-soft);
-      font-size: 17px;
-      line-height: 1.6;
+      font-size: 17px; line-height: 1.6;
     }
     .cat-grid {
       display: grid;
@@ -365,37 +302,30 @@
       aspect-ratio: 3 / 4;
       border-radius: 6px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 32px;
       color: var(--paper);
       transition: transform 0.4s ease;
       cursor: pointer;
     }
     .cat-card:hover { transform: translateY(-6px); }
+    .cat-card img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      transition: transform 0.6s ease;
+    }
+    .cat-card:hover img { transform: scale(1.04); }
     .cat-card::after {
-      content: '';
-      position: absolute;
-      inset: 0;
+      content: ''; position: absolute; inset: 0;
       background: linear-gradient(180deg, rgba(27,40,69,0.0) 30%, rgba(27,40,69,0.85) 100%);
       z-index: 1;
     }
-    .cat-card > * { position: relative; z-index: 2; }
-    .cat-card.swim {
-      background: linear-gradient(135deg, #5A7895 0%, #2E3D5C 100%);
-    }
-    .cat-card.dresses {
-      background: linear-gradient(135deg, #E8A39B 0%, #C97870 100%);
-    }
-    .cat-card.accessories {
-      background: linear-gradient(135deg, #F2B541 0%, #C99025 100%);
-    }
+    .cat-card > span, .cat-card > h3, .cat-card > p { position: relative; z-index: 2; }
     .cat-tag {
       display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
       padding: 6px 14px;
       background: rgba(255,252,245,0.2);
       border: 1px solid rgba(255,252,245,0.4);
@@ -413,10 +343,8 @@
       margin-bottom: 8px;
     }
     .cat-desc {
-      font-size: 14px;
-      line-height: 1.55;
-      opacity: 0.9;
-      max-width: 280px;
+      font-size: 14px; line-height: 1.55;
+      opacity: 0.9; max-width: 280px;
     }
     .cat-featured {
       position: absolute;
@@ -428,12 +356,10 @@
       background: var(--daisy);
       color: var(--navy);
       border-radius: 50px;
-      z-index: 2;
+      z-index: 3;
       font-weight: 500;
     }
-    @media (max-width: 880px) {
-      .cat-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 880px) { .cat-grid { grid-template-columns: 1fr; } }
 
     /* ───── Featured Brand: Tai Swim ───── */
     .feature-brand {
@@ -448,12 +374,9 @@
       grid-template-columns: 1fr 1fr;
       gap: 80px;
       align-items: center;
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
     }
-    .feature-brand .section-eyebrow {
-      color: var(--daisy);
-    }
+    .feature-brand .section-eyebrow { color: var(--daisy); }
     .feature-brand .section-eyebrow::before { color: var(--daisy); }
     .feature-brand h2 {
       font-family: var(--display);
@@ -465,55 +388,33 @@
     }
     .feature-brand h2 em { font-style: italic; color: var(--daisy); }
     .feature-brand p {
-      font-size: 17px;
-      line-height: 1.7;
+      font-size: 17px; line-height: 1.7;
       color: rgba(255,252,245,0.78);
       margin-bottom: 24px;
     }
-    .feature-brand .btn-primary {
-      background: var(--daisy);
-      color: var(--navy);
-    }
-    .feature-brand .btn-primary:hover {
-      background: var(--paper);
-    }
+    .feature-brand .btn-primary { background: var(--daisy); color: var(--navy); }
+    .feature-brand .btn-primary:hover { background: var(--paper); }
     .brand-visual {
       aspect-ratio: 1 / 1;
-      background: linear-gradient(135deg, #4A6B8A 0%, #1B2845 100%);
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       position: relative;
       overflow: hidden;
     }
-    .brand-visual::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, rgba(242,181,65,0.18) 0%, transparent 50%);
+    .brand-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .brand-visual span {
-      font-family: var(--display);
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(40px, 6vw, 80px);
-      color: var(--paper);
-      letter-spacing: -0.02em;
-    }
-    .brand-visual span em {
-      color: var(--daisy);
-      font-weight: 400;
+    .brand-visual::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(27,40,69,0) 50%, rgba(27,40,69,0.4) 100%);
     }
     @media (max-width: 880px) {
       .feature-brand .container { grid-template-columns: 1fr; gap: 48px; }
     }
 
     /* ───── Visit ───── */
-    .visit {
-      background: var(--paper);
-      padding: 120px 32px;
-    }
+    .visit { background: var(--paper); padding: 120px 32px; }
     .visit-grid {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
@@ -522,42 +423,24 @@
     }
     .visit-info { padding-top: 12px; }
     .visit-info .section-title { margin-bottom: 40px; }
-    .info-block {
-      padding: 28px 0;
-      border-top: 1px solid var(--line);
-    }
+    .info-block { padding: 28px 0; border-top: 1px solid var(--line); }
     .info-block:last-child { border-bottom: 1px solid var(--line); }
     .info-label {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--navy-soft);
       margin-bottom: 10px;
     }
     .info-value {
       font-family: var(--display);
-      font-weight: 400;
-      font-size: 22px;
-      letter-spacing: -0.01em;
-      line-height: 1.3;
+      font-weight: 400; font-size: 22px;
+      letter-spacing: -0.01em; line-height: 1.3;
     }
-    .info-value a {
-      color: var(--navy);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .info-value a { color: var(--navy); text-decoration: none; transition: color 0.2s; }
     .info-value a:hover { color: var(--daisy-deep); }
-    .hours-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .hours-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .hours-list li {
-      display: flex;
-      justify-content: space-between;
-      font-size: 15px;
-      padding: 4px 0;
+      display: flex; justify-content: space-between;
+      font-size: 15px; padding: 4px 0;
       border-bottom: 1px dotted rgba(27,40,69,0.15);
     }
     .hours-list .day { color: var(--navy-soft); }
@@ -570,41 +453,32 @@
       background: var(--cream-deep);
       border-radius: 6px;
       overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      display: flex; flex-direction: column; justify-content: flex-end;
       padding: 36px;
       color: var(--paper);
     }
     .map-card iframe {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       width: 100%; height: 100%;
       border: 0;
       filter: saturate(0.85) contrast(0.95);
     }
     .map-overlay {
-      position: relative;
-      z-index: 2;
+      position: relative; z-index: 2;
       background: rgba(27,40,69,0.92);
       backdrop-filter: blur(8px);
       padding: 24px 28px;
       border-radius: 4px;
-      display: flex;
-      align-items: center;
-      gap: 18px;
+      display: flex; align-items: center; gap: 18px;
     }
     .map-overlay-icon {
       width: 38px; height: 38px;
       background: var(--daisy);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
       color: var(--navy);
-      font-size: 18px;
-      font-weight: 600;
+      font-size: 18px; font-weight: 600;
     }
     .map-overlay-text { font-size: 14px; line-height: 1.4; }
     .map-overlay-text strong { display: block; font-weight: 500; margin-bottom: 2px; }
@@ -631,8 +505,7 @@
       letter-spacing: -0.025em;
       margin-bottom: 28px;
       max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: auto; margin-right: auto;
     }
     .connect h2 em { font-style: italic; color: var(--daisy-deep); }
     .connect p {
@@ -640,21 +513,15 @@
       color: var(--navy-soft);
       margin-bottom: 40px;
       max-width: 540px;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: auto; margin-right: auto;
     }
     .connect-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
+      display: inline-flex; align-items: center; gap: 12px;
       padding: 18px 40px;
-      background: var(--navy);
-      color: var(--paper);
+      background: var(--navy); color: var(--paper);
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
       border-radius: 50px;
       transition: all 0.25s;
     }
@@ -668,21 +535,14 @@
       color: var(--daisy-deep);
       text-decoration: none;
     }
-    .connect .daisy-deco {
-      opacity: 0.4;
-    }
-    .connect .daisy-3 { top: 8%; left: 6%; width: 110px; transform: rotate(-22deg); }
-    .connect .daisy-4 { bottom: 12%; right: 8%; width: 90px; transform: rotate(40deg); }
+    .daisy-deco { position: absolute; pointer-events: none; opacity: 0.4; }
+    .daisy-3 { top: 8%; left: 6%; width: 110px; transform: rotate(-22deg); }
+    .daisy-4 { bottom: 12%; right: 8%; width: 90px; transform: rotate(40deg); }
 
     /* ───── Footer ───── */
-    footer {
-      background: var(--navy);
-      color: var(--paper);
-      padding: 80px 32px 32px;
-    }
+    footer { background: var(--navy); color: var(--paper); padding: 80px 32px 32px; }
     .foot-top {
-      max-width: 1240px;
-      margin: 0 auto;
+      max-width: 1240px; margin: 0 auto;
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr;
       gap: 48px;
@@ -691,17 +551,14 @@
     }
     .foot-brand {
       font-family: var(--display);
-      font-style: italic;
-      font-weight: 400;
+      font-style: italic; font-weight: 400;
       font-size: 32px;
       margin-bottom: 16px;
     }
     .foot-brand em { color: var(--daisy); }
     .foot-tagline { color: rgba(255,252,245,0.7); font-size: 15px; line-height: 1.6; max-width: 320px; }
     .foot-col h4 {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
       color: var(--daisy);
       margin-bottom: 18px;
       font-weight: 500;
@@ -717,35 +574,26 @@
     .foot-bottom {
       max-width: 1240px;
       margin: 32px auto 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
       font-size: 13px;
       color: rgba(255,252,245,0.5);
     }
-    @media (max-width: 880px) {
-      .foot-top { grid-template-columns: 1fr; gap: 32px; }
-    }
+    @media (max-width: 880px) { .foot-top { grid-template-columns: 1fr; gap: 32px; } }
 
     /* ───── Reveal animation ───── */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
+      opacity: 0; transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
 
   <!-- ═══ NAV ═══ -->
   <nav class="nav" id="nav">
-    <a href="#" class="nav-logo">Montauk Daizes</a>
+    <a href="#" class="nav-logo">Montauk Dazies</a>
     <ul class="nav-links">
       <li><a href="#shop">Shop</a></li>
       <li><a href="#about">About</a></li>
@@ -753,7 +601,7 @@
       <li><a href="#connect">Connect</a></li>
     </ul>
     <div style="display:flex; align-items:center; gap:12px;">
-      <a href="#visit" class="nav-cta">Shop Now</a>
+      <a href="#visit" class="nav-cta">Visit Us</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -770,59 +618,40 @@
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <!-- decorative SVG daisies -->
-    <svg class="daisy-deco daisy-1" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g transform="translate(100,100)">
-        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
-          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
-          <ellipse cx="0" cy="58" rx="14" ry="46"/>
-          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
-          <ellipse cx="58" cy="0" rx="46" ry="14"/>
-          <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
-          <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
-          <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
-          <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
-        </g>
-        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
-        <circle cx="-6" cy="-4" r="2" fill="#1B2845" opacity="0.4"/>
-        <circle cx="6" cy="2" r="2" fill="#1B2845" opacity="0.4"/>
-        <circle cx="0" cy="6" r="1.5" fill="#1B2845" opacity="0.4"/>
-      </g>
-    </svg>
-    <svg class="daisy-deco daisy-2" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g transform="translate(100,100)">
-        <g fill="#FFFCF5" stroke="#1B2845" stroke-width="1.5">
-          <ellipse cx="0" cy="-58" rx="14" ry="46"/>
-          <ellipse cx="0" cy="58" rx="14" ry="46"/>
-          <ellipse cx="-58" cy="0" rx="46" ry="14"/>
-          <ellipse cx="58" cy="0" rx="46" ry="14"/>
-          <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
-          <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
-          <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
-          <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
-        </g>
-        <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="1.5"/>
-      </g>
-    </svg>
-
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">Boutique · Downtown Montauk</div>
-        <h1 class="hero-title">
-          Coastal style,<br>
-          easy <em>summer</em> days.
-        </h1>
-        <p class="hero-sub">
-          A curated women's boutique on Montauk Highway. Swimwear, sun-soaked dresses, and the kind of accessories that look better at the beach.
-        </p>
-        <div class="hero-actions">
-          <a href="#visit" class="btn-primary">Visit the Shop →</a>
-          <a href="https://www.instagram.com/montaukdazies/" class="btn-link" target="_blank" rel="noopener">Follow @montaukdazies</a>
-        </div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Boutique · Downtown Montauk</div>
+      <h1 class="hero-title">
+        Coastal style,<br>
+        easy <em>summer</em> days.
+      </h1>
+      <p class="hero-sub">
+        A curated women's boutique on Montauk Highway. Swimwear, sun-soaked dresses, and the kind of accessories that look better at the beach.
+      </p>
+      <div class="hero-actions">
+        <a href="#visit" class="btn-primary">Visit the Shop →</a>
+        <a href="https://www.instagram.com/montaukdazies/" class="btn-link" target="_blank" rel="noopener">Follow @montaukdazies</a>
       </div>
     </div>
-
-    <div class="hero-meta">769 Montauk Hwy · Est. Boutique</div>
+    <div class="hero-image">
+      <!-- [PLACEHOLDER: HERO_IMAGE] Boutique interior — replace with storefront or shop interior shot -->
+      <img src="https://images.unsplash.com/photo-1635691456524-5d7878772171?w=1200&q=82&auto=format&fit=crop" alt="Boutique interior">
+      <!-- floating daisy overlay -->
+      <svg class="daisy-overlay" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g transform="translate(100,100)">
+          <g fill="#FFFCF5" stroke="#1B2845" stroke-width="2">
+            <ellipse cx="0" cy="-58" rx="14" ry="46"/>
+            <ellipse cx="0" cy="58" rx="14" ry="46"/>
+            <ellipse cx="-58" cy="0" rx="46" ry="14"/>
+            <ellipse cx="58" cy="0" rx="46" ry="14"/>
+            <ellipse cx="-41" cy="-41" rx="14" ry="46" transform="rotate(45,-41,-41)"/>
+            <ellipse cx="41" cy="-41" rx="14" ry="46" transform="rotate(-45,41,-41)"/>
+            <ellipse cx="-41" cy="41" rx="14" ry="46" transform="rotate(-45,-41,41)"/>
+            <ellipse cx="41" cy="41" rx="14" ry="46" transform="rotate(45,41,41)"/>
+          </g>
+          <circle cx="0" cy="0" r="22" fill="#F2B541" stroke="#1B2845" stroke-width="2"/>
+        </g>
+      </svg>
+    </div>
   </section>
 
   <!-- ═══ ABOUT ═══ -->
@@ -833,29 +662,15 @@
           <div class="section-eyebrow">The Boutique</div>
           <h2 class="section-title">A little shop with a <em>lot of personality</em>.</h2>
           <p>
-            Tucked along Montauk Highway, Daizes is the kind of place locals send their friends to. The selection is small on purpose &mdash; thoughtfully curated, easy to wear, and chosen with that effortless coastal feel in mind.
+            Tucked along Montauk Highway, Dazies is the kind of place locals send their friends to. The selection is small on purpose &mdash; thoughtfully curated, easy to wear, and chosen with that effortless coastal feel in mind.
           </p>
           <p>
             Stop in for a swimsuit, leave with a whole summer wardrobe. The staff knows the inventory, knows the fit, and isn't afraid to tell you when something just isn't it.
           </p>
         </div>
         <div class="about-visual reveal">
-          <!-- Big stylized daisy as placeholder for owner / interior shot -->
-          <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <g transform="translate(150,150)">
-              <g fill="#FFFCF5" stroke="#1B2845" stroke-width="2">
-                <ellipse cx="0" cy="-90" rx="22" ry="72"/>
-                <ellipse cx="0" cy="90" rx="22" ry="72"/>
-                <ellipse cx="-90" cy="0" rx="72" ry="22"/>
-                <ellipse cx="90" cy="0" rx="72" ry="22"/>
-                <ellipse cx="-64" cy="-64" rx="22" ry="72" transform="rotate(45,-64,-64)"/>
-                <ellipse cx="64" cy="-64" rx="22" ry="72" transform="rotate(-45,64,-64)"/>
-                <ellipse cx="-64" cy="64" rx="22" ry="72" transform="rotate(-45,-64,64)"/>
-                <ellipse cx="64" cy="64" rx="22" ry="72" transform="rotate(45,64,64)"/>
-              </g>
-              <circle cx="0" cy="0" r="34" fill="#F2B541" stroke="#1B2845" stroke-width="2"/>
-            </g>
-          </svg>
+          <!-- [PLACEHOLDER: ABOUT_IMAGE] Modern boutique interior — replace with shot of Kanani in shop or detailed interior -->
+          <img src="https://images.unsplash.com/photo-1769107805412-90d9191d53e9?w=1000&q=82&auto=format&fit=crop" alt="Inside the boutique">
         </div>
       </div>
     </div>
@@ -873,18 +688,24 @@
       </div>
 
       <div class="cat-grid">
-        <div class="cat-card swim reveal">
+        <div class="cat-card reveal">
           <span class="cat-featured">Featured: Tai Swim Co.</span>
+          <!-- [PLACEHOLDER: CATEGORY_SWIM] Hanged bikinis flat-lay — replace with Tai Swim rack shot from store -->
+          <img src="https://images.unsplash.com/photo-1524894200781-78730fa3d63e?w=900&q=82&auto=format&fit=crop" alt="Swimwear collection">
           <span class="cat-tag">Swimwear</span>
           <h3 class="cat-name">Bikinis &amp;<br>Cover-Ups</h3>
           <p class="cat-desc">Suits that survive the surf and the rooftop bar. Tai Swim Co. and other curated favorites.</p>
         </div>
-        <div class="cat-card dresses reveal">
+        <div class="cat-card reveal">
+          <!-- [PLACEHOLDER: CATEGORY_DRESSES] Clothing rack — replace with dress detail shot from store -->
+          <img src="https://images.unsplash.com/photo-1761090617068-f1b3257d27ad?w=800&q=82&auto=format&fit=crop" alt="Dresses on rack">
           <span class="cat-tag">Apparel</span>
           <h3 class="cat-name">Dresses &amp;<br>Sets</h3>
           <p class="cat-desc">Light layers for hot days. Easy silhouettes, real-life fits.</p>
         </div>
-        <div class="cat-card accessories reveal">
+        <div class="cat-card reveal">
+          <!-- [PLACEHOLDER: CATEGORY_ACCESSORIES] Straw hat shot — replace with hats/jewelry/bags from store -->
+          <img src="https://images.unsplash.com/photo-1575535135032-0045eaea7d62?w=800&q=82&auto=format&fit=crop" alt="Accessories">
           <span class="cat-tag">Finishing Touches</span>
           <h3 class="cat-name">Accessories</h3>
           <p class="cat-desc">Hats, jewelry, bags &mdash; the small things that make the outfit.</p>
@@ -898,7 +719,7 @@
     <div class="container">
       <div class="reveal">
         <div class="section-eyebrow">Now Carrying</div>
-        <h2>Tai Swim Co. <em>at Daizes</em>.</h2>
+        <h2>Tai Swim Co. <em>at Dazies</em>.</h2>
         <p>
           Beloved Hawaiian-born swim brand Tai Swim Co. is on the racks. Sustainable, beautifully cut, made for actual ocean swimming &mdash; not just the photo of it.
         </p>
@@ -906,7 +727,8 @@
         <a href="#visit" class="btn-primary">Come See It →</a>
       </div>
       <div class="brand-visual reveal">
-        <span>Tai <em>Swim</em><br>Co.</span>
+        <!-- [PLACEHOLDER: TAI_SWIM_FEATURE] Coastal swimwear shot — replace with actual Tai Swim product or in-store shot -->
+        <img src="https://images.unsplash.com/photo-1551887283-ca87be316d1d?w=1000&q=82&auto=format&fit=crop" alt="Tai Swim Co. swimwear">
       </div>
     </div>
   </section>
@@ -952,7 +774,7 @@
             src="https://maps.google.com/maps?q=769+Montauk+Hwy+Montauk+NY+11954&output=embed"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Map to Montauk Daizes"></iframe>
+            title="Map to Montauk Dazies"></iframe>
           <div class="map-overlay">
             <div class="map-overlay-icon">↗</div>
             <div class="map-overlay-text">
@@ -1009,7 +831,7 @@
   <footer>
     <div class="foot-top">
       <div>
-        <div class="foot-brand">Montauk <em>Daizes</em></div>
+        <div class="foot-brand">Montauk <em>Dazies</em></div>
         <p class="foot-tagline">A curated women's boutique on Montauk Highway. Swimwear, summer dresses, and easy coastal style.</p>
       </div>
       <div class="foot-col">
@@ -1030,7 +852,7 @@
       </div>
     </div>
     <div class="foot-bottom">
-      <span>&copy; <span id="year">2026</span> Montauk Daizes. All rights reserved.</span>
+      <span>&copy; <span id="year">2026</span> Montauk Dazies. All rights reserved.</span>
       <span>Designed by <a href="https://bofilltech.com" target="_blank" rel="noopener" style="color: var(--daisy); text-decoration: none;">Bofill Technologies</a></span>
     </div>
   </footer>
@@ -1045,9 +867,7 @@
     // Mobile menu
     const toggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-    toggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
-    });
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
     mobileMenu.addEventListener('click', e => {
       if (e.target.tagName === 'A') mobileMenu.classList.remove('open');
     });
