@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunrise Guest House — The unHampton, Montauk</title>
+<meta name="description" content="A four-room beach house tucked into Old Montauk Highway. Steps to the sand. A travelers' paradise since 1995.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a2832;
+  --ink-soft: #2c3e4a;
+  --sea: #3a6d7c;
+  --sea-deep: #21515f;
+  --sun: #e8a071;
+  --sun-deep: #c97f50;
+  --shell: #f4ebde;
+  --paper: #fbf7ef;
+  --paper-2: #f6f1e6;
+  --mist: #d8c8b6;
+  --rule: #c9b9a3;
+  --display: 'Fraunces', Georgia, serif;
+  --body: 'DM Sans', system-ui, sans-serif;
+  --r-1: 2px;
+  --r-2: 4px;
+  --shadow-soft: 0 30px 80px -40px rgba(26, 40, 50, 0.4);
+  --shadow-card: 0 20px 50px -25px rgba(26, 40, 50, 0.25);
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+  font-variation-settings: "opsz" 18;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* ==================================================================== */
+/* TYPOGRAPHY                                                            */
+/* ==================================================================== */
+
+.display { font-family: var(--display); font-weight: 400; line-height: 1.04; letter-spacing: -0.02em; font-variation-settings: "opsz" 144, "SOFT" 50; }
+.eyebrow {
+  font-family: var(--body);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-weight: 500;
+  color: var(--sea-deep);
+}
+.eyebrow.light { color: rgba(255,255,255,0.85); }
+.lede {
+  font-family: var(--display);
+  font-weight: 300;
+  font-size: clamp(20px, 2.4vw, 27px);
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  font-variation-settings: "opsz" 60, "SOFT" 80;
+}
+.body-prose p { font-size: 17px; line-height: 1.7; color: var(--ink-soft); }
+.body-prose p + p { margin-top: 1.1em; }
+
+/* ==================================================================== */
+/* NAV                                                                   */
+/* ==================================================================== */
+
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 18px 32px;
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center;
+  gap: 32px;
+  transition: all 0.4s var(--ease);
+  color: white;
+}
+.nav.scrolled {
+  background: rgba(251, 247, 239, 0.96);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(26,40,50,0.06);
+  padding: 12px 32px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--display); font-weight: 500; font-size: 22px; letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 60, "SOFT" 60;
+}
+.brand-mark {
+  width: 26px; height: 26px;
+  position: relative;
+}
+.brand-mark::before {
+  content: '';
+  position: absolute; left: 0; right: 0; top: 50%;
+  height: 1px; background: currentColor; opacity: 0.7;
+}
+.brand-mark::after {
+  content: '';
+  position: absolute; left: 50%; top: 50%;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--sun);
+  transform: translate(-50%, -85%);
+  transition: background 0.4s var(--ease);
+}
+.nav.scrolled .brand-mark::after { background: var(--sun-deep); }
+
+.nav-links {
+  display: flex; gap: 36px;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  justify-content: center;
+}
+.nav-links a {
+  position: relative;
+  padding: 4px 0;
+  transition: opacity 0.2s var(--ease);
+}
+.nav-links a:hover { opacity: 0.65; }
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -2px;
+  width: 0; height: 1px; background: currentColor;
+  transition: width 0.3s var(--ease);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-actions { display: flex; align-items: center; gap: 20px; }
+.nav-phone {
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-phone svg { width: 14px; height: 14px; opacity: 0.7; }
+.btn-reserve {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--body); font-size: 13px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  padding: 12px 22px;
+  background: var(--sun);
+  color: var(--ink);
+  border-radius: var(--r-1);
+  transition: all 0.3s var(--ease);
+  white-space: nowrap;
+}
+.btn-reserve:hover { background: var(--sun-deep); transform: translateY(-1px); }
+.nav.scrolled .btn-reserve { background: var(--ink); color: var(--paper); }
+.nav.scrolled .btn-reserve:hover { background: var(--sea-deep); }
+
+.menu-toggle { display: none; }
+
+@media (max-width: 960px) {
+  .nav { grid-template-columns: auto 1fr auto; padding: 14px 18px; gap: 12px; }
+  .nav-links {
+    position: fixed; inset: 0; top: 60px;
+    background: var(--paper);
+    flex-direction: column; gap: 0;
+    padding: 40px 24px;
+    transform: translateX(100%);
+    transition: transform 0.4s var(--ease);
+    color: var(--ink);
+    font-size: 24px;
+    font-family: var(--display); font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .nav-links.open { transform: translateX(0); }
+  .nav-links a { padding: 18px 0; border-bottom: 1px solid var(--mist); }
+  .nav-actions .nav-phone { display: none; }
+  .menu-toggle {
+    display: flex; flex-direction: column; gap: 5px;
+    width: 28px; height: 28px;
+    align-items: center; justify-content: center;
+  }
+  .menu-toggle span {
+    display: block; width: 22px; height: 1.5px; background: currentColor;
+    transition: all 0.3s var(--ease);
+  }
+  .menu-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .menu-toggle.open span:nth-child(2) { opacity: 0; }
+  .menu-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .btn-reserve { padding: 10px 16px; font-size: 11px; letter-spacing: 0.14em; }
+}
+
+/* ==================================================================== */
+/* HERO                                                                  */
+/* ==================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex; align-items: flex-end;
+  color: white;
+  overflow: hidden;
+}
+.hero-img {
+  position: absolute; inset: 0;
+  background: var(--ink);
+}
+.hero-img img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 40%;
+  filter: brightness(0.85) saturate(0.95);
+}
+.hero-img::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(26,40,50,0.4) 0%, rgba(26,40,50,0) 35%, rgba(26,40,50,0) 55%, rgba(26,40,50,0.7) 100%);
+}
+.hero-grid {
+  position: relative;
+  width: 100%;
+  padding: 0 32px 72px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+}
+.hero-headline {
+  font-size: clamp(64px, 12vw, 180px);
+  letter-spacing: -0.04em;
+  font-variation-settings: "opsz" 144, "SOFT" 30, "wght" 350;
+  line-height: 0.92;
+  max-width: 1100px;
+}
+.hero-headline em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+  color: var(--sun);
+}
+.hero-meta {
+  display: flex; flex-direction: column; gap: 8px;
+  font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+  text-align: right;
+  font-weight: 500;
+}
+.hero-meta .since {
+  font-family: var(--display); font-style: italic;
+  text-transform: none; letter-spacing: 0;
+  font-size: 18px;
+  color: var(--sun);
+  font-variation-settings: "opsz" 30, "SOFT" 100;
+}
+.hero-sub-row {
+  position: absolute;
+  left: 32px; right: 32px; top: calc(50% + 40px);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+  pointer-events: none;
+}
+.hero-sub-row .rule {
+  flex: 1; height: 1px; background: rgba(255,255,255,0.5);
+  margin: 0 24px;
+}
+.hero-tagline {
+  position: absolute;
+  bottom: 50%;
+  left: 32px;
+  transform: translateY(50%);
+  max-width: 360px;
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.5;
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 350;
+  color: rgba(255,255,255,0.95);
+  display: none;
+}
+.scroll-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 32px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-cue::after {
+  content: '';
+  width: 1px; height: 28px;
+  background: rgba(255,255,255,0.5);
+  animation: cueLine 2.4s var(--ease) infinite;
+}
+@keyframes cueLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+@media (max-width: 768px) {
+  .hero-grid { padding: 0 18px 48px; grid-template-columns: 1fr; }
+  .hero-meta { text-align: left; flex-direction: row; align-items: center; gap: 20px; }
+  .hero-meta .since { font-size: 14px; }
+  .hero-sub-row { left: 18px; right: 18px; font-size: 10px; }
+  .hero-sub-row .rule { margin: 0 12px; }
+  .hero-tagline { display: none; }
+}
+
+/* ==================================================================== */
+/* SECTION CHROME                                                        */
+/* ==================================================================== */
+
+section { padding: 120px 32px; position: relative; }
+@media (max-width: 768px) { section { padding: 80px 18px; } }
+
+.container { max-width: 1280px; margin: 0 auto; }
+.container-narrow { max-width: 880px; margin: 0 auto; }
+
+.section-label {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 32px;
+}
+.section-label::before {
+  content: ''; width: 32px; height: 1px; background: var(--rule);
+}
+.section-label .num {
+  font-family: var(--display); font-style: italic;
+  font-size: 13px; color: var(--sea-deep);
+  font-variation-settings: "opsz" 30, "SOFT" 100;
+}
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-stagger > * { opacity: 0; transform: translateY(24px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal-stagger.in > * { opacity: 1; transform: none; }
+.reveal-stagger.in > *:nth-child(1) { transition-delay: 0s; }
+.reveal-stagger.in > *:nth-child(2) { transition-delay: 0.1s; }
+.reveal-stagger.in > *:nth-child(3) { transition-delay: 0.2s; }
+.reveal-stagger.in > *:nth-child(4) { transition-delay: 0.3s; }
+
+/* ==================================================================== */
+/* WELCOME (editorial split)                                             */
+/* ==================================================================== */
+
+.welcome { padding-top: 140px; padding-bottom: 0; }
+.welcome-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+.welcome-text { padding-right: 20px; }
+.welcome-headline {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 350;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 350;
+  margin: 24px 0 32px;
+  letter-spacing: -0.025em;
+}
+.welcome-headline em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+  color: var(--sea-deep);
+}
+.welcome-quote {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(20px, 2vw, 26px); line-height: 1.5;
+  color: var(--ink);
+  margin: 36px 0;
+  padding-left: 28px;
+  border-left: 1px solid var(--sun);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 350;
+}
+.welcome-img {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--r-2);
+  box-shadow: var(--shadow-soft);
+}
+.welcome-img img { width: 100%; height: 100%; object-fit: cover; }
+.welcome-img-tag {
+  position: absolute; bottom: 20px; left: 20px;
+  background: var(--paper);
+  padding: 10px 16px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--sea-deep);
+  font-weight: 500;
+}
+
+@media (max-width: 880px) {
+  .welcome-grid { grid-template-columns: 1fr; gap: 48px; }
+  .welcome-text { padding-right: 0; order: 2; }
+  .welcome-img { order: 1; aspect-ratio: 4 / 3; }
+}
+
+/* ==================================================================== */
+/* SUITES (magazine index)                                               */
+/* ==================================================================== */
+
+.suites { background: var(--paper-2); }
+.suites-head {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  align-items: end;
+  margin-bottom: 80px;
+}
+.suites-headline {
+  font-size: clamp(44px, 6vw, 80px);
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "SOFT" 50, "wght" 350;
+}
+.suites-headline em {
+  font-style: italic;
+  color: var(--sea-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.suites-intro p { font-size: 18px; line-height: 1.65; color: var(--ink-soft); }
+.suites-intro p + p { margin-top: 16px; }
+
+.suite {
+  display: grid;
+  grid-template-columns: 80px 1fr 1.3fr;
+  gap: 48px;
+  padding: 56px 0;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+.suite:last-of-type { border-bottom: 1px solid var(--rule); }
+.suite-num {
+  font-family: var(--display); font-style: italic;
+  font-size: 56px; line-height: 1;
+  color: var(--sea);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.suite-info { padding-right: 20px; }
+.suite-name {
+  font-family: var(--display);
+  font-size: clamp(28px, 3vw, 38px);
+  font-variation-settings: "opsz" 60, "SOFT" 50, "wght" 400;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.suite-detail-row {
+  display: flex; flex-wrap: wrap; gap: 8px 18px;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--sea-deep);
+  margin-bottom: 18px;
+}
+.suite-detail-row span { display: inline-flex; align-items: center; gap: 6px; }
+.suite-detail-row span::before {
+  content: ''; width: 4px; height: 4px; background: var(--sun); border-radius: 50%;
+}
+.suite-info p { font-size: 16px; color: var(--ink-soft); line-height: 1.7; }
+.suite-img {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--r-2);
+  position: relative;
+}
+.suite-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 1.6s var(--ease);
+}
+.suite:hover .suite-img img { transform: scale(1.04); }
+
+@media (max-width: 880px) {
+  .suites-head { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+  .suite { grid-template-columns: 1fr; gap: 24px; padding: 40px 0; }
+  .suite-num { font-size: 36px; }
+  .suite-info { padding-right: 0; }
+  .suite-img { aspect-ratio: 16 / 11; }
+}
+
+/* ==================================================================== */
+/* MORNINGS (full-bleed photo + text)                                    */
+/* ==================================================================== */
+
+.mornings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+  min-height: 80vh;
+  align-items: stretch;
+}
+.mornings-img {
+  position: relative; overflow: hidden;
+  background: var(--ink);
+}
+.mornings-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.mornings-text {
+  padding: 100px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--shell);
+}
+.mornings-headline {
+  font-size: clamp(44px, 6vw, 78px);
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 350;
+  margin: 24px 0 28px;
+}
+.mornings-headline em {
+  font-style: italic;
+  color: var(--sun-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.mornings-text p {
+  font-size: 17px; line-height: 1.75; color: var(--ink-soft);
+  max-width: 460px;
+}
+.mornings-text p + p { margin-top: 16px; }
+.mornings-list {
+  margin-top: 32px;
+  display: flex; flex-wrap: wrap; gap: 8px 24px;
+  font-family: var(--display); font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 350;
+}
+.mornings-list span {
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.mornings-list span:not(:last-child)::after {
+  content: '·';
+  margin-left: 24px;
+  color: var(--sun);
+}
+
+@media (max-width: 960px) {
+  .mornings { grid-template-columns: 1fr; min-height: auto; }
+  .mornings-img { aspect-ratio: 4 / 3; }
+  .mornings-text { padding: 60px 24px; }
+}
+
+/* ==================================================================== */
+/* THE BEACH (overlapping panels)                                        */
+/* ==================================================================== */
+
+.beach { padding: 140px 32px; }
+.beach-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+}
+.beach-img {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+  border-radius: var(--r-2);
+  position: relative;
+}
+.beach-img img { width: 100%; height: 100%; object-fit: cover; }
+.beach-text { padding-left: 20px; }
+.beach-headline {
+  font-size: clamp(40px, 5vw, 70px);
+  letter-spacing: -0.03em;
+  margin: 20px 0 28px;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 350;
+}
+.beach-headline em {
+  font-style: italic; color: var(--sea-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.beach-stats {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.beach-stat-num {
+  font-family: var(--display); font-style: italic;
+  font-size: 40px; line-height: 1;
+  color: var(--sea-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 350;
+  margin-bottom: 8px;
+}
+.beach-stat-label {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 880px) {
+  .beach-grid { grid-template-columns: 1fr; gap: 40px; }
+  .beach-text { padding-left: 0; }
+}
+
+/* ==================================================================== */
+/* THE UNHAMPTON (statement section)                                     */
+/* ==================================================================== */
+
+.unhampton {
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  padding: 140px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.unhampton::before {
+  content: '';
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 60px; background: var(--sun);
+}
+.unhampton-eyebrow {
+  font-size: 11px; letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--sun); margin-bottom: 32px;
+}
+.unhampton-headline {
+  font-size: clamp(48px, 8vw, 130px);
+  font-variation-settings: "opsz" 144, "SOFT" 80, "wght" 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.unhampton-headline em {
+  font-style: italic;
+  color: var(--sun);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.unhampton-sub {
+  max-width: 580px; margin: 40px auto 0;
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(18px, 2vw, 22px); line-height: 1.6;
+  color: rgba(255,255,255,0.85);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 350;
+}
+.unhampton-list {
+  margin-top: 64px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 880px;
+  margin-left: auto; margin-right: auto;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 40px;
+}
+.unhampton-list-item {
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  padding: 12px 8px;
+  position: relative;
+}
+.unhampton-list-item:not(:last-child)::after {
+  content: '';
+  position: absolute; right: 0; top: 16px; bottom: 16px;
+  width: 1px; background: rgba(255,255,255,0.15);
+}
+
+@media (max-width: 720px) {
+  .unhampton-list { grid-template-columns: repeat(2, 1fr); }
+  .unhampton-list-item:nth-child(2)::after { display: none; }
+}
+
+/* ==================================================================== */
+/* GUEST WORDS (review pull quotes)                                      */
+/* ==================================================================== */
+
+.words { padding: 140px 32px; }
+.words-head { text-align: center; margin-bottom: 80px; }
+.words-headline {
+  font-size: clamp(40px, 5vw, 64px);
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 350;
+  letter-spacing: -0.025em;
+  margin-top: 16px;
+}
+.words-headline em { font-style: italic; color: var(--sea-deep); font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300; }
+.words-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.word-card {
+  background: var(--paper);
+  padding: 40px 32px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-2);
+  position: relative;
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+.word-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.word-stars {
+  display: flex; gap: 3px; margin-bottom: 20px;
+  color: var(--sun-deep);
+  font-size: 14px;
+}
+.word-quote {
+  font-family: var(--display); font-style: italic;
+  font-size: 22px; line-height: 1.45;
+  color: var(--ink);
+  margin-bottom: 28px;
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 400;
+}
+.word-meta {
+  display: flex; flex-direction: column; gap: 4px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.word-author {
+  font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.word-source {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--sea-deep);
+}
+.words-trust {
+  text-align: center; margin-top: 64px;
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+}
+.words-trust-rating {
+  font-family: var(--display);
+  font-size: 60px;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 400;
+  color: var(--ink);
+  line-height: 1;
+}
+.words-trust-rating sub {
+  font-size: 22px; color: var(--sea-deep);
+  font-style: italic;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.words-trust-label {
+  font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 960px) {
+  .words-grid { grid-template-columns: 1fr; gap: 24px; }
+  .word-quote { font-size: 19px; }
+}
+
+/* ==================================================================== */
+/* GALLERY STRIP                                                         */
+/* ==================================================================== */
+
+.gallery { padding: 0; overflow: hidden; }
+.gallery-track {
+  display: flex; gap: 4px;
+  width: 100%;
+}
+.gallery-item {
+  flex: 1;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+@media (max-width: 880px) {
+  .gallery-track { flex-wrap: wrap; }
+  .gallery-item { flex: 1 1 50%; aspect-ratio: 1 / 1; }
+}
+
+/* ==================================================================== */
+/* VISIT (location & contact)                                            */
+/* ==================================================================== */
+
+.visit {
+  background: var(--paper-2);
+  padding: 140px 32px;
+}
+.visit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: start;
+}
+.visit-headline {
+  font-size: clamp(44px, 6vw, 80px);
+  letter-spacing: -0.03em;
+  margin: 16px 0 32px;
+  font-variation-settings: "opsz" 144, "SOFT" 60, "wght" 350;
+}
+.visit-headline em {
+  font-style: italic; color: var(--sea-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.visit-info { font-size: 17px; line-height: 1.7; color: var(--ink-soft); margin-bottom: 32px; }
+.visit-block {
+  padding: 28px 0;
+  border-top: 1px solid var(--rule);
+}
+.visit-block:last-child { border-bottom: 1px solid var(--rule); }
+.visit-block-label {
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--sea-deep);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.visit-block-value {
+  font-family: var(--display);
+  font-size: 22px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 60, "SOFT" 50, "wght" 400;
+  letter-spacing: -0.01em;
+}
+.visit-block-value a { transition: color 0.2s var(--ease); }
+.visit-block-value a:hover { color: var(--sun-deep); }
+
+.visit-near {
+  display: flex; flex-direction: column;
+  background: var(--paper); border-radius: var(--r-2);
+  padding: 36px 36px 12px;
+  border: 1px solid var(--rule);
+}
+.visit-near-title {
+  font-family: var(--display);
+  font-size: 24px;
+  font-variation-settings: "opsz" 60, "SOFT" 60, "wght" 400;
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+.visit-near-list { list-style: none; }
+.visit-near-list li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+}
+.visit-near-list li:first-child { border-top: 0; }
+.visit-near-list li span { color: var(--ink); }
+.visit-near-list li em {
+  font-family: var(--display); font-style: italic;
+  color: var(--sea-deep);
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 350;
+  font-size: 14px;
+}
+
+@media (max-width: 880px) {
+  .visit-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* ==================================================================== */
+/* FINAL CTA                                                             */
+/* ==================================================================== */
+
+.final {
+  position: relative;
+  padding: 160px 32px;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  isolation: isolate;
+}
+.final-bg {
+  position: absolute; inset: 0; z-index: -2;
+}
+.final-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+.final::before {
+  content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(26,40,50,0.3) 0%, rgba(26,40,50,0.5) 100%);
+}
+.final-mark {
+  display: inline-block;
+  width: 80px; height: 80px;
+  margin-bottom: 32px;
+  position: relative;
+}
+.final-mark::before {
+  content: ''; position: absolute; left: 0; right: 0; top: 50%;
+  height: 1px; background: rgba(255,255,255,0.5);
+}
+.final-mark::after {
+  content: ''; position: absolute; left: 50%; top: 50%;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--sun);
+  transform: translate(-50%, -85%);
+  box-shadow: 0 0 60px rgba(232, 160, 113, 0.4);
+}
+.final-headline {
+  font-size: clamp(48px, 7vw, 110px);
+  letter-spacing: -0.03em;
+  font-variation-settings: "opsz" 144, "SOFT" 70, "wght" 300;
+  line-height: 1;
+}
+.final-headline em {
+  font-style: italic; color: var(--sun);
+  font-variation-settings: "opsz" 144, "SOFT" 100, "wght" 300;
+}
+.final-sub {
+  font-family: var(--display); font-style: italic;
+  font-size: clamp(18px, 2vw, 22px); line-height: 1.6;
+  margin: 32px auto 48px; max-width: 480px;
+  color: rgba(255,255,255,0.9);
+  font-variation-settings: "opsz" 60, "SOFT" 100, "wght" 350;
+}
+.final-actions {
+  display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;
+}
+.final-actions .btn-primary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 32px;
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 13px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: var(--r-1);
+  transition: all 0.3s var(--ease);
+}
+.final-actions .btn-primary:hover { background: var(--sun-deep); transform: translateY(-2px); }
+.final-actions .btn-secondary {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 18px 32px;
+  border: 1px solid rgba(255,255,255,0.5);
+  color: white;
+  font-size: 13px; font-weight: 500; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: var(--r-1);
+  transition: all 0.3s var(--ease);
+}
+.final-actions .btn-secondary:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+/* ==================================================================== */
+/* FOOTER                                                                */
+/* ==================================================================== */
+
+.footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.7);
+  padding: 80px 32px 32px;
+  font-size: 14px;
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 60px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.footer-brand {
+  font-family: var(--display);
+  color: white;
+  font-size: 28px;
+  letter-spacing: -0.01em;
+  font-variation-settings: "opsz" 60, "SOFT" 60, "wght" 500;
+  margin-bottom: 16px;
+}
+.footer-tag {
+  font-family: var(--display); font-style: italic;
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  font-variation-settings: "opsz" 30, "SOFT" 100, "wght" 350;
+  margin-bottom: 24px;
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--sun);
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+.footer-col a, .footer-col p {
+  display: block; padding: 4px 0;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s var(--ease);
+}
+.footer-col a:hover { color: white; }
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  padding-top: 32px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.04em;
+}
+.footer-bottom em {
+  font-family: var(--display); font-style: italic; color: var(--sun);
+  font-variation-settings: "opsz" 30, "SOFT" 100;
+}
+
+@media (max-width: 880px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .footer-brand-col { grid-column: span 2; }
+  .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* ==================================================================== */
+/* STICKY MOBILE PILL                                                    */
+/* ==================================================================== */
+
+.book-pill {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  z-index: 90;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 14px 22px;
+  border-radius: 100px;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 500;
+  display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 14px 40px -10px rgba(26,40,50,0.5);
+  transition: all 0.3s var(--ease);
+  opacity: 0; pointer-events: none; transform: translateY(20px);
+}
+.book-pill.show { opacity: 1; pointer-events: auto; transform: none; }
+.book-pill:hover { background: var(--sun); color: var(--ink); }
+.book-pill svg { width: 14px; height: 14px; }
+
+@media (max-width: 720px) {
+  .book-pill { bottom: 16px; right: 16px; left: 16px; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav" id="nav">
+  <a href="#" class="brand">
+    <span class="brand-mark"></span>
+    Sunrise
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="#suites">Suites</a>
+    <a href="#mornings">Breakfast</a>
+    <a href="#beach">The Beach</a>
+    <a href="#visit">Visit</a>
+    <a href="#words">Reviews</a>
+  </div>
+  <div class="nav-actions">
+    <a href="tel:+16316687286" class="nav-phone">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      631 668 7286
+    </a>
+    <a href="#final" class="btn-reserve">Reserve</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/7a/sunrise-guest-house.jpg?w=2200&h=-1&s=1" alt="Sunrise Guest House at the edge of the Atlantic" referrerpolicy="no-referrer">
+  </div>
+
+  <div class="hero-sub-row">
+    <span>Old Montauk Highway</span>
+    <span class="rule"></span>
+    <span>Across the road from the Atlantic</span>
+  </div>
+
+  <div class="hero-tagline">
+    Casual. Beachy. Unpretentious. A four-room beach house on Old Montauk Highway — just steps to a beach that feels like yours.
+  </div>
+
+  <div class="hero-grid">
+    <h1 class="display hero-headline">
+      The <em>unHampton.</em>
+    </h1>
+    <div class="hero-meta">
+      <span>Montauk · NY</span>
+      <span class="since">est. 1995</span>
+      <span>4 Suites</span>
+    </div>
+  </div>
+
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ============== WELCOME ============== -->
+<section class="welcome" id="welcome">
+  <div class="welcome-grid">
+    <div class="welcome-text reveal">
+      <div class="section-label"><span class="num">i.</span> <span class="eyebrow">Welcome</span></div>
+      <h2 class="display welcome-headline">
+        One of Montauk's <em>best-kept</em> secrets, tucked away by the sea.
+      </h2>
+      <div class="body-prose">
+        <p>Stacey and John have run the place since 1995 — a four-room beach house on a quiet bend of Old Montauk Highway, with a porch that watches the Atlantic and a kitchen that smells of homemade quiche by 8 a.m.</p>
+        <p>You'll find no lobby here, no concierge desk, no marble. What you'll find instead is a house — warm, lived-in, and laid out to make you feel like you've finally stopped traveling.</p>
+      </div>
+      <p class="welcome-quote">A travelers' paradise since 1995. Romantic, laid back — even in peak season, there are very few people on our beach.</p>
+    </div>
+    <div class="welcome-img reveal">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/7c/sunrise-guest-house.jpg?w=1400&h=-1&s=1" alt="The house from the porch" referrerpolicy="no-referrer">
+      <div class="welcome-img-tag">681 Old Montauk Hwy</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SUITES ============== -->
+<section class="suites" id="suites">
+  <div class="container">
+    <div class="suites-head">
+      <div>
+        <div class="section-label"><span class="num">ii.</span> <span class="eyebrow">The Rooms</span></div>
+        <h2 class="display suites-headline">Four <em>suites.</em><br>Three with the ocean.</h2>
+      </div>
+      <div class="suites-intro reveal">
+        <p>Each suite is roughly three hundred square feet — large enough to live in for a week, small enough to feel like yours. Three of the four face the water; all four have ensuite baths, fireplaces, flat-screens, and the sound of the surf if you crack a window at night.</p>
+      </div>
+    </div>
+
+    <article class="suite reveal-stagger">
+      <div class="suite-num">01</div>
+      <div class="suite-info">
+        <h3 class="suite-name">The Front Suite</h3>
+        <div class="suite-detail-row">
+          <span>Ocean view</span>
+          <span>Gas fireplace</span>
+          <span>Ensuite</span>
+        </div>
+        <p>Wide windows facing the Atlantic and the morning sun. A sleigh bed, a sliding door to the porch, and the sort of quiet you forgot existed.</p>
+      </div>
+      <div class="suite-img">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/74/sunrise-guest-house.jpg?w=1400&h=-1&s=1" alt="Front suite with ocean view" referrerpolicy="no-referrer">
+      </div>
+    </article>
+
+    <article class="suite reveal-stagger">
+      <div class="suite-num">02</div>
+      <div class="suite-info">
+        <h3 class="suite-name">The Fireplace Suite</h3>
+        <div class="suite-detail-row">
+          <span>Ocean view</span>
+          <span>Gas fireplace</span>
+          <span>Sitting area</span>
+        </div>
+        <p>Two rooms divided by a half-wall: a bed by the windows, a sitting area by the fireplace. Open the slider and you'll hear the surf above the firelight.</p>
+      </div>
+      <div class="suite-img">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/76/sunrise-guest-house.jpg?w=1400&h=-1&s=1" alt="Fireplace suite interior" referrerpolicy="no-referrer">
+      </div>
+    </article>
+
+    <article class="suite reveal-stagger">
+      <div class="suite-num">03</div>
+      <div class="suite-info">
+        <h3 class="suite-name">The Garden Suite</h3>
+        <div class="suite-detail-row">
+          <span>Ocean view</span>
+          <span>Ensuite</span>
+          <span>Antique furnishings</span>
+        </div>
+        <p>Set back from the road, with the same view of the water and a touch more quiet. Antique furnishings, a generous bath, and a porch step from the door.</p>
+      </div>
+      <div class="suite-img">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/77/sunrise-guest-house.jpg?w=1400&h=-1&s=1" alt="Garden suite" referrerpolicy="no-referrer">
+      </div>
+    </article>
+
+    <article class="suite reveal-stagger">
+      <div class="suite-num">04</div>
+      <div class="suite-info">
+        <h3 class="suite-name">The Tucked-In Suite</h3>
+        <div class="suite-detail-row">
+          <span>Sound of the sea</span>
+          <span>Ensuite</span>
+          <span>Quiet rear</span>
+        </div>
+        <p>The hideaway — set back from the highway and as quiet as the house gets. The view is of the garden, but you'll still hear the surf at night.</p>
+      </div>
+      <div class="suite-img">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/78/sunrise-guest-house.jpg?w=1400&h=-1&s=1" alt="Tucked-in suite" referrerpolicy="no-referrer">
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============== MORNINGS ============== -->
+<section class="mornings" id="mornings">
+  <div class="mornings-img reveal">
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/02/3e/97/porch.jpg?w=1600&h=-1&s=1" alt="Breakfast on the porch" referrerpolicy="no-referrer">
+  </div>
+  <div class="mornings-text reveal">
+    <div class="section-label"><span class="num">iii.</span> <span class="eyebrow">Mornings</span></div>
+    <h2 class="display mornings-headline">Breakfast on <em>the porch.</em></h2>
+    <div class="body-prose">
+      <p>Some mornings, Stacey makes a quiche. Some mornings, it's biscotti, or muffins still warm from the oven. There's always coffee, and the binoculars on the windowsill, in case the whales pass.</p>
+      <p>You can take a plate out to the porch and watch the sun climb out of the Atlantic. Most guests do.</p>
+    </div>
+    <div class="mornings-list">
+      <span>Homemade quiche</span>
+      <span>Fresh-baked biscotti</span>
+      <span>Local fruit</span>
+      <span>Strong coffee</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BEACH ============== -->
+<section class="beach" id="beach">
+  <div class="beach-grid">
+    <div class="beach-img reveal">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/af/d0/a4/view-from-my-hotel-room.jpg?w=1600&h=-1&s=1" alt="The beach across the road" referrerpolicy="no-referrer">
+    </div>
+    <div class="beach-text reveal">
+      <div class="section-label"><span class="num">iv.</span> <span class="eyebrow">The Beach</span></div>
+      <h2 class="display beach-headline">A beach <em>that feels</em> like yours.</h2>
+      <div class="body-prose">
+        <p>Cross the road. There's a path through the dunes, a stretch of sand that runs for miles in either direction, and almost no one on it. We keep beach chairs, umbrellas, a cooler, and bikes — take what you need.</p>
+      </div>
+      <div class="beach-stats">
+        <div>
+          <div class="beach-stat-num">30s</div>
+          <div class="beach-stat-label">From porch to sand</div>
+        </div>
+        <div>
+          <div class="beach-stat-num">∞</div>
+          <div class="beach-stat-label">Miles of beach to walk</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== UNHAMPTON ============== -->
+<section class="unhampton">
+  <div class="unhampton-eyebrow">A Note on the Neighborhood</div>
+  <h2 class="display unhampton-headline">
+    The <em>unHampton.</em>
+  </h2>
+  <p class="unhampton-sub">
+    We're casual, beachy, unpretentious. Twenty minutes from the rest of the Hamptons. Two and a half hours from the city. As far east as you can go on Long Island — which is, we've found, exactly far enough.
+  </p>
+  <div class="unhampton-list">
+    <div class="unhampton-list-item">40+ Restaurants</div>
+    <div class="unhampton-list-item">Walking Trails</div>
+    <div class="unhampton-list-item">Surf Beaches</div>
+    <div class="unhampton-list-item">Ditch Plains</div>
+  </div>
+</section>
+
+<!-- ============== WORDS ============== -->
+<section class="words" id="words">
+  <div class="words-head reveal">
+    <div class="eyebrow">Guests, in their own words</div>
+    <h2 class="display words-headline">A house <em>worth</em> writing home about.</h2>
+  </div>
+  <div class="words-grid container">
+    <div class="word-card reveal-stagger">
+      <div class="word-stars">★★★★★</div>
+      <p class="word-quote">A true beach house with charming quirks and stunning views.</p>
+      <div class="word-meta">
+        <span class="word-author">Chantal W.</span>
+        <span class="word-source">Tripadvisor</span>
+      </div>
+    </div>
+    <div class="word-card reveal-stagger">
+      <div class="word-stars">★★★★★</div>
+      <p class="word-quote">Quiet, clean, comfortable — and the breakfast was excellent.</p>
+      <div class="word-meta">
+        <span class="word-author">Outdoor Luvr</span>
+        <span class="word-source">Tripadvisor</span>
+      </div>
+    </div>
+    <div class="word-card reveal-stagger">
+      <div class="word-stars">★★★★★</div>
+      <p class="word-quote">Charming, cosy, romantic. The sound of the surf at night.</p>
+      <div class="word-meta">
+        <span class="word-author">Wendy B.</span>
+        <span class="word-source">Tripadvisor</span>
+      </div>
+    </div>
+  </div>
+  <div class="words-trust reveal">
+    <div class="words-trust-rating">4.7<sub>/5</sub></div>
+    <div class="words-trust-label">#1 of 2 B&Bs in Montauk · 175 Reviews · Tripadvisor</div>
+  </div>
+</section>
+
+<!-- ============== GALLERY ============== -->
+<section class="gallery">
+  <div class="gallery-track">
+    <div class="gallery-item">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/7b/sunrise-guest-house.jpg?w=900&h=-1&s=1" alt="Sunrise Guest House" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/72/sunrise-guest-house.jpg?w=900&h=-1&s=1" alt="Sunrise Guest House interior" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/aa/8c/75/sunrise-guest-house.jpg?w=900&h=-1&s=1" alt="Suite detail" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/5b/e0/6c/sunrise-guest-house.jpg?w=900&h=-1&s=1" alt="The view at dawn" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="gallery-item">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0c/1a/1e/99/sunrise-b-b.jpg?w=900&h=-1&s=1" alt="The B&B" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============== VISIT ============== -->
+<section class="visit" id="visit">
+  <div class="visit-grid">
+    <div class="reveal">
+      <div class="section-label"><span class="num">v.</span> <span class="eyebrow">Visit</span></div>
+      <h2 class="display visit-headline">Find <em>your way</em> to us.</h2>
+      <p class="visit-info">A mile from the village, twenty minutes from the rest of the Hamptons, two and a half hours from Manhattan. The Hampton Jitney and the Long Island Rail Road both end here — call ahead and we'll point you to the path across the road.</p>
+
+      <div class="visit-block">
+        <div class="visit-block-label">Address</div>
+        <div class="visit-block-value">681 Old Montauk Hwy<br>Montauk, NY 11954</div>
+      </div>
+      <div class="visit-block">
+        <div class="visit-block-label">Telephone</div>
+        <div class="visit-block-value"><a href="tel:+16316687286">(631) 668-7286</a></div>
+      </div>
+      <div class="visit-block">
+        <div class="visit-block-label">Email</div>
+        <div class="visit-block-value"><a href="mailto:sunbnb@gmail.com">sunbnb@gmail.com</a></div>
+      </div>
+    </div>
+
+    <div class="visit-near reveal">
+      <h3 class="visit-near-title">A few favorites, nearby</h3>
+      <ul class="visit-near-list">
+        <li><span>Ditch Plains Beach</span><em>2.5 mi</em></li>
+        <li><span>Camp Hero State Park</span><em>20 min walk</em></li>
+        <li><span>Hither Hills State Park</span><em>2.9 mi</em></li>
+        <li><span>Second House Museum</span><em>0.6 mi</em></li>
+        <li><span>Montauk Point Lighthouse</span><em>6 mi</em></li>
+        <li><span>Montauk Village</span><em>1 mi · walking path</em></li>
+        <li><span>Gosman's Dock</span><em>3.6 mi</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="final" id="final">
+  <div class="final-bg">
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/5b/e0/6c/sunrise-guest-house.jpg?w=2200&h=-1&s=1" alt="" referrerpolicy="no-referrer">
+  </div>
+  <div class="final-mark"></div>
+  <h2 class="display final-headline">
+    Reserve a suite.<br>
+    Wake up to the <em>sunrise.</em>
+  </h2>
+  <p class="final-sub">
+    With four rooms, we book up early — especially in summer. A phone call or a quick note is all it takes.
+  </p>
+  <div class="final-actions">
+    <a href="tel:+16316687286" class="btn-primary">Call to Reserve</a>
+    <a href="mailto:sunbnb@gmail.com?subject=Reservation%20Inquiry" class="btn-secondary">Email Us</a>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand-col">
+      <div class="footer-brand">Sunrise Guest House</div>
+      <p class="footer-tag">A four-room beach house on Old Montauk Highway. The unHampton, since 1995.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Visit</h4>
+      <p>681 Old Montauk Hwy</p>
+      <p>Montauk, NY 11954</p>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="tel:+16316687286">(631) 668-7286</a>
+      <a href="mailto:sunbnb@gmail.com">sunbnb@gmail.com</a>
+    </div>
+    <div class="footer-col">
+      <h4>Explore</h4>
+      <a href="#suites">Suites</a>
+      <a href="#mornings">Breakfast</a>
+      <a href="#beach">The Beach</a>
+      <a href="#visit">Visit</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sunrise Guest House · <em>est. 1995</em></span>
+    <span>Stacey & John Grisch, Proprietors</span>
+  </div>
+</footer>
+
+<!-- ============== STICKY PILL ============== -->
+<a href="#final" class="book-pill" id="bookPill">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Reserve a Suite
+</a>
+
+<script>
+// ============== STICKY NAV ==============
+const nav = document.getElementById('nav');
+const bookPill = document.getElementById('bookPill');
+const updateNav = () => {
+  const scrolled = window.scrollY > 60;
+  nav.classList.toggle('scrolled', scrolled);
+  bookPill.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+};
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+// ============== MOBILE MENU ==============
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menuToggle.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+// ============== REVEAL ON SCROLL ==============
+const reveals = document.querySelectorAll('.reveal, .reveal-stagger');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+reveals.forEach(r => io.observe(r));
+</script>
+
+</body>
+</html>
