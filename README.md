@@ -63,3 +63,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 29 | Sunrise Guest House | Montauk, NY | [sunrisebnb.com](http://sunrisebnb.com/) | [View →](https://bofilltech.github.io/concepts/sunrise-guest-house/) | A — Magazine/Editorial (The unHampton — beachy unpretentious B&B) | Fraunces + DM Sans | Apr 28 |
 | 30 | Colonial Shores Resort | Hampton Bays, NY | [colonialshoresny.com](https://www.colonialshoresny.com/) | [View →](https://bofilltech.github.io/concepts/colonial-shores/) | A — Magazine/Editorial (Bayfront Coastal Luxury) — numbered sections, italic display accents, full-bleed cinematic break | Fraunces + Manrope | Apr 28 |
 
+| 31 | White Sands Resort | Amagansett, NY | [whitesandsresort.com](https://whitesandsresort.com/) | [View →](https://bofilltech.github.io/concepts/white-sands/) | B — Split-Screen Narrative (Hamptons Editorial) — sticky horizontal booking bar, italic Fraunces accents, scrolling marquee ribbon | Fraunces + Karla | Apr 28 |
+

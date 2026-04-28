@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>White Sands Resort — Oceanfront in the Hamptons | Amagansett, NY</title>
+<meta name="description" content="Elegant simplicity on the Atlantic. Oceanfront rooms and efficiencies between Amagansett and Montauk. TempurPedic bedding, ocean-front decks, steps from the sand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Karla:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sand: #F4EFE6;
+  --sand-warm: #EBE2D0;
+  --ivory: #FBF8F2;
+  --ink: #1A1814;
+  --ink-soft: #2C2823;
+  --muted: #6B645A;
+  --line: #D9D1C2;
+  --coral: #D87C5A;
+  --coral-deep: #B85C3A;
+  --teal: #5A7B7B;
+  --white: #FFFFFF;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+
+  --book-bar-h: 84px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--ivory);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  padding-bottom: var(--book-bar-h);
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ============ NAV ============ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nav.scrolled {
+  background: var(--ivory);
+  padding: 14px 36px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+}
+
+.nav-logo img {
+  height: 46px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.4s, height 0.4s;
+}
+
+.nav.scrolled .nav-logo img {
+  filter: none;
+  height: 38px;
+}
+
+.nav-logo .nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  display: none; /* logo image is the brand */
+}
+
+.nav-links {
+  display: flex; gap: 38px; list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.92;
+  transition: opacity 0.3s, color 0.4s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: ''; position: absolute;
+  bottom: -6px; left: 0;
+  width: 0; height: 1px;
+  background: currentColor;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.nav.scrolled .nav-links a { color: var(--ink); opacity: 0.78; }
+
+.nav-right {
+  display: flex; align-items: center; gap: 24px;
+}
+
+.nav-phone {
+  font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  transition: color 0.4s;
+}
+.nav.scrolled .nav-phone { color: var(--ink); }
+
+.nav-cta {
+  background: var(--coral);
+  color: var(--white);
+  padding: 11px 24px;
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  transition: background 0.3s, transform 0.3s;
+  border: none; cursor: pointer;
+}
+.nav-cta:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+.mobile-toggle { display: none; }
+
+/* ============ HERO — split-screen ============ */
+.hero {
+  height: 100vh;
+  min-height: 720px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  position: relative;
+  background: var(--ink);
+}
+
+.hero-image {
+  position: relative;
+  overflow: hidden;
+}
+.hero-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease-out;
+}
+.hero.loaded .hero-image img {
+  transform: scale(1.06);
+}
+
+.hero-image::after {
+  content: ''; position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 60%);
+  pointer-events: none;
+}
+
+.hero-content {
+  background: var(--ivory);
+  padding: 80px 80px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 36px; height: 1px;
+  background: var(--coral);
+}
+
+.hero-headline {
+  font-size: clamp(48px, 5.6vw, 84px);
+  line-height: 0.96;
+  margin-bottom: 28px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+  color: var(--ink);
+}
+.hero-headline em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--coral-deep);
+}
+
+.hero-sub {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 460px;
+  margin-bottom: 38px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 32px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.hero-meta-item {
+  display: flex; flex-direction: column;
+}
+.hero-meta-label {
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.hero-meta-value {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--ink);
+  font-variation-settings: "opsz" 144;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 36px; left: 80px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-scroll::after {
+  content: ''; width: 40px; height: 1px;
+  background: var(--ink-soft);
+  animation: line-pulse 2.4s ease-in-out infinite;
+}
+@keyframes line-pulse {
+  0%, 100% { transform: scaleX(0.3); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+}
+
+/* ============ MARQUEE / RIBBON ============ */
+.ribbon {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 22px 0;
+  overflow: hidden;
+  position: relative;
+}
+.ribbon-track {
+  display: flex;
+  gap: 80px;
+  white-space: nowrap;
+  animation: scroll-x 38s linear infinite;
+}
+.ribbon-item {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 80;
+  display: flex; align-items: center; gap: 80px;
+  letter-spacing: 0.02em;
+}
+.ribbon-item::after {
+  content: '✦';
+  color: var(--coral);
+  font-size: 14px;
+  font-style: normal;
+}
+@keyframes scroll-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============ STORY ============ */
+.story {
+  padding: 140px 0;
+  background: var(--ivory);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.story-image {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+}
+.story-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.story-image-tag {
+  position: absolute;
+  bottom: -1px; left: -1px;
+  background: var(--ivory);
+  padding: 18px 26px 0 0;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+}
+
+.story-eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 14px;
+}
+.story-eyebrow::before {
+  content: ''; width: 36px; height: 1px; background: var(--coral);
+}
+
+.story-title {
+  font-size: clamp(40px, 4vw, 60px);
+  line-height: 1.02;
+  margin-bottom: 36px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+.story-title em {
+  font-style: italic;
+  color: var(--coral-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.story-body p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin-bottom: 22px;
+}
+
+.story-sig {
+  margin-top: 36px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--coral-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+/* ============ ROOMS ============ */
+.rooms {
+  padding: 140px 0;
+  background: var(--sand);
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.section-eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-eyebrow::before {
+  content: ''; width: 36px; height: 1px; background: var(--coral);
+}
+
+.section-title {
+  font-size: clamp(40px, 4.6vw, 68px);
+  line-height: 1.02;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+  max-width: 720px;
+}
+.section-title em {
+  font-style: italic;
+  color: var(--coral-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.section-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 380px;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 8px;
+}
+
+.room-card {
+  background: var(--ivory);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 360px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s ease;
+}
+.room-card:nth-child(even) {
+  grid-template-columns: 1fr 1fr;
+  direction: rtl;
+}
+.room-card:nth-child(even) > * { direction: ltr; }
+
+.room-card:hover {
+  transform: translateY(-4px);
+}
+
+.room-photo {
+  position: relative; overflow: hidden;
+  background: var(--sand-warm);
+}
+.room-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1s ease;
+}
+.room-card:hover .room-photo img {
+  transform: scale(1.04);
+}
+
+.room-info {
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.room-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--coral);
+  letter-spacing: 0.02em;
+  margin-bottom: 18px;
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+}
+
+.room-name {
+  font-size: 28px;
+  line-height: 1.05;
+  margin-bottom: 18px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+
+.room-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.room-features {
+  display: flex; gap: 14px; flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.room-feat {
+  font-size: 11px; font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 5px 0;
+  border-top: 1px solid var(--line);
+  display: inline-block;
+  min-width: 70px;
+}
+
+.room-link {
+  font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--coral-deep);
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: gap 0.3s;
+  margin-top: auto;
+}
+.room-link:hover { gap: 16px; }
+.room-link::after {
+  content: '→';
+  font-size: 14px;
+}
+
+/* ============ BEACH FULL-BLEED ============ */
+.beach {
+  position: relative;
+  min-height: 86vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--ivory);
+}
+.beach-bg {
+  position: absolute; inset: 0;
+  z-index: 0;
+}
+.beach-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.beach-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 100%);
+}
+
+.beach-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 80px 32px;
+  max-width: 920px;
+}
+
+.beach-eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 28px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.beach-eyebrow::before, .beach-eyebrow::after {
+  content: ''; width: 36px; height: 1px; background: var(--coral);
+}
+
+.beach-title {
+  font-size: clamp(48px, 6.5vw, 96px);
+  line-height: 1;
+  margin-bottom: 38px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+.beach-title em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+
+.beach-quote {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-style: italic;
+  line-height: 1.5;
+  font-weight: 300;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  max-width: 720px;
+  margin: 0 auto;
+  color: rgba(251,248,242,0.9);
+}
+
+/* ============ AMENITIES STRIP ============ */
+.amenities {
+  padding: 110px 0;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--line);
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px;
+}
+
+.amen {
+  display: flex; flex-direction: column;
+  gap: 14px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.amen::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 0;
+  width: 40px; height: 1px;
+  background: var(--coral);
+}
+
+.amen-num {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--coral);
+  letter-spacing: 0.04em;
+  font-variation-settings: "opsz" 14, "SOFT" 100;
+}
+
+.amen-name {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: 4px;
+  font-variation-settings: "opsz" 144, "SOFT" 40;
+}
+
+.amen-desc {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ============ LOCATION ============ */
+.location {
+  padding: 140px 0;
+  background: var(--sand);
+}
+
+.loc-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.loc-content { padding-right: 40px; }
+
+.loc-points {
+  margin-top: 40px;
+  display: flex; flex-direction: column;
+  gap: 22px;
+}
+.loc-point {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: baseline;
+  gap: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.loc-point-time {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--coral-deep);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.loc-point-text {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.loc-point-text strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.loc-image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  position: relative;
+}
+.loc-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+/* ============ CTA ============ */
+.cta {
+  padding: 130px 0;
+  background: var(--ink);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.cta-eyebrow {
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.32em; text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 28px;
+}
+
+.cta-title {
+  font-size: clamp(44px, 5.4vw, 78px);
+  line-height: 1.02;
+  margin-bottom: 32px;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144, "SOFT" 50;
+}
+.cta-title em {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  color: var(--sand-warm);
+}
+
+.cta-sub {
+  font-size: 18px;
+  color: rgba(251,248,242,0.7);
+  margin-bottom: 50px;
+  max-width: 580px;
+  margin-left: auto; margin-right: auto;
+  line-height: 1.6;
+}
+
+.cta-actions {
+  display: flex; gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--coral);
+  color: var(--white);
+  padding: 16px 40px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s, transform 0.3s;
+}
+.btn-primary:hover { background: var(--coral-deep); transform: translateY(-2px); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--ivory);
+  padding: 16px 40px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border: 1px solid rgba(251,248,242,0.4);
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.3s, background 0.3s;
+}
+.btn-outline:hover { border-color: var(--ivory); background: rgba(251,248,242,0.06); }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--ink-soft);
+  color: rgba(251,248,242,0.75);
+  padding: 80px 0 40px;
+  font-size: 13.5px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+
+.footer-brand h4 {
+  font-size: 24px;
+  color: var(--ivory);
+  margin-bottom: 14px;
+  font-variation-settings: "opsz" 144;
+}
+.footer-brand p {
+  line-height: 1.7;
+  max-width: 320px;
+}
+
+.footer-col h5 {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  margin-bottom: 22px;
+}
+
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a { transition: color 0.3s; }
+.footer-col a:hover { color: var(--coral); }
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(251,248,242,0.12);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 12px;
+  color: rgba(251,248,242,0.55);
+}
+
+/* ============ STICKY BOOKING BAR — minimal horizontal ============ */
+.book-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--ivory);
+  border-top: 1px solid var(--line);
+  z-index: 90;
+  padding: 14px 0;
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+}
+
+.book-bar-inner {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr auto;
+  align-items: center;
+  gap: 0;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.book-bar-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink);
+  padding-right: 28px;
+  border-right: 1px solid var(--line);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  white-space: nowrap;
+}
+
+.book-field {
+  padding: 0 24px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.book-field:last-of-type { border-right: none; }
+
+.book-field label {
+  font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.book-field input,
+.book-field select {
+  border: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 2px 0;
+  outline: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.book-field input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(0.5);
+}
+
+.book-bar-cta {
+  background: var(--coral);
+  color: var(--white);
+  padding: 16px 32px;
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  border: none; cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.3s;
+  margin-left: 24px;
+  white-space: nowrap;
+}
+.book-bar-cta:hover { background: var(--coral-deep); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-image { height: 50vh; min-height: 360px; }
+  .hero-content { padding: 60px 40px; }
+  .hero-scroll { display: none; }
+
+  .story-grid, .loc-grid { grid-template-columns: 1fr; gap: 60px; }
+  .story-image, .loc-image { aspect-ratio: 4/3; }
+  .loc-content { padding-right: 0; }
+
+  .rooms-grid { grid-template-columns: 1fr; }
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+  :root { --book-bar-h: 140px; }
+  .nav { padding: 16px 20px; }
+  .nav.scrolled { padding: 12px 20px; }
+  .nav-links { display: none; }
+  .nav-phone { display: none; }
+  .mobile-toggle {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    background: transparent;
+    border: none; cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .mobile-toggle span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--white);
+    transition: background 0.4s;
+  }
+  .nav.scrolled .mobile-toggle span { background: var(--ink); }
+
+  .hero-content { padding: 50px 28px; }
+  .hero-meta { gap: 24px; }
+
+  .container { padding: 0 20px; }
+
+  .story, .rooms, .location, .amenities, .cta { padding: 80px 0; }
+  .story-grid, .loc-grid { gap: 40px; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .room-card { grid-template-columns: 1fr; min-height: auto; }
+  .room-card:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
+  .room-photo { aspect-ratio: 4/3; }
+  .room-info { padding: 28px 24px; }
+  .amenities-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+
+  .ribbon-item { font-size: 16px; gap: 50px; }
+  .ribbon-track { gap: 50px; }
+
+  /* Booking bar — stacks on mobile */
+  .book-bar { padding: 10px 0 12px; }
+  .book-bar-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0 16px;
+  }
+  .book-bar-label { display: none; }
+  .book-field {
+    padding: 6px 12px;
+    border-right: 1px solid var(--line);
+    border-bottom: none;
+  }
+  .book-field:nth-child(3) { border-right: none; }
+  .book-field label { font-size: 8.5px; }
+  .book-field input { font-size: 13px; }
+  .book-bar-cta {
+    grid-column: 1 / -1;
+    margin: 6px 0 0;
+    padding: 14px;
+    width: 100%;
+  }
+}
+
+/* ============ ANIMATIONS ============ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+.fade-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <img src="https://whitesandsresort.com/images/white-sands-resort-logo.svg" alt="White Sands Resort">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#story">About</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#beach">Beach</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="tel:+16312673350" class="nav-phone">631.267.3350</a>
+    <a href="#book" class="nav-cta">Book Now</a>
+    <button class="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home">
+  <div class="hero-image">
+    <img src="https://whitesandsresort.com/images/about.jpg" alt="White Sands Resort exterior, Amagansett">
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Oceanfront in the Hamptons</div>
+    <h1 class="hero-headline">
+      Elegant<br>
+      simplicity,<br>
+      <em>on the&nbsp;Atlantic.</em>
+    </h1>
+    <p class="hero-sub">
+      A quiet oceanfront escape between Amagansett and Montauk —
+      nineteen rooms and efficiencies, steps from the pristine sand,
+      tucked into the dunes since long before the crowds arrived.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Location</span>
+        <span class="hero-meta-value">Amagansett, NY</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Beach</span>
+        <span class="hero-meta-value">Steps Away</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Established</span>
+        <span class="hero-meta-value">A Hamptons Tradition</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ============ MARQUEE RIBBON ============ -->
+<section class="ribbon">
+  <div class="ribbon-track">
+    <div class="ribbon-item">Oceanfront Rooms</div>
+    <div class="ribbon-item">TempurPedic Bedding</div>
+    <div class="ribbon-item">Private Decks</div>
+    <div class="ribbon-item">Steps to the Sand</div>
+    <div class="ribbon-item">Family-Run</div>
+    <div class="ribbon-item">Quiet Getaway</div>
+    <!-- duplicate for seamless loop -->
+    <div class="ribbon-item">Oceanfront Rooms</div>
+    <div class="ribbon-item">TempurPedic Bedding</div>
+    <div class="ribbon-item">Private Decks</div>
+    <div class="ribbon-item">Steps to the Sand</div>
+    <div class="ribbon-item">Family-Run</div>
+    <div class="ribbon-item">Quiet Getaway</div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-image fade-up">
+        <img src="https://whitesandsresort.com/images/about/01.jpg" alt="White Sands grounds">
+      </div>
+      <div class="story-content fade-up">
+        <div class="story-eyebrow">Our Story</div>
+        <h2 class="story-title">
+          A quiet escape, where so many <em>return year after year.</em>
+        </h2>
+        <div class="story-body">
+          <p>
+            White Sands Resort is your escape to elegant simplicity in the
+            Hamptons. Located between Amagansett and Montauk, our oceanfront
+            accommodations offer a quiet getaway, just steps from the
+            pristine sands of the ocean beach.
+          </p>
+          <p>
+            It's a short trip east to Montauk's authentic flavor, or west to
+            all Hamptons locations. Nineteen beautifully furnished rooms and
+            efficiencies — every one with TempurPedic bedding, ocean breezes,
+            and the kind of unhurried mornings that bring our guests back
+            decade after decade.
+          </p>
+        </div>
+        <div class="story-sig">— Come stay with us and see why.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROOMS ============ -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <div class="section-eyebrow">Accommodations</div>
+        <h2 class="section-title">
+          Rooms & efficiencies, <em>all facing the ocean.</em>
+        </h2>
+      </div>
+      <p class="section-desc">
+        Each of our nineteen rooms is individually furnished and outfitted
+        with TempurPedic bedding, air conditioning, and ceiling fans —
+        because the ocean breeze deserves choices.
+      </p>
+    </div>
+
+    <div class="rooms-grid">
+
+      <article class="room-card fade-up">
+        <div class="room-photo">
+          <img src="https://whitesandsresort.com/images/about/02.jpg" alt="Ocean Front One Bedroom Suite">
+        </div>
+        <div class="room-info">
+          <div class="room-num">No. 01</div>
+          <div>
+            <h3 class="room-name">Oceanfront One Bedroom Suite</h3>
+            <p class="room-desc">
+              Queen bed, full living room, one and a half baths, and a
+              180-degree oceanfront deck — the suite that has guests asking
+              for it by number every season.
+            </p>
+            <div class="room-features">
+              <span class="room-feat">Queen Bed</span>
+              <span class="room-feat">Living Rm</span>
+              <span class="room-feat">1.5 Baths</span>
+              <span class="room-feat">Ocean Deck</span>
+            </div>
+          </div>
+          <a href="#book" class="room-link">Reserve</a>
+        </div>
+      </article>
+
+      <article class="room-card fade-up">
+        <div class="room-photo">
+          <img src="https://whitesandsresort.com/images/about/03.jpg" alt="Large Efficiency Facing Ocean">
+        </div>
+        <div class="room-info">
+          <div class="room-num">No. 02</div>
+          <div>
+            <h3 class="room-name">Large Efficiency, Facing Ocean</h3>
+            <p class="room-desc">
+              Two queen beds, kitchenette with full-size refrigerator, and
+              the kind of ocean view that makes you forget you came here
+              with a checklist.
+            </p>
+            <div class="room-features">
+              <span class="room-feat">2 Queens</span>
+              <span class="room-feat">Kitchenette</span>
+              <span class="room-feat">Ocean View</span>
+            </div>
+          </div>
+          <a href="#book" class="room-link">Reserve</a>
+        </div>
+      </article>
+
+      <article class="room-card fade-up">
+        <div class="room-photo">
+          <img src="https://whitesandsresort.com/images/about/04.jpg" alt="Large Efficiency with Deck">
+        </div>
+        <div class="room-info">
+          <div class="room-num">No. 03</div>
+          <div>
+            <h3 class="room-name">Large Efficiency, with Deck</h3>
+            <p class="room-desc">
+              Queen bed, kitchenette, and a semi-private deck for the kind
+              of quiet morning coffee that lasts well into the afternoon.
+            </p>
+            <div class="room-features">
+              <span class="room-feat">Queen Bed</span>
+              <span class="room-feat">Kitchenette</span>
+              <span class="room-feat">Private Deck</span>
+            </div>
+          </div>
+          <a href="#book" class="room-link">Reserve</a>
+        </div>
+      </article>
+
+      <article class="room-card fade-up">
+        <div class="room-photo">
+          <img src="https://whitesandsresort.com/images/book/01.jpg" alt="Efficiency">
+        </div>
+        <div class="room-info">
+          <div class="room-num">No. 04</div>
+          <div>
+            <h3 class="room-name">Efficiency &amp; Studios</h3>
+            <p class="room-desc">
+              Smaller, simpler, ocean still close. A queen bed, a kitchen
+              with what you need, and a deck that proves you don't need
+              square footage to feel a million miles from anywhere.
+            </p>
+            <div class="room-features">
+              <span class="room-feat">Queen Bed</span>
+              <span class="room-feat">Kitchen</span>
+              <span class="room-feat">Deck</span>
+            </div>
+          </div>
+          <a href="#book" class="room-link">Reserve</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEACH FULL BLEED ============ -->
+<section class="beach" id="beach">
+  <div class="beach-bg">
+    <img src="https://whitesandsresort.com/images/contact.jpg" alt="The beach at White Sands">
+  </div>
+  <div class="beach-content">
+    <div class="beach-eyebrow">The Atlantic, Right There</div>
+    <h2 class="beach-title">
+      Come to the ocean,<br>
+      <em>and you'll find us.</em>
+    </h2>
+    <p class="beach-quote">
+      "It is literally right on the beach. Quiet, private, and the kind of
+      place you don't want to leave." — A returning guest, like so many
+      others.
+    </p>
+  </div>
+</section>
+
+<!-- ============ AMENITIES STRIP ============ -->
+<section class="amenities">
+  <div class="container">
+    <div class="section-head fade-up">
+      <div>
+        <div class="section-eyebrow">What's Here</div>
+        <h2 class="section-title">
+          The essentials, <em>thoughtfully kept.</em>
+        </h2>
+      </div>
+    </div>
+    <div class="amenities-grid">
+
+      <div class="amen fade-up">
+        <span class="amen-num">i.</span>
+        <h3 class="amen-name">TempurPedic Bedding</h3>
+        <p class="amen-desc">
+          In every room. The kind of sleep that earns the trip out east.
+        </p>
+      </div>
+
+      <div class="amen fade-up">
+        <span class="amen-num">ii.</span>
+        <h3 class="amen-name">Oceanfront Decks</h3>
+        <p class="amen-desc">
+          Private and semi-private outdoor space — your morning coffee, your
+          afternoon book.
+        </p>
+      </div>
+
+      <div class="amen fade-up">
+        <span class="amen-num">iii.</span>
+        <h3 class="amen-name">Steps to the Sand</h3>
+        <p class="amen-desc">
+          A short walk through the dunes. Pristine, uncrowded, ours.
+        </p>
+      </div>
+
+      <div class="amen fade-up">
+        <span class="amen-num">iv.</span>
+        <h3 class="amen-name">Beautiful Gardens</h3>
+        <p class="amen-desc">
+          Walk through the gardens to reach the office. Guests have been
+          coming back for them for decades.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="loc-grid">
+      <div class="loc-content fade-up">
+        <div class="section-eyebrow">Where We Are</div>
+        <h2 class="section-title">
+          Between<br>Amagansett <em>&amp; Montauk.</em>
+        </h2>
+        <p class="section-desc" style="max-width:none; margin-top:24px;">
+          Five miles east of the village, two hundred feet off Atlantic
+          Drive, and right on the ocean.
+        </p>
+
+        <div class="loc-points">
+          <div class="loc-point">
+            <span class="loc-point-time">5 min</span>
+            <span class="loc-point-text">
+              <strong>Amagansett village</strong> — restaurants, beach bars,
+              the Stephen Talkhouse, summer farmers markets
+            </span>
+          </div>
+          <div class="loc-point">
+            <span class="loc-point-time">15 min</span>
+            <span class="loc-point-text">
+              <strong>Montauk</strong> — the lighthouse, the docks, the
+              authentic flavor that put it on the map
+            </span>
+          </div>
+          <div class="loc-point">
+            <span class="loc-point-time">20 min</span>
+            <span class="loc-point-text">
+              <strong>East Hampton</strong> — galleries, boutiques, all the
+              Hamptons you came for
+            </span>
+          </div>
+          <div class="loc-point">
+            <span class="loc-point-time">∞</span>
+            <span class="loc-point-text">
+              <strong>The Atlantic</strong> — right outside your door
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="loc-image fade-up">
+        <img src="https://whitesandsresort.com/images/rates/only-image.jpg" alt="Beach grass at White Sands">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="book">
+  <div class="container">
+    <div class="cta-eyebrow">Reservations</div>
+    <h2 class="cta-title">
+      Stay where the days <em>slow down.</em>
+    </h2>
+    <p class="cta-sub">
+      A quiet getaway in the Hamptons, on the ocean, with the people who've
+      kept it that way for years. Reserve your room and see what so many of
+      our guests come back for.
+    </p>
+    <div class="cta-actions">
+      <a href="https://roomsy.com" class="btn-primary" target="_blank" rel="noopener">Check Availability</a>
+      <a href="tel:+16312673350" class="btn-outline">Call 631.267.3350</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h4>White Sands Resort</h4>
+        <p>
+          Oceanfront elegance, simply done. A Hamptons tradition between
+          Amagansett and Montauk.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Visit</h5>
+        <ul>
+          <li>28 Shore Road</li>
+          <li>Amagansett, NY 11930</li>
+          <li><a href="https://goo.gl/maps/KYonb1qdZdtGRifb7" target="_blank" rel="noopener">Get Directions →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="tel:+16312673350">631.267.3350</a></li>
+          <li><a href="mailto:reservations@whitesandsresort.com">reservations@whitesandsresort.com</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Mailing</h5>
+        <ul>
+          <li>P.O. Box 747</li>
+          <li>Amagansett, NY 11930</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© White Sands Resort Hotel — Amagansett, NY</span>
+      <span>Concept by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ STICKY BOOKING BAR ============ -->
+<div class="book-bar">
+  <div class="book-bar-inner">
+    <span class="book-bar-label">Reserve your stay</span>
+    <div class="book-field">
+      <label for="ci">Check-In</label>
+      <input type="date" id="ci">
+    </div>
+    <div class="book-field">
+      <label for="co">Check-Out</label>
+      <input type="date" id="co">
+    </div>
+    <div class="book-field">
+      <label for="g">Guests</label>
+      <select id="g">
+        <option>1 guest</option>
+        <option selected>2 guests</option>
+        <option>3 guests</option>
+        <option>4 guests</option>
+        <option>5+ guests</option>
+      </select>
+    </div>
+    <button class="book-bar-cta" onclick="window.open('https://roomsy.com','_blank')">Check Availability</button>
+  </div>
+</div>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll);
+
+  // Hero loaded class for the slow zoom
+  window.addEventListener('load', () => {
+    document.querySelector('.hero')?.classList.add('loaded');
+  });
+
+  // Fade-up reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+  // Default booking dates: today + 2 days
+  const ci = document.getElementById('ci');
+  const co = document.getElementById('co');
+  const t = new Date();
+  const t2 = new Date(); t2.setDate(t2.getDate() + 2);
+  const fmt = d => d.toISOString().split('T')[0];
+  ci.value = fmt(t);
+  co.value = fmt(t2);
+  ci.min = fmt(t);
+  co.min = fmt(t2);
+</script>
+
+</body>
+</html>
