@@ -11,18 +11,10 @@
 
   <!--
     ═══════════════════════════════════════════════════════════════════
-    PHOTO PLACEHOLDERS — All images sourced from Unsplash (royalty-free,
-    commercial use, no attribution required). Each <img> below is marked
-    with a [PLACEHOLDER] comment block so you can search-and-replace
-    when real Montauk Dazies photos are available.
-
-    Replace these 6 photos with real ones:
-      1. HERO_IMAGE          — Storefront exterior or interior wide shot
-      2. ABOUT_IMAGE          — Boutique interior / Kanani in shop
-      3. CATEGORY_SWIM        — Swimwear on rack / Tai Swim flat-lay
-      4. CATEGORY_DRESSES     — Dresses on rack / dress detail shot
-      5. CATEGORY_ACCESSORIES — Hats, jewelry, or bags on display
-      6. TAI_SWIM_FEATURE     — Tai Swim Co. lifestyle / coastal shot
+    All photos are real Montauk Dazies images stored at:
+    /montauk-dazies/images/ in the BofillTech/concepts repo.
+    Image URLs use absolute GitHub Pages URLs so this file previews
+    correctly when opened locally.
     ═══════════════════════════════════════════════════════════════════
   -->
 
@@ -199,7 +191,7 @@
     }
     .btn-link:hover { color: var(--daisy-deep); border-color: var(--daisy-deep); }
 
-    /* Hero image — [PLACEHOLDER: HERO_IMAGE] */
+    /* Hero image */
     .hero-image {
       position: relative;
       aspect-ratio: 4 / 5;
@@ -360,6 +352,56 @@
       font-weight: 500;
     }
     @media (max-width: 880px) { .cat-grid { grid-template-columns: 1fr; } }
+
+    /* ───── Detail Banner (between categories and Tai Swim) ───── */
+    .detail-banner {
+      background: var(--cream-deep);
+      padding: 0;
+    }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 520px;
+    }
+    .detail-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+    }
+    .detail-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .detail-text {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream-deep);
+    }
+    .detail-text .section-eyebrow { color: var(--navy-soft); }
+    .detail-text h2 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: clamp(34px, 4.4vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 24px;
+    }
+    .detail-text h2 em { font-style: italic; color: var(--daisy-deep); font-weight: 400; }
+    .detail-text p {
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--navy-soft);
+      max-width: 460px;
+    }
+    @media (max-width: 880px) {
+      .detail-grid { grid-template-columns: 1fr; }
+      .detail-image { min-height: 380px; aspect-ratio: 4 / 3; }
+      .detail-text { padding: 56px 24px; }
+    }
 
     /* ───── Featured Brand: Tai Swim ───── */
     .feature-brand {
@@ -633,8 +675,8 @@
       </div>
     </div>
     <div class="hero-image">
-      <!-- [PLACEHOLDER: HERO_IMAGE] Boutique interior — replace with storefront or shop interior shot -->
-      <img src="https://images.unsplash.com/photo-1635691456524-5d7878772171?w=1200&q=82&auto=format&fit=crop" alt="Boutique interior">
+      <!-- HERO_IMAGE: Boutique interior — Montauk Dazies -->
+      <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/HERO_IMAGE.jpg" alt="Inside Montauk Dazies">
       <!-- floating daisy overlay -->
       <svg class="daisy-overlay" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <g transform="translate(100,100)">
@@ -669,8 +711,8 @@
           </p>
         </div>
         <div class="about-visual reveal">
-          <!-- [PLACEHOLDER: ABOUT_IMAGE] Modern boutique interior — replace with shot of Kanani in shop or detailed interior -->
-          <img src="https://images.unsplash.com/photo-1769107805412-90d9191d53e9?w=1000&q=82&auto=format&fit=crop" alt="Inside the boutique">
+          <!-- ABOUT_IMAGE: Curated dresses on hangers -->
+          <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/ABOUT_IMAGE.jpg" alt="Curated dresses at Montauk Dazies">
         </div>
       </div>
     </div>
@@ -690,26 +732,43 @@
       <div class="cat-grid">
         <div class="cat-card reveal">
           <span class="cat-featured">Featured: Tai Swim Co.</span>
-          <!-- [PLACEHOLDER: CATEGORY_SWIM] Hanged bikinis flat-lay — replace with Tai Swim rack shot from store -->
-          <img src="https://images.unsplash.com/photo-1524894200781-78730fa3d63e?w=900&q=82&auto=format&fit=crop" alt="Swimwear collection">
+          <!-- CATEGORY_SWIM: Real swimwear on the rack at Dazies -->
+          <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/CATEGORY_SWIM.jpg" alt="Swimwear collection at Montauk Dazies">
           <span class="cat-tag">Swimwear</span>
           <h3 class="cat-name">Bikinis &amp;<br>Cover-Ups</h3>
           <p class="cat-desc">Suits that survive the surf and the rooftop bar. Tai Swim Co. and other curated favorites.</p>
         </div>
         <div class="cat-card reveal">
-          <!-- [PLACEHOLDER: CATEGORY_DRESSES] Clothing rack — replace with dress detail shot from store -->
-          <img src="https://images.unsplash.com/photo-1761090617068-f1b3257d27ad?w=800&q=82&auto=format&fit=crop" alt="Dresses on rack">
+          <!-- CATEGORY_DRESSES: Curated apparel rack -->
+          <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/CATEGORY_DRESSES.jpg" alt="Dresses and apparel at Montauk Dazies">
           <span class="cat-tag">Apparel</span>
           <h3 class="cat-name">Dresses &amp;<br>Sets</h3>
           <p class="cat-desc">Light layers for hot days. Easy silhouettes, real-life fits.</p>
         </div>
         <div class="cat-card reveal">
-          <!-- [PLACEHOLDER: CATEGORY_ACCESSORIES] Straw hat shot — replace with hats/jewelry/bags from store -->
-          <img src="https://images.unsplash.com/photo-1575535135032-0045eaea7d62?w=800&q=82&auto=format&fit=crop" alt="Accessories">
+          <!-- CATEGORY_ACCESSORIES: The hat wall -->
+          <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/CATEGORY_ACCESSORIES1.jpg" alt="Hat wall at Montauk Dazies">
           <span class="cat-tag">Finishing Touches</span>
           <h3 class="cat-name">Accessories</h3>
           <p class="cat-desc">Hats, jewelry, bags &mdash; the small things that make the outfit.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DETAIL BANNER ═══ -->
+  <section class="detail-banner">
+    <div class="detail-grid">
+      <div class="detail-image reveal">
+        <!-- CATEGORY_ACCESSORIES: Bags, totes & finishing pieces -->
+        <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/CATEGORY_ACCESSORIES.jpg" alt="Bags and finishing pieces at Montauk Dazies">
+      </div>
+      <div class="detail-text reveal">
+        <div class="section-eyebrow">The Details</div>
+        <h2>Bags, belts, and the <em>little extras</em>.</h2>
+        <p>
+          Some of the best pieces at Dazies aren't on the racks &mdash; they're on the shelves. A rotating mix of leather bags, woven totes, and small accessories chosen to round out a look without overcomplicating it.
+        </p>
       </div>
     </div>
   </section>
@@ -727,8 +786,8 @@
         <a href="#visit" class="btn-primary">Come See It →</a>
       </div>
       <div class="brand-visual reveal">
-        <!-- [PLACEHOLDER: TAI_SWIM_FEATURE] Coastal swimwear shot — replace with actual Tai Swim product or in-store shot -->
-        <img src="https://images.unsplash.com/photo-1551887283-ca87be316d1d?w=1000&q=82&auto=format&fit=crop" alt="Tai Swim Co. swimwear">
+        <!-- TAI_SWIM_FEATURE: Coastal swim styling shot -->
+        <img src="https://bofilltech.github.io/concepts/montauk-dazies/images/TAI_SWIM_FEATURE.jpg" alt="Tai Swim Co. swimwear and beach styling">
       </div>
     </div>
   </section>
