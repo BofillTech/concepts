@@ -67,3 +67,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 32 | Uihlein's Marina &amp; Motel | Montauk, NY | [uihleinsmarina.com](https://www.uihleinsmarina.com/) | [View →](https://bofilltech.github.io/concepts/uihleins/) | Working Waterfront Editorial (Marina/Boat Service — non-hotel) — Roman numeral sections, oversized Newsreader display, buoy-red CTA, full-service marina + boat rental + motel + boatyard hybrid | Newsreader + Work Sans | Apr 29 |
 
+| 33 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
+
