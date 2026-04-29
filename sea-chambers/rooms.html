@@ -49,6 +49,62 @@
 .sc-key{display:flex;gap:16px;flex-wrap:wrap;margin:30px 0;padding:18px 24px;background:var(--mist);border-radius:8px;font-size:13px;color:var(--gray);align-items:center;}
 .sc-key strong{color:var(--dark);}
 .sc-highlight{display:inline-block;padding:4px 12px;background:rgba(91,155,213,.15);border-radius:4px;color:var(--ocean);font-size:12px;font-weight:600;}
+/* INTERACTIVE BUILDING MAP */
+.sc-rmap-tabs{display:flex;gap:0;justify-content:center;margin:50px auto 0;max-width:1200px;border-bottom:1px solid var(--sand);}
+.sc-rmap-tab{flex:1;padding:18px 20px;background:none;border:none;border-bottom:2px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .25s;}
+.sc-rmap-tab:hover{color:var(--ocean);}
+.sc-rmap-tab.active{color:var(--ocean-deep);border-bottom-color:var(--ocean);}
+.sc-rmap{max-width:1200px;margin:0 auto 60px;background:var(--white);border:1px solid var(--sand);border-top:none;border-radius:0 0 12px 12px;overflow:hidden;}
+.sc-rmap-banner{position:relative;height:240px;overflow:hidden;}
+.sc-rmap-banner img{width:100%;height:100%;object-fit:cover;}
+.sc-rmap-banner-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,71,100,.85) 0%,rgba(42,71,100,.2) 100%);display:flex;align-items:flex-end;padding:30px 36px;color:var(--white);}
+.sc-rmap-banner-overlay h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;margin-bottom:6px;color:var(--white);}
+.sc-rmap-banner-overlay p{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.85);max-width:600px;}
+.sc-rmap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.sc-rmap-grid{padding:30px 36px;border-right:1px solid var(--sand);}
+.sc-rmap-legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--font-body);font-size:11px;color:var(--gray);letter-spacing:.04em;text-transform:uppercase;font-weight:500;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--sand);}
+.sc-rmap-legend-swatch{display:inline-block;width:14px;height:14px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+.sc-rmap-legend-swatch.ocean{background:#BDD8EC;border:1px solid #7FAED1;}
+.sc-rmap-legend-swatch.standard{background:#EFEFEA;border:1px solid #D8D6CC;}
+.sc-rmap-level{margin-bottom:22px;}
+.sc-rmap-level-label{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean);margin-bottom:4px;}
+.sc-rmap-level-meta{font-family:var(--font-body);font-size:12px;color:var(--gray);margin-bottom:12px;}
+.sc-rmap-cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:6px;}
+.sc-rmap-cell{padding:10px 6px;background:#EFEFEA;border:1px solid #D8D6CC;border-radius:4px;font-family:var(--font-body);text-align:center;cursor:pointer;transition:all .2s;color:var(--dark);}
+.sc-rmap-cell:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(42,71,100,.15);border-color:var(--ocean);}
+.sc-rmap-cell.ocean{background:#BDD8EC;border-color:#7FAED1;}
+.sc-rmap-cell.ocean:hover{background:#A5CAE3;}
+.sc-rmap-cell.active{background:var(--ocean);border-color:var(--ocean-deep);color:var(--white);transform:translateY(-2px);box-shadow:0 6px 18px rgba(42,71,100,.3);}
+.sc-rmap-cell-num{font-size:16px;font-weight:600;letter-spacing:-.01em;display:block;margin-bottom:2px;}
+.sc-rmap-cell-beds{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.75;display:block;line-height:1.2;}
+.sc-rmap-panel{padding:30px 36px;min-height:540px;display:flex;flex-direction:column;background:var(--mist);}
+.sc-rmap-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;color:var(--gray);}
+.sc-rmap-empty svg{width:60px;height:60px;color:var(--ocean-light);margin-bottom:18px;opacity:.5;}
+.sc-rmap-empty p{font-family:var(--font-body);font-size:14px;line-height:1.6;max-width:280px;}
+.sc-rmap-detail-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
+.sc-rmap-detail-tag{display:inline-block;padding:4px 10px;background:var(--white);border:1px solid var(--sand);border-radius:99px;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean-deep);}
+.sc-rmap-detail-tag.ocean{background:#BDD8EC;border-color:#7FAED1;color:var(--ocean-deep);}
+.sc-rmap-detail h3{font-family:var(--font-display);font-size:clamp(28px,3.5vw,38px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;margin:6px 0 4px;line-height:1;}
+.sc-rmap-detail-subtitle{font-family:var(--font-body);font-size:14px;color:var(--gray);margin-bottom:18px;}
+.sc-rmap-photos{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:16px;}
+.sc-rmap-photos img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;cursor:zoom-in;}
+.sc-rmap-photos-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.sc-rmap-photos-row img{aspect-ratio:1;}
+.sc-rmap-detail-desc{font-family:var(--font-body);font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:18px;}
+.sc-rmap-actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;}
+.sc-rmap-book{flex:1;padding:13px 22px;background:var(--ocean);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;}
+.sc-rmap-book:hover{background:var(--ocean-deep);}
+.sc-rmap-detail-link{padding:13px 18px;border:1px solid var(--sand);color:var(--ocean);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;}
+.sc-rmap-detail-link:hover{border-color:var(--ocean);background:var(--white);}
+.sc-rmap-key{padding:18px 36px 24px;background:var(--warm);font-family:var(--font-body);font-size:12px;color:var(--gray);text-align:center;border-top:1px solid var(--sand);letter-spacing:.02em;}
+.sc-rmap-key strong{color:var(--ocean-deep);font-weight:600;margin:0 4px;}
+@media(max-width:900px){
+  .sc-rmap-body{grid-template-columns:1fr;}
+  .sc-rmap-grid{border-right:none;border-bottom:1px solid var(--sand);}
+  .sc-rmap-banner{height:180px;}
+  .sc-rmap-tab{font-size:10px;letter-spacing:.12em;padding:14px 8px;}
+}
+
 .sc-building{margin:50px 0;background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--sand);}
 .sc-building-header{padding:30px 36px 20px;border-bottom:1px solid var(--sand);}
 .sc-building-header h2{font-family:var(--font-display);font-size:clamp(22px,3vw,28px);font-weight:400;color:var(--ocean-deep);margin-bottom:6px;}
@@ -170,93 +226,44 @@
     <p>Click or tap individual room numbers on the layouts below for room details and photos.</p>
   </div>
 
-  <div class="sc-building">
-    <div class="sc-building-header">
-      <h2>The Oceanside Building</h2>
-      <p>Our largest building — most rooms face the Atlantic with unobstructed ocean views</p>
-    </div>
-    <div class="sc-building-layout">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Website-2026-Oceanside-Building.jpg" alt="Sea Chambers Oceanside Building photo and room layout diagram" loading="lazy">
-    </div>
-    <div class="sc-building-details">
-      <div>
-        <h3>Room Locations</h3>
-        <ul>
-          <li><strong>Rooms 1–18:</strong> Ground Level — no stairs</li>
-          <li><strong>Rooms 19–32:</strong> Upper Level — one staircase up</li>
-          <li><strong>Rooms 33A–39:</strong> Terrace Level — down a ramp</li>
-          <li><strong>Rooms 40A–42:</strong> Sea Level — ramp + staircase</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Building Features</h3>
-        <ul>
-          <li>Guest Lobby between Rooms 9 and 10</li>
-          <li>Breakfast location with 24-hour coffee</li>
-          <li>Ice machines on Ground and Terrace levels</li>
-          <li>Accessible guest rooms available</li>
-          <li>King, queen, double, and trundle beds</li>
-        </ul>
-      </div>
-    </div>
+  <!-- INTERACTIVE BUILDING MAP -->
+  <div class="sc-rmap-tabs" role="tablist">
+    <button class="sc-rmap-tab active" data-bldg="oceanside" role="tab">Oceanside Building</button>
+    <button class="sc-rmap-tab" data-bldg="poolside" role="tab">Poolside Building</button>
+    <button class="sc-rmap-tab" data-bldg="inn" role="tab">Inn Building</button>
   </div>
 
-  <div class="sc-building">
-    <div class="sc-building-header">
-      <h2>The Poolside Building</h2>
-      <p>Home to the Front Desk — steps from the pool, hot tub, and fire pits</p>
-    </div>
-    <div class="sc-building-layout">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/04/Website-2026-Poolside-Building.jpg" alt="Sea Chambers Poolside Building photo and room layout diagram" loading="lazy">
-    </div>
-    <div class="sc-building-details">
-      <div>
-        <h3>Room Locations</h3>
-        <ul>
-          <li><strong>Rooms 70–71:</strong> Top Level — full staircase</li>
-          <li><strong>Rooms 72–76:</strong> Ground Level — stairs required</li>
-          <li><strong>Rooms 77–78:</strong> Lower Level — no steps</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Building Features</h3>
-        <ul>
-          <li>Front Desk by ramp or half staircase</li>
-          <li>Adjacent to pool, hot tub, fire pits</li>
-          <li>Sea Chambers merchandise and gifts</li>
-          <li>Various bed configurations</li>
-        </ul>
+  <div class="sc-rmap" id="sc-rmap">
+    <div class="sc-rmap-banner">
+      <img id="sc-rmap-banner-img" src="img/main-building.jpg" alt="">
+      <div class="sc-rmap-banner-overlay">
+        <div>
+          <h2 id="sc-rmap-bldg-name">The Oceanside Building</h2>
+          <p id="sc-rmap-bldg-desc">Our largest building — most rooms face the Atlantic with unobstructed ocean views.</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="sc-building">
-    <div class="sc-building-header">
-      <h2>The Inn Building</h2>
-      <p>Charming standalone building with larger suites and apartment-style accommodations</p>
-    </div>
-    <div class="sc-building-layout">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/04/Website-2026-Inn-Building.jpg" alt="Sea Chambers Inn Building photo and room layout diagram" loading="lazy">
-    </div>
-    <div class="sc-building-details">
-      <div>
-        <h3>Room Locations</h3>
-        <ul>
-          <li><strong>Rooms 501–508:</strong> First Floor — two steps in</li>
-          <li><strong>Rooms 522–528:</strong> Second Floor — one staircase</li>
-          <li><strong>Room 530:</strong> Entire Third Floor — two staircases</li>
-        </ul>
+    <div class="sc-rmap-body">
+      <div class="sc-rmap-grid">
+        <div class="sc-rmap-legend">
+          <span><span class="sc-rmap-legend-swatch ocean"></span>Ocean view</span>
+          <span><span class="sc-rmap-legend-swatch standard"></span>Standard</span>
+          <span>K = King · Q = Queen · D = Double · T = Trundle</span>
+        </div>
+        <div id="sc-rmap-levels"></div>
       </div>
-      <div>
-        <h3>Building Features</h3>
-        <ul>
-          <li>Inn Breakfast Room in Guest Utility area</li>
-          <li>24-hour grind-on-demand coffee</li>
-          <li>Self-service laundry (April – October)</li>
-          <li>Ice machine in Guest Utility Room</li>
-          <li>Spacious suites with full kitchens</li>
-        </ul>
+
+      <div class="sc-rmap-panel" id="sc-rmap-panel">
+        <div class="sc-rmap-empty">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11.25v1.5M15 11.25v1.5M9.75 17.25h4.5M3.75 21h16.5M4.5 3.75v17.25M19.5 3.75v17.25M3 8.25h18M3 13.5h18"/></svg>
+          <p>Click any room number to see photos and details.</p>
+        </div>
       </div>
+    </div>
+
+    <div class="sc-rmap-key">
+      <strong>K</strong> = King · <strong>Q</strong> = Queen · <strong>D</strong> = Double · <strong>T</strong> = Trundle · <strong>2 RMS</strong> = Two-room suite · Photos are representative — actual rooms may vary slightly
     </div>
   </div>
 
@@ -280,5 +287,245 @@
   <div><h4>Contact</h4><ul><li><a href="tel:2076469311">207.646.9311</a></li><li><a href="mailto:lodging@seachambers.com">lodging@seachambers.com</a></li><li>67 Shore Road, Ogunquit, ME 03907</li></ul></div>
   <div class="sc-footer-bottom">© 2026 Sea Chambers. All rights reserved.</div>
 </div>
+<script>
+// ROOM DATA — bed config, level, ocean view, optional notes
+const BLDG = {
+  oceanside: {
+    name: "The Oceanside Building",
+    desc: "Our largest building — most rooms face the Atlantic with unobstructed ocean views.",
+    banner: "img/main-building.jpg",
+    levels: [
+      { name: "Upper Level", meta: "One staircase up from Ground Level", rooms: [
+        {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false, sqft:""},
+        {n:"23", b:"Queen + Double", v:false},
+        {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
+        {n:"25", b:"Queen + Double", v:true},
+        {n:"26", b:"Queen + Double", v:true},
+        {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+        {n:"28", b:"Queen + Double", v:true},
+        {n:"29", b:"Queen + Double", v:true},
+        {n:"30", b:"Queen + Double", v:true},
+        {n:"31", b:"Queen + Double", v:true},
+        {n:"32", b:"Queen + Double", v:true}
+      ]},
+      { name: "Ground Level", meta: "No stairs", rooms: [
+        {n:"4", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
+        {n:"5", b:"Queen + Double", v:false},
+        {n:"6", b:"King", v:false},
+        {n:"7", b:"Queen + Double", v:true},
+        {n:"8", b:"Queen + Double", v:true},
+        {n:"9", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+        {n:"10", b:"King", v:true, special:"Sofa bed, oversized"},
+        {n:"11", b:"Queen + Double", v:true},
+        {n:"12", b:"Queen + Double", v:true},
+        {n:"14", b:"Queen + Double", v:true},
+        {n:"15", b:"Queen + Double", v:true},
+        {n:"16", b:"Queen + Double", v:true},
+        {n:"17", b:"Queen + Double", v:true},
+        {n:"18", b:"Queen + Double", v:true}
+      ]},
+      { name: "Terrace Level", meta: "Down a ramp from the parking lot", rooms: [
+        {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true},
+        {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true},
+        {n:"34", b:"Queen + Double", v:true},
+        {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large"},
+        {n:"36", b:"King", v:true},
+        {n:"37", b:"King", v:true, special:"Bold ocean view"},
+        {n:"38", b:"Queen + Double", v:true},
+        {n:"39", b:"Queen + Double", v:true}
+      ]},
+      { name: "Sea Level", meta: "Down a ramp and a staircase — closest to the water", rooms: [
+        {n:"40A", b:"King/Twin + Queen Sofa", note:"Two-room suite", v:true},
+        {n:"40B", b:"King", v:true},
+        {n:"41", b:"King", v:true},
+        {n:"42", b:"King", v:true, special:"Bold ocean view, closest to water"}
+      ]},
+      { name: "Annex Wing", meta: "Side rooms with sofa beds — various levels", rooms: [
+        {n:"1", b:"Q/D + Queen Sofa", v:false},
+        {n:"2", b:"Q/D + Queen Sofa", v:false},
+        {n:"3", b:"Q/D + Queen Sofa", v:false},
+        {n:"19", b:"Q/D + Queen Sofa", v:false},
+        {n:"20", b:"Q/D + Queen Sofa", v:false},
+        {n:"21", b:"Q/D + Queen Sofa", v:false}
+      ]}
+    ]
+  },
+  poolside: {
+    name: "The Poolside Building",
+    desc: "Home to the Front Desk — steps from the pool, hot tub, and fire pits.",
+    banner: "img/room-46-pool.jpg",
+    levels: [
+      { name: "Top Level", meta: "Full staircase up", rooms: [
+        {n:"70", b:"King + Sofa Bed", v:true},
+        {n:"71", b:"King + Sofa Bed", v:true}
+      ]},
+      { name: "Ground Level", meta: "Stairs required to enter", rooms: [
+        {n:"72", b:"Queen + Double", v:false},
+        {n:"73", b:"Queen + Double", note:"Adjoining option with 74", v:true},
+        {n:"74", b:"Queen + Double", note:"Adjoining option with 73", v:true},
+        {n:"75", b:"King + Sofa Bed", v:true},
+        {n:"76", b:"King + Sofa Bed", v:true}
+      ]},
+      { name: "Lower Level", meta: "No steps", rooms: [
+        {n:"77", b:"King", v:false},
+        {n:"78", b:"King", v:false}
+      ]}
+    ]
+  },
+  inn: {
+    name: "The Inn Building",
+    desc: "Charming standalone building across Shore Road — larger suites and apartment-style rooms.",
+    banner: "img/inn-across-street.jpg",
+    levels: [
+      { name: "First Floor", meta: "Two steps into the building", rooms: [
+        {n:"501", b:"King", v:false},
+        {n:"502", b:"King", v:false},
+        {n:"503", b:"King", v:false, special:"Private patio with partial ocean view seating"},
+        {n:"504", b:"King", v:false},
+        {n:"505", b:"King", v:false},
+        {n:"506", b:"King", v:false},
+        {n:"507", b:"King", v:false},
+        {n:"508", b:"King", v:false}
+      ]},
+      { name: "Second Floor", meta: "One full staircase up", rooms: [
+        {n:"522", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"523", b:"King Suite", note:"Two-room suite, ~332 sq ft", v:true, special:"Private ocean view balcony"},
+        {n:"524", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"525", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"526", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"527", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"528", b:"King", v:false}
+      ]},
+      { name: "Third Floor", meta: "Up two full staircases — entire floor apartment", rooms: [
+        {n:"530", b:"Apartment", note:"Entire third floor", v:true, special:"Largest accommodation"}
+      ]}
+    ]
+  }
+};
+
+// Photo sets — keyed by bed config or specific room number override
+const PHOTOS = {
+  // Specific real photos from seachambers.com
+  "35": [
+    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
+  ],
+  // Fallback by category
+  king: [
+    "img/room-king.jpg",
+    "img/room-2-view.jpg",
+    "img/room-46-pool.jpg"
+  ],
+  queendouble: [
+    "img/room-double.jpg",
+    "img/room-38-deck.jpg",
+    "img/room-2-view.jpg"
+  ],
+  twoqueens: [
+    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg"
+  ],
+  suite: [
+    "img/room-suite.jpg",
+    "img/room-2-view.jpg",
+    "img/room-46-pool.jpg"
+  ]
+};
+
+function getPhotos(room){
+  if(PHOTOS[room.n]) return PHOTOS[room.n];
+  const b = (room.b || "").toLowerCase();
+  if(b.includes("two queens") || b.includes("q/q")) return PHOTOS.twoqueens;
+  if(b.includes("suite") || b.includes("apartment")) return PHOTOS.suite;
+  if(b.startsWith("king") || b === "king") return PHOTOS.king;
+  return PHOTOS.queendouble;
+}
+
+function renderBuilding(key){
+  const b = BLDG[key];
+  document.getElementById('sc-rmap-banner-img').src = b.banner;
+  document.getElementById('sc-rmap-banner-img').alt = b.name;
+  document.getElementById('sc-rmap-bldg-name').textContent = b.name;
+  document.getElementById('sc-rmap-bldg-desc').textContent = b.desc;
+
+  const wrap = document.getElementById('sc-rmap-levels');
+  wrap.innerHTML = '';
+  b.levels.forEach(lvl => {
+    const lvlDiv = document.createElement('div');
+    lvlDiv.className = 'sc-rmap-level';
+    const grid = lvl.rooms.map(r => {
+      const cls = 'sc-rmap-cell' + (r.v ? ' ocean' : '');
+      const beds = r.b.replace(/Queen \+ Double/g, 'Q/D').replace(/Two Queens/g, 'Q/Q').replace(/King\b/g, 'K').replace(/Queen\b/g, 'Q').replace(/Double\b/g, 'D');
+      return `<button class="${cls}" data-bldg="${key}" data-room="${r.n}"><span class="sc-rmap-cell-num">${r.n}</span><span class="sc-rmap-cell-beds">${beds}</span></button>`;
+    }).join('');
+    lvlDiv.innerHTML = `<div class="sc-rmap-level-label">${lvl.name}</div><div class="sc-rmap-level-meta">${lvl.meta}</div><div class="sc-rmap-cells">${grid}</div>`;
+    wrap.appendChild(lvlDiv);
+  });
+
+  // Reset panel
+  document.getElementById('sc-rmap-panel').innerHTML = `
+    <div class="sc-rmap-empty">
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11.25v1.5M15 11.25v1.5M9.75 17.25h4.5M3.75 21h16.5M4.5 3.75v17.25M19.5 3.75v17.25M3 8.25h18M3 13.5h18"/></svg>
+      <p>Click any room number to see photos and details.</p>
+    </div>`;
+
+  // Bind cell clicks
+  wrap.querySelectorAll('.sc-rmap-cell').forEach(c => c.addEventListener('click', e => {
+    const num = c.dataset.room;
+    const room = b.levels.flatMap(l => l.rooms.map(r => ({...r, _level:l.name}))).find(r => r.n === num);
+    showRoom(b, room, c);
+  }));
+}
+
+function showRoom(bldg, room, cellEl){
+  // Mark active cell
+  document.querySelectorAll('.sc-rmap-cell.active').forEach(c => c.classList.remove('active'));
+  if(cellEl) cellEl.classList.add('active');
+
+  const photos = getPhotos(room);
+  const tags = [];
+  if(room.v) tags.push(`<span class="sc-rmap-detail-tag ocean">Ocean View</span>`);
+  else tags.push(`<span class="sc-rmap-detail-tag">Standard View</span>`);
+  tags.push(`<span class="sc-rmap-detail-tag">${room._level}</span>`);
+  if(room.note) tags.push(`<span class="sc-rmap-detail-tag">${room.note}</span>`);
+
+  const desc = [
+    room.special ? `<strong>${room.special}.</strong>` : '',
+    `Located in the ${bldg.name.replace('The ','')}, this room features <strong>${room.b}</strong>${room.sqft ? ' and ' + room.sqft : ''}. Continental breakfast, in-room mini-fridge & microwave, flat-screen TV, and full use of the heated oceanfront pool, hot tub, and fire pits are included.`
+  ].filter(Boolean).join(' ');
+
+  document.getElementById('sc-rmap-panel').innerHTML = `
+    <div class="sc-rmap-detail">
+      <div class="sc-rmap-detail-tags">${tags.join('')}</div>
+      <h3>Room ${room.n}</h3>
+      <div class="sc-rmap-detail-subtitle">${room.b}</div>
+      <div class="sc-rmap-photos">
+        <img src="${photos[0]}" alt="Room ${room.n}" loading="lazy">
+        <div class="sc-rmap-photos-row">
+          ${photos.slice(1,4).map(p => `<img src="${p}" alt="Room ${room.n}" loading="lazy">`).join('')}
+        </div>
+      </div>
+      <p class="sc-rmap-detail-desc">${desc}</p>
+      <div class="sc-rmap-actions">
+        <a href="https://reservations.seachambers.com" class="sc-rmap-book">Book This Room</a>
+        <a href="rooms.html#" class="sc-rmap-detail-link" onclick="document.querySelector('.sc-rmap-panel').scrollIntoView({behavior:'smooth',block:'start'});return false;">↑ Top</a>
+      </div>
+    </div>`;
+}
+
+// Tab switching
+document.querySelectorAll('.sc-rmap-tab').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.sc-rmap-tab').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  renderBuilding(t.dataset.bldg);
+}));
+
+// Init
+renderBuilding('oceanside');
+</script>
 </body>
 </html>
