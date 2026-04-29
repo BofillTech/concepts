@@ -240,10 +240,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');
+  background-image: url('img/hero-boats-inlet.jpg');
   background-size: cover;
-  background-position: center 60%;
-  filter: brightness(0.62) saturate(0.85);
+  background-position: center 55%;
+  filter: brightness(0.62) saturate(0.92);
 }
 .hero-bg::after {
   content: '';
@@ -357,25 +357,66 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 @media (min-width: 1024px) {
   .heritage-grid { grid-template-columns: 1fr 1fr; gap: 100px; }
 }
-.heritage-num {
-  font-family: var(--display);
-  font-weight: 200;
-  font-variation-settings: "opsz" 72;
-  font-size: clamp(120px, 18vw, 240px);
-  line-height: 0.85;
-  color: var(--ink);
-  display: block;
-  letter-spacing: -0.04em;
+.heritage-photo-wrap { position: relative; }
+.heritage-photo {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--ink);
+  box-shadow: var(--shadow-md);
 }
-.heritage-num .since {
+.heritage-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.heritage-year-bug {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--paper);
+  padding: 18px 22px 16px;
+  text-align: center;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 8px 20px -10px rgba(13,36,56,0.35);
+}
+.heritage-year-bug .label {
   display: block;
+  font-family: var(--body);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cedar);
+  margin-bottom: 4px;
+}
+.heritage-year-bug .yr {
+  display: block;
+  font-family: var(--display);
+  font-weight: 300;
+  font-variation-settings: "opsz" 60;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--buoy);
+}
+.heritage-caption {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
   font-family: var(--body);
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--buoy);
-  margin-bottom: 12px;
+  color: var(--cedar);
+}
+.heritage-caption .caption-rule {
+  width: 30px;
+  height: 1px;
+  background: var(--buoy);
+  flex-shrink: 0;
 }
 .heritage-text h2 {
   font-family: var(--display);
@@ -588,7 +629,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   position: relative;
   min-height: 600px;
   background-image: linear-gradient(135deg, rgba(13,36,56,0.78) 0%, rgba(13,36,56,0.45) 60%, rgba(13,36,56,0.85) 100%),
-                    url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');
+                    url('img/marina-aerial.jpg');
   background-size: cover;
   background-position: center;
   color: var(--off-white);
@@ -856,48 +897,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 }
 .stay-img-stack img { width: 100%; height: 100%; object-fit: cover; }
 
-/* ---------- Caps MTK (restaurant) ---------- */
-.caps {
-  background: var(--ink);
-  color: var(--off-white);
-  position: relative;
-  overflow: hidden;
-}
-.caps-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  align-items: center;
-}
-@media (min-width: 1024px) {
-  .caps-grid { grid-template-columns: 1.1fr 0.9fr; gap: 80px; }
-}
-.caps-text .eyebrow { color: var(--cedar-soft); }
-.caps-text .eyebrow::before { background: var(--buoy); }
-.caps-text h2 {
-  font-family: var(--display);
-  font-weight: 300;
-  font-variation-settings: "opsz" 60;
-  font-size: clamp(34px, 4.5vw, 60px);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: var(--off-white);
-  margin: 18px 0 24px;
-}
-.caps-text h2 .it { font-style: italic; color: var(--cedar-soft); }
-.caps-text p {
-  font-size: 17px;
-  line-height: 1.65;
-  color: rgba(255,255,255,0.86);
-  max-width: 520px;
-  margin-bottom: 28px;
-}
-.caps-img {
-  aspect-ratio: 4/5;
-  overflow: hidden;
-}
-.caps-img img { width: 100%; height: 100%; object-fit: cover; }
-
 /* ---------- Tournament (heritage feature) ---------- */
 .tourney { background: var(--paper-2); position: relative; }
 .tourney-inner {
@@ -1079,11 +1078,11 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=2400&q=80');
+  background-image: url('img/final-cta-bg.jpg');
   background-size: cover;
   background-position: center;
-  opacity: 0.18;
-  filter: saturate(0.6);
+  opacity: 0.20;
+  filter: saturate(0.7);
 }
 .final-cta-inner { position: relative; z-index: 2; }
 .final-cta .eyebrow { color: var(--cedar-soft); justify-content: center; margin-bottom: 24px; display: inline-flex; }
@@ -1279,11 +1278,18 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 <section class="section heritage">
   <div class="container">
     <div class="heritage-grid">
-      <div class="reveal">
-        <span class="heritage-num">
-          <span class="since">Family Owned Since</span>
-          1951
-        </span>
+      <div class="heritage-photo-wrap reveal">
+        <div class="heritage-photo">
+          <img src="img/heritage-family.jpg" alt="Henry C. Uihlein, Henry Uihlein, and Jeremy Somero in front of the marina">
+          <div class="heritage-year-bug">
+            <span class="label">Family Owned Since</span>
+            <span class="yr">1951</span>
+          </div>
+        </div>
+        <div class="heritage-caption">
+          <span class="caption-rule"></span>
+          <span>L–R: Henry C. Uihlein · Henry Uihlein · Jeremy Somero</span>
+        </div>
       </div>
       <div class="heritage-text reveal" data-delay="1">
         <span class="eyebrow">A Working Waterfront</span>
@@ -1326,7 +1332,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <article class="fleet-card reveal">
         <div class="fleet-card-img">
           <span class="fleet-card-tag">16–22 ft</span>
-          <img src="https://images.unsplash.com/photo-1564873535408-b9ed4cdb86b1?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Skiff for harbor and inshore use">
+          <img src="img/fleet-skiffs.jpg" alt="A Uihlein's-branded skiff being lifted by forklift">
         </div>
         <div class="fleet-card-body">
           <h3>Skiffs &amp; Runabouts</h3>
@@ -1342,7 +1348,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <article class="fleet-card reveal" data-delay="1">
         <div class="fleet-card-img">
           <span class="fleet-card-tag">23–28 ft</span>
-          <img src="https://images.unsplash.com/photo-1573037128835-3e2e8d6e09c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Center console boat for fishing and water sports">
+          <img src="img/fleet-center-consoles.jpg" alt="Uihlein's center console boat at sea pulling jet skis">
         </div>
         <div class="fleet-card-body">
           <h3>Center Consoles</h3>
@@ -1358,7 +1364,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <article class="fleet-card reveal" data-delay="2">
         <div class="fleet-card-img">
           <span class="fleet-card-tag">29–32 ft</span>
-          <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Larger boat suited for offshore Montauk waters">
+          <img src="img/fleet-big-boats.jpg" alt="Larger boats stored at Uihlein's Marina">
         </div>
         <div class="fleet-card-body">
           <h3>The Big Boats</h3>
@@ -1374,7 +1380,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       <article class="fleet-card reveal" data-delay="3">
         <div class="fleet-card-img">
           <span class="fleet-card-tag">Jet Skis</span>
-          <img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Jet ski rental at Uihlein's">
+          <img src="img/fleet-jetskis.jpg" alt="Father and son riding a Uihlein's WaveRunner">
         </div>
         <div class="fleet-card-body">
           <h3>Jet Skis &amp; Tubes</h3>
@@ -1452,7 +1458,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
     <div class="yard-grid">
       <div class="yard-img reveal">
-        <img src="https://images.unsplash.com/photo-1530036846422-0c9b1ad6cdf8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80" alt="Working boat yard at Uihlein's Marina">
+        <img src="img/yard-travel-lift.jpg" alt="Uihlein's Marina travel lift hauling out a yacht">
         <div class="yard-img-tag">Authorized Mercury Dealer</div>
       </div>
 
@@ -1514,10 +1520,10 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     <div class="stay-grid">
       <div class="stay-img-stack reveal">
         <div class="stay-img-1">
-          <img src="https://images.unsplash.com/photo-1530653333484-8a51a2b40b71?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Uihlein's Motel cottage exterior">
+          <img src="img/motel-sign.jpg" alt="Uihlein's Motel entrance sign on the property">
         </div>
         <div class="stay-img-2">
-          <img src="https://images.unsplash.com/photo-1551776235-dde6d4829808?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Motel kitchenette interior">
+          <img src="img/motel-deck.jpg" alt="The motel grounds — deck, picnic area, and BBQs">
         </div>
       </div>
 
@@ -1551,29 +1557,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   </div>
 </section>
 
-<!-- ============= CAP'S MTK ============= -->
-<section class="section caps">
-  <div class="container">
-    <div class="caps-grid">
-      <div class="caps-text reveal">
-        <span class="eyebrow">V. Cap's MTK</span>
-        <h2>Dock, dine,<br><span class="it">and unwind</span> next door.</h2>
-        <p>
-          Cap's MTK sits right next to the marina — locally-sourced seafood, shellfish, cold drinks, and that easy Montauk energy. Walk over off the boat, grab a stool at the bar, or settle in for a long lunch.
-        </p>
-        <p>
-          A casual stop after a day on the water — open seasonally, run by friends.
-        </p>
-        <a href="#" class="btn btn-outline-light" style="margin-top: 18px;">See the Menu</a>
-      </div>
-
-      <div class="caps-img reveal" data-delay="1">
-        <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80" alt="Fresh seafood at Cap's MTK">
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============= TOURNAMENT ============= -->
 <section class="section tourney">
   <div class="container">
@@ -1597,7 +1580,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
       </div>
 
       <div class="tourney-img reveal" data-delay="1">
-        <img src="https://images.unsplash.com/photo-1545419913-775e3e82c7db?ixlib=rb-4.0.3&auto=format&fit=crop&w=1100&q=80" alt="Annual fishing tournament at the dock">
+        <img src="img/tournament-aerial.jpg" alt="Aerial view of Uihlein's Marina during the annual fishing tournament">
       </div>
     </div>
   </div>
@@ -1607,7 +1590,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 <section class="gallery">
   <div class="container">
     <div class="section-head reveal">
-      <div class="section-head-num">VI.</div>
+      <div class="section-head-num">V.</div>
       <div class="section-head-title">
         <span class="eyebrow">Around the Marina</span>
         <h2>The <span class="it">harbor.</span></h2>
@@ -1616,12 +1599,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
     </div>
   </div>
   <div class="gallery-strip" role="list">
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Boats in Montauk Harbor at golden hour"></div>
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Montauk lighthouse and coastline"></div>
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1502489597346-dff77c39b88d?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Sailing boats off Montauk"></div>
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Open water and the Atlantic"></div>
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1504194104404-433180773017?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Aerial view of Montauk coastline"></div>
-    <div class="gallery-img" role="listitem"><img src="https://images.unsplash.com/photo-1545161296-d9c2c6f3863a?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&q=80" alt="Sunset over the harbor"></div>
+    <div class="gallery-img" role="listitem"><img src="img/gallery-sign-flags.jpg" alt="The Uihlein's Marina &amp; Boat Rental sign on West Lake Drive"></div>
+    <div class="gallery-img" role="listitem"><img src="img/gallery-storefront.jpg" alt="The classic Outboards / Uihlein's Skiffs storefront"></div>
+    <div class="gallery-img" role="listitem"><img src="img/gallery-bench.jpg" alt="The In Memory of Henry C. Uihlein bench at the marina"></div>
+    <div class="gallery-img" role="listitem"><img src="img/gallery-fuel-pump.jpg" alt="Fuel dock at Uihlein's Marina with Pepsi umbrella"></div>
+    <div class="gallery-img" role="listitem"><img src="img/marina-aerial.jpg" alt="Full aerial of Uihlein's Marina property"></div>
+    <div class="gallery-img" role="listitem"><img src="img/tournament-aerial.jpg" alt="The marina at golden hour during the annual tournament"></div>
   </div>
 </section>
 
@@ -1630,7 +1613,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   <div class="container">
     <div class="visit-grid">
       <div class="visit-info reveal">
-        <span class="eyebrow">VII. Visit</span>
+        <span class="eyebrow">VI. Visit</span>
         <h2 style="margin-top: 18px;">Find us on the <span class="it">harbor inlet.</span></h2>
         <p style="font-size: 17px; line-height: 1.65; max-width: 540px;">
           We're at the inlet on West Lake Drive — across from the bike shop and the market, walking distance to most of Montauk's restaurants and bars. The dock is open seven days a week through the season.
@@ -1721,9 +1704,9 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
         <h4>Stay</h4>
         <ul>
           <li><a href="#stay">The Motel</a></li>
-          <li><a href="#caps">Cap's MTK</a></li>
           <li><a href="#tourney">Tournament</a></li>
           <li><a href="#visit">Visit</a></li>
+          <li>Cap's MTK · Next Door</li>
         </ul>
       </div>
       <div>
