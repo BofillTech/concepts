@@ -200,10 +200,12 @@
     height: auto;
     display: block;
   }
-  /* Marker hover/active states (controlled via JS) */
-  .venue-marker { cursor: pointer; transition: transform 0.18s ease; transform-origin: center; transform-box: fill-box; }
-  .venue-marker:hover { transform: scale(1.4); }
-  .venue-marker.active { transform: scale(1.5); }
+  .map-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 2px;
+  }
 
   .map-caption {
     margin-top: 14px;
@@ -269,16 +271,11 @@
     padding: 22px;
     transition: all 0.22s ease;
     position: relative;
-    scroll-margin-top: 80px;
   }
   .venue-card:hover {
     border-color: var(--ocean);
     transform: translateY(-2px);
     box-shadow: 0 12px 28px -16px rgba(45, 156, 219, 0.25);
-  }
-  .venue-card.active {
-    border: 2px solid var(--ocean);
-    padding: 21px;
   }
   .venue-card.featured {
     border-top: 4px solid var(--gold);
@@ -301,6 +298,28 @@
   .venue-area-tag.great-harbour { background: var(--area-great-harbour); color: white; }
   .venue-area-tag.little-harbour { background: var(--area-little-harbour); color: var(--ink); }
   .venue-area-tag.east-end { background: var(--area-east-end); color: white; }
+
+  .venue-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .map-ref {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: 50%;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+    cursor: help;
+  }
 
   .venue-card h4 {
     font-family: 'Fraunces', serif;
@@ -352,6 +371,48 @@
     letter-spacing: 0.15em;
     padding: 4px 10px;
     border-radius: 100px;
+  }
+
+  /* PROPERTY AERIAL */
+  .property-aerial {
+    position: relative;
+    width: 100%;
+    height: clamp(360px, 50vw, 580px);
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .property-aerial img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .property-aerial .overlay-bottom {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 32px 36px;
+    text-align: center;
+  }
+  .property-aerial .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(22px, 4vw, 38px);
+    line-height: 1.15;
+    color: white;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    max-width: 780px;
+  }
+  .property-aerial .pull-quote em {
+    font-style: normal;
+    color: var(--teal);
   }
 
   /* PRO TIPS */
@@ -467,7 +528,7 @@
   <span class="intro-label">Why this guide exists</span>
   <h2 class="serif">Half of these places <em>don't have a website.</em> Some don't have menus. None of them care about reservations the way the mainland does.</h2>
   <p>Jost runs on its own clock. Walk in, say hi, and you're already a regular. We made this map because guests kept asking for "the list" — and because the best spots on the island never show up on a Google search.</p>
-  <p>Tap any pin on the map below to find it on the list, or tap any venue to call ahead.</p>
+  <p>The map below shows every venue numbered 1–13. Find a place that catches your eye, scroll to its card, and tap to call ahead.</p>
 </section>
 
 <!-- AREAS OVERVIEW -->
@@ -502,209 +563,17 @@
   </div>
 </section>
 
-<!-- INTERACTIVE MAP -->
+<!-- ISLAND MAP - real satellite map with numbered POIs -->
 <section class="map-section">
   <div class="map-wrap">
-    <svg viewBox="0 0 800 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Jost Van Dyke showing all bars and restaurants">
-      <defs>
-        <pattern id="water3" width="32" height="32" patternUnits="userSpaceOnUse">
-          <rect width="32" height="32" fill="#dff2f1"/>
-          <path d="M0 16 Q 8 12, 16 16 T 32 16" stroke="#b8dcd9" stroke-width="0.8" fill="none" opacity="0.7"/>
-          <path d="M0 26 Q 8 22, 16 26 T 32 26" stroke="#b8dcd9" stroke-width="0.6" fill="none" opacity="0.4"/>
-        </pattern>
-        <filter id="islandShadow3" x="-5%" y="-5%" width="110%" height="115%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-          <feOffset dx="0" dy="3"/>
-          <feComponentTransfer><feFuncA type="linear" slope="0.18"/></feComponentTransfer>
-          <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
-        <pattern id="hills2" width="14" height="14" patternUnits="userSpaceOnUse">
-          <circle cx="7" cy="7" r="0.8" fill="#d5dce0" opacity="0.5"/>
-        </pattern>
-      </defs>
-
-      <rect width="800" height="540" fill="url(#water3)"/>
-
-      <text x="400" y="40" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-style="italic" fill="#5a6470" letter-spacing="0.25em">JOST VAN DYKE · EAT & DRINK MAP</text>
-
-      <!-- Main JVD Island -->
-      <g filter="url(#islandShadow3)">
-        <path d="
-          M 80 290
-          Q 100 210, 170 190
-          Q 250 170, 330 175
-          Q 420 165, 510 180
-          Q 590 185, 650 205
-          Q 700 220, 720 250
-          Q 730 270, 720 295
-          Q 700 320, 650 325
-          Q 600 350, 530 340
-          Q 500 370, 470 365
-          Q 440 350, 410 360
-          Q 380 370, 350 360
-          Q 300 350, 250 355
-          Q 180 350, 130 335
-          Q 90 320, 80 290
-          Z" fill="#ffffff" stroke="#d5dce0" stroke-width="1.5"/>
-        <path d="
-          M 80 290
-          Q 100 210, 170 190
-          Q 250 170, 330 175
-          Q 420 165, 510 180
-          Q 590 185, 650 205
-          Q 700 220, 720 250
-          Q 730 270, 720 295
-          Q 700 320, 650 325
-          Q 600 350, 530 340
-          Q 500 370, 470 365
-          Q 440 350, 410 360
-          Q 380 370, 350 360
-          Q 300 350, 250 355
-          Q 180 350, 130 335
-          Q 90 320, 80 290
-          Z" fill="url(#hills2)" opacity="0.4"/>
-      </g>
-
-      <!-- Little JVD (small island east) -->
-      <g filter="url(#islandShadow3)">
-        <ellipse cx="730" cy="195" rx="40" ry="18" fill="#ffffff" stroke="#d5dce0" stroke-width="1.2"/>
-        <text x="730" y="172" text-anchor="middle" font-family="Fraunces, serif" font-size="9" font-style="italic" fill="#5a6470">Little Jost</text>
-      </g>
-
-      <!-- Hill contour -->
-      <path d="M 200 230 Q 320 215, 460 225 Q 560 230, 640 245" stroke="#d5dce0" stroke-width="0.8" fill="none" opacity="0.5"/>
-      <path d="M 230 250 Q 350 240, 480 250 Q 580 255, 630 265" stroke="#d5dce0" stroke-width="0.8" fill="none" opacity="0.45"/>
-
-      <!-- Island name watermark -->
-      <text x="400" y="220" text-anchor="middle" font-family="Fraunces, serif" font-size="22" font-weight="500" fill="#2D9CDB" opacity="0.18" letter-spacing="0.1em">JOST VAN DYKE</text>
-
-      <!-- Peak -->
-      <g transform="translate(430, 235)">
-        <path d="M 0 -6 L 5 5 L -5 5 Z" fill="#b8b8b8"/>
-        <text x="0" y="-12" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" fill="#5a6470" font-style="italic">Majohnny Peak</text>
-      </g>
-
-      <!-- ============ AREA LABELS ============ -->
-      <!-- White Bay area -->
-      <path d="M 200 350 Q 230 380, 290 385 Q 340 383, 350 365" fill="#fef8e0" stroke="#e5d58a" stroke-width="1" opacity="0.85"/>
-      <text x="270" y="412" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#1e7aad">White Bay</text>
-
-      <!-- Great Harbour bay -->
-      <path d="M 380 350 Q 400 385, 430 390 Q 470 388, 480 365" fill="#dff2f1" stroke="#88cce8" stroke-width="1" opacity="0.85"/>
-      <text x="430" y="415" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#1e7aad">Great Harbour</text>
-
-      <!-- Little Harbour bay -->
-      <path d="M 580 345 Q 600 370, 630 375 Q 655 370, 660 350" fill="#dff2f1" stroke="#88cce8" stroke-width="1" opacity="0.85"/>
-      <text x="618" y="395" text-anchor="middle" font-family="Fraunces, serif" font-size="12" font-style="italic" fill="#1e7aad">Little Harbour</text>
-
-      <!-- Diamond Cay area -->
-      <text x="710" y="220" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-style="italic" fill="#1e7aad">Diamond Cay</text>
-
-      <!-- ============ ROADS ============ -->
-      <path d="M 220 305 Q 290 290, 340 295 Q 390 300, 430 305 Q 500 310, 580 305 Q 640 300, 685 280" stroke="#d5dce0" stroke-width="2" stroke-dasharray="4,3" fill="none" opacity="0.55"/>
-
-      <!-- ============ VENUE MARKERS ============ -->
-      <!-- (data-id matches IDs in JS venue list) -->
-
-      <!-- WHITE BAY (teal markers) -->
-      <g class="venue-marker" data-id="alices" onclick="selectVenue('alices')">
-        <circle cx="298" cy="370" r="9" fill="#D4AF37" stroke="#ffffff" stroke-width="2.5"/>
-        <text x="298" y="374" text-anchor="middle" font-family="Fraunces, serif" font-size="10" font-weight="700" fill="#333333">★</text>
-      </g>
-      <g class="venue-marker" data-id="soggy-dollar" onclick="selectVenue('soggy-dollar')">
-        <circle cx="278" cy="375" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="hendos" onclick="selectVenue('hendos')">
-        <circle cx="262" cy="377" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="one-love" onclick="selectVenue('one-love')">
-        <circle cx="245" cy="378" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="gertrudes" onclick="selectVenue('gertrudes')">
-        <circle cx="228" cy="378" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="ivans" onclick="selectVenue('ivans')">
-        <circle cx="210" cy="375" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="coco-loco" onclick="selectVenue('coco-loco')">
-        <circle cx="193" cy="370" r="7" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-      </g>
-
-      <!-- GREAT HARBOUR (ocean blue markers) -->
-      <g class="venue-marker" data-id="foxys" onclick="selectVenue('foxys')">
-        <circle cx="408" cy="370" r="8" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="corsairs" onclick="selectVenue('corsairs')">
-        <circle cx="424" cy="372" r="7" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="ali-babas" onclick="selectVenue('ali-babas')">
-        <circle cx="442" cy="370" r="7" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="tipsy-shark" onclick="selectVenue('tipsy-shark')">
-        <circle cx="395" cy="365" r="7" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="christines" onclick="selectVenue('christines')">
-        <circle cx="458" cy="368" r="7" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-      </g>
-
-      <!-- LITTLE HARBOUR (gold markers) -->
-      <g class="venue-marker" data-id="sidneys" onclick="selectVenue('sidneys')">
-        <circle cx="600" cy="358" r="7" fill="#D4AF37" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="harris" onclick="selectVenue('harris')">
-        <circle cx="618" cy="362" r="7" fill="#D4AF37" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="abes" onclick="selectVenue('abes')">
-        <circle cx="638" cy="360" r="7" fill="#D4AF37" stroke="#ffffff" stroke-width="2"/>
-      </g>
-
-      <!-- EAST END (charcoal markers) -->
-      <g class="venue-marker" data-id="foxys-taboo" onclick="selectVenue('foxys-taboo')">
-        <circle cx="700" cy="240" r="7" fill="#5a6470" stroke="#ffffff" stroke-width="2"/>
-      </g>
-      <g class="venue-marker" data-id="b-line" onclick="selectVenue('b-line')">
-        <circle cx="730" cy="195" r="7" fill="#5a6470" stroke="#ffffff" stroke-width="2"/>
-      </g>
-
-      <!-- WBV PIN (home base) -->
-      <g>
-        <path d="M 305 360 C 297 360, 293 364, 293 372 C 293 378, 299 386, 305 392 C 311 386, 317 378, 317 372 C 317 364, 313 360, 305 360 Z" fill="#D4AF37" stroke="#ffffff" stroke-width="2.5"/>
-        <circle cx="305" cy="372" r="3" fill="#ffffff"/>
-        <text x="305" y="430" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="600" fill="#D4AF37">White Bay Villas</text>
-        <text x="305" y="444" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="9" fill="#5a6470" letter-spacing="0.15em">YOU ARE HERE</text>
-      </g>
-
-      <!-- LEGEND -->
-      <g transform="translate(540, 60)">
-        <rect x="0" y="0" width="220" height="118" fill="#ffffff" stroke="#d5dce0" stroke-width="1" rx="3"/>
-        <text x="110" y="20" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="500" fill="#1e7aad" letter-spacing="0.12em">TAP A PIN TO LEARN MORE</text>
-
-        <circle cx="22" cy="44" r="6" fill="#8BE8E5" stroke="#ffffff" stroke-width="2"/>
-        <text x="38" y="48" font-family="DM Sans, sans-serif" font-size="11" fill="#333333">White Bay</text>
-
-        <circle cx="22" cy="64" r="6" fill="#2D9CDB" stroke="#ffffff" stroke-width="2"/>
-        <text x="38" y="68" font-family="DM Sans, sans-serif" font-size="11" fill="#333333">Great Harbour</text>
-
-        <circle cx="22" cy="84" r="6" fill="#D4AF37" stroke="#ffffff" stroke-width="2"/>
-        <text x="38" y="88" font-family="DM Sans, sans-serif" font-size="11" fill="#333333">Little Harbour</text>
-
-        <circle cx="22" cy="104" r="6" fill="#5a6470" stroke="#ffffff" stroke-width="2"/>
-        <text x="38" y="108" font-family="DM Sans, sans-serif" font-size="11" fill="#333333">East End</text>
-      </g>
-
-      <!-- Compass -->
-      <g transform="translate(60, 90)">
-        <circle r="22" fill="#ffffff" stroke="#d5dce0" stroke-width="1"/>
-        <path d="M0,-16 L3,0 L0,16 L-3,0 Z" fill="#D4AF37"/>
-        <path d="M-16,0 L0,3 L16,0 L0,-3 Z" fill="#5a6470"/>
-        <circle r="2" fill="#ffffff"/>
-        <text y="-28" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-weight="600" fill="#1e7aad">N</text>
-      </g>
-
-      <text x="400" y="510" text-anchor="middle" font-family="Fraunces, serif" font-size="12" font-style="italic" fill="#1e7aad">Stylized map · venues approximate · road system simplified</text>
-    </svg>
+    <img src="assets/jvd-island-map-only.jpg" alt="Aerial map of Jost Van Dyke with all bars, restaurants, and points of interest numbered" />
   </div>
-  <p class="map-caption">Tap a pin to scroll to the venue. Tap a venue card below to highlight it on the map.</p>
+  <p class="map-caption">All thirteen points of interest. Numbers below each venue card match the pins on the map.</p>
+
+  <div class="map-wrap" style="margin-top: 18px;">
+    <img src="assets/jvd-white-bay-zoom.jpg" alt="Close-up satellite view of White Bay showing each beach bar from Gertrude\'s in the west to Ivan\'s in the east" />
+  </div>
+  <p class="map-caption">White Bay close-up · west → east, Gertrude\'s and Soggy Dollar to Ivan\'s and Ocean View.</p>
 </section>
 
 <!-- FILTER + VENUE LIST -->
@@ -721,6 +590,14 @@
     <!-- Venue cards injected by JS -->
   </div>
 </section>
+
+<!-- WBV PROPERTY AERIAL - shows Alice's location relative to the villas -->
+<div class="property-aerial">
+  <img src="assets/wbv-property-aerial.jpg" alt="Aerial photo of White Bay Villas property showing Alice's restaurant on the beach, the Beach Club, and all villa locations" />
+  <div class="overlay-bottom">
+    <p class="pull-quote">And don't forget — <em>Alice's is right downstairs.</em></p>
+  </div>
+</div>
 
 <!-- PRO TIPS -->
 <section class="tips-section">
@@ -782,18 +659,20 @@
 
 <script>
   // ============ VENUE DATA ============
+  // mapRef = pin number on the static island map (above)
+  // The map groups some venues together (e.g. Great Harbour cluster #3 = Corsair's, Ali Baba's, Tipsy Shark)
   const venues = [
-    // ==================== WHITE BAY ====================
+    // ==================== WHITE BAY (map pins 5-10, west to east) ====================
     {
-      id: 'alices', area: 'white-bay', name: "Alice's at White Bay Beach Club",
+      id: 'alices', area: 'white-bay', name: "Alice's at White Bay Beach Club", mapRef: '★',
       vibe: 'On-property · farm-to-table · open all day',
       featured: true,
       blurb: "Our own beachfront kitchen and bar, right on the sand at White Bay Villas. Artisan menu by our island chef, ingredients sourced on-island first. Stop in before or after the beach — or both.",
-      phone: null, // call WBV main line
+      phone: null,
       note: 'Booked through your villa concierge'
     },
     {
-      id: 'soggy-dollar', area: 'white-bay', name: 'Soggy Dollar Bar',
+      id: 'soggy-dollar', area: 'white-bay', name: 'Soggy Dollar Bar', mapRef: '9',
       vibe: "Iconic · home of the Painkiller · daytime",
       featured: true,
       blurb: "The most famous beach bar in the BVI, where the original Painkiller cocktail was invented. Walk in, swim up, sit on the sand. The motto 'a sunny place for shady people' explains everything.",
@@ -801,40 +680,40 @@
       note: 'Reservations not needed · cash & cards'
     },
     {
-      id: 'hendos', area: 'white-bay', name: "Hendo's Hideout",
+      id: 'hendos', area: 'white-bay', name: "Hendo's Hideout", mapRef: '8',
       vibe: 'Beach bar · upscale · sunset food',
       blurb: "Right next door to Soggy Dollar — look for the bright orange loungers. Better food than most beach bars, killer cocktails, hammocks in the palms. Sushi night Thursday, Sunday brunch.",
       phone: '+1-284-340-0074'
     },
     {
-      id: 'one-love', area: 'white-bay', name: 'One Love Bar & Grill',
+      id: 'one-love', area: 'white-bay', name: 'One Love Bar & Grill', mapRef: '7',
       vibe: 'Beach bar · Foxy family · daytime only',
       blurb: "Founded by Foxy's son. Lobster quesadillas, sushi tuna, and a sunny attitude. Daytime hours; dinner only by group request. (Status varies — call ahead, ownership recently in transition.)",
       phone: null,
       note: 'No published number · walk-up only'
     },
     {
-      id: 'gertrudes', area: 'white-bay', name: "Gertrude's Beach Bar",
+      id: 'gertrudes', area: 'white-bay', name: "Gertrude's Beach Bar", mapRef: '6',
       vibe: 'West Indian · family-run · open early',
       blurb: "Open from 7 or 8 AM until the last person leaves. Real-deal West Indian fare with flair, run by people who've been doing it forever. The breakfast is the secret.",
       phone: '+1-284-495-9104'
     },
     {
-      id: 'ivans', area: 'white-bay', name: "Ivan's Stress Free Bar",
+      id: 'ivans', area: 'white-bay', name: "Ivan's Stress Free Bar", mapRef: '5',
       vibe: 'Beach bar · low-key · honor-system roots',
       blurb: "Far end of the bay, away from the crowds. Tire swing under a tree, sunbeds, cold drinks. Camping is also available here if a guest wants the full beach-bum experience.",
       phone: '+1-284-540-0676'
     },
     {
-      id: 'coco-loco', area: 'white-bay', name: "Coco Loco's",
+      id: 'coco-loco', area: 'white-bay', name: "Coco Loco's", mapRef: '6',
       vibe: 'Hidden gem · West Indian · lunch & dinner',
       blurb: "The far end of White Bay. Quieter, more local, with Tina and the team running a real kitchen. Caribbean and North American dishes, strong cocktails.",
       phone: '+1-284-495-0013'
     },
 
-    // ==================== GREAT HARBOUR ====================
+    // ==================== GREAT HARBOUR (map pins 2-4) ====================
     {
-      id: 'foxys', area: 'great-harbour', name: "Foxy's",
+      id: 'foxys', area: 'great-harbour', name: "Foxy's", mapRef: '2',
       vibe: 'Legendary · live music · Friday/Saturday BBQ',
       featured: true,
       blurb: "The most famous bar on the island. Friday and Saturday BBQ buffet is essential. Live music, dancing, and the postcard-covered walls of forty years of yacht crews. Reservations strongly recommended for dinner.",
@@ -843,55 +722,55 @@
       note: 'Reservations strongly suggested'
     },
     {
-      id: 'corsairs', area: 'great-harbour', name: "Corsair's Beach Bar & Restaurant",
+      id: 'corsairs', area: 'great-harbour', name: "Corsair's Beach Bar & Restaurant", mapRef: '3',
       vibe: 'International · seafood & pasta · sunset',
       blurb: "Vinny runs the place — drives a vintage US Army jeep, quick with a story, even quicker with a smile. Seafood, pasta, Mexican, BVI specialties, and bay views.",
       phone: '+1-284-495-9294',
       website: 'https://www.corsairsbvi.com'
     },
     {
-      id: 'ali-babas', area: 'great-harbour', name: "Ali Baba's",
+      id: 'ali-babas', area: 'great-harbour', name: "Ali Baba's", mapRef: '3',
       vibe: 'Lunch & dinner · classic Jost · grilled lobster',
       blurb: "A Great Harbour staple. Order the chicken roti at lunch or the grilled lobster at dinner — the menu rarely steers wrong. Monday Pig Roast in season is the move.",
       phone: '+1-284-495-9280'
     },
     {
-      id: 'tipsy-shark', area: 'great-harbour', name: 'Tipsy Shark Bar & Café',
+      id: 'tipsy-shark', area: 'great-harbour', name: 'Tipsy Shark Bar & Café', mapRef: '3',
       vibe: 'Family-run · breakfast standout · farm-to-table',
       blurb: "Newer addition right in Great Harbour, two minutes from the ferry. Breakfast is exceptional — fresh, locally sourced. Bar inside, water-edge tables outside.",
       phone: '+1-284-541-0500'
     },
     {
-      id: 'christines', area: 'great-harbour', name: "Christine's Bakery",
+      id: 'christines', area: 'great-harbour', name: "Christine's Bakery", mapRef: '4',
       vibe: 'Bakery · breakfast · provisioning',
       blurb: "If your villa has a kitchen, this is your morning stop. Fresh bread, pastries, johnny cakes. The pre-ferry breakfast spot.",
       phone: '+1-284-495-9281'
     },
 
-    // ==================== LITTLE HARBOUR ====================
+    // ==================== LITTLE HARBOUR (map pin 11) ====================
     {
-      id: 'sidneys', area: 'little-harbour', name: "Sidney's Peace & Love",
+      id: 'sidneys', area: 'little-harbour', name: "Sidney's Peace & Love", mapRef: '11',
       vibe: 'Lobster · honor-system bar · sailors love it',
       featured: true,
       blurb: "Famous for all-you-can-eat lobster nights twice weekly, and an honor-system bar where you pour your own. The kind of place that's been doing it the right way for decades.",
       phone: '+1-284-495-9271'
     },
     {
-      id: 'harris', area: 'little-harbour', name: "Harris' Place",
+      id: 'harris', area: 'little-harbour', name: "Harris' Place", mapRef: '11',
       vibe: 'West Indian · breakfast lunch dinner · classic',
       blurb: "Cynthia and her family running real Caribbean hospitality. Lobster, fish, conch, ribs, chicken — all done right. The Monday lobster dinner deserves its reputation.",
       phone: '+1-284-495-9295'
     },
     {
-      id: 'abes', area: 'little-harbour', name: "Abe's by the Sea",
+      id: 'abes', area: 'little-harbour', name: "Abe's by the Sea", mapRef: '11',
       vibe: 'Native bar & grill · Sunday pig roast',
       blurb: "Big Abe and Eunicy run a place that feels like dinner at someone's home. Fresh lobster, fish, conch, ribs, chicken. The Sunday pig roast is a Jost institution. Reservations required for dinner.",
       phone: '+1-284-495-9329'
     },
 
-    // ==================== EAST END / DIAMOND CAY ====================
+    // ==================== EAST END / DIAMOND CAY (map pin 12) ====================
     {
-      id: 'foxys-taboo', area: 'east-end', name: "Foxy's Taboo",
+      id: 'foxys-taboo', area: 'east-end', name: "Foxy's Taboo", mapRef: '12',
       vibe: 'Mediterranean-inspired · upscale · day-trip-worthy',
       featured: true,
       blurb: "Sister property to Foxy's, on the eastern end at Diamond Cay. More refined menu — kebabs, hummus, eggplant cheesecake, the best burgers and salads on the island. Pair with a hike to the Bubbly Pool.",
@@ -900,7 +779,7 @@
       note: 'Open 7 days from 10 AM'
     },
     {
-      id: 'b-line', area: 'east-end', name: 'B-Line Beach Bar',
+      id: 'b-line', area: 'east-end', name: 'B-Line Beach Bar', mapRef: '10',
       vibe: 'Adventure spot · on Little Jost · corn hole',
       blurb: "On Little Jost Van Dyke. You'll need a dinghy from Jost Van Dyke SCUBA, or you can wade across at low tide. Cold beer, grilled food, beach games. Worth the effort, every time.",
       phone: '+1-284-541-0177'
@@ -918,9 +797,12 @@
   function renderVenues() {
     const grid = document.getElementById('venue-grid');
     grid.innerHTML = venues.map(v => `
-      <div class="venue-card${v.featured ? ' featured' : ''}" id="venue-${v.id}" data-area="${v.area}" onclick="highlightOnMap('${v.id}')">
+      <div class="venue-card${v.featured ? ' featured' : ''}" id="venue-${v.id}" data-area="${v.area}">
         ${v.featured ? '<span class="featured-badge">Local Favorite</span>' : ''}
-        <span class="venue-area-tag ${v.area}">${areaNames[v.area]}</span>
+        <div class="venue-card-header">
+          ${v.mapRef ? `<span class="map-ref" title="Pin ${v.mapRef} on the island map above">${v.mapRef}</span>` : ''}
+          <span class="venue-area-tag ${v.area}">${areaNames[v.area]}</span>
+        </div>
         <h4 class="serif">${v.name}</h4>
         <p class="vibe">${v.vibe}</p>
         <p>${v.blurb}</p>
@@ -935,46 +817,13 @@
 
   // ============ FILTER ============
   function filterTo(area) {
-    // update chips
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.filter === area));
-    // show/hide cards
     document.querySelectorAll('.venue-card').forEach(c => {
       const show = area === 'all' || c.dataset.area === area;
       c.classList.toggle('hidden', !show);
     });
-    // dim non-matching markers
-    document.querySelectorAll('.venue-marker').forEach(m => {
-      const v = venues.find(x => x.id === m.dataset.id);
-      m.style.opacity = (area === 'all' || v.area === area) ? '1' : '0.25';
-    });
-    // scroll to filter bar
     if (area !== 'all') {
       document.querySelector('.filter-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
-
-  // ============ MAP-CARD INTERACTIONS ============
-  function selectVenue(id) {
-    // Clear active states
-    document.querySelectorAll('.venue-marker').forEach(m => m.classList.remove('active'));
-    document.querySelectorAll('.venue-card').forEach(c => c.classList.remove('active'));
-    // Activate
-    const marker = document.querySelector(`.venue-marker[data-id="${id}"]`);
-    const card = document.getElementById(`venue-${id}`);
-    if (marker) marker.classList.add('active');
-    if (card) {
-      card.classList.add('active');
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  }
-
-  function highlightOnMap(id) {
-    document.querySelectorAll('.venue-marker').forEach(m => m.classList.remove('active'));
-    const marker = document.querySelector(`.venue-marker[data-id="${id}"]`);
-    if (marker) {
-      marker.classList.add('active');
-      // Brief pulse, then drop active
-      setTimeout(() => marker.classList.remove('active'), 1800);
     }
   }
 
