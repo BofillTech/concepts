@@ -55,11 +55,12 @@
 .sc-rmap-tab:hover{color:var(--ocean);}
 .sc-rmap-tab.active{color:var(--ocean-deep);border-bottom-color:var(--ocean);}
 .sc-rmap{max-width:1200px;margin:0 auto 60px;background:var(--white);border:1px solid var(--sand);border-top:none;border-radius:0 0 12px 12px;overflow:hidden;}
-.sc-rmap-banner{position:relative;height:240px;overflow:hidden;}
-.sc-rmap-banner img{width:100%;height:100%;object-fit:cover;}
-.sc-rmap-banner-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,71,100,.85) 0%,rgba(42,71,100,.2) 100%);display:flex;align-items:flex-end;padding:30px 36px;color:var(--white);}
-.sc-rmap-banner-overlay h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;margin-bottom:6px;color:var(--white);}
-.sc-rmap-banner-overlay p{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.85);max-width:600px;}
+.sc-rmap-header{padding:24px 36px 18px;border-bottom:1px solid var(--sand);background:var(--warm);}
+.sc-rmap-header h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;color:var(--ocean-deep);margin-bottom:6px;line-height:1;}
+.sc-rmap-header p{font-family:var(--font-body);font-size:13px;color:var(--gray);max-width:700px;line-height:1.5;}
+.sc-rmap-diagram{padding:18px 36px 6px;background:var(--white);text-align:center;}
+.sc-rmap-diagram img{max-width:100%;height:auto;display:inline-block;border-radius:4px;}
+.sc-rmap-diagram-caption{font-family:var(--font-body);font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.16em;margin-top:10px;font-weight:500;}
 .sc-rmap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;}
 .sc-rmap-grid{padding:30px 36px;border-right:1px solid var(--sand);}
 .sc-rmap-legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--font-body);font-size:11px;color:var(--gray);letter-spacing:.04em;text-transform:uppercase;font-weight:500;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--sand);}
@@ -101,7 +102,8 @@
 @media(max-width:900px){
   .sc-rmap-body{grid-template-columns:1fr;}
   .sc-rmap-grid{border-right:none;border-bottom:1px solid var(--sand);}
-  .sc-rmap-banner{height:180px;}
+  .sc-rmap-diagram{padding:14px 20px 4px;}
+  .sc-rmap-header{padding:18px 20px 14px;}
   .sc-rmap-tab{font-size:10px;letter-spacing:.12em;padding:14px 8px;}
 }
 
@@ -234,14 +236,13 @@
   </div>
 
   <div class="sc-rmap" id="sc-rmap">
-    <div class="sc-rmap-banner">
-      <img id="sc-rmap-banner-img" src="img/main-building.jpg" alt="">
-      <div class="sc-rmap-banner-overlay">
-        <div>
-          <h2 id="sc-rmap-bldg-name">The Oceanside Building</h2>
-          <p id="sc-rmap-bldg-desc">Our largest building — most rooms face the Atlantic with unobstructed ocean views.</p>
-        </div>
-      </div>
+    <div class="sc-rmap-header">
+      <h2 id="sc-rmap-bldg-name">The Oceanside Building</h2>
+      <p id="sc-rmap-bldg-desc">Our largest building — most rooms face the Atlantic with unobstructed ocean views.</p>
+    </div>
+    <div class="sc-rmap-diagram">
+      <img id="sc-rmap-diagram-img" src="img/diagrams/diagram-oceanside.jpg" alt="Oceanside Building floor diagram">
+      <div class="sc-rmap-diagram-caption">Building layout — not to scale · Light blue = ocean view</div>
     </div>
 
     <div class="sc-rmap-body">
@@ -293,7 +294,7 @@ const BLDG = {
   oceanside: {
     name: "The Oceanside Building",
     desc: "Our largest building — most rooms face the Atlantic with unobstructed ocean views.",
-    banner: "img/main-building.jpg",
+    diagram: "img/diagrams/diagram-oceanside.jpg",
     levels: [
       { name: "Upper Level", meta: "One staircase up from Ground Level", rooms: [
         {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false, sqft:""},
@@ -353,7 +354,7 @@ const BLDG = {
   poolside: {
     name: "The Poolside Building",
     desc: "Home to the Front Desk — steps from the pool, hot tub, and fire pits.",
-    banner: "img/room-46-pool.jpg",
+    diagram: "img/diagrams/diagram-poolside.jpg",
     levels: [
       { name: "Top Level", meta: "Full staircase up", rooms: [
         {n:"70", b:"King + Sofa Bed", v:true},
@@ -375,7 +376,7 @@ const BLDG = {
   inn: {
     name: "The Inn Building",
     desc: "Charming standalone building across Shore Road — larger suites and apartment-style rooms.",
-    banner: "img/inn-across-street.jpg",
+    diagram: "img/diagrams/diagram-inn.jpg",
     levels: [
       { name: "First Floor", meta: "Two steps into the building", rooms: [
         {n:"501", b:"King", v:false},
@@ -447,8 +448,8 @@ function getPhotos(room){
 
 function renderBuilding(key){
   const b = BLDG[key];
-  document.getElementById('sc-rmap-banner-img').src = b.banner;
-  document.getElementById('sc-rmap-banner-img').alt = b.name;
+  document.getElementById('sc-rmap-diagram-img').src = b.diagram;
+  document.getElementById('sc-rmap-diagram-img').alt = b.name + ' floor diagram';
   document.getElementById('sc-rmap-bldg-name').textContent = b.name;
   document.getElementById('sc-rmap-bldg-desc').textContent = b.desc;
 
