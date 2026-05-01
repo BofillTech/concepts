@@ -60,6 +60,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 28 | Saffire — Thai Beach Bar & Restaurant | Narragansett, RI | (new restaurant — inside AquaBlue Hotel, One Beach Street) | [View →](https://bofilltech.github.io/concepts/saffire/) | Multi-Page Restaurant Site (9 pages) — dark warm aesthetic, Thai beach concept, full menus with allergen system | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
 
+<<<<<<< HEAD
 | 29 | Sunrise Guest House | Montauk, NY | [sunrisebnb.com](http://sunrisebnb.com/) | [View →](https://bofilltech.github.io/concepts/sunrise-guest-house/) | A — Magazine/Editorial (The unHampton — beachy unpretentious B&B) | Fraunces + DM Sans | Apr 28 |
 | 30 | Colonial Shores Resort | Hampton Bays, NY | [colonialshoresny.com](https://www.colonialshoresny.com/) | [View →](https://bofilltech.github.io/concepts/colonial-shores/) | A — Magazine/Editorial (Bayfront Coastal Luxury) — numbered sections, italic display accents, full-bleed cinematic break | Fraunces + Manrope | Apr 28 |
 
@@ -68,4 +69,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 | 32 | Uihlein's Marina &amp; Motel | Montauk, NY | [uihleinsmarina.com](https://www.uihleinsmarina.com/) | [View →](https://bofilltech.github.io/concepts/uihleins/) | Working Waterfront Editorial (Marina/Boat Service — non-hotel) — Roman numeral sections, oversized Newsreader display, buoy-red CTA, full-service marina + boat rental + motel + boatyard hybrid | Newsreader + Work Sans | Apr 29 |
 
 | 33 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
+=======
+| 29 | Saffire — AquaBlue Hotel Restaurant Page | Narragansett, RI | [aquabluehotels.com](https://aquabluehotels.com/) (existing client) | [View →](https://bofilltech.github.io/concepts/saffire-aquablue/) | Single-page hotel sub-page — coastal cream aesthetic bridging hotel + restaurant brands, links to full Saffire site | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
+>>>>>>> 48f2bb4 (Add Saffire AquaBlue Hotel sub-page concept — single-page summary for aquabluehotels.com)
 

@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saffire Thai Beach Bar &amp; Restaurant — AquaBlue Hotel | Narragansett, RI</title>
+<meta name="description" content="Saffire is the restaurant at AquaBlue Hotel — Thai-inspired beach dining at One Beach Street, Narragansett, RI. View menu highlights, hours, and book a table.">
+<meta property="og:title" content="Saffire at AquaBlue Hotel — Thai Beach Bar &amp; Restaurant">
+<meta property="og:description" content="Thai-inspired beach dining at AquaBlue Hotel in Narragansett, RI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="saffire-logo.png">
+<style>
+  /* ===== Reset ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  /* ===== Tokens ===== */
+  :root {
+    --bg-cream: #F7F1E8;
+    --bg-cream-warm: #F0E5D2;
+    --bg-deep: #2C2420;
+    --bg-card: #FFFFFF;
+    --ink: #1F1A16;
+    --ink-soft: #5C544D;
+    --ink-mute: #8C8278;
+    --terracotta: #C4613A;
+    --terracotta-dark: #A8512F;
+    --gold: #B98D3F;
+    --gold-light: #D4A853;
+    --aqua: #1E4D6B;
+    --aqua-dark: #163A50;
+    --rule: rgba(31, 26, 22, 0.12);
+    --max: 1180px;
+    --max-text: 720px;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-script: 'Cormorant Garamond', Georgia, serif;
+    --font-mono: 'DM Mono', monospace;
+    --ease: cubic-bezier(.2,.7,.2,1);
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--bg-cream);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; letter-spacing: -0.005em; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--terracotta);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .script {
+    font-family: var(--font-script);
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  /* ===== Hotel-site nav (mimics AquaBlue) ===== */
+  .hotel-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .hotel-brand {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--aqua);
+  }
+  .hotel-brand span { color: var(--terracotta); }
+  .hotel-nav-links {
+    display: flex;
+    gap: 28px;
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .hotel-nav-links a { color: var(--ink-soft); transition: color 200ms var(--ease); }
+  .hotel-nav-links a.active { color: var(--terracotta); }
+  .hotel-nav-links a:hover { color: var(--terracotta); }
+  .hotel-nav-cta {
+    background: var(--aqua);
+    color: #fff;
+    padding: 10px 22px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: background 200ms var(--ease);
+  }
+  .hotel-nav-cta:hover { background: var(--aqua-dark); }
+  @media (max-width: 900px) {
+    .hotel-nav-links { display: none; }
+  }
+
+  /* ===== Hero ===== */
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 120px 24px;
+    color: #fff;
+    text-align: center;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=2400&q=85');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(31,26,22,0.5) 0%, rgba(31,26,22,0.7) 100%);
+    z-index: 1;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 720px; }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--gold-light);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: block;
+  }
+  .hero h1 {
+    font-size: clamp(48px, 8vw, 96px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .hero-tagline {
+    font-family: var(--font-script);
+    font-style: italic;
+    font-size: clamp(22px, 3vw, 28px);
+    color: var(--gold-light);
+    margin-bottom: 14px;
+  }
+  .hero-sub {
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    letter-spacing: 0.06em;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+  .hero-buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 16px 32px;
+    transition: all 250ms var(--ease);
+    border: 1px solid transparent;
+    cursor: pointer;
+  }
+  .btn-primary { background: var(--terracotta); color: #fff; border-color: var(--terracotta); }
+  .btn-primary:hover { background: var(--terracotta-dark); border-color: var(--terracotta-dark); }
+  .btn-outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); }
+  .btn-outline-light:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-outline:hover { background: var(--ink); color: var(--bg-cream); }
+
+  /* ===== Section base ===== */
+  .section { padding: 100px 24px; }
+  .section.warm { background: var(--bg-cream-warm); }
+  .section.deep { background: var(--bg-deep); color: #F5EDE0; }
+  .section-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .section-inner.narrow { max-width: var(--max-text); }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-header h2 {
+    font-size: clamp(30px, 4.5vw, 44px);
+    margin-bottom: 14px;
+  }
+  .accent-line {
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    margin: 18px auto 0;
+  }
+  .section-header p {
+    color: var(--ink-soft);
+    font-size: 16px;
+    max-width: 560px;
+    margin: 18px auto 0;
+  }
+
+  /* ===== About / Concept ===== */
+  .concept-block {
+    text-align: center;
+  }
+  .concept-block p {
+    color: var(--ink-soft);
+    font-size: 17px;
+    line-height: 1.85;
+    margin-bottom: 18px;
+  }
+  .concept-block p:last-child { margin-bottom: 0; }
+  .concept-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+  }
+  .concept-meta div { text-align: center; }
+  .concept-meta .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--terracotta);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .concept-meta .value {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--ink);
+  }
+  @media (max-width: 720px) {
+    .concept-meta { grid-template-columns: 1fr; gap: 24px; }
+  }
+
+  /* ===== Featured Menu ===== */
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .featured-card {
+    background: #fff;
+    overflow: hidden;
+    transition: transform 350ms var(--ease), box-shadow 350ms var(--ease);
+  }
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 40px rgba(31,26,22,0.1);
+  }
+  .featured-card-img {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+  }
+  .featured-card-body {
+    padding: 22px 22px 26px;
+  }
+  .featured-card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+  }
+  .featured-card p {
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .featured-card .price {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+  @media (max-width: 1000px) {
+    .featured-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 540px) {
+    .featured-grid { grid-template-columns: 1fr; }
+  }
+  .menu-cta-row {
+    text-align: center;
+    margin-top: 56px;
+  }
+
+  /* ===== Hours + Visit ===== */
+  .visit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .visit-card {
+    padding: 0;
+  }
+  .visit-card h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  .visit-card .sub {
+    color: var(--ink-mute);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+  }
+  .hours-list {
+    list-style: none;
+    color: var(--ink-soft);
+    font-size: 15px;
+    line-height: 2.2;
+    border-top: 1px solid var(--rule);
+    padding-top: 14px;
+  }
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding: 6px 0;
+  }
+  .hours-list strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hours-period-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--terracotta);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+    margin: 28px 0 8px;
+  }
+  .hours-note {
+    margin-top: 18px;
+    color: var(--ink-mute);
+    font-size: 13px;
+    font-style: italic;
+  }
+  .visit-info {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .visit-info-row .label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--terracotta);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .visit-info-row .value {
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .visit-info-row .value a { color: var(--ink); border-bottom: 1px solid var(--gold); }
+  .visit-info-row .value a:hover { color: var(--terracotta); border-color: var(--terracotta); }
+  @media (max-width: 800px) {
+    .visit-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  /* ===== Photo strip ===== */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+  }
+  .photo-tile {
+    aspect-ratio: 1/1;
+    background-size: cover;
+    background-position: center;
+    transition: transform 400ms var(--ease);
+  }
+  .photo-tile:hover { transform: scale(1.02); }
+  @media (max-width: 700px) {
+    .photo-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== Final CTA ===== */
+  .final-cta {
+    text-align: center;
+    padding: 100px 24px;
+    background: var(--bg-deep);
+    color: #F5EDE0;
+  }
+  .final-cta h2 {
+    font-size: clamp(32px, 4.5vw, 48px);
+    color: #F5EDE0;
+    margin-bottom: 14px;
+  }
+  .final-cta p {
+    color: rgba(245,237,224,0.75);
+    font-size: 16px;
+    max-width: 540px;
+    margin: 0 auto 36px;
+  }
+  .final-cta .btn-outline-light { border-color: var(--gold-light); color: var(--gold-light); }
+  .final-cta .btn-outline-light:hover { background: var(--gold-light); color: var(--bg-deep); border-color: var(--gold-light); }
+
+  /* ===== Mini footer (hotel context) ===== */
+  .hotel-footer {
+    padding: 40px 24px;
+    background: #fff;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 13px;
+    color: var(--ink-mute);
+  }
+  .hotel-footer .row {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .hotel-footer a {
+    color: var(--ink-soft);
+    transition: color 200ms var(--ease);
+  }
+  .hotel-footer a:hover { color: var(--terracotta); }
+</style>
+</head>
+<body>
+
+<!-- ===== AquaBlue Hotel Nav (existing site) ===== -->
+<nav class="hotel-nav">
+  <div class="hotel-brand">AQUA<span>BLUE</span> HOTEL</div>
+  <div class="hotel-nav-links">
+    <a href="https://aquabluehotels.com/">Home</a>
+    <a href="https://aquabluehotels.com/rooms/">Rooms</a>
+    <a href="#" class="active">Saffire</a>
+    <a href="https://aquabluehotels.com/weddings/">Events</a>
+    <a href="https://aquabluehotels.com/amenities/">Amenities</a>
+    <a href="https://aquabluehotels.com/contact-us/">Contact</a>
+  </div>
+  <a href="https://bookings.rmscloud.com/Search/Index/171C7B3DE31D11BC/90/" class="hotel-nav-cta">Book Now</a>
+</nav>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">— The Restaurant at AquaBlue Hotel —</span>
+    <h1>SAFFIRE</h1>
+    <p class="hero-tagline">Thai Beach Bar &amp; Restaurant</p>
+    <p class="hero-sub">Bold Thai flavors, craft cocktails, and Atlantic ocean views. Located on the ground floor of AquaBlue Hotel at One Beach Street.</p>
+    <div class="hero-buttons">
+      <a href="https://bofilltech.github.io/concepts/saffire/reservations.html" class="btn btn-primary">Make a Reservation</a>
+      <a href="https://bofilltech.github.io/concepts/saffire/menu.html" class="btn btn-outline-light">View Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== About / Concept ===== -->
+<section class="section">
+  <div class="section-inner narrow">
+    <div class="concept-block">
+      <span class="eyebrow">— The Concept —</span>
+      <h2 style="margin-bottom: 28px;">Where the Beach Meets Bangkok</h2>
+      <p>Saffire is the signature restaurant at AquaBlue Hotel, bringing the bold, layered flavors of Thai cuisine to Narragansett's beach district. Local Point Judith seafood, Rhode Island farm produce, and craft cocktails built around lemongrass, kaffir lime, and Thai chili — all served against the sound of the Atlantic.</p>
+      <p>Open to hotel guests and the public alike. Walk down from your room or come spend the evening — either way, you'll find a kitchen that takes Thai street food seriously and a bar that doesn't take itself too seriously.</p>
+    </div>
+    <div class="concept-meta">
+      <div>
+        <span class="label">Cuisine</span>
+        <span class="value">Modern Thai</span>
+      </div>
+      <div>
+        <span class="label">Setting</span>
+        <span class="value">Beachfront Casual</span>
+      </div>
+      <div>
+        <span class="label">Vibe</span>
+        <span class="value">Lively · Welcoming</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Featured Menu ===== -->
+<section class="section warm">
+  <div class="section-inner">
+    <div class="section-header">
+      <span class="eyebrow">— Highlights from the Kitchen &amp; Bar —</span>
+      <h2>What People Order</h2>
+      <span class="accent-line"></span>
+    </div>
+    <div class="featured-grid">
+      <article class="featured-card">
+        <div class="featured-card-img" style="background-image: url('https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=900&q=85');"></div>
+        <div class="featured-card-body">
+          <h3>Lemongrass Mojito</h3>
+          <p>White rum, fresh lemongrass, mint, lime, soda. Bright, herbal, crushable.</p>
+          <span class="price">$14</span>
+        </div>
+      </article>
+      <article class="featured-card">
+        <div class="featured-card-img" style="background-image: url('https://images.unsplash.com/photo-1559314809-0d155014e29e?w=900&q=85');"></div>
+        <div class="featured-card-body">
+          <h3>Bangkok Chili Garlic Shrimp</h3>
+          <p>Shrimp, screaming-hot wok, garlic, bird chili, and grilled bread for soaking it all up.</p>
+          <span class="price">$19</span>
+        </div>
+      </article>
+      <article class="featured-card">
+        <div class="featured-card-img" style="background-image: url('https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?w=900&q=85');"></div>
+        <div class="featured-card-body">
+          <h3>Drunken Noodles</h3>
+          <p>Wide rice noodles fired with Thai basil, chili, and garlic. Chicken or shrimp.</p>
+          <span class="price">$16</span>
+        </div>
+      </article>
+      <article class="featured-card">
+        <div class="featured-card-img" style="background-image: url('https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=900&q=85');"></div>
+        <div class="featured-card-body">
+          <h3>Panang Curry Mussels</h3>
+          <p>Local mussels in rich panang coconut curry broth with kaffir lime.</p>
+          <span class="price">$21</span>
+        </div>
+      </article>
+    </div>
+    <div class="menu-cta-row">
+      <a href="https://bofilltech.github.io/concepts/saffire/menu.html" class="btn btn-outline">Browse the Full Menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Visit / Hours ===== -->
+<section class="section">
+  <div class="section-inner">
+    <div class="visit-grid">
+      <div class="visit-card">
+        <span class="eyebrow">— Hours —</span>
+        <h3>When We're Open</h3>
+        <p class="sub">Hours are seasonal at AquaBlue.</p>
+        <span class="hours-period-label">In-Season · June – September</span>
+        <ul class="hours-list">
+          <li><strong>Mon – Thu</strong> <span>4:00 PM – 10:00 PM</span></li>
+          <li><strong>Fri – Sat</strong> <span>12:00 PM – 11:00 PM</span></li>
+          <li><strong>Sun</strong> <span>12:00 PM – 9:00 PM</span></li>
+        </ul>
+        <span class="hours-period-label">Off-Season · October – May</span>
+        <ul class="hours-list">
+          <li><strong>Thu – Sat</strong> <span>5:00 PM – 10:00 PM</span></li>
+          <li><strong>Sun</strong> <span>4:00 PM – 9:00 PM</span></li>
+        </ul>
+        <p class="hours-note">In-season hours begin Memorial Day weekend.</p>
+      </div>
+      <div class="visit-card">
+        <span class="eyebrow">— Visit —</span>
+        <h3>Find Us</h3>
+        <p class="sub">Inside AquaBlue Hotel · ground floor.</p>
+        <div class="visit-info" style="margin-top: 22px;">
+          <div class="visit-info-row">
+            <span class="label">Address</span>
+            <span class="value">One Beach Street<br>Narragansett, RI 02882</span>
+          </div>
+          <div class="visit-info-row">
+            <span class="label">Reservations</span>
+            <span class="value"><a href="tel:+14017836767">(401) 783-6767</a></span>
+          </div>
+          <div class="visit-info-row">
+            <span class="label">Hotel Guests</span>
+            <span class="value">Charge dinner directly to your room. Mention it when you arrive.</span>
+          </div>
+          <div class="visit-info-row">
+            <span class="label">Parking</span>
+            <span class="value">Complimentary for guests. Street and public lots for visitors.</span>
+          </div>
+          <div style="margin-top: 14px;">
+            <a href="https://bofilltech.github.io/concepts/saffire/reservations.html" class="btn btn-primary">Reserve a Table</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Photo strip ===== -->
+<section style="padding: 0;">
+  <div class="photo-strip">
+    <div class="photo-tile" style="background-image: url('https://images.unsplash.com/photo-1559847844-5315695dadae?w=800&q=82');"></div>
+    <div class="photo-tile" style="background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=82');"></div>
+    <div class="photo-tile" style="background-image: url('https://images.unsplash.com/photo-1582450871972-ab5ca641643d?w=800&q=82');"></div>
+    <div class="photo-tile" style="background-image: url('https://images.unsplash.com/photo-1604908554007-3b2ad0395a52?w=800&q=82');"></div>
+  </div>
+</section>
+
+<!-- ===== Final CTA ===== -->
+<section class="final-cta">
+  <span class="eyebrow" style="color: var(--gold-light);">— Plan Your Visit —</span>
+  <h2>Stay With Us, Dine With Us</h2>
+  <p>Pair your stay at AquaBlue with dinner downstairs at Saffire. Hotel guests automatically get priority on reservations during peak season.</p>
+  <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <a href="https://bookings.rmscloud.com/Search/Index/171C7B3DE31D11BC/90/" class="btn btn-primary">Book a Room</a>
+    <a href="https://bofilltech.github.io/concepts/saffire/" class="btn btn-outline-light">Explore Saffire</a>
+  </div>
+</section>
+
+<!-- ===== Mini Hotel Footer ===== -->
+<footer class="hotel-footer">
+  <div class="row">
+    <a href="https://aquabluehotels.com/">Home</a>
+    <a href="https://aquabluehotels.com/rooms/">Rooms</a>
+    <a href="#" class="active" style="color: var(--terracotta);">Saffire</a>
+    <a href="https://aquabluehotels.com/amenities/">Amenities</a>
+    <a href="https://aquabluehotels.com/contact-us/">Contact</a>
+  </div>
+  <div>
+    AquaBlue Hotel · One Beach Street, Narragansett, RI 02882 · <a href="tel:+14017836767">(401) 783-6767</a>
+  </div>
+  <div style="margin-top: 14px; font-size: 12px;">
+    © 2026 AquaBlue Hotel. Saffire is operated as the in-house restaurant at AquaBlue Hotel.
+  </div>
+</footer>
+
+</body>
+</html>
