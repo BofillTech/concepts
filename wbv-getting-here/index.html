@@ -877,6 +877,291 @@
     text-align: center;
   }
 
+  /* ------------ DISCLAIMER BANNERS ------------ */
+  .disclaimer-band {
+    background: var(--sand-light);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 36px 24px;
+  }
+  .disclaimer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .disclaimer {
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    background: #fdf9ee;
+  }
+  .disclaimer.alert { border-left-color: #c64a2b; background: #fcf1ec; }
+  .disclaimer .label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .disclaimer.alert .label { color: #c64a2b; }
+  .disclaimer p {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .disclaimer p strong { color: var(--ocean); font-weight: 700; }
+
+  /* ------------ TABBED ROUTE PICKER ------------ */
+  .tabs-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 72px 24px 48px;
+  }
+  .tab-bar {
+    display: flex;
+    gap: 8px;
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 8px;
+    margin: 36px 0 32px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1 1 240px;
+    padding: 18px 24px;
+    background: transparent;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.22s ease;
+    text-align: left;
+  }
+  .tab-btn:hover { background: var(--sand-dark); color: var(--ocean); }
+  .tab-btn.active {
+    background: var(--ocean);
+    color: white;
+  }
+  .tab-btn .tab-eyebrow {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    opacity: 0.7;
+    margin-bottom: 4px;
+  }
+  .tab-btn .tab-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+  }
+  .tab-btn .tab-airport {
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 2px;
+    opacity: 0.7;
+  }
+
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeUp 0.35s ease forwards; }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tab-specific notice (like Aquatic Tue/Wed warning) */
+  .tab-notice {
+    background: #fcf1ec;
+    border: 1px solid #e8b4a3;
+    border-left: 4px solid #c64a2b;
+    border-radius: 2px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .tab-notice .icon {
+    font-family: 'Fraunces', serif;
+    font-size: 24px;
+    color: #c64a2b;
+    line-height: 1;
+    font-weight: 700;
+  }
+  .tab-notice .body strong {
+    display: block;
+    font-weight: 700;
+    color: #8a3520;
+    font-size: 13px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tab-notice .body p {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* Route option cards */
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .option-row {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.22s ease;
+  }
+  .option-row:hover {
+    border-color: var(--ocean);
+    box-shadow: 0 12px 28px -16px rgba(45, 156, 219, 0.25);
+  }
+  .option-row.featured {
+    border-top: 4px solid var(--gold);
+  }
+  @media (max-width: 720px) {
+    .option-row { grid-template-columns: 1fr; }
+  }
+
+  .option-image {
+    background: var(--sand-dark);
+    position: relative;
+    min-height: 180px;
+    overflow: hidden;
+  }
+  .option-image svg, .option-image img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .option-image .photo-tag {
+    position: absolute;
+    bottom: 8px; left: 8px;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-style: italic;
+  }
+  .option-body { padding: 24px 26px; }
+  .option-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .option-head h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .option-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .price-tier {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .opt-tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .opt-tag.preferred { background: var(--gold); color: var(--ink); }
+  .opt-tag.daily { background: var(--teal); color: var(--ink); }
+  .opt-tag.alt { background: #c64a2b; color: white; }
+  .opt-tag.limited { background: var(--ink-soft); color: white; }
+
+  .option-vibe {
+    font-size: 12px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .option-body p.desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+  .option-meta {
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .option-meta span strong {
+    color: var(--ink);
+    font-weight: 600;
+    margin-right: 6px;
+  }
+  .option-meta a {
+    color: var(--ocean);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid currentColor;
+  }
+  .option-meta a:hover { color: var(--ocean-deep); }
+
+  /* "Best for" pills */
+  .best-for {
+    margin-top: 12px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .best-for strong {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--ocean);
+    margin-right: 8px;
+  }
+
+  /* ------------ GETTING BACK SECTION ------------ */
+  .return-section {
+    background: var(--sand-dark);
+    padding: 56px 24px 0;
+    border-top: 1px solid var(--line);
+  }
+  .return-inner { max-width: 1100px; margin: 0 auto; }
+  .return-section .tabs-section { padding: 0 0 56px; }
+
   /* ------------ FINAL LEG ------------ */
   .final-leg {
     background: var(--ocean);
@@ -1101,276 +1386,411 @@
   </div>
   <div class="map-caption">
     <span>Four crossings connect the airports to Jost Van Dyke. Pick the one that matches your flight.</span>
-    <em>Scroll down to build your route →</em>
+    <em>Scroll down to choose your airport →</em>
   </div>
 </section>
 
-<!-- PLANNER -->
-<section class="planner-section">
+<!-- ============ CRITICAL DISCLAIMERS ============ -->
+<section class="disclaimer-band">
+  <div class="disclaimer-inner">
+    <div class="disclaimer alert">
+      <span class="label">⚠ Critical timing rule</span>
+      <p><strong>Flying into STT?</strong> Land by <strong>3:00 PM local time</strong> to comfortably make the last 5:00 PM ferry to Tortola. Later than that, you'll need a private water taxi or an overnight in St. Thomas.</p>
+    </div>
+    <div class="disclaimer">
+      <span class="label">Always book ahead</span>
+      <p>Especially private charters. Ferry tickets can usually be bought online a day or two in advance, and we strongly recommend it during peak season to guarantee a seat.</p>
+    </div>
+    <div class="disclaimer">
+      <span class="label">Schedules change</span>
+      <p>Times, prices, and routes can shift seasonally. <strong>Always confirm with the operator 24–48 hours before you travel</strong>, especially if your itinerary depends on a tight connection.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TABBED ROUTE PICKER ============ -->
+<section class="tabs-section" id="getting-here-tabs">
   <div class="section-header">
-    <p class="num">— Plan your journey</p>
-    <h2 class="serif">Build your route, step by step.</h2>
-    <p>Tell us where you're flying from and we'll lay out your best options, with real travel times, contacts, and the last ferry you need to catch.</p>
+    <p class="num">— Choose your arrival airport</p>
+    <h2 class="serif">How you'll get from the airport to Jost.</h2>
+    <p>Pick the airport you're flying into, and we'll show you every realistic way to make the crossing.</p>
   </div>
 
-  <div class="planner" id="planner">
-
-    <!-- STEP 1 — Airport -->
-    <div class="step" id="step-1">
-      <div class="step-label">
-        <span class="step-num">Step 01</span>
-        <span class="step-title serif">Where are you flying into?</span>
-      </div>
-      <div class="airport-grid">
-        <button class="airport-card" data-airport="eis">
-          <span class="code">EIS</span>
-          <div class="name">Tortola · Beef Island</div>
-          <div class="note">Most direct. Daily flights from Miami (American) and JetBlue.</div>
-        </button>
-        <button class="airport-card" data-airport="stt">
-          <span class="code">STT</span>
-          <div class="name">St. Thomas, USVI</div>
-          <div class="note">Most flights per day. Add a ferry or water taxi crossing.</div>
-        </button>
-        <button class="airport-card" data-airport="sju">
-          <span class="code">SJU</span>
-          <div class="name">San Juan, Puerto Rico</div>
-          <div class="note">Common hub. Connect to STT or EIS from here.</div>
-        </button>
-        <button class="airport-card" data-airport="private">
-          <span class="code">TUPJ</span>
-          <div class="name">Tortola · West End</div>
-          <div class="note">Private / charter flights only. Short hop to JVD.</div>
-        </button>
-      </div>
-    </div>
-
-    <!-- STEP 2 — Route -->
-    <div class="step step-hidden" id="step-2">
-      <div class="step-label">
-        <span class="step-num">Step 02</span>
-        <span class="step-title serif">Choose how you'll cross the water.</span>
-      </div>
-      <div id="route-options"></div>
-    </div>
-
-    <!-- STEP 3 — Arrival -->
-    <div class="step step-hidden" id="step-3">
-      <div class="step-label">
-        <span class="step-num">Step 03</span>
-        <span class="step-title serif">From Great Harbour to White Bay Villas.</span>
-      </div>
-      <div id="arrival-options"></div>
-    </div>
-
-    <!-- ITINERARY OUTPUT -->
-    <div class="step step-hidden" id="step-output">
-      <div id="itinerary-card"></div>
-      <div class="reset-bar">
-        <button class="btn-reset" onclick="resetPlanner()">↺ Start over</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COMPARE -->
-<section class="compare-section">
-  <div class="compare-inner">
-    <div class="section-header">
-      <p class="num">— At a glance</p>
-      <h2 class="serif">All routes, side by side.</h2>
-      <p>If you'd rather just see everything on one screen, here it is.</p>
-    </div>
-
-    <div class="compare-table">
-      <div class="compare-head">
-        <div>Route</div>
-        <div>From</div>
-        <div>Travel Time</div>
-        <div>Approx. Cost (pp)</div>
-        <div>Frequency</div>
-      </div>
-
-      <div class="compare-row">
-        <div class="route-name" data-label="Route">Beef Island → Water Taxi</div>
-        <div data-label="From">EIS · Tortola</div>
-        <div data-label="Travel Time">~25 min</div>
-        <div data-label="Cost">Charter — ask us</div>
-        <div data-label="Frequency">On demand</div>
-      </div>
-      <div class="compare-row">
-        <div class="route-name" data-label="Route">Beef Island → West End Ferry</div>
-        <div data-label="From">EIS · Tortola</div>
-        <div data-label="Travel Time">~1h 45m total</div>
-        <div data-label="Cost">$35–$50</div>
-        <div data-label="Frequency">Multiple daily</div>
-      </div>
-      <div class="compare-row">
-        <div class="route-name" data-label="Route">Red Hook → West End → JVD</div>
-        <div data-label="From">STT · St. Thomas</div>
-        <div data-label="Travel Time">~2h 30m total</div>
-        <div data-label="Cost">~$75–$110</div>
-        <div data-label="Frequency">Multiple daily</div>
-      </div>
-      <div class="compare-row">
-        <div class="route-name" data-label="Route">Private Water Taxi</div>
-        <div data-label="From">STT · St. Thomas</div>
-        <div data-label="Travel Time">~1h door-to-door</div>
-        <div data-label="Cost">$300+ per boat</div>
-        <div data-label="Frequency">On demand</div>
-      </div>
-      <div class="compare-row">
-        <div class="route-name" data-label="Route">Inter Island Direct Ferry</div>
-        <div data-label="From">STT / St. John</div>
-        <div data-label="Travel Time">~1h 30m</div>
-        <div data-label="Cost">~$80 + $30 customs</div>
-        <div data-label="Frequency">Tue / Fri / Sun only</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PHOTO STRIP - atmospheric break. SVG placeholder — swap in a real WBV ferry/boat photo when ready. -->
-<div class="photo-strip">
-  <svg viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Stylized illustration of a boat on the sea">
-    <defs>
-      <linearGradient id="skyGrad2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#88cce8"/>
-        <stop offset="100%" stop-color="#d8eff5"/>
-      </linearGradient>
-      <linearGradient id="seaGrad2" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#3aa5d5"/>
-        <stop offset="50%" stop-color="#1a6b95"/>
-        <stop offset="100%" stop-color="#124867"/>
-      </linearGradient>
-      <pattern id="waveLines" width="60" height="30" patternUnits="userSpaceOnUse">
-        <path d="M0 15 Q 15 10, 30 15 T 60 15" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.25"/>
-        <path d="M0 23 Q 15 19, 30 23 T 60 23" stroke="#ffffff" stroke-width="0.8" fill="none" opacity="0.15"/>
-      </pattern>
-    </defs>
-    <!-- Sky -->
-    <rect width="1600" height="200" fill="url(#skyGrad2)"/>
-    <!-- Horizon distant island -->
-    <path d="M 0 200 Q 400 185, 800 195 Q 1200 188, 1600 200 L 1600 202 L 0 202 Z" fill="#4a9975" opacity="0.3"/>
-    <!-- Sea -->
-    <rect y="200" width="1600" height="300" fill="url(#seaGrad2)"/>
-    <rect y="200" width="1600" height="300" fill="url(#waveLines)"/>
-    <!-- Sun glare -->
-    <ellipse cx="1100" cy="220" rx="300" ry="8" fill="#ffffff" opacity="0.35"/>
-    <ellipse cx="1100" cy="230" rx="180" ry="4" fill="#ffffff" opacity="0.25"/>
-
-    <!-- Boat in middle distance -->
-    <g transform="translate(700, 275)">
-      <!-- Wake behind boat -->
-      <path d="M -80 18 Q -40 14, 0 16 Q 30 16, 40 12" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.5"/>
-      <path d="M -60 22 Q -20 20, 20 20" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.35"/>
-      <!-- Hull -->
-      <path d="M -35 0 L 35 0 L 28 14 L -28 14 Z" fill="#ffffff" stroke="#333333" stroke-width="0.5"/>
-      <!-- Cabin -->
-      <rect x="-18" y="-14" width="30" height="14" fill="#1e7aad" rx="1"/>
-      <rect x="-15" y="-11" width="6" height="7" fill="#d8eff5"/>
-      <rect x="-5" y="-11" width="6" height="7" fill="#d8eff5"/>
-      <rect x="5" y="-11" width="6" height="7" fill="#d8eff5"/>
-    </g>
-    <!-- Very small second boat in distance -->
-    <g transform="translate(1300, 240)" opacity="0.7">
-      <path d="M -8 0 L 8 0 L 6 3 L -6 3 Z" fill="#ffffff"/>
-      <rect x="-3" y="-4" width="6" height="4" fill="#1e7aad"/>
-    </g>
-  </svg>
-  <div class="overlay">
-    <p class="pull-quote">The crossing is short. The arrival <em>lasts a lifetime.</em></p>
-  </div>
-</div>
-
-<!-- TIMING -->
-<section class="timing-section">
-  <div class="section-header">
-    <p class="num">— Critical timing</p>
-    <h2 class="serif">When should I aim to land?</h2>
-    <p>The last ferry to Jost is real — and it doesn't wait. These are the numbers that matter.</p>
+  <div class="tab-bar" role="tablist" aria-label="Choose arrival airport">
+    <button class="tab-btn active" data-tab="eis" role="tab" aria-selected="true">
+      <span class="tab-eyebrow">Option A</span>
+      <span class="tab-label">Flying into Tortola</span>
+      <span class="tab-airport">EIS · Beef Island Airport · BVI</span>
+    </button>
+    <button class="tab-btn" data-tab="stt" role="tab" aria-selected="false">
+      <span class="tab-eyebrow">Option B</span>
+      <span class="tab-label">Flying into St. Thomas</span>
+      <span class="tab-airport">STT · Cyril E. King Airport · USVI</span>
+    </button>
   </div>
 
-  <div class="timing-grid">
-    <div class="timing-card ok">
-      <div class="timing-icon">✓</div>
-      <h4 class="serif">Ideal arrival</h4>
-      <p>Land by <strong>1:00 PM local</strong> on your arrival day. This gives you a comfortable cushion for customs, taxi, and ferry — with no stress.</p>
-    </div>
-    <div class="timing-card">
-      <div class="timing-icon">!</div>
-      <h4 class="serif">Latest safe arrival (STT)</h4>
-      <p>Land by <strong>3:00 PM</strong>. Last Aquatic ferry from Red Hook is around 5:00 PM, and the last New Horizon to JVD leaves West End around <strong>6:00 PM</strong>.</p>
-    </div>
-    <div class="timing-card">
-      <div class="timing-icon">!</div>
-      <h4 class="serif">Latest safe arrival (EIS)</h4>
-      <p>Land by <strong>4:00 PM</strong> if you're using the New Horizon ferry from West End. Water taxi is more forgiving — we can often arrange later crossings.</p>
-    </div>
-    <div class="timing-card warn">
-      <div class="timing-icon">✕</div>
-      <h4 class="serif">Land after the last ferry?</h4>
-      <p>Stay the night in Tortola or St. Thomas and cross in the morning. Don't try to push it — overnight crossings are expensive and rarely worth it.</p>
-    </div>
-    <div class="timing-card">
-      <div class="timing-icon">◷</div>
-      <h4 class="serif">Check in early</h4>
-      <p>Ferry check-in is <strong>30–45 minutes before departure</strong>, and all BVI/USVI crossings are international — you'll clear customs at West End.</p>
-    </div>
-    <div class="timing-card">
-      <div class="timing-icon">→</div>
-      <h4 class="serif">Departing JVD</h4>
-      <p>For early-morning departures, book your island taxi <strong>at least a day ahead</strong>. WhatsApp works best with our local drivers.</p>
-    </div>
-  </div>
-</section>
+  <!-- ===== EIS TAB ===== -->
+  <div class="tab-panel active" id="tab-eis" role="tabpanel">
+    <div class="options-grid">
 
-<!-- CONNECTION CHECKER -->
-<section class="checker-section">
-  <div class="checker-inner">
-    <div class="section-header">
-      <p class="num">— Will I make it today?</p>
-      <h2 class="serif">Check your connection.</h2>
-      <p>Tell us your airport, your arrival day, and what time your flight lands. We'll tell you exactly which ferries you can catch — and by what time you'll be on the porch with a cold drink.</p>
-    </div>
-
-    <div class="checker-form">
-      <div class="checker-grid">
-        <div class="field">
-          <label for="ck-airport">Arriving at</label>
-          <select id="ck-airport">
-            <option value="">Choose airport…</option>
-            <option value="eis">EIS · Tortola (Beef Island)</option>
-            <option value="stt">STT · St. Thomas, USVI</option>
-            <option value="tupj">TUPJ · Tortola (West End, charter)</option>
-          </select>
+      <!-- EIS Option 1: Allure (FEATURED) -->
+      <div class="option-row featured">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="eisAllureSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#88cce8"/><stop offset="100%" stop-color="#d8eff5"/>
+              </linearGradient>
+              <linearGradient id="eisAllureSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#1a6b95"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#eisAllureSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#eisAllureSea)"/>
+            <path d="M 0 180 Q 100 175, 200 178 Q 300 174, 400 180 L 400 184 L 0 184 Z" fill="#4a9975" opacity="0.45"/>
+            <!-- Premium speedboat silhouette -->
+            <g transform="translate(200, 220)">
+              <path d="M -75 0 L 75 0 L 65 18 L -65 18 Z" fill="#ffffff" stroke="#1e7aad" stroke-width="0.8"/>
+              <path d="M -50 -20 L 40 -20 L 50 0 L -50 0 Z" fill="#1e7aad"/>
+              <rect x="-45" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="-25" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="-5" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="15" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <path d="M -90 18 Q -50 14, 0 16 Q 50 14, 90 16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · Allure boat</span>
         </div>
-        <div class="field">
-          <label for="ck-day">Day of arrival</label>
-          <select id="ck-day">
-            <option value="">Choose day…</option>
-            <option value="mon">Monday</option>
-            <option value="tue">Tuesday</option>
-            <option value="wed">Wednesday</option>
-            <option value="thu">Thursday</option>
-            <option value="fri">Friday</option>
-            <option value="sat">Saturday</option>
-            <option value="sun">Sunday</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="ck-time">Flight lands (local time)</label>
-          <input id="ck-time" type="time" step="300" />
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Allure Charters & Water Taxi</h4>
+            <div class="option-tags">
+              <span class="opt-tag preferred">Our preferred private</span>
+              <span class="price-tier">$$$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Private charter · 25 min direct · captained service</p>
+          <p class="desc">A short transfer from EIS to a private boat at Trellis Bay, captained directly to White Bay Villas. We've worked with Captain Michael Clyne for thirty years — his boats are the best in class, and the same charter can take you island-hopping during your stay.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~25 min direct</span>
+            <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
+            <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Best experience · groups of 4+ · late arrivals · maximum peace of mind</p>
         </div>
       </div>
-      <button class="checker-btn" id="ck-run">Show my options</button>
 
-      <div class="checker-results" id="ck-results"></div>
+      <!-- EIS Option 2: Trellis Bay Water Taxi -->
+      <div class="option-row">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="eisWtSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8ddf0"/><stop offset="100%" stop-color="#d8eff5"/>
+              </linearGradient>
+              <linearGradient id="eisWtSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5ab0d8"/><stop offset="100%" stop-color="#2D9CDB"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#eisWtSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#eisWtSea)"/>
+            <!-- Open shared water taxi -->
+            <g transform="translate(200, 230)">
+              <path d="M -65 0 L 65 0 L 55 14 L -55 14 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+              <rect x="-38" y="-3" width="76" height="3" fill="#1e7aad"/>
+              <!-- Bimini top -->
+              <rect x="-40" y="-22" width="80" height="3" fill="#D4AF37"/>
+              <line x1="-38" y1="-22" x2="-38" y2="0" stroke="#5a4632" stroke-width="1.2"/>
+              <line x1="38" y1="-22" x2="38" y2="0" stroke="#5a4632" stroke-width="1.2"/>
+              <!-- Wake -->
+              <path d="M -85 14 Q -45 11, 0 12 Q 45 11, 85 12" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.55"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · Trellis Bay water taxi</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Trellis Bay Water Taxi</h4>
+            <div class="option-tags">
+              <span class="opt-tag daily">Daily on demand</span>
+              <span class="price-tier">$$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Shared water taxi · 4-min walk from EIS · ~30 min crossing</p>
+          <p class="desc">Walk four minutes from the EIS terminal to Trellis Bay Marina, where shared water taxis run direct to JVD on demand. Faster and more flexible than the public ferry route, without the cost of a private charter.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~35 min total</span>
+            <span><strong>Book:</strong> Through your villa concierge or at the dock</span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Couples and small groups · daytime arrivals · light luggage</p>
+        </div>
+      </div>
 
-      <p class="checker-note">Based on published ferry schedules. Sea conditions, holidays, and operator changes can affect actual times — always confirm with the ferry operator 24–48 hours before you travel.</p>
+      <!-- EIS Option 3: Land Taxi + New Horizon Ferry -->
+      <div class="option-row">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="eisFerrySky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/>
+              </linearGradient>
+              <linearGradient id="eisFerrySea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#eisFerrySky)"/>
+            <rect y="180" width="400" height="120" fill="url(#eisFerrySea)"/>
+            <!-- Ferry boat (larger, multi-deck) -->
+            <g transform="translate(200, 215)">
+              <path d="M -90 0 L 90 0 L 80 22 L -80 22 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+              <rect x="-70" y="-22" width="140" height="22" fill="#1e7aad"/>
+              <rect x="-60" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-40" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-20" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="0" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="20" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="40" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-25" y="-38" width="50" height="16" fill="#1e7aad"/>
+              <rect x="40" y="-46" width="6" height="24" fill="#333333"/>
+              <!-- Wake -->
+              <path d="M -110 22 Q -50 18, 0 20 Q 60 18, 110 20" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · New Horizon Ferry</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Land Taxi + New Horizon Ferry</h4>
+            <div class="option-tags">
+              <span class="opt-tag daily">Daily</span>
+              <span class="price-tier">$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Public ferry · ~1h 45m total · most affordable</p>
+          <p class="desc">A <strong>land taxi</strong> (not a water taxi — be specific) takes you 45–55 min across Tortola from EIS to West End ferry dock. From there, the New Horizon Ferry runs to Great Harbour, JVD multiple times daily.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~1h 45m total</span>
+            <span><strong>Last ferry:</strong> 6:00 PM from West End</span>
+            <span><strong>Schedule:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Solo travelers · budget-conscious · daytime arrivals</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== STT TAB ===== -->
+  <div class="tab-panel" id="tab-stt" role="tabpanel">
+
+    <!-- Aquatic Tue/Wed warning -->
+    <div class="tab-notice">
+      <div class="icon">!</div>
+      <div class="body">
+        <strong>Current notice — Aquatic Ferry suspended Tuesdays & Wednesdays</strong>
+        <p>If your STT arrival is on a Tuesday or Wednesday, use <strong>Roadtown Fast Ferry</strong> as the Red Hook → West End substitute on those days. Same dock, same destination — different operator. Confirmed through summer.</p>
+      </div>
+    </div>
+
+    <div class="options-grid">
+
+      <!-- STT Option 1: Allure Private Water Taxi (FEATURED) -->
+      <div class="option-row featured">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sttAllureSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#88cce8"/><stop offset="100%" stop-color="#d8eff5"/>
+              </linearGradient>
+              <linearGradient id="sttAllureSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#1a6b95"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#sttAllureSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#sttAllureSea)"/>
+            <path d="M 0 180 Q 100 175, 200 178 Q 300 174, 400 180 L 400 184 L 0 184 Z" fill="#4a9975" opacity="0.45"/>
+            <g transform="translate(200, 220)">
+              <path d="M -75 0 L 75 0 L 65 18 L -65 18 Z" fill="#ffffff" stroke="#1e7aad" stroke-width="0.8"/>
+              <path d="M -50 -20 L 40 -20 L 50 0 L -50 0 Z" fill="#1e7aad"/>
+              <rect x="-45" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="-25" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="-5" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <rect x="15" y="-16" width="14" height="10" fill="#a8ecea"/>
+              <path d="M -90 18 Q -50 14, 0 16 Q 50 14, 90 16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · Allure boat</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Allure Charters & Water Taxi (Private)</h4>
+            <div class="option-tags">
+              <span class="opt-tag preferred">Best experience</span>
+              <span class="price-tier">$$$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Private water taxi · ~1 hour door-to-door · captained service</p>
+          <p class="desc">Pick-up from Red Hook or Crown Bay, direct private crossing to JVD. Skip the two ferries, skip the customs lines. We've worked with Captain Michael Clyne for thirty years — superior boats, superior service. Same charter doubles as an island-hopping excursion during your stay.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~1 hour total</span>
+            <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
+            <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Late arrivals (after 3 PM) · groups · families · maximum peace of mind</p>
+        </div>
+      </div>
+
+      <!-- STT Option 2: Aquatic Ferry → New Horizon -->
+      <div class="option-row">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sttAqSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/>
+              </linearGradient>
+              <linearGradient id="sttAqSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#sttAqSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#sttAqSea)"/>
+            <!-- Aquatic ferry: catamaran-style -->
+            <g transform="translate(200, 215)">
+              <path d="M -90 0 L 90 0 L 80 18 L -80 18 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+              <rect x="-75" y="-26" width="150" height="26" fill="#2D9CDB"/>
+              <rect x="-65" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-45" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-25" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-5" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="15" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="35" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="55" y="-22" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-30" y="-42" width="60" height="16" fill="#1e7aad"/>
+              <text x="0" y="-31" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#ffffff">AQUATIC</text>
+              <path d="M -110 18 Q -50 14, 0 16 Q 60 14, 110 16" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · Aquatic Ferry</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Aquatic Ferry + New Horizon Ferry</h4>
+            <div class="option-tags">
+              <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
+              <span class="price-tier">$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Public ferry combo · ~2h 30m total · most popular budget option</p>
+          <p class="desc">Land taxi from STT airport to Red Hook (~30 min), Aquatic Ferry to West End Tortola (clear BVI customs), then walk to the same dock for the New Horizon Ferry to Great Harbour, JVD. We strongly recommend buying tickets online ahead of time. <strong>Land by 3 PM</strong> to comfortably make the last 5 PM Aquatic.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~2h 30m total</span>
+            <span><strong>Aquatic:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
+            <span><strong>New Horizon:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Affordable arrivals · daytime flights · independent travelers</p>
+        </div>
+      </div>
+
+      <!-- STT Option 2b: Roadtown Fast Ferry (Tue/Wed alternative) -->
+      <div class="option-row">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sttRfSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/>
+              </linearGradient>
+              <linearGradient id="sttRfSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#sttRfSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#sttRfSea)"/>
+            <g transform="translate(200, 215)">
+              <path d="M -90 0 L 90 0 L 80 18 L -80 18 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+              <rect x="-75" y="-26" width="150" height="26" fill="#D4AF37"/>
+              <rect x="-65" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="-45" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="-25" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="-5" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="15" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="35" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="55" y="-22" width="14" height="14" fill="#fef8e0"/>
+              <rect x="-30" y="-42" width="60" height="16" fill="#1e7aad"/>
+              <text x="0" y="-31" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#ffffff">ROADTOWN</text>
+              <path d="M -110 18 Q -50 14, 0 16 Q 60 14, 110 16" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · Roadtown Fast Ferry</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Roadtown Fast Ferry + New Horizon Ferry</h4>
+            <div class="option-tags">
+              <span class="opt-tag alt">Tue / Wed substitute</span>
+              <span class="price-tier">$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Tue/Wed alternative · same route · ~2h 30m total</p>
+          <p class="desc">Currently the required substitute when Aquatic isn't running on Tuesdays and Wednesdays. Same route — Red Hook to West End — different operator. Same New Horizon connection on the JVD side. Confirm latest schedule directly before booking.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~2h 30m total</span>
+            <span><strong>Use only when:</strong> Arriving STT on a Tuesday or Wednesday</span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Tue/Wed STT arrivals when Aquatic is suspended</p>
+        </div>
+      </div>
+
+      <!-- STT Option 3: InterIsland Direct -->
+      <div class="option-row">
+        <div class="option-image">
+          <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="sttIiSky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#a8ddf0"/><stop offset="100%" stop-color="#d8eff5"/>
+              </linearGradient>
+              <linearGradient id="sttIiSea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5ab0d8"/><stop offset="100%" stop-color="#1e7aad"/>
+              </linearGradient>
+            </defs>
+            <rect width="400" height="180" fill="url(#sttIiSky)"/>
+            <rect y="180" width="400" height="120" fill="url(#sttIiSea)"/>
+            <g transform="translate(200, 220)">
+              <path d="M -80 0 L 80 0 L 70 18 L -70 18 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+              <rect x="-65" y="-22" width="130" height="22" fill="#1e7aad"/>
+              <rect x="-55" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-35" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="-15" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="5" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="25" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <rect x="45" y="-18" width="14" height="14" fill="#a8ecea"/>
+              <path d="M -100 18 Q -50 14, 0 16 Q 50 14, 100 16" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+            </g>
+          </svg>
+          <span class="photo-tag">Photo placeholder · InterIsland Ferry</span>
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">InterIsland Direct Ferry to JVD</h4>
+            <div class="option-tags">
+              <span class="opt-tag limited">Tue · Fri · Sun mornings only</span>
+              <span class="price-tier">$$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Direct to JVD · skips West End · ~1h 30m on water</p>
+          <p class="desc">A direct ferry from Red Hook (7:30 AM) and Cruz Bay (8:00 AM) to Great Harbour, JVD — three days a week. <strong>Important:</strong> this is for guests already in the islands or with very early arrivals — not for same-day flights landing later in the day. Despite what Google sometimes suggests.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~1h 30m on water</span>
+            <span><strong>Customs:</strong> $30/person extra</span>
+            <span><strong>Schedule:</strong> <a href="https://interislandboatservices.com" target="_blank" rel="noopener">interislandboatservices.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Multi-day USVI itineraries · guests already on St. John or St. Thomas</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 
 <!-- JVD ISLAND MAP -->
 <section class="map-section" style="background: var(--sand-light);">
@@ -1414,6 +1834,273 @@
   </div>
 </section>
 
+<!-- ============ GETTING BACK SECTION ============ -->
+<section class="return-section">
+  <div class="return-inner">
+    <div class="section-header">
+      <p class="num">— When it's time to leave</p>
+      <h2 class="serif">How to get back.</h2>
+      <p>Same routes, run in reverse. With a few extra wrinkles you should know about — especially if you're flying out of St. Thomas.</p>
+    </div>
+
+    <!-- Critical return disclaimers -->
+    <div class="disclaimer-inner" style="margin-bottom: 36px;">
+      <div class="disclaimer alert">
+        <span class="label">⚠ Departure timing rule</span>
+        <p><strong>Flying out of STT?</strong> Your flight should be <strong>1:30 PM or later</strong> if you're taking the earliest ferry back. Two ferries, customs at St. John, and a 30-min taxi to the airport — and STT expects you 3 hours early for international with checked bags.</p>
+      </div>
+      <div class="disclaimer alert">
+        <span class="label">⚠ St. John customs (return only)</span>
+        <p>All return ferries clear US customs in <strong>St. John</strong> — not at the STT airport. You'll go through customs once on the ferry side, then a <strong>second time</strong> at the airport. Build in extra buffer.</p>
+      </div>
+      <div class="disclaimer">
+        <span class="label">Earlier flight?</span>
+        <p>If your departure is before 1:30 PM, take a private water taxi. The cost is more than worth the reduced stress, and Allure can pick you up directly from White Bay.</p>
+      </div>
+    </div>
+
+    <div class="tabs-section" id="getting-back-tabs">
+      <div class="tab-bar" role="tablist" aria-label="Choose departure airport">
+        <button class="tab-btn active" data-tab="back-eis" role="tab" aria-selected="true">
+          <span class="tab-eyebrow">Returning via</span>
+          <span class="tab-label">Tortola (EIS)</span>
+          <span class="tab-airport">Beef Island Airport · BVI</span>
+        </button>
+        <button class="tab-btn" data-tab="back-stt" role="tab" aria-selected="false">
+          <span class="tab-eyebrow">Returning via</span>
+          <span class="tab-label">St. Thomas (STT)</span>
+          <span class="tab-airport">Cyril E. King Airport · USVI</span>
+        </button>
+      </div>
+
+      <!-- ===== Return via EIS ===== -->
+      <div class="tab-panel active" id="tab-back-eis" role="tabpanel">
+        <div class="options-grid">
+          <div class="option-row featured">
+            <div class="option-image">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="bkAllSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#88cce8"/><stop offset="100%" stop-color="#d8eff5"/></linearGradient>
+                  <linearGradient id="bkAllSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#1a6b95"/></linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#bkAllSky)"/>
+                <rect y="180" width="400" height="120" fill="url(#bkAllSea)"/>
+                <g transform="translate(200, 220)">
+                  <path d="M -75 0 L 75 0 L 65 18 L -65 18 Z" fill="#ffffff" stroke="#1e7aad" stroke-width="0.8"/>
+                  <path d="M -50 -20 L 40 -20 L 50 0 L -50 0 Z" fill="#1e7aad"/>
+                  <rect x="-45" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="-25" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="-5" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="15" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <path d="M -90 18 Q -50 14, 0 16 Q 50 14, 90 16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+                </g>
+              </svg>
+              <span class="photo-tag">Photo placeholder · Allure boat</span>
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">Allure Charters & Water Taxi</h4>
+                <div class="option-tags">
+                  <span class="opt-tag preferred">Stress-free departure</span>
+                  <span class="price-tier">$$$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Private charter · pickup from White Bay · ~30 min direct</p>
+              <p class="desc">The smoothest way to leave. Picked up from White Bay, dropped at Trellis Bay just minutes from EIS. No customs lines, no two-ferry connections.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~30 min direct</span>
+                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a> (book early — return slots fill up)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-row">
+            <div class="option-image">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="bkNhSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/></linearGradient>
+                  <linearGradient id="bkNhSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/></linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#bkNhSky)"/>
+                <rect y="180" width="400" height="120" fill="url(#bkNhSea)"/>
+                <g transform="translate(200, 215)">
+                  <path d="M -90 0 L 90 0 L 80 22 L -80 22 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+                  <rect x="-70" y="-22" width="140" height="22" fill="#1e7aad"/>
+                  <rect x="-60" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-40" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-20" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="0" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="20" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="40" y="-18" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-25" y="-38" width="50" height="16" fill="#1e7aad"/>
+                  <path d="M -110 22 Q -50 18, 0 20 Q 60 18, 110 20" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+                </g>
+              </svg>
+              <span class="photo-tag">Photo placeholder · New Horizon Ferry</span>
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">New Horizon Ferry + Land Taxi</h4>
+                <div class="option-tags">
+                  <span class="opt-tag daily">Daily</span>
+                  <span class="price-tier">$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Public ferry + land taxi · ~1h 45m total</p>
+              <p class="desc">Reverse of the inbound: New Horizon from Great Harbour to West End Tortola, then a land taxi 45–55 min across the island to EIS. Multiple departures daily — first ferry at 7 AM lets you catch most morning flights comfortably.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~1h 45m total</span>
+                <span><strong>NH from JVD:</strong> 7 AM, 9 AM, 12 PM, 2 PM, 5 PM</span>
+                <span><strong>Schedule:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== Return via STT ===== -->
+      <div class="tab-panel" id="tab-back-stt" role="tabpanel">
+
+        <div class="tab-notice">
+          <div class="icon">!</div>
+          <div class="body">
+            <strong>Aquatic still suspended Tuesdays & Wednesdays</strong>
+            <p>Same as outbound — if your departure day from West End is a Tuesday or Wednesday, use <strong>Roadtown Fast Ferry</strong> as the West End → Red Hook substitute. Both clear US customs at St. John.</p>
+          </div>
+        </div>
+
+        <div class="options-grid">
+          <div class="option-row featured">
+            <div class="option-image">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="bkSttAllSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#88cce8"/><stop offset="100%" stop-color="#d8eff5"/></linearGradient>
+                  <linearGradient id="bkSttAllSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#1a6b95"/></linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#bkSttAllSky)"/>
+                <rect y="180" width="400" height="120" fill="url(#bkSttAllSea)"/>
+                <g transform="translate(200, 220)">
+                  <path d="M -75 0 L 75 0 L 65 18 L -65 18 Z" fill="#ffffff" stroke="#1e7aad" stroke-width="0.8"/>
+                  <path d="M -50 -20 L 40 -20 L 50 0 L -50 0 Z" fill="#1e7aad"/>
+                  <rect x="-45" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="-25" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="-5" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <rect x="15" y="-16" width="14" height="10" fill="#a8ecea"/>
+                  <path d="M -90 18 Q -50 14, 0 16 Q 50 14, 90 16" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.6"/>
+                </g>
+              </svg>
+              <span class="photo-tag">Photo placeholder · Allure boat</span>
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">Allure Charters Private Water Taxi</h4>
+                <div class="option-tags">
+                  <span class="opt-tag preferred">Required for early flights</span>
+                  <span class="price-tier">$$$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Private water taxi · ~1 hour door-to-door</p>
+              <p class="desc">Pickup from White Bay, direct to Red Hook or Crown Bay. Skip the customs-twice routine. <strong>Essentially required if your STT flight is before 1:30 PM</strong> — public ferries can't get you there in time.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~1 hour total</span>
+                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
+                <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-row">
+            <div class="option-image">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="bkAqSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/></linearGradient>
+                  <linearGradient id="bkAqSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/></linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#bkAqSky)"/>
+                <rect y="180" width="400" height="120" fill="url(#bkAqSea)"/>
+                <g transform="translate(200, 215)">
+                  <path d="M -90 0 L 90 0 L 80 18 L -80 18 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+                  <rect x="-75" y="-26" width="150" height="26" fill="#2D9CDB"/>
+                  <rect x="-65" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-45" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-25" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-5" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="15" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="35" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="55" y="-22" width="14" height="14" fill="#a8ecea"/>
+                  <rect x="-30" y="-42" width="60" height="16" fill="#1e7aad"/>
+                  <text x="0" y="-31" text-anchor="middle" font-family="Arial" font-size="9" font-weight="700" fill="#ffffff">AQUATIC</text>
+                  <path d="M -110 18 Q -50 14, 0 16 Q 60 14, 110 16" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+                </g>
+              </svg>
+              <span class="photo-tag">Photo placeholder · Aquatic Ferry</span>
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">New Horizon + Aquatic Ferry to STT</h4>
+                <div class="option-tags">
+                  <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
+                  <span class="price-tier">$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Two ferries · customs at St. John · ~3 hours total</p>
+              <p class="desc">New Horizon Ferry from Great Harbour to West End Tortola, then Aquatic from West End back to Red Hook (clearing US customs in St. John en route). Land taxi from Red Hook to STT airport adds ~30 minutes. <strong>Plan generously</strong> — the second customs at the airport always takes longer than expected.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~3 hours from JVD to STT</span>
+                <span><strong>Aquatic from W. End:</strong> 8:15 AM, 11 AM, 3:30 PM</span>
+                <span><strong>Schedule:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="option-row">
+            <div class="option-image">
+              <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+                <defs>
+                  <linearGradient id="bkRfSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#9cd5e8"/><stop offset="100%" stop-color="#dff2f1"/></linearGradient>
+                  <linearGradient id="bkRfSea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3aa5d5"/><stop offset="100%" stop-color="#124867"/></linearGradient>
+                </defs>
+                <rect width="400" height="180" fill="url(#bkRfSky)"/>
+                <rect y="180" width="400" height="120" fill="url(#bkRfSea)"/>
+                <g transform="translate(200, 215)">
+                  <path d="M -90 0 L 90 0 L 80 18 L -80 18 Z" fill="#ffffff" stroke="#333333" stroke-width="0.6"/>
+                  <rect x="-75" y="-26" width="150" height="26" fill="#D4AF37"/>
+                  <rect x="-65" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="-45" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="-25" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="-5" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="15" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="35" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="55" y="-22" width="14" height="14" fill="#fef8e0"/>
+                  <rect x="-30" y="-42" width="60" height="16" fill="#1e7aad"/>
+                  <text x="0" y="-31" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#ffffff">ROADTOWN</text>
+                  <path d="M -110 18 Q -50 14, 0 16 Q 60 14, 110 16" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.55"/>
+                </g>
+              </svg>
+              <span class="photo-tag">Photo placeholder · Roadtown Fast Ferry</span>
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">New Horizon + Roadtown Fast Ferry</h4>
+                <div class="option-tags">
+                  <span class="opt-tag alt">Tue / Wed substitute</span>
+                  <span class="price-tier">$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Tue/Wed alternative when Aquatic isn't running</p>
+              <p class="desc">Use this combo when departing on a Tuesday or Wednesday. Same route, same St. John customs clearance, different operator on the second leg. Confirm latest schedule the day before — these are the days most prone to last-minute changes.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~3 hours from JVD to STT</span>
+                <span><strong>Use only when:</strong> Departing on Tuesday or Wednesday</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HELP -->
 <section class="help-section">
   <h2 class="serif">Still have questions?</h2>
@@ -1430,609 +2117,23 @@
 <p class="footnote">Ferry schedules, water taxi availability, and customs fees are set by third parties and can change. Always confirm directly with the operator within 48 hours of travel. A valid passport is required for all USVI ↔ BVI crossings.</p>
 
 <script>
-  // ============ DATA ============
-  const routesData = {
-    eis: [
-      {
-        id: 'eis-water-taxi',
-        title: 'Allure Water Taxi (direct to JVD)',
-        tag: 'recommended',
-        tagLabel: 'Recommended',
-        time: '~25 min',
-        cost: 'Charter — ask us',
-        steps: [
-          'Clear customs at Beef Island Airport (EIS)',
-          'Short walk or 4-minute ride to Trellis Bay',
-          'Allure Water Taxi direct to Great Harbour, JVD',
-          'WBV taxi to the villa (5 min)'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at EIS · Beef Island', detail: 'Clear customs and collect bags.' },
-          { time: '+20m', title: 'Trellis Bay → Jost Van Dyke', detail: 'Allure Water Taxi — we can pre-book this for you.', contact: 'Call us to arrange: <a href="tel:+13402014976">+1 340-201-4976</a>' },
-          { time: '+45m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill. Drivers listed below.' }
-        ]
-      },
-      {
-        id: 'eis-ferry',
-        title: 'Land Taxi + New Horizon Ferry',
-        tag: 'scheduled',
-        tagLabel: 'Scheduled Ferry',
-        time: '~1h 45m',
-        cost: '~$35–$50 pp',
-        steps: [
-          'Clear customs at EIS',
-          'Land taxi to West End Ferry Dock (~50 min)',
-          'New Horizon Ferry to Great Harbour, JVD (~30 min)',
-          'WBV taxi to the villa'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at EIS · Beef Island', detail: 'Clear customs and collect bags.' },
-          { time: '+60m', title: 'Taxi to West End Ferry Dock', detail: 'About 50 minutes across Tortola.' },
-          { time: '+90m', title: 'New Horizon Ferry to JVD', detail: 'Check in 30 min before departure. Last ferry around 6 PM.', contact: 'Confirm schedule with operator before travel.' },
-          { time: '+2h 15m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill.' }
-        ]
-      }
-    ],
-    stt: [
-      {
-        id: 'stt-redhook',
-        title: 'Red Hook → West End → JVD',
-        tag: 'recommended',
-        tagLabel: 'Most Popular',
-        time: '~2h 30m',
-        cost: '~$75–$110 pp',
-        steps: [
-          'Taxi from STT airport to Red Hook (~30 min, $25–$30)',
-          'Aquatic Ferry to West End Tortola — clear customs',
-          'New Horizon Ferry from same dock to Great Harbour, JVD',
-          'WBV taxi to the villa'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at STT · St. Thomas', detail: 'Clear customs and collect bags.' },
-          { time: '+30m', title: 'Taxi to Red Hook', detail: 'About 30 minutes across the island, $25–$30 per person.' },
-          { time: '+90m', title: 'Aquatic Ferry to West End, Tortola', detail: 'Clear BVI customs at West End. Last Aquatic around 5 PM.', contact: 'Check schedule before travel.' },
-          { time: '+2h 15m', title: 'New Horizon Ferry to JVD', detail: 'Same dock, different ferry. Last departure around 6 PM.' },
-          { time: '+2h 45m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill.' }
-        ]
-      },
-      {
-        id: 'stt-water-taxi',
-        title: 'Private Water Taxi direct from STT',
-        tag: 'fastest',
-        tagLabel: 'Fastest',
-        time: '~1h door-to-door',
-        cost: '$300+ per boat',
-        steps: [
-          'Taxi from STT airport to Crown Bay or Red Hook',
-          'Private water taxi direct to Great Harbour, JVD',
-          'WBV taxi to the villa'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at STT · St. Thomas', detail: 'Clear customs and collect bags.' },
-          { time: '+15m', title: 'Short taxi to marina', detail: 'Crown Bay is 5 min from airport; Red Hook is ~30 min.' },
-          { time: '+1h', title: 'Private Water Taxi to JVD', detail: 'We partner with Allure Charters for discounted water taxi rates.', contact: 'Ask us to pre-book: <a href="tel:+13402014976">+1 340-201-4976</a>' },
-          { time: '+1h 15m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill.' }
-        ]
-      },
-      {
-        id: 'stt-interisland',
-        title: 'Inter Island Direct Ferry (STT → JVD)',
-        tag: 'scenic',
-        tagLabel: 'Tue / Fri / Sun only',
-        time: '~1h 30m on water',
-        cost: '~$80 + $30 customs',
-        steps: [
-          'Taxi from STT airport to Red Hook or Crown Bay',
-          'Inter Island Boat Services direct ferry to JVD (via St. John)',
-          'WBV taxi to the villa'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at STT · St. Thomas', detail: 'Only runs Tuesday, Friday, Sunday.' },
-          { time: '+20m', title: 'Taxi to Red Hook or Crown Bay', detail: 'Crown Bay departs morning; confirm dock with operator.' },
-          { time: '+2h', title: 'Direct Ferry to Great Harbour', detail: 'Inter Island Boat Services, +1 340-776-6597.', contact: 'Minimum 15 passengers required — confirm before travel.' },
-          { time: '+2h 30m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill.' }
-        ]
-      }
-    ],
-    sju: [
-      {
-        id: 'sju-connect',
-        title: 'Connect to STT or EIS from San Juan',
-        tag: 'recommended',
-        tagLabel: 'Connecting Flight',
-        time: 'Depends on connection',
-        cost: 'Added airfare',
-        steps: [
-          'Short connecting flight from SJU to STT (~30 min) or EIS (~1h)',
-          'Follow the STT or EIS route from there'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at SJU · San Juan', detail: 'San Juan is a common hub.' },
-          { time: 'Connect', title: 'Fly on to STT or EIS', detail: 'Cape Air and other regional carriers connect daily.' },
-          { time: 'Continue', title: 'Continue with STT or EIS route', detail: 'Use this planner again once you know your final airport.' }
-        ]
-      }
-    ],
-    private: [
-      {
-        id: 'tupj-direct',
-        title: 'Short hop from West End, Tortola',
-        tag: 'recommended',
-        tagLabel: 'Charter / Private',
-        time: '~45 min total',
-        cost: 'Varies',
-        steps: [
-          'Land at TUPJ / West End, Tortola',
-          'Walk to West End Ferry Dock',
-          'New Horizon Ferry or water taxi to JVD',
-          'WBV taxi to the villa'
-        ],
-        legs: [
-          { time: 'Land', title: 'Arrive at TUPJ · West End', detail: 'Private and charter flights only.' },
-          { time: '+10m', title: 'Short walk to ferry dock', detail: 'West End ferry terminal is right there.' },
-          { time: '+40m', title: 'Ferry or water taxi to JVD', detail: 'Quick crossing — confirm schedule in advance.' },
-          { time: '+45m', title: 'Great Harbour → White Bay Villas', detail: '5-minute taxi up the hill.' }
-        ]
-      }
-    ]
-  };
-
-  // ============ STATE ============
-  let selectedAirport = null;
-  let selectedRoute = null;
-
-  // ============ HANDLERS ============
-  document.querySelectorAll('.airport-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.airport-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedAirport = card.dataset.airport;
-      renderRouteOptions(selectedAirport);
-      revealStep(2);
-      setTimeout(() => {
-        document.getElementById('step-2').scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 300);
+  // ============ TAB SWITCHING ============
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.tab;
+      const scope = btn.closest('.tabs-section');
+      // Update buttons in this tab group
+      scope.querySelectorAll('.tab-btn').forEach(b => {
+        const isActive = b.dataset.tab === target;
+        b.classList.toggle('active', isActive);
+        b.setAttribute('aria-selected', isActive);
+      });
+      // Update panels in this tab group
+      scope.querySelectorAll('.tab-panel').forEach(p => {
+        p.classList.toggle('active', p.id === `tab-${target}` || p.id === `tab-back-${target}`);
+      });
     });
   });
-
-  function renderRouteOptions(airport) {
-    const container = document.getElementById('route-options');
-    const routes = routesData[airport];
-    container.innerHTML = routes.map(route => `
-      <div class="route" data-route-id="${route.id}" onclick="selectRoute('${route.id}')">
-        <div class="route-top">
-          <div class="route-title serif">${route.title}</div>
-          <span class="route-tag tag-${route.tag}">${route.tagLabel}</span>
-        </div>
-        <div class="route-meta">
-          <span><strong>Time:</strong> ${route.time}</span>
-          <span><strong>Cost:</strong> ${route.cost}</span>
-        </div>
-        <div class="route-steps">
-          <ol>${route.steps.map(s => `<li>${s}</li>`).join('')}</ol>
-        </div>
-      </div>
-    `).join('');
-    // Reset step 3
-    document.getElementById('step-3').classList.remove('active');
-    document.getElementById('step-output').classList.remove('active');
-  }
-
-  function selectRoute(routeId) {
-    document.querySelectorAll('.route').forEach(r => r.classList.remove('selected'));
-    document.querySelector(`[data-route-id="${routeId}"]`).classList.add('selected');
-    selectedRoute = routesData[selectedAirport].find(r => r.id === routeId);
-    renderArrivalOptions();
-    revealStep(3);
-  }
-
-  function renderArrivalOptions() {
-    const container = document.getElementById('arrival-options');
-    container.innerHTML = `
-      <div class="route" onclick="finalizeItinerary('wbv-taxi')">
-        <div class="route-top">
-          <div class="route-title serif">Local taxi from Great Harbour</div>
-          <span class="route-tag tag-recommended">Standard</span>
-        </div>
-        <div class="route-meta">
-          <span><strong>Time:</strong> ~5 min</span>
-          <span><strong>Cost:</strong> ~$10–$15 pp</span>
-        </div>
-        <div class="route-steps">
-          <ol>
-            <li>Ferry docks at Great Harbour</li>
-            <li>Taxis are always waiting when the ferry arrives</li>
-            <li>5-minute ride over the hill to White Bay Villas</li>
-          </ol>
-        </div>
-      </div>
-      <div class="route" onclick="finalizeItinerary('walk')">
-        <div class="route-top">
-          <div class="route-title serif">Walk from Great Harbour</div>
-          <span class="route-tag tag-scenic">Light luggage only</span>
-        </div>
-        <div class="route-meta">
-          <span><strong>Time:</strong> 15–20 min</span>
-          <span><strong>Cost:</strong> Free</span>
-        </div>
-        <div class="route-steps">
-          <ol>
-            <li>Ferry docks at Great Harbour</li>
-            <li>Scenic walk along the main road and up to White Bay</li>
-            <li>Not recommended in heat or with bags</li>
-          </ol>
-        </div>
-      </div>
-    `;
-  }
-
-  function finalizeItinerary(lastLeg) {
-    document.querySelectorAll('#arrival-options .route').forEach(r => r.classList.remove('selected'));
-    event.currentTarget.classList.add('selected');
-    renderItinerary(lastLeg);
-    revealStep('output');
-    setTimeout(() => {
-      document.getElementById('step-output').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300);
-  }
-
-  function renderItinerary(lastLeg) {
-    const airportNames = {
-      eis: 'EIS · Tortola (Beef Island)',
-      stt: 'STT · St. Thomas, USVI',
-      sju: 'SJU · San Juan, Puerto Rico',
-      private: 'TUPJ · Tortola (West End)'
-    };
-    const finalLegDetail = lastLeg === 'walk'
-      ? { title: 'Walk to White Bay Villas', detail: '15–20 min walk along the main road. Light luggage only.' }
-      : { title: 'Taxi to White Bay Villas', detail: 'Taxi from Great Harbour, 5 minutes up the hill. Drivers wait at the ferry dock.' };
-
-    const legs = [...selectedRoute.legs];
-    legs[legs.length - 1] = { ...legs[legs.length - 1], ...finalLegDetail };
-
-    document.getElementById('itinerary-card').innerHTML = `
-      <div class="itinerary">
-        <p class="itinerary-header">Your journey to White Bay Villas</p>
-        <h3 class="serif">From ${airportNames[selectedAirport]} via ${selectedRoute.title.toLowerCase()}.</h3>
-        ${legs.map(leg => `
-          <div class="itinerary-leg">
-            <div class="leg-time serif">${leg.time}</div>
-            <div class="leg-detail">
-              <h4>${leg.title}</h4>
-              <p>${leg.detail}</p>
-              ${leg.contact ? `<p class="leg-contact">${leg.contact}</p>` : ''}
-            </div>
-          </div>
-        `).join('')}
-        <div class="itinerary-actions">
-          <button class="btn btn-primary" onclick="window.print()">🖨  Print / Save as PDF</button>
-          <a class="btn btn-secondary" href="mailto:info@jostvandyke.com?subject=Travel%20questions%20for%20White%20Bay%20Villas&body=Hi!%20I%27m%20planning%20my%20trip%20using%20route:%20${encodeURIComponent(selectedRoute.title)}.%20A%20few%20questions...">✉  Email us about this route</a>
-        </div>
-      </div>
-    `;
-  }
-
-  function revealStep(n) {
-    const id = n === 'output' ? 'step-output' : `step-${n}`;
-    document.getElementById(id).classList.add('active');
-  }
-
-  // ============ CONNECTION CHECKER ============
-  // Ferry schedule data — all times in 24-hour "HH:MM" format, local BVI/USVI time
-  const FERRIES = {
-    // New Horizon Ferry: West End Tortola → Great Harbour JVD (daily)
-    newHorizon: {
-      name: 'New Horizon Ferry',
-      from: 'West End, Tortola',
-      to: 'Great Harbour, JVD',
-      crossing: 25, // minutes
-      checkIn: 30,
-      departures: {
-        mon: ['08:00','10:00','13:00','16:00','18:00'],
-        tue: ['08:00','10:00','13:00','16:00','18:00'],
-        wed: ['08:00','10:00','13:00','16:00','18:00'],
-        thu: ['08:00','10:00','13:00','16:00','18:00'],
-        fri: ['08:00','10:00','13:00','16:00','18:00'],
-        sat: ['08:00','10:00','13:00','16:00','18:00'],
-        sun: ['08:00','10:00','13:00','16:00','18:00']
-      }
-    },
-    // Red Hook STT → West End Tortola
-    redHookWestEnd: {
-      name: 'Native Son / Smith\'s Ferry',
-      from: 'Red Hook, St. Thomas',
-      to: 'West End, Tortola',
-      crossing: 35,
-      checkIn: 30,
-      departures: {
-        mon: ['09:15','12:30','17:00'],
-        tue: ['09:15','12:30','17:00'],
-        wed: ['09:15','12:30','17:00'],
-        thu: ['09:15','12:30','17:00'],
-        fri: ['09:15','12:30','17:00'],
-        sat: ['09:15','12:30','17:00'],
-        sun: ['09:15','12:30','17:00']
-      }
-    },
-    // Inter Island direct STT → JVD (Tue/Fri/Sun only)
-    interIsland: {
-      name: 'Inter Island Direct Ferry',
-      from: 'Red Hook, St. Thomas',
-      to: 'Great Harbour, JVD',
-      crossing: 90,
-      checkIn: 45,
-      departures: {
-        tue: ['07:30'],
-        fri: ['07:30'],
-        sun: ['07:30']
-      }
-    }
-  };
-
-  // Travel times in minutes
-  const TAXI = {
-    sttAirportToRedHook: 30,
-    eisAirportToWestEnd: 55,
-    eisAirportToTrellisBay: 5,
-    customsClearance: 25, // deplaning + customs at arrival airport
-    customsAtWestEnd: 25, // BVI customs clearance
-    connectionBuffer: 10 // walk to next ferry on same dock
-  };
-
-  // Helpers
-  const toMin = t => { const [h,m] = t.split(':').map(Number); return h*60 + m; };
-  const fmt = m => {
-    m = ((m % 1440) + 1440) % 1440;
-    const h = Math.floor(m / 60);
-    const mm = String(m % 60).padStart(2, '0');
-    const ampm = h < 12 ? 'AM' : 'PM';
-    const hh = h % 12 === 0 ? 12 : h % 12;
-    return `${hh}:${mm} ${ampm}`;
-  };
-
-  function findFeasibleFerry(ferryKey, day, readyAtMin) {
-    const ferry = FERRIES[ferryKey];
-    const times = (ferry.departures[day] || []);
-    for (const t of times) {
-      const departMin = toMin(t);
-      // Must be at dock by: depart - checkIn
-      if (readyAtMin + ferry.checkIn <= departMin) {
-        return { ferry, departMin, arriveMin: departMin + ferry.crossing };
-      }
-    }
-    return null;
-  }
-
-  function buildTimeline(legs) {
-    return legs.map((leg, i) => `
-      <div class="timeline-item" style="display:contents">
-        <div class="timeline-time">${fmt(leg.time)}</div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-detail"><strong>${leg.title}</strong><span>${leg.detail}</span></div>
-      </div>
-    `).join('');
-  }
-
-  function checkOptions() {
-    const airport = document.getElementById('ck-airport').value;
-    const day = document.getElementById('ck-day').value;
-    const timeStr = document.getElementById('ck-time').value;
-
-    if (!airport || !day || !timeStr) {
-      alert('Please fill in all three fields.');
-      return;
-    }
-
-    const landMin = toMin(timeStr);
-    const options = [];
-
-    if (airport === 'stt') {
-      // Option A: Inter Island direct (Tue/Fri/Sun only at 7:30 AM)
-      // Guest needs: land + customs(25) + taxi to Red Hook(30) + checkIn(45) = 100 min to be at dock
-      const iiReady = landMin + TAXI.customsClearance + TAXI.sttAirportToRedHook;
-      const ii = findFeasibleFerry('interIsland', day, iiReady);
-      if (ii) {
-        options.push({
-          title: 'Inter Island Direct to JVD',
-          total: ii.arriveMin + 10 - landMin,
-          legs: [
-            { time: landMin, title: 'Land at STT', detail: 'Clear customs, collect bags (~25 min).' },
-            { time: landMin + TAXI.customsClearance, title: 'Taxi to Red Hook', detail: `About ${TAXI.sttAirportToRedHook} min.` },
-            { time: ii.departMin, title: `Board ${ii.ferry.name}`, detail: `Check in ${ii.ferry.checkIn} min early.` },
-            { time: ii.arriveMin, title: 'Arrive Great Harbour, JVD', detail: 'Direct crossing — no additional customs.' },
-            { time: ii.arriveMin + 10, title: 'Taxi to White Bay Villas', detail: '5-minute ride over the hill.' }
-          ]
-        });
-      }
-
-      // Option B: Red Hook → West End → New Horizon
-      // Try each feasible RH ferry, pick the combo with shortest total time
-      const rhReady = landMin + TAXI.customsClearance + TAXI.sttAirportToRedHook;
-      const rhFerry = FERRIES.redHookWestEnd;
-      const rhTimes = rhFerry.departures[day] || [];
-      let bestCombo = null;
-      for (const rhT of rhTimes) {
-        const rhDepart = toMin(rhT);
-        if (rhReady + rhFerry.checkIn > rhDepart) continue;
-        const rhArrive = rhDepart + rhFerry.crossing;
-        const westEndReady = rhArrive + TAXI.customsAtWestEnd;
-        const nhFerry = FERRIES.newHorizon;
-        const nhTimes = nhFerry.departures[day] || [];
-        for (const nhT of nhTimes) {
-          const nhDepart = toMin(nhT);
-          if (westEndReady > nhDepart) continue; // Already left
-          const nhArrive = nhDepart + nhFerry.crossing;
-          const totalTime = nhArrive - landMin;
-          if (!bestCombo || totalTime < bestCombo.totalTime) {
-            bestCombo = { rhDepart, rhArrive, nhDepart, nhArrive, totalTime };
-          }
-          break; // First NH that works for this RH is the best for this RH
-        }
-      }
-      if (bestCombo) {
-        options.push({
-          title: 'Red Hook → West End → New Horizon',
-          total: bestCombo.nhArrive + 10 - landMin,
-          legs: [
-            { time: landMin, title: 'Land at STT', detail: 'Clear USVI customs, collect bags.' },
-            { time: landMin + TAXI.customsClearance, title: 'Taxi to Red Hook', detail: `About ${TAXI.sttAirportToRedHook} min, $25–$30 pp.` },
-            { time: bestCombo.rhDepart, title: `Board ${rhFerry.name}`, detail: `To West End, Tortola. Check in ${rhFerry.checkIn} min early.` },
-            { time: bestCombo.rhArrive, title: 'Arrive West End', detail: `Clear BVI customs (~${TAXI.customsAtWestEnd} min).` },
-            { time: bestCombo.nhDepart, title: 'Board New Horizon Ferry', detail: 'Same dock — short walk.' },
-            { time: bestCombo.nhArrive, title: 'Arrive Great Harbour, JVD', detail: 'Almost there!' },
-            { time: bestCombo.nhArrive + 10, title: 'Taxi to White Bay Villas', detail: '5 minutes up the hill.' }
-          ]
-        });
-      }
-
-      // Option C: Private water taxi — always available
-      options.push({
-        title: 'Private Water Taxi from STT (on-demand)',
-        total: 90,
-        legs: [
-          { time: landMin, title: 'Land at STT', detail: 'Clear customs, collect bags.' },
-          { time: landMin + 20, title: 'Short taxi to marina', detail: 'Crown Bay is 5 min from the airport.' },
-          { time: landMin + 50, title: 'Private water taxi to JVD', detail: 'Direct crossing, ~45 min. Pre-booked by WBV.' },
-          { time: landMin + 85, title: 'Arrive Great Harbour', detail: 'Taxi waiting at the dock.' },
-          { time: landMin + 90, title: 'Arrive White Bay Villas', detail: 'Total ~90 min from landing.' }
-        ],
-        tag: 'On demand'
-      });
-    }
-
-    if (airport === 'eis') {
-      // Option A: Water taxi from Trellis Bay — 4 min walk from airport
-      options.push({
-        title: 'Water Taxi from Trellis Bay (direct)',
-        total: 50,
-        legs: [
-          { time: landMin, title: 'Land at EIS', detail: 'Clear customs, collect bags.' },
-          { time: landMin + TAXI.customsClearance, title: 'Short transfer to Trellis Bay', detail: '4 minutes from airport.' },
-          { time: landMin + TAXI.customsClearance + 5, title: 'Water taxi to JVD', detail: '~25 min direct crossing.' },
-          { time: landMin + TAXI.customsClearance + 30, title: 'Arrive Great Harbour', detail: 'Taxi up the hill.' },
-          { time: landMin + TAXI.customsClearance + 35, title: 'Arrive White Bay Villas', detail: 'Total ~1 hour from landing.' }
-        ],
-        tag: 'On demand'
-      });
-
-      // Option B: Land taxi to West End + New Horizon Ferry
-      const readyAtWestEnd = landMin + TAXI.customsClearance + TAXI.eisAirportToWestEnd;
-      const nh = findFeasibleFerry('newHorizon', day, readyAtWestEnd);
-      if (nh) {
-        options.push({
-          title: 'Taxi to West End + New Horizon Ferry',
-          total: nh.arriveMin + 10 - landMin,
-          legs: [
-            { time: landMin, title: 'Land at EIS', detail: 'Clear customs, collect bags.' },
-            { time: landMin + TAXI.customsClearance, title: 'Taxi to West End', detail: `About ${TAXI.eisAirportToWestEnd} min across Tortola.` },
-            { time: nh.departMin, title: 'Board New Horizon Ferry', detail: `Check in ${nh.ferry.checkIn} min early. Crossing ~${nh.ferry.crossing} min.` },
-            { time: nh.arriveMin, title: 'Arrive Great Harbour, JVD', detail: 'You made it.' },
-            { time: nh.arriveMin + 10, title: 'Taxi to White Bay Villas', detail: '5 minutes up the hill.' }
-          ]
-        });
-      }
-    }
-
-    if (airport === 'tupj') {
-      // From West End — short walk to dock, then New Horizon or water taxi
-      const ready = landMin + TAXI.customsClearance + 10;
-      const nh = findFeasibleFerry('newHorizon', day, ready);
-      if (nh) {
-        options.push({
-          title: 'Short walk to ferry + New Horizon',
-          total: nh.arriveMin + 10 - landMin,
-          legs: [
-            { time: landMin, title: 'Land at TUPJ', detail: 'Clear customs.' },
-            { time: landMin + TAXI.customsClearance, title: 'Short transfer to ferry dock', detail: 'West End terminal is right there.' },
-            { time: nh.departMin, title: 'Board New Horizon Ferry', detail: `Crossing ~${nh.ferry.crossing} min.` },
-            { time: nh.arriveMin, title: 'Arrive Great Harbour', detail: 'Taxi up the hill.' },
-            { time: nh.arriveMin + 10, title: 'Arrive White Bay Villas', detail: 'Welcome!' }
-          ]
-        });
-      }
-
-      options.push({
-        title: 'Private Water Taxi from West End',
-        total: 40,
-        legs: [
-          { time: landMin, title: 'Land at TUPJ', detail: 'Clear customs.' },
-          { time: landMin + TAXI.customsClearance, title: 'Private water taxi', detail: 'Short direct crossing.' },
-          { time: landMin + TAXI.customsClearance + 15, title: 'Arrive Great Harbour', detail: 'Quick crossing.' },
-          { time: landMin + TAXI.customsClearance + 20, title: 'Arrive White Bay Villas', detail: 'Total ~45 min.' }
-        ],
-        tag: 'On demand'
-      });
-    }
-
-    renderResults(options, airport, day, timeStr);
-  }
-
-  function renderResults(options, airport, day, timeStr) {
-    const container = document.getElementById('ck-results');
-
-    // Pick best by total travel time
-    const scheduledOptions = options.filter(o => !o.tag);
-    const onDemandOptions = options.filter(o => o.tag);
-    scheduledOptions.sort((a, b) => a.total - b.total);
-
-    let summaryClass = 'good';
-    let summaryTitle = 'You\'ve got options.';
-    let summaryMsg = '';
-
-    if (scheduledOptions.length === 0) {
-      summaryClass = 'none';
-      summaryTitle = 'No scheduled ferry will work today.';
-      summaryMsg = 'Your only realistic option is a private water taxi, or stay the night nearby and cross in the morning. Give us a call — we\'ll help figure it out.';
-    } else if (scheduledOptions.length === 1) {
-      summaryClass = 'tight';
-      summaryTitle = 'It\'s going to be close.';
-      summaryMsg = 'Only one scheduled ferry combination works for your arrival time. If anything runs late, you\'ll want a backup — consider booking a private water taxi just in case.';
-    } else {
-      summaryMsg = `${scheduledOptions.length} scheduled options work, plus on-demand water taxi anytime. The fastest lands you at White Bay Villas in about ${Math.round(scheduledOptions[0].total / 60 * 10) / 10} hours.`;
-    }
-
-    const allOptions = [...scheduledOptions, ...onDemandOptions];
-    const html = `
-      <div class="result-summary ${summaryClass}">
-        <h4 class="serif">${summaryTitle}</h4>
-        <p>${summaryMsg}</p>
-      </div>
-      ${allOptions.map((opt, i) => `
-        <div class="option-card ${i === 0 && !opt.tag ? 'best' : ''}">
-          <div class="option-head">
-            <h5 class="serif">${opt.title}${i === 0 && !opt.tag ? ' · Fastest' : ''}</h5>
-            <span class="option-total">${opt.tag ? opt.tag : `Arrive by ${fmt(opt.legs[opt.legs.length - 1].time)}`}</span>
-          </div>
-          <div class="timeline">
-            ${buildTimeline(opt.legs)}
-          </div>
-        </div>
-      `).join('')}
-    `;
-    container.innerHTML = html;
-    container.classList.add('show');
-    setTimeout(() => container.scrollIntoView({ behavior: 'smooth', block: 'start' }), 300);
-  }
-
-  document.getElementById('ck-run').addEventListener('click', checkOptions);
-  ['ck-airport','ck-day','ck-time'].forEach(id => {
-    document.getElementById(id).addEventListener('change', () => {
-      const container = document.getElementById('ck-results');
-      if (container.classList.contains('show')) {
-        setTimeout(checkOptions, 100);
-      }
-    });
-  });
-
-  function resetPlanner() {
-    selectedAirport = null;
-    selectedRoute = null;
-    document.querySelectorAll('.airport-card').forEach(c => c.classList.remove('selected'));
-    document.getElementById('step-2').classList.remove('active');
-    document.getElementById('step-3').classList.remove('active');
-    document.getElementById('step-output').classList.remove('active');
-    document.getElementById('step-1').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
 </script>
 
 </body>
