@@ -21,7 +21,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 13 | Watson's Regency Suites | Ocean City, NJ | [watsonsregency.com](https://watsonsregency.com) | [View →](https://bofilltech.github.io/concepts/watsons-regency/) | B — Split-Screen Narrative | EB Garamond + Josefin Sans | Apr 26 |
 
-| 15 | The Garlands on Nantucket Sound | Dennis Port, MA | [thegarlandscapecod.com](https://www.thegarlandscapecod.com/) | [View →](https://bofilltech.github.io/concepts/the-garlands/) | Editorial Coastal | Fraunces + DM Sans | Apr 21 |
+| 15 | The Garlands on Nantucket Sound | Dennis Port, MA | [thegarlandscapecod.com](https://www.thegarlandscapecod.com/) | [View →](https://bofilltech.github.io/concepts/the-garlands/) · [Policies](https://bofilltech.github.io/concepts/the-garlands/policies/) · [Room Tours](https://bofilltech.github.io/concepts/the-garlands/room-tours/) | Editorial Coastal (Pelham-inspired) | Fraunces + DM Sans | Apr 21 / refreshed May 02 |
 
 | 16 | East Norwich Inn | East Norwich, NY | [eastnorwichinnli.com](https://eastnorwichinnli.com/) | [View →](https://bofilltech.github.io/concepts/east-norwich-inn/) | F — Classic/Heritage (Tudor) | Fraunces + DM Sans | Apr 21 |
 
