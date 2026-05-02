@@ -6,6 +6,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 25 | The Atlantic Inn | Block Island (New Shoreham), RI | [atlanticinn.com](https://www.atlanticinn.com/) | [View →](https://bofilltech.github.io/concepts/atlantic-inn/) | A — Magazine/Editorial (ASH-inspired louche maximalism) | Bodoni Moda + Manrope | May 02 |
 | 1 | Waterside Inn | Chincoteague, VA | [watersideinn.biz](https://watersideinn.biz) | [View →](https://bofilltech.github.io/concepts/waterside-inn/) | A — Magazine/Editorial | Bodoni Moda + Work Sans | Mar 24 |
 | 2 | Island Inn | Atlantic Beach, NC | [islandinnrentals.com](https://islandinnrentals.com) | [View →](https://bofilltech.github.io/concepts/island-inn/) | E — Warm Community | Outfit + Lora | Mar 24 |
 | 3 | Imperial 500 | Wildwood Crest, NJ | [imperial500.com](https://imperial500.com) | [View →](https://bofilltech.github.io/concepts/imperial-500/) | C — Bold Typography-Led | Space Grotesk + Source Serif 4 | Mar 24 |
