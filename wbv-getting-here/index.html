@@ -42,6 +42,450 @@
 
   .serif { font-family: 'Fraunces', serif; font-optical-sizing: auto; }
 
+  /* ------------ WBV SITE HEADER (matches jostvandyke.com) ------------ */
+  .wbv-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 0;
+  }
+  .wbv-header-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .wbv-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .wbv-logo {
+    width: 44px; height: 44px;
+    background: var(--ocean);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+  }
+  .wbv-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .wbv-brand-name {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .wbv-brand-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ocean);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .wbv-nav {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    list-style: none;
+  }
+  .wbv-nav-item {
+    position: relative;
+  }
+  .wbv-nav-link {
+    display: block;
+    padding: 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: all 0.18s ease;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+  .wbv-nav-link:hover { color: var(--ocean); background: var(--sand-dark); }
+  .wbv-nav-item.has-children > .wbv-nav-link::after {
+    content: " ▾";
+    font-size: 9px;
+    opacity: 0.6;
+  }
+  .wbv-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    box-shadow: 0 16px 32px -16px rgba(45, 156, 219, 0.25);
+    padding: 6px;
+    display: none;
+    list-style: none;
+  }
+  .wbv-nav-item.has-children:hover .wbv-dropdown,
+  .wbv-nav-item.has-children:focus-within .wbv-dropdown { display: block; }
+  .wbv-dropdown a {
+    display: block;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+  .wbv-dropdown a:hover { background: var(--sand-dark); color: var(--ocean); }
+
+  .wbv-cta {
+    background: var(--teal);
+    color: var(--ink);
+    padding: 11px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    flex-shrink: 0;
+  }
+  .wbv-cta:hover { background: #a5efec; }
+
+  .wbv-mobile-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--line);
+    padding: 8px 12px;
+    border-radius: 2px;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+
+  @media (max-width: 980px) {
+    .wbv-nav { display: none; }
+    .wbv-mobile-toggle { display: block; }
+    .wbv-cta { padding: 9px 14px; font-size: 12px; }
+    .wbv-brand-tag { display: none; }
+  }
+
+  /* ------------ WHILE YOU'RE HERE / ISLAND GUIDE SECTION ------------ */
+  .while-here {
+    background: var(--sand);
+    border-top: 1px solid var(--line);
+    padding: 80px 24px 0;
+  }
+  .while-here-inner { max-width: 1100px; margin: 0 auto; }
+  .while-here-intro {
+    max-width: 720px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+  .while-here-intro p {
+    color: var(--ink-soft);
+    font-size: 17px;
+  }
+
+  /* Area cards (4 neighborhoods) */
+  .area-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 56px;
+  }
+  .area-card {
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--ocean);
+    border-radius: 4px;
+    padding: 22px 20px;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+  .area-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -12px rgba(45, 156, 219, 0.2);
+  }
+  .area-card[data-area="white-bay"] { border-top-color: var(--teal); }
+  .area-card[data-area="great-harbour"] { border-top-color: var(--ocean); }
+  .area-card[data-area="little-harbour"] { border-top-color: var(--gold); }
+  .area-card[data-area="east-end"] { border-top-color: var(--ink-soft); }
+  .area-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .area-card .count {
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 12px;
+  }
+  .area-card p {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+
+  /* Filter chips */
+  .filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+    padding: 16px;
+    background: var(--sand-dark);
+    border-radius: 4px;
+  }
+  .filter-chip {
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    padding: 9px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    font-family: inherit;
+  }
+  .filter-chip:hover { border-color: var(--ocean); color: var(--ocean); }
+  .filter-chip.active {
+    background: var(--ocean);
+    color: white;
+    border-color: var(--ocean);
+  }
+  .filter-chip .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  /* Venue grid */
+  .venue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .venue-card {
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px;
+    transition: all 0.22s ease;
+    position: relative;
+  }
+  .venue-card:hover {
+    border-color: var(--ocean);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -16px rgba(45, 156, 219, 0.25);
+  }
+  .venue-card.featured {
+    border-top: 4px solid var(--gold);
+    padding-top: 19px;
+  }
+  .venue-card.hidden { display: none; }
+  .venue-card-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .map-ref {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--gold);
+    color: var(--ink);
+    border-radius: 50%;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .venue-area-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+  .venue-area-tag.white-bay { background: var(--teal); color: var(--ink); }
+  .venue-area-tag.great-harbour { background: var(--ocean); color: white; }
+  .venue-area-tag.little-harbour { background: var(--gold); color: var(--ink); }
+  .venue-area-tag.east-end { background: var(--ink-soft); color: white; }
+  .venue-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .venue-card .vibe {
+    font-size: 11px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .venue-card p.blurb {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .venue-meta {
+    border-top: 1px solid var(--line);
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  .venue-meta a {
+    color: var(--ocean);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid currentColor;
+  }
+  .venue-meta a:hover { color: var(--ocean-deep); }
+  .featured-badge {
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  .full-guide-link {
+    text-align: center;
+    padding: 18px;
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: 56px;
+  }
+  .full-guide-link a {
+    color: var(--ocean);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 1px solid currentColor;
+  }
+  .full-guide-link a:hover { color: var(--ocean-deep); }
+
+  /* ------------ STICKY PAGE SUBMENU ------------ */
+  .page-submenu {
+    position: sticky;
+    top: 73px; /* sits below the WBV header */
+    z-index: 90;
+    background: var(--ocean);
+    border-bottom: 1px solid var(--ocean-deep);
+    box-shadow: 0 4px 18px -8px rgba(0, 0, 0, 0.15);
+  }
+  .submenu-inner {
+    max-width: 1380px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .submenu-inner::-webkit-scrollbar { display: none; }
+
+  .submenu-link {
+    flex: 1 1 0;
+    min-width: 180px;
+    padding: 18px 20px;
+    text-align: center;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+  }
+  .submenu-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .submenu-link.active {
+    color: white;
+    border-bottom-color: var(--teal);
+    background: rgba(255, 255, 255, 0.06);
+  }
+  .submenu-link .submenu-num {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 12px;
+    color: var(--teal);
+    margin-right: 8px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  /* Page section anchors need scroll offset for sticky header + submenu */
+  .page-section-anchor {
+    scroll-margin-top: 130px;
+  }
+
   /* ------------ HERO ------------ */
   .hero {
     padding: 80px 24px 56px;
@@ -1286,6 +1730,82 @@
 </head>
 <body>
 
+<!-- ============ WBV SITE HEADER ============ -->
+<header class="wbv-header">
+  <div class="wbv-header-inner">
+    <a class="wbv-brand" href="https://www.jostvandyke.com/" aria-label="White Bay Villas home">
+      <span class="wbv-logo">WBV</span>
+      <span class="wbv-brand-text">
+        <span class="wbv-brand-name">White Bay Villas</span>
+        <span class="wbv-brand-tag">Jost Van Dyke · BVI</span>
+      </span>
+    </a>
+
+    <nav>
+      <ul class="wbv-nav">
+        <li class="wbv-nav-item has-children">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/">Stay</a>
+          <ul class="wbv-dropdown">
+            <li><a href="https://www.jostvandyke.com/">Properties Overview</a></li>
+            <li><a href="https://www.jostvandyke.com/palm-villa">Palm Villa</a></li>
+            <li><a href="https://www.jostvandyke.com/sunset-villa-east">Sunset Villa East</a></li>
+            <li><a href="https://www.jostvandyke.com/sunset-villa-west">Sunset Villa West</a></li>
+            <li><a href="https://www.jostvandyke.com/the-hideaway">The Hideaway</a></li>
+            <li><a href="https://www.jostvandyke.com/hillside-villas">Hillside Villas (4)</a></li>
+            <li><a href="https://www.jostvandyke.com/paradise-villas">Paradise Villas (8)</a></li>
+            <li><a href="https://www.jostvandyke.com/seaside-cottages">Seaside Cottages (3)</a></li>
+          </ul>
+        </li>
+        <li class="wbv-nav-item">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/beachclub">Beach Club</a>
+        </li>
+        <li class="wbv-nav-item">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/dining">Alice's</a>
+        </li>
+        <li class="wbv-nav-item">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/activities">Activities</a>
+        </li>
+        <li class="wbv-nav-item">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/retreats">Retreats</a>
+        </li>
+        <li class="wbv-nav-item has-children">
+          <a class="wbv-nav-link" href="#">Plan Your Visit</a>
+          <ul class="wbv-dropdown">
+            <li><a href="#section-getting-here">Getting Here</a></li>
+            <li><a href="#section-while-here">While You're Here</a></li>
+            <li><a href="#section-getting-back">Getting Back</a></li>
+            <li><a href="https://www.jostvandyke.com/frequently-asked-questions">FAQ</a></li>
+          </ul>
+        </li>
+        <li class="wbv-nav-item">
+          <a class="wbv-nav-link" href="https://www.jostvandyke.com/contact-us">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <a class="wbv-cta" href="https://www.jostvandyke.com/booking">Book Now</a>
+    <button class="wbv-mobile-toggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<!-- ============ STICKY PAGE SUBMENU ============ -->
+<nav class="page-submenu" aria-label="Page sections">
+  <div class="submenu-inner">
+    <a class="submenu-link active" data-target="section-getting-here" href="#section-getting-here">
+      <span class="submenu-num">01</span>Getting Here
+    </a>
+    <a class="submenu-link" data-target="section-while-here" href="#section-while-here">
+      <span class="submenu-num">02</span>While You're Here
+    </a>
+    <a class="submenu-link" data-target="section-getting-back" href="#section-getting-back">
+      <span class="submenu-num">03</span>Getting Back
+    </a>
+  </div>
+</nav>
+
+<!-- ============ SECTION 01: GETTING HERE ============ -->
+<div id="section-getting-here" class="page-section-anchor"></div>
+
 <!-- HERO -->
 <section class="hero">
   <p class="eyebrow">Arrivals Guide · Jost Van Dyke, BVI</p>
@@ -1792,18 +2312,6 @@
 </section>
 
 
-<!-- JVD ISLAND MAP -->
-<section class="map-section" style="background: var(--sand-light);">
-  <div class="section-header">
-    <p class="num">— The last mile</p>
-    <h2 class="serif">Once your ferry docks at Great Harbour…</h2>
-    <p>You're already 95% there. A 5-minute taxi or 15-minute walk over the hill, and you're at White Bay Villas.</p>
-  </div>
-  <div class="map-wrap" id="jvd-map-wrap">
-    <img src="assets/jvd-island-map-only.jpg" alt="Aerial map of Jost Van Dyke showing White Bay Villas and points of interest" />
-  </div>
-</section>
-
 <!-- PROPERTY AERIAL - the "you've arrived" moment - real WBV property map -->
 <div class="photo-strip property-aerial">
   <img src="assets/wbv-property-aerial.jpg" alt="Aerial photo of White Bay Villas property showing the villas, beach club, and Alice's restaurant" />
@@ -1833,6 +2341,76 @@
     </div>
   </div>
 </section>
+
+
+<!-- ============ SECTION 02: WHILE YOU'RE HERE ============ -->
+<div id="section-while-here" class="page-section-anchor"></div>
+<section class="while-here">
+  <div class="while-here-inner">
+    <div class="section-header">
+      <p class="num">— Now that you're here</p>
+      <h2 class="serif">Where to eat & drink on Jost.</h2>
+    </div>
+    <div class="while-here-intro">
+      <p>Most of these places don't have a website. Some don't have menus. None of them care about reservations the way the mainland does. Here's our shortlist — every bar, every kitchen, every Painkiller worth ordering.</p>
+    </div>
+
+    <!-- Area overview cards -->
+    <div class="area-grid">
+      <button class="area-card" data-area="white-bay" onclick="filterVenuesTo('white-bay')">
+        <h3 class="serif">White Bay</h3>
+        <p class="count">7 venues · home base</p>
+        <p>The famous beach. Painkillers, beach bars, sand between your toes. You're already here.</p>
+      </button>
+      <button class="area-card" data-area="great-harbour" onclick="filterVenuesTo('great-harbour')">
+        <h3 class="serif">Great Harbour</h3>
+        <p class="count">5 venues · main town</p>
+        <p>Where the ferry docks and where Foxy lives. The most variety, the best after-dinner energy.</p>
+      </button>
+      <button class="area-card" data-area="little-harbour" onclick="filterVenuesTo('little-harbour')">
+        <h3 class="serif">Little Harbour</h3>
+        <p class="count">3 venues · sailors' favorite</p>
+        <p>Quieter bay just east. Three legendary lobster spots. The locals' choice.</p>
+      </button>
+      <button class="area-card" data-area="east-end" onclick="filterVenuesTo('east-end')">
+        <h3 class="serif">East End</h3>
+        <p class="count">2 venues · adventure stop</p>
+        <p>Diamond Cay and Little Jost. Pair with a hike to the Bubbly Pool.</p>
+      </button>
+    </div>
+
+    <!-- Island map (numbered POIs) -->
+    <div class="map-wrap" style="margin-bottom: 16px;">
+      <img src="assets/jvd-island-map-only.jpg" alt="Aerial map of Jost Van Dyke with all bars, restaurants, and points of interest numbered" style="width: 100%; height: auto; display: block; border-radius: 2px;" />
+    </div>
+    <p class="map-caption" style="text-align:center; font-size:13px; color:var(--ink-soft); font-style:italic; margin-bottom: 16px;">All 13 points of interest. Numbers below each venue card match the pins above.</p>
+
+    <div class="map-wrap" style="margin-bottom: 40px;">
+      <img src="assets/jvd-white-bay-zoom.jpg" alt="Close-up satellite view of White Bay showing each beach bar from Gertrude's in the west to Ivan's in the east" style="width: 100%; height: auto; display: block; border-radius: 2px;" />
+    </div>
+
+    <!-- Filter chips -->
+    <div class="filter-bar" role="tablist">
+      <button class="filter-chip active" data-filter="all" onclick="filterVenuesTo('all')">All venues</button>
+      <button class="filter-chip" data-filter="white-bay" onclick="filterVenuesTo('white-bay')"><span class="dot" style="background:var(--teal)"></span>White Bay</button>
+      <button class="filter-chip" data-filter="great-harbour" onclick="filterVenuesTo('great-harbour')"><span class="dot" style="background:var(--ocean)"></span>Great Harbour</button>
+      <button class="filter-chip" data-filter="little-harbour" onclick="filterVenuesTo('little-harbour')"><span class="dot" style="background:var(--gold)"></span>Little Harbour</button>
+      <button class="filter-chip" data-filter="east-end" onclick="filterVenuesTo('east-end')"><span class="dot" style="background:var(--ink-soft)"></span>East End</button>
+    </div>
+
+    <div class="venue-grid" id="venue-grid">
+      <!-- Injected by JS -->
+    </div>
+
+    <div class="full-guide-link">
+      <a href="https://bofilltech.github.io/concepts/wbv-jvd-guide/">See the full Eat & Drink Guide — local tips, pro advice, and more →</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ SECTION 03: GETTING BACK ============ -->
+<div id="section-getting-back" class="page-section-anchor"></div>
 
 <!-- ============ GETTING BACK SECTION ============ -->
 <section class="return-section">
@@ -2117,23 +2695,158 @@
 <p class="footnote">Ferry schedules, water taxi availability, and customs fees are set by third parties and can change. Always confirm directly with the operator within 48 hours of travel. A valid passport is required for all USVI ↔ BVI crossings.</p>
 
 <script>
-  // ============ TAB SWITCHING ============
+  // ============ TAB SWITCHING (Getting Here & Getting Back) ============
   document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.dataset.tab;
       const scope = btn.closest('.tabs-section');
-      // Update buttons in this tab group
       scope.querySelectorAll('.tab-btn').forEach(b => {
         const isActive = b.dataset.tab === target;
         b.classList.toggle('active', isActive);
         b.setAttribute('aria-selected', isActive);
       });
-      // Update panels in this tab group
       scope.querySelectorAll('.tab-panel').forEach(p => {
         p.classList.toggle('active', p.id === `tab-${target}` || p.id === `tab-back-${target}`);
       });
     });
   });
+
+  // ============ STICKY SUBMENU SCROLL-SPY ============
+  const submenuLinks = document.querySelectorAll('.submenu-link');
+  const sectionAnchors = ['section-getting-here', 'section-while-here', 'section-getting-back']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+
+  function updateActiveSubmenu() {
+    // Find which section is currently in view (based on top of viewport + offset)
+    const offset = 200; // account for sticky header + submenu height
+    let currentId = sectionAnchors[0]?.id;
+    for (const anchor of sectionAnchors) {
+      const rect = anchor.getBoundingClientRect();
+      if (rect.top - offset <= 0) {
+        currentId = anchor.id;
+      }
+    }
+    submenuLinks.forEach(link => {
+      link.classList.toggle('active', link.dataset.target === currentId);
+    });
+  }
+
+  // Smooth scroll on submenu click (the browser default works fine with scroll-margin-top,
+  // but we update the active class immediately for snappier feel)
+  submenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      submenuLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  window.addEventListener('scroll', updateActiveSubmenu, { passive: true });
+  updateActiveSubmenu();
+
+  // ============ VENUE DATA (While You're Here / Island Guide) ============
+  const venues = [
+    // White Bay
+    { id: 'alices', area: 'white-bay', name: "Alice's at White Bay Beach Club", mapRef: '★', vibe: 'On-property · farm-to-table · open all day', featured: true,
+      blurb: "Our own beachfront kitchen and bar at White Bay Villas. Artisan menu, ingredients sourced on-island first. Stop in before or after the beach — or both.",
+      phone: null, note: 'Booked through your villa concierge' },
+    { id: 'soggy-dollar', area: 'white-bay', name: 'Soggy Dollar Bar', mapRef: '9', vibe: 'Iconic · home of the Painkiller · daytime', featured: true,
+      blurb: "The most famous beach bar in the BVI, where the original Painkiller cocktail was invented. Walk in, swim up, sit on the sand.",
+      phone: '+1-284-495-9888', note: 'Reservations not needed · cash & cards' },
+    { id: 'hendos', area: 'white-bay', name: "Hendo's Hideout", mapRef: '8', vibe: 'Beach bar · upscale · sunset food',
+      blurb: "Right next door to Soggy Dollar — orange loungers. Better food than most beach bars, killer cocktails, hammocks in the palms. Sushi night Thursday, Sunday brunch.",
+      phone: '+1-284-340-0074' },
+    { id: 'one-love', area: 'white-bay', name: 'One Love Bar & Grill', mapRef: '7', vibe: 'Beach bar · Foxy family · daytime only',
+      blurb: "Founded by Foxy's son. Lobster quesadillas, sushi tuna, sunny attitude. Daytime only.",
+      phone: null, note: 'No published number · walk-up' },
+    { id: 'gertrudes', area: 'white-bay', name: "Gertrude's Beach Bar", mapRef: '6', vibe: 'West Indian · family-run · open early',
+      blurb: "Open from 7 or 8 AM until the last person leaves. Real West Indian fare, run by people who've been doing it forever. Breakfast is the secret.",
+      phone: '+1-284-495-9104' },
+    { id: 'ivans', area: 'white-bay', name: "Ivan's Stress Free Bar", mapRef: '5', vibe: 'Beach bar · low-key · honor-system roots',
+      blurb: "Far end of the bay, away from the crowds. Tire swing, sunbeds, cold drinks. Camping available too.",
+      phone: '+1-284-540-0676' },
+    { id: 'coco-loco', area: 'white-bay', name: "Coco Loco's", mapRef: '6', vibe: 'Hidden gem · West Indian · lunch & dinner',
+      blurb: "Far end of White Bay. Quieter, more local, with Tina running a real kitchen. Caribbean and North American dishes.",
+      phone: '+1-284-495-0013' },
+
+    // Great Harbour
+    { id: 'foxys', area: 'great-harbour', name: "Foxy's", mapRef: '2', vibe: 'Legendary · live music · Fri/Sat BBQ', featured: true,
+      blurb: "Most famous bar on the island. Friday and Saturday BBQ buffet is essential. Live music, dancing. Reservations strongly recommended.",
+      phone: '+1-284-442-3074', website: 'https://www.foxysbvi.com/' },
+    { id: 'corsairs', area: 'great-harbour', name: "Corsair's Beach Bar & Restaurant", mapRef: '3', vibe: 'International · seafood & pasta · sunset',
+      blurb: "Vinny runs the place — vintage US Army jeep, quick story, even quicker smile. Seafood, pasta, Mexican, BVI specialties.",
+      phone: '+1-284-495-9294', website: 'https://www.corsairsbvi.com' },
+    { id: 'ali-babas', area: 'great-harbour', name: "Ali Baba's", mapRef: '3', vibe: 'Lunch & dinner · classic Jost · grilled lobster',
+      blurb: "Great Harbour staple. Chicken roti at lunch, grilled lobster at dinner. Monday Pig Roast in season is the move.",
+      phone: '+1-284-495-9280' },
+    { id: 'tipsy-shark', area: 'great-harbour', name: 'Tipsy Shark Bar & Café', mapRef: '3', vibe: 'Family-run · breakfast standout',
+      blurb: "Two minutes from the ferry. Breakfast is exceptional — fresh, locally sourced. Bar inside, water-edge tables outside.",
+      phone: '+1-284-541-0500' },
+    { id: 'christines', area: 'great-harbour', name: "Christine's Bakery", mapRef: '4', vibe: 'Bakery · breakfast · provisioning',
+      blurb: "If your villa has a kitchen, this is your morning stop. Fresh bread, pastries, johnny cakes.",
+      phone: '+1-284-495-9281' },
+
+    // Little Harbour
+    { id: 'sidneys', area: 'little-harbour', name: "Sidney's Peace & Love", mapRef: '11', vibe: 'Lobster · honor-system bar', featured: true,
+      blurb: "Famous for all-you-can-eat lobster nights twice weekly, and an honor-system bar where you pour your own.",
+      phone: '+1-284-495-9271' },
+    { id: 'harris', area: 'little-harbour', name: "Harris' Place", mapRef: '11', vibe: 'West Indian · breakfast lunch dinner',
+      blurb: "Cynthia and family running real Caribbean hospitality. Lobster, fish, conch, ribs — all done right. Monday lobster dinner is renowned.",
+      phone: '+1-284-495-9295' },
+    { id: 'abes', area: 'little-harbour', name: "Abe's by the Sea", mapRef: '11', vibe: 'Native bar & grill · Sunday pig roast',
+      blurb: "Big Abe and Eunicy run a place that feels like dinner at someone's home. Sunday pig roast is a Jost institution.",
+      phone: '+1-284-495-9329' },
+
+    // East End
+    { id: 'foxys-taboo', area: 'east-end', name: "Foxy's Taboo", mapRef: '12', vibe: 'Mediterranean · upscale · day-trip-worthy', featured: true,
+      blurb: "Sister property to Foxy's, on the eastern end at Diamond Cay. Refined menu, best burgers and salads on the island. Pair with the Bubbly Pool hike.",
+      phone: '+1-284-442-3074', website: 'https://www.foxysbvi.com/foxys-taboo/' },
+    { id: 'b-line', area: 'east-end', name: 'B-Line Beach Bar', mapRef: '10', vibe: 'Adventure spot · on Little Jost · corn hole',
+      blurb: "On Little Jost Van Dyke. You'll need a dinghy or wade across at low tide. Cold beer, grilled food, beach games.",
+      phone: '+1-284-541-0177' }
+  ];
+
+  const areaNames = {
+    'white-bay': 'White Bay',
+    'great-harbour': 'Great Harbour',
+    'little-harbour': 'Little Harbour',
+    'east-end': 'East End'
+  };
+
+  function renderVenues() {
+    const grid = document.getElementById('venue-grid');
+    if (!grid) return;
+    grid.innerHTML = venues.map(v => `
+      <div class="venue-card${v.featured ? ' featured' : ''}" id="venue-${v.id}" data-area="${v.area}">
+        ${v.featured ? '<span class="featured-badge">Local Favorite</span>' : ''}
+        <div class="venue-card-header">
+          ${v.mapRef ? `<span class="map-ref" title="Pin ${v.mapRef} on the island map above">${v.mapRef}</span>` : ''}
+          <span class="venue-area-tag ${v.area}">${areaNames[v.area]}</span>
+        </div>
+        <h4 class="serif">${v.name}</h4>
+        <p class="vibe">${v.vibe}</p>
+        <p class="blurb">${v.blurb}</p>
+        <div class="venue-meta">
+          ${v.phone ? `<span><strong>Call:</strong> <a href="tel:${v.phone.replace(/\D/g,'')}">${v.phone}</a></span>` : ''}
+          ${v.website ? `<span><a href="${v.website}" target="_blank" rel="noopener">visit site →</a></span>` : ''}
+          ${v.note ? `<span style="color:var(--ink-soft);font-style:italic;">${v.note}</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterVenuesTo(area) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.dataset.filter === area));
+    document.querySelectorAll('.venue-card').forEach(c => {
+      const show = area === 'all' || c.dataset.area === area;
+      c.classList.toggle('hidden', !show);
+    });
+    if (area !== 'all') {
+      document.querySelector('.filter-bar').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  renderVenues();
 </script>
 
 </body>
