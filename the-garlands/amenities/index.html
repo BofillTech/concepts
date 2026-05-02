@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amenities — The Garlands on Nantucket Sound</title>
+<meta name="description" content="In-unit amenities and on-property features at The Garlands on Nantucket Sound — full kitchens, A/C, private balconies, oceanfront sundeck, private beach, and Cape Cod's best at the door.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=DM+Sans:opsz,wght@9..40,300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --atlantic: #0f2942;
+  --atlantic-deep: #081a2c;
+  --seafoam: #9fb8b4;
+  --seafoam-soft: #cfdbd9;
+  --sand: #f2ebde;
+  --paper: #fafaf7;
+  --coral: #d97757;
+  --coral-deep: #b85f42;
+  --ink: #1a1a1a;
+  --ink-muted: #4a4a4a;
+  --line: rgba(15, 41, 66, 0.12);
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section: clamp(4rem, 8vw, 7rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+
+/* ---------- NAV ---------- */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.25rem var(--gutter);
+  display: flex; justify-content: space-between; align-items: center;
+  transition: background .4s ease, padding .4s ease, box-shadow .4s ease;
+}
+.nav.scrolled {
+  background: rgba(250, 250, 247, 0.96);
+  backdrop-filter: blur(10px);
+  padding: .85rem var(--gutter);
+  box-shadow: 0 1px 0 var(--line);
+}
+.nav__brand {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: .01em;
+  color: #fff;
+  text-decoration: none;
+  line-height: 1;
+  transition: color .4s ease;
+}
+.nav__brand span {
+  display: block;
+  font-size: .65rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  margin-top: .35rem;
+  font-family: var(--sans);
+  font-weight: 400;
+  opacity: .85;
+}
+.nav.scrolled .nav__brand { color: var(--atlantic); }
+.nav__links {
+  display: none;
+  gap: 2rem;
+  list-style: none;
+}
+.nav__links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: .78rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color .3s ease, opacity .3s ease;
+  opacity: .88;
+}
+.nav.scrolled .nav__links a { color: var(--atlantic); }
+.nav__links a:hover { opacity: 1; color: var(--coral); }
+.nav__cta { display: flex; gap: .75rem; align-items: center; }
+.nav__phone {
+  color: #fff;
+  text-decoration: none;
+  font-size: .85rem;
+  letter-spacing: .1em;
+  display: none;
+  transition: color .4s ease;
+}
+.nav.scrolled .nav__phone { color: var(--atlantic); }
+.nav__phone:hover { color: var(--coral); }
+.book-btn {
+  display: inline-block;
+  background: var(--coral);
+  color: #fff;
+  text-decoration: none;
+  padding: .8rem 1.6rem;
+  font-size: .76rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background .3s ease, transform .3s ease;
+  font-family: var(--sans);
+}
+.book-btn:hover { background: var(--coral-deep); transform: translateY(-1px); }
+.book-btn--outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.5);
+  color: #fff;
+}
+.book-btn--outline:hover { background: #fff; color: var(--atlantic); border-color: #fff; }
+.book-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--atlantic);
+  color: var(--atlantic);
+}
+.book-btn--ghost:hover { background: var(--atlantic); color: #fff; }
+
+/* ---------- PAGE HERO ---------- */
+.page-hero {
+  position: relative;
+  height: 56vh;
+  min-height: 420px;
+  width: 100%;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.page-hero__img {
+  position: absolute; inset: 0;
+  background-image: url('../blue_loungers.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.page-hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,26,44,.45) 0%, rgba(8,26,44,.7) 100%);
+}
+.page-hero__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 var(--gutter) clamp(2.5rem, 6vh, 4rem);
+  color: #fff;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.page-hero__eyebrow {
+  font-size: .8rem;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 1.25rem;
+  color: var(--seafoam-soft);
+}
+.page-hero__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  line-height: .98;
+  letter-spacing: -.02em;
+  margin-bottom: .75rem;
+  font-variation-settings: 'opsz' 144;
+}
+.page-hero__title em { font-style: italic; color: var(--seafoam-soft); }
+.page-hero__subtitle {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  max-width: 620px;
+  opacity: .92;
+}
+
+/* ---------- INTRO ---------- */
+.intro {
+  padding: var(--section) var(--gutter);
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+.eyebrow {
+  font-size: .72rem;
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  color: var(--coral);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+.h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  color: var(--atlantic);
+  font-variation-settings: 'opsz' 144;
+}
+.h2 em { font-style: italic; }
+.intro__lead {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  color: var(--ink-muted);
+  margin-top: 1.75rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
+/* ---------- AMENITY SECTION (split layout) ---------- */
+.amenity {
+  padding: var(--section) 0;
+}
+.amenity:nth-child(even) { background: var(--sand); }
+.amenity__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.amenity__media {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.amenity__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.amenity:hover .amenity__media img { transform: scale(1.04); }
+.amenity__body { display: flex; flex-direction: column; }
+.amenity__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  color: var(--atlantic);
+  margin-bottom: 1.25rem;
+  font-variation-settings: 'opsz' 144;
+}
+.amenity__title em { font-style: italic; }
+.amenity__lead {
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  margin-bottom: 1.75rem;
+  max-width: 520px;
+  line-height: 1.7;
+}
+.amenity__list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.1rem;
+  max-width: 560px;
+}
+.amenity__list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.amenity__list li:last-child { border-bottom: none; }
+.amenity__icon {
+  flex: 0 0 38px;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--coral);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 2px;
+}
+.amenity__icon svg {
+  width: 18px; height: 18px;
+  stroke: currentColor; fill: none;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
+}
+.amenity__list-text { flex: 1; }
+.amenity__list-text strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.15rem;
+  color: var(--atlantic);
+  margin-bottom: .25rem;
+  letter-spacing: -.005em;
+}
+.amenity__list-text span {
+  font-size: .95rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+/* ---------- BIG STATEMENT ---------- */
+.statement {
+  background: var(--atlantic);
+  color: #fff;
+  padding: var(--section) var(--gutter);
+  text-align: center;
+}
+.statement__inner { max-width: 800px; margin: 0 auto; }
+.statement .eyebrow { color: var(--seafoam); }
+.statement h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5.5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 1.25rem 0;
+  font-variation-settings: 'opsz' 144;
+}
+.statement h2 em { font-style: italic; color: var(--seafoam-soft); }
+.statement p {
+  color: var(--seafoam-soft);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 1.5rem auto 0;
+}
+
+/* ---------- NEARBY GRID ---------- */
+.nearby {
+  padding: var(--section) var(--gutter);
+  background: var(--paper);
+}
+.nearby__header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.nearby__header p {
+  margin-top: 1.25rem;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.nearby__grid {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+.nearby__item {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+.nearby__item--wide { grid-column: span 2; aspect-ratio: 16/7; }
+.nearby__img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 1.2s ease;
+}
+.nearby__item:hover .nearby__img { transform: scale(1.06); }
+.nearby__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(8,26,44,.85) 100%);
+}
+.nearby__content {
+  position: absolute;
+  bottom: 1.5rem; left: 1.5rem; right: 1.5rem;
+  z-index: 2;
+}
+.nearby__content .eyebrow {
+  color: var(--seafoam-soft);
+  font-size: .65rem;
+  letter-spacing: .35em;
+  margin-bottom: .35rem;
+}
+.nearby__content h3 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.25rem, 2.5vw, 1.85rem);
+  line-height: 1.1;
+  font-variation-settings: 'opsz' 144;
+}
+.nearby__content h3 em { font-style: italic; }
+
+/* ---------- IN-UNIT QUICK LIST ---------- */
+.in-unit-summary {
+  padding: var(--section) var(--gutter);
+  background: var(--sand);
+}
+.in-unit-summary__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: center;
+}
+.in-unit-summary__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem 2rem;
+  margin-top: 4rem;
+}
+.in-unit-summary__item .ic {
+  width: 56px; height: 56px;
+  margin: 0 auto 1.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--atlantic);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--atlantic);
+}
+.in-unit-summary__item .ic svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.in-unit-summary__item h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--atlantic);
+  margin-bottom: .35rem;
+  font-variation-settings: 'opsz' 144;
+}
+.in-unit-summary__item p {
+  font-size: .92rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  max-width: 240px;
+  margin: 0 auto;
+}
+
+/* ---------- FINALE ---------- */
+.finale {
+  position: relative;
+  height: 60vh;
+  min-height: 460px;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.finale__img {
+  position: absolute; inset: 0;
+  background-image: url('../sunset_deck.jpg');
+  background-size: cover;
+  background-position: center;
+}
+.finale__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(8,26,44,.4) 0%, rgba(8,26,44,.85) 100%);
+}
+.finale__content {
+  position: relative; z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 var(--gutter);
+  color: #fff;
+}
+.finale .eyebrow { color: var(--seafoam); }
+.finale h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.05;
+  letter-spacing: -.02em;
+  margin: 1rem 0 1.25rem;
+  max-width: 760px;
+  font-variation-settings: 'opsz' 144;
+}
+.finale h2 em { font-style: italic; color: var(--seafoam-soft); }
+.finale p { font-size: 1.1rem; margin-bottom: 2rem; opacity: .9; max-width: 540px; }
+.finale__buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- FOOTER ---------- */
+.footer {
+  background: var(--atlantic);
+  color: var(--seafoam-soft);
+  padding: 4rem var(--gutter) 2rem;
+}
+.footer__grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.footer__brand-name {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #fff;
+  font-variation-settings: 'opsz' 144;
+}
+.footer__brand-name span { display: block; font-size: .85rem; font-style: italic; opacity: .85; margin-top: .25rem; }
+.footer__brand p { margin-top: 1rem; font-size: .9rem; opacity: .7; max-width: 280px; font-style: italic; font-family: var(--serif); }
+.footer h5 {
+  font-size: .7rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--seafoam);
+  font-weight: 500;
+  margin-bottom: 1.25rem;
+}
+.footer p, .footer a { font-size: .92rem; opacity: .85; line-height: 1.7; }
+.footer a { color: var(--seafoam-soft); text-decoration: none; transition: color .2s ease; }
+.footer a:hover { color: #fff; }
+.footer ul { list-style: none; }
+.footer ul li { margin-bottom: .35rem; }
+.footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: .78rem;
+  opacity: .55;
+}
+
+/* ---------- BOOKING BAR ---------- */
+.booking-bar {
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  transform: translate(-50%, calc(100% + 2rem));
+  z-index: 90;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(8,26,44,.18);
+  padding: .75rem;
+  display: flex; gap: .5rem; align-items: center;
+  transition: transform .5s cubic-bezier(.4, 0, .2, 1);
+  max-width: calc(100% - 2rem);
+  flex-wrap: wrap;
+}
+.booking-bar.show { transform: translate(-50%, 0); }
+.booking-bar__field {
+  display: flex; flex-direction: column;
+  padding: .35rem .85rem;
+  border-right: 1px solid var(--line);
+}
+.booking-bar__field:last-of-type { border-right: none; }
+.booking-bar__label {
+  font-size: .6rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  font-weight: 500;
+}
+.booking-bar__value {
+  font-family: var(--serif);
+  font-size: .95rem;
+  color: var(--atlantic);
+}
+.booking-bar .book-btn { padding: .75rem 1.25rem; font-size: .7rem; }
+
+/* ---------- REVEAL ---------- */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ---------- RESPONSIVE ---------- */
+@media (min-width: 720px) {
+  .nearby__grid { grid-template-columns: repeat(3, 1fr); }
+  .nearby__item--wide { grid-column: span 3; }
+  .in-unit-summary__grid { grid-template-columns: repeat(4, 1fr); }
+}
+@media (min-width: 900px) {
+  .nav__links { display: flex; }
+  .nav__phone { display: inline-flex; }
+
+  .amenity__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 5vw, 4.5rem);
+  }
+  .amenity--reverse .amenity__media { order: 2; }
+  .amenity--reverse .amenity__body { order: 1; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="../" class="nav__brand">The Garlands<span>on Nantucket Sound</span></a>
+  <ul class="nav__links">
+    <li><a href="../rooms/">Rooms</a></li>
+    <li><a href="../room-tours/">Room Tours</a></li>
+    <li><a href="../amenities/">Amenities</a></li>
+    <li><a href="../#gallery">Gallery</a></li>
+    <li><a href="../policies/">Policies</a></li>
+    <li><a href="../#location">Contact</a></li>
+  </ul>
+  <div class="nav__cta">
+    <a href="tel:15083986987" class="nav__phone">508.398.6987</a>
+    <a href="https://secure.webrez.com/hotel/3342" class="book-btn">Book Now</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero__img"></div>
+  <div class="page-hero__overlay"></div>
+  <div class="page-hero__content">
+    <div class="page-hero__eyebrow">What's Included</div>
+    <h1 class="page-hero__title">Amenities &amp; <em>Features</em></h1>
+    <p class="page-hero__subtitle">The simple things, done well. Everything you actually need for a quiet week by the water.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="eyebrow reveal">Where comfort meets the coast</div>
+  <h2 class="h2 reveal">A small place that <em>thinks of everything.</em></h2>
+  <p class="intro__lead reveal">Twenty oceanfront and ocean-view condos, a private beach, a generous oceanfront sundeck, and a Cape Cod town with whale-watching, day trips, and good food just minutes away. Here's everything that comes with your stay.</p>
+</section>
+
+<!-- AMENITY 1 — IN YOUR UNIT -->
+<section class="amenity">
+  <div class="amenity__inner reveal">
+    <div class="amenity__media">
+      <img src="../kitchenette.jpg" alt="Full kitchenette inside a Garlands suite">
+    </div>
+    <div class="amenity__body">
+      <div class="eyebrow">In Your Unit</div>
+      <h2 class="amenity__title">A real kitchen, <em>your own balcony,</em> and the air just right.</h2>
+      <p class="amenity__lead">Every condo at The Garlands is set up for actual living &mdash; not just sleeping. Cook breakfast at your own pace, work or stream from anywhere in the unit, and crack the slider to a balcony or patio when you need a minute with the water.</p>
+      <ul class="amenity__list">
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Air conditioning in every unit</strong>
+            <span>Newly added across the entire property &mdash; every unit stays cool through the hottest Cape Cod afternoons.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M3 11h18M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M5 11v8h14v-8M9 7v4M15 7v4"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Full kitchenette</strong>
+            <span>Stovetop, microwave, fridge, coffee maker, dishes, and pans. Everything you need for groceries-not-takeout mornings and family dinners by the water.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 19h20M8 23h8"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Cable TV &amp; Wi-Fi</strong>
+            <span>Reliable connectivity throughout the property &mdash; for work-from-water days, rainy-afternoon movies, and keeping the kids occupied between beach runs.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-5 7 5v10M9 21v-7h6v7"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Private patio or balcony</strong>
+            <span>Most face the Sound directly, others look over the lawn or sundeck. Either way, the door opens to the salt air.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Private bathroom</strong>
+            <span>Full bath in every unit. No shared spaces, no hallway shuffles &mdash; the whole place is yours.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITY 2 — ON THE PROPERTY -->
+<section class="amenity">
+  <div class="amenity__inner amenity--reverse reveal">
+    <div class="amenity__media">
+      <img src="../garlands_sign.jpg" alt="The Garlands beach access sign — reserved for guests">
+    </div>
+    <div class="amenity__body">
+      <div class="eyebrow">On the Property</div>
+      <h2 class="amenity__title">A private beach, an oceanfront sundeck, and the <em>whole Sound</em> in front of you.</h2>
+      <p class="amenity__lead">The Garlands sits on a quiet stretch of Nantucket Sound with the kind of warm, calm swimming water Cape Cod's south shore is famous for. Step off the deck and you're on the sand &mdash; and the sand is yours.</p>
+      <ul class="amenity__list">
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M2 18h20M2 14c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1M2 22h20"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Private beach</strong>
+            <span>Reserved for registered guests. No crowds, no parking battles, no fight for a spot &mdash; just a clean stretch of Nantucket Sound, soft sand, and a chair waiting for you.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M3 12l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M3 18l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2M3 6l2-2 2 2 2-2 2 2 2-2 2 2 2-2 2 2"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Oceanfront sundeck</strong>
+            <span>A generous shared deck with chairs and chaise lounges that look straight out at the Sound. Coffee in the morning, cocktails at sunset, kids in and out from the beach below.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M3.5 7l5 3M15.5 14l5 3M3.5 17l5-3M15.5 10l5-3"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Direct beach access</strong>
+            <span>Stairs from the sundeck go straight to the sand. No streets to cross, no walks to the water &mdash; the kids can come and go all day.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M3 7l9-4 9 4M3 7v14M21 7v14M9 21v-7h6v7M7 11h.01M11 11h.01M15 11h.01"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Generous lawn &amp; outdoor seating</strong>
+            <span>Adirondack chairs, picnic tables, and quiet spots to read. Plenty of room for a beach day that doesn't actually involve sand.</span>
+          </div>
+        </li>
+        <li>
+          <div class="amenity__icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="amenity__list-text">
+            <strong>Free, on-site parking</strong>
+            <span>One spot per unit, included. Pull in, unload, and don't move the car again until you have to.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- BIG STATEMENT -->
+<section class="statement">
+  <div class="statement__inner reveal">
+    <div class="eyebrow">No fuss, no minimums</div>
+    <h2>One night or one <em>month.</em><br>Whatever you came for.</h2>
+    <p>There's no minimum stay required at The Garlands. Come for a long weekend, a full week, or one quiet night in shoulder season. The deck is ready. The water's warm.</p>
+  </div>
+</section>
+
+<!-- IN-UNIT QUICK SUMMARY -->
+<section class="in-unit-summary">
+  <div class="in-unit-summary__inner">
+    <div class="eyebrow reveal">In every unit, no exceptions</div>
+    <h2 class="h2 reveal">The <em>essentials</em>, included.</h2>
+
+    <div class="in-unit-summary__grid">
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+        <h4>Air Conditioning</h4>
+        <p>Now in every condo, property-wide</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 11h18M5 11V8a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v3M5 11v8h14v-8"/></svg></div>
+        <h4>Full Kitchenette</h4>
+        <p>Stove, microwave, fridge, coffee, dishes</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 19h20M8 23h8"/></svg></div>
+        <h4>Cable TV &amp; Wi-Fi</h4>
+        <p>Reliable connectivity in every room</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V11l7-5 7 5v10M9 21v-7h6v7"/></svg></div>
+        <h4>Private Balcony or Patio</h4>
+        <p>Open the slider, hear the water</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4>Private Bathroom</h4>
+        <p>Full bath in every unit</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M2 18h20M2 14c2 0 2-1 4-1s2 1 4 1 2-1 4-1 2 1 4 1 2-1 4-1"/></svg></div>
+        <h4>Private Beach Access</h4>
+        <p>For registered guests only</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h4>Free Parking</h4>
+        <p>One spot per unit, on-site</p>
+      </div>
+      <div class="in-unit-summary__item reveal">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h6l3-9 6 18 3-9h3"/></svg></div>
+        <h4>No Minimum Stay</h4>
+        <p>One night, one week, one month</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEARBY -->
+<section class="nearby">
+  <div class="nearby__header reveal">
+    <div class="eyebrow">The Neighborhood</div>
+    <h2 class="h2">Quiet shore. <em>Whole Cape</em> at the door.</h2>
+    <p>Dennis Port is a true family beach town &mdash; calm, walkable, unhurried. The rest of Cape Cod is minutes away when you want it.</p>
+  </div>
+
+  <div class="nearby__grid">
+    <a href="#" class="nearby__item nearby__item--wide reveal">
+      <div class="nearby__img" style="background-image:url('../beach_jetty.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">5 min</div>
+        <h3>West Dennis <em>Beach</em></h3>
+      </div>
+    </a>
+    <a href="#" class="nearby__item reveal">
+      <div class="nearby__img" style="background-image:url('../property_from_beach.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">Seasonal</div>
+        <h3>Whale Watching <em>Tours</em></h3>
+      </div>
+    </a>
+    <a href="#" class="nearby__item reveal">
+      <div class="nearby__img" style="background-image:url('../sunrise_property.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">Day Trip</div>
+        <h3>Nantucket &amp; <em>The Vineyard</em></h3>
+      </div>
+    </a>
+    <a href="#" class="nearby__item reveal">
+      <div class="nearby__img" style="background-image:url('../sunset_deck.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">Outer Cape</div>
+        <h3>Provincetown <em>Day Trip</em></h3>
+      </div>
+    </a>
+    <a href="#" class="nearby__item reveal">
+      <div class="nearby__img" style="background-image:url('../lawn_chairs.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">All over</div>
+        <h3>Golf, Biking <em>&amp; Fishing</em></h3>
+      </div>
+    </a>
+    <a href="#" class="nearby__item reveal">
+      <div class="nearby__img" style="background-image:url('../interior_ahoy.jpg');"></div>
+      <div class="nearby__overlay"></div>
+      <div class="nearby__content">
+        <div class="eyebrow">Walk &amp; drive</div>
+        <h3>Dining &amp; <em>Shopping</em></h3>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FINALE -->
+<section class="finale">
+  <div class="finale__img"></div>
+  <div class="finale__overlay"></div>
+  <div class="finale__content">
+    <div class="eyebrow">Ready when you are</div>
+    <h2>Pick your dates. <em>Pick your view.</em></h2>
+    <p>The deck is set, the kitchen's stocked, and the water's right there. We'll have the balcony ready.</p>
+    <div class="finale__buttons">
+      <a href="https://secure.webrez.com/hotel/3342" class="book-btn">Check Availability</a>
+      <a href="../rooms/" class="book-btn book-btn--outline">See the Rooms</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <div class="footer__brand-name">The Garlands<span>on Nantucket Sound</span></div>
+      <p>Where comfort meets the coast.</p>
+    </div>
+    <div>
+      <h5>Find Us</h5>
+      <p>117 Old Wharf Rd.<br>Dennis Port, MA</p>
+    </div>
+    <div>
+      <h5>Get in Touch</h5>
+      <ul>
+        <li><a href="tel:15083986987">508.398.6987</a></li>
+        <li><a href="mailto:thegarlandsmotel@gmail.com">thegarlandsmotel@gmail.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Plan Your Stay</h5>
+      <ul>
+        <li><a href="https://secure.webrez.com/hotel/3342">Book Your Stay</a></li>
+        <li><a href="../rooms/">Rooms</a></li>
+        <li><a href="../room-tours/">Room Tours</a></li>
+        <li><a href="../amenities/">Amenities</a></li>
+        <li><a href="../policies/">Policies</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 The Garlands on Nantucket Sound</span>
+    <span>Concept by Bofill Technologies</span>
+  </div>
+</footer>
+
+<!-- BOOKING BAR -->
+<div class="booking-bar" id="bookingBar">
+  <div class="booking-bar__field"><span class="booking-bar__label">Check-in</span><span class="booking-bar__value">Pick a date</span></div>
+  <div class="booking-bar__field"><span class="booking-bar__label">Check-out</span><span class="booking-bar__value">Pick a date</span></div>
+  <a href="https://secure.webrez.com/hotel/3342" class="book-btn">Book</a>
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+const bookingBar = document.getElementById('bookingBar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > window.innerHeight * 0.5) bookingBar.classList.add('show');
+  else bookingBar.classList.remove('show');
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('in');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
