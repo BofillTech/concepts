@@ -6,6 +6,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 35 | The Cove at Yarmouth | West Yarmouth, MA (Cape Cod) | [coveatyarmouth.com](https://coveatyarmouth.com/) | [View →](https://bofilltech.github.io/concepts/cove-at-yarmouth/) | Coastal Modernism — migrated from Lovable to self-contained static HTML, base64 images, drone video hero, SynXis booking integration | Playfair Display + Questrial | May 03 |
 | 26 | Beachcomber Resort at Montauk | Montauk, NY | [beachcombermontauk.com](https://beachcombermontauk.com/) | [View →](https://bofilltech.github.io/concepts/beachcomber-montauk/) | Editorial Coastal (B/D Hybrid — Split-Screen + Minimal Luxury) | Fraunces + Outfit | May 03 |
 | 25 | The Atlantic Inn | Block Island (New Shoreham), RI | [atlanticinn.com](https://www.atlanticinn.com/) | [View →](https://bofilltech.github.io/concepts/atlantic-inn/) | A — Magazine/Editorial (ASH-inspired louche maximalism) | Bodoni Moda + Manrope | May 02 |
 | 1 | Waterside Inn | Chincoteague, VA | [watersideinn.biz](https://watersideinn.biz) | [View →](https://bofilltech.github.io/concepts/waterside-inn/) | A — Magazine/Editorial | Bodoni Moda + Work Sans | Mar 24 |
@@ -58,20 +59,19 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 26 | Surfside Inn & Restaurant | Montauk, NY | [surfsideinnmontauk.com](http://surfsideinnmontauk.com/) | [View →](https://bofilltech.github.io/concepts/surfside-inn/) | A — Magazine/Editorial (Coastal Heritage) — phone in nav, minimal bottom booking bar, oversized italic display | Fraunces + DM Sans | Apr 27 |
 
-| 27 | Montauk Dazies | Montauk, NY | [mtkdazies.com](https://mtkdazies.com) | [View →](https://bofilltech.github.io/concepts/montauk-dazies/) | Editorial Coastal Boutique (Retail/Non-Hospitality) — typography-led, daisy SVG motif, embedded Google Maps | Fraunces + DM Sans | Apr 27 |
+| 28 | Montauk Dazies | Montauk, NY | [mtkdazies.com](https://mtkdazies.com) | [View →](https://bofilltech.github.io/concepts/montauk-dazies/) | Editorial Coastal Boutique (Retail/Non-Hospitality) — typography-led, daisy SVG motif, embedded Google Maps | Fraunces + DM Sans | Apr 27 |
 
-| 28 | Saffire — Thai Beach Bar & Restaurant | Narragansett, RI | (new restaurant — inside AquaBlue Hotel, One Beach Street) | [View →](https://bofilltech.github.io/concepts/saffire/) | Multi-Page Restaurant Site (9 pages) — dark warm aesthetic, Thai beach concept, full menus with allergen system | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
+| 29 | Saffire — Thai Beach Bar & Restaurant | Narragansett, RI | (new restaurant — inside AquaBlue Hotel, One Beach Street) | [View →](https://bofilltech.github.io/concepts/saffire/) | Multi-Page Restaurant Site (9 pages) — dark warm aesthetic, Thai beach concept, full menus with allergen system | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
 
-<<<<<<< HEAD
-| 29 | Sunrise Guest House | Montauk, NY | [sunrisebnb.com](http://sunrisebnb.com/) | [View →](https://bofilltech.github.io/concepts/sunrise-guest-house/) | A — Magazine/Editorial (The unHampton — beachy unpretentious B&B) | Fraunces + DM Sans | Apr 28 |
-| 30 | Colonial Shores Resort | Hampton Bays, NY | [colonialshoresny.com](https://www.colonialshoresny.com/) | [View →](https://bofilltech.github.io/concepts/colonial-shores/) | A — Magazine/Editorial (Bayfront Coastal Luxury) — numbered sections, italic display accents, full-bleed cinematic break | Fraunces + Manrope | Apr 28 |
+| 30 | Saffire — AquaBlue Hotel Restaurant Page | Narragansett, RI | [aquabluehotels.com](https://aquabluehotels.com/) (existing client) | [View →](https://bofilltech.github.io/concepts/saffire-aquablue/) | Single-page hotel sub-page — coastal cream aesthetic bridging hotel + restaurant brands, links to full Saffire site | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
 
-| 31 | White Sands Resort | Amagansett, NY | [whitesandsresort.com](https://whitesandsresort.com/) | [View →](https://bofilltech.github.io/concepts/white-sands/) | B — Split-Screen Narrative (Hamptons Editorial) — sticky horizontal booking bar, italic Fraunces accents, scrolling marquee ribbon | Fraunces + Karla | Apr 28 |
+| 31 | Sunrise Guest House | Montauk, NY | [sunrisebnb.com](http://sunrisebnb.com/) | [View →](https://bofilltech.github.io/concepts/sunrise-guest-house/) | A — Magazine/Editorial (The unHampton — beachy unpretentious B&B) | Fraunces + DM Sans | Apr 28 |
 
-| 32 | Uihlein's Marina &amp; Motel | Montauk, NY | [uihleinsmarina.com](https://www.uihleinsmarina.com/) | [View →](https://bofilltech.github.io/concepts/uihleins/) | Working Waterfront Editorial (Marina/Boat Service — non-hotel) — Roman numeral sections, oversized Newsreader display, buoy-red CTA, full-service marina + boat rental + motel + boatyard hybrid | Newsreader + Work Sans | Apr 29 |
+| 32 | Colonial Shores Resort | Hampton Bays, NY | [colonialshoresny.com](https://www.colonialshoresny.com/) | [View →](https://bofilltech.github.io/concepts/colonial-shores/) | A — Magazine/Editorial (Bayfront Coastal Luxury) — numbered sections, italic display accents, full-bleed cinematic break | Fraunces + Manrope | Apr 28 |
 
-| 33 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
-=======
-| 29 | Saffire — AquaBlue Hotel Restaurant Page | Narragansett, RI | [aquabluehotels.com](https://aquabluehotels.com/) (existing client) | [View →](https://bofilltech.github.io/concepts/saffire-aquablue/) | Single-page hotel sub-page — coastal cream aesthetic bridging hotel + restaurant brands, links to full Saffire site | Playfair Display + DM Sans + Cormorant Garamond | Apr 28 |
->>>>>>> 48f2bb4 (Add Saffire AquaBlue Hotel sub-page concept — single-page summary for aquabluehotels.com)
+| 33 | White Sands Resort | Amagansett, NY | [whitesandsresort.com](https://whitesandsresort.com/) | [View →](https://bofilltech.github.io/concepts/white-sands/) | B — Split-Screen Narrative (Hamptons Editorial) — sticky horizontal booking bar, italic Fraunces accents, scrolling marquee ribbon | Fraunces + Karla | Apr 28 |
+
+| 34 | Uihlein's Marina &amp; Motel | Montauk, NY | [uihleinsmarina.com](https://www.uihleinsmarina.com/) | [View →](https://bofilltech.github.io/concepts/uihleins/) | Working Waterfront Editorial (Marina/Boat Service — non-hotel) — Roman numeral sections, oversized Newsreader display, buoy-red CTA, full-service marina + boat rental + motel + boatyard hybrid | Newsreader + Work Sans | Apr 29 |
+
+| 35 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
 
