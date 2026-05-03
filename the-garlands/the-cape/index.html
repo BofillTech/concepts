@@ -567,6 +567,65 @@ img { max-width: 100%; display: block; }
   font-size: .78rem; opacity: .55;
 }
 
+/* ---------- CAPE COD OVERVIEW MAP ---------- */
+.cape-map {
+  background: var(--paper);
+  padding: var(--section) var(--gutter);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.cape-map__inner {
+  max-width: 1240px; margin: 0 auto;
+}
+.cape-map__header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+.cape-map__header p {
+  margin-top: 1.25rem;
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.cape-map__frame-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: var(--seafoam-soft);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 12px 40px rgba(8,26,44,.08);
+}
+.cape-map__frame {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+.cape-map__legend {
+  margin-top: 1.5rem;
+  display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: space-between;
+  gap: 1rem;
+  font-size: .85rem;
+  color: var(--ink-muted);
+}
+.cape-map__legend strong {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--atlantic);
+  font-weight: 400;
+}
+.cape-map__attrib {
+  font-size: .7rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  opacity: .7;
+}
+.cape-map__attrib a { color: var(--ink-muted); text-decoration: underline; }
+.cape-map__attrib a:hover { color: var(--coral); }
+
 /* ---------- REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -688,6 +747,29 @@ img { max-width: 100%; display: block; }
           </li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPE COD OVERVIEW MAP -->
+<section class="cape-map">
+  <div class="cape-map__inner">
+    <div class="cape-map__header reveal">
+      <div class="eyebrow">You Are Here</div>
+      <h2 class="h2">Where <em>Dennis Port</em> sits on the Cape.</h2>
+      <p>Right on the south shore facing Nantucket Sound &mdash; central enough that everything's a short drive, far enough that it feels like its own place.</p>
+    </div>
+    <div class="cape-map__frame-wrap reveal">
+      <iframe class="cape-map__frame"
+        width="100%" height="100%"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-70.78,41.42,-69.85,42.10&amp;layer=mapnik&amp;marker=41.6595,-70.1278"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Cape Cod overview map showing Dennis Port location"></iframe>
+    </div>
+    <div class="cape-map__legend reveal">
+      <div><strong>The Garlands</strong> &mdash; 117 Old Wharf Rd, Dennis Port, MA</div>
+      <div class="cape-map__attrib">Map &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors</div>
     </div>
   </div>
 </section>

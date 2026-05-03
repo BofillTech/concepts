@@ -249,8 +249,19 @@ img { max-width: 100%; display: block; }
   aspect-ratio: 4/3;
   overflow: hidden;
   background: var(--atlantic-deep);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: .55rem;
 }
-.amenity__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.amenity__media img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+.amenity__media img:first-child {
+  grid-row: span 2;
+}
 .amenity:hover .amenity__media img { transform: scale(1.04); }
 .amenity__body { display: flex; flex-direction: column; }
 .amenity__title {
@@ -314,6 +325,67 @@ img { max-width: 100%; display: block; }
   font-size: .95rem;
   color: var(--ink-muted);
   line-height: 1.6;
+}
+
+/* ---------- PHOTO STRIP ---------- */
+.photo-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: .25rem;
+  width: 100%;
+  height: clamp(160px, 22vw, 320px);
+  overflow: hidden;
+}
+.photo-strip__cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.photo-strip__cell img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+.photo-strip__cell:hover img { transform: scale(1.06); }
+
+/* ---------- BANNER PHOTO ---------- */
+.banner-photo {
+  position: relative;
+  height: clamp(280px, 38vw, 480px);
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.banner-photo__img {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+.banner-photo__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(8,26,44,.7) 0%, rgba(8,26,44,.2) 60%);
+}
+.banner-photo__content {
+  position: absolute; inset: 0;
+  z-index: 2;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  max-width: 1240px;
+  margin: 0 auto;
+  color: #fff;
+}
+.banner-photo__eyebrow {
+  font-size: .65rem; letter-spacing: .35em;
+  text-transform: uppercase; color: var(--seafoam-soft);
+  font-weight: 500; margin-bottom: .75rem;
+}
+.banner-photo__quote {
+  font-family: var(--serif); font-weight: 300;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+  line-height: 1.2;
+  max-width: 540px;
+  font-variation-settings: 'opsz' 144;
 }
 
 /* ---------- BIG STATEMENT ---------- */
@@ -646,6 +718,8 @@ img { max-width: 100%; display: block; }
   <div class="amenity__inner reveal">
     <div class="amenity__media">
       <img src="../kitchenette.jpg" alt="Full kitchenette inside a Garlands suite">
+      <img src="../interior_ahoy.jpg" alt="Dining nook with A/C unit and AHOY sign">
+      <img src="../bedroom_twins.jpg" alt="Bedroom with twin beds and Cape Cod decor">
     </div>
     <div class="amenity__body">
       <div class="eyebrow">In Your Unit</div>
@@ -692,11 +766,21 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
+<!-- PHOTO STRIP -->
+<div class="photo-strip reveal">
+  <div class="photo-strip__cell"><img src="../sundeck_chaises.jpg" alt="Oceanfront sundeck"></div>
+  <div class="photo-strip__cell"><img src="../property_from_beach.jpg" alt="The Garlands seen from the beach"></div>
+  <div class="photo-strip__cell"><img src="../beach_jetty.jpg" alt="Private beach with stone jetty"></div>
+  <div class="photo-strip__cell"><img src="../sunset_deck.jpg" alt="Sunset over Nantucket Sound from the deck"></div>
+</div>
+
 <!-- AMENITY 2 — ON THE PROPERTY -->
 <section class="amenity">
   <div class="amenity__inner amenity--reverse reveal">
     <div class="amenity__media">
       <img src="../garlands_sign.jpg" alt="The Garlands beach access sign — reserved for guests">
+      <img src="../blue_loungers.jpg" alt="Blue lounge chairs on the sundeck">
+      <img src="../lawn_chairs.jpg" alt="Adirondack chairs on the lawn">
     </div>
     <div class="amenity__body">
       <div class="eyebrow">On the Property</div>
@@ -800,6 +884,16 @@ img { max-width: 100%; display: block; }
         <p>One night, one week, one month</p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- BANNER PHOTO -->
+<section class="banner-photo">
+  <div class="banner-photo__img" style="background-image:url('../sunrise_property.jpg');"></div>
+  <div class="banner-photo__overlay"></div>
+  <div class="banner-photo__content">
+    <div class="banner-photo__eyebrow">From the porch, every morning</div>
+    <p class="banner-photo__quote">First light, straight through the balcony door &mdash; the kind of quiet that makes you want to whisper, even alone.</p>
   </div>
 </section>
 
