@@ -53,6 +53,7 @@
     z-index: 100;
     padding: 1.25rem var(--gutter);
     display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem;
     transition: background .35s ease, padding .35s ease, box-shadow .35s ease;
     background: linear-gradient(180deg, rgba(14,34,54,0.6) 0%, rgba(14,34,54,0) 100%);
   }
@@ -75,17 +76,18 @@
   }
   .nav-primary {
     display: none;
-    gap: 2.25rem;
+    gap: 1.6rem;
     align-items: center;
   }
   .nav-primary a {
     font-family: var(--sans);
-    font-size: .82rem;
+    font-size: .78rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 500;
     color: #fff;
     position: relative;
+    white-space: nowrap;
   }
   .nav-primary a:after {
     content: '';
@@ -978,9 +980,19 @@
 
   /* ---------- DESKTOP (1024px+) ---------- */
   @media (min-width: 1024px) {
+    .room-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ---------- WIDE DESKTOP (1200px+) — show full nav, hide header phone to make room ---------- */
+  @media (min-width: 1200px) {
     .nav-primary { display: flex; }
     .menu-toggle { display: none; }
-    .room-grid { grid-template-columns: repeat(4, 1fr); }
+    .header-phone { display: none; }
+  }
+
+  /* ---------- EXTRA WIDE (1400px+) — bring back header phone alongside full nav ---------- */
+  @media (min-width: 1400px) {
+    .header-phone { display: inline-flex; align-items: center; }
   }
 
   /* ---------- MOBILE BOOKING BAR ADJUSTMENT ---------- */
@@ -1016,7 +1028,9 @@
     <a href="#rooms">Suites</a>
     <a href="#amenities">Amenities</a>
     <a href="#gallery">Gallery</a>
-    <a href="#location">Montauk</a>
+    <a href="#explore-montauk">Explore Montauk</a>
+    <a href="#policies">Policies</a>
+    <a href="#contact">Contact</a>
   </nav>
 
   <div class="header-actions">
@@ -1036,7 +1050,9 @@
   <a href="#rooms">Suites</a>
   <a href="#amenities">Amenities</a>
   <a href="#gallery">Gallery</a>
-  <a href="#location">Montauk</a>
+  <a href="#explore-montauk">Explore Montauk</a>
+  <a href="#policies">Policies</a>
+  <a href="#contact">Contact</a>
   <div class="mobile-extras">
     <a href="tel:6316682894">631.668.2894</a>
     <a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a>
@@ -1338,7 +1354,7 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="footer">
+<footer class="footer" id="contact">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
