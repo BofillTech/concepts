@@ -769,69 +769,84 @@ img { max-width: 100%; display: block; }
   color: rgba(255,255,255,.45);
 }
 
-/* ---------- BOTTOM BOOKING BAR ---------- */
+/* ---------- BOTTOM BOOKING BAR (floating pill) ---------- */
 .booking-bar {
   position: fixed;
-  bottom: -100%;
-  left: 0; right: 0;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
   background: rgba(15, 41, 66, .96);
-  backdrop-filter: blur(10px);
-  padding: .75rem var(--gutter);
+  backdrop-filter: blur(12px);
+  padding: .55rem .55rem .55rem 1rem;
   z-index: 90;
-  transition: bottom .5s ease;
-  box-shadow: 0 -8px 30px rgba(0,0,0,.15);
+  border-radius: 999px;
+  box-shadow: 0 12px 40px rgba(8,26,44,.35), 0 0 0 1px rgba(255,255,255,.08);
+  max-width: calc(100% - 2rem);
+  opacity: 0;
+  transform: translateX(-50%) translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
 }
-.booking-bar.in { bottom: 0; }
+.booking-bar.in {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 .booking-bar__inner {
-  max-width: 720px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr auto;
-  gap: .65rem;
-  align-items: end;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 .booking-bar__field {
   display: flex;
   flex-direction: column;
   min-width: 0;
+  padding: 0 .65rem;
+  border-right: 1px solid rgba(255,255,255,.12);
 }
 .booking-bar__field label {
-  font-size: .58rem;
+  font-size: .55rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--seafoam-soft);
-  margin-bottom: .25rem;
+  margin-bottom: .15rem;
+  opacity: .75;
 }
 .booking-bar__field input {
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.15);
+  background: transparent;
+  border: none;
   color: #fff;
-  padding: .6rem .65rem;
-  font-size: .82rem;
+  padding: 0;
+  font-size: .8rem;
   font-family: var(--sans);
-  border-radius: 0;
   width: 100%;
   -webkit-appearance: none;
   appearance: none;
   color-scheme: dark;
+  cursor: pointer;
 }
-.booking-bar__field input:focus {
-  outline: none;
-  border-color: var(--coral);
-}
+.booking-bar__field input:focus { outline: none; }
 .booking-bar__btn {
   background: var(--coral);
   color: #fff;
   text-decoration: none;
-  padding: .65rem 1.4rem;
+  padding: .7rem 1.4rem;
   font-size: .72rem;
   letter-spacing: .22em;
   text-transform: uppercase;
   font-weight: 500;
   white-space: nowrap;
-  transition: background .3s ease;
+  border-radius: 999px;
+  transition: background .3s ease, transform .2s ease;
 }
-.booking-bar__btn:hover { background: var(--coral-deep); }
+.booking-bar__btn:hover { background: var(--coral-deep); transform: scale(1.03); }
+
+/* On very small screens, hide the date fields and just show "Book Now" pill */
+@media (max-width: 520px) {
+  .booking-bar { padding: .45rem .45rem .45rem .55rem; }
+  .booking-bar__field { padding: 0 .5rem; }
+  .booking-bar__field label { font-size: .5rem; }
+  .booking-bar__field input { font-size: .72rem; }
+  .booking-bar__btn { padding: .6rem 1rem; font-size: .65rem; letter-spacing: .18em; }
+}
 
 /* ---------- REVEAL ---------- */
 .reveal { opacity: 0; transform: translateY(40px); transition: opacity 1s ease, transform 1s ease; }
@@ -850,10 +865,6 @@ img { max-width: 100%; display: block; }
   .nav__phone { display: inline; }
   .rooms-preview__grid { grid-template-columns: 1fr 1fr 1fr; gap: 1rem; }
   .room-tile { aspect-ratio: 4/5; }
-  .booking-bar__inner {
-    grid-template-columns: 1fr 1fr auto auto;
-    gap: 1rem;
-  }
 }
 @media (min-width: 1024px) {
   .amenities__grid { grid-template-columns: repeat(4, 1fr); }
@@ -1219,14 +1230,9 @@ img { max-width: 100%; display: block; }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Reveal booking bar after scrolling past hero
+  // Show booking bar immediately (with brief delay for graceful entry)
   const bar = document.getElementById('bookingBar');
-  const showBar = () => {
-    const triggerY = window.innerHeight * 0.6;
-    bar.classList.toggle('in', window.scrollY > triggerY);
-  };
-  window.addEventListener('scroll', showBar, { passive: true });
-  showBar();
+  setTimeout(() => bar.classList.add('in'), 400);
 
   // Default check-in/check-out
   const today = new Date();
