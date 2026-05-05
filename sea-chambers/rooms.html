@@ -50,6 +50,11 @@
 .sc-key{display:flex;gap:16px;flex-wrap:wrap;margin:30px 0;padding:18px 24px;background:var(--mist);border-radius:8px;font-size:13px;color:var(--gray);align-items:center;}
 .sc-key strong{color:var(--dark);}
 .sc-highlight{display:inline-block;padding:4px 12px;background:rgba(91,155,213,.15);border-radius:4px;color:var(--ocean);font-size:12px;font-weight:600;}
+/* AERIAL OVERVIEW */
+.sc-aerial{margin:30px auto;max-width:1400px;}
+.sc-aerial img{width:100%;height:auto;border-radius:8px;border:1px solid var(--sand);}
+.sc-aerial figcaption{font-family:var(--font-body);font-size:12px;color:var(--gray);text-align:center;margin-top:12px;letter-spacing:.04em;}
+
 /* INTERACTIVE BUILDING MAP */
 .sc-rmap-tabs{display:flex;gap:0;justify-content:center;margin:50px auto 0;max-width:100%;border-bottom:1px solid var(--sand);}
 .sc-rmap-tab{flex:1;padding:18px 20px;background:none;border:none;border-bottom:2px solid transparent;font-family:var(--font-body);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);cursor:pointer;transition:all .25s;}
@@ -59,32 +64,26 @@
 .sc-rmap-header{padding:24px 36px 18px;border-bottom:1px solid var(--sand);background:var(--warm);}
 .sc-rmap-header h2{font-family:var(--font-display);font-size:clamp(24px,3vw,34px);font-weight:400;letter-spacing:.02em;text-transform:uppercase;color:var(--ocean-deep);margin-bottom:6px;line-height:1;}
 .sc-rmap-header p{font-family:var(--font-body);font-size:13px;color:var(--gray);max-width:700px;line-height:1.5;}
-.sc-rmap-diagram{padding:18px 36px 6px;background:var(--white);text-align:center;}
-.sc-rmap-diagram img{max-width:100%;height:auto;display:inline-block;border-radius:4px;}
-.sc-rmap-diagram-caption{font-family:var(--font-body);font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.16em;margin-top:10px;font-weight:500;}
-.sc-rmap-body{display:grid;grid-template-columns:1.4fr 1fr;gap:0;}
-.sc-rmap-grid{padding:30px 36px;border-right:1px solid var(--sand);}
-.sc-rmap-legend{display:flex;flex-wrap:wrap;gap:14px;font-family:var(--font-body);font-size:11px;color:var(--gray);letter-spacing:.04em;text-transform:uppercase;font-weight:500;margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid var(--sand);}
-.sc-rmap-legend-swatch{display:inline-block;width:14px;height:14px;border-radius:2px;margin-right:6px;vertical-align:middle;}
-.sc-rmap-legend-swatch.ocean{background:#BDD8EC;border:1px solid #7FAED1;}
-.sc-rmap-legend-swatch.standard{background:#EFEFEA;border:1px solid #D8D6CC;}
-.sc-rmap-level{margin-bottom:22px;}
-.sc-rmap-level-label{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean);margin-bottom:4px;}
-.sc-rmap-level-meta{font-family:var(--font-body);font-size:12px;color:var(--gray);margin-bottom:12px;}
-.sc-rmap-cells{display:grid;grid-template-columns:repeat(auto-fill,minmax(95px,1fr));gap:8px;}
-.sc-rmap-cell{padding:10px 6px;background:#EFEFEA;border:1px solid #D8D6CC;border-radius:4px;font-family:var(--font-body);text-align:center;cursor:pointer;transition:all .2s;color:var(--dark);}
-.sc-rmap-cell:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(42,71,100,.15);border-color:var(--ocean);}
-.sc-rmap-cell.ocean{background:#BDD8EC;border-color:#7FAED1;}
-.sc-rmap-cell.ocean:hover{background:#A5CAE3;}
-.sc-rmap-cell.active{background:var(--ocean);border-color:var(--ocean-deep);color:var(--white);transform:translateY(-2px);box-shadow:0 6px 18px rgba(42,71,100,.3);}
-.sc-rmap-cell-num{font-size:16px;font-weight:600;letter-spacing:-.01em;display:block;margin-bottom:2px;}
-.sc-rmap-cell-beds{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;opacity:.75;display:block;line-height:1.2;}
-.sc-rmap-panel{padding:30px 36px;min-height:540px;display:flex;flex-direction:column;background:var(--mist);}
+.sc-rmap-body{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;}
+.sc-rmap-diagram{padding:32px 36px;border-right:1px solid var(--sand);background:var(--mist);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;}
+.sc-rmap-diagram img{max-width:100%;height:auto;border-radius:4px;}
+.sc-rmap-diagram-caption{font-family:var(--font-body);font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.16em;margin-top:14px;font-weight:500;text-align:center;}
+.sc-rmap-chips-wrap{margin-top:22px;width:100%;}
+.sc-rmap-chips-label{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ocean);margin-bottom:10px;text-align:center;}
+.sc-rmap-chips-level{margin-bottom:14px;}
+.sc-rmap-chips-level-name{font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.sc-rmap-chips{display:flex;flex-wrap:wrap;gap:5px;}
+.sc-rmap-chip{padding:7px 12px;background:#EFEFEA;border:1px solid #D8D6CC;border-radius:99px;font-family:var(--font-body);font-size:12px;font-weight:600;color:var(--dark);cursor:pointer;transition:all .2s;letter-spacing:.02em;}
+.sc-rmap-chip:hover{transform:translateY(-1px);border-color:var(--ocean);color:var(--ocean);}
+.sc-rmap-chip.ocean{background:#BDD8EC;border-color:#7FAED1;}
+.sc-rmap-chip.ocean:hover{background:#A5CAE3;}
+.sc-rmap-chip.active{background:var(--ocean);border-color:var(--ocean-deep);color:var(--white);box-shadow:0 4px 12px rgba(42,71,100,.25);}
+.sc-rmap-panel{padding:32px 36px;min-height:540px;display:flex;flex-direction:column;background:var(--white);}
 .sc-rmap-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;text-align:center;color:var(--gray);}
 .sc-rmap-empty svg{width:60px;height:60px;color:var(--ocean-light);margin-bottom:18px;opacity:.5;}
 .sc-rmap-empty p{font-family:var(--font-body);font-size:14px;line-height:1.6;max-width:280px;}
 .sc-rmap-detail-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
-.sc-rmap-detail-tag{display:inline-block;padding:4px 10px;background:var(--white);border:1px solid var(--sand);border-radius:99px;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean-deep);}
+.sc-rmap-detail-tag{display:inline-block;padding:4px 10px;background:var(--warm);border:1px solid var(--sand);border-radius:99px;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean-deep);}
 .sc-rmap-detail-tag.ocean{background:#BDD8EC;border-color:#7FAED1;color:var(--ocean-deep);}
 .sc-rmap-detail h3{font-family:var(--font-display);font-size:clamp(28px,3.5vw,38px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;margin:6px 0 4px;line-height:1;}
 .sc-rmap-detail-subtitle{font-family:var(--font-body);font-size:14px;color:var(--gray);margin-bottom:18px;}
@@ -94,18 +93,19 @@
 .sc-rmap-photos-row img{aspect-ratio:1;}
 .sc-rmap-detail-desc{font-family:var(--font-body);font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:18px;}
 .sc-rmap-actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;}
-.sc-rmap-book{flex:1;padding:13px 22px;background:var(--ocean);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;}
-.sc-rmap-book:hover{background:var(--ocean-deep);}
-.sc-rmap-detail-link{padding:13px 18px;border:1px solid var(--sand);color:var(--ocean);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;}
-.sc-rmap-detail-link:hover{border-color:var(--ocean);background:var(--white);}
+.sc-rmap-btn{flex:1;padding:14px 22px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;}
+.sc-rmap-btn-primary{background:var(--ocean);color:var(--white);}
+.sc-rmap-btn-primary:hover{background:var(--ocean-deep);}
+.sc-rmap-btn-secondary{background:var(--white);border-color:var(--ocean);color:var(--ocean);}
+.sc-rmap-btn-secondary:hover{background:var(--ocean);color:var(--white);}
 .sc-rmap-key{padding:18px 36px 24px;background:var(--warm);font-family:var(--font-body);font-size:12px;color:var(--gray);text-align:center;border-top:1px solid var(--sand);letter-spacing:.02em;}
 .sc-rmap-key strong{color:var(--ocean-deep);font-weight:600;margin:0 4px;}
 @media(max-width:900px){
   .sc-rmap-body{grid-template-columns:1fr;}
-  .sc-rmap-grid{border-right:none;border-bottom:1px solid var(--sand);}
-  .sc-rmap-diagram{padding:14px 20px 4px;}
-  .sc-rmap-header{padding:18px 20px 14px;}
+  .sc-rmap-diagram{border-right:none;border-bottom:1px solid var(--sand);padding:24px 20px;}
+  .sc-rmap-panel{padding:24px 20px;}
   .sc-rmap-tab{font-size:10px;letter-spacing:.12em;padding:14px 8px;}
+  .sc-rmap-header{padding:18px 20px 14px;}
 }
 
 .sc-building{margin:50px 0;background:var(--white);border-radius:12px;overflow:hidden;border:1px solid var(--sand);}
@@ -152,7 +152,7 @@
 </nav>
 
 <section class="sc-rooms-hero">
-  <img src="https://bofilltech.com/wp-content/uploads/2026/03/Aerial-rooms-page-website-2026.jpg" alt="Aerial view of Sea Chambers showing all three buildings on the oceanfront">
+  <img src="img/hero/slide-3-firepit.jpg" alt="Sea Chambers oceanfront fire pits with view of the Atlantic">
   <div class="sc-rooms-hero-overlay">
     <div>
       <h1>Guest Rooms, Suites & Apartments</h1>
@@ -164,69 +164,20 @@
 <section class="sc-content">
 
   <div class="sc-section-title">
-    <p class="sc-label">Accommodations</p>
-    <h2>Choose Your <em>Room Type</em></h2>
-    <p>Every room has been newly remodeled with coastal-inspired decor, kitchenette amenities, and modern comforts.</p>
+    <p class="sc-label">Property Overview</p>
+    <h2>Three Buildings · <em>One Coastline</em></h2>
+    <p>Sea Chambers spans three buildings along Shore Road. Pick a building below to explore rooms, photos, and amenities.</p>
   </div>
 
-  <div class="sc-room-grid">
-    <div class="sc-room-card">
-      <img src="img/room-king.jpg" alt="King Guest Room with hardwood floors and ocean view" loading="lazy">
-      <div class="sc-room-body">
-        <h3>King Guest Room</h3>
-        <p>Newly remodeled with hardwood floors, king bed, kitchenette, and bright coastal decor. Many rooms offer ocean views.</p>
-        <div class="sc-room-features">
-          <span class="sc-room-feat">King Bed</span>
-          <span class="sc-room-feat">Kitchenette</span>
-          <span class="sc-room-feat">Ocean View</span>
-          <span class="sc-room-feat">WiFi</span>
-        </div>
-        <a href="https://reservations.seachambers.com" class="sc-room-link">Check Availability</a>
-      </div>
-    </div>
-    <div class="sc-room-card">
-      <img src="img/room-suite.jpg" alt="Ocean View Suite with exposed brick and sitting area" loading="lazy">
-      <div class="sc-room-body">
-        <h3>Ocean View Suite</h3>
-        <p>Charming exposed brick accents, king bed, sitting area with sleeper sofa, kitchenette, and flat-screen TV.</p>
-        <div class="sc-room-features">
-          <span class="sc-room-feat">King Bed</span>
-          <span class="sc-room-feat">Sitting Area</span>
-          <span class="sc-room-feat">Sleeper Sofa</span>
-          <span class="sc-room-feat">Ocean View</span>
-        </div>
-        <a href="https://reservations.seachambers.com" class="sc-room-link">Check Availability</a>
-      </div>
-    </div>
-    <div class="sc-room-card">
-      <img src="img/room-double.jpg" alt="Double Queen Room with kitchenette" loading="lazy">
-      <div class="sc-room-body">
-        <h3>Double Queen Room</h3>
-        <p>Spacious rooms with two queen beds, kitchenette, sitting area, and flat-screen TV. Ideal for families.</p>
-        <div class="sc-room-features">
-          <span class="sc-room-feat">2 Queen Beds</span>
-          <span class="sc-room-feat">Kitchenette</span>
-          <span class="sc-room-feat">Family Friendly</span>
-          <span class="sc-room-feat">WiFi</span>
-        </div>
-        <a href="https://reservations.seachambers.com" class="sc-room-link">Check Availability</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="sc-key">
-    <span><span class="sc-highlight">Blue Shading</span> = Ocean View</span>
-    <span><strong>K</strong> = King</span>
-    <span><strong>Q</strong> = Queen</span>
-    <span><strong>D</strong> = Double</span>
-    <span><strong>T</strong> = Trundle</span>
-    <span>Adjoining: 33A+33B, 73+74</span>
-  </div>
+  <figure class="sc-aerial">
+    <img src="img/aerial-overview.jpg" alt="Aerial overview of Sea Chambers showing the Oceanside Building, Poolside Building with Front Desk, and Inn Building across Shore Road" loading="lazy">
+    <figcaption>Aerial view — Oceanside Building (Rooms 1–42), Poolside Building (Rooms 70–78 + Front Desk), and Inn Building across Shore Road (Rooms 501–530)</figcaption>
+  </figure>
 
   <div class="sc-section-title" style="margin-top:50px;">
     <p class="sc-label">Property Map</p>
     <h2>Our Three <em>Buildings</em></h2>
-    <p>Click or tap individual room numbers on the layouts below for room details and photos.</p>
+    <p>Select any room number to see photos, bed configuration, and amenities for that specific room.</p>
   </div>
 
   <!-- INTERACTIVE BUILDING MAP -->
@@ -241,25 +192,21 @@
       <h2 id="sc-rmap-bldg-name">The Oceanside Building</h2>
       <p id="sc-rmap-bldg-desc">Our largest building — most rooms face the Atlantic with unobstructed ocean views.</p>
     </div>
-    <div class="sc-rmap-diagram">
-      <img id="sc-rmap-diagram-img" src="img/diagrams/diagram-oceanside.jpg" alt="Oceanside Building floor diagram">
-      <div class="sc-rmap-diagram-caption">Building layout — not to scale · Light blue = ocean view</div>
-    </div>
 
     <div class="sc-rmap-body">
-      <div class="sc-rmap-grid">
-        <div class="sc-rmap-legend">
-          <span><span class="sc-rmap-legend-swatch ocean"></span>Ocean view</span>
-          <span><span class="sc-rmap-legend-swatch standard"></span>Standard</span>
-          <span>K = King · Q = Queen · D = Double · T = Trundle</span>
+      <div class="sc-rmap-diagram">
+        <img id="sc-rmap-diagram-img" src="img/diagrams/diagram-oceanside.jpg" alt="Oceanside Building floor diagram">
+        <div class="sc-rmap-diagram-caption">Building layout · Light blue = ocean view</div>
+        <div class="sc-rmap-chips-wrap">
+          <div class="sc-rmap-chips-label">Select a room</div>
+          <div id="sc-rmap-chips-container"></div>
         </div>
-        <div id="sc-rmap-levels"></div>
       </div>
 
       <div class="sc-rmap-panel" id="sc-rmap-panel">
         <div class="sc-rmap-empty">
           <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11.25v1.5M15 11.25v1.5M9.75 17.25h4.5M3.75 21h16.5M4.5 3.75v17.25M19.5 3.75v17.25M3 8.25h18M3 13.5h18"/></svg>
-          <p>Click any room number to see photos and details.</p>
+          <p>Select a room number from the list on the left to see photos and details.</p>
         </div>
       </div>
     </div>
@@ -355,21 +302,21 @@ const BLDG = {
   poolside: {
     name: "The Poolside Building",
     desc: "Home to the Front Desk — steps from the pool, hot tub, and fire pits.",
-    diagram: "img/diagrams/diagram-poolside.jpg",
+    diagram: "img/diagrams/diagram-poolside.png",
     levels: [
       { name: "Top Level", meta: "Full staircase up", rooms: [
-        {n:"70", b:"King + Sofa Bed", v:true},
-        {n:"71", b:"King + Sofa Bed", v:true}
+        {n:"70", b:"King + Sofa Bed", v:true, special:"Balcony with ocean view"},
+        {n:"71", b:"King + Sofa Bed", v:true, special:"Balcony"}
       ]},
       { name: "Ground Level", meta: "Stairs required to enter", rooms: [
-        {n:"72", b:"Queen + Double", v:false},
-        {n:"73", b:"Queen + Double", note:"Adjoining option with 74", v:true},
-        {n:"74", b:"Queen + Double", note:"Adjoining option with 73", v:true},
-        {n:"75", b:"King + Sofa Bed", v:true},
-        {n:"76", b:"King + Sofa Bed", v:true}
+        {n:"72", b:"Two Queens", v:false},
+        {n:"73", b:"King", note:"Adjoining option with 74", v:true},
+        {n:"74", b:"King + Twin Sofa Bed", note:"Two-room suite, adjoining 73", v:true},
+        {n:"75", b:"King + Queen Sofa Bed", v:true},
+        {n:"76", b:"King + Twin Sofa Bed", note:"Two-room suite", v:true}
       ]},
       { name: "Lower Level", meta: "No steps", rooms: [
-        {n:"77", b:"King", v:false},
+        {n:"77", b:"King + Twin Sofa Bed", v:false},
         {n:"78", b:"King", v:false}
       ]}
     ]
@@ -377,29 +324,28 @@ const BLDG = {
   inn: {
     name: "The Inn Building",
     desc: "Charming standalone building across Shore Road — larger suites and apartment-style rooms.",
-    diagram: "img/diagrams/diagram-inn.jpg",
+    diagram: "img/diagrams/diagram-inn.png",
     levels: [
       { name: "First Floor", meta: "Two steps into the building", rooms: [
-        {n:"501", b:"King", v:false},
+        {n:"501", b:"King + Double Sofa Bed", note:"Kitchen + patio", v:false, special:"Apartment-style with full kitchen"},
         {n:"502", b:"King", v:false},
-        {n:"503", b:"King", v:false, special:"Private patio with partial ocean view seating"},
+        {n:"503", b:"King", note:"Patio", v:false, special:"Private patio"},
         {n:"504", b:"King", v:false},
-        {n:"505", b:"King", v:false},
         {n:"506", b:"King", v:false},
-        {n:"507", b:"King", v:false},
+        {n:"507", b:"King", note:"Patio", v:false, special:"Private patio"},
         {n:"508", b:"King", v:false}
       ]},
       { name: "Second Floor", meta: "One full staircase up", rooms: [
-        {n:"522", b:"King Suite", note:"Two-room suite", v:false},
-        {n:"523", b:"King Suite", note:"Two-room suite, ~332 sq ft", v:true, special:"Private ocean view balcony"},
-        {n:"524", b:"King Suite", note:"Two-room suite", v:false},
-        {n:"525", b:"King Suite", note:"Two-room suite", v:false},
-        {n:"526", b:"King Suite", note:"Two-room suite", v:false},
-        {n:"527", b:"King Suite", note:"Two-room suite", v:false},
+        {n:"522", b:"King", note:"Balcony", v:true, special:"Private ocean view balcony"},
+        {n:"523", b:"King + Double Sofa Bed", note:"Two-room suite, balcony", v:true, sqft:"~332 sq ft", special:"Two-room suite with private ocean view balcony"},
+        {n:"524", b:"King", note:"Balcony", v:true, special:"Balcony"},
+        {n:"525", b:"King", note:"Balcony", v:true, special:"Balcony with ocean view"},
+        {n:"526", b:"King", v:false},
+        {n:"527", b:"King", note:"Balcony", v:true, special:"Balcony with ocean view"},
         {n:"528", b:"King", v:false}
       ]},
       { name: "Third Floor", meta: "Up two full staircases — entire floor apartment", rooms: [
-        {n:"530", b:"Apartment", note:"Entire third floor", v:true, special:"Largest accommodation"}
+        {n:"530", b:"King + 2 Twin", note:"2-bedroom apartment, full kitchen", v:true, special:"Entire third-floor apartment — largest accommodation, two bedrooms, full kitchen and dining area"}
       ]}
     ]
   }
@@ -454,17 +400,16 @@ function renderBuilding(key){
   document.getElementById('sc-rmap-bldg-name').textContent = b.name;
   document.getElementById('sc-rmap-bldg-desc').textContent = b.desc;
 
-  const wrap = document.getElementById('sc-rmap-levels');
+  const wrap = document.getElementById('sc-rmap-chips-container');
   wrap.innerHTML = '';
   b.levels.forEach(lvl => {
     const lvlDiv = document.createElement('div');
-    lvlDiv.className = 'sc-rmap-level';
-    const grid = lvl.rooms.map(r => {
-      const cls = 'sc-rmap-cell' + (r.v ? ' ocean' : '');
-      const beds = r.b.replace(/Queen \+ Double/g, 'Q/D').replace(/Two Queens/g, 'Q/Q').replace(/King\b/g, 'K').replace(/Queen\b/g, 'Q').replace(/Double\b/g, 'D');
-      return `<button class="${cls}" data-bldg="${key}" data-room="${r.n}"><span class="sc-rmap-cell-num">${r.n}</span><span class="sc-rmap-cell-beds">${beds}</span></button>`;
+    lvlDiv.className = 'sc-rmap-chips-level';
+    const chips = lvl.rooms.map(r => {
+      const cls = 'sc-rmap-chip' + (r.v ? ' ocean' : '');
+      return `<button class="${cls}" data-bldg="${key}" data-room="${r.n}">${r.n}</button>`;
     }).join('');
-    lvlDiv.innerHTML = `<div class="sc-rmap-level-label">${lvl.name}</div><div class="sc-rmap-level-meta">${lvl.meta}</div><div class="sc-rmap-cells">${grid}</div>`;
+    lvlDiv.innerHTML = `<div class="sc-rmap-chips-level-name">${lvl.name}</div><div class="sc-rmap-chips">${chips}</div>`;
     wrap.appendChild(lvlDiv);
   });
 
@@ -472,21 +417,20 @@ function renderBuilding(key){
   document.getElementById('sc-rmap-panel').innerHTML = `
     <div class="sc-rmap-empty">
       <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11.25v1.5M15 11.25v1.5M9.75 17.25h4.5M3.75 21h16.5M4.5 3.75v17.25M19.5 3.75v17.25M3 8.25h18M3 13.5h18"/></svg>
-      <p>Click any room number to see photos and details.</p>
+      <p>Select a room number from the list on the left to see photos and details.</p>
     </div>`;
 
-  // Bind cell clicks
-  wrap.querySelectorAll('.sc-rmap-cell').forEach(c => c.addEventListener('click', e => {
+  // Bind chip clicks
+  wrap.querySelectorAll('.sc-rmap-chip').forEach(c => c.addEventListener('click', e => {
     const num = c.dataset.room;
     const room = b.levels.flatMap(l => l.rooms.map(r => ({...r, _level:l.name}))).find(r => r.n === num);
-    showRoom(b, room, c);
+    showRoom(b, key, room, c);
   }));
 }
 
-function showRoom(bldg, room, cellEl){
-  // Mark active cell
-  document.querySelectorAll('.sc-rmap-cell.active').forEach(c => c.classList.remove('active'));
-  if(cellEl) cellEl.classList.add('active');
+function showRoom(bldg, bldgKey, room, chipEl){
+  document.querySelectorAll('.sc-rmap-chip.active').forEach(c => c.classList.remove('active'));
+  if(chipEl) chipEl.classList.add('active');
 
   const photos = getPhotos(room);
   const tags = [];
@@ -513,8 +457,8 @@ function showRoom(bldg, room, cellEl){
       </div>
       <p class="sc-rmap-detail-desc">${desc}</p>
       <div class="sc-rmap-actions">
-        <a href="https://reservations.seachambers.com" class="sc-rmap-book">Book This Room</a>
-        <a href="rooms.html#" class="sc-rmap-detail-link" onclick="document.querySelector('.sc-rmap-panel').scrollIntoView({behavior:'smooth',block:'start'});return false;">↑ Top</a>
+        <a href="https://reservations.seachambers.com" class="sc-rmap-btn sc-rmap-btn-primary">Book Now</a>
+        <a href="room.html?id=${room.n}&bldg=${bldgKey}" class="sc-rmap-btn sc-rmap-btn-secondary">More Info</a>
       </div>
     </div>`;
 }

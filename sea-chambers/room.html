@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Room Details — Sea Chambers, Ogunquit Maine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+@font-face{font-family:'Cronder';src:url('img/fonts/CRONDERegular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
+:root{--ocean:#2D5680;--ocean-deep:#2A4764;--ocean-light:#5B9BD5;--mist:#FDFBF2;--warm:#F9F9EF;--sand:#E8DFD0;--white:#FFFFFF;--dark:#1E1E2A;--gray:#6E7B8B;--font-display:'Cronder','Libre Baskerville',serif;--font-body:'Jost',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--font-body);color:var(--dark);background:var(--warm);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+.sc-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;background:var(--ocean-deep);box-shadow:0 2px 16px rgba(0,0,0,.1);}
+.sc-nav-logo img{height:50px;width:auto;}
+.sc-nav-links{display:flex;align-items:center;gap:24px;}
+.sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--white);transition:color .3s;}
+.sc-nav-links a:hover,.sc-nav-links a.active{color:var(--ocean-light);}
+.sc-nav-phone{font-size:12px;color:rgba(255,255,255,.6);}
+.sc-nav-cta{padding:9px 22px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
+.sc-nav-cta:hover{background:var(--ocean-light);}
+
+/* BREADCRUMB */
+.sc-breadcrumb{margin-top:78px;padding:18px 60px;background:var(--white);border-bottom:1px solid var(--sand);font-family:var(--font-body);font-size:12px;color:var(--gray);letter-spacing:.04em;}
+.sc-breadcrumb a{color:var(--ocean);}
+.sc-breadcrumb a:hover{text-decoration:underline;}
+.sc-breadcrumb .sep{margin:0 10px;color:var(--sand);}
+
+/* MAIN LAYOUT */
+.sc-room-page{max-width:1400px;margin:0 auto;padding:50px 40px;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start;}
+
+/* GALLERY (left) */
+.sc-rd-gallery{display:flex;flex-direction:column;gap:10px;}
+.sc-rd-hero{aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--sand);}
+.sc-rd-hero img{width:100%;height:100%;object-fit:cover;}
+.sc-rd-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.sc-rd-thumb{aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer;background:var(--sand);transition:opacity .25s;}
+.sc-rd-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
+.sc-rd-thumb:hover img{transform:scale(1.05);}
+.sc-rd-thumb.active{outline:3px solid var(--ocean);outline-offset:-3px;}
+
+/* DETAILS (right) */
+.sc-rd-details{position:sticky;top:90px;}
+.sc-rd-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+.sc-rd-tag{display:inline-block;padding:5px 12px;background:var(--white);border:1px solid var(--sand);border-radius:99px;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ocean-deep);}
+.sc-rd-tag.ocean{background:#BDD8EC;border-color:#7FAED1;}
+.sc-rd-eyebrow{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ocean);margin-bottom:8px;}
+.sc-rd-title{font-family:var(--font-display);font-size:clamp(40px,6vw,72px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;line-height:.95;margin-bottom:8px;}
+.sc-rd-subtitle{font-family:var(--font-body);font-size:18px;font-weight:400;color:var(--gray);margin-bottom:24px;}
+.sc-rd-description{font-family:var(--font-body);font-size:15px;color:var(--dark);line-height:1.7;margin-bottom:28px;}
+.sc-rd-description strong{color:var(--ocean-deep);font-weight:600;}
+
+/* PROPERTY DETAILS GRID */
+.sc-rd-meta{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;padding:22px 24px;background:var(--white);border:1px solid var(--sand);border-radius:8px;}
+.sc-rd-meta-item{font-family:var(--font-body);}
+.sc-rd-meta-label{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:4px;}
+.sc-rd-meta-value{font-size:14px;color:var(--dark);font-weight:500;}
+
+/* AMENITIES */
+.sc-rd-amen-title{font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ocean);margin-bottom:14px;}
+.sc-rd-amen{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-bottom:32px;}
+.sc-rd-amen li{list-style:none;font-family:var(--font-body);font-size:13px;color:var(--dark);padding-left:22px;position:relative;line-height:1.6;}
+.sc-rd-amen li::before{content:'✓';position:absolute;left:0;color:var(--ocean);font-weight:700;}
+
+/* CTA BUTTONS */
+.sc-rd-actions{display:flex;gap:10px;}
+.sc-rd-btn{flex:1;padding:16px 24px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;}
+.sc-rd-btn-primary{background:var(--ocean);color:var(--white);}
+.sc-rd-btn-primary:hover{background:var(--ocean-deep);transform:translateY(-1px);}
+.sc-rd-btn-secondary{background:var(--white);border-color:var(--ocean);color:var(--ocean);}
+.sc-rd-btn-secondary:hover{background:var(--ocean);color:var(--white);}
+
+/* NOT FOUND */
+.sc-rd-notfound{text-align:center;padding:120px 40px;font-family:var(--font-body);}
+.sc-rd-notfound h1{font-family:var(--font-display);font-size:42px;color:var(--ocean-deep);margin-bottom:14px;letter-spacing:.02em;text-transform:uppercase;}
+.sc-rd-notfound p{font-size:15px;color:var(--gray);margin-bottom:28px;}
+
+/* FOOTER */
+.sc-footer{background:#111118;padding:60px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,.4);}
+.sc-footer h4{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--white);margin-bottom:16px;letter-spacing:.16em;text-transform:uppercase;}
+.sc-footer p,.sc-footer a{line-height:1.7;}
+.sc-footer a{display:block;color:rgba(255,255,255,.5);}
+.sc-footer a:hover{color:var(--white);}
+.sc-footer-credit{padding:18px 60px;background:#0a0a10;text-align:center;font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.06em;}
+
+@media(max-width:1024px){.sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}.sc-room-page{grid-template-columns:1fr;gap:40px;}.sc-rd-details{position:static;}.sc-footer{grid-template-columns:1fr;}}
+@media(max-width:600px){.sc-nav{padding:12px 20px;}.sc-breadcrumb{padding:14px 20px;}.sc-room-page{padding:30px 20px;}.sc-rd-meta{grid-template-columns:1fr;}.sc-rd-amen{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav class="sc-nav">
+  <a href="index.html" class="sc-nav-logo"><img src="img/logo-white.png" alt="Sea Chambers"></a>
+  <div class="sc-nav-links">
+    <a href="rooms.html" class="active">Rooms</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="faq.html">FAQ</a>
+    <a href="contact.html">Contact</a>
+    <a href="webcam.html">Webcam</a>
+    <span class="sc-nav-phone"><a href="tel:2076469311">207.646.9311</a></span>
+    <a href="https://reservations.seachambers.com" class="sc-nav-cta">Book Online</a>
+  </div>
+</nav>
+
+<div class="sc-breadcrumb" id="sc-breadcrumb">
+  <a href="rooms.html">Rooms</a><span class="sep">/</span><span id="sc-bc-bldg">Building</span><span class="sep">/</span><span id="sc-bc-room">Room</span>
+</div>
+
+<main id="sc-room-main"></main>
+
+<footer class="sc-footer">
+  <div>
+    <h4>Sea Chambers</h4>
+    <p>67 Shore Road, Ogunquit, ME 03907</p>
+    <p>Oceanfront motel, breakfast, pool, and direct beach access.</p>
+  </div>
+  <div>
+    <h4>Stay</h4>
+    <a href="rooms.html">Rooms</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="webcam.html">Live Webcam</a>
+  </div>
+  <div>
+    <h4>Contact</h4>
+    <p><a href="tel:2076469311">207.646.9311</a></p>
+    <p><a href="mailto:lodging@seachambers.com">lodging@seachambers.com</a></p>
+    <a href="https://reservations.seachambers.com">Book Online</a>
+  </div>
+</footer>
+<div class="sc-footer-credit">Concept by Bofill Technologies</div>
+
+<script>
+// Mirror BLDG data from rooms.html (single source — small enough to inline)
+const BLDG = {
+  oceanside: {
+    name: "The Oceanside Building",
+    levels: [
+      { name: "Upper Level", meta: "One staircase up from Ground Level", rooms: [
+        {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
+        {n:"23", b:"Queen + Double", v:false},
+        {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
+        {n:"25", b:"Queen + Double", v:true},
+        {n:"26", b:"Queen + Double", v:true},
+        {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+        {n:"28", b:"Queen + Double", v:true},
+        {n:"29", b:"Queen + Double", v:true},
+        {n:"30", b:"Queen + Double", v:true},
+        {n:"31", b:"Queen + Double", v:true},
+        {n:"32", b:"Queen + Double", v:true}
+      ]},
+      { name: "Ground Level", meta: "No stairs", rooms: [
+        {n:"4", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
+        {n:"5", b:"Queen + Double", v:false},
+        {n:"6", b:"King", v:false},
+        {n:"7", b:"Queen + Double", v:true},
+        {n:"8", b:"Queen + Double", v:true},
+        {n:"9", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+        {n:"10", b:"King", v:true, special:"Sofa bed, oversized"},
+        {n:"11", b:"Queen + Double", v:true},
+        {n:"12", b:"Queen + Double", v:true},
+        {n:"14", b:"Queen + Double", v:true},
+        {n:"15", b:"Queen + Double", v:true},
+        {n:"16", b:"Queen + Double", v:true},
+        {n:"17", b:"Queen + Double", v:true},
+        {n:"18", b:"Queen + Double", v:true}
+      ]},
+      { name: "Terrace Level", meta: "Down a ramp from the parking lot", rooms: [
+        {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true},
+        {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true},
+        {n:"34", b:"Queen + Double", v:true},
+        {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large"},
+        {n:"36", b:"King", v:true},
+        {n:"37", b:"King", v:true, special:"Bold ocean view"},
+        {n:"38", b:"Queen + Double", v:true},
+        {n:"39", b:"Queen + Double", v:true}
+      ]},
+      { name: "Sea Level", meta: "Down a ramp and a staircase — closest to the water", rooms: [
+        {n:"40A", b:"King/Twin + Queen Sofa", note:"Two-room suite", v:true},
+        {n:"40B", b:"King", v:true},
+        {n:"41", b:"King", v:true},
+        {n:"42", b:"King", v:true, special:"Bold ocean view, closest to water"}
+      ]},
+      { name: "Annex Wing", meta: "Side rooms with sofa beds", rooms: [
+        {n:"1", b:"Q/D + Queen Sofa", v:false},
+        {n:"2", b:"Q/D + Queen Sofa", v:false},
+        {n:"3", b:"Q/D + Queen Sofa", v:false},
+        {n:"19", b:"Q/D + Queen Sofa", v:false},
+        {n:"20", b:"Q/D + Queen Sofa", v:false},
+        {n:"21", b:"Q/D + Queen Sofa", v:false}
+      ]}
+    ]
+  },
+  poolside: {
+    name: "The Poolside Building",
+    levels: [
+      { name: "Top Level", meta: "Full staircase up", rooms: [
+        {n:"70", b:"King + Sofa Bed", v:true, special:"Balcony with ocean view"},
+        {n:"71", b:"King + Sofa Bed", v:true, special:"Balcony"}
+      ]},
+      { name: "Ground Level", meta: "Stairs required to enter", rooms: [
+        {n:"72", b:"Two Queens", v:false},
+        {n:"73", b:"King", note:"Adjoining option with 74", v:true},
+        {n:"74", b:"King + Twin Sofa Bed", note:"Two-room suite, adjoining 73", v:true},
+        {n:"75", b:"King + Queen Sofa Bed", v:true},
+        {n:"76", b:"King + Twin Sofa Bed", note:"Two-room suite", v:true}
+      ]},
+      { name: "Lower Level", meta: "No steps", rooms: [
+        {n:"77", b:"King + Twin Sofa Bed", v:false},
+        {n:"78", b:"King", v:false}
+      ]}
+    ]
+  },
+  inn: {
+    name: "The Inn Building",
+    levels: [
+      { name: "First Floor", meta: "Two steps into the building", rooms: [
+        {n:"501", b:"King + Double Sofa Bed", note:"Kitchen + patio", v:false, special:"Apartment-style with full kitchen"},
+        {n:"502", b:"King", v:false},
+        {n:"503", b:"King", note:"Patio", v:false, special:"Private patio"},
+        {n:"504", b:"King", v:false},
+        {n:"506", b:"King", v:false},
+        {n:"507", b:"King", note:"Patio", v:false, special:"Private patio"},
+        {n:"508", b:"King", v:false}
+      ]},
+      { name: "Second Floor", meta: "One full staircase up", rooms: [
+        {n:"522", b:"King", note:"Balcony", v:true, special:"Private ocean view balcony"},
+        {n:"523", b:"King + Double Sofa Bed", note:"Two-room suite, balcony", v:true, sqft:"~332 sq ft", special:"Two-room suite with private ocean view balcony"},
+        {n:"524", b:"King", note:"Balcony", v:true, special:"Balcony"},
+        {n:"525", b:"King", note:"Balcony", v:true, special:"Balcony with ocean view"},
+        {n:"526", b:"King", v:false},
+        {n:"527", b:"King", note:"Balcony", v:true, special:"Balcony with ocean view"},
+        {n:"528", b:"King", v:false}
+      ]},
+      { name: "Third Floor", meta: "Up two full staircases — entire floor apartment", rooms: [
+        {n:"530", b:"King + 2 Twin", note:"2-bedroom apartment, full kitchen", v:true, special:"Entire third-floor apartment — largest accommodation, two bedrooms, full kitchen and dining area"}
+      ]}
+    ]
+  }
+};
+
+const PHOTOS = {
+  "35": [
+    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
+  ],
+  king: ["img/room-king.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg", "img/room-38-deck.jpg"],
+  queendouble: ["img/room-double.jpg", "img/room-38-deck.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg"],
+  twoqueens: [
+    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
+    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
+  ],
+  suite: ["img/room-suite.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg", "img/room-38-deck.jpg"]
+};
+
+function getPhotos(room){
+  if(PHOTOS[room.n]) return PHOTOS[room.n];
+  const b = (room.b || "").toLowerCase();
+  if(b.includes("two queens") || b.includes("q/q")) return PHOTOS.twoqueens;
+  if(b.includes("apartment") || (room.special||"").toLowerCase().includes("two-room suite") || b.includes("sofa bed") && b.includes("king")) return PHOTOS.suite;
+  if(b.startsWith("king") || b === "king") return PHOTOS.king;
+  return PHOTOS.queendouble;
+}
+
+const BASE_AMENITIES = [
+  "Continental breakfast included",
+  "Heated oceanfront pool",
+  "Hot tub & ocean-view fire pits",
+  "Free WiFi throughout property",
+  "Mini-fridge & microwave",
+  "Flat-screen cable TV",
+  "Coffee maker & in-room amenities",
+  "Free on-site parking",
+  "Iron & ironing board on request",
+  "Daily housekeeping",
+  "24-hour front desk",
+  "Direct beach access"
+];
+
+function getAmenities(room){
+  const list = [...BASE_AMENITIES];
+  if(room.v) list.unshift("Ocean view");
+  if((room.note||"").toLowerCase().includes("balcony") || (room.special||"").toLowerCase().includes("balcony")) list.unshift("Private balcony");
+  if((room.note||"").toLowerCase().includes("patio") || (room.special||"").toLowerCase().includes("patio")) list.unshift("Private patio");
+  if((room.note||"").toLowerCase().includes("two-room") || (room.note||"").toLowerCase().includes("2rms")) list.unshift("Two-room layout");
+  if((room.b||"").toLowerCase().includes("sofa bed")) list.push("Sleeper sofa");
+  if((room.note||"").toLowerCase().includes("kitchen") || (room.special||"").toLowerCase().includes("kitchen")) list.push("Full kitchen");
+  return list;
+}
+
+// Parse query params
+const params = new URLSearchParams(window.location.search);
+const roomId = params.get('id');
+const bldgKey = params.get('bldg') || 'oceanside';
+
+const bldg = BLDG[bldgKey];
+let room = null, level = null;
+if(bldg){
+  for(const lvl of bldg.levels){
+    const r = lvl.rooms.find(x => x.n === roomId);
+    if(r){ room = r; level = lvl; break; }
+  }
+}
+
+const main = document.getElementById('sc-room-main');
+const bcBldg = document.getElementById('sc-bc-bldg');
+const bcRoom = document.getElementById('sc-bc-room');
+
+if(!room){
+  document.title = "Room not found — Sea Chambers";
+  bcBldg.textContent = '—';
+  bcRoom.textContent = 'Not found';
+  main.innerHTML = `
+    <div class="sc-rd-notfound">
+      <h1>Room Not Found</h1>
+      <p>We couldn't find the room you're looking for.</p>
+      <a href="rooms.html" class="sc-rd-btn sc-rd-btn-primary" style="display:inline-block;max-width:280px;">← Back to All Rooms</a>
+    </div>`;
+} else {
+  document.title = `Room ${room.n} — Sea Chambers, Ogunquit Maine`;
+  bcBldg.innerHTML = `<a href="rooms.html">${bldg.name}</a>`;
+  bcRoom.textContent = `Room ${room.n}`;
+  const photos = getPhotos(room);
+  const amenities = getAmenities(room);
+  const tags = [
+    room.v ? '<span class="sc-rd-tag ocean">Ocean View</span>' : '<span class="sc-rd-tag">Standard View</span>',
+    `<span class="sc-rd-tag">${level.name}</span>`,
+    room.note ? `<span class="sc-rd-tag">${room.note}</span>` : ''
+  ].filter(Boolean).join('');
+
+  const desc = room.special
+    ? `<strong>${room.special}.</strong> Located in the ${bldg.name.replace('The ','')}, this room features <strong>${room.b}</strong>${room.sqft ? ' and is ' + room.sqft : ''}. All Sea Chambers stays include a continental breakfast, full use of our heated oceanfront pool, hot tub, and fire pits, plus direct beach access from the property.`
+    : `Located in the ${bldg.name.replace('The ','')}, this room features <strong>${room.b}</strong>${room.sqft ? ' and is ' + room.sqft : ''}. All Sea Chambers stays include a continental breakfast, full use of our heated oceanfront pool, hot tub, and fire pits, plus direct beach access from the property.`;
+
+  main.innerHTML = `
+    <section class="sc-room-page">
+      <div class="sc-rd-gallery">
+        <div class="sc-rd-hero"><img id="sc-rd-hero-img" src="${photos[0]}" alt="Room ${room.n}"></div>
+        <div class="sc-rd-thumbs">
+          ${photos.slice(0, 4).map((p, i) => `<div class="sc-rd-thumb${i===0?' active':''}" data-src="${p}"><img src="${p}" alt="Room ${room.n} photo ${i+1}" loading="lazy"></div>`).join('')}
+        </div>
+      </div>
+
+      <aside class="sc-rd-details">
+        <div class="sc-rd-tags">${tags}</div>
+        <p class="sc-rd-eyebrow">${bldg.name}</p>
+        <h1 class="sc-rd-title">Room ${room.n}</h1>
+        <p class="sc-rd-subtitle">${room.b}</p>
+
+        <div class="sc-rd-meta">
+          <div class="sc-rd-meta-item">
+            <div class="sc-rd-meta-label">Building</div>
+            <div class="sc-rd-meta-value">${bldg.name.replace('The ','')}</div>
+          </div>
+          <div class="sc-rd-meta-item">
+            <div class="sc-rd-meta-label">Level</div>
+            <div class="sc-rd-meta-value">${level.name}</div>
+          </div>
+          <div class="sc-rd-meta-item">
+            <div class="sc-rd-meta-label">Bedding</div>
+            <div class="sc-rd-meta-value">${room.b}</div>
+          </div>
+          <div class="sc-rd-meta-item">
+            <div class="sc-rd-meta-label">View</div>
+            <div class="sc-rd-meta-value">${room.v ? 'Ocean View' : 'Standard'}</div>
+          </div>
+          ${room.sqft ? `<div class="sc-rd-meta-item"><div class="sc-rd-meta-label">Size</div><div class="sc-rd-meta-value">${room.sqft}</div></div>` : ''}
+          <div class="sc-rd-meta-item">
+            <div class="sc-rd-meta-label">Access</div>
+            <div class="sc-rd-meta-value">${level.meta}</div>
+          </div>
+        </div>
+
+        <p class="sc-rd-description">${desc}</p>
+
+        <p class="sc-rd-amen-title">Room Amenities</p>
+        <ul class="sc-rd-amen">
+          ${amenities.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+
+        <div class="sc-rd-actions">
+          <a href="https://reservations.seachambers.com" class="sc-rd-btn sc-rd-btn-primary">Book Now</a>
+          <a href="rooms.html" class="sc-rd-btn sc-rd-btn-secondary">All Rooms</a>
+        </div>
+      </aside>
+    </section>`;
+
+  // Thumb click handlers — swap hero image
+  document.querySelectorAll('.sc-rd-thumb').forEach(t => t.addEventListener('click', () => {
+    document.querySelectorAll('.sc-rd-thumb').forEach(x => x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById('sc-rd-hero-img').src = t.dataset.src;
+  }));
+}
+</script>
+
+</body>
+</html>
