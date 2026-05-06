@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlantic Beach Casino Resort — Oceanfront on Misquamicut · Westerly, RI</title>
+  <meta name="description" content="Atlantic Beach Casino Resort — 21 oceanfront condominium suites set directly on the dunes of Misquamicut Beach, Westerly, Rhode Island. Private beach. Indoor heated pool. Family-owned since 2001.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,400..600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Palette — Salt-faded New England coastal */
+      --ink:        #0D2A38;   /* Deep ocean */
+      --ink-soft:   #1B3A4B;
+      --paper:      #FAF6EE;   /* Warm off-white */
+      --sand:       #EFE6D2;   /* Warm sand */
+      --sand-deep:  #D9CDB1;
+      --coral:      #D17A5A;   /* Sun-faded coral accent */
+      --coral-deep: #B86247;
+      --sage:       #6F8A7C;   /* Soft tertiary */
+      --char:       #1A1A1A;
+      --rule:       rgba(13, 42, 56, 0.14);
+
+      --serif:  'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --sans:   'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --max:    1320px;
+      --gut:    clamp(20px, 4vw, 56px);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--char);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Typography ─── */
+    .display, h1, h2, h3, .nav-mark, .eyebrow, .cta {
+      font-family: var(--sans);
+      font-feature-settings: 'ss01', 'ss02';
+    }
+
+    h1, .h-hero {
+      font-family: var(--sans);
+      font-weight: 400;
+      font-variation-settings: 'opsz' 96, 'wdth' 100;
+      font-size: clamp(48px, 8.5vw, 124px);
+      line-height: 0.94;
+      letter-spacing: -0.025em;
+      margin: 0;
+    }
+
+    h2 {
+      font-weight: 400;
+      font-variation-settings: 'opsz' 72;
+      font-size: clamp(34px, 5.5vw, 68px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 0.6em;
+    }
+
+    h3 {
+      font-weight: 500;
+      font-size: clamp(20px, 2.4vw, 28px);
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin: 0 0 0.5em;
+    }
+
+    .italic-accent {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin: 0 0 1.4em;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    p { margin: 0 0 1em; max-width: 62ch; }
+    p.lede { font-size: clamp(19px, 2.1vw, 23px); line-height: 1.55; max-width: 36ch; }
+
+    /* ─── Buttons / CTAs ─── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px;
+      padding: 14px 26px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(.2,.7,.2,1);
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--coral);
+      color: var(--paper);
+    }
+    .btn-primary:hover { background: var(--coral-deep); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+    .btn-light {
+      background: transparent;
+      color: var(--paper);
+      border: 1px solid var(--paper);
+    }
+    .btn-light:hover { background: var(--paper); color: var(--ink); }
+
+    .arrow-link {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--ink);
+      transition: gap 0.3s;
+    }
+    .arrow-link:hover { gap: 18px; }
+
+    /* ─── Layout ─── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gut); }
+
+    /* ─── Sticky Nav ─── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px var(--gut);
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(250, 246, 238, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 14px var(--gut);
+      border-bottom-color: var(--rule);
+    }
+
+    .nav-mark {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--paper);
+      line-height: 1.1;
+    }
+    .nav-mark .sub {
+      display: block;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      opacity: 0.75;
+      margin-top: 3px;
+    }
+    .nav.scrolled .nav-mark { color: var(--ink); }
+
+    .nav-links {
+      display: none;
+      gap: 32px;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .nav-links a {
+      color: var(--paper);
+      transition: opacity 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover { opacity: 0.7; }
+    .nav.scrolled .nav-links a { color: var(--ink); }
+
+    .nav-right {
+      display: flex; align-items: center; gap: 18px;
+    }
+    .nav-phone {
+      display: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--paper);
+    }
+    .nav.scrolled .nav-phone { color: var(--ink); }
+
+    @media (min-width: 880px) {
+      .nav-links { display: flex; }
+      .nav-phone { display: inline; }
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      color: var(--paper);
+      isolation: isolate;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      z-index: -2;
+      filter: contrast(1.04) saturate(0.92) brightness(0.94);
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(13,42,56,0.55) 0%, rgba(13,42,56,0.18) 35%, rgba(13,42,56,0.78) 100%);
+      z-index: -1;
+    }
+
+    .hero-inner {
+      width: 100%;
+      padding: 0 var(--gut) clamp(40px, 9vh, 90px);
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 44px;
+      align-items: end;
+    }
+    @media (min-width: 920px) {
+      .hero-inner { grid-template-columns: 1.4fr 1fr; gap: 60px; }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin: 0 0 22px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: ""; height: 1px; background: currentColor; opacity: 0.5;
+      flex: 0 0 32px;
+    }
+    .hero-eyebrow::after { flex: 1; }
+
+    .hero h1 .it {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+    }
+    .hero h1 .amp {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-meta {
+      font-family: var(--sans);
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      line-height: 1.55;
+      max-width: 38ch;
+      opacity: 0.92;
+    }
+    .hero-meta p { margin-bottom: 1.2em; }
+    .hero-cta-row {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .scroll-mark {
+      position: absolute;
+      bottom: 24px; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--sans);
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      writing-mode: vertical-rl;
+    }
+
+    /* ─── Sections ─── */
+    section { padding: clamp(72px, 12vh, 140px) 0; position: relative; }
+
+    /* ─── Welcome ─── */
+    .welcome { background: var(--paper); }
+    .welcome-grid {
+      display: grid; gap: 60px;
+      grid-template-columns: 1fr;
+      align-items: end;
+    }
+    @media (min-width: 880px) {
+      .welcome-grid { grid-template-columns: 1.1fr 1fr; gap: 80px; }
+    }
+    .welcome-text { max-width: 50ch; }
+    .welcome-text p { font-size: clamp(17px, 1.5vw, 19px); }
+    .welcome-figure {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+    }
+    .welcome-figure img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center;
+    }
+    .welcome-cap {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.6;
+      margin-top: 14px;
+    }
+
+    /* ─── Marquee ─── */
+    .marquee {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 22px 0;
+      overflow: hidden;
+      border-top: 1px solid var(--ink-soft);
+      border-bottom: 1px solid var(--ink-soft);
+    }
+    .marquee-inner {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      animation: scroll 40s linear infinite;
+    }
+    .marquee-inner span { display: inline-flex; align-items: center; gap: 48px; }
+    .marquee-inner .dot { width: 5px; height: 5px; background: var(--coral); border-radius: 50%; flex-shrink: 0; display: inline-block; }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── The Stay (Rooms) ─── */
+    .stay { background: var(--paper); }
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 60px;
+      align-items: end;
+    }
+    @media (min-width: 880px) {
+      .section-head { grid-template-columns: 1.4fr 1fr; gap: 80px; }
+    }
+    .section-head .blurb {
+      max-width: 42ch;
+      font-size: clamp(15px, 1.2vw, 17px);
+    }
+
+    .stay-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 54px;
+    }
+    @media (min-width: 880px) {
+      .stay-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+    }
+
+    .room-card {
+      display: flex; flex-direction: column;
+      gap: 22px;
+    }
+    .room-figure {
+      position: relative;
+      aspect-ratio: 5/4;
+      overflow: hidden;
+      background: var(--sand);
+    }
+    .room-figure img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.1s cubic-bezier(.2,.7,.2,1);
+    }
+    .room-card:hover .room-figure img { transform: scale(1.04); }
+    .room-num {
+      position: absolute; top: 20px; left: 20px;
+      background: var(--paper);
+      padding: 7px 12px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+    .room-tag {
+      position: absolute; bottom: 20px; right: 20px;
+      background: var(--coral);
+      color: var(--paper);
+      padding: 7px 12px;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .room-meta {
+      display: flex; gap: 20px;
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+    .room-meta span::before {
+      content: "·";
+      margin-right: 20px;
+      opacity: 0.4;
+    }
+    .room-meta span:first-child::before { content: ""; margin: 0; }
+    .room-card p { font-size: 16px; max-width: 48ch; }
+
+    /* ─── Setting (Split) ─── */
+    .setting {
+      background: var(--ink);
+      color: var(--paper);
+      overflow: hidden;
+    }
+    .setting .eyebrow { color: var(--coral); }
+    .setting-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    @media (min-width: 880px) {
+      .setting-grid { grid-template-columns: 1fr 1.1fr; gap: 80px; }
+    }
+    .setting-text { padding: 0; }
+    .setting-text h2 { color: var(--paper); }
+    .setting-text p { color: rgba(250,246,238,0.85); max-width: 44ch; }
+    .setting-figure {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+    .setting-figure img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 50px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(250,246,238,0.18);
+    }
+    .stat-num {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--paper);
+      margin-bottom: 6px;
+    }
+    .stat-num .small {
+      font-size: 0.5em;
+      vertical-align: super;
+      opacity: 0.6;
+      margin-left: 4px;
+    }
+    .stat-label {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.7);
+      line-height: 1.3;
+    }
+
+    /* ─── Amenities ─── */
+    .amenities { background: var(--sand); }
+    .amen-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(13,42,56,0.18);
+      border: 1px solid rgba(13,42,56,0.18);
+    }
+    @media (min-width: 720px) {
+      .amen-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 1100px) {
+      .amen-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .amen-cell {
+      background: var(--sand);
+      padding: 36px 28px;
+      display: flex; flex-direction: column;
+      gap: 14px;
+      transition: background 0.35s;
+    }
+    .amen-cell:hover { background: var(--paper); }
+    .amen-cell svg {
+      width: 28px; height: 28px;
+      stroke: var(--ink);
+      stroke-width: 1.4;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .amen-cell h4 {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0;
+      margin: 0 0 4px;
+      color: var(--ink);
+    }
+    .amen-cell p {
+      font-size: 13.5px;
+      color: var(--char);
+      opacity: 0.78;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ─── Gallery Strip ─── */
+    .gallery {
+      background: var(--paper);
+      padding: clamp(72px, 12vh, 140px) 0 0;
+    }
+    .gallery .wrap { padding-bottom: clamp(60px, 10vh, 110px); }
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      grid-template-rows: 280px 200px;
+      gap: 14px;
+      margin-top: 60px;
+    }
+    @media (max-width: 720px) {
+      .gallery-strip { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 220px 220px; }
+    }
+    .gallery-strip > div {
+      overflow: hidden;
+      background: var(--sand-deep);
+    }
+    .gallery-strip img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 1.2s;
+    }
+    .gallery-strip > div:hover img { transform: scale(1.05); }
+
+    .gal-1 { grid-column: 1 / 2; grid-row: 1 / 3; }
+    .gal-2 { grid-column: 2 / 3; grid-row: 1 / 2; }
+    .gal-3 { grid-column: 3 / 4; grid-row: 1 / 2; }
+    .gal-4 { grid-column: 2 / 4; grid-row: 2 / 3; }
+    @media (max-width: 720px) {
+      .gal-1, .gal-2, .gal-3, .gal-4 { grid-column: auto; grid-row: auto; }
+      .gal-1 { grid-column: 1 / 3; }
+    }
+
+    /* ─── Westerly / Location ─── */
+    .westerly { background: var(--paper); border-top: 1px solid var(--rule); }
+    .west-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+    @media (min-width: 880px) {
+      .west-grid { grid-template-columns: 1fr 1.3fr; gap: 80px; }
+    }
+    .west-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      border-top: 1px solid var(--rule);
+    }
+    .west-list li {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: baseline;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .west-list .name {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+    .west-list .name em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--coral);
+      margin-left: 6px;
+      font-size: 13px;
+    }
+    .west-list .dist {
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.55;
+    }
+
+    /* ─── Reviews ─── */
+    .reviews { background: var(--ink); color: var(--paper); }
+    .reviews .eyebrow { color: var(--coral); }
+    .review-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      margin-top: 50px;
+    }
+    @media (min-width: 880px) {
+      .review-grid { grid-template-columns: repeat(3, 1fr); gap: 50px; }
+    }
+    .review {
+      border-top: 1px solid rgba(250,246,238,0.22);
+      padding-top: 28px;
+    }
+    .review .stars {
+      color: var(--coral);
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+    .review p {
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.55;
+      color: rgba(250,246,238,0.92);
+      margin-bottom: 22px;
+    }
+    .review .by {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,246,238,0.65);
+    }
+
+    /* ─── Final CTA ─── */
+    .final {
+      position: relative;
+      padding: clamp(90px, 18vh, 180px) 0;
+      color: var(--paper);
+      overflow: hidden;
+      isolation: isolate;
+      text-align: center;
+    }
+    .final-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+      filter: brightness(0.55) saturate(0.85);
+    }
+    .final::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(13,42,56,0.5), rgba(13,42,56,0.7));
+      z-index: -1;
+    }
+    .final h2 {
+      font-size: clamp(44px, 7vw, 92px);
+      max-width: 18ch;
+      margin: 0 auto 30px;
+      color: var(--paper);
+    }
+    .final p {
+      max-width: 38ch;
+      margin: 0 auto 36px;
+      font-size: 18px;
+      opacity: 0.9;
+    }
+    .final-row {
+      display: inline-flex; gap: 18px; flex-wrap: wrap; justify-content: center;
+    }
+
+    /* ─── Footer ─── */
+    footer {
+      background: var(--paper);
+      padding: 70px 0 40px;
+      border-top: 1px solid var(--rule);
+    }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+    @media (min-width: 720px) {
+      .foot-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 60px; }
+    }
+    .foot-mark {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 14px;
+    }
+    .foot-mark .sub {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.28em;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+    .foot-grid p { font-size: 14px; color: var(--char); opacity: 0.78; max-width: 30ch; line-height: 1.6; }
+    .foot-grid h5 {
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 18px;
+      opacity: 0.55;
+    }
+    .foot-grid ul { list-style: none; margin: 0; padding: 0; }
+    .foot-grid ul li {
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--char);
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+    .foot-grid ul a { transition: color 0.25s; }
+    .foot-grid ul a:hover { color: var(--coral); }
+
+    .foot-bottom {
+      border-top: 1px solid var(--rule);
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.55;
+    }
+
+    /* ─── Reveal animation ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(.2,.7,.2,1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      * { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+    }
+
+    /* ─── Mobile menu ─── */
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: 8px;
+    }
+    .nav-toggle span {
+      width: 22px;
+      height: 1.5px;
+      background: var(--paper);
+      transition: background 0.3s;
+    }
+    .nav.scrolled .nav-toggle span { background: var(--ink); }
+    @media (min-width: 880px) {
+      .nav-toggle { display: none; }
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--ink);
+      color: var(--paper);
+      z-index: 99;
+      padding: 90px var(--gut) 40px;
+      flex-direction: column;
+      gap: 24px;
+      font-family: var(--sans);
+      font-size: 24px;
+      font-weight: 300;
+      letter-spacing: -0.005em;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--paper);
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(250,246,238,0.2);
+    }
+    .mobile-menu .phone-mob {
+      margin-top: auto;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--coral);
+      border: none;
+    }
+
+  </style>
+</head>
+<body>
+
+<!-- ─── Navigation ─── -->
+<nav class="nav" id="nav">
+  <div class="nav-mark">
+    Atlantic Beach
+    <span class="sub">Casino Resort · Westerly, RI</span>
+  </div>
+  <div class="nav-links">
+    <a href="#stay">The Stay</a>
+    <a href="#setting">The Setting</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#westerly">Westerly</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-right">
+    <a href="tel:14013227100" class="nav-phone">+1 (401) 322&middot;7100</a>
+    <a href="#contact" class="btn btn-primary">Inquire</a>
+    <button class="nav-toggle" aria-label="Open menu" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#stay">The Stay</a>
+  <a href="#setting">The Setting</a>
+  <a href="#amenities">Amenities</a>
+  <a href="#westerly">Westerly</a>
+  <a href="#contact">Contact</a>
+  <a href="tel:14013227100" class="phone-mob">+1 (401) 322&middot;7100</a>
+</div>
+
+<!-- ─── Hero ─── -->
+<header class="hero">
+  <img class="hero-img"
+       src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/8f/a7/3b/the-house.jpg"
+       alt="Atlantic Beach Casino Resort, oceanfront on Misquamicut Beach"
+       referrerpolicy="no-referrer">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">A meeting place since 1950 · Misquamicut Beach</p>
+      <h1>
+        A slice of <span class="it">heaven,</span><br>
+        kept <span class="amp">&amp;</span> coastal.
+      </h1>
+    </div>
+    <div class="hero-meta">
+      <p>Twenty-one privately owned suites set directly on the dunes of Westerly, Rhode Island &mdash; where the front door opens to a private beach and the bedroom window opens to the Atlantic.</p>
+      <div class="hero-cta-row">
+        <a href="#stay" class="btn btn-primary">View The Suites</a>
+        <a href="#contact" class="btn btn-light">Reserve A Week</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-mark">Scroll</div>
+</header>
+
+<!-- ─── Welcome ─── -->
+<section class="welcome">
+  <div class="wrap">
+    <div class="welcome-grid">
+      <div class="welcome-text reveal">
+        <p class="eyebrow">Chapter 01 — Welcome</p>
+        <h2>Where mind, body <span class="italic-accent">&amp;</span> soul become one with the sea.</h2>
+        <p class="lede">A name that goes back to the 1950s, when <span class="italic-accent">casino</span> meant a meeting place — and Misquamicut&rsquo;s was right here on the dunes.</p>
+        <p>Today the Atlantic Beach Casino Resort is a community of twenty-one privately owned, oceanfront condominium suites set on a quiet stretch of Atlantic Avenue between Misquamicut and Watch Hill. The original Atlantic Beach Casino stood next door, where the Windjammer is now. We carry the name forward — and the spirit of a place built simply to gather, swim, and watch the Atlantic.</p>
+        <p>You wake to the waves crashing. You watch the sun rise over the ocean. You walk for miles in either direction without leaving the dunes. Saturday-to-Saturday, all summer long, generations of families have called this their slice of heaven on Earth.</p>
+        <a href="#stay" class="arrow-link">Browse the Suites &rarr;</a>
+      </div>
+      <figure class="welcome-figure reveal">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/df/filename-100-3254-jpg.jpg"
+             alt="Surf and dunes at Atlantic Beach Casino Resort"
+             referrerpolicy="no-referrer"
+             loading="lazy">
+        <figcaption class="welcome-cap">Sunrise &mdash; from the deck of an oceanfront suite</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Marquee ─── -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-inner">
+    <span>Oceanfront Suites <span class="dot"></span> Private Beach <span class="dot"></span> Indoor Heated Pool <span class="dot"></span> Sauna &amp; Whirlpool <span class="dot"></span> Full Kitchens <span class="dot"></span> 15 min to Mystic <span class="dot"></span> 15 min to Foxwoods <span class="dot"></span></span>
+    <span>Oceanfront Suites <span class="dot"></span> Private Beach <span class="dot"></span> Indoor Heated Pool <span class="dot"></span> Sauna &amp; Whirlpool <span class="dot"></span> Full Kitchens <span class="dot"></span> 15 min to Mystic <span class="dot"></span> 15 min to Foxwoods <span class="dot"></span></span>
+  </div>
+</div>
+
+<!-- ─── The Stay ─── -->
+<section class="stay" id="stay">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <p class="eyebrow">Chapter 02 &mdash; The Stay</p>
+        <h2>Two homes by the sea, both with the door that opens to the Atlantic.</h2>
+      </div>
+      <p class="blurb reveal">Each suite is privately owned and individually furnished — full kitchens, oceanfront decks, queen beds. Both styles sleep up to six, and both look at the same horizon. Stays run Saturday to Saturday throughout the season.</p>
+    </div>
+
+    <div class="stay-grid">
+      <article class="room-card reveal">
+        <div class="room-figure">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/cf/filename-100-3247-jpg.jpg"
+               alt="Ocean View Townhouse at Atlantic Beach Casino Resort"
+               referrerpolicy="no-referrer"
+               loading="lazy">
+          <div class="room-num">N&deg; 01</div>
+          <div class="room-tag">Oceanfront</div>
+        </div>
+        <div class="room-meta">
+          <span>Two Bedroom</span>
+          <span>Sleeps 6</span>
+          <span>Whirlpool Bath</span>
+        </div>
+        <h3>Ocean View Townhouse</h3>
+        <p>Two stories on the dunes. The master suite occupies the upper floor with a queen bed, private bath with whirlpool, and its own deck above the surf. Below: full kitchen, living room, second bedroom with queen, sleeper sofa, and a deck that faces the water.</p>
+        <a href="#contact" class="arrow-link">Inquire about a week &rarr;</a>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-figure">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-s/01/8f/a7/3e/view-out-of-the-bedroom.jpg"
+               alt="Ocean View Flat at Atlantic Beach Casino Resort"
+               referrerpolicy="no-referrer"
+               loading="lazy">
+          <div class="room-num">N&deg; 02</div>
+          <div class="room-tag">Oceanfront</div>
+        </div>
+        <div class="room-meta">
+          <span>Two Bedroom</span>
+          <span>Sleeps 6</span>
+          <span>Single Level</span>
+        </div>
+        <h3>Ocean View Flat</h3>
+        <p>A single-level layout for families who want everyone on the same floor. Full kitchen, living room with sleeper sofa, primary bedroom with a full bed, second bedroom with bunk beds &mdash; ideal for kids. Same dunes, same view, same easy walk to the water.</p>
+        <a href="#contact" class="arrow-link">Inquire about a week &rarr;</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── The Setting ─── -->
+<section class="setting" id="setting">
+  <div class="wrap">
+    <div class="setting-grid">
+      <figure class="setting-figure reveal">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/d8/filename-100-3244-jpg.jpg"
+             alt="Private beach at Atlantic Beach Casino Resort, Westerly RI"
+             referrerpolicy="no-referrer"
+             loading="lazy">
+      </figure>
+      <div class="setting-text reveal">
+        <p class="eyebrow">Chapter 03 &mdash; The Setting</p>
+        <h2>On the dunes, between the Sound <span class="italic-accent">and</span> the open sea.</h2>
+        <p>Atlantic Beach Casino Resort sits along the Westerly stretch of the Rhode Island shore, where the dunes give way to miles of open sand in either direction and the coastal islands sit on the horizon. Ours is the building closest to the water &mdash; at high tide, the surf runs beneath us.</p>
+        <p>Down the beach are restaurants, ice cream stands, and the Misquamicut boardwalk. Across the street: a saltwater pond, mini golf, batting cages, and Water Wizz waterslides. Fifteen minutes east are Mystic Seaport and Foxwoods. Fifteen minutes west are the lights of New London. And the rest is salt and silence.</p>
+        <div class="stat-row">
+          <div>
+            <div class="stat-num">21</div>
+            <div class="stat-label">Oceanfront<br>Suites</div>
+          </div>
+          <div>
+            <div class="stat-num">0<span class="small">ft</span></div>
+            <div class="stat-label">From Suite<br>To Sand</div>
+          </div>
+          <div>
+            <div class="stat-num">15<span class="small">min</span></div>
+            <div class="stat-label">To Mystic<br>&amp; Foxwoods</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Amenities ─── -->
+<section class="amenities" id="amenities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <p class="eyebrow">Chapter 04 &mdash; What&rsquo;s Here</p>
+        <h2>Everything you came for. <span class="italic-accent">Nothing</span> you didn&rsquo;t.</h2>
+      </div>
+      <p class="blurb reveal">A small property kept simple. A common pool house, a private beach, and the kind of quiet that takes a few days to settle into.</p>
+    </div>
+
+    <div class="amen-grid reveal">
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><path d="M2 18 Q6 14, 10 18 T18 18 T26 18"/><path d="M2 14 Q6 10, 10 14 T18 14 T26 14"/><path d="M2 22 Q6 18, 10 22 T18 22 T26 22"/></svg>
+        <h4>Private Beach</h4>
+        <p>Direct dune access &mdash; miles of sand in both directions. Beach blanket-to-blanket nowhere.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="1"/><path d="M3 13 Q9 10, 12 13 T21 13"/><path d="M7 6 V3 M17 6 V3"/></svg>
+        <h4>Indoor Heated Pool</h4>
+        <p>Common pool house with heated saltwater pool, sauna, and whirlpool &mdash; for the cool mornings and shoulder seasons.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><path d="M3 21 V9 a3 3 0 0 1 3-3 h12 a3 3 0 0 1 3 3 V21"/><path d="M3 13 H21"/><circle cx="9" cy="17" r="0.8" fill="currentColor"/><circle cx="15" cy="17" r="0.8" fill="currentColor"/></svg>
+        <h4>Full Kitchens</h4>
+        <p>Every suite has a full kitchen &mdash; refrigerator, stove, dishwasher, cookware. Cook in, save the dining out for the night you don&rsquo;t.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><path d="M5 22 V11 L12 5 L19 11 V22 Z"/><path d="M9 22 V16 H15 V22"/></svg>
+        <h4>Oceanfront Decks</h4>
+        <p>Private balconies and shared decks facing the water. Master bedrooms with their own.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M2 12 Q12 4, 22 12 Q12 20, 2 12"/><circle cx="12" cy="12" r="3.5"/></svg>
+        <h4>Whirlpool Baths</h4>
+        <p>Townhouse master bathrooms include private whirlpool tubs &mdash; for after a day in the salt.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="1"/><path d="M9 8 H15 M9 12 H15 M9 16 H13"/></svg>
+        <h4>Free Wi-Fi</h4>
+        <p>Wireless throughout the property &mdash; for work-from-the-beach weeks and rainy-day movie nights.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><path d="M3 17 H21 V13 L18 8 H6 L3 13 Z"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></svg>
+        <h4>Free Parking</h4>
+        <p>One assigned space per suite. No meter, no garage, no fee.</p>
+      </div>
+      <div class="amen-cell">
+        <svg viewBox="0 0 24 24"><path d="M6 20 V8 a3 3 0 0 1 3-3 h6 a3 3 0 0 1 3 3 V20"/><path d="M3 20 H21"/><path d="M9 12 H15"/><circle cx="9" cy="9" r="0.8" fill="currentColor"/></svg>
+        <h4>Outdoor Grills</h4>
+        <p>Shared grills on the property &mdash; for beach-day burgers, fresh-caught striper, the works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Gallery ─── -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <p class="eyebrow">Chapter 05 &mdash; The Property</p>
+        <h2>A look <span class="italic-accent">around.</span></h2>
+      </div>
+    </div>
+    <div class="gallery-strip reveal">
+      <div class="gal-1">
+        <img src="https://cdn1.redweek.com/photos/full-preview/2/8/6/28648.jpg?1"
+             alt="Atlantic Beach Casino Resort exterior"
+             referrerpolicy="no-referrer"
+             loading="lazy"
+             onerror="this.src='https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/8f/a7/3b/the-house.jpg'">
+      </div>
+      <div class="gal-2">
+        <img src="https://cdn1.redweek.com/photos/full-preview/2/8/6/28651.jpg?1"
+             alt="Suite interior at Atlantic Beach Casino Resort"
+             referrerpolicy="no-referrer"
+             loading="lazy"
+             onerror="this.src='https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/cf/filename-100-3247-jpg.jpg'">
+      </div>
+      <div class="gal-3">
+        <img src="https://cdn2.redweek.com/photos/full-preview/2/8/6/28652.jpg?1"
+             alt="Beach access at Atlantic Beach Casino Resort"
+             referrerpolicy="no-referrer"
+             loading="lazy"
+             onerror="this.src='https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/d8/filename-100-3244-jpg.jpg'">
+      </div>
+      <div class="gal-4">
+        <img src="https://cdn1.redweek.com/photos/full-preview/2/8/6/28655.jpg?1"
+             alt="Pool house at Atlantic Beach Casino Resort"
+             referrerpolicy="no-referrer"
+             loading="lazy"
+             onerror="this.src='https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/df/filename-100-3254-jpg.jpg'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Westerly ─── -->
+<section class="westerly" id="westerly">
+  <div class="wrap">
+    <div class="west-grid">
+      <div class="reveal">
+        <p class="eyebrow">Chapter 06 &mdash; Westerly</p>
+        <h2>The town that <span class="italic-accent">isn&rsquo;t</span> the Hamptons.</h2>
+        <p>Westerly is a working coastal town &mdash; less polished than Newport, less precious than Martha&rsquo;s Vineyard, more lived-in than Block Island. It has a downtown with a small cinema and a 200-voice chorus, two state beaches, the Watch Hill lighthouse, and a Taylor Swift sighting if you&rsquo;re lucky.</p>
+        <p style="margin-top: 28px; font-size: 14px; opacity: 0.7;">319 Atlantic Avenue<br>Westerly, Rhode Island 02891</p>
+      </div>
+      <ul class="west-list reveal">
+        <li><span class="name">Misquamicut State Beach</span><span class="dist">9 min</span></li>
+        <li><span class="name">Watch Hill Lighthouse <em>+ beach</em></span><span class="dist">10 min</span></li>
+        <li><span class="name">Mystic Seaport &amp; Aquarium</span><span class="dist">15 min</span></li>
+        <li><span class="name">Foxwoods Resort Casino</span><span class="dist">15 min</span></li>
+        <li><span class="name">Mohegan Sun Casino</span><span class="dist">20 min</span></li>
+        <li><span class="name">Westerly Train Station <em>+ Amtrak</em></span><span class="dist">12 min</span></li>
+        <li><span class="name">T.F. Green Airport</span><span class="dist">45 min</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Reviews ─── -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="reveal">
+        <p class="eyebrow">Chapter 07 &mdash; In Their Words</p>
+        <h2>Forty years of returning <span class="italic-accent">guests.</span></h2>
+      </div>
+    </div>
+    <div class="review-grid">
+      <div class="review reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;A little slice of heaven. Peaceful but alive, and has served our family well throughout the years.&rdquo;</p>
+        <div class="by">kp195 &mdash; RedWeek, 2025</div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;You wake up hearing the waves crashing and the sun rising over the ocean. Highly recommended to anyone.&rdquo;</p>
+        <div class="by">John M. &mdash; TripAdvisor</div>
+      </div>
+      <div class="review reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;Pure beach awesomeness. You cannot beat the location of this resort. Ocean view? Perfection.&rdquo;</p>
+        <div class="by">D7169OZkellyb &mdash; TripAdvisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="final" id="contact">
+  <img class="final-img"
+       src="https://dynamic-media-cdn.tripadvisor.com/media/photo-s/02/a0/d6/d8/filename-100-3244-jpg.jpg"
+       alt="Misquamicut Beach at Atlantic Beach Casino Resort"
+       referrerpolicy="no-referrer">
+  <div class="wrap">
+    <h2 class="reveal">Reserve a week <span class="italic-accent">on the dunes.</span></h2>
+    <p class="reveal">Availability for the 2026 season is open. Reach out for rates, dates, and to ask anything you&rsquo;d like to know about the suites.</p>
+    <div class="final-row reveal">
+      <a href="tel:14013227100" class="btn btn-primary">Call &middot; (401) 322-7100</a>
+      <a href="mailto:abcresortri@yahoo.com" class="btn btn-light">Email Inquiry</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-mark">
+          Atlantic Beach
+          <span class="sub">Casino Resort &middot; Westerly, RI</span>
+        </div>
+        <p>Twenty-one privately owned oceanfront suites on Misquamicut Beach. The name from the 1950s, the spirit unchanged — a slice of heaven on Earth, in Westerly, Rhode Island.</p>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <ul>
+          <li>319 Atlantic Avenue</li>
+          <li>Westerly, RI 02891</li>
+          <li><a href="https://maps.google.com/?q=319+Atlantic+Ave+Westerly+RI" target="_blank" rel="noopener">Get directions &rarr;</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Reach Us</h5>
+        <ul>
+          <li><a href="tel:14013227100">(401) 322-7100</a></li>
+          <li><a href="mailto:abcresortri@yahoo.com">abcresortri@yahoo.com</a></li>
+          <li><a href="https://abcresortri.com/members/" target="_blank" rel="noopener">Owners&rsquo; portal &rarr;</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#stay">The Suites</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#westerly">Westerly</a></li>
+          <li><a href="#contact">Reserve</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Atlantic Beach Casino Resort. All rights reserved.</span>
+      <span>Concept by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav background on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu
+  const navToggle = document.getElementById('navToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  navToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
