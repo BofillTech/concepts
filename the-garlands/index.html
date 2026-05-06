@@ -144,12 +144,21 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   background: var(--atlantic-deep);
 }
-.hero__img {
+.hero__slides {
   position: absolute; inset: 0;
-  background-image: url('./hero_sunset.jpg');
+}
+.hero__slide {
+  position: absolute; inset: 0;
   background-size: cover;
-  background-position: center 65%;
-  animation: kenburns 20s ease-out forwards;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 1.4s ease-in-out;
+  will-change: opacity, transform;
+}
+.hero__slide.is-active {
+  opacity: 1;
+  animation: kenburns 8s ease-out forwards;
 }
 @keyframes kenburns {
   from { transform: scale(1.08); }
@@ -157,7 +166,8 @@ img { max-width: 100%; display: block; }
 }
 .hero__overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(8,26,44,.45) 0%, rgba(8,26,44,.15) 35%, rgba(8,26,44,.75) 100%);
+  background: linear-gradient(180deg, rgba(8,26,44,.45) 0%, rgba(8,26,44,.2) 35%, rgba(8,26,44,.78) 100%);
+  z-index: 1;
 }
 .hero__content {
   position: relative;
@@ -169,6 +179,36 @@ img { max-width: 100%; display: block; }
   padding: 0 var(--gutter) clamp(3rem, 8vh, 6rem);
   color: #fff;
 }
+.hero__dots {
+  position: absolute;
+  top: 50%;
+  right: clamp(1rem, 3vw, 2rem);
+  transform: translateY(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  padding: .75rem .55rem;
+  background: rgba(8,26,44,.35);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+}
+.hero__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all .35s ease;
+}
+.hero__dot.is-active {
+  background: #fff;
+  height: 24px;
+  border-radius: 4px;
+}
+.hero__dot:hover { background: rgba(255,255,255,.7); }
 .hero__eyebrow {
   font-size: .8rem;
   letter-spacing: .42em;
@@ -898,8 +938,21 @@ img { max-width: 100%; display: block; }
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero__img"></div>
+  <div class="hero__slides">
+    <div class="hero__slide is-active" style="background-image:url('./property_from_beach.jpg');background-position:center 55%;"></div>
+    <div class="hero__slide" style="background-image:url('./sundeck_chaises.jpg');background-position:center 60%;"></div>
+    <div class="hero__slide" style="background-image:url('./bedroom_twins.jpg');background-position:center 50%;"></div>
+    <div class="hero__slide" style="background-image:url('./kitchenette.jpg');background-position:center 45%;"></div>
+    <div class="hero__slide" style="background-image:url('./hero_sunset.jpg');background-position:center 65%;"></div>
+  </div>
   <div class="hero__overlay"></div>
+  <div class="hero__dots" id="heroDots">
+    <button class="hero__dot is-active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="hero__dot" data-slide="1" aria-label="Slide 2"></button>
+    <button class="hero__dot" data-slide="2" aria-label="Slide 3"></button>
+    <button class="hero__dot" data-slide="3" aria-label="Slide 4"></button>
+    <button class="hero__dot" data-slide="4" aria-label="Slide 5"></button>
+  </div>
   <div class="hero__content">
     <div class="hero__eyebrow">Dennis Port · Cape Cod</div>
     <h1 class="hero__title">The Garlands<br><em>on Nantucket Sound</em></h1>
@@ -1233,6 +1286,34 @@ img { max-width: 100%; display: block; }
   // Show booking bar immediately (with brief delay for graceful entry)
   const bar = document.getElementById('bookingBar');
   setTimeout(() => bar.classList.add('in'), 400);
+
+  // Hero slideshow
+  (function heroSlideshow() {
+    const slides = document.querySelectorAll('.hero__slide');
+    const dots = document.querySelectorAll('.hero__dot');
+    if (!slides.length) return;
+    const hero = document.querySelector('.hero');
+    let idx = 0;
+    let timer;
+    const SLIDE_DURATION = 6000;
+
+    function show(i) {
+      slides.forEach((s, k) => s.classList.toggle('is-active', k === i));
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      idx = i;
+    }
+    function next() { show((idx + 1) % slides.length); }
+    function start() { stop(); timer = setInterval(next, SLIDE_DURATION); }
+    function stop() { if (timer) clearInterval(timer); }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { show(i); start(); });
+    });
+    hero.addEventListener('mouseenter', stop);
+    hero.addEventListener('mouseleave', start);
+
+    start();
+  })();
 
   // Default check-in/check-out
   const today = new Date();
