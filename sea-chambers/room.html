@@ -33,17 +33,36 @@ a{text-decoration:none;color:inherit;}
 .sc-breadcrumb .sep{margin:0 10px;color:var(--sand);}
 
 /* MAIN LAYOUT */
-.sc-room-page{max-width:1400px;margin:0 auto;padding:50px 40px;display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start;}
+.sc-room-page{max-width:1400px;margin:0 auto;padding:50px 40px;display:grid;grid-template-columns:1.4fr 1fr;gap:60px;align-items:start;}
 
-/* GALLERY (left) */
-.sc-rd-gallery{display:flex;flex-direction:column;gap:10px;}
-.sc-rd-hero{aspect-ratio:16/10;border-radius:8px;overflow:hidden;background:var(--sand);}
-.sc-rd-hero img{width:100%;height:100%;object-fit:cover;}
-.sc-rd-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
-.sc-rd-thumb{aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer;background:var(--sand);transition:opacity .25s;}
-.sc-rd-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
-.sc-rd-thumb:hover img{transform:scale(1.05);}
-.sc-rd-thumb.active{outline:3px solid var(--ocean);outline-offset:-3px;}
+/* GALLERY (left) — hero + 11 thumbnails with captions */
+.sc-rd-gallery{display:flex;flex-direction:column;gap:14px;}
+.sc-rd-hero{position:relative;border-radius:8px;overflow:hidden;background:var(--sand);}
+.sc-rd-hero img{width:100%;aspect-ratio:16/10;object-fit:cover;cursor:zoom-in;}
+.sc-rd-hero-caption{position:absolute;bottom:0;left:0;right:0;padding:14px 20px;background:linear-gradient(0deg,rgba(30,30,42,.85) 0%,rgba(30,30,42,0) 100%);color:var(--white);font-family:var(--font-body);font-size:13px;font-weight:500;letter-spacing:.04em;text-shadow:0 1px 4px rgba(0,0,0,.3);}
+.sc-rd-hero-counter{position:absolute;top:14px;right:14px;padding:6px 12px;background:rgba(30,30,42,.7);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.12em;border-radius:99px;backdrop-filter:blur(8px);}
+
+.sc-rd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.sc-rd-card{display:flex;flex-direction:column;cursor:pointer;border-radius:6px;overflow:hidden;background:var(--white);border:1px solid var(--sand);transition:all .25s;}
+.sc-rd-card:hover{border-color:var(--ocean);transform:translateY(-2px);box-shadow:0 6px 16px rgba(42,71,100,.1);}
+.sc-rd-card.active{border-color:var(--ocean);border-width:2px;}
+.sc-rd-card-img{aspect-ratio:1;overflow:hidden;background:var(--sand);}
+.sc-rd-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .35s;}
+.sc-rd-card:hover .sc-rd-card-img img{transform:scale(1.05);}
+.sc-rd-card-caption{padding:8px 10px;font-family:var(--font-body);font-size:11px;font-weight:500;color:var(--gray);text-align:center;line-height:1.3;letter-spacing:.02em;}
+
+/* LIGHTBOX */
+.sc-rd-lightbox{position:fixed;inset:0;z-index:1000;background:rgba(15,15,22,.94);display:none;align-items:center;justify-content:center;padding:60px 40px;}
+.sc-rd-lightbox.open{display:flex;}
+.sc-rd-lightbox-img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:6px;}
+.sc-rd-lightbox-close{position:absolute;top:24px;right:32px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);font-size:24px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;}
+.sc-rd-lightbox-close:hover{background:rgba(255,255,255,.2);}
+.sc-rd-lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:var(--white);cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.sc-rd-lightbox-nav:hover{background:rgba(255,255,255,.2);}
+.sc-rd-lightbox-prev{left:32px;}
+.sc-rd-lightbox-next{right:32px;}
+.sc-rd-lightbox-caption{position:absolute;bottom:40px;left:0;right:0;text-align:center;color:var(--white);font-family:var(--font-body);font-size:14px;letter-spacing:.04em;}
+.sc-rd-lightbox-counter{display:block;font-size:11px;color:rgba(255,255,255,.55);margin-top:6px;letter-spacing:.16em;text-transform:uppercase;}
 
 /* DETAILS (right) */
 .sc-rd-details{position:sticky;top:90px;}
@@ -70,11 +89,11 @@ a{text-decoration:none;color:inherit;}
 
 /* CTA BUTTONS */
 .sc-rd-actions{display:flex;gap:10px;}
-.sc-rd-btn{flex:1;padding:16px 24px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;}
-.sc-rd-btn-primary{background:var(--ocean);color:var(--white);}
-.sc-rd-btn-primary:hover{background:var(--ocean-deep);transform:translateY(-1px);}
-.sc-rd-btn-secondary{background:var(--white);border-color:var(--ocean);color:var(--ocean);}
-.sc-rd-btn-secondary:hover{background:var(--ocean);color:var(--white);}
+.sc-rd-btn{flex:1;padding:16px 24px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;display:block;}
+a.sc-rd-btn-primary,.sc-rd-btn-primary{background:var(--ocean);color:#FFFFFF !important;}
+a.sc-rd-btn-primary:hover,.sc-rd-btn-primary:hover{background:var(--ocean-deep);color:#FFFFFF !important;transform:translateY(-1px);}
+a.sc-rd-btn-secondary,.sc-rd-btn-secondary{background:var(--white);border:1px solid var(--ocean);color:var(--ocean);}
+a.sc-rd-btn-secondary:hover,.sc-rd-btn-secondary:hover{background:var(--ocean);color:#FFFFFF !important;}
 
 /* NOT FOUND */
 .sc-rd-notfound{text-align:center;padding:120px 40px;font-family:var(--font-body);}
@@ -90,7 +109,7 @@ a{text-decoration:none;color:inherit;}
 .sc-footer-credit{padding:18px 60px;background:#0a0a10;text-align:center;font-size:11px;color:rgba(255,255,255,.25);letter-spacing:.06em;}
 
 @media(max-width:1024px){.sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}.sc-room-page{grid-template-columns:1fr;gap:40px;}.sc-rd-details{position:static;}.sc-footer{grid-template-columns:1fr;}}
-@media(max-width:600px){.sc-nav{padding:12px 20px;}.sc-breadcrumb{padding:14px 20px;}.sc-room-page{padding:30px 20px;}.sc-rd-meta{grid-template-columns:1fr;}.sc-rd-amen{grid-template-columns:1fr;}}
+@media(max-width:600px){.sc-nav{padding:12px 20px;}.sc-breadcrumb{padding:14px 20px;}.sc-room-page{padding:30px 20px;}.sc-rd-meta{grid-template-columns:1fr;}.sc-rd-amen{grid-template-columns:1fr;}.sc-rd-grid{grid-template-columns:repeat(2,1fr);}.sc-rd-lightbox{padding:30px 16px;}.sc-rd-lightbox-nav{width:42px;height:42px;}.sc-rd-lightbox-prev{left:12px;}.sc-rd-lightbox-next{right:12px;}}
 </style>
 </head>
 <body>
@@ -246,32 +265,66 @@ const BLDG = {
   }
 };
 
+// PHOTOS: each entry is {src, caption}. Real per-room sets keyed by room number;
+// fallback sets keyed by bed type. All sets target 12 photos.
 const PHOTOS = {
+  // Real photos from seachambers.com/room35/
   "35": [
-    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
-  ],
-  king: ["img/room-king.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg", "img/room-38-deck.jpg"],
-  queendouble: ["img/room-double.jpg", "img/room-38-deck.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg"],
-  twoqueens: [
-    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
-  ],
-  suite: ["img/room-suite.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg", "img/room-38-deck.jpg"]
+    {src:"https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg", caption:"Two queen beds with ocean view"},
+    {src:"https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg", caption:"Sitting area facing the ocean"},
+    {src:"https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg", caption:"Sitting area looking back into the room"},
+    {src:"https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg", caption:"Bedroom from the entry"},
+    {src:"https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg", caption:"Wider room view with kitchenette"},
+    {src:"img/room-2-view.jpg", caption:"Wake-up ocean view from bed"},
+    {src:"img/room-46-pool.jpg", caption:"View toward the pool and Atlantic"},
+    {src:"img/room-38-deck.jpg", caption:"Private deck-side view"},
+    {src:"img/room-king.jpg", caption:"Coastal-decor finishes"},
+    {src:"img/room-suite.jpg", caption:"Sitting nook with exposed brick"},
+    {src:"img/firepit-dusk.jpg", caption:"Property fire pits at dusk"},
+    {src:"img/building-wide.jpg", caption:"Adirondack chairs along the water"}
+  ]
 };
 
-function getPhotos(room){
-  if(PHOTOS[room.n]) return PHOTOS[room.n];
+// Fallback caption templates
+const CAPTION_TEMPLATES = {
+  king: ["King bed with coastal decor","Sitting area and reading chair","Kitchenette with mini-fridge","Private bathroom","Flat-screen TV and dresser","Closet and storage","View from the doorway","Window seating","Property pool and ocean view","Oceanfront fire pits","Adirondack chairs by the water","Sea Chambers oceanfront grounds"],
+  queendouble: ["Queen and double beds","Kitchenette with mini-fridge","Sitting area","Private bathroom","Flat-screen TV and dresser","View toward the ocean","Closet and storage","Door view of the room","Property pool and ocean view","Oceanfront fire pits","Private deck access","Sea Chambers oceanfront grounds"],
+  twoqueens: ["Two queen beds with ocean view","Sitting area facing the ocean","Sitting area looking into the room","Bedroom from the entry","Wider room view with kitchenette","Kitchenette and table","Private bathroom","Closet and storage","Window with ocean view","Property pool and grounds","Oceanfront fire pits","Adirondack chairs by the water"],
+  suite: ["Suite living room with sleeper sofa","King bedroom","Sitting area with table and chairs","Kitchenette","Private bathroom","Flat-screen TV","Sleeping area from the doorway","Window with ocean view","Property pool and grounds","Oceanfront fire pits","Adirondack chairs along the water","Sea Chambers oceanfront grounds"],
+  apartment: ["Living room with full kitchen","Master bedroom","Second bedroom","Dining area","Full kitchen","Sitting area","Private bathroom","Window views over the property","Apartment entry","Property pool and grounds","Oceanfront fire pits","Sea Chambers oceanfront grounds"]
+};
+
+// Photo pools by bed type for fallback (cycled to fill 12 with rotation)
+const PHOTO_POOLS = {
+  king: ["img/room-king.jpg","img/room-2-view.jpg","img/room-suite.jpg","img/room-46-pool.jpg","img/room-38-deck.jpg","img/room-double.jpg","img/firepit-dusk.jpg","img/building-wide.jpg","img/terrace-ramp.jpg","img/lounge-grass.jpg","img/beach-view.jpg","img/main-building.jpg"],
+  queendouble: ["img/room-double.jpg","img/room-38-deck.jpg","img/room-2-view.jpg","img/room-46-pool.jpg","img/room-king.jpg","img/room-suite.jpg","img/firepit-dusk.jpg","img/building-wide.jpg","img/terrace-ramp.jpg","img/lounge-grass.jpg","img/beach-view.jpg","img/main-building.jpg"],
+  twoqueens: ["https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg","https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg","https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg","https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg","https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg","img/room-2-view.jpg","img/room-46-pool.jpg","img/room-38-deck.jpg","img/firepit-dusk.jpg","img/building-wide.jpg","img/terrace-ramp.jpg","img/main-building.jpg"],
+  suite: ["img/room-suite.jpg","img/room-2-view.jpg","img/room-46-pool.jpg","img/room-38-deck.jpg","img/room-king.jpg","img/room-double.jpg","img/firepit-dusk.jpg","img/building-wide.jpg","img/terrace-ramp.jpg","img/lounge-grass.jpg","img/beach-view.jpg","img/main-building.jpg"],
+  apartment: ["img/room-suite.jpg","img/room-king.jpg","img/room-double.jpg","img/room-2-view.jpg","img/room-38-deck.jpg","img/room-46-pool.jpg","img/firepit-dusk.jpg","img/building-wide.jpg","img/terrace-ramp.jpg","img/lounge-grass.jpg","img/beach-view.jpg","img/main-building.jpg"]
+};
+
+function getCategoryKey(room){
   const b = (room.b || "").toLowerCase();
-  if(b.includes("two queens") || b.includes("q/q")) return PHOTOS.twoqueens;
-  if(b.includes("apartment") || (room.special||"").toLowerCase().includes("two-room suite") || b.includes("sofa bed") && b.includes("king")) return PHOTOS.suite;
-  if(b.startsWith("king") || b === "king") return PHOTOS.king;
-  return PHOTOS.queendouble;
+  const sp = (room.special || "").toLowerCase();
+  if(b.includes("apartment") || sp.includes("apartment")) return "apartment";
+  if(b.includes("two queens") || b.includes("q/q")) return "twoqueens";
+  if(sp.includes("two-room suite") || (b.includes("sofa bed") && b.includes("king"))) return "suite";
+  if(b.startsWith("king") || b === "king") return "king";
+  return "queendouble";
+}
+
+function getPhotos(room){
+  // Specific room override
+  if(PHOTOS[room.n]){
+    let arr = PHOTOS[room.n].slice(0,12);
+    let i = 0;
+    while(arr.length < 12){ arr.push(arr[i % PHOTOS[room.n].length]); i++; }
+    return arr;
+  }
+  const cat = getCategoryKey(room);
+  const pool = PHOTO_POOLS[cat];
+  const captions = CAPTION_TEMPLATES[cat];
+  return pool.slice(0,12).map((src, i) => ({src, caption: captions[i] || ""}));
 }
 
 const BASE_AMENITIES = [
@@ -347,9 +400,17 @@ if(!room){
   main.innerHTML = `
     <section class="sc-room-page">
       <div class="sc-rd-gallery">
-        <div class="sc-rd-hero"><img id="sc-rd-hero-img" src="${photos[0]}" alt="Room ${room.n}"></div>
-        <div class="sc-rd-thumbs">
-          ${photos.slice(0, 4).map((p, i) => `<div class="sc-rd-thumb${i===0?' active':''}" data-src="${p}"><img src="${p}" alt="Room ${room.n} photo ${i+1}" loading="lazy"></div>`).join('')}
+        <div class="sc-rd-hero">
+          <img id="sc-rd-hero-img" src="${photos[0].src}" alt="${photos[0].caption}" data-idx="0">
+          <div class="sc-rd-hero-counter">1 / ${photos.length}</div>
+          <div class="sc-rd-hero-caption" id="sc-rd-hero-caption">${photos[0].caption}</div>
+        </div>
+        <div class="sc-rd-grid">
+          ${photos.map((p, i) => `
+            <div class="sc-rd-card${i===0?' active':''}" data-idx="${i}">
+              <div class="sc-rd-card-img"><img src="${p.src}" alt="${p.caption}" loading="lazy"></div>
+              <div class="sc-rd-card-caption">${p.caption}</div>
+            </div>`).join('')}
         </div>
       </div>
 
@@ -395,14 +456,77 @@ if(!room){
           <a href="rooms.html" class="sc-rd-btn sc-rd-btn-secondary">All Rooms</a>
         </div>
       </aside>
-    </section>`;
+    </section>
 
-  // Thumb click handlers — swap hero image
-  document.querySelectorAll('.sc-rd-thumb').forEach(t => t.addEventListener('click', () => {
-    document.querySelectorAll('.sc-rd-thumb').forEach(x => x.classList.remove('active'));
-    t.classList.add('active');
-    document.getElementById('sc-rd-hero-img').src = t.dataset.src;
+    <div class="sc-rd-lightbox" id="sc-rd-lightbox" role="dialog" aria-modal="true">
+      <button class="sc-rd-lightbox-close" aria-label="Close" id="sc-rd-lb-close">×</button>
+      <button class="sc-rd-lightbox-nav sc-rd-lightbox-prev" aria-label="Previous" id="sc-rd-lb-prev">‹</button>
+      <img class="sc-rd-lightbox-img" id="sc-rd-lb-img" src="" alt="">
+      <button class="sc-rd-lightbox-nav sc-rd-lightbox-next" aria-label="Next" id="sc-rd-lb-next">›</button>
+      <div class="sc-rd-lightbox-caption" id="sc-rd-lb-caption">
+        <span id="sc-rd-lb-text"></span>
+        <span class="sc-rd-lightbox-counter" id="sc-rd-lb-counter"></span>
+      </div>
+    </div>`;
+
+  // Hero <-> grid sync
+  let currentIdx = 0;
+  function setHero(idx){
+    currentIdx = idx;
+    const p = photos[idx];
+    const heroImg = document.getElementById('sc-rd-hero-img');
+    heroImg.src = p.src;
+    heroImg.alt = p.caption;
+    heroImg.dataset.idx = idx;
+    document.getElementById('sc-rd-hero-caption').textContent = p.caption;
+    document.querySelector('.sc-rd-hero-counter').textContent = `${idx+1} / ${photos.length}`;
+    document.querySelectorAll('.sc-rd-card').forEach(c => c.classList.toggle('active', parseInt(c.dataset.idx) === idx));
+  }
+  document.querySelectorAll('.sc-rd-card').forEach(c => c.addEventListener('click', () => {
+    const idx = parseInt(c.dataset.idx);
+    setHero(idx);
+    openLightbox(idx);
   }));
+  document.getElementById('sc-rd-hero-img').addEventListener('click', () => openLightbox(currentIdx));
+
+  // Lightbox
+  const lb = document.getElementById('sc-rd-lightbox');
+  const lbImg = document.getElementById('sc-rd-lb-img');
+  const lbText = document.getElementById('sc-rd-lb-text');
+  const lbCounter = document.getElementById('sc-rd-lb-counter');
+  let lbIdx = 0;
+  function openLightbox(idx){
+    lbIdx = idx;
+    showLightbox();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function showLightbox(){
+    const p = photos[lbIdx];
+    lbImg.src = p.src;
+    lbImg.alt = p.caption;
+    lbText.textContent = p.caption;
+    lbCounter.textContent = `Photo ${lbIdx+1} of ${photos.length}`;
+  }
+  function navLightbox(dir){
+    lbIdx = (lbIdx + dir + photos.length) % photos.length;
+    showLightbox();
+    setHero(lbIdx);
+  }
+  document.getElementById('sc-rd-lb-close').addEventListener('click', closeLightbox);
+  document.getElementById('sc-rd-lb-prev').addEventListener('click', () => navLightbox(-1));
+  document.getElementById('sc-rd-lb-next').addEventListener('click', () => navLightbox(1));
+  lb.addEventListener('click', (e) => { if(e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') navLightbox(-1);
+    if(e.key === 'ArrowRight') navLightbox(1);
+  });
 }
 </script>
 
