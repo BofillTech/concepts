@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grand Canyon Inn &amp; Motel — Twenty Minutes from the Rim · Valle, Arizona</title>
+<meta name="description" content="A family-run inn on AZ-64, twenty minutes from the South Rim of the Grand Canyon. 101 rooms, full restaurant, saloon and seasonal pool — open since 1981." />
+<link rel="icon" href="https://bofilltech.com/wp-content/uploads/2026/05/lohoo.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" />
+
+<style>
+  :root{
+    --ink:        #2A1F18;
+    --ink-soft:   #4A3D33;
+    --cream:      #F4EAD9;
+    --paper:      #FAF4E8;
+    --rust:       #B85A35;
+    --rust-deep:  #8B3A1F;
+    --gold:       #D4A05F;
+    --sage:       #94957B;
+    --stone:      #8A7A6B;
+    --line:       rgba(42,31,24,.16);
+
+    --display:    'Crimson Pro', Georgia, serif;
+    --body:       'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:       'DM Mono', ui-monospace, monospace;
+
+    --pad:        clamp(1.25rem, 4vw, 3rem);
+    --section:    clamp(4rem, 10vw, 8rem);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.55;
+    font-size:16px;
+    font-weight:400;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block;height:auto}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+
+  /* ───────── NAVIGATION ───────── */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    padding:14px var(--pad);
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    background:rgba(244,234,217,0);
+    backdrop-filter:blur(0px);
+    transition:background .3s ease, backdrop-filter .3s ease, box-shadow .3s ease, padding .3s ease;
+  }
+  .nav.scrolled{
+    background:rgba(244,234,217,.92);
+    backdrop-filter:blur(10px);
+    box-shadow:0 1px 0 var(--line);
+    padding:10px var(--pad);
+  }
+  .nav__brand{display:flex;align-items:center;gap:.7rem}
+  .nav__brand img{height:46px;width:auto;filter:drop-shadow(0 1px 2px rgba(0,0,0,.15))}
+  .nav__wordmark{
+    font-family:var(--display);
+    font-style:italic;
+    font-weight:500;
+    font-size:1.05rem;
+    color:var(--cream);
+    letter-spacing:.01em;
+    line-height:1.1;
+    transition:color .3s ease;
+  }
+  .nav__wordmark span{display:block;font-style:normal;font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-top:2px}
+  .nav.scrolled .nav__wordmark{color:var(--ink)}
+
+  .nav__menu{display:none}
+  @media(min-width:1024px){
+    .nav__menu{
+      display:flex;align-items:center;gap:2rem;
+      font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--cream);
+      transition:color .3s ease;
+    }
+    .nav.scrolled .nav__menu{color:var(--ink)}
+    .nav__menu a{position:relative;padding:.4rem 0;transition:color .3s}
+    .nav__menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:1px;background:currentColor;transition:width .3s}
+    .nav__menu a:hover::after{width:100%}
+    .nav__menu a:hover{color:var(--rust)}
+  }
+  .nav__cta{display:flex;align-items:center;gap:.6rem}
+  .nav__phone{
+    display:none;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;
+    color:var(--cream);transition:color .3s;
+  }
+  .nav.scrolled .nav__phone{color:var(--ink)}
+  @media(min-width:768px){.nav__phone{display:inline-block}}
+  .btn-book{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--rust);
+    color:var(--cream);
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;
+    padding:.75rem 1.25rem;
+    border-radius:0;
+    transition:background .25s ease, transform .25s ease;
+    white-space:nowrap;
+  }
+  .btn-book:hover{background:var(--rust-deep);transform:translateY(-1px)}
+
+  /* ───────── HERO ───────── */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:0 var(--pad) clamp(2rem, 6vw, 5rem);
+    color:var(--cream);
+    overflow:hidden;
+    background:#2A1F18;
+  }
+  .hero__bg{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('https://bofilltech.com/wp-content/uploads/2026/05/1.jpg');
+    background-size:cover;
+    background-position:center 30%;
+    filter:brightness(.78) saturate(1.05) contrast(1.02);
+    transform:scale(1.04);
+  }
+  .hero__veil{
+    position:absolute;inset:0;z-index:1;
+    background:
+      linear-gradient(180deg, rgba(42,31,24,.55) 0%, rgba(42,31,24,.15) 32%, rgba(42,31,24,.0) 55%, rgba(42,31,24,.65) 100%),
+      radial-gradient(ellipse at 50% 110%, rgba(139,58,31,.35) 0%, rgba(0,0,0,0) 50%);
+  }
+  .hero__inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%}
+  .hero__eyebrow{
+    display:flex;align-items:center;gap:.8rem;
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1.25rem;
+    opacity:.95;
+  }
+  .hero__eyebrow::before,.hero__eyebrow::after{content:'';flex:0 0 1.6rem;height:1px;background:var(--gold);opacity:.7}
+  .hero__title{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(3rem, 11vw, 9.5rem);
+    line-height:.95;
+    letter-spacing:-.02em;
+    margin-bottom:1.25rem;
+    text-shadow:0 2px 24px rgba(0,0,0,.35);
+  }
+  .hero__title em{font-style:italic;font-weight:300;color:var(--gold)}
+  .hero__amp{
+    display:inline-block;
+    font-style:italic;font-weight:300;
+    color:var(--gold);
+    transform:translateY(.05em);
+    margin:0 .15em;
+  }
+  .hero__sub{
+    font-family:var(--display);
+    font-style:italic;
+    font-size:clamp(1.15rem, 2vw, 1.65rem);
+    font-weight:400;
+    max-width:30em;
+    color:var(--cream);
+    margin-bottom:2rem;
+    line-height:1.4;
+  }
+  .hero__row{
+    display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem 2rem;
+    margin-top:.5rem;
+  }
+  .btn-hero{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    background:var(--rust);
+    color:var(--cream);
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+    padding:1.1rem 2rem;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .btn-hero:hover{background:var(--rust-deep);transform:translateY(-2px)}
+  .btn-hero svg{width:14px;height:14px;transition:transform .3s}
+  .btn-hero:hover svg{transform:translateX(4px)}
+  .hero__phone{
+    font-family:var(--mono);font-size:.8rem;letter-spacing:.18em;
+    color:var(--cream);text-transform:uppercase;
+    border-bottom:1px solid rgba(244,234,217,.4);
+    padding-bottom:.4rem;
+    transition:border-color .3s;
+  }
+  .hero__phone:hover{border-color:var(--gold)}
+  .hero__phone strong{font-weight:500;letter-spacing:.05em}
+
+  .hero__meta{
+    position:absolute;
+    bottom:clamp(2rem, 6vw, 5rem);
+    right:var(--pad);
+    z-index:2;
+    text-align:right;
+    font-family:var(--mono);
+    font-size:.65rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--cream);
+    opacity:.78;
+    line-height:1.9;
+    display:none;
+  }
+  @media(min-width:1024px){.hero__meta{display:block}}
+  .hero__meta strong{color:var(--gold);font-weight:500;display:block;font-size:.95rem;letter-spacing:.05em;font-family:var(--display);font-style:italic;font-weight:400}
+
+  .hero__scroll{
+    position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);z-index:2;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--cream);opacity:.6;
+  }
+
+  /* ───────── CHAPTER MARKER ───────── */
+  .chapter{
+    display:flex;align-items:center;gap:1rem;
+    font-family:var(--mono);font-size:.65rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--rust);
+    margin-bottom:1.5rem;
+  }
+  .chapter__num{
+    font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:1.6rem;color:var(--rust);
+    letter-spacing:0;
+  }
+  .chapter__line{flex:1;height:1px;background:var(--line);max-width:80px}
+
+  /* ───────── SECTION SHELL ───────── */
+  section{padding:var(--section) var(--pad)}
+  .wrap{max-width:1400px;margin:0 auto}
+
+  /* ───────── STORY (HERITAGE) ───────── */
+  .story{background:var(--cream);position:relative}
+  .story__grid{
+    display:grid;grid-template-columns:1fr;gap:clamp(2rem, 5vw, 4rem);
+    align-items:flex-start;
+  }
+  @media(min-width:900px){.story__grid{grid-template-columns:1fr 1.05fr;gap:5rem}}
+  .story__lead{font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(1.4rem, 2.6vw, 2rem);line-height:1.35;color:var(--ink-soft);margin-bottom:1.6rem}
+  .story__lead em{color:var(--rust)}
+  .story h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.4rem, 6vw, 4.5rem);
+    line-height:1;letter-spacing:-.02em;
+    margin-bottom:1.5rem;
+  }
+  .story h2 em{font-style:italic;color:var(--rust);font-weight:300}
+  .story__body p{font-size:1.02rem;color:var(--ink-soft);margin-bottom:1.1rem;max-width:34em}
+  .story__body p:last-child{margin-bottom:0}
+  .story__timeline{
+    margin-top:2.4rem;border-top:1px solid var(--line);padding-top:1.6rem;
+    display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem 1.5rem;
+  }
+  @media(min-width:600px){.story__timeline{grid-template-columns:repeat(4,1fr)}}
+  .story__yr{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.5rem;color:var(--rust);line-height:1}
+  .story__yr-label{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-top:.45rem;line-height:1.4}
+
+  .story__media{position:relative}
+  .story__media img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border:1px solid var(--line)}
+  .story__caption{
+    margin-top:1rem;
+    font-family:var(--mono);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--stone);
+  }
+  .story__caption span{color:var(--rust)}
+
+  /* ───────── FULL-BLEED INTERSTITIAL ───────── */
+  .bleed{
+    position:relative;
+    min-height:65vh;
+    display:flex;align-items:center;justify-content:center;
+    background-image:url('https://bofilltech.com/wp-content/uploads/2026/05/4.jpg');
+    background-size:cover;
+    background-position:center;
+    color:var(--cream);
+    text-align:center;
+    overflow:hidden;
+    padding:var(--pad);
+  }
+  .bleed::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(42,31,24,.55) 0%, rgba(42,31,24,.7) 100%)}
+  .bleed__inner{position:relative;z-index:1;max-width:900px}
+  .bleed__big{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(4rem, 16vw, 14rem);
+    line-height:.85;letter-spacing:-.04em;
+    color:var(--gold);
+    margin-bottom:.75rem;
+  }
+  .bleed__big em{font-style:italic;color:var(--cream)}
+  .bleed__cap{font-family:var(--display);font-style:italic;font-size:clamp(1.2rem, 2.4vw, 1.8rem);line-height:1.4;font-weight:400}
+  .bleed__byline{
+    margin-top:1.5rem;
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);opacity:.9;
+  }
+
+  /* ───────── ROOMS ───────── */
+  .rooms{background:var(--paper)}
+  .rooms__head{display:grid;grid-template-columns:1fr;gap:2rem;align-items:flex-end;margin-bottom:clamp(2.5rem,5vw,4rem)}
+  @media(min-width:900px){.rooms__head{grid-template-columns:1.1fr 1fr;gap:5rem}}
+  .rooms h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.4rem, 6vw, 4.5rem);
+    line-height:1;letter-spacing:-.02em;
+  }
+  .rooms h2 em{font-style:italic;color:var(--rust);font-weight:300}
+  .rooms__intro{font-size:1rem;color:var(--ink-soft);max-width:32em;line-height:1.65}
+
+  .rooms__grid{display:grid;grid-template-columns:1fr;gap:clamp(2rem,4vw,3rem)}
+  @media(min-width:768px){.rooms__grid{grid-template-columns:repeat(3,1fr)}}
+
+  .room{display:flex;flex-direction:column;position:relative}
+  .room__img{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--ink)}
+  .room__img img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+  .room:hover .room__img img{transform:scale(1.04)}
+  .room__num{
+    position:absolute;top:.9rem;left:.9rem;z-index:2;
+    font-family:var(--display);font-style:italic;font-weight:400;
+    font-size:1.25rem;color:var(--cream);
+    background:rgba(42,31,24,.55);
+    padding:.25rem .7rem;
+    backdrop-filter:blur(4px);
+  }
+  .room__body{padding:1.4rem 0 0}
+  .room__type{font-family:var(--mono);font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);margin-bottom:.5rem}
+  .room h3{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(1.6rem, 2.5vw, 2rem);
+    line-height:1.05;letter-spacing:-.01em;
+    margin-bottom:.65rem;
+    color:var(--ink);
+  }
+  .room h3 em{font-style:italic;font-weight:300;color:var(--rust)}
+  .room__desc{font-size:.95rem;color:var(--ink-soft);line-height:1.6;margin-bottom:1rem}
+  .room__specs{
+    display:flex;flex-wrap:wrap;gap:.4rem .8rem;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);
+    border-top:1px solid var(--line);padding-top:1rem;
+  }
+  .room__specs span{position:relative;padding-right:.8rem}
+  .room__specs span:not(:last-child)::after{content:'·';position:absolute;right:.05rem;top:0;color:var(--rust)}
+
+  /* ───────── DINING ───────── */
+  .dining{background:var(--ink);color:var(--cream);overflow:hidden;position:relative}
+  .dining::before{
+    content:'';position:absolute;
+    top:-200px;right:-200px;width:500px;height:500px;
+    background:radial-gradient(circle, rgba(212,160,95,.12) 0%, rgba(0,0,0,0) 60%);
+    pointer-events:none;
+  }
+  .dining .chapter{color:var(--gold)}
+  .dining .chapter__num{color:var(--gold)}
+  .dining .chapter__line{background:rgba(244,234,217,.18)}
+
+  .dining__head{display:grid;grid-template-columns:1fr;gap:2rem;align-items:flex-end;margin-bottom:clamp(2.5rem,5vw,4rem)}
+  @media(min-width:900px){.dining__head{grid-template-columns:1.2fr 1fr;gap:5rem}}
+  .dining h2{
+    font-family:var(--display);font-weight:400;
+    font-size:clamp(2.4rem, 6.5vw, 5rem);
+    line-height:.98;letter-spacing:-.02em;
+    color:var(--cream);
+  }
+  .dining h2 em{font-style:italic;color:var(--gold);font-weight:300}
+  .dining__intro{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.25rem;line-height:1.5;color:rgba(244,234,217,.85);max-width:32em}
+
+  .dining__grid{
+    display:grid;grid-template-columns:1fr;gap:1.5rem;
+  }
+  @media(min-width:768px){
+    .dining__grid{
+      grid-template-columns:1.4fr 1fr 1fr;
+      grid-template-rows:auto auto;
+      gap:1.5rem;
+    }
+    .dining__card:nth-child(1){grid-row:1/3}
+  }
+
+  .dining__card{
+    position:relative;overflow:hidden;
+    background:var(--ink-soft);
+    border:1px solid rgba(212,160,95,.14);
+    min-height:280px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+  }
+  .dining__card img{
+    position:absolute;inset:0;
+    width:100%;height:100%;object-fit:cover;
+    opacity:.65;transition:opacity .5s, transform 1s;
+  }
+  .dining__card:hover img{opacity:.85;transform:scale(1.04)}
+  .dining__card::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(42,31,24,.92) 100%)}
+  .dining__card-body{position:relative;z-index:1;padding:1.5rem}
+  .dining__card-tag{font-family:var(--mono);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
+  .dining__card h3{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,2.4vw,2rem);line-height:1.05;color:var(--cream);margin-bottom:.4rem}
+  .dining__card h3 em{font-style:italic;font-weight:300;color:var(--gold)}
+  .dining__card p{font-size:.92rem;line-height:1.55;color:rgba(244,234,217,.78);max-width:32em}
+  .dining__card:nth-child(1){min-height:520px}
+  .dining__card:nth-child(1) h3{font-size:clamp(1.8rem,3vw,2.4rem)}
+
+  /* ───────── AMENITIES STRIP ───────── */
+  .amen{background:var(--cream);padding-top:clamp(3rem,6vw,5rem);padding-bottom:clamp(3rem,6vw,5rem)}
+  .amen__head{text-align:center;margin-bottom:2.5rem}
+  .amen__head .chapter{justify-content:center}
+  .amen__head h2{font-family:var(--display);font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;letter-spacing:-.01em}
+  .amen__head h2 em{font-style:italic;color:var(--rust);font-weight:300}
+
+  .amen__row{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:2rem 1rem;
+    max-width:1100px;margin:0 auto;
+  }
+  @media(min-width:700px){.amen__row{grid-template-columns:repeat(5,1fr)}}
+  .amen__item{text-align:center}
+  .amen__icon{
+    width:54px;height:54px;
+    margin:0 auto .8rem;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--rust);
+    border-radius:50%;
+    color:var(--rust);
+  }
+  .amen__icon svg{width:24px;height:24px}
+  .amen__label{font-family:var(--display);font-size:1.1rem;font-weight:500;line-height:1.2;margin-bottom:.25rem}
+  .amen__sub{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone)}
+
+  /* ───────── GALLERY ───────── */
+  .gallery{background:var(--paper);padding-bottom:clamp(3rem,6vw,5rem)}
+  .gallery__head{display:flex;flex-wrap:wrap;gap:1.5rem 3rem;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem}
+  .gallery__head h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1;letter-spacing:-.02em}
+  .gallery__head h2 em{font-style:italic;color:var(--rust);font-weight:300}
+  .gallery__nav{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);display:flex;gap:1.5rem}
+  .gallery__nav span{color:var(--rust)}
+
+  .gallery__strip{
+    display:grid;
+    grid-template-columns:repeat(6,minmax(220px,1fr));
+    gap:1rem;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    padding-bottom:1rem;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:thin;
+    scrollbar-color:var(--rust) transparent;
+  }
+  .gallery__strip::-webkit-scrollbar{height:4px}
+  .gallery__strip::-webkit-scrollbar-thumb{background:var(--rust)}
+  .gallery__strip > div{
+    aspect-ratio:3/4;
+    overflow:hidden;
+    scroll-snap-align:start;
+    background:var(--ink);
+    position:relative;
+  }
+  .gallery__strip img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+  .gallery__strip > div:hover img{transform:scale(1.05)}
+  .gallery__strip > div:nth-child(2n){aspect-ratio:3/4}
+  .gallery__strip > div:nth-child(3){aspect-ratio:3/4}
+  @media(min-width:768px){
+    .gallery__strip{grid-template-columns:repeat(3,1fr);overflow:visible;padding-bottom:0}
+    .gallery__strip > div{scroll-snap-align:none}
+    .gallery__strip > div:nth-child(1){grid-row:1/3;aspect-ratio:3/4}
+    .gallery__strip > div:nth-child(2){aspect-ratio:4/3}
+    .gallery__strip > div:nth-child(3){aspect-ratio:4/3}
+    .gallery__strip > div:nth-child(4){aspect-ratio:1/1;grid-column:2/3}
+    .gallery__strip > div:nth-child(5){aspect-ratio:1/1;grid-column:3/4}
+  }
+
+  /* ───────── LOCATION ───────── */
+  .loc{background:var(--cream);padding-top:clamp(3rem,6vw,5rem);padding-bottom:clamp(3rem,6vw,5rem)}
+  .loc__grid{display:grid;grid-template-columns:1fr;gap:3rem;align-items:center}
+  @media(min-width:900px){.loc__grid{grid-template-columns:1fr 1fr}}
+  .loc h2{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3.4rem);line-height:1.02;letter-spacing:-.02em;margin-bottom:1rem}
+  .loc h2 em{font-style:italic;color:var(--rust);font-weight:300}
+  .loc__addr{font-family:var(--display);font-style:italic;font-size:1.2rem;font-weight:400;color:var(--ink-soft);margin-bottom:1.5rem;line-height:1.5}
+  .loc__addr strong{font-style:normal;font-weight:500;color:var(--ink);display:block;font-family:var(--body);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.4rem;color:var(--rust)}
+
+  .loc__list{margin-top:1.5rem}
+  .loc__list li{
+    display:flex;justify-content:space-between;
+    border-top:1px solid var(--line);
+    padding:.95rem 0;
+    font-size:.95rem;
+    color:var(--ink-soft);
+    align-items:baseline;
+    gap:1rem;
+  }
+  .loc__list li:last-child{border-bottom:1px solid var(--line)}
+  .loc__list strong{font-family:var(--display);font-style:italic;font-weight:500;color:var(--rust);font-size:1.05rem;white-space:nowrap}
+  .loc__list span{font-family:var(--mono);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);text-align:right;flex-shrink:0}
+
+  .loc__map{
+    aspect-ratio:5/6;
+    background:var(--ink);
+    background-image:url('https://bofilltech.com/wp-content/uploads/2026/05/GS15692.jpg');
+    background-size:cover;
+    background-position:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .loc__map::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(42,31,24,.0) 50%, rgba(42,31,24,.7) 100%);
+  }
+  .loc__map-tag{
+    position:absolute;left:1.5rem;bottom:1.5rem;z-index:1;
+    color:var(--cream);
+    font-family:var(--mono);font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .loc__map-tag strong{font-family:var(--display);font-style:italic;font-weight:400;font-size:1.4rem;letter-spacing:0;color:var(--gold);display:block;text-transform:none;margin-bottom:.2rem}
+
+  /* ───────── FINAL CTA ───────── */
+  .cta-final{
+    background:var(--rust);
+    color:var(--cream);
+    padding:clamp(4rem,8vw,7rem) var(--pad);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(212,160,95,.18) 0%, rgba(0,0,0,0) 50%),
+      radial-gradient(circle at 80% 70%, rgba(42,31,24,.25) 0%, rgba(0,0,0,0) 50%);
+    pointer-events:none;
+  }
+  .cta-final__inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
+  .cta-final .chapter{color:var(--cream);justify-content:center;opacity:.85}
+  .cta-final .chapter__num{color:var(--cream)}
+  .cta-final .chapter__line{background:rgba(244,234,217,.3)}
+  .cta-final h2{
+    font-family:var(--display);font-weight:300;
+    font-size:clamp(2.4rem, 7vw, 5rem);
+    line-height:1;letter-spacing:-.02em;
+    margin-bottom:1.5rem;
+  }
+  .cta-final h2 em{font-style:italic;color:var(--gold)}
+  .cta-final p{font-family:var(--display);font-style:italic;font-size:1.2rem;line-height:1.5;max-width:36em;margin:0 auto 2rem;font-weight:300}
+  .cta-final__btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center}
+  .btn-final{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+    background:var(--cream);
+    color:var(--rust-deep);
+    font-family:var(--mono);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;
+    padding:1.1rem 2rem;
+    transition:background .25s ease, transform .25s ease, color .25s ease;
+  }
+  .btn-final:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+  .btn-final--ghost{
+    background:transparent;
+    color:var(--cream);
+    border:1px solid rgba(244,234,217,.5);
+  }
+  .btn-final--ghost:hover{background:var(--cream);color:var(--rust-deep);border-color:var(--cream)}
+
+  /* ───────── FOOTER ───────── */
+  footer{background:var(--ink);color:var(--cream);padding:clamp(3rem,5vw,4.5rem) var(--pad) 1.5rem}
+  .ft__top{
+    display:grid;grid-template-columns:1fr;gap:2.5rem;
+    max-width:1400px;margin:0 auto;
+    padding-bottom:2.5rem;
+    border-bottom:1px solid rgba(244,234,217,.12);
+  }
+  @media(min-width:768px){.ft__top{grid-template-columns:1.2fr 1fr 1fr 1fr}}
+  .ft__brand img{height:54px;margin-bottom:1.2rem;filter:brightness(1.1)}
+  .ft__brand p{font-family:var(--display);font-style:italic;font-weight:300;font-size:1.05rem;line-height:1.5;color:rgba(244,234,217,.7);max-width:24em}
+  .ft__col h4{
+    font-family:var(--mono);font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:1rem;font-weight:500;
+  }
+  .ft__col ul li{margin-bottom:.65rem;font-size:.92rem;color:rgba(244,234,217,.78);line-height:1.4}
+  .ft__col ul li a{transition:color .2s}
+  .ft__col ul li a:hover{color:var(--gold)}
+  .ft__col p{font-size:.92rem;color:rgba(244,234,217,.78);margin-bottom:.55rem;line-height:1.5}
+  .ft__col p strong{font-family:var(--display);font-style:italic;font-weight:500;color:var(--cream)}
+
+  .ft__social{display:flex;gap:.7rem;margin-top:1.2rem}
+  .ft__social a{
+    width:36px;height:36px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(244,234,217,.3);
+    transition:background .2s, border-color .2s, color .2s;
+  }
+  .ft__social a:hover{background:var(--rust);border-color:var(--rust);color:var(--cream)}
+  .ft__social svg{width:14px;height:14px}
+
+  .ft__bottom{
+    max-width:1400px;margin:0 auto;
+    padding-top:1.5rem;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;
+    font-family:var(--mono);font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;
+    color:rgba(244,234,217,.45);
+  }
+  .ft__bottom span{color:var(--gold)}
+
+  /* ───────── BOTTOM BOOKING BAR ───────── */
+  .bookbar{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    background:var(--ink);
+    color:var(--cream);
+    padding:.7rem var(--pad);
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    border-top:1px solid var(--gold);
+    transform:translateY(110%);
+    transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  }
+  .bookbar.show{transform:translateY(0)}
+  .bookbar__msg{font-family:var(--display);font-style:italic;font-size:.95rem;line-height:1.2;flex:1;min-width:0}
+  .bookbar__msg strong{font-family:var(--mono);font-style:normal;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.1rem}
+  .bookbar .btn-book{padding:.6rem 1.1rem;font-size:.65rem}
+  @media(max-width:480px){.bookbar__msg{font-size:.85rem}}
+
+  /* ───────── ANIMATIONS ───────── */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.2,.8,.2,1), transform 1s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  @keyframes hero-fade {0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+  .hero__inner > *{animation:hero-fade 1.1s cubic-bezier(.2,.8,.2,1) both}
+  .hero__inner > *:nth-child(1){animation-delay:.1s}
+  .hero__inner > *:nth-child(2){animation-delay:.25s}
+  .hero__inner > *:nth-child(3){animation-delay:.4s}
+  .hero__inner > *:nth-child(4){animation-delay:.55s}
+  .hero__meta{animation:hero-fade 1.1s 1s cubic-bezier(.2,.8,.2,1) both}
+
+  /* ───────── MOBILE NAV ───────── */
+  .menu-toggle{display:none}
+  @media(max-width:1023px){
+    .menu-toggle{
+      display:flex;align-items:center;justify-content:center;
+      width:36px;height:36px;color:var(--cream);
+      transition:color .3s;
+    }
+    .nav.scrolled .menu-toggle{color:var(--ink)}
+    .menu-toggle svg{width:22px;height:22px}
+  }
+  .menu-drawer{
+    position:fixed;top:0;right:0;bottom:0;
+    width:min(85vw,360px);
+    background:var(--ink);
+    color:var(--cream);
+    z-index:60;
+    padding:5rem 2rem 2rem;
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1);
+    display:flex;flex-direction:column;
+  }
+  .menu-drawer.open{transform:translateX(0)}
+  .menu-drawer ul{margin-top:1rem}
+  .menu-drawer li{padding:1.1rem 0;border-bottom:1px solid rgba(244,234,217,.1)}
+  .menu-drawer li a{
+    font-family:var(--display);font-size:1.4rem;font-weight:400;letter-spacing:0;
+    transition:color .2s;
+  }
+  .menu-drawer li a:hover{color:var(--gold)}
+  .menu-drawer__close{position:absolute;top:1rem;right:1rem;color:var(--cream);width:36px;height:36px;display:flex;align-items:center;justify-content:center}
+  .menu-drawer__contact{margin-top:auto;padding-top:2rem}
+  .menu-drawer__contact a{display:block;font-family:var(--mono);font-size:.7rem;letter-spacing:.2em;color:var(--gold);margin-bottom:.5rem;text-transform:uppercase}
+  .menu-drawer__contact p{font-family:var(--display);font-style:italic;font-size:.95rem;color:rgba(244,234,217,.7);line-height:1.5}
+
+  .menu-overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:55;
+    opacity:0;pointer-events:none;
+    transition:opacity .3s;
+  }
+  .menu-overlay.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__brand" aria-label="Grand Canyon Inn home">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/05/lohoo.png" alt="Grand Canyon Inn" />
+    <div class="nav__wordmark">Grand Canyon Inn<span>Valle, Arizona · Est. 1981</span></div>
+  </a>
+  <div class="nav__menu" role="navigation">
+    <a href="#story">The Inn</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#dining">Restaurant &amp; Bar</a>
+    <a href="#location">Location</a>
+  </div>
+  <div class="nav__cta">
+    <a href="tel:+19286359203" class="nav__phone">(928) 635-9203</a>
+    <a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener" class="btn-book">Book a Room</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="menu-drawer" id="menuDrawer" aria-label="Mobile navigation">
+  <button class="menu-drawer__close" id="menuClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="22" height="22"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+  </button>
+  <ul>
+    <li><a href="#story">The Inn</a></li>
+    <li><a href="#rooms">Rooms</a></li>
+    <li><a href="#dining">Restaurant &amp; Bar</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener">Book a Room</a></li>
+  </ul>
+  <div class="menu-drawer__contact">
+    <a href="tel:+19286359203">(928) 635-9203</a>
+    <a href="tel:+18006359203">(800) 635-9203 — Toll Free</a>
+    <p>257 South State Route 64<br>Valle, Arizona 86046</p>
+  </div>
+</aside>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<header class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__veil"></div>
+  <div class="hero__inner">
+    <div class="hero__eyebrow">Family-Run · Valle, Arizona · Since 1981</div>
+    <h1 class="hero__title">Grand Canyon<br/><em>Inn <span class="hero__amp">&amp;</span> Motel</em></h1>
+    <p class="hero__sub">A roadside inn on Highway 64 — twenty minutes from the South Rim, ten thousand miles from a chain hotel.</p>
+    <div class="hero__row">
+      <a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener" class="btn-hero">
+        Check Availability
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+      </a>
+      <a href="tel:+19286359203" class="hero__phone">Call <strong>(928) 635-9203</strong></a>
+    </div>
+  </div>
+  <div class="hero__meta">
+    35.6504°N · 112.1468°W<br/>
+    <strong>Grand Canyon Junction</strong>
+    Elevation 5,975 ft<br/>
+  </div>
+  <div class="hero__scroll">Scroll ↓</div>
+</header>
+
+<!-- ═══════════════ STORY ═══════════════ -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="story__grid">
+      <div class="story__text reveal">
+        <div class="chapter"><span class="chapter__num">I.</span><span>The Inn</span><span class="chapter__line"></span></div>
+        <h2>A family-run inn in <em>Grand Canyon country.</em></h2>
+        <p class="story__lead">Three generations. <em>One stretch of highway.</em> A hundred and one rooms between the Kaibab and the Coconino.</p>
+        <div class="story__body">
+          <p>Our story begins in the early 1950s, when a hardworking family from Canada moved south and built the very first Grand Canyon Inn and Restaurant — a small roadside outfit between Red Lake and the Canyon, with a service station out front and the dust of Arizona settling over everything.</p>
+          <p>In 1977 the family moved to Valle and built the Grand Canyon Motel. Four years later, the first thirty-three rooms of the present Inn went up. Two new wings and an outdoor pool followed in the mid-nineties. Today the Inn has grown to a hundred and one rooms — still independently owned, still focused on what matters out here: a clean bed, a hot meal, and a short drive to the rim.</p>
+        </div>
+        <div class="story__timeline">
+          <div><div class="story__yr">1950s</div><div class="story__yr-label">First Inn opens<br/>near Red Lake</div></div>
+          <div><div class="story__yr">1977</div><div class="story__yr-label">Family relocates<br/>to Valle, AZ</div></div>
+          <div><div class="story__yr">1981</div><div class="story__yr-label">First 33 rooms<br/>of present Inn</div></div>
+          <div><div class="story__yr">1990s</div><div class="story__yr-label">Two new wings<br/>and the pool</div></div>
+        </div>
+      </div>
+      <div class="story__media reveal">
+        <img src="https://bofilltech.com/wp-content/uploads/2026/05/174742141.jpg" alt="The Grand Canyon Inn at dusk, southbound on Highway 64" loading="lazy"/>
+        <div class="story__caption"><span>Plate I.</span> · The Inn at dusk · 257 S State Route 64 · Valle, Arizona</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FULL-BLEED INTERSTITIAL ═══════════════ -->
+<section class="bleed" aria-label="Twenty minutes from the rim">
+  <div class="bleed__inner">
+    <div class="bleed__big"><em>Twenty</em><br/>Minutes</div>
+    <p class="bleed__cap">From your room key to the canyon rim — twenty miles of open desert, then the world goes wide.</p>
+    <div class="bleed__byline">South Rim · Grand Canyon National Park</div>
+  </div>
+</section>
+
+<!-- ═══════════════ ROOMS ═══════════════ -->
+<section class="rooms" id="rooms">
+  <div class="wrap">
+    <div class="rooms__head reveal">
+      <div>
+        <div class="chapter"><span class="chapter__num">II.</span><span>Rest</span><span class="chapter__line"></span></div>
+        <h2>Three room types. <em>One hundred and one rooms in all.</em></h2>
+      </div>
+      <p class="rooms__intro">Non-smoking throughout, with free Wi-Fi, flat-screen televisions, complimentary toiletries and parking included. The Main Inn building holds the Queen rooms; Singles and Doubles sit across Highway 64 in the Annexed Building, about four hundred yards from the front desk.</p>
+    </div>
+
+    <div class="rooms__grid">
+      <article class="room reveal">
+        <div class="room__img">
+          <span class="room__num">i.</span>
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/02.jpg" alt="Single room with one full bed at Grand Canyon Inn" loading="lazy"/>
+        </div>
+        <div class="room__body">
+          <div class="room__type">Annexed Building</div>
+          <h3>Single <em>Room</em></h3>
+          <p class="room__desc">A 262-square-foot room with one full bed, located across the highway in the Annexed Building. Practical, quiet, and right-sized for a one-night stop on the way to the rim.</p>
+          <div class="room__specs"><span>1 Full bed</span><span>262 sq ft</span><span>Sleeps 2</span></div>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="room__img">
+          <span class="room__num">ii.</span>
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/08.jpg" alt="Double room with two full beds" loading="lazy"/>
+        </div>
+        <div class="room__body">
+          <div class="room__type">Annexed Building</div>
+          <h3>Double <em>Room</em></h3>
+          <p class="room__desc">Two full beds in the Annexed Building — the right room for friends, families with younger kids, or anyone splitting the drive between Vegas and the South Rim.</p>
+          <div class="room__specs"><span>2 Full beds</span><span>Tub shower</span><span>Sleeps 4</span></div>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="room__img">
+          <span class="room__num">iii.</span>
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/QueenRoom.jpg" alt="Queen room with two queen beds in Main Inn building" loading="lazy"/>
+        </div>
+        <div class="room__body">
+          <div class="room__type">Main Inn Building</div>
+          <h3>Queen <em>Room</em></h3>
+          <p class="room__desc">Our largest room — a spacious 364 square feet with two queen beds, a refrigerator, hairdryer, iron and board, and steps from the lobby, lounge, and pool. Sleeps up to five with a rollaway.</p>
+          <div class="room__specs"><span>2 Queen beds</span><span>364 sq ft</span><span>Sleeps 5</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DINING ═══════════════ -->
+<section class="dining" id="dining">
+  <div class="wrap">
+    <div class="dining__head reveal">
+      <div>
+        <div class="chapter"><span class="chapter__num">III.</span><span>Eat &amp; Drink</span><span class="chapter__line"></span></div>
+        <h2>Restaurant. Saloon. <em>Cold beer, hot pizza,</em> a long bar to lean on.</h2>
+      </div>
+      <p class="dining__intro">Open daily for breakfast, lunch and dinner — steaks, burgers, salads, charbroiled chicken, quesadillas, and the made-with-love pizza that gives travelers second thoughts about pushing on to Williams.</p>
+    </div>
+
+    <div class="dining__grid">
+      <article class="dining__card reveal">
+        <img src="https://bofilltech.com/wp-content/uploads/2026/05/3.jpg" alt="Grand Canyon Inn restaurant interior" loading="lazy"/>
+        <div class="dining__card-body">
+          <div class="dining__card-tag">The Restaurant</div>
+          <h3>An alternating <em>seasonal menu</em> with something for everyone.</h3>
+          <p>Large seating capacity, family atmosphere. Start the day with a hearty breakfast or a nutritious light bite — and finish with steaks, burgers, salads, sandwiches, quesadillas, or a hand-built pizza.</p>
+        </div>
+      </article>
+
+      <article class="dining__card reveal">
+        <img src="https://bofilltech.com/wp-content/uploads/2026/05/bar.jpg" alt="The Bar at Grand Canyon Inn" loading="lazy"/>
+        <div class="dining__card-body">
+          <div class="dining__card-tag">The Bar</div>
+          <h3>Spirits, <em>local craft beer.</em></h3>
+          <p>A great collection of distilled spirits and a rotating tap of local craft beers — including specialty beers from Grand Canyon Brewery — poured in a Southwestern room of warm wood and easy company.</p>
+        </div>
+      </article>
+
+      <article class="dining__card reveal">
+        <img src="https://bofilltech.com/wp-content/uploads/2026/05/bar_chair.jpg" alt="The Lounge at Grand Canyon Inn" loading="lazy"/>
+        <div class="dining__card-body">
+          <div class="dining__card-tag">The Lounge</div>
+          <h3>A <em>relaxed</em> Southwestern room.</h3>
+          <p>A friendly, vibrant gathering place — made-to-order drinks from attentive bartenders, large-screen televisions for the game, and the kind of unhurried evening you can only find at a family-run inn.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AMENITIES ═══════════════ -->
+<section class="amen">
+  <div class="amen__head">
+    <div class="chapter"><span class="chapter__num">IV.</span><span>On Property</span><span class="chapter__line"></span></div>
+    <h2>Everything you need, <em>nothing you don't.</em></h2>
+  </div>
+  <div class="amen__row">
+    <div class="amen__item reveal">
+      <div class="amen__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0 1 14 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><path d="M8.5 16.42a6 6 0 0 1 7 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+      <div class="amen__label">Free Wi-Fi</div>
+      <div class="amen__sub">In-room &amp; lobby</div>
+    </div>
+    <div class="amen__item reveal">
+      <div class="amen__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 18a3 3 0 0 0 3-3v-4h14v4a3 3 0 0 0 3 3"/><path d="M2 18v3"/><path d="M22 18v3"/><path d="M9 7v4"/><path d="M15 7v4"/></svg></div>
+      <div class="amen__label">Seasonal Pool</div>
+      <div class="amen__sub">Memorial Day–Labor Day</div>
+    </div>
+    <div class="amen__item reveal">
+      <div class="amen__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11h18l-2 9H5l-2-9z"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+      <div class="amen__label">Restaurant &amp; Bar</div>
+      <div class="amen__sub">Open daily, on site</div>
+    </div>
+    <div class="amen__item reveal">
+      <div class="amen__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="1"/><line x1="3" y1="14" x2="21" y2="14"/></svg></div>
+      <div class="amen__label">Flat-Screen TV</div>
+      <div class="amen__sub">In every room</div>
+    </div>
+    <div class="amen__item reveal">
+      <div class="amen__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18"/><path d="M12 3a14 14 0 0 0 0 18"/></svg></div>
+      <div class="amen__label">Free Parking</div>
+      <div class="amen__sub">On-site, all guests</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="gallery__head reveal">
+      <div>
+        <div class="chapter"><span class="chapter__num">V.</span><span>The Property</span><span class="chapter__line"></span></div>
+        <h2>The Inn, <em>in pictures.</em></h2>
+      </div>
+      <div class="gallery__nav"><span>01</span> &mdash; The Inn · The Rooms · The Saloon · The Land</div>
+    </div>
+    <div class="gallery__strip">
+      <div class="reveal"><img src="https://bofilltech.com/wp-content/uploads/2026/05/174742168.jpg" alt="Grand Canyon Inn property view" loading="lazy"/></div>
+      <div class="reveal"><img src="https://bofilltech.com/wp-content/uploads/2026/05/2.jpg" alt="Guest room interior" loading="lazy"/></div>
+      <div class="reveal"><img src="https://bofilltech.com/wp-content/uploads/2026/05/16.jpg" alt="Queen room" loading="lazy"/></div>
+      <div class="reveal"><img src="https://bofilltech.com/wp-content/uploads/2026/05/table.jpg" alt="Restaurant table setting" loading="lazy"/></div>
+      <div class="reveal"><img src="https://bofilltech.com/wp-content/uploads/2026/05/7.jpg" alt="Cold drinks at the bar" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ LOCATION ═══════════════ -->
+<section class="loc" id="location">
+  <div class="wrap">
+    <div class="loc__grid">
+      <div class="reveal">
+        <div class="chapter"><span class="chapter__num">VI.</span><span>Find Us</span><span class="chapter__line"></span></div>
+        <h2>Grand Canyon Junction. <em>Highway 64.</em></h2>
+        <p class="loc__addr">
+          <strong>Address</strong>
+          257 South State Route 64<br/>
+          Valle, Arizona 86046
+        </p>
+        <ul class="loc__list">
+          <li><span>Grand Canyon · South Rim</span><strong>20 minutes</strong></li>
+          <li><span>Williams, AZ</span><strong>30 miles</strong></li>
+          <li><span>Flagstaff, AZ</span><strong>50 miles</strong></li>
+          <li><span>Tusayan</span><strong>15 minutes</strong></li>
+          <li><span>Planes of Fame Museum</span><strong>across the road</strong></li>
+        </ul>
+      </div>
+      <div class="loc__map reveal" role="img" aria-label="Map view of Grand Canyon Inn at Valle, Arizona">
+        <div class="loc__map-tag">
+          <strong>35.6504° N · 112.1468° W</strong>
+          Coconino County · Arizona
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FINAL CTA ═══════════════ -->
+<section class="cta-final">
+  <div class="cta-final__inner">
+    <div class="chapter"><span class="chapter__num">VII.</span><span>Reserve</span><span class="chapter__line"></span></div>
+    <h2>Pull off the highway. <em>Stay a night.</em></h2>
+    <p>The South Rim opens at sunrise. The pizza is ready by six. The bed is made. Reserve your room directly with the Inn.</p>
+    <div class="cta-final__btns">
+      <a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener" class="btn-final">
+        Check Availability
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+      </a>
+      <a href="tel:+18006359203" class="btn-final btn-final--ghost">Toll Free · (800) 635-9203</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft__top">
+    <div class="ft__brand">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/05/lohoo.png" alt="Grand Canyon Inn"/>
+      <p>An independently owned and operated inn on Highway 64 in Valle, Arizona — twenty minutes from the South Rim of the Grand Canyon. Open since 1981.</p>
+      <div class="ft__social">
+        <a href="https://www.facebook.com/GrandCanyonInnandMotel" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+        <a href="https://www.instagram.com/grandcanyoninn/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/9286359203" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.4.3-.7.1-.9-.4-1.7-1-2.4-1.7-.6-.6-1.1-1.4-1.6-2.2-.2-.3-.1-.5.1-.7l.6-.7c.2-.2.2-.5.1-.7-.1-.3-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.7c-.2 0-.6.1-.9.4C5.7 7 5 7.9 5 9.7s1.3 3.6 1.5 3.8c.2.3 2.5 4 6.1 5.6.8.4 1.5.5 2 .7.8.3 1.6.2 2.2.1.7-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.3l-1.2-.0zM12 2C6.5 2 2 6.5 2 12c0 1.7.4 3.3 1.2 4.7L2 22l5.5-1.4c1.4.7 2.9 1.2 4.5 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2z"/></svg></a>
+      </div>
+    </div>
+
+    <div class="ft__col">
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="#story">The Inn</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#dining">Restaurant &amp; Bar</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+
+    <div class="ft__col">
+      <h4>Contact</h4>
+      <p>257 South State Route 64<br/>Valle, Arizona 86046</p>
+      <p><strong>(928) 635-9203</strong></p>
+      <p>Toll Free<br/>(800) 635-9203</p>
+      <p><a href="mailto:info@grandcanyoninn.com">info@grandcanyoninn.com</a></p>
+    </div>
+
+    <div class="ft__col">
+      <h4>Reservations</h4>
+      <p>Front desk open<br/>7 AM – 9 PM, daily</p>
+      <p>Check-in 3 PM<br/>Check-out 11 AM</p>
+      <p style="margin-top:1.2rem"><a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener" style="color:var(--gold)">Book Online &rarr;</a></p>
+    </div>
+  </div>
+
+  <div class="ft__bottom">
+    <span>&copy; 2026 Grand Canyon Inn &amp; Motel · All rights reserved</span>
+    <span>Concept by <span>Bofill Technologies</span></span>
+  </div>
+</footer>
+
+<!-- Bottom booking bar -->
+<div class="bookbar" id="bookbar">
+  <div class="bookbar__msg">
+    <strong>Twenty minutes from the South Rim</strong>
+    Reserve your room
+  </div>
+  <a href="https://booking.hotelkeyapp.com/v2/index.html#/booking/search?pc=0843&amp;property_id=f361e0d0-3053-42ea-9a15-ddca6f3b0899&amp;url=https://www.grandcanyoninn.com/" target="_blank" rel="noopener" class="btn-book">Book Now</a>
+</div>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  const bookbar = document.getElementById('bookbar');
+  let lastShown = false;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 60);
+    const show = y > window.innerHeight * 0.6;
+    if (show !== lastShown) {
+      bookbar.classList.toggle('show', show);
+      lastShown = show;
+    }
+  }, {passive:true});
+
+  // Mobile menu
+  const toggle = document.getElementById('menuToggle');
+  const close = document.getElementById('menuClose');
+  const drawer = document.getElementById('menuDrawer');
+  const overlay = document.getElementById('menuOverlay');
+  function openMenu(){drawer.classList.add('open');overlay.classList.add('show')}
+  function closeMenu(){drawer.classList.remove('open');overlay.classList.remove('show')}
+  toggle?.addEventListener('click', openMenu);
+  close?.addEventListener('click', closeMenu);
+  overlay?.addEventListener('click', closeMenu);
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Reduced motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
