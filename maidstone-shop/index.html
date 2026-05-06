@@ -7,7 +7,7 @@
 <meta name="description" content="A curated selection of Maidstone goods. Inquire with our front desk to take a piece of la dolce vita home." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   /* ---------- TOKENS ---------- */
@@ -22,8 +22,16 @@
     --rule: rgba(26, 26, 23, 0.12);
     --gold: #a98852;
 
-    --display: 'Italiana', 'Times New Roman', serif;
-    --body: 'Manrope', -apple-system, sans-serif;
+    /* Typography — mirrors themaidstone.com CSS variables.
+       The real foundry fonts (Cartograph CF, Apercu, Pepe) are listed first
+       so this page will render with the correct fonts when integrated into
+       the live site. JetBrains Mono + Manrope are the closest free
+       Google Font fallbacks for the standalone preview. */
+    --heading-font: "Cartograph CF Extra", "JetBrains Mono", ui-monospace, monospace;
+    --body-font:    "Apercu", "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+    --title-font:   "Apercu Pro", "Manrope", -apple-system, sans-serif;
+    --font-primary: "Cartograph CF", "JetBrains Mono", ui-monospace, monospace;
+    --font-secondary: "Pepe", "Cartograph CF", "JetBrains Mono", monospace;
 
     --max: 1440px;
     --gutter: clamp(20px, 4vw, 56px);
@@ -35,7 +43,7 @@
     margin: 0;
     background: var(--creme);
     color: var(--ink);
-    font-family: var(--body);
+    font-family: var(--body-font);
     font-weight: 300;
     font-size: 16px;
     line-height: 1.6;
@@ -45,8 +53,8 @@
   img, svg { max-width: 100%; display: block; }
   a { color: inherit; text-decoration: none; }
   button { font-family: inherit; font-weight: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-  .product, .product * { font-family: var(--body); font-weight: 300; }
-  .product .product-name { font-family: var(--display); font-weight: 400; }
+  .product, .product * { font-family: var(--body-font); font-weight: 300; }
+  .product .product-name { font-family: var(--title-font); font-weight: 400; }
 
   /* subtle paper grain */
   body::before {
@@ -72,7 +80,7 @@
     gap: 24px;
   }
   .brand {
-    font-family: var(--display);
+    font-family: var(--font-primary);
     font-size: 18px;
     letter-spacing: 0.18em;
     line-height: 1;
@@ -80,7 +88,7 @@
   }
   .brand small {
     display: block;
-    font-family: var(--body);
+    font-family: var(--body-font);
     font-weight: 400;
     font-size: 9px;
     letter-spacing: 0.32em;
@@ -126,7 +134,7 @@
     font-weight: 500;
   }
   .hero h1 {
-    font-family: var(--display);
+    font-family: var(--heading-font);
     font-weight: 400;
     font-size: clamp(110px, 22vw, 320px);
     letter-spacing: 0.04em;
@@ -135,7 +143,7 @@
     color: var(--green);
   }
   .hero-sub {
-    font-family: var(--display);
+    font-family: var(--title-font);
     font-size: clamp(22px, 3vw, 32px);
     line-height: 1.35;
     max-width: 680px;
@@ -174,7 +182,7 @@
   }
   .strip span em {
     font-style: italic;
-    font-family: var(--display);
+    font-family: var(--heading-font);
     text-transform: none;
     letter-spacing: 0.02em;
     color: var(--green);
@@ -199,7 +207,7 @@
     padding-bottom: 24px;
   }
   .grid-head .label {
-    font-family: var(--display);
+    font-family: var(--heading-font);
     font-size: 28px;
     color: var(--green);
     line-height: 1;
@@ -256,7 +264,7 @@
     transition: opacity 0.3s;
   }
   .product-name {
-    font-family: var(--display) !important;
+    font-family: var(--title-font) !important;
     font-weight: 400;
     font-style: normal;
     font-size: 24px;
@@ -274,7 +282,7 @@
     color: var(--ink-soft);
   }
   .product-price {
-    font-family: var(--display);
+    font-family: var(--heading-font);
     font-size: 17px;
     color: var(--ink);
     letter-spacing: 0.02em;
@@ -297,7 +305,7 @@
     opacity: 0.7;
   }
   .inquire h2 {
-    font-family: var(--display);
+    font-family: var(--heading-font);
     font-weight: 400;
     font-size: clamp(40px, 6vw, 84px);
     line-height: 1.05;
@@ -337,7 +345,7 @@
     opacity: 0.7;
   }
   .inquire-card .value {
-    font-family: var(--display);
+    font-family: var(--title-font);
     font-size: 22px;
     line-height: 1.3;
     color: var(--creme-soft);
@@ -420,7 +428,7 @@
     justify-content: center;
     border-radius: 50%;
     transition: background 0.2s;
-    font-family: var(--body);
+    font-family: var(--body-font);
     font-size: 22px;
     line-height: 1;
   }
@@ -433,7 +441,7 @@
     font-weight: 500;
   }
   .modal h3 {
-    font-family: var(--display);
+    font-family: var(--title-font);
     font-weight: 400;
     font-size: clamp(32px, 4vw, 48px);
     line-height: 1.1;
@@ -441,7 +449,7 @@
     color: var(--ink);
   }
   .modal-price {
-    font-family: var(--display);
+    font-family: var(--heading-font);
     font-size: 26px;
     color: var(--green);
     margin-top: -8px;
@@ -464,7 +472,7 @@
     color: var(--ink-soft);
   }
   .spec-value {
-    font-family: var(--display);
+    font-family: var(--title-font);
     font-size: 18px;
     color: var(--ink);
     display: flex;
@@ -510,7 +518,7 @@
     opacity: 0.7;
   }
   .modal-cta .text {
-    font-family: var(--display);
+    font-family: var(--title-font);
     font-size: 19px;
     line-height: 1.4;
     color: var(--creme-soft);
@@ -611,7 +619,7 @@
               <path d="M120 180 L155 145 Q175 138 200 138 Q225 138 245 145 L280 180 L320 200 L300 240 L280 230 L280 380 Q280 395 270 395 L130 395 Q120 395 120 380 L120 230 L100 240 L80 200 Z"/>
               <path d="M170 142 Q200 168 230 142" stroke="#f1e8d3" stroke-width="3" fill="none"/>
             </g>
-            <text x="200" y="450" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 01</text>
+            <text x="200" y="450" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 01</text>
           </svg>
         </div>
         <div class="product-overlay">View Details</div>
@@ -643,7 +651,7 @@
               <!-- kangaroo pocket -->
               <path d="M148 308 L252 308 L242 358 L158 358 Z" fill="none" stroke="#2c4a3a" stroke-width="1.5"/>
             </g>
-            <text x="200" y="455" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 02</text>
+            <text x="200" y="455" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 02</text>
           </svg>
         </div>
         <div class="product-overlay">View Details</div>
@@ -672,7 +680,7 @@
               <rect x="130" y="148" width="38" height="8" fill="#f1e8d3"/>
               <rect x="232" y="148" width="38" height="8" fill="#f1e8d3"/>
             </g>
-            <text x="200" y="450" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 03</text>
+            <text x="200" y="450" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 03</text>
           </svg>
         </div>
         <div class="product-overlay">View Details</div>
@@ -703,9 +711,9 @@
               <!-- button -->
               <circle cx="200" cy="180" r="5" fill="#2c4a3a"/>
               <!-- monogram badge -->
-              <text x="200" y="248" font-family="Italiana" font-size="32" text-anchor="middle" fill="#2c4a3a">M</text>
+              <text x="200" y="248" font-family="JetBrains Mono" font-size="32" text-anchor="middle" fill="#2c4a3a">M</text>
             </g>
-            <text x="200" y="445" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 04</text>
+            <text x="200" y="445" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 04</text>
           </svg>
         </div>
         <div class="product-overlay">View Details</div>
@@ -733,10 +741,10 @@
               <path d="M125 230 L275 230" stroke="#f1e8d3" stroke-width="1" stroke-dasharray="2,3"/>
               <!-- Nicola Radano label -->
               <rect x="155" y="295" width="90" height="42" fill="#f1e8d3"/>
-              <text x="200" y="313" font-family="Italiana" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">NICOLA</text>
-              <text x="200" y="328" font-family="Italiana" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">RADANO</text>
+              <text x="200" y="313" font-family="JetBrains Mono" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">NICOLA</text>
+              <text x="200" y="328" font-family="JetBrains Mono" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">RADANO</text>
             </g>
-            <text x="200" y="455" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 05</text>
+            <text x="200" y="455" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 05</text>
           </svg>
         </div>
         <div class="product-overlay">View Details</div>
@@ -829,7 +837,7 @@
       swatch: '#f1e8d3',
       swatchBorder: '#1a1a17',
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M120 180 L155 145 Q175 138 200 138 Q225 138 245 145 L280 180 L320 200 L300 240 L280 230 L280 380 Q280 395 270 395 L130 395 Q120 395 120 380 L120 230 L100 240 L80 200 Z"/><path d="M170 142 Q200 168 230 142" stroke="#f1e8d3" stroke-width="3" fill="none"/></g><text x="200" y="450" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 01</text></svg>`
+      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M120 180 L155 145 Q175 138 200 138 Q225 138 245 145 L280 180 L320 200 L300 240 L280 230 L280 380 Q280 395 270 395 L130 395 Q120 395 120 380 L120 230 L100 240 L80 200 Z"/><path d="M170 142 Q200 168 230 142" stroke="#f1e8d3" stroke-width="3" fill="none"/></g><text x="200" y="450" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 01</text></svg>`
     },
     hoodie: {
       num: 'N° 02',
@@ -838,7 +846,7 @@
       color: 'Maidstone Green',
       swatch: '#2c4a3a',
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#2c4a3a"/><g fill="#f1e8d3"><path d="M155 175 Q160 110 200 105 Q240 110 245 175 L240 200 L160 200 Z"/><path d="M125 200 L160 175 L160 200 L240 200 L240 175 L275 200 L325 220 L308 262 L285 250 L285 405 Q285 418 272 418 L128 418 Q115 418 115 405 L115 250 L92 262 L75 220 Z"/><path d="M165 195 Q200 215 235 195" fill="#2c4a3a"/><line x1="190" y1="208" x2="188" y2="245" stroke="#2c4a3a" stroke-width="2.5" stroke-linecap="round"/><line x1="210" y1="208" x2="212" y2="245" stroke="#2c4a3a" stroke-width="2.5" stroke-linecap="round"/><path d="M148 308 L252 308 L242 358 L158 358 Z" fill="none" stroke="#2c4a3a" stroke-width="1.5"/></g><text x="200" y="455" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 02</text></svg>`
+      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#2c4a3a"/><g fill="#f1e8d3"><path d="M155 175 Q160 110 200 105 Q240 110 245 175 L240 200 L160 200 Z"/><path d="M125 200 L160 175 L160 200 L240 200 L240 175 L275 200 L325 220 L308 262 L285 250 L285 405 Q285 418 272 418 L128 418 Q115 418 115 405 L115 250 L92 262 L75 220 Z"/><path d="M165 195 Q200 215 235 195" fill="#2c4a3a"/><line x1="190" y1="208" x2="188" y2="245" stroke="#2c4a3a" stroke-width="2.5" stroke-linecap="round"/><line x1="210" y1="208" x2="212" y2="245" stroke="#2c4a3a" stroke-width="2.5" stroke-linecap="round"/><path d="M148 308 L252 308 L242 358 L158 358 Z" fill="none" stroke="#2c4a3a" stroke-width="1.5"/></g><text x="200" y="455" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 02</text></svg>`
     },
     socks: {
       num: 'N° 03',
@@ -847,7 +855,7 @@
       color: 'Maidstone Creme',
       swatch: '#f1e8d3',
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M130 130 L168 130 L168 290 Q168 310 178 318 L210 340 Q222 350 222 365 L222 388 Q222 395 215 395 L130 395 Q123 395 123 388 L123 295 Q123 285 130 280 Z"/><path d="M232 130 L270 130 L270 290 Q270 310 280 318 L312 340 Q324 350 324 365 L324 388 Q324 395 317 395 L232 395 Q225 395 225 388 L225 295 Q225 285 232 280 Z"/><rect x="130" y="148" width="38" height="8" fill="#f1e8d3"/><rect x="232" y="148" width="38" height="8" fill="#f1e8d3"/></g><text x="200" y="450" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 03</text></svg>`
+      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M130 130 L168 130 L168 290 Q168 310 178 318 L210 340 Q222 350 222 365 L222 388 Q222 395 215 395 L130 395 Q123 395 123 388 L123 295 Q123 285 130 280 Z"/><path d="M232 130 L270 130 L270 290 Q270 310 280 318 L312 340 Q324 350 324 365 L324 388 Q324 395 317 395 L232 395 Q225 395 225 388 L225 295 Q225 285 232 280 Z"/><rect x="130" y="148" width="38" height="8" fill="#f1e8d3"/><rect x="232" y="148" width="38" height="8" fill="#f1e8d3"/></g><text x="200" y="450" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 03</text></svg>`
     },
     cap: {
       num: 'N° 04',
@@ -856,7 +864,7 @@
       color: 'Maidstone Green',
       swatch: '#2c4a3a',
       sizes: ['One Size'],
-      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#2c4a3a"/><g fill="#f1e8d3"><path d="M110 280 Q108 200 200 175 Q292 200 290 280 Q290 290 280 290 L120 290 Q110 290 110 280 Z"/><path d="M105 286 Q200 318 295 286 L320 304 Q200 348 80 304 Z"/><line x1="200" y1="178" x2="200" y2="285" stroke="#2c4a3a" stroke-width="1.5" opacity="0.4"/><path d="M200 178 Q145 195 125 285" stroke="#2c4a3a" stroke-width="1.5" fill="none" opacity="0.4"/><path d="M200 178 Q255 195 275 285" stroke="#2c4a3a" stroke-width="1.5" fill="none" opacity="0.4"/><circle cx="200" cy="180" r="5" fill="#2c4a3a"/><text x="200" y="248" font-family="Italiana" font-size="32" text-anchor="middle" fill="#2c4a3a">M</text></g><text x="200" y="445" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 04</text></svg>`
+      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#2c4a3a"/><g fill="#f1e8d3"><path d="M110 280 Q108 200 200 175 Q292 200 290 280 Q290 290 280 290 L120 290 Q110 290 110 280 Z"/><path d="M105 286 Q200 318 295 286 L320 304 Q200 348 80 304 Z"/><line x1="200" y1="178" x2="200" y2="285" stroke="#2c4a3a" stroke-width="1.5" opacity="0.4"/><path d="M200 178 Q145 195 125 285" stroke="#2c4a3a" stroke-width="1.5" fill="none" opacity="0.4"/><path d="M200 178 Q255 195 275 285" stroke="#2c4a3a" stroke-width="1.5" fill="none" opacity="0.4"/><circle cx="200" cy="180" r="5" fill="#2c4a3a"/><text x="200" y="248" font-family="JetBrains Mono" font-size="32" text-anchor="middle" fill="#2c4a3a">M</text></g><text x="200" y="445" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#f1e8d3" opacity="0.55">N° 04</text></svg>`
     },
     tote: {
       num: 'N° 05',
@@ -865,7 +873,7 @@
       color: 'Limited edition — please inquire',
       swatch: '#a98852',
       sizes: ['One Size'],
-      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M118 215 L282 215 L292 395 Q292 402 285 402 L115 402 Q108 402 108 395 Z"/><path d="M155 215 Q155 145 200 145 Q245 145 245 215" stroke="#2c4a3a" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M125 230 L275 230" stroke="#f1e8d3" stroke-width="1" stroke-dasharray="2,3"/><rect x="155" y="295" width="90" height="42" fill="#f1e8d3"/><text x="200" y="313" font-family="Italiana" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">NICOLA</text><text x="200" y="328" font-family="Italiana" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">RADANO</text></g><text x="200" y="455" font-family="Italiana" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 05</text></svg>`
+      svg: `<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"><rect width="400" height="500" fill="#f1e8d3"/><g fill="#2c4a3a"><path d="M118 215 L282 215 L292 395 Q292 402 285 402 L115 402 Q108 402 108 395 Z"/><path d="M155 215 Q155 145 200 145 Q245 145 245 215" stroke="#2c4a3a" stroke-width="6" fill="none" stroke-linecap="round"/><path d="M125 230 L275 230" stroke="#f1e8d3" stroke-width="1" stroke-dasharray="2,3"/><rect x="155" y="295" width="90" height="42" fill="#f1e8d3"/><text x="200" y="313" font-family="JetBrains Mono" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">NICOLA</text><text x="200" y="328" font-family="JetBrains Mono" font-size="13" letter-spacing="3" text-anchor="middle" fill="#2c4a3a">RADANO</text></g><text x="200" y="455" font-family="JetBrains Mono" font-size="14" letter-spacing="4" text-anchor="middle" fill="#2c4a3a" opacity="0.55">N° 05</text></svg>`
     }
   };
 
