@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greunke's First Street Inn — Bayfield, Wisconsin · Est. 1863</title>
+<meta name="description" content="Twelve charming rooms in two of Bayfield's oldest historic buildings, one block from Lake Superior. Quaint lodging and a beloved restaurant since 1940.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4ECD8;
+    --paper:#EFE5CC;
+    --paper-deep:#E6DABE;
+    --ink:#1A1411;
+    --ink-soft:#3F342B;
+    --brick:#8E2A1A;
+    --brick-deep:#6E1E13;
+    --brass:#A88240;
+    --brass-soft:#C7A366;
+    --lake:#26475A;
+    --lake-soft:#3D6175;
+    --rule:rgba(26,20,17,.18);
+    --rule-soft:rgba(26,20,17,.10);
+    --shadow:0 30px 60px -25px rgba(26,20,17,.45);
+    --shadow-soft:0 14px 30px -18px rgba(26,20,17,.35);
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+  html{scroll-behavior:smooth}
+
+  body{
+    font-family:'Plus Jakarta Sans',system-ui,sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:16px;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    /* faint paper texture */
+    background-image:
+      radial-gradient(1200px 600px at 20% -10%, rgba(168,130,64,.08), transparent 60%),
+      radial-gradient(900px 500px at 110% 30%, rgba(38,71,90,.05), transparent 60%);
+    background-attachment:fixed;
+    padding-bottom:74px; /* room for sticky booking bar */
+  }
+
+  img{display:block;max-width:100%;height:auto}
+
+  a{color:inherit;text-decoration:none}
+
+  /* ------------------- TYPOGRAPHY ------------------- */
+  .display{font-family:'Bodoni Moda',serif;font-weight:500;letter-spacing:-.01em;line-height:1.05}
+  .eyebrow{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.22em;
+    font-size:11px;
+    color:var(--brick);
+  }
+  .eyebrow.brass{color:var(--brass)}
+  .eyebrow.lake{color:var(--lake)}
+  .eyebrow .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;margin:0 .8em;vertical-align:middle;opacity:.6}
+
+  /* ornamental rule */
+  .rule{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    color:var(--brass);
+    font-size:14px;
+    margin:14px 0;
+  }
+  .rule::before,.rule::after{content:"";flex:0 0 60px;height:1px;background:currentColor;opacity:.5}
+  .rule .glyph{font-family:'Bodoni Moda',serif;font-style:italic;font-size:18px;letter-spacing:.1em}
+
+  /* ------------------- TOP BAR / NAV ------------------- */
+  .topbar{
+    background:var(--ink);
+    color:var(--paper);
+    font-size:12px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    padding:9px 28px;
+    text-align:center;
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .topbar span{opacity:.85}
+  .topbar .accent{color:var(--brass-soft);margin:0 12px}
+
+  .nav-wrap{
+    position:sticky;top:0;z-index:90;
+    background:rgba(244,236,216,.92);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--rule-soft);
+    transition:box-shadow .3s ease,background .3s ease;
+  }
+  .nav-wrap.scrolled{box-shadow:0 8px 24px -16px rgba(26,20,17,.3);background:rgba(244,236,216,.97)}
+
+  nav{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+    padding:18px 28px;gap:24px;
+  }
+
+  .logo{
+    display:flex;align-items:center;gap:14px;
+    text-decoration:none;color:var(--ink);
+  }
+  .logo-mark{
+    width:50px;height:50px;border-radius:50%;
+    border:1.5px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    flex-direction:column;
+    line-height:1;
+    background:var(--cream);
+    position:relative;
+  }
+  .logo-mark::before,.logo-mark::after{
+    content:"";position:absolute;left:5px;right:5px;height:1px;background:var(--ink);opacity:.3;
+  }
+  .logo-mark::before{top:11px}
+  .logo-mark::after{bottom:11px}
+  .logo-mark .yr{font-family:'Bodoni Moda',serif;font-size:11px;font-style:italic;letter-spacing:.05em}
+  .logo-mark .est{font-family:'Plus Jakarta Sans',sans-serif;font-size:7px;letter-spacing:.25em;text-transform:uppercase;opacity:.7}
+  .logo-text{display:flex;flex-direction:column;line-height:1.05}
+  .logo-text .name{font-family:'Bodoni Moda',serif;font-size:22px;font-weight:600;letter-spacing:.01em}
+  .logo-text .sub{font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--brick);margin-top:2px}
+
+  .nav-links{
+    display:flex;gap:30px;list-style:none;justify-content:center;
+  }
+  .nav-links a{
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink);
+    position:relative;
+    padding:6px 0;
+    transition:color .25s ease;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:50%;bottom:0;height:1px;width:0;
+    background:var(--brick);transition:all .3s ease;transform:translateX(-50%);
+  }
+  .nav-links a:hover{color:var(--brick)}
+  .nav-links a:hover::after{width:100%}
+
+  .nav-cta{display:flex;align-items:center;gap:18px;justify-content:flex-end}
+  .nav-phone{
+    display:flex;align-items:center;gap:8px;
+    font-family:'Bodoni Moda',serif;font-size:17px;font-weight:500;
+    color:var(--ink);
+  }
+  .nav-phone svg{width:14px;height:14px;color:var(--brick)}
+  .nav-phone:hover{color:var(--brick)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:500;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    padding:13px 22px;
+    cursor:pointer;border:none;
+    transition:all .3s cubic-bezier(.2,.8,.2,1);
+  }
+  .btn-primary{
+    background:var(--brick);color:var(--cream);
+  }
+  .btn-primary:hover{background:var(--brick-deep);transform:translateY(-1px);box-shadow:0 10px 22px -10px rgba(110,30,19,.6)}
+  .btn-ghost{
+    background:transparent;color:var(--ink);
+    border:1px solid var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink);color:var(--cream)}
+  .btn-cream{background:var(--cream);color:var(--ink)}
+  .btn-cream:hover{background:var(--paper);transform:translateY(-1px)}
+
+  .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px}
+  .menu-toggle svg{width:22px;height:22px;color:var(--ink)}
+
+  /* ------------------- HERO ------------------- */
+  .hero{
+    position:relative;
+    min-height:88vh;
+    display:flex;align-items:flex-end;
+    padding:120px 28px 80px;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero-bg{
+    position:absolute;inset:0;z-index:-2;
+    background:linear-gradient(135deg,#3a2520,#1f1614);
+  }
+  .hero-bg img{
+    width:100%;height:100%;object-fit:cover;object-position:center 40%;
+    filter:saturate(.9) contrast(1.05) brightness(.85);
+  }
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg,rgba(26,20,17,.15) 0%,rgba(26,20,17,.0) 30%,rgba(26,20,17,.45) 75%,rgba(26,20,17,.85) 100%),
+      linear-gradient(90deg,rgba(26,20,17,.5) 0%,rgba(26,20,17,.1) 60%);
+  }
+
+  .hero-frame{
+    position:absolute;top:90px;left:28px;right:28px;bottom:60px;
+    border:1px solid rgba(244,236,216,.25);
+    pointer-events:none;
+  }
+  .hero-frame .corner{
+    position:absolute;width:18px;height:18px;
+    border:1px solid rgba(244,236,216,.55);
+  }
+  .hero-frame .corner.tl{top:-1px;left:-1px;border-right:none;border-bottom:none}
+  .hero-frame .corner.tr{top:-1px;right:-1px;border-left:none;border-bottom:none}
+  .hero-frame .corner.bl{bottom:-1px;left:-1px;border-right:none;border-top:none}
+  .hero-frame .corner.br{bottom:-1px;right:-1px;border-left:none;border-top:none}
+
+  .hero-stamp{
+    position:absolute;top:130px;right:60px;z-index:2;
+    display:flex;align-items:center;justify-content:center;
+    width:130px;height:130px;border-radius:50%;
+    border:1px solid rgba(244,236,216,.5);
+    color:var(--cream);
+    text-align:center;
+    transform:rotate(8deg);
+    background:rgba(244,236,216,.04);
+    backdrop-filter:blur(2px);
+  }
+  .hero-stamp::before{
+    content:"";position:absolute;inset:8px;border-radius:50%;
+    border:1px dashed rgba(244,236,216,.4);
+  }
+  .hero-stamp .num{font-family:'Bodoni Moda',serif;font-size:32px;font-weight:600;font-style:italic;letter-spacing:.02em;line-height:1}
+  .hero-stamp .lbl{font-family:'Plus Jakarta Sans',sans-serif;font-size:8px;letter-spacing:.32em;text-transform:uppercase;margin-top:4px;opacity:.85}
+
+  .hero-content{
+    position:relative;z-index:1;
+    max-width:1280px;width:100%;margin:0 auto;
+    color:var(--cream);
+  }
+  .hero-eyebrow{
+    color:var(--brass-soft);
+    font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase;
+    margin-bottom:24px;display:flex;align-items:center;gap:14px;
+  }
+  .hero-eyebrow::before{content:"";width:36px;height:1px;background:var(--brass-soft)}
+
+  .hero-title{
+    font-family:'Bodoni Moda',serif;
+    font-weight:500;
+    font-size:clamp(48px,8vw,108px);
+    line-height:.95;
+    letter-spacing:-.015em;
+    margin-bottom:18px;
+    max-width:14ch;
+  }
+  .hero-title em{font-style:italic;font-weight:400;color:var(--brass-soft)}
+
+  .hero-sub{
+    font-size:18px;font-weight:300;
+    max-width:54ch;
+    color:rgba(244,236,216,.85);
+    margin-bottom:36px;
+    line-height:1.55;
+  }
+
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+
+  .scroll-cue{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    color:var(--cream);font-size:9px;letter-spacing:.32em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+    opacity:.7;
+  }
+  .scroll-cue .line{width:1px;height:36px;background:var(--cream);animation:dropdown 2.4s ease-in-out infinite}
+  @keyframes dropdown{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+  /* ------------------- WELCOME / EDITORIAL ------------------- */
+  section{padding:110px 28px}
+  .container{max-width:1280px;margin:0 auto}
+
+  .welcome{position:relative;background:var(--cream)}
+  .welcome-grid{
+    display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start;
+  }
+  .welcome-col-left{position:sticky;top:120px;align-self:start}
+  .welcome-eyebrow{margin-bottom:18px}
+  .welcome-title{
+    font-size:clamp(34px,4vw,56px);
+    margin-bottom:24px;
+    color:var(--ink);
+  }
+  .welcome-title em{color:var(--brick);font-style:italic;font-weight:400}
+  .welcome-meta{
+    display:flex;flex-wrap:wrap;gap:34px 50px;
+    padding:24px 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+    margin-top:30px;
+  }
+  .welcome-meta .item{display:flex;flex-direction:column;gap:6px}
+  .welcome-meta .item .lbl{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass);
+  }
+  .welcome-meta .item .val{
+    font-family:'Bodoni Moda',serif;font-size:22px;color:var(--ink);font-weight:500;
+  }
+
+  .welcome-text{display:flex;flex-direction:column;gap:24px}
+  .welcome-text p{font-size:17px;color:var(--ink-soft);line-height:1.75}
+  .welcome-text .dropcap::first-letter{
+    font-family:'Bodoni Moda',serif;
+    float:left;font-size:84px;line-height:.85;font-weight:600;
+    color:var(--brick);
+    padding:6px 12px 0 0;
+  }
+  .welcome-quote{
+    border-left:2px solid var(--brick);
+    padding:6px 0 6px 22px;margin:10px 0;
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:21px;line-height:1.5;color:var(--ink);
+  }
+  .welcome-quote .src{
+    display:block;font-style:normal;font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-top:14px;
+  }
+
+  /* ------------------- HERITAGE BAND ------------------- */
+  .heritage{
+    background:var(--ink);color:var(--cream);
+    padding:90px 28px;position:relative;overflow:hidden;
+  }
+  .heritage::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(800px 400px at 10% 50%, rgba(168,130,64,.12), transparent 60%),
+      radial-gradient(700px 350px at 90% 50%, rgba(142,42,26,.18), transparent 60%);
+    pointer-events:none;
+  }
+  .heritage-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+  .heritage-text .eyebrow{color:var(--brass-soft)}
+  .heritage-text h2{
+    font-size:clamp(34px,4vw,52px);font-family:'Bodoni Moda',serif;font-weight:500;
+    margin:18px 0 24px;line-height:1.1;
+  }
+  .heritage-text h2 em{font-style:italic;color:var(--brass-soft);font-weight:400}
+  .heritage-text p{color:rgba(244,236,216,.78);font-size:16px;line-height:1.75;margin-bottom:18px}
+  .heritage-list{display:flex;flex-direction:column;gap:18px;margin-top:30px;padding-top:30px;border-top:1px solid rgba(244,236,216,.18)}
+  .heritage-list .row{display:flex;gap:24px;align-items:baseline}
+  .heritage-list .yr{
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:24px;color:var(--brass-soft);min-width:80px;
+  }
+  .heritage-list .desc{color:rgba(244,236,216,.85);font-size:15px;line-height:1.6}
+
+  .heritage-img{
+    position:relative;
+    aspect-ratio:4/5;
+    background:#241814;
+    overflow:hidden;
+    border:1px solid rgba(244,236,216,.18);
+  }
+  .heritage-img img{
+    width:100%;height:100%;object-fit:cover;
+    filter:sepia(.15) saturate(.9) contrast(1.05);
+    transition:transform 1s ease;
+  }
+  .heritage-img:hover img{transform:scale(1.04)}
+  .heritage-img-cap{
+    position:absolute;bottom:18px;left:18px;
+    background:rgba(26,20,17,.85);color:var(--cream);
+    padding:8px 14px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
+  }
+
+  /* ------------------- ROOMS ------------------- */
+  .rooms{background:var(--paper);padding:120px 28px 110px}
+  .rooms-head{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:end;
+    margin-bottom:64px;
+  }
+  .rooms-head h2{
+    font-size:clamp(38px,4.5vw,64px);color:var(--ink);
+  }
+  .rooms-head h2 em{color:var(--brick);font-style:italic}
+  .rooms-head p{color:var(--ink-soft);font-size:16px;line-height:1.7;max-width:50ch}
+
+  .rooms-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:36px;
+  }
+  .room-card{
+    background:var(--cream);
+    display:flex;flex-direction:column;
+    transition:transform .5s ease,box-shadow .5s ease;
+    border:1px solid var(--rule-soft);
+  }
+  .room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+  .room-img{
+    aspect-ratio:4/3;background:#2a201a;overflow:hidden;position:relative;
+  }
+  .room-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+  .room-card:hover .room-img img{transform:scale(1.05)}
+  .room-tag{
+    position:absolute;top:14px;left:14px;
+    background:var(--cream);color:var(--ink);
+    padding:5px 11px;font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+  }
+  .room-info{padding:26px 26px 30px;display:flex;flex-direction:column;flex:1}
+  .room-num{
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:13px;color:var(--brass);letter-spacing:.06em;margin-bottom:8px;
+  }
+  .room-info h3{
+    font-family:'Bodoni Moda',serif;font-weight:500;font-size:26px;color:var(--ink);margin-bottom:10px;line-height:1.2;
+  }
+  .room-info .desc{
+    font-size:14.5px;color:var(--ink-soft);line-height:1.65;flex:1;margin-bottom:22px;
+  }
+  .room-info .specs{
+    display:flex;flex-wrap:wrap;gap:14px 18px;
+    padding-top:18px;border-top:1px solid var(--rule-soft);
+    font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);
+  }
+  .room-info .specs .spec{display:flex;align-items:center;gap:6px}
+  .room-info .specs .spec::before{
+    content:"";display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--brass);
+  }
+
+  /* ------------------- DINING / RESTAURANT ------------------- */
+  .dining{
+    background:linear-gradient(180deg,var(--paper) 0%,var(--paper-deep) 100%);
+    padding:110px 28px;
+  }
+  .dining-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:0;
+    border:1px solid var(--rule);
+    background:var(--cream);
+  }
+  .dining-img{aspect-ratio:auto;min-height:520px;background:#2a201a;overflow:hidden;position:relative}
+  .dining-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.05)}
+  .dining-content{
+    padding:60px 56px;
+    display:flex;flex-direction:column;justify-content:center;
+  }
+  .dining-content h2{
+    font-size:clamp(34px,3.6vw,52px);margin:18px 0 24px;color:var(--ink);
+  }
+  .dining-content h2 em{font-style:italic;color:var(--brick)}
+  .dining-content p{color:var(--ink-soft);font-size:16px;line-height:1.75;margin-bottom:16px}
+  .dining-feats{
+    display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    margin:30px 0 30px;padding-top:24px;border-top:1px solid var(--rule-soft);
+  }
+  .dining-feats .f{display:flex;flex-direction:column;gap:4px}
+  .dining-feats .f .lbl{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--brass);
+  }
+  .dining-feats .f .val{
+    font-family:'Bodoni Moda',serif;font-size:18px;color:var(--ink);
+  }
+
+  .press-strip{
+    background:var(--ink);color:var(--cream);
+    padding:36px 28px;
+    text-align:center;
+  }
+  .press-strip .label{
+    font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-soft);margin-bottom:14px;
+  }
+  .press-strip .quotes{
+    display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px;
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:17px;
+  }
+  .press-strip .quotes span{display:inline-flex;align-items:center;gap:18px;line-height:1.4}
+  .press-strip .quotes span:not(:last-child)::after{
+    content:"";width:8px;height:8px;border-radius:50%;background:var(--brick);opacity:.7;
+  }
+
+  /* ------------------- AMENITIES ------------------- */
+  .amenities{background:var(--cream);padding:110px 28px}
+  .amenities-head{text-align:center;margin-bottom:64px}
+  .amenities-head h2{font-size:clamp(34px,4vw,52px);margin-top:14px;color:var(--ink)}
+  .amenities-head h2 em{font-style:italic;color:var(--brass)}
+  .am-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border:1px solid var(--rule);
+    background:var(--cream);
+  }
+  .am{
+    padding:38px 26px;text-align:center;
+    border-right:1px solid var(--rule-soft);
+    border-bottom:1px solid var(--rule-soft);
+    transition:background .3s ease;
+  }
+  .am:hover{background:var(--paper)}
+  .am:nth-child(4n){border-right:none}
+  .am:nth-last-child(-n+4){border-bottom:none}
+  .am-icon{
+    width:56px;height:56px;margin:0 auto 18px;
+    border:1px solid var(--brass);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--brick);
+  }
+  .am h4{
+    font-family:'Bodoni Moda',serif;font-size:18px;font-weight:500;margin-bottom:8px;color:var(--ink);
+  }
+  .am p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+
+  /* ------------------- LOCATION ------------------- */
+  .location{
+    background:var(--lake);color:var(--cream);
+    padding:110px 28px;position:relative;overflow:hidden;
+  }
+  .location::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(800px 400px at 80% 20%, rgba(244,236,216,.08), transparent 60%);
+    pointer-events:none;
+  }
+  .loc-grid{
+    position:relative;
+    display:grid;grid-template-columns:1.05fr 1fr;gap:80px;align-items:center;
+  }
+  .loc-text .eyebrow{color:var(--brass-soft)}
+  .loc-text h2{
+    font-size:clamp(34px,4.2vw,56px);margin:18px 0 24px;line-height:1.05;
+  }
+  .loc-text h2 em{font-style:italic;color:var(--brass-soft);font-weight:400}
+  .loc-text p{color:rgba(244,236,216,.85);font-size:16px;line-height:1.75;margin-bottom:14px}
+  .loc-list{
+    list-style:none;margin-top:30px;padding-top:30px;
+    border-top:1px solid rgba(244,236,216,.2);
+    display:flex;flex-direction:column;gap:18px;
+  }
+  .loc-list li{
+    display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+    padding-bottom:14px;border-bottom:1px solid rgba(244,236,216,.1);
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;
+    color:rgba(244,236,216,.85);
+  }
+  .loc-list li .name{font-family:'Bodoni Moda',serif;font-size:17px;color:var(--cream);font-style:italic}
+  .loc-list li .dist{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-soft)}
+
+  .loc-card{
+    background:var(--cream);color:var(--ink);
+    padding:46px 40px;
+    border:1px solid rgba(244,236,216,.4);
+    box-shadow:var(--shadow);
+  }
+  .loc-card .stamp{
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:18px;color:var(--brick);
+    margin-bottom:24px;display:flex;align-items:center;gap:14px;
+  }
+  .loc-card .stamp::before,.loc-card .stamp::after{
+    content:"";flex:1;height:1px;background:var(--brick);opacity:.4;
+  }
+  .loc-card .addr{
+    font-family:'Bodoni Moda',serif;font-size:30px;line-height:1.25;color:var(--ink);margin-bottom:18px;
+  }
+  .loc-card .city{font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:24px}
+  .loc-card .ph{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Bodoni Moda',serif;font-size:22px;color:var(--brick);
+    margin-bottom:8px;
+  }
+  .loc-card .em{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;color:var(--ink-soft);
+    margin-bottom:30px;
+  }
+
+  /* ------------------- FINAL CTA ------------------- */
+  .cta{
+    background:var(--cream);
+    padding:140px 28px;
+    text-align:center;
+    position:relative;
+    border-top:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+  }
+  .cta::before,.cta::after{
+    content:"";position:absolute;width:100%;height:1px;background:var(--rule);
+  }
+  .cta::before{top:8px}
+  .cta::after{bottom:8px}
+  .cta .glyph{
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:22px;color:var(--brass);
+    margin-bottom:14px;display:block;
+  }
+  .cta h2{
+    font-size:clamp(40px,6vw,80px);
+    margin:0 auto 22px;line-height:1.05;max-width:18ch;
+  }
+  .cta h2 em{font-style:italic;color:var(--brick);font-weight:400}
+  .cta p{font-size:17px;color:var(--ink-soft);max-width:50ch;margin:0 auto 36px;line-height:1.7}
+  .cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+
+  /* ------------------- FOOTER ------------------- */
+  footer{
+    background:var(--ink);color:rgba(244,236,216,.8);
+    padding:80px 28px 40px;
+  }
+  .foot-grid{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:60px;
+    padding-bottom:50px;border-bottom:1px solid rgba(244,236,216,.15);
+  }
+  .foot-brand{display:flex;flex-direction:column;gap:18px}
+  .foot-brand .name{font-family:'Bodoni Moda',serif;font-size:30px;color:var(--cream);font-weight:500}
+  .foot-brand .tag{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass-soft)}
+  .foot-brand p{font-size:14px;line-height:1.75;color:rgba(244,236,216,.7);max-width:34ch}
+
+  .foot-col h5{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass-soft);margin-bottom:18px;font-weight:500;
+  }
+  .foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .foot-col a,.foot-col li{font-size:14px;color:rgba(244,236,216,.78);transition:color .25s ease}
+  .foot-col a:hover{color:var(--brass-soft)}
+  .foot-bot{
+    max-width:1280px;margin:0 auto;
+    padding-top:30px;
+    display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;
+    font-size:12px;letter-spacing:.05em;color:rgba(244,236,216,.55);
+  }
+  .foot-bot .credit{font-family:'Bodoni Moda',serif;font-style:italic;font-size:13px;color:var(--brass-soft)}
+
+  /* ------------------- BOTTOM BOOKING BAR ------------------- */
+  .booking-bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:100;
+    background:var(--ink);color:var(--cream);
+    border-top:1px solid var(--brass);
+    padding:0;
+  }
+  .bb-inner{
+    max-width:1280px;margin:0 auto;
+    display:grid;grid-template-columns:auto 1fr 1fr auto;
+    align-items:stretch;
+  }
+  .bb-label{
+    display:flex;align-items:center;gap:12px;
+    padding:0 24px;
+    font-family:'Bodoni Moda',serif;font-style:italic;font-size:14px;color:var(--brass-soft);
+    border-right:1px solid rgba(244,236,216,.15);
+  }
+  .bb-field{
+    display:flex;flex-direction:column;justify-content:center;gap:2px;
+    padding:10px 22px;
+    border-right:1px solid rgba(244,236,216,.15);
+    cursor:pointer;
+    transition:background .25s ease;
+  }
+  .bb-field:hover{background:rgba(244,236,216,.04)}
+  .bb-field .lbl{font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--brass-soft)}
+  .bb-field input{
+    background:transparent;border:none;outline:none;color:var(--cream);
+    font-family:'Bodoni Moda',serif;font-size:16px;padding:2px 0;
+    color-scheme:dark;
+    cursor:pointer;
+  }
+  .bb-field input::-webkit-calendar-picker-indicator{filter:invert(1) opacity(.5);cursor:pointer}
+  .bb-cta{
+    display:flex;align-items:center;justify-content:center;
+    background:var(--brick);color:var(--cream);
+    padding:0 36px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;
+    transition:background .25s ease;
+    cursor:pointer;border:none;gap:10px;
+  }
+  .bb-cta:hover{background:var(--brick-deep)}
+
+  /* ------------------- ANIMATIONS ------------------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.on{opacity:1;transform:none}
+
+  /* ------------------- RESPONSIVE ------------------- */
+  @media (max-width:1024px){
+    .welcome-grid,.heritage-inner,.dining-grid,.loc-grid{grid-template-columns:1fr;gap:50px}
+    .welcome-col-left{position:static}
+    .rooms-grid{grid-template-columns:repeat(2,1fr)}
+    .rooms-head{grid-template-columns:1fr;gap:24px}
+    .am-grid{grid-template-columns:repeat(2,1fr)}
+    .am{border-right:1px solid var(--rule-soft)!important;border-bottom:1px solid var(--rule-soft)!important}
+    .am:nth-child(2n){border-right:none!important}
+    .am:nth-last-child(-n+2){border-bottom:none!important}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:40px}
+    .dining-img{min-height:380px}
+    .nav-phone{display:none}
+  }
+  @media (max-width:768px){
+    section{padding:80px 22px}
+    .topbar{font-size:10px;padding:8px 16px;letter-spacing:.14em}
+    .topbar .accent{margin:0 6px}
+    nav{grid-template-columns:auto 1fr auto;padding:14px 22px;gap:12px}
+    .logo-mark{width:42px;height:42px}
+    .logo-text .name{font-size:18px}
+    .logo-text .sub{font-size:8px;letter-spacing:.28em}
+    .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--cream);flex-direction:column;padding:24px;border-bottom:1px solid var(--rule-soft);gap:16px}
+    .nav-links.open{display:flex}
+    .menu-toggle{display:flex;align-items:center;justify-content:center}
+    .nav-cta .btn{padding:10px 14px;font-size:10px}
+    .hero{padding:80px 22px 60px;min-height:88vh}
+    .hero-frame{display:none}
+    .hero-stamp{width:100px;height:100px;top:90px;right:22px}
+    .hero-stamp .num{font-size:24px}
+    .hero-title{font-size:clamp(40px,11vw,68px)}
+    .hero-sub{font-size:15px}
+    .rooms-grid{grid-template-columns:1fr}
+    .am-grid{grid-template-columns:1fr}
+    .am{border-right:none!important;border-bottom:1px solid var(--rule-soft)!important}
+    .am:last-child{border-bottom:none!important}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .dining-content{padding:40px 26px}
+    .loc-card{padding:34px 26px}
+    .loc-card .addr{font-size:24px}
+    .press-strip .quotes{flex-direction:column;gap:12px}
+    .press-strip .quotes span:not(:last-child)::after{display:none}
+    .heritage-list .row{gap:14px}
+    .heritage-list .yr{font-size:20px;min-width:64px}
+
+    /* Booking bar - mobile compact */
+    body{padding-bottom:124px}
+    .bb-inner{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+    .bb-label{display:none}
+    .bb-cta{grid-column:1 / -1;padding:14px;font-size:11px;letter-spacing:.22em}
+    .bb-field{padding:8px 14px}
+    .bb-field input{font-size:14px}
+    .scroll-cue{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- Top announcement bar -->
+<div class="topbar">
+  <span>17 Rittenhouse Avenue</span>
+  <span class="accent">·</span>
+  <span>Bayfield, Wisconsin</span>
+  <span class="accent">·</span>
+  <span>One Block from Lake Superior</span>
+</div>
+
+<!-- Sticky Navigation -->
+<div class="nav-wrap" id="navwrap">
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <span class="yr">1863</span>
+        <span class="est">Est.</span>
+      </div>
+      <div class="logo-text">
+        <span class="name">Greunke's</span>
+        <span class="sub">First Street Inn</span>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#welcome">The Inn</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#dining">Restaurant</a></li>
+      <li><a href="#location">Bayfield</a></li>
+      <li><a href="#contact">Visit</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="tel:7157795480" class="nav-phone" aria-label="Call (715) 779-5480">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (715) 779‑5480
+      </a>
+      <a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener" class="btn btn-primary">Book Now</a>
+      <button class="menu-toggle" id="menubtn" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg">
+    <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_limit,h_1600,q_80,w_1800/v1/crm/bayfieldwi/greunkes_inn_edit_2_2E8A3B21-5056-A36A-0A13B57C1B9C0386-2e8a3a565056a36_2e8a432d-5056-a36a-0a3a15e7022589f8.jpg" alt="Greunke's First Street Inn — historic exterior in downtown Bayfield" referrerpolicy="no-referrer">
+  </div>
+  <div class="hero-frame">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+  </div>
+
+  <div class="hero-stamp">
+    <div>
+      <div class="num">160+</div>
+      <div class="lbl">Years of<br>Hospitality</div>
+    </div>
+  </div>
+
+  <div class="hero-content" style="padding:120px 28px 80px">
+    <div class="hero-eyebrow">Bayfield, Wisconsin · Since 1863</div>
+    <h1 class="hero-title">A Stay Like <em>Stepping Back</em> in Time.</h1>
+    <p class="hero-sub">Twelve charming, historic rooms above a beloved downtown restaurant — one block from Lake Superior, the Madeline Island Ferry, and the Apostle Islands Cruise.</p>
+    <div class="hero-actions">
+      <a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener" class="btn btn-cream">Check Availability →</a>
+      <a href="#welcome" class="btn btn-ghost" style="color:var(--cream);border-color:rgba(244,236,216,.5)">Discover the Inn</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue">
+    <span>Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- WELCOME / EDITORIAL -->
+<section class="welcome" id="welcome">
+  <div class="container welcome-grid">
+    <div class="welcome-col-left reveal">
+      <div class="welcome-eyebrow eyebrow">Welcome <span class="dot"></span> Est. 1863</div>
+      <h2 class="display welcome-title">Quaint lodging,<br><em>fine food</em>, &amp; a great atmosphere.</h2>
+      <div class="rule"><span class="glyph">✦</span></div>
+
+      <div class="welcome-meta">
+        <div class="item">
+          <span class="lbl">Rooms</span>
+          <span class="val">Twelve</span>
+        </div>
+        <div class="item">
+          <span class="lbl">Buildings</span>
+          <span class="val">1863 &amp; 1880</span>
+        </div>
+        <div class="item">
+          <span class="lbl">To the Lake</span>
+          <span class="val">One Block</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="welcome-text reveal">
+      <p class="dropcap">Fine food and quaint lodgings are what Greunke's is known for in the Bayfield, Wisconsin area — and well beyond. Our twelve charming rooms occupy two of Bayfield's oldest historic structures, the LaBonte House and the Wachsmuth House, both quietly anchoring downtown for more than a century and a half.</p>
+
+      <div class="welcome-quote">
+        Stepping into Greunke's is like stepping back into the '40s — the Coca‑Cola memorabilia, the working Wurlitzer, the old soda fountain counter — images straight from a Norman Rockwell cover.
+        <span class="src">— A Note from the Inn</span>
+      </div>
+
+      <p>Centrally located, the Inn is a short walk from Lake Superior, the Madeline Island Ferry, the Apostle Islands Cruise Service, the town pool, the shops, and most of Bayfield's attractions. Shuttle service to Big Top Chautauqua is available for our guests.</p>
+
+      <p>Six rooms have private baths and queen beds. Two have queen beds with a half bath. Four rooms — reminiscent of the Inn's earliest days — have shared facilities. Each is comfortable, quiet, and decorated with antiques and original art.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE BAND -->
+<section class="heritage">
+  <div class="container heritage-inner">
+    <div class="heritage-text reveal">
+      <span class="eyebrow">Our Story</span>
+      <h2>Two of Bayfield's <em>oldest, most historic</em> structures.</h2>
+      <p>The First Street Inn is a careful combination of two of Bayfield's earliest buildings — the LaBonte House, built in 1863 by a young French‑Canadian who would later help convince the railroads to come to the peninsula, and the Wachsmuth House from 1880, once Whisker Wachsmuth's tobacco shop.</p>
+      <p>Today they're combined into a single small inn, listed in the directory of <em style="color:var(--brass-soft)">Historic Wisconsin Inns</em> and Harvard's <em style="color:var(--brass-soft)">Let's Go Guide to the United States</em>.</p>
+
+      <div class="heritage-list">
+        <div class="row">
+          <span class="yr">1863</span>
+          <span class="desc">LaBonte House welcomes its first guests, between the Hotel Bracken and Wachsmith's tobacco shop.</span>
+        </div>
+        <div class="row">
+          <span class="yr">1880</span>
+          <span class="desc">The Wachsmuth House is built next door — its rooms later named for the Apostle Islands.</span>
+        </div>
+        <div class="row">
+          <span class="yr">1940</span>
+          <span class="desc">Greunke's begins serving food to locals and visitors — the era our restaurant still channels today.</span>
+        </div>
+        <div class="row">
+          <span class="yr">Today</span>
+          <span class="desc">Twelve rooms, one beloved restaurant, and a working Wurlitzer that still plays.</span>
+        </div>
+      </div>
+    </div>
+    <div class="heritage-img reveal">
+      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/01/9a/d9/b1/gruenke-s-inn.jpg?w=1200&h=1500" alt="Historic Greunke's First Street Inn building" referrerpolicy="no-referrer">
+      <div class="heritage-img-cap">17 Rittenhouse Ave.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="rooms-head">
+      <div class="reveal">
+        <span class="eyebrow">Twelve Charming Rooms</span>
+        <h2 class="display" style="margin-top:14px">Our <em>guest rooms</em>.</h2>
+      </div>
+      <p class="reveal">Quaint, comfortable, neatly decorated with antiques and original art. Six rooms with private baths, two with half baths, and four reminiscent of the Inn's earliest days with shared facilities. All rooms feature free WiFi.</p>
+    </div>
+
+    <div class="rooms-grid">
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/98/19/98/gruenke-s.jpg?w=900&h=700" alt="A charming guest room at Greunke's" referrerpolicy="no-referrer">
+          <span class="room-tag">Most Popular</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">Room № 7</span>
+          <h3>The Studio</h3>
+          <p class="desc">Our largest room above the restaurant. Three rooms, queen sleigh bed plus an additional queen and double in the loft. Private bath, sofa, refrigerator, A/C, and a collection of art and stained glass. Sleeps six.</p>
+          <div class="specs">
+            <span class="spec">Sleeps 6</span>
+            <span class="spec">Private Bath</span>
+            <span class="spec">A/C</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/98/19/f6/gruenke-s.jpg?w=900&h=700" alt="The Wildrose Room loft" referrerpolicy="no-referrer">
+          <span class="room-tag">First Floor</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">Wildrose</span>
+          <h3>The Wildrose Room</h3>
+          <p class="desc">The only room on the first floor — no stairs to navigate. Two and a half bedrooms with two queens and a twin, private bath, dorm‑size refrigerator, WiFi, and a television.</p>
+          <div class="specs">
+            <span class="spec">No Stairs</span>
+            <span class="spec">Private Bath</span>
+            <span class="spec">2 Queens + Twin</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/98/1a/08/gruenke-s.jpg?w=900&h=700" alt="The Cowboy Room four-poster" referrerpolicy="no-referrer">
+          <span class="room-tag">Heritage</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">Room № 3</span>
+          <h3>The Cowboy Room</h3>
+          <p class="desc">Fondly remembered for generations. A comfortable oak four‑poster queen bed and a private half bath. On the second floor of the historic Greunke's Restaurant building.</p>
+          <div class="specs">
+            <span class="spec">Queen 4‑Poster</span>
+            <span class="spec">Half Bath</span>
+            <span class="spec">WiFi</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/98/19/ec/gruenke-s.jpg?w=900&h=700" alt="An Apostle Islands-named room" referrerpolicy="no-referrer">
+          <span class="room-tag">Apostle Islands</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">York · Manitou · Madeline</span>
+          <h3>The Wachsmuth Rooms</h3>
+          <p class="desc">Four restored rooms in the 1880 Wachsmuth House, each named for an Apostle Island. Queen and twin beds, private baths, A/C, cherry wood furnishings, and access to a porch overlooking First Street.</p>
+          <div class="specs">
+            <span class="spec">Private Bath</span>
+            <span class="spec">A/C</span>
+            <span class="spec">Porch</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/98/1a/00/gruenke-s.jpg?w=900&h=700" alt="A historic shared-bath room" referrerpolicy="no-referrer">
+          <span class="room-tag">As Featured On</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">Room № 5</span>
+          <h3>The Hotel Impossible Room</h3>
+          <p class="desc">Featured on Travel Channel's <em>Hotel Impossible</em>. A simple, comfortable room with a queen bed, shared bath across the hall, and air conditioning. Pure historic charm.</p>
+          <div class="specs">
+            <span class="spec">Queen Bed</span>
+            <span class="spec">Shared Bath</span>
+            <span class="spec">A/C</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-img">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/06/8d/ac/5f/gruenke-s.jpg?w=900&h=700" alt="View of Lake Superior from Bayfield" referrerpolicy="no-referrer">
+          <span class="room-tag">+ 6 More Rooms</span>
+        </div>
+        <div class="room-info">
+          <span class="room-num">Rooms № 1, 2, 4, 6 &amp; more</span>
+          <h3>The Original Inn</h3>
+          <p class="desc">Six additional rooms above Greunke's Restaurant — front rooms with views of Lake Superior, charming European‑style guest rooms, comfortable rooms with stained glass fixtures and double beds. Affordable nightly rates.</p>
+          <div class="specs">
+            <span class="spec">Various Configs</span>
+            <span class="spec">Free WiFi</span>
+            <span class="spec">Lake Views</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<section class="dining" id="dining">
+  <div class="container">
+    <div class="dining-grid reveal">
+      <div class="dining-img">
+        <img src="https://media-cdn.tripadvisor.com/media/photo-s/06/8d/ac/5f/gruenke-s.jpg" alt="Greunke's Restaurant interior, Bayfield" referrerpolicy="no-referrer">
+      </div>
+      <div class="dining-content">
+        <span class="eyebrow brass">The Restaurant Downstairs</span>
+        <h2 class="display">Best <em>breakfast</em> in town. <br>Famous fish boil at six.</h2>
+        <p>Located in the heart of Bayfield, Greunke's has been serving food to locals and visitors alike since 1940. Memorabilia covers the walls. The menu offers some of America's favorite foods — burgers, sandwiches, salads, steak, pasta, and of course, FRESH fish from Lake Superior.</p>
+        <p>Stay with us, and breakfast is steps from your room.</p>
+
+        <div class="dining-feats">
+          <div class="f"><span class="lbl">Specialty</span><span class="val">Whitefish Livers</span></div>
+          <div class="f"><span class="lbl">Tradition</span><span class="val">Summer Fish Boils</span></div>
+          <div class="f"><span class="lbl">Mornings</span><span class="val">Greunke's Eggs Benedict</span></div>
+          <div class="f"><span class="lbl">Afternoons</span><span class="val">Hand‑dipped Malts</span></div>
+        </div>
+
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a href="https://greunkesinn.com/restaurant/menu/" target="_blank" rel="noopener" class="btn btn-ghost">View the Menu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS STRIP -->
+<div class="press-strip reveal">
+  <div class="label">As Recognized By</div>
+  <div class="quotes">
+    <span><em>Wisconsin Trails</em> — “Top 10 Breakfast Spots in Wisconsin”</span>
+    <span><em>Travel Channel</em> — Hotel Impossible</span>
+    <span>Harvard's <em>Let's Go Guide</em></span>
+    <span><em>Historic Wisconsin Inns</em> Directory</span>
+  </div>
+</div>
+
+<!-- AMENITIES -->
+<section class="amenities">
+  <div class="container">
+    <div class="amenities-head reveal">
+      <span class="eyebrow brass">What's Included</span>
+      <h2 class="display">A few <em>good things</em>.</h2>
+    </div>
+    <div class="am-grid">
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1.5" fill="currentColor"/></svg></div>
+        <h4>Free WiFi</h4>
+        <p>In all guest rooms throughout the Inn.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M3 12h3M18 12h3M12 3v3M12 18v3"/></svg></div>
+        <h4>Free Parking</h4>
+        <p>Right at the property in downtown Bayfield.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18h18l-2-9H5l-2 9z"/><path d="M7 9V6a5 5 0 0 1 10 0v3"/></svg></div>
+        <h4>Restaurant &amp; Lounge</h4>
+        <p>Breakfast, lunch &amp; dinner — seven days a week.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18l-1.5 12a2 2 0 0 1-2 1.7H6.5A2 2 0 0 1 4.5 19L3 7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></div>
+        <h4>Pizza Next Door</h4>
+        <p>Sgt. Pepperoni's — best pizza in town.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 6c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 18c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/></svg></div>
+        <h4>One Block to the Lake</h4>
+        <p>Lake Superior, just steps from the front door.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 18l3-7 5 5 7-9 5 11"/><circle cx="6" cy="7" r="2"/></svg></div>
+        <h4>Big Top Shuttle</h4>
+        <p>Stop for the Big Top Chautauqua summer shows.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-7h6v7"/></svg></div>
+        <h4>Antiques &amp; Art</h4>
+        <p>Each room neatly decorated with originals.</p>
+      </div>
+      <div class="am reveal">
+        <div class="am-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h4>153+ Years of Hospitality</h4>
+        <p>Welcoming travelers since the LaBonte days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location" id="location">
+  <div class="container loc-grid">
+    <div class="loc-text reveal">
+      <span class="eyebrow">Centrally Located</span>
+      <h2 class="display">In the heart of <em>downtown Bayfield</em>.</h2>
+      <p>You can leave the car parked. The Madeline Island Ferry, the Apostle Islands Cruise Service, the maritime museum, the gift shops, the bookstore, and a dozen restaurants are all within a few minutes' walk.</p>
+
+      <ul class="loc-list">
+        <li><span class="name">Lake Superior</span><span class="dist">1 Block</span></li>
+        <li><span class="name">Madeline Island Ferry</span><span class="dist">Short Walk</span></li>
+        <li><span class="name">Apostle Islands Cruise Service</span><span class="dist">Short Walk</span></li>
+        <li><span class="name">Bayfield Maritime Museum</span><span class="dist">0.2 Miles</span></li>
+        <li><span class="name">Apostle Islands Booksellers</span><span class="dist">0.05 Miles</span></li>
+        <li><span class="name">Stone's Throw Art Gallery</span><span class="dist">0.1 Miles</span></li>
+      </ul>
+    </div>
+
+    <div class="loc-card reveal" id="contact">
+      <div class="stamp">— Greunke's First Street Inn —</div>
+      <div class="addr">17 Rittenhouse Avenue</div>
+      <div class="city">Bayfield, Wisconsin 54814</div>
+      <a href="tel:7157795480" class="ph">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (715) 779‑5480
+      </a>
+      <div class="em">greunkes@gmail.com</div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener" class="btn btn-primary">Reserve Your Room</a>
+        <a href="https://www.google.com/maps/place/17+Rittenhouse+Ave,+Bayfield,+WI+54814" target="_blank" rel="noopener" class="btn btn-ghost">Get Directions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta">
+  <div class="container">
+    <span class="glyph">— Reserve Your Stay —</span>
+    <h2 class="display">A few <em>quiet rooms</em> are waiting in Bayfield.</h2>
+    <p>Twelve rooms is twelve rooms. They book up fast in summer and fish‑boil season. Reserve directly and save the booking fee.</p>
+    <div class="cta-actions">
+      <a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener" class="btn btn-primary" style="padding:18px 32px;font-size:12px">Check Availability →</a>
+      <a href="tel:7157795480" class="btn btn-ghost" style="padding:18px 32px;font-size:12px">Call (715) 779‑5480</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <span class="name">Greunke's First Street Inn</span>
+      <span class="tag">Bayfield · Est. 1863</span>
+      <p>Twelve charming rooms in two of Bayfield's oldest historic buildings. Quaint lodging, fine food, and a great atmosphere — one block from Lake Superior.</p>
+    </div>
+    <div class="foot-col">
+      <h5>The Inn</h5>
+      <ul>
+        <li><a href="#welcome">About</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#dining">Restaurant</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Visit</h5>
+      <ul>
+        <li>17 Rittenhouse Ave.</li>
+        <li>Bayfield, WI 54814</li>
+        <li><a href="tel:7157795480">(715) 779‑5480</a></li>
+        <li><a href="mailto:greunkes@gmail.com">greunkes@gmail.com</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Reserve</h5>
+      <ul>
+        <li><a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener">Book a Room</a></li>
+        <li><a href="https://greunkesinn.com/restaurant/menu/" target="_blank" rel="noopener">Restaurant Menu</a></li>
+        <li><a href="https://www.facebook.com/GreunkesFirstStreetInn/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bot">
+    <span>© <span id="year"></span> Greunke's First Street Inn — All rights reserved.</span>
+    <span class="credit">Concept by Bofill Technologies</span>
+  </div>
+</footer>
+
+<!-- BOTTOM BOOKING BAR -->
+<div class="booking-bar">
+  <div class="bb-inner">
+    <div class="bb-label">— Reserve —</div>
+    <label class="bb-field" for="bb-in">
+      <span class="lbl">Check In</span>
+      <input type="date" id="bb-in">
+    </label>
+    <label class="bb-field" for="bb-out">
+      <span class="lbl">Check Out</span>
+      <input type="date" id="bb-out">
+    </label>
+    <a href="https://via.eviivo.com/en-US/GrnksFrstStrtInn54814" target="_blank" rel="noopener" class="bb-cta" id="bb-go">
+      Book Now
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</div>
+
+<script>
+  // sticky nav shadow
+  const navwrap=document.getElementById('navwrap');
+  window.addEventListener('scroll',()=>{
+    if(window.scrollY>20)navwrap.classList.add('scrolled');
+    else navwrap.classList.remove('scrolled');
+  });
+
+  // mobile menu
+  const menubtn=document.getElementById('menubtn');
+  const navlinks=document.getElementById('navlinks');
+  menubtn?.addEventListener('click',()=>navlinks.classList.toggle('open'));
+  navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navlinks.classList.remove('open')));
+
+  // year
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // dates: today / tomorrow
+  const today=new Date();
+  const tmrw=new Date(today);tmrw.setDate(today.getDate()+1);
+  const fmt=d=>d.toISOString().split('T')[0];
+  const inEl=document.getElementById('bb-in');
+  const outEl=document.getElementById('bb-out');
+  inEl.value=fmt(today);outEl.value=fmt(tmrw);
+  inEl.min=fmt(today);
+  inEl.addEventListener('change',()=>{
+    const next=new Date(inEl.value);next.setDate(next.getDate()+1);
+    outEl.min=fmt(next);
+    if(new Date(outEl.value)<=new Date(inEl.value))outEl.value=fmt(next);
+  });
+
+  // booking bar -> book now passes dates to eviivo (best-effort, eviivo handles)
+  document.getElementById('bb-go').addEventListener('click',e=>{
+    const base='https://via.eviivo.com/en-US/GrnksFrstStrtInn54814';
+    const url=`${base}?from=${inEl.value}&to=${outEl.value}`;
+    e.currentTarget.href=url;
+  });
+
+  // scroll reveal
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}});
+  },{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
