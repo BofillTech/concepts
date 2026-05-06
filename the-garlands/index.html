@@ -320,15 +320,65 @@ img { max-width: 100%; display: block; }
   margin: .1em .15em 0 0;
   color: var(--atlantic);
 }
+.intro__media {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .75rem;
+  margin-top: 2rem;
+}
+.intro__media-tall {
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.intro__media-tall img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+.intro__media-tall:hover img { transform: scale(1.04); }
+.intro__media-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .75rem;
+}
+.intro__media-row > div {
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--atlantic-deep);
+}
+.intro__media-row img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+.intro__media-row > div:hover img { transform: scale(1.05); }
 
-/* ---------- BIG STATEMENT ---------- */
+/* ---------- BIG STATEMENT (with bg image) ---------- */
 .statement {
+  position: relative;
   background: var(--atlantic);
   color: #fff;
   padding: var(--section) var(--gutter);
   text-align: center;
+  overflow: hidden;
+}
+.statement__bg {
+  position: absolute; inset: 0;
+  background-image: url('./sunset_deck.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: .35;
+  z-index: 0;
+}
+.statement__bg-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15,41,66,.78) 0%, rgba(8,26,44,.88) 100%);
+  z-index: 1;
 }
 .statement__inner {
+  position: relative;
+  z-index: 2;
   max-width: 980px;
   margin: 0 auto;
 }
@@ -895,7 +945,8 @@ img { max-width: 100%; display: block; }
 /* ---------- RESPONSIVE ---------- */
 @media (min-width: 768px) {
   .nav__links { display: flex; }
-  .intro { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .intro { grid-template-columns: 1fr 1fr 0.85fr; gap: 3rem; }
+  .intro__media { margin-top: 0; }
   .moment { grid-template-columns: 1fr 1fr; gap: 4rem; }
   .moment:nth-child(even) .moment__img { order: 2; }
   .strip__grid { grid-template-rows: 280px 280px; }
@@ -974,11 +1025,22 @@ img { max-width: 100%; display: block; }
       <p>Tucked along the quiet shore of Nantucket Sound, The Garlands is a small, family-owned collection of twenty one- and two-bedroom condos &mdash; each one different, each one ours. Private balconies and patios open directly to the water views. Kitchenettes mean mornings at your own pace. And just outside your door, a wide oceanfront sundeck leads down to your own stretch of beach.</p>
       <p>There's no rush here. No minimum stay. Come for a week, a weekend, or one quiet night when you just need to hear the tide. We'll be ready.</p>
     </div>
+    <div class="intro__media reveal">
+      <div class="intro__media-tall">
+        <img src="./property_from_beach.jpg" alt="The Garlands seen from the beach" loading="lazy">
+      </div>
+      <div class="intro__media-row">
+        <div><img src="./blue_loungers.jpg" alt="Blue lounge chairs on the sundeck" loading="lazy"></div>
+        <div><img src="./garlands_sign.jpg" alt="Private beach access for guests" loading="lazy"></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- BIG STATEMENT (Pelham-inspired bold section) -->
 <section class="statement">
+  <div class="statement__bg"></div>
+  <div class="statement__bg-overlay"></div>
   <div class="statement__inner">
     <div class="statement__eyebrow">Oceanfront. Always.</div>
     <h2 class="statement__h">Where the day begins<br>and ends with <em>the water.</em></h2>
