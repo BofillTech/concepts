@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day's Sail BVI — Private Day Sails Through the British Virgin Islands</title>
+<meta name="description" content="Private day sails through the British Virgin Islands with Captain Pearline. Norman Island, Jost Van Dyke, the Caves, and more. Up to ten guests aboard the Pirate Flag.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Albert+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ocean:#0a3a4a;
+    --ocean-deep:#062831;
+    --turquoise:#4ba3ad;
+    --shallows:#9bcccd;
+    --sand:#f3ebdd;
+    --sand-light:#faf6ec;
+    --paper:#fdfaf3;
+    --coral:#d97757;
+    --coral-deep:#b85e3e;
+    --gold:#c8a472;
+    --text:#0e2227;
+    --text-muted:#5d6e74;
+    --border:rgba(14,34,39,0.12);
+
+    --font-display:'Spectral', 'Times New Roman', serif;
+    --font-display-sc:'Albert Sans', sans-serif;
+    --font-body:'Albert Sans', -apple-system, sans-serif;
+
+    --max:1400px;
+    --pad:clamp(1.5rem, 5vw, 4rem);
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    color:var(--text);
+    background:var(--paper);
+    line-height:1.6;
+    font-size:17px;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none;transition:opacity .25s ease, color .25s ease}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+  /* ===== TYPE SCALE ===== */
+  .display{
+    font-family:var(--font-display);
+    font-weight:400;
+    line-height:1.02;
+    letter-spacing:-0.005em;
+  }
+  .eyebrow{
+    font-family:var(--font-display-sc);
+    letter-spacing:0.22em;
+    font-size:.72rem;
+    text-transform:uppercase;
+    font-weight:500;
+    color:var(--turquoise);
+    display:inline-block;
+  }
+  .eyebrow.dark{color:var(--ocean)}
+  .eyebrow.light{color:var(--shallows)}
+
+  /* ===== NAV ===== */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1.4rem var(--pad);
+    display:flex;align-items:center;justify-content:space-between;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  .nav.scrolled{
+    background:rgba(253,250,243,0.96);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    padding:.9rem var(--pad);
+    box-shadow:0 1px 0 var(--border);
+  }
+  .nav-logo{display:flex;align-items:center;gap:.7rem;color:#fff;transition:color .35s ease}
+  .nav.scrolled .nav-logo{color:var(--ocean)}
+  .nav-logo img{height:42px;width:auto;filter:brightness(0) invert(1);transition:filter .35s ease}
+  .nav.scrolled .nav-logo img{filter:none}
+  .nav-logo .brand{
+    font-family:var(--font-display);
+    font-size:1.15rem;letter-spacing:.02em;
+    display:none;
+  }
+  @media(min-width:560px){.nav-logo .brand{display:block}}
+  .nav-logo .brand small{
+    display:block;font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.55rem;letter-spacing:.25em;opacity:.75;margin-top:2px;
+  }
+  .nav-cta-group .btn{display:none}
+  @media(min-width:900px){.nav-cta-group .btn{display:inline-block}}
+  .nav-links{
+    display:none;gap:2.2rem;align-items:center;
+    font-size:.85rem;letter-spacing:.05em;
+    color:#fff;
+  }
+  .nav.scrolled .nav-links{color:var(--ocean)}
+  .nav-links a{position:relative;padding:.4rem 0}
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;
+    width:0;height:1px;background:currentColor;
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-cta-group{display:flex;align-items:center;gap:.7rem}
+  .nav-phone{
+    display:none;color:#fff;font-size:.85rem;letter-spacing:.04em;
+    transition:color .35s ease;
+  }
+  .nav.scrolled .nav-phone{color:var(--ocean)}
+  .nav-phone:hover{opacity:.7}
+  .btn{
+    display:inline-block;
+    padding:.85rem 1.6rem;
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.78rem;letter-spacing:.18em;
+    transition:all .3s ease;
+    cursor:pointer;
+    line-height:1;
+  }
+  .btn-primary{
+    background:var(--coral);color:#fff;
+    border:1px solid var(--coral);
+  }
+  .btn-primary:hover{background:var(--coral-deep);border-color:var(--coral-deep);transform:translateY(-1px)}
+  .btn-outline{
+    background:transparent;color:#fff;
+    border:1px solid rgba(255,255,255,.55);
+  }
+  .btn-outline:hover{background:#fff;color:var(--ocean);border-color:#fff}
+  .btn-outline-dark{
+    background:transparent;color:var(--ocean);
+    border:1px solid var(--ocean);
+  }
+  .btn-outline-dark:hover{background:var(--ocean);color:var(--paper)}
+
+  .hamburger{
+    display:flex;flex-direction:column;gap:5px;
+    padding:.5rem;color:inherit;
+  }
+  .hamburger span{
+    display:block;width:22px;height:1.5px;background:currentColor;
+    transition:all .25s ease;
+  }
+  .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .hamburger.open span:nth-child(2){opacity:0}
+  .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+  .mobile-menu{
+    position:fixed;top:0;right:-100%;
+    width:min(90vw,360px);height:100vh;
+    background:var(--ocean-deep);
+    z-index:99;
+    padding:6rem 2rem 2rem;
+    transition:right .4s cubic-bezier(.4,0,.2,1);
+    display:flex;flex-direction:column;
+  }
+  .mobile-menu.open{right:0}
+  .mobile-menu a{
+    color:var(--sand);
+    font-family:var(--font-display);
+    font-size:1.4rem;
+    padding:1rem 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .mobile-menu .mobile-phone{
+    margin-top:auto;font-family:var(--font-body);font-size:.95rem;
+    border:none;padding-top:1.5rem;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    height:100vh;min-height:640px;max-height:900px;
+    overflow:hidden;
+    display:flex;align-items:flex-end;
+    color:#fff;
+    background:var(--ocean-deep);
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('https://www.daysail-bvi.com/wp-content/uploads/2019/09/slider.jpg');
+    background-size:cover;
+    background-position:center 40%;
+    transform:scale(1.05);
+    will-change:transform;
+  }
+  .hero-bg::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(6,40,49,.35) 0%, rgba(6,40,49,.15) 30%, rgba(6,40,49,.65) 100%);
+  }
+  .hero-content{
+    position:relative;z-index:2;
+    width:100%;max-width:var(--max);
+    margin:0 auto;
+    padding:0 var(--pad) clamp(3rem, 8vw, 6rem);
+  }
+  .hero-eyebrow{
+    color:var(--shallows);
+    margin-bottom:1.5rem;
+    opacity:0;animation:fadeUp 1s .2s forwards;
+  }
+  .hero-eyebrow span{
+    display:inline-block;
+    width:36px;height:1px;background:var(--shallows);
+    vertical-align:middle;margin-right:1rem;opacity:.6;
+  }
+  .hero h1{
+    font-size:clamp(3rem, 9vw, 7.5rem);
+    line-height:.95;
+    margin-bottom:1.8rem;
+    max-width:18ch;
+    opacity:0;animation:fadeUp 1.1s .4s forwards;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--shallows);
+    font-family:var(--font-display);
+  }
+  .hero-sub{
+    font-size:clamp(1rem,1.4vw,1.15rem);
+    max-width:46ch;
+    line-height:1.6;
+    color:rgba(255,255,255,.85);
+    margin-bottom:2.5rem;
+    font-weight:300;
+    opacity:0;animation:fadeUp 1.1s .6s forwards;
+  }
+  .hero-ctas{
+    display:flex;flex-wrap:wrap;gap:1rem;
+    opacity:0;animation:fadeUp 1.1s .8s forwards;
+  }
+
+  /* hero corner stamp */
+  .hero-stamp{
+    position:absolute;
+    top:50%;right:var(--pad);
+    transform:translateY(-50%) rotate(90deg);
+    transform-origin:right center;
+    color:rgba(255,255,255,.55);
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.7rem;letter-spacing:.32em;
+    z-index:2;
+    display:none;
+    opacity:0;animation:fadeUp 1.5s 1.2s forwards;
+  }
+  @media(min-width:1100px){.hero-stamp{display:block}}
+
+  .scroll-cue{
+    position:absolute;bottom:1.5rem;left:50%;
+    transform:translateX(-50%);
+    color:rgba(255,255,255,.7);
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.6rem;letter-spacing:.3em;
+    z-index:2;
+    display:flex;flex-direction:column;align-items:center;gap:.6rem;
+    opacity:0;animation:fadeUp 1.5s 1.4s forwards;
+  }
+  .scroll-cue::after{
+    content:'';width:1px;height:36px;
+    background:rgba(255,255,255,.5);
+    animation:scrollLine 2s ease-in-out infinite;
+    transform-origin:top;
+  }
+  @keyframes scrollLine{
+    0%,100%{transform:scaleY(.3);opacity:.3}
+    50%{transform:scaleY(1);opacity:1}
+  }
+
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(28px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ===== SECTION BASICS ===== */
+  section{padding:clamp(4rem,10vw,8rem) var(--pad)}
+  .container{max-width:var(--max);margin:0 auto}
+  .section-head{
+    max-width:760px;margin-bottom:clamp(3rem,6vw,5rem);
+  }
+  .section-head .eyebrow{margin-bottom:1.4rem}
+  .section-head h2{
+    font-size:clamp(2.25rem,5.5vw,4.25rem);
+    line-height:1.05;
+    margin-bottom:1.4rem;
+  }
+  .section-head p{
+    font-size:1.05rem;line-height:1.75;
+    color:var(--text-muted);max-width:55ch;
+  }
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .9s ease, transform .9s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* ===== INTRO STORY ===== */
+  .intro{
+    background:var(--paper);
+    position:relative;
+  }
+  .intro-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:3rem;align-items:center;
+  }
+  @media(min-width:900px){
+    .intro-grid{grid-template-columns:1.1fr .9fr;gap:5rem}
+  }
+  .intro-text h2{
+    font-size:clamp(2.5rem,6vw,5rem);
+    line-height:1;
+    margin:1.5rem 0 2rem;
+  }
+  .intro-text h2 em{
+    font-style:italic;color:var(--turquoise);
+  }
+  .intro-text p{
+    color:var(--text-muted);
+    font-size:1.05rem;line-height:1.85;
+    margin-bottom:1.4rem;
+    max-width:50ch;
+  }
+  .intro-text .signature{
+    margin-top:2.5rem;
+    font-family:var(--font-display);
+    font-style:italic;
+    color:var(--ocean);
+    font-size:1.15rem;
+  }
+  .intro-image-wrap{
+    position:relative;
+  }
+  .intro-image-wrap img{
+    width:100%;aspect-ratio:4/5;object-fit:cover;
+    border-radius:2px;
+  }
+  .intro-image-wrap .badge{
+    position:absolute;
+    bottom:-30px;left:-30px;
+    background:var(--paper);
+    padding:1.5rem 2rem;
+    border:1px solid var(--border);
+    max-width:240px;
+  }
+  .intro-image-wrap .badge .num{
+    font-family:var(--font-display);
+    font-size:3rem;line-height:1;
+    color:var(--coral);display:block;margin-bottom:.3rem;
+  }
+  .intro-image-wrap .badge .lbl{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.7rem;letter-spacing:.2em;
+    color:var(--text-muted);
+  }
+
+  /* ===== EXCURSIONS ===== */
+  .excursions{
+    background:var(--ocean-deep);
+    color:var(--sand);
+    position:relative;
+  }
+  .excursions::before{
+    content:'';position:absolute;top:0;left:0;right:0;
+    height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:.4;
+  }
+  .excursions .eyebrow{color:var(--shallows)}
+  .excursions h2{color:var(--sand-light)}
+  .excursions h2 em{color:var(--shallows);font-style:italic}
+  .excursions-head{
+    display:grid;grid-template-columns:1fr;gap:2rem;
+    align-items:end;margin-bottom:4rem;
+  }
+  @media(min-width:900px){
+    .excursions-head{grid-template-columns:1.5fr 1fr;gap:4rem}
+  }
+  .excursions-head p{
+    color:rgba(245,237,224,.7);
+    font-size:1rem;line-height:1.75;
+    max-width:42ch;
+  }
+
+  .excursion-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:1px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
+  }
+  .excursion-card{
+    background:var(--ocean-deep);
+    padding:2rem 1.8rem;
+    transition:background .4s ease;
+    cursor:pointer;
+    position:relative;
+    display:flex;flex-direction:column;
+    min-height:340px;
+  }
+  .excursion-card:hover{background:var(--ocean)}
+  .excursion-card .num{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.7rem;letter-spacing:.25em;
+    color:var(--gold);
+    margin-bottom:1.2rem;
+  }
+  .excursion-card .img-wrap{
+    width:100%;aspect-ratio:16/10;
+    overflow:hidden;
+    margin-bottom:1.5rem;
+    background:var(--ocean);
+  }
+  .excursion-card .img-wrap img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .9s ease;
+    filter:saturate(.95);
+  }
+  .excursion-card:hover .img-wrap img{transform:scale(1.06)}
+  .excursion-card h3{
+    font-family:var(--font-display);
+    font-size:1.5rem;font-weight:400;
+    margin-bottom:.5rem;
+    color:var(--sand-light);
+  }
+  .excursion-card .meta{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.65rem;letter-spacing:.2em;
+    color:rgba(245,237,224,.5);
+    margin-top:auto;
+    display:flex;align-items:center;gap:.6rem;
+  }
+  .excursion-card .meta::before{
+    content:'';width:18px;height:1px;background:var(--gold);
+  }
+
+  /* ===== CAPTAIN ===== */
+  .captain{
+    background:var(--sand);
+    position:relative;overflow:hidden;
+  }
+  .captain-grid{
+    display:grid;grid-template-columns:1fr;gap:3rem;
+    align-items:center;
+  }
+  @media(min-width:900px){
+    .captain-grid{grid-template-columns:.85fr 1.15fr;gap:5rem}
+  }
+  .captain-portrait{
+    position:relative;
+  }
+  .captain-portrait img{
+    width:100%;aspect-ratio:5/6;object-fit:cover;
+    border-radius:2px;
+    filter:contrast(1.02) saturate(.95);
+  }
+  .captain-portrait .frame{
+    position:absolute;
+    top:24px;left:24px;right:-24px;bottom:-24px;
+    border:1px solid var(--gold);
+    z-index:-1;
+  }
+  .captain-text .eyebrow{margin-bottom:1.4rem;color:var(--coral)}
+  .captain-text h2{
+    font-size:clamp(2.5rem,6vw,4.5rem);
+    line-height:1;
+    margin-bottom:.5rem;
+    color:var(--ocean);
+  }
+  .captain-text .role{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.75rem;letter-spacing:.22em;
+    color:var(--text-muted);
+    margin-bottom:2.5rem;
+  }
+  .captain-text p{
+    color:var(--text);
+    font-size:1.05rem;line-height:1.85;
+    max-width:55ch;margin-bottom:1.5rem;
+  }
+  .captain-quote{
+    margin-top:2.5rem;
+    padding:2rem 2.5rem;
+    border-left:2px solid var(--coral);
+    background:rgba(255,255,255,.4);
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.15rem;
+    line-height:1.55;
+    color:var(--ocean);
+    max-width:55ch;
+  }
+  .captain-quote cite{
+    display:block;margin-top:1rem;
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-style:normal;font-size:.7rem;
+    letter-spacing:.22em;
+    color:var(--text-muted);
+  }
+
+  /* ===== YACHT (Pirate Flag) ===== */
+  .yacht{
+    background:var(--paper);
+    position:relative;
+  }
+  .yacht-grid{
+    display:grid;grid-template-columns:1fr;gap:3rem;
+    align-items:center;
+  }
+  @media(min-width:900px){
+    .yacht-grid{grid-template-columns:1fr 1fr;gap:5rem}
+  }
+  .yacht-image{
+    width:100%;aspect-ratio:5/4;
+    object-fit:cover;border-radius:2px;
+  }
+  .yacht-text h2{
+    font-size:clamp(2.25rem,5vw,3.75rem);
+    line-height:1.05;margin-bottom:1.5rem;
+  }
+  .yacht-text h2 em{color:var(--turquoise);font-style:italic}
+  .yacht-text p{
+    color:var(--text-muted);
+    font-size:1.05rem;line-height:1.8;
+    margin-bottom:1.4rem;
+    max-width:50ch;
+  }
+  .yacht-specs{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    gap:1.5rem 2.5rem;
+    margin-top:2.5rem;
+    padding-top:2.5rem;
+    border-top:1px solid var(--border);
+  }
+  .yacht-specs .spec .v{
+    font-family:var(--font-display);
+    font-size:1.85rem;
+    color:var(--ocean);line-height:1;
+    margin-bottom:.4rem;display:block;
+  }
+  .yacht-specs .spec .l{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.65rem;letter-spacing:.22em;
+    color:var(--text-muted);
+  }
+
+  /* ===== STAY & SAIL ===== */
+  .stay{
+    background:linear-gradient(180deg, var(--paper) 0%, var(--sand) 100%);
+    position:relative;
+  }
+  .stay-grid{
+    display:grid;grid-template-columns:1fr;gap:0;
+    background:#fff;
+    border:1px solid var(--border);
+    overflow:hidden;
+  }
+  @media(min-width:900px){
+    .stay-grid{grid-template-columns:1.1fr .9fr}
+  }
+  .stay-image{
+    position:relative;min-height:380px;
+    background:var(--ocean) url('https://www.daysail-bvi.com/wp-content/uploads/Shark-Bay-Views-2.jpg') center/cover;
+  }
+  .stay-image .corner-tag{
+    position:absolute;top:1.5rem;left:1.5rem;
+    background:var(--paper);
+    padding:.7rem 1.1rem;
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.65rem;letter-spacing:.22em;
+    color:var(--ocean);
+  }
+  .stay-text{padding:clamp(2.5rem,5vw,4rem)}
+  .stay-text .eyebrow{color:var(--coral);margin-bottom:1rem}
+  .stay-text h2{
+    font-size:clamp(2rem,4.5vw,3.25rem);
+    line-height:1.05;margin-bottom:1.4rem;
+  }
+  .stay-text > p{
+    color:var(--text-muted);
+    font-size:1rem;line-height:1.75;
+    margin-bottom:2rem;max-width:42ch;
+  }
+  .stay-features{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:.8rem 1.5rem;margin-bottom:2rem;
+  }
+  .stay-features li{
+    list-style:none;
+    font-size:.92rem;
+    color:var(--text);
+    padding-left:1.4rem;position:relative;
+  }
+  .stay-features li::before{
+    content:'';
+    position:absolute;left:0;top:.6em;
+    width:8px;height:1px;background:var(--gold);
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery{
+    background:var(--ocean-deep);
+    color:var(--sand);
+    padding-bottom:0;overflow:hidden;
+  }
+  .gallery-head{margin-bottom:3rem}
+  .gallery-head h2{color:var(--sand-light);font-size:clamp(2rem,4.5vw,3.5rem)}
+  .gallery-head .eyebrow{color:var(--shallows)}
+  .gallery-strip{
+    display:flex;gap:1.5rem;
+    padding:0 var(--pad) 6rem;
+    margin:0 calc(-1 * var(--pad));
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .gallery-strip::-webkit-scrollbar{display:none}
+  .gallery-strip > div{
+    flex:0 0 clamp(260px, 38vw, 460px);
+    aspect-ratio:4/5;
+    scroll-snap-align:start;
+    overflow:hidden;
+    background:var(--ocean);
+  }
+  .gallery-strip img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform 1s ease;
+    filter:saturate(.95);
+  }
+  .gallery-strip > div:hover img{transform:scale(1.05)}
+
+  /* ===== TESTIMONIALS ===== */
+  .reviews{
+    background:var(--paper);
+  }
+  .reviews-head{text-align:center;margin-bottom:4rem}
+  .reviews-head .eyebrow{margin-bottom:1.2rem}
+  .reviews-head h2{
+    font-size:clamp(2rem,4.5vw,3.25rem);
+    line-height:1.1;
+  }
+  .reviews-grid{
+    display:grid;
+    grid-template-columns:1fr;gap:1.5rem;
+  }
+  @media(min-width:900px){
+    .reviews-grid{grid-template-columns:repeat(3,1fr);gap:2rem}
+  }
+  .review{
+    padding:2.5rem 2.2rem;
+    background:#fff;
+    border:1px solid var(--border);
+    position:relative;
+  }
+  .review .stars{
+    color:var(--coral);font-size:.9rem;letter-spacing:.15em;
+    margin-bottom:1.5rem;
+  }
+  .review p{
+    font-family:var(--font-display);
+    font-size:1.05rem;line-height:1.65;
+    color:var(--text);
+    font-style:italic;
+    margin-bottom:1.8rem;
+  }
+  .review cite{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-style:normal;
+    font-size:.72rem;letter-spacing:.22em;
+    color:var(--text-muted);
+    display:flex;align-items:center;gap:.7rem;
+  }
+  .review cite::before{
+    content:'';width:18px;height:1px;background:var(--gold);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    position:relative;
+    color:#fff;
+    padding:clamp(5rem,10vw,9rem) var(--pad);
+    text-align:center;
+    overflow:hidden;
+    background:var(--ocean-deep);
+  }
+  .final-cta::before{
+    content:'';position:absolute;inset:0;
+    background-image:url('https://www.daysail-bvi.com/wp-content/uploads/DJI_0044-400x250.jpg');
+    background-size:cover;background-position:center;
+    transform:scale(1.05);
+    opacity:.5;
+  }
+  .final-cta::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg, rgba(6,40,49,.6) 0%, rgba(6,40,49,.85) 100%);
+  }
+  .final-cta-inner{
+    position:relative;z-index:2;
+    max-width:760px;margin:0 auto;
+  }
+  .final-cta .eyebrow{color:var(--shallows);margin-bottom:1.5rem}
+  .final-cta h2{
+    font-size:clamp(2.25rem,6vw,4.5rem);
+    line-height:1;margin-bottom:1.5rem;
+  }
+  .final-cta h2 em{color:var(--shallows);font-style:italic}
+  .final-cta p{
+    font-size:1.05rem;
+    color:rgba(255,255,255,.85);
+    max-width:50ch;margin:0 auto 2.5rem;
+  }
+  .final-cta .ctas{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;
+  }
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--ocean-deep);
+    color:var(--sand);
+    padding:5rem var(--pad) 2rem;
+    border-top:1px solid rgba(255,255,255,.08);
+  }
+  .footer-grid{
+    max-width:var(--max);margin:0 auto;
+    display:grid;grid-template-columns:1fr;gap:3rem;
+    margin-bottom:4rem;
+  }
+  @media(min-width:768px){
+    .footer-grid{grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem}
+  }
+  .footer-brand .brand{
+    font-family:var(--font-display);
+    font-size:1.5rem;margin-bottom:.4rem;display:block;
+  }
+  .footer-brand .brand small{
+    display:block;font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.6rem;letter-spacing:.25em;
+    color:var(--shallows);margin-top:.4rem;
+  }
+  .footer-brand p{
+    margin-top:1.2rem;
+    color:rgba(245,237,224,.65);
+    font-size:.92rem;line-height:1.7;
+    max-width:30ch;
+  }
+  footer h4{
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.7rem;letter-spacing:.25em;
+    color:var(--shallows);
+    font-weight:400;
+    margin-bottom:1.4rem;
+  }
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:.7rem}
+  footer ul a, footer .contact-line{
+    color:rgba(245,237,224,.8);
+    font-size:.92rem;line-height:1.5;
+  }
+  footer ul a:hover{color:var(--shallows)}
+  .contact-line{display:block;margin-bottom:.7rem}
+  .footer-bottom{
+    max-width:var(--max);margin:0 auto;
+    display:flex;flex-wrap:wrap;gap:1rem;
+    justify-content:space-between;align-items:center;
+    padding-top:2rem;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:rgba(245,237,224,.45);
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.65rem;letter-spacing:.22em;
+  }
+  .footer-bottom a{color:var(--shallows)}
+
+  /* ===== STICKY MOBILE BAR ===== */
+  .mobile-bar{
+    display:flex;
+    position:fixed;bottom:0;left:0;right:0;
+    background:var(--paper);
+    border-top:1px solid var(--border);
+    z-index:90;
+    padding:.7rem;gap:.5rem;
+  }
+  .mobile-bar a{flex:1;text-align:center;padding:.95rem;
+    font-family:var(--font-display-sc);
+    text-transform:uppercase;
+    font-size:.7rem;letter-spacing:.18em;
+  }
+  .mobile-bar .call{
+    color:var(--ocean);border:1px solid var(--ocean);
+  }
+  .mobile-bar .book{
+    background:var(--coral);color:#fff;
+  }
+  body{padding-bottom:64px}
+
+  /* ===== RESPONSIVE ===== */
+  @media(min-width:900px){
+    .nav-links{display:flex}
+    .nav-phone{display:inline}
+    .hamburger{display:none}
+    .mobile-bar{display:none}
+    body{padding-bottom:0}
+  }
+
+  /* compass decorative */
+  .compass{
+    position:absolute;
+    width:120px;height:120px;
+    opacity:.18;
+    pointer-events:none;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" aria-label="Day's Sail BVI home">
+    <img src="https://www.daysail-bvi.com/wp-content/uploads/2019/10/1142256589336211.xSqRXeuaPDMEOZS6PpbN_height640.png" alt="Day's Sail BVI">
+    <span class="brand">Day's Sail BVI<small>Sail a Day Excursions</small></span>
+  </a>
+  <div class="nav-links">
+    <a href="#excursions">Excursions</a>
+    <a href="#captain">Captain</a>
+    <a href="#yacht">The Yacht</a>
+    <a href="#stay">Stay</a>
+    <a href="#gallery">Photos</a>
+    <a href="https://www.daysail-bvi.com/contact/">Contact</a>
+  </div>
+  <div class="nav-cta-group">
+    <a href="tel:+12845477540" class="nav-phone">+1 284 547 7540</a>
+    <a href="https://www.daysail-bvi.com/contact/" class="btn btn-primary">Book a Trip</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<aside class="mobile-menu" id="mobileMenu">
+  <a href="#excursions">Excursions</a>
+  <a href="#captain">Captain</a>
+  <a href="#yacht">The Yacht</a>
+  <a href="#stay">Stay</a>
+  <a href="#gallery">Photos</a>
+  <a href="https://www.daysail-bvi.com/contact/">Contact</a>
+  <a href="tel:+12845477540" class="mobile-phone">+1 284 547 7540</a>
+</aside>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-stamp">18.4136° N · 64.6208° W &nbsp;·&nbsp; Manuel Reef Marina, Tortola</div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span></span>Private Day Sails · British Virgin Islands</div>
+    <h1 class="display">Sail the British<br><em>Virgin Islands</em></h1>
+    <p class="hero-sub">Private charters captained by a true local. Up to ten guests aboard the <em>Pirate Flag</em>, sailing eight legendary destinations across the BVI.</p>
+    <div class="hero-ctas">
+      <a href="#excursions" class="btn btn-primary">View Excursions</a>
+      <a href="https://www.daysail-bvi.com/contact/" class="btn btn-outline">Inquire</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</header>
+
+<!-- ============ INTRO ============ -->
+<section class="intro" id="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="intro-text reveal">
+        <span class="eyebrow dark">A Day at Sea</span>
+        <h2 class="display">Eight islands.<br>One captain who<br><em>knows them all.</em></h2>
+        <p>The BVI doesn't reveal itself to passing tourists. It reveals itself to those guided by someone who grew up on these waters — who knows which cove is calm at noon, where the reef holds the brightest fish, and which beach bar has the best painkiller.</p>
+        <p>That's where Captain Pearline comes in. Fifteen years on these waters. A born Tortolian. And a private boat that's yours alone for the day.</p>
+        <span class="signature">— A day designed entirely around you.</span>
+      </div>
+      <div class="intro-image-wrap reveal">
+        <img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0036-e1677390180958-950x640.jpg" alt="Aerial view of the Pirate Flag yacht in BVI waters" loading="lazy">
+        <div class="badge">
+          <span class="num">10</span>
+          <span class="lbl">Guests Maximum<br>Privately Yours</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXCURSIONS ============ -->
+<section class="excursions" id="excursions">
+  <div class="container">
+    <div class="excursions-head reveal">
+      <div>
+        <span class="eyebrow">Choose Your Course</span>
+        <h2 class="display" style="margin-top:1.4rem">Eight excursions.<br><em>Yours to choose.</em></h2>
+      </div>
+      <p>Tell us where you'd like to sail and we'll plot the course. Each excursion is fully customizable — adjust the route, linger longer at your favorite stop, request a special menu. The day is built around your group.</p>
+    </div>
+
+    <div class="excursion-grid">
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-norman-island/" class="excursion-card">
+        <span class="num">01</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/j3.jpg" alt="Sail to Norman Island" loading="lazy"></div>
+        <h3>Norman Island</h3>
+        <span class="meta">The Bight · Snorkeling</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-jost-van-dyke/" class="excursion-card">
+        <span class="num">02</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/d3-1.jpg" alt="Sail to Jost Van Dyke" loading="lazy"></div>
+        <h3>Jost Van Dyke</h3>
+        <span class="meta">White Bay · Soggy Dollar</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-the-caves/" class="excursion-card">
+        <span class="num">03</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/caves.jpg" alt="Sail to The Caves" loading="lazy"></div>
+        <h3>The Caves</h3>
+        <span class="meta">Treasure Point · Norman</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-the-indians/" class="excursion-card">
+        <span class="num">04</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/Indians.jpg" alt="Sail to The Indians" loading="lazy"></div>
+        <h3>The Indians</h3>
+        <span class="meta">Pinnacle Reef · Snorkel</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-cooper-island/" class="excursion-card">
+        <span class="num">05</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/cooper-island.jpg" alt="Sail to Cooper Island" loading="lazy"></div>
+        <h3>Cooper Island</h3>
+        <span class="meta">Manchioneel Bay</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sail-to-peter-island/" class="excursion-card">
+        <span class="num">06</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/2019/09/revsail-1.jpg" alt="Sail to Peter Island" loading="lazy"></div>
+        <h3>Peter Island</h3>
+        <span class="meta">Deadman's Bay · Beach</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/full-day-sail/" class="excursion-card">
+        <span class="num">07</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/d5.jpg" alt="Full-Day Sail" loading="lazy"></div>
+        <h3>Full-Day Sail</h3>
+        <span class="meta">Custom Itinerary</span>
+      </a>
+
+      <a href="https://www.daysail-bvi.com/single-boat/sleepaboard-day-sail/" class="excursion-card">
+        <span class="num">08</span>
+        <div class="img-wrap"><img src="https://www.daysail-bvi.com/wp-content/uploads/2019/09/2c489eaa-587e-4247-964f-ee0e73b6b7de.jpg" alt="Add a Sleepaboard" loading="lazy"></div>
+        <h3>Add a Sleepaboard</h3>
+        <span class="meta">Stay Onboard · Overnight</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPTAIN ============ -->
+<section class="captain" id="captain">
+  <div class="container">
+    <div class="captain-grid">
+      <div class="captain-portrait reveal">
+        <img src="https://www.daysail-bvi.com/wp-content/uploads/capp_Pearline-e1703009673746.jpg" alt="Captain Pearline" loading="lazy">
+        <div class="frame"></div>
+      </div>
+      <div class="captain-text reveal">
+        <span class="eyebrow">In Safe Hands</span>
+        <h2 class="display">Captain<br>Pearline</h2>
+        <div class="role">Captain · Charter Coordinator · Born Tortolian</div>
+        <p>A local Tortolian with over fifteen years on these waters, Pearline looks after every detail of your charter — from the route to the menu. Allergies? Birthday? Honeymoon? She's already three steps ahead.</p>
+        <p>What guests remember most isn't a destination. It's Pearline. Picking them up at the airport on her day off. Arranging a birthday cake mid-charter. Recommending the perfect beach bar in Soper's Hole.</p>
+        <blockquote class="captain-quote">
+          They are the nicest, warmest people that treated us like friends from the moment we met them. Pearline went above and beyond — including picking us up at the airport on her day off, and arranging a birthday cake and celebratory cigars.
+          <cite>— Past Charter Guest</cite>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ YACHT ============ -->
+<section class="yacht" id="yacht">
+  <div class="container">
+    <div class="yacht-grid">
+      <div class="reveal">
+        <img class="yacht-image" src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0036-e1677390180958-950x640.jpg" alt="The Pirate Flag yacht" loading="lazy">
+      </div>
+      <div class="yacht-text reveal">
+        <span class="eyebrow dark">The Vessel</span>
+        <h2 class="display" style="margin-top:1rem"><em>Pirate Flag.</em><br>Privately Yours.</h2>
+        <p>A spacious sailing yacht built for groups up to ten. Generous shaded cockpit. Easy access to the water for swimming and snorkeling. Sound system, cooler stocked, custom provisioning prepared by Pearline herself.</p>
+        <p>No shared charters, no fixed itinerary, no hurried schedule. From Manuel Reef Marina, the entire BVI archipelago opens up — and the boat is yours for the day.</p>
+        <div class="yacht-specs">
+          <div class="spec"><span class="v">10</span><span class="l">Max Guests</span></div>
+          <div class="spec"><span class="v">8+</span><span class="l">Hour Charters</span></div>
+          <div class="spec"><span class="v">15+</span><span class="l">Years Experience</span></div>
+          <div class="spec"><span class="v">∞</span><span class="l">Custom Routes</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAY & SAIL ============ -->
+<section class="stay" id="stay">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow dark">Stay &amp; Sail</span>
+      <h2 class="display" style="margin-top:1.4rem">Make a week of it.</h2>
+    </div>
+    <div class="stay-grid reveal">
+      <div class="stay-image">
+        <span class="corner-tag">Scrub Island, BVI</span>
+      </div>
+      <div class="stay-text">
+        <span class="eyebrow">Your Island Stay</span>
+        <h2 class="display" style="margin-top:1rem">Comfort, views,<br>and effortless<br><em>Caribbean living.</em></h2>
+        <p>Stay on beautiful Scrub Island, just minutes from the airport and Trellis Bay. Wake up to ocean views, relax by the pool, and use it as the perfect base for your BVI adventure.</p>
+        <ul class="stay-features">
+          <li>Ocean &amp; marina views</li>
+          <li>Modern, spacious interiors</li>
+          <li>King-size comfort</li>
+          <li>Fully equipped kitchen</li>
+          <li>Pool &amp; resort amenities</li>
+          <li>Fast Wi-Fi</li>
+        </ul>
+        <a href="https://www.daysail-bvi.com/stay/" class="btn btn-outline-dark">Book on Airbnb</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="gallery-head reveal">
+      <span class="eyebrow">From the Logbook</span>
+      <h2 class="display" style="margin-top:1.2rem">Days at sea.</h2>
+    </div>
+  </div>
+  <div class="gallery-strip">
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0048.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/caves.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0059.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/Indians.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0063.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/cooper-island.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0031.jpg" alt="" loading="lazy"></div>
+    <div><img src="https://www.daysail-bvi.com/wp-content/uploads/DJI_0039.jpg" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="reviews">
+  <div class="container">
+    <div class="reviews-head reveal">
+      <span class="eyebrow dark">Happy Clients</span>
+      <h2 class="display" style="margin-top:1.2rem">Words from past guests.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"My husband and I did a 2-day stay and 2-day sail on the beautiful Reverie. Pearline was absolutely wonderful with her communication and the ease of booking. She made sure we were prepared and cared for."</p>
+        <cite>Amy</cite>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"I can't say enough kind things about Don and Pearline. They are the nicest, warmest people that treated us like friends from the moment we met them. We were introduced to several people at the marina so our stay would be easy."</p>
+        <cite>Karl</cite>
+      </div>
+      <div class="review reveal">
+        <div class="stars">★★★★★</div>
+        <p>"We really enjoyed our time on Reverie in Soper's Hole on Tortola. Pearline was very helpful and available if we needed anything. A great way to transition back to land while still enjoying a few more days on the water."</p>
+        <cite>Ron</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta">
+  <div class="final-cta-inner reveal">
+    <span class="eyebrow">Ready When You Are</span>
+    <h2 class="display" style="margin-top:1.4rem">Reserve your<br><em>day at sea.</em></h2>
+    <p>Tell us your dates, your group size, and where you'd love to sail. Pearline will take it from there.</p>
+    <div class="ctas">
+      <a href="https://www.daysail-bvi.com/contact/" class="btn btn-primary">Inquire Now</a>
+      <a href="tel:+12845477540" class="btn btn-outline">Call +1 284 547 7540</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" style="display:flex;align-items:center;gap:.7rem">
+        <img src="https://www.daysail-bvi.com/wp-content/uploads/2019/10/1142256589336211.xSqRXeuaPDMEOZS6PpbN_height640.png" alt="Day's Sail BVI" style="height:42px;filter:brightness(0) invert(1)">
+        <span class="brand">Day's Sail BVI<small>Sail a Day Excursions</small></span>
+      </a>
+      <p>Private day charters through the British Virgin Islands. Captained by Pearline. Eight excursions, custom-tailored to you.</p>
+    </div>
+    <div>
+      <h4>Excursions</h4>
+      <ul>
+        <li><a href="https://www.daysail-bvi.com/single-boat/sail-to-norman-island/">Norman Island</a></li>
+        <li><a href="https://www.daysail-bvi.com/single-boat/sail-to-jost-van-dyke/">Jost Van Dyke</a></li>
+        <li><a href="https://www.daysail-bvi.com/single-boat/sail-to-the-caves/">The Caves</a></li>
+        <li><a href="https://www.daysail-bvi.com/single-boat/sail-to-the-indians/">The Indians</a></li>
+        <li><a href="https://www.daysail-bvi.com/single-boat/full-day-sail/">Full-Day Sail</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="https://www.daysail-bvi.com/your-excursion-options/">All Options</a></li>
+        <li><a href="https://www.daysail-bvi.com/crew/">Crew</a></li>
+        <li><a href="https://www.daysail-bvi.com/stay/">Stay</a></li>
+        <li><a href="https://www.daysail-bvi.com/photos/">Photos</a></li>
+        <li><a href="https://www.daysail-bvi.com/frequently-asked-questions/">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <span class="contact-line">Manuel Reef Marina<br>Sea Cows Bay, Tortola<br>British Virgin Islands</span>
+      <a href="tel:+12845477540" class="contact-line">+1 284 547 7540</a>
+      <a href="https://www.facebook.com/daysailbvi/" class="contact-line">Facebook →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Day's Sail BVI · All Rights Reserved</span>
+    <span>Concept by <a href="https://www.bofilltech.com/">Bofill Technologies</a></span>
+  </div>
+</footer>
+
+<!-- ============ MOBILE BAR ============ -->
+<div class="mobile-bar">
+  <a href="tel:+12845477540" class="call">Call</a>
+  <a href="https://www.daysail-bvi.com/contact/" class="book">Book a Trip</a>
+</div>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  let ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(()=>{
+        nav.classList.toggle('scrolled', window.scrollY > 60);
+        // hero parallax
+        const heroBg = document.getElementById('heroBg');
+        if(heroBg && window.scrollY < 800){
+          heroBg.style.transform = `scale(1.05) translateY(${window.scrollY * 0.25}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // Mobile menu
+  const burger = document.getElementById('hamburger');
+  const menu = document.getElementById('mobileMenu');
+  burger?.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('open');
+    menu.classList.remove('open');
+  }));
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
