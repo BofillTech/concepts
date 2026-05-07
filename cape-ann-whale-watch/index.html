@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cape Ann Whale Watch — Forty-Seven Seasons of Wonder · Gloucester, MA</title>
+  <meta name="description" content="Sail the Hurricane II to Stellwagen Bank with Cape Ann Whale Watch — pioneers of Gloucester whale watching since 1979. Guaranteed sightings. Top 1% on TripAdvisor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,700;0,6..96,800;1,6..96,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Editorial Maritime palette */
+      --abyss: #0B1E2E;
+      --abyss-2: #122A40;
+      --atlantic: #1B3A5C;
+      --hairline: #2E4A66;
+      --parchment: #F5EFE2;
+      --parchment-2: #ECE4D2;
+      --parchment-deep: #E2D6BC;
+      --ink: #131A22;
+      --ink-soft: #3A4452;
+      --terracotta: #D87B3F;
+      --terracotta-deep: #B65F2A;
+      --seafoam: #7BA89A;
+      --gold: #C9A24A;
+
+      --display: 'Bodoni Moda', 'Didot', serif;
+      --body: 'Instrument Sans', 'Helvetica Neue', sans-serif;
+      --script: 'Caveat', cursive;
+
+      --max: 1320px;
+      --pad: clamp(20px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--parchment);
+      line-height: 1.55;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    /* ─── Utility bar ─────────────────────────── */
+    .utility {
+      background: var(--abyss);
+      color: var(--parchment);
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 9px var(--pad);
+      display: flex;
+      justify-content: center;
+      gap: clamp(16px, 4vw, 48px);
+      flex-wrap: wrap;
+      font-weight: 500;
+    }
+    .utility .dot { color: var(--gold); margin: 0 4px; }
+    .utility .award { color: var(--gold); font-style: italic; font-family: var(--display); text-transform: none; letter-spacing: 0.04em; font-weight: 500; font-size: 13px; }
+
+    /* ─── Navigation ─────────────────────────── */
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--parchment);
+      border-bottom: 1px solid rgba(11, 30, 46, 0.08);
+      transition: box-shadow 0.3s, background 0.3s;
+    }
+    .nav-wrap.scrolled {
+      box-shadow: 0 6px 24px rgba(11, 30, 46, 0.08);
+    }
+    nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px var(--pad);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .logo img {
+      height: 44px;
+      width: auto;
+    }
+    .logo-mark {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 1;
+      color: var(--abyss);
+      letter-spacing: -0.01em;
+    }
+    .logo-mark small {
+      display: block;
+      font-family: var(--body);
+      font-size: 9px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .nav-links {
+      display: flex;
+      gap: clamp(16px, 2vw, 28px);
+      margin-left: auto;
+      list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      font-weight: 500;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a:hover { color: var(--terracotta-deep); }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 100%;
+      bottom: -4px;
+      height: 1px;
+      background: var(--terracotta);
+      transition: right 0.3s;
+    }
+    .nav-links a:hover::after { right: 0; }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-phone {
+      font-family: var(--display);
+      font-size: 17px;
+      color: var(--abyss);
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 26px;
+      background: var(--terracotta);
+      color: var(--parchment);
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--terracotta);
+      border-radius: 0;
+      transition: all 0.25s;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn:hover {
+      background: var(--terracotta-deep);
+      border-color: var(--terracotta-deep);
+      transform: translateY(-1px);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--abyss);
+      border-color: var(--abyss);
+    }
+    .btn-outline:hover {
+      background: var(--abyss);
+      color: var(--parchment);
+    }
+    .btn-light {
+      background: var(--parchment);
+      color: var(--abyss);
+      border-color: var(--parchment);
+    }
+    .btn-light:hover {
+      background: var(--terracotta);
+      color: var(--parchment);
+      border-color: var(--terracotta);
+    }
+    .nav-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .nav-toggle span {
+      width: 22px;
+      height: 1.5px;
+      background: var(--abyss);
+      transition: 0.3s;
+    }
+
+    /* ─── Hero ─────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      background:
+        linear-gradient(180deg, rgba(11,30,46,0.55) 0%, rgba(11,30,46,0.25) 35%, rgba(11,30,46,0.85) 100%),
+        url('https://stellwagen.noaa.gov/media/img/20210728-whale-tail-1000.jpg') center 30% / cover no-repeat,
+        var(--abyss);
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      padding: clamp(80px, 12vw, 140px) var(--pad) clamp(100px, 14vw, 180px);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(216, 123, 63, 0.18) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: rise 0.9s 0.1s forwards;
+    }
+    .hero-eyebrow::before, .hero-eyebrow::after {
+      content: '';
+      flex: 0 0 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(44px, 8.5vw, 124px);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      max-width: 14ch;
+      margin-bottom: 28px;
+      font-variation-settings: 'opsz' 96;
+      opacity: 0;
+      animation: rise 1s 0.25s forwards;
+    }
+    .hero h1 em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+    }
+    .hero-sub {
+      font-size: clamp(16px, 1.4vw, 19px);
+      max-width: 52ch;
+      line-height: 1.6;
+      color: rgba(245, 239, 226, 0.85);
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: rise 1s 0.45s forwards;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: rise 1s 0.6s forwards;
+    }
+    .hero-actions .btn {
+      padding: 18px 36px;
+      font-size: 14px;
+    }
+    .hero-actions .secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--parchment);
+      font-weight: 500;
+      border-bottom: 1px solid rgba(245, 239, 226, 0.4);
+      padding-bottom: 4px;
+      transition: border-color 0.25s, color 0.25s;
+    }
+    .hero-actions .secondary:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+    .hero-corner {
+      position: absolute;
+      bottom: 32px;
+      right: var(--pad);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 14px;
+      color: rgba(245, 239, 226, 0.65);
+      letter-spacing: 0.04em;
+      z-index: 2;
+      text-align: right;
+    }
+    .hero-corner strong {
+      display: block;
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-family: var(--body);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Marquee Numbers ─────────────────────────── */
+    .marquee {
+      background: var(--parchment);
+      padding: clamp(48px, 7vw, 88px) var(--pad);
+      border-bottom: 1px solid rgba(11, 30, 46, 0.08);
+    }
+    .marquee-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(20px, 3vw, 48px);
+      align-items: end;
+    }
+    .stat { text-align: center; }
+    .stat .num {
+      font-family: var(--display);
+      font-size: clamp(54px, 7vw, 96px);
+      font-weight: 500;
+      font-variation-settings: 'opsz' 96;
+      line-height: 1;
+      color: var(--abyss);
+      letter-spacing: -0.03em;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .stat .num em {
+      font-style: italic;
+      color: var(--terracotta);
+      font-weight: 400;
+    }
+    .stat .num sup {
+      font-size: 0.4em;
+      vertical-align: super;
+      color: var(--terracotta);
+      font-style: italic;
+    }
+    .stat .label {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    /* ─── Welcome Editorial ─────────────────────────── */
+    .welcome {
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      background: var(--parchment);
+      position: relative;
+    }
+    .welcome-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(40px, 7vw, 100px);
+      align-items: center;
+    }
+    .welcome-text .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--terracotta-deep);
+      font-weight: 600;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .welcome-text .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--terracotta);
+    }
+    .welcome-text h2 {
+      font-family: var(--display);
+      font-size: clamp(34px, 4.6vw, 60px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--abyss);
+      margin-bottom: 32px;
+      font-variation-settings: 'opsz' 72;
+    }
+    .welcome-text h2 em {
+      font-style: italic;
+      color: var(--atlantic);
+    }
+    .welcome-text p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+      max-width: 50ch;
+    }
+    .welcome-text p:first-of-type::first-letter {
+      font-family: var(--display);
+      font-size: 4.2em;
+      float: left;
+      line-height: 0.85;
+      margin: 8px 12px 0 0;
+      color: var(--terracotta-deep);
+      font-weight: 500;
+      font-style: italic;
+    }
+    .signature {
+      margin-top: 40px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(11, 30, 46, 0.12);
+    }
+    .signature-name {
+      font-family: var(--script);
+      font-size: 38px;
+      color: var(--abyss);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .signature-title {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+    }
+    .welcome-image {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background-color: var(--abyss);
+      background-image:
+        linear-gradient(180deg, rgba(11,30,46,0.05) 0%, rgba(11,30,46,0.65) 100%),
+        url('https://stellwagen.noaa.gov/media/img/20210728-whale-breach-600.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      box-shadow: 0 24px 60px rgba(11, 30, 46, 0.25);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .welcome-image::before {
+      content: '';
+      position: absolute;
+      inset: -14px;
+      border: 1px solid var(--gold);
+      z-index: -1;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .welcome-image::after {
+      /* Decorative wave SVG — visible if photo doesn't load */
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' fill='none' stroke='%23C9A24A' stroke-width='0.8' opacity='0.18'><path d='M-20,260 Q60,230 140,260 T300,260 T460,260'/><path d='M-20,290 Q60,260 140,290 T300,290 T460,290'/><path d='M-20,320 Q60,290 140,320 T300,320 T460,320'/><circle cx='200' cy='180' r='2' fill='%23C9A24A' stroke='none'/></svg>");
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+      z-index: 0;
+      mix-blend-mode: screen;
+    }
+    .welcome-image .caption {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      color: var(--parchment);
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .welcome-image .caption strong {
+      display: block;
+      font-style: normal;
+      font-family: var(--body);
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    /* ─── Vessel showcase ─────────────────────────── */
+    .vessel {
+      background: var(--abyss);
+      color: var(--parchment);
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      position: relative;
+      overflow: hidden;
+    }
+    .vessel::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 200%; height: 80px;
+      background: var(--abyss);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+    }
+    .vessel-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .vessel-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(32px, 6vw, 80px);
+      align-items: end;
+      margin-bottom: clamp(48px, 6vw, 80px);
+    }
+    .vessel-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .vessel-head .eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .vessel-head h2 {
+      font-family: var(--display);
+      font-size: clamp(44px, 7vw, 100px);
+      font-weight: 500;
+      line-height: 0.95;
+      letter-spacing: -0.025em;
+      font-variation-settings: 'opsz' 96;
+    }
+    .vessel-head h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .vessel-head p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(245, 239, 226, 0.78);
+      max-width: 48ch;
+    }
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--hairline);
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .spec {
+      background: var(--abyss);
+      padding: 36px 28px;
+      transition: background 0.3s;
+    }
+    .spec:hover { background: var(--abyss-2); }
+    .spec .num {
+      font-family: var(--display);
+      font-size: clamp(40px, 4.2vw, 56px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      font-variation-settings: 'opsz' 72;
+    }
+    .spec .num em {
+      font-style: italic;
+      font-size: 0.6em;
+      color: var(--parchment);
+      font-weight: 400;
+      margin-left: 2px;
+    }
+    .spec .label {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(245, 239, 226, 0.85);
+      letter-spacing: 0.02em;
+    }
+    .vessel-amenities {
+      margin-top: clamp(48px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(20px, 3vw, 40px);
+    }
+    .amen {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .amen .icon {
+      width: 44px;
+      height: 44px;
+      stroke: var(--gold);
+      stroke-width: 1.2;
+      fill: none;
+    }
+    .amen h4 {
+      font-family: var(--display);
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .amen p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(245, 239, 226, 0.7);
+    }
+
+    /* ─── What you'll see — species ─────────────────────────── */
+    .species {
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      background: var(--parchment);
+    }
+    .species-head {
+      max-width: var(--max);
+      margin: 0 auto clamp(48px, 6vw, 72px);
+      text-align: center;
+    }
+    .species-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--terracotta-deep);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .species-head h2 {
+      font-family: var(--display);
+      font-size: clamp(38px, 5.5vw, 76px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--abyss);
+      margin-bottom: 24px;
+      max-width: 18ch;
+      margin-left: auto;
+      margin-right: auto;
+      font-variation-settings: 'opsz' 96;
+    }
+    .species-head h2 em { font-style: italic; color: var(--atlantic); }
+    .species-head p {
+      max-width: 60ch;
+      margin: 0 auto;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .species-grid {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+    .species-card {
+      position: relative;
+      background: var(--abyss);
+      color: var(--parchment);
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      transition: transform 0.4s cubic-bezier(.2,.6,.2,1);
+    }
+    .species-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11,30,46,0.1) 0%, rgba(11,30,46,0.85) 100%);
+      z-index: 1;
+    }
+    .species-card .bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.8s cubic-bezier(.2,.6,.2,1);
+    }
+    .species-card:hover .bg { transform: scale(1.06); }
+    .species-card .content {
+      position: relative;
+      z-index: 2;
+    }
+    .species-card .latin {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .species-card h3 {
+      font-family: var(--display);
+      font-size: clamp(22px, 2vw, 28px);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      font-variation-settings: 'opsz' 48;
+    }
+    .species-card p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(245, 239, 226, 0.82);
+    }
+    /* species grid layout — magazine asymmetric */
+    .species-card.s-1 { grid-column: span 6; min-height: 380px; }
+    .species-card.s-2 { grid-column: span 6; min-height: 380px; }
+    .species-card.s-3 { grid-column: span 4; }
+    .species-card.s-4 { grid-column: span 4; }
+    .species-card.s-5 { grid-column: span 4; }
+    .species-card.s-6 { grid-column: span 6; }
+    .species-card.s-7 { grid-column: span 6; }
+
+    /* ─── Stellwagen story ─────────────────────────── */
+    .stellwagen {
+      position: relative;
+      min-height: 80vh;
+      background:
+        linear-gradient(180deg, rgba(11,30,46,0.45) 0%, rgba(11,30,46,0.85) 100%),
+        url('https://stellwagen.noaa.gov/media/img/20210809-sunset-600.jpg') center / cover;
+      color: var(--parchment);
+      display: flex;
+      align-items: center;
+      padding: clamp(100px, 12vw, 160px) var(--pad);
+    }
+    .stellwagen-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .stellwagen .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .stellwagen h2 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+      font-style: italic;
+      font-variation-settings: 'opsz' 96;
+    }
+    .stellwagen h2 strong { font-style: normal; font-weight: 500; color: var(--gold); }
+    .stellwagen p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: rgba(245, 239, 226, 0.88);
+      max-width: 60ch;
+      margin: 0 auto 28px;
+    }
+    .stellwagen .credit {
+      display: inline-block;
+      margin-top: 32px;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      border: 1px solid var(--gold);
+      padding: 14px 22px;
+    }
+
+    /* ─── Sightings Guarantee ─────────────────────────── */
+    .guarantee {
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      background: var(--parchment-2);
+      position: relative;
+    }
+    .guarantee-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+    .guarantee-mark {
+      width: 100%;
+      max-width: 380px;
+      aspect-ratio: 1;
+      position: relative;
+      margin: 0 auto;
+    }
+    .guarantee-mark svg { width: 100%; height: 100%; }
+    .guarantee-mark .seal-text {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .guarantee-mark .seal-text .big {
+      font-family: var(--display);
+      font-size: clamp(48px, 6vw, 78px);
+      font-weight: 500;
+      line-height: 0.9;
+      color: var(--abyss);
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 96;
+    }
+    .guarantee-mark .seal-text .big em {
+      font-style: italic;
+      color: var(--terracotta);
+    }
+    .guarantee-mark .seal-text .small {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 600;
+      margin-top: 12px;
+    }
+    .guarantee-text .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--terracotta-deep);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .guarantee-text h2 {
+      font-family: var(--display);
+      font-size: clamp(34px, 4.5vw, 56px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--abyss);
+      margin-bottom: 28px;
+      font-variation-settings: 'opsz' 72;
+    }
+    .guarantee-text h2 em { font-style: italic; color: var(--atlantic); }
+    .guarantee-text p {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+      margin-bottom: 20px;
+    }
+    .guarantee-text .pull {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.4;
+      color: var(--abyss);
+      padding-left: 24px;
+      border-left: 2px solid var(--terracotta);
+      margin: 28px 0;
+    }
+
+    /* ─── Pricing ─────────────────────────── */
+    .pricing {
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      background: var(--parchment);
+    }
+    .pricing-head {
+      max-width: var(--max);
+      margin: 0 auto clamp(48px, 6vw, 72px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+    .pricing-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--terracotta-deep);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .pricing-head h2 {
+      font-family: var(--display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.025em;
+      color: var(--abyss);
+      font-variation-settings: 'opsz' 72;
+    }
+    .pricing-head h2 em { font-style: italic; color: var(--atlantic); }
+    .pricing-head p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 42ch;
+    }
+    .pricing-table {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(11, 30, 46, 0.12);
+      border-top: 1px solid rgba(11, 30, 46, 0.12);
+      border-bottom: 1px solid rgba(11, 30, 46, 0.12);
+    }
+    .price-card {
+      background: var(--parchment);
+      padding: 36px 28px;
+      transition: background 0.25s;
+      position: relative;
+    }
+    .price-card.featured {
+      background: var(--abyss);
+      color: var(--parchment);
+    }
+    .price-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: 14px; right: 14px;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .price-card .label {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: 18px;
+      color: var(--atlantic);
+      margin-bottom: 6px;
+    }
+    .price-card.featured .label { color: var(--gold); }
+    .price-card .age {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink-soft);
+      margin-bottom: 24px;
+    }
+    .price-card.featured .age { color: rgba(245, 239, 226, 0.6); }
+    .price-card .price {
+      font-family: var(--display);
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 500;
+      line-height: 1;
+      color: var(--abyss);
+      letter-spacing: -0.02em;
+      font-variation-settings: 'opsz' 96;
+    }
+    .price-card.featured .price { color: var(--parchment); }
+    .price-card .price sup {
+      font-size: 0.5em;
+      vertical-align: super;
+      font-weight: 400;
+      color: var(--terracotta-deep);
+      margin-right: 2px;
+    }
+    .price-card.featured .price sup { color: var(--gold); }
+    .pricing-foot {
+      max-width: var(--max);
+      margin: 36px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 24px 0 0;
+    }
+    .pricing-foot .discount {
+      font-size: 14px;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .pricing-foot .discount strong { color: var(--terracotta-deep); }
+
+    /* ─── Reviews ─────────────────────────── */
+    .reviews {
+      background: var(--abyss);
+      color: var(--parchment);
+      padding: clamp(80px, 10vw, 140px) var(--pad);
+      position: relative;
+    }
+    .reviews-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .reviews-head {
+      text-align: center;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
+    .reviews-head .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .reviews-head h2 {
+      font-family: var(--display);
+      font-size: clamp(34px, 4.6vw, 56px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      max-width: 22ch;
+      margin: 0 auto;
+      font-variation-settings: 'opsz' 72;
+    }
+    .reviews-head h2 em { font-style: italic; color: var(--gold); }
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: clamp(24px, 4vw, 56px);
+      flex-wrap: wrap;
+      margin: 48px 0 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--hairline);
+      border-bottom: 1px solid var(--hairline);
+    }
+    .badge {
+      text-align: center;
+    }
+    .badge .num {
+      font-family: var(--display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+      font-variation-settings: 'opsz' 48;
+    }
+    .badge .num em { font-style: italic; }
+    .badge .text {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 226, 0.65);
+      font-weight: 600;
+    }
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(24px, 4vw, 56px);
+    }
+    .quote {
+      padding: 0;
+    }
+    .quote .stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      margin-bottom: 20px;
+    }
+    .quote blockquote {
+      font-family: var(--display);
+      font-style: italic;
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.55;
+      color: rgba(245, 239, 226, 0.92);
+      margin-bottom: 20px;
+    }
+    .quote cite {
+      font-style: normal;
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ─── Final CTA ─────────────────────────── */
+    .final-cta {
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(11,30,46,0.7) 0%, rgba(11,30,46,0.92) 100%),
+        url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-11-600.jpg') center / cover;
+      color: var(--parchment);
+      padding: clamp(100px, 12vw, 160px) var(--pad);
+      text-align: center;
+    }
+    .final-cta-inner {
+      max-width: 880px;
+      margin: 0 auto;
+    }
+    .final-cta .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .final-cta h2 {
+      font-family: var(--display);
+      font-size: clamp(40px, 6vw, 88px);
+      font-weight: 500;
+      line-height: 1.0;
+      letter-spacing: -0.025em;
+      margin-bottom: 28px;
+      font-variation-settings: 'opsz' 96;
+    }
+    .final-cta h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .final-cta p {
+      font-size: 18px;
+      line-height: 1.65;
+      max-width: 50ch;
+      margin: 0 auto 44px;
+      color: rgba(245, 239, 226, 0.85);
+    }
+    .final-cta-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .final-cta-actions .btn { padding: 18px 40px; font-size: 14px; }
+    .final-cta-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--display);
+      font-size: 22px;
+      color: var(--parchment);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+    }
+
+    /* ─── Footer ─────────────────────────── */
+    footer {
+      background: #07151F;
+      color: rgba(245, 239, 226, 0.7);
+      padding: clamp(56px, 7vw, 88px) var(--pad) 24px;
+    }
+    .foot-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: clamp(32px, 4vw, 64px);
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .foot-brand .foot-logo {
+      font-family: var(--display);
+      font-size: 22px;
+      color: var(--parchment);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .foot-brand .foot-logo small {
+      display: block;
+      font-family: var(--body);
+      font-size: 10px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+    .foot-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 36ch;
+      margin-top: 20px;
+      color: rgba(245, 239, 226, 0.6);
+    }
+    .foot-col h4 {
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .foot-col ul { list-style: none; }
+    .foot-col li {
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .foot-col a:hover { color: var(--gold); }
+    .foot-col .addr {
+      font-style: normal;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .foot-col .addr a {
+      display: block;
+      margin-top: 8px;
+      color: var(--parchment);
+    }
+    .socials {
+      display: flex;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .socials a {
+      width: 36px; height: 36px;
+      border: 1px solid var(--hairline);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s;
+    }
+    .socials a:hover { border-color: var(--gold); background: var(--abyss-2); }
+    .socials svg { width: 14px; height: 14px; fill: rgba(245, 239, 226, 0.7); }
+    .foot-base {
+      max-width: var(--max);
+      margin: 24px auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12px;
+      color: rgba(245, 239, 226, 0.4);
+    }
+    .foot-base .credit {
+      font-style: italic;
+      font-family: var(--display);
+    }
+
+    /* ─── Mobile ─────────────────────────── */
+    @media (max-width: 1024px) {
+      .marquee-inner { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .vessel-head { grid-template-columns: 1fr; gap: 24px; }
+      .specs-grid { grid-template-columns: repeat(2, 1fr); }
+      .vessel-amenities { grid-template-columns: repeat(2, 1fr); }
+      .welcome-inner { grid-template-columns: 1fr; }
+      .welcome-image { aspect-ratio: 16/11; max-width: 560px; margin: 0 auto; }
+      .guarantee-inner { grid-template-columns: 1fr; }
+      .pricing-head { grid-template-columns: 1fr; gap: 24px; }
+      .pricing-table { grid-template-columns: repeat(2, 1fr); }
+      .quote-grid { grid-template-columns: 1fr; }
+      .foot-inner { grid-template-columns: 1fr 1fr; }
+      .species-card.s-1, .species-card.s-2 { grid-column: span 12; }
+      .species-card.s-3, .species-card.s-4, .species-card.s-5 { grid-column: span 6; min-height: 240px; }
+      .species-card.s-5 { grid-column: span 12; }
+      .species-card.s-6, .species-card.s-7 { grid-column: span 12; }
+    }
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: flex; }
+      .nav-phone { display: none; }
+      .nav-cta .btn { padding: 10px 18px; font-size: 12px; }
+      .utility { font-size: 10px; gap: 14px; padding: 8px 16px; }
+      .utility .award { display: none; }
+      .hero { min-height: 78vh; padding: 80px var(--pad) 100px; }
+      .hero-corner { display: none; }
+      .marquee-inner { grid-template-columns: 1fr 1fr; }
+      .specs-grid { grid-template-columns: 1fr 1fr; }
+      .vessel-amenities { grid-template-columns: 1fr 1fr; }
+      .pricing-table { grid-template-columns: 1fr; }
+      .price-card { padding: 28px 24px; }
+      .foot-inner { grid-template-columns: 1fr; gap: 32px; }
+      .species-card.s-3, .species-card.s-4 { grid-column: span 12; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+
+    /* ─── Reveal animation ─────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Utility bar -->
+  <div class="utility">
+    <span>Est. <strong>1979</strong></span>
+    <span class="dot">◆</span>
+    <span class="award">Among the Top 1% Worldwide on TripAdvisor</span>
+    <span class="dot">◆</span>
+    <span>Guaranteed Sightings</span>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-wrap" id="navWrap">
+    <nav>
+      <a href="#" class="logo" aria-label="Cape Ann Whale Watch home">
+        <img src="https://seethewhales.com/images/logo.png" alt="Cape Ann Whale Watch" onerror="this.style.display='none'">
+        <span class="logo-mark">Cape Ann<small>Whale Watch · Est. 1979</small></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#vessel">The Hurricane II</a></li>
+        <li><a href="#species">What You'll See</a></li>
+        <li><a href="#pricing">Tickets</a></li>
+        <li><a href="#guarantee">Our Guarantee</a></li>
+        <li><a href="#contact">Visit</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="tel:18008775110" class="nav-phone">800.877.5110</a>
+        <a href="https://fareharbor.com/embeds/book/seethewhales/items/67671/?full-items=yes&flow=5556" class="btn">Reserve</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Pioneers of Gloucester Whale Watching · Since 1979</div>
+      <h1>Forty-seven seasons.<br>Same waters.<br>Same <em>wonder.</em></h1>
+      <p class="hero-sub">Sail aboard <em>The Hurricane II</em> — the largest, fastest whale watching vessel north of Boston — out to Stellwagen Bank, named one of the world's top five whale watching destinations by the World Wildlife Fund.</p>
+      <div class="hero-actions">
+        <a href="https://fareharbor.com/embeds/book/seethewhales/items/67671/?full-items=yes&flow=5556" class="btn">Reserve Your Voyage</a>
+        <a href="#vessel" class="secondary">Tour the Hurricane II →</a>
+      </div>
+    </div>
+    <div class="hero-corner">
+      <strong>415 Main Street</strong>
+      Gloucester, Massachusetts
+    </div>
+  </section>
+
+  <!-- Stats Marquee -->
+  <section class="marquee">
+    <div class="marquee-inner">
+      <div class="stat reveal">
+        <span class="num">47<em>.</em></span>
+        <span class="label">Seasons on the water</span>
+      </div>
+      <div class="stat reveal">
+        <span class="num">9,000<em>+</em></span>
+        <span class="label">Voyages led by our captains</span>
+      </div>
+      <div class="stat reveal">
+        <span class="num"><em>Top</em>1%</span>
+        <span class="label">Things to do worldwide · TripAdvisor</span>
+      </div>
+      <div class="stat reveal">
+        <span class="num">115<em> ft</em></span>
+        <span class="label">The Hurricane II — flagship vessel</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome Editorial -->
+  <section class="welcome">
+    <div class="welcome-inner">
+      <div class="welcome-text reveal">
+        <div class="eyebrow">A Letter from the Helm</div>
+        <h2>We are the <em>pioneers</em> of whale watching in Gloucester.</h2>
+        <p>Cape Ann Whale Watch has been carrying passengers out to Stellwagen Bank since 1979 — long before whale watching became a national pastime. My father started this company. Today my crew and I carry his legacy forward, leading guests to the same productive waters that draw humpbacks, fin whales, minkes, and dolphins back to Gloucester each year.</p>
+        <p>We go where the whales go. Our vessels stay in constant communication, tracking sightings across the North and South Shore. Wherever the whales are running — Stellwagen, Jeffreys Ledge, the waters off Provincetown — that's where we'll take you.</p>
+        <p>Please join us aboard.</p>
+        <div class="signature">
+          <div class="signature-name">Capt. Jim Douglass</div>
+          <div class="signature-title">Captain · Owner · Cape Ann Whale Watch</div>
+        </div>
+      </div>
+      <div class="welcome-image reveal" aria-hidden="true">
+        <div class="caption">
+          <strong>The breach</strong>
+          A humpback levitates in full body breach — Stellwagen Bank
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vessel Showcase -->
+  <section class="vessel" id="vessel">
+    <div class="vessel-inner">
+      <div class="vessel-head">
+        <div class="reveal">
+          <div class="eyebrow">The Flagship · Since 1979</div>
+          <h2>The <em>Hurricane II</em></h2>
+        </div>
+        <p class="reveal">A 115-foot ocean cruiser purpose-built for one thing: getting you to the whales faster, with more room to see them, and bringing you home in comfort. No fishing charters. No party cruises. Just whale watching, the way Gloucester invented it.</p>
+      </div>
+
+      <div class="specs-grid reveal">
+        <div class="spec">
+          <div class="num">115<em>ft</em></div>
+          <div class="label">Length overall — the largest whale watch vessel north of Boston</div>
+        </div>
+        <div class="spec">
+          <div class="num">30<em>kn</em></div>
+          <div class="label">Cruising speed via four 1,100-hp Caterpillar diesels</div>
+        </div>
+        <div class="spec">
+          <div class="num">400<em>ft</em></div>
+          <div class="label">Of unobstructed railing across upper &amp; lower decks</div>
+        </div>
+        <div class="spec">
+          <div class="num">117</div>
+          <div class="label">Sundeck capacity — plus seating for 85 inside the heated cabin</div>
+        </div>
+      </div>
+
+      <div class="vessel-amenities">
+        <div class="amen reveal">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M3 12c2-3 5-3 9-3s7 0 9 3M3 16c2-3 5-3 9-3s7 0 9 3M3 8c2-3 5-3 9-3s7 0 9 3"/></svg>
+          <h4>Heated Indoor Cabin</h4>
+          <p>Cushioned dinette seating for 85, with full panoramic windows.</p>
+        </div>
+        <div class="amen reveal">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M5 9h14l-1 11H6L5 9z M9 9V6a3 3 0 016 0v3"/></svg>
+          <h4>Full Galley &amp; Bar</h4>
+          <p>Hot meals, snacks, cold drinks — plus a fully stocked, licensed cash bar.</p>
+        </div>
+        <div class="amen reveal">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18 M12 3a14 14 0 010 18 M12 3a14 14 0 000 18"/></svg>
+          <h4>Educators On Every Trip</h4>
+          <p>Planet Whale–certified naturalists narrate every behavior you'll witness.</p>
+        </div>
+        <div class="amen reveal">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M5 12l4-7h6l4 7M3 12h18v8H3z M9 16h6"/></svg>
+          <h4>Free, Easy Parking</h4>
+          <p>Just steps from the boat. No meters. Half a mile off Route 128 North.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Species -->
+  <section class="species" id="species">
+    <div class="species-head reveal">
+      <div class="eyebrow">Stellwagen Bank · 12 Miles Off Gloucester</div>
+      <h2>What you'll <em>see</em> out there.</h2>
+      <p>Stellwagen Bank is one of the most productive whale-feeding grounds on the Atlantic coast — abundant in herring and sand lance that draw whales back every spring. Here are the species our captains spot most often.</p>
+    </div>
+
+    <div class="species-grid">
+      <article class="species-card s-1 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210913-breaching-whale-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Megaptera novaeangliae</div>
+          <h3>Humpback Whale</h3>
+          <p>The headliner. Acrobatic, curious, and famously unafraid of boats — known for full-body breaches, tail slaps, and bubble-net feeding.</p>
+        </div>
+      </article>
+      <article class="species-card s-2 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-2-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Balaenoptera physalus</div>
+          <h3>Fin Whale</h3>
+          <p>The second-largest animal on Earth, gliding through sanctuary waters at speeds up to 25 knots. Often spotted in summer feeding aggregations.</p>
+        </div>
+      </article>
+      <article class="species-card s-3 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-3-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Balaenoptera acutorostrata</div>
+          <h3>Minke Whale</h3>
+          <p>The pocket-sized cousin — quick, curious, and a regular Stellwagen Bank visitor.</p>
+        </div>
+      </article>
+      <article class="species-card s-4 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-4-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Lagenorhynchus acutus</div>
+          <h3>Atlantic White-Sided Dolphin</h3>
+          <p>Pods of dozens to hundreds, surfing the bow wake in dazzling formation.</p>
+        </div>
+      </article>
+      <article class="species-card s-5 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-1-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Eubalaena glacialis</div>
+          <h3>North Atlantic Right Whale</h3>
+          <p>Among the rarest large whales on the planet — a privileged sighting when one passes through.</p>
+        </div>
+      </article>
+      <article class="species-card s-6 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-5-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Phoca vitulina</div>
+          <h3>Harbor Seal &amp; Other Wildlife</h3>
+          <p>Plus harbor porpoises, basking sharks, ocean sunfish, gannets, shearwaters, and the occasional sea turtle.</p>
+        </div>
+      </article>
+      <article class="species-card s-7 reveal">
+        <div class="bg" style="background-image: linear-gradient(180deg, rgba(11,30,46,0) 0%, rgba(11,30,46,0.85) 100%), url('https://stellwagen.noaa.gov/media/img/20210729-marine-mammals-11-600.jpg');"></div>
+        <div class="content">
+          <div class="latin">Globicephala melas</div>
+          <h3>Pilot Whales, Sperm Whales &amp; Sei Whales</h3>
+          <p>The deepwater species. Less common, more spectacular when they appear off the rail.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Stellwagen Story -->
+  <section class="stellwagen">
+    <div class="stellwagen-inner reveal">
+      <div class="eyebrow">Stellwagen Bank National Marine Sanctuary</div>
+      <h2>Named one of the <strong>Top Five</strong> whale watching destinations on Earth.</h2>
+      <p>Twelve miles off the Gloucester coast lies a submerged glacial bank that funnels nutrient-rich currents to the surface — drawing the largest seasonal concentration of feeding whales on the eastern seaboard. The World Wildlife Fund, USA Today, and Lonely Planet have all named it among the world's premier whale grounds.</p>
+      <span class="credit">— World Wildlife Fund</span>
+    </div>
+  </section>
+
+  <!-- Sightings Guarantee -->
+  <section class="guarantee" id="guarantee">
+    <div class="guarantee-inner">
+      <div class="guarantee-mark reveal" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <path id="circle" d="M 200, 200 m -160, 0 a 160,160 0 1,1 320,0 a 160,160 0 1,1 -320,0"/>
+          </defs>
+          <circle cx="200" cy="200" r="190" fill="none" stroke="#0B1E2E" stroke-width="1"/>
+          <circle cx="200" cy="200" r="170" fill="none" stroke="#D87B3F" stroke-width="0.8" stroke-dasharray="2 4"/>
+          <circle cx="200" cy="200" r="140" fill="none" stroke="#0B1E2E" stroke-width="0.5"/>
+          <text font-family="Bodoni Moda, serif" font-size="16" letter-spacing="6" fill="#0B1E2E" font-weight="500">
+            <textPath href="#circle" startOffset="0%">CAPE ANN WHALE WATCH · GLOUCESTER, MASSACHUSETTS · </textPath>
+          </text>
+          <text x="200" y="345" text-anchor="middle" font-family="Instrument Sans" font-size="10" letter-spacing="4" fill="#0B1E2E" font-weight="600">EST · 1979</text>
+        </svg>
+        <div class="seal-text">
+          <div class="big">Sightings<br><em>Guaranteed.</em></div>
+          <div class="small">Since 1979</div>
+        </div>
+      </div>
+      <div class="guarantee-text reveal">
+        <div class="eyebrow">Our Promise</div>
+        <h2>If we don't find whales, you sail again — <em>on us.</em></h2>
+        <p>This isn't a tourist gimmick. It's a 47-year promise rooted in the productive waters off Cape Ann. Our captains know these grounds intimately, and our vessels work in coordination — radioing locations across the fleet so we can chase whatever's running, from Stellwagen Bank to Jeffreys Ledge.</p>
+        <div class="pull">"We go where the whales go. Wherever they may roam."</div>
+        <p>Read our full sightings guarantee or book your voyage with confidence.</p>
+        <a href="https://fareharbor.com/embeds/book/seethewhales/items/67671/?full-items=yes&flow=5556" class="btn btn-outline">Book with Confidence</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <div class="pricing-head">
+      <div class="reveal">
+        <div class="eyebrow">2026 Season Pricing</div>
+        <h2>Voyage <em>fares.</em></h2>
+      </div>
+      <p class="reveal">Tours run 3–4 hours, mornings and afternoons, mid-spring through late October. AAA, AARP, college student, and military discounts available — see below.</p>
+    </div>
+
+    <div class="pricing-table">
+      <div class="price-card reveal">
+        <div class="label">Junior</div>
+        <div class="age">Ages 4–16</div>
+        <div class="price"><sup>$</sup>53</div>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="label">Adult</div>
+        <div class="age">Ages 17–59</div>
+        <div class="price"><sup>$</sup>68</div>
+      </div>
+      <div class="price-card reveal">
+        <div class="label">Senior</div>
+        <div class="age">Ages 60+</div>
+        <div class="price"><sup>$</sup>63</div>
+      </div>
+      <div class="price-card reveal">
+        <div class="label">Child</div>
+        <div class="age">Age 3 &amp; Under</div>
+        <div class="price"><sup>$</sup>10</div>
+      </div>
+    </div>
+
+    <div class="pricing-foot">
+      <div class="discount">
+        <strong>$5 OFF</strong> any adult ticket for AAA · CAA · AARP members, college students with valid ID, and active military.<br>Group rates available for tour companies, schools, scouts, and corporate outings — call for details.
+      </div>
+      <a href="https://fareharbor.com/embeds/book/seethewhales/items/67671/?full-items=yes&flow=5556" class="btn">Reserve Tickets</a>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reviews">
+    <div class="reviews-inner">
+      <div class="reviews-head reveal">
+        <div class="eyebrow">Trusted on Trip Advisor</div>
+        <h2>Among the <em>top 1%</em> of things to do — anywhere on Earth.</h2>
+      </div>
+
+      <div class="badges reveal">
+        <div class="badge">
+          <div class="num">Top<em> 1</em>%</div>
+          <div class="text">Things to do worldwide</div>
+        </div>
+        <div class="badge">
+          <div class="num">4,600<em>+</em></div>
+          <div class="text">Verified Trip Advisor reviews</div>
+        </div>
+        <div class="badge">
+          <div class="num">Travelers'</div>
+          <div class="text">Choice award winner</div>
+        </div>
+        <div class="badge">
+          <div class="num">47<em>th</em></div>
+          <div class="text">Season on the water</div>
+        </div>
+      </div>
+
+      <div class="quote-grid">
+        <div class="quote reveal">
+          <div class="stars">★★★★★</div>
+          <blockquote>"There is a reason this group guarantees that you will see whales on your trip. They study and document the whales in their surrounding area and use informative scientists to guide you through. These are scientists — not tour guides — that give you so much information without making you feel like you're cramming for a science exam."</blockquote>
+          <cite>— Trip Advisor reviewer · Cape Ann Whale Watch</cite>
+        </div>
+        <div class="quote reveal">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Captain Johnny went above and beyond to insure us seeing 11 whales. The educational staff was so informative. An absolutely wonderful trip — I've been on at least seven whale watches and this one is now at the top of my list."</blockquote>
+          <cite>— Trip Advisor reviewer · The Hurricane II</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="contact">
+    <div class="final-cta-inner reveal">
+      <div class="eyebrow">Sailings Run Daily · Mid-April through October</div>
+      <h2>Come see the whales <em>with us.</em></h2>
+      <p>Reserve online in under a minute, or call our Gloucester office for group rates, gift certificates, and private charter inquiries. Free parking, easy boarding, and a guarantee that goes back forty-seven seasons.</p>
+      <div class="final-cta-actions">
+        <a href="https://fareharbor.com/embeds/book/seethewhales/items/67671/?full-items=yes&flow=5556" class="btn btn-light">Reserve Your Voyage</a>
+        <a href="tel:18008775110" class="final-cta-phone">800.877.5110</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="foot-logo">Cape Ann Whale Watch<small>Est. 1979 · Gloucester, MA</small></div>
+        <p>Pioneers of Gloucester whale watching. Sailing the Hurricane II to Stellwagen Bank since 1979. Top 1% on Trip Advisor.</p>
+        <div class="socials">
+          <a href="https://www.facebook.com/CapeAnnWhaleWatch" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 9V7h2.5V4h-3.4C11 4 10 5.5 10 7.5V9H8v3h2v9h3v-9h2.4l.6-3H13z"/></svg></a>
+          <a href="https://twitter.com/seethewhales" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M22 5.8a8 8 0 01-2.4.7 4 4 0 001.8-2.2 8 8 0 01-2.6 1A4 4 0 0012 8.5c0 .3 0 .7.1 1A11 11 0 013 5a4 4 0 001.2 5.4A4 4 0 012.4 10v.1a4 4 0 003.2 4 4 4 0 01-1.8.1 4 4 0 003.7 2.8A8 8 0 012 18.5a11 11 0 006 1.7c7.2 0 11.1-6 11.1-11.1v-.5A8 8 0 0022 5.8z"/></svg></a>
+          <a href="https://www.youtube.com/user/capeannwhalewatch" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 7.5s-.2-1.5-.9-2.2c-.8-.8-1.7-.8-2.1-.9C17 4.2 12 4.2 12 4.2s-5 0-8 .2c-.4.1-1.3.1-2.1.9C1.2 6 1 7.5 1 7.5S.8 9.3.8 11v1.6c0 1.7.2 3.5.2 3.5s.2 1.5.9 2.2c.8.8 1.9.8 2.4.9 1.7.1 7.7.2 7.7.2s5 0 8-.2c.4-.1 1.3-.1 2.1-.9.7-.7.9-2.2.9-2.2s.2-1.7.2-3.5V11c0-1.7-.2-3.5-.2-3.5zM10 14.5V8.7l5.3 2.9-5.3 2.9z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Visit</h4>
+        <address class="addr">
+          Cape Ann Whale Watch<br>
+          415 Main Street<br>
+          Gloucester, MA 01930
+          <a href="tel:18008775110">800.877.5110</a>
+          <a href="tel:19782835110">978.283.5110</a>
+          <a href="mailto:whalescapeann@gmail.com">whalescapeann@gmail.com</a>
+        </address>
+      </div>
+      <div class="foot-col">
+        <h4>Sail With Us</h4>
+        <ul>
+          <li><a href="#vessel">The Hurricane II</a></li>
+          <li><a href="#species">What You'll See</a></li>
+          <li><a href="#pricing">Tickets &amp; Pricing</a></li>
+          <li><a href="#guarantee">Sightings Guarantee</a></li>
+          <li><a href="https://fareharbor.com/embeds/book/seethewhales/items/67675/calendar/?flow=5556">Gift Certificates</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Discover</h4>
+        <ul>
+          <li><a href="#">Meet the Captains</a></li>
+          <li><a href="#">History &amp; Heritage</a></li>
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#">Group &amp; School Rates</a></li>
+          <li><a href="#">Lodging Partners</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Cape Ann Whale Watch · Home of the Hurricane II · All rights reserved.</span>
+      <span class="credit">Concept by Bofill Technologies. Wildlife photography: NOAA / Stellwagen Bank NMS.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow
+    const navWrap = document.getElementById('navWrap');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > 12) navWrap.classList.add('scrolled');
+      else navWrap.classList.remove('scrolled');
+      lastScroll = y;
+    });
+
+    // Reveal-on-scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Smooth anchor scroll with offset for sticky nav
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.scrollY - 78;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      });
+    });
+
+    // Mobile nav toggle
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      const links = document.querySelector('.nav-links');
+      if (links.style.display === 'flex') {
+        links.style.display = 'none';
+      } else {
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.top = '100%';
+        links.style.left = '0';
+        links.style.right = '0';
+        links.style.background = 'var(--parchment)';
+        links.style.padding = '24px var(--pad)';
+        links.style.borderBottom = '1px solid rgba(11, 30, 46, 0.1)';
+        links.style.gap = '18px';
+        links.style.alignItems = 'flex-start';
+      }
+    });
+  </script>
+</body>
+</html>
