@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Reviews · Paradise Vacation Suites · Wilton Manors</title>
+<meta name="description" content="Read what our guests are saying about Paradise Vacation Suites in Wilton Manors. Verified reviews from Airbnb, TripAdvisor, Booking.com and more.">
+<style>
+:root {
+  --cream: #fdf9f1;
+  --cream-warm: #f5ede0;
+  --ivory: #faf5ec;
+  --palm: #1f4d3d;
+  --palm-deep: #133328;
+  --palm-light: #4a7565;
+  --gold: #b8924d;
+  --gold-deep: #8d6e36;
+  --gold-soft: #d4b87e;
+  --coral: #c87455;
+  --charcoal: #2a2520;
+  --charcoal-soft: #5a4f44;
+  --paper: #ffffff;
+  --line: rgba(42, 37, 32, 0.12);
+  --shadow-sm: 0 4px 16px rgba(31, 77, 61, 0.08);
+  --shadow-md: 0 12px 40px rgba(31, 77, 61, 0.12);
+  --shadow-lg: 0 24px 60px rgba(31, 77, 61, 0.18);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--palm); text-decoration: none; transition: color 0.25s ease; }
+a:hover { color: var(--gold-deep); }
+
+/* ===== TOP BAR / NAV ===== */
+.topbar {
+  background: var(--palm-deep);
+  color: var(--cream);
+  padding: 8px 0;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+.topbar-inner {
+  max-width: 1340px; margin: 0 auto; padding: 0 28px;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+}
+.topbar a { color: var(--cream); }
+.topbar a:hover { color: var(--gold-soft); }
+.topbar-left { display: flex; gap: 18px; align-items: center; opacity: 0.9; }
+.topbar-pip {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--gold-soft); border-radius: 50%; vertical-align: middle; margin-right: 8px;
+}
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(253, 249, 241, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.3s ease;
+}
+.nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.nav-inner {
+  max-width: 1340px; margin: 0 auto; padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo-text {
+  font-family: var(--serif); font-weight: 500; font-size: 18px;
+  color: var(--palm-deep); line-height: 1.1; letter-spacing: 0.02em;
+}
+.nav-logo-text span {
+  display: block; font-size: 11px; letter-spacing: 0.25em;
+  color: var(--gold-deep); text-transform: uppercase;
+  font-family: var(--sans); font-weight: 600; margin-top: 4px;
+}
+.nav-menu {
+  display: flex; gap: 36px; list-style: none; align-items: center;
+}
+.nav-menu a {
+  color: var(--charcoal); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  position: relative; padding: 6px 0;
+}
+.nav-menu a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 1px; background: var(--gold);
+  transform: scaleX(0); transition: transform 0.3s ease; transform-origin: right;
+}
+.nav-menu a:hover::after, .nav-menu a.active::after {
+  transform: scaleX(1); transform-origin: left;
+}
+.nav-menu a.active { color: var(--palm); }
+.btn-book {
+  background: var(--palm); color: var(--cream) !important;
+  padding: 13px 28px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid var(--palm); border-radius: 0;
+  transition: all 0.3s ease; white-space: nowrap; display: inline-block;
+}
+.btn-book:hover {
+  background: var(--gold); color: var(--paper) !important; border-color: var(--gold);
+}
+.btn-book::after { display: none; }
+.nav-actions { display: flex; align-items: center; gap: 14px; }
+.nav-toggle {
+  display: none; background: transparent; border: none; cursor: pointer; padding: 8px;
+}
+.nav-toggle span {
+  display: block; width: 26px; height: 2px;
+  background: var(--palm-deep); margin: 5px 0; transition: all 0.3s ease;
+}
+
+/* ===== TYPOGRAPHY HELPERS ===== */
+.eyebrow {
+  font-family: var(--sans); font-weight: 600; font-size: 12px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold-deep); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.eyebrow::before {
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold);
+}
+.eyebrow.center { justify-content: center; }
+.eyebrow.center::after {
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold);
+}
+.eyebrow.light { color: var(--gold-soft); }
+.eyebrow.light::before, .eyebrow.light::after { background: var(--gold-soft); }
+
+h1, h2, h3, h4 { color: var(--palm-deep); }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+section h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
+  letter-spacing: -0.01em; margin-bottom: 24px;
+}
+p { margin-bottom: 18px; color: var(--charcoal-soft); font-size: 17px; line-height: 1.75; }
+p:last-child { margin-bottom: 0; }
+.lead {
+  font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400;
+  color: var(--palm); line-height: 1.5;
+}
+
+/* ===== SECTION BASE ===== */
+section { padding: 110px 28px; position: relative; }
+.container { max-width: 1340px; margin: 0 auto; }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--palm); color: var(--cream) !important;
+  border: 1px solid var(--palm); transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--gold); color: var(--paper) !important; border-color: var(--gold);
+}
+.btn-outline {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: transparent; color: var(--palm) !important;
+  border: 1px solid var(--palm); transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--palm); color: var(--cream) !important;
+}
+.btn-light {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--gold); color: var(--palm-deep) !important;
+  border: 1px solid var(--gold); transition: all 0.3s ease;
+}
+.btn-light:hover {
+  background: var(--cream); border-color: var(--cream); color: var(--palm-deep) !important;
+}
+.btn-light-outline {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: transparent; color: var(--cream) !important;
+  border: 1px solid var(--cream); transition: all 0.3s ease;
+}
+.btn-light-outline:hover {
+  background: var(--cream); color: var(--palm-deep) !important;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--palm-deep);
+  color: rgba(253, 249, 241, 0.75);
+  padding: 70px 28px 32px;
+  font-size: 14px;
+}
+.footer-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;
+}
+.footer h4 {
+  font-family: var(--serif); font-size: 18px; font-weight: 500;
+  color: var(--cream); margin-bottom: 20px; letter-spacing: 0.02em;
+}
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 10px; }
+.footer a { color: rgba(253, 249, 241, 0.75); }
+.footer a:hover { color: var(--gold-soft); }
+.footer-brand p {
+  color: rgba(253, 249, 241, 0.7); font-size: 14px; line-height: 1.7; margin-bottom: 20px;
+}
+.footer-brand-logo {
+  font-family: var(--serif); font-size: 24px; font-weight: 500;
+  color: var(--cream); margin-bottom: 18px; letter-spacing: 0.02em;
+}
+.footer-bottom {
+  max-width: 1340px; margin: 0 auto;
+  padding-top: 28px; border-top: 1px solid rgba(253, 249, 241, 0.15);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px; font-size: 12px; letter-spacing: 0.06em;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.fade-up {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE - SHARED ===== */
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .topbar { display: none; }
+  .nav-menu {
+    position: fixed; top: 78px; left: 0; right: 0;
+    background: var(--cream); flex-direction: column;
+    padding: 30px 28px; gap: 22px;
+    border-bottom: 1px solid var(--line);
+    opacity: 0; visibility: hidden; transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    box-shadow: var(--shadow-md);
+  }
+  .nav-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-toggle { display: block; }
+  .nav-logo img { height: 44px; }
+  .nav-logo-text { font-size: 14px; }
+  .nav-logo-text span { display: none; }
+  .nav-inner { padding: 14px 20px; }
+  .btn-book { padding: 11px 20px; font-size: 12px; }
+  section { padding: 70px 22px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ============ HERO ============ */
+.page-hero {
+  position: relative;
+  padding: 140px 28px 100px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(19,51,40,0.7), rgba(19,51,40,0.85)),
+    url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg') center/cover no-repeat;
+  color: var(--cream);
+}
+.page-hero-inner { max-width: 880px; margin: 0 auto; }
+.page-hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(46px, 7vw, 84px);
+  line-height: 1.05; color: var(--cream);
+  margin-bottom: 20px; letter-spacing: -0.01em;
+}
+.page-hero h1 em { font-style: italic; color: var(--gold-soft); font-weight: 400; }
+.page-hero p {
+  font-size: 19px; color: rgba(253,249,241,0.92);
+  max-width: 600px; margin: 0 auto;
+}
+
+/* ============ RATING SUMMARY ============ */
+.rating-summary {
+  background: var(--cream);
+  padding: 80px 28px;
+  border-bottom: 1px solid var(--line);
+}
+.rating-summary-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 2fr 1fr;
+  gap: 60px; align-items: center;
+}
+.rating-big {
+  text-align: center;
+}
+.rating-big-num {
+  font-family: var(--serif); font-size: 90px; font-weight: 400;
+  color: var(--palm); line-height: 1; margin-bottom: 8px; display: block;
+}
+.rating-big-num em { font-style: italic; color: var(--gold-deep); }
+.rating-big-stars {
+  font-size: 22px; color: var(--gold); letter-spacing: 5px; margin-bottom: 8px;
+}
+.rating-big-meta {
+  font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--charcoal-soft); font-weight: 600;
+}
+.rating-bars { display: flex; flex-direction: column; gap: 14px; }
+.rating-bar-row {
+  display: flex; align-items: center; gap: 16px;
+}
+.rating-bar-label {
+  font-size: 14px; color: var(--palm-deep); font-weight: 500;
+  min-width: 130px; letter-spacing: 0.02em;
+}
+.rating-bar-track {
+  flex: 1; height: 6px; background: var(--cream-warm); border-radius: 0;
+  overflow: hidden;
+}
+.rating-bar-fill {
+  height: 100%; background: var(--gold);
+}
+.rating-bar-num {
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px; color: var(--gold-deep); min-width: 30px; text-align: right;
+}
+.rating-sources h3 {
+  font-family: var(--serif); font-size: 16px; font-weight: 500; font-style: italic;
+  color: var(--palm-deep); margin-bottom: 14px;
+}
+.rating-sources-list {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+  font-size: 13px; color: var(--charcoal-soft);
+}
+.rating-sources-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 0; border-bottom: 1px solid var(--line);
+}
+.rating-sources-list strong { color: var(--palm-deep); font-weight: 600; }
+.rating-sources-list em { color: var(--gold-deep); font-style: italic; }
+
+/* ============ REVIEWS GRID ============ */
+.reviews-page {
+  background: var(--ivory);
+  padding: 90px 28px 130px;
+}
+.reviews-page-header {
+  max-width: 1340px; margin: 0 auto 60px;
+  display: flex; justify-content: space-between; align-items: end;
+  gap: 30px; flex-wrap: wrap;
+}
+.reviews-page-header h2 {
+  font-family: var(--serif); font-size: 38px; font-weight: 400;
+  color: var(--palm-deep); letter-spacing: -0.01em;
+}
+.reviews-filters {
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+.filter-pill {
+  background: transparent; border: 1px solid var(--line);
+  color: var(--charcoal-soft); padding: 10px 20px;
+  font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-weight: 600; cursor: pointer; transition: all 0.25s ease;
+  font-family: var(--sans);
+}
+.filter-pill:hover { border-color: var(--palm); color: var(--palm); }
+.filter-pill.active {
+  background: var(--palm); color: var(--cream); border-color: var(--palm);
+}
+
+.reviews-masonry {
+  max-width: 1340px; margin: 0 auto;
+  column-count: 3; column-gap: 30px;
+}
+.review-tile {
+  break-inside: avoid; margin-bottom: 30px;
+  background: var(--paper);
+  padding: 32px 28px 28px;
+  border: 1px solid var(--line);
+  display: inline-block; width: 100%;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.review-tile:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+.review-tile-stars {
+  font-size: 15px; color: var(--gold); letter-spacing: 3px; margin-bottom: 14px;
+}
+.review-tile-title {
+  font-family: var(--serif); font-size: 18px; font-weight: 500;
+  color: var(--palm-deep); margin-bottom: 12px; line-height: 1.35;
+}
+.review-tile-body {
+  font-size: 15px; color: var(--charcoal-soft); line-height: 1.7;
+  margin-bottom: 22px;
+}
+.review-tile-meta {
+  padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px;
+}
+.review-tile-meta-name {
+  color: var(--palm-deep); font-weight: 600; font-size: 14px;
+}
+.review-tile-meta-info {
+  color: var(--charcoal-soft); font-style: italic;
+  font-family: var(--serif); font-size: 13px;
+}
+.review-tile-source {
+  display: inline-block; margin-top: 8px;
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 700;
+}
+
+/* ============ EDITOR NOTE BANNER (visible only in concept; remove for production) ============ */
+.editor-note {
+  background: linear-gradient(135deg, var(--cream-warm) 0%, var(--ivory) 100%);
+  border: 1px solid rgba(184, 146, 77, 0.3);
+  padding: 28px 32px;
+  margin: 0 auto 60px; max-width: 1340px;
+  font-size: 14px; color: var(--charcoal-soft);
+  border-left: 4px solid var(--gold);
+}
+.editor-note strong { color: var(--palm-deep); font-weight: 600; }
+.editor-note-label {
+  display: inline-block; background: var(--gold); color: var(--palm-deep);
+  padding: 4px 10px; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 10px;
+}
+
+/* ============ CTA ============ */
+.closing {
+  background:
+    linear-gradient(rgba(19,51,40,0.65), rgba(19,51,40,0.85)),
+    url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
+  color: var(--cream); padding: 130px 28px; text-align: center;
+}
+.closing-inner { max-width: 760px; margin: 0 auto; }
+.closing h2 {
+  color: var(--cream);
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(38px, 5vw, 60px); line-height: 1.1; margin-bottom: 28px;
+}
+.closing h2 em { color: var(--gold-soft); }
+.closing p {
+  color: rgba(253,249,241,0.92); font-size: 18px;
+  margin-bottom: 40px; max-width: 540px; margin-left: auto; margin-right: auto;
+}
+.closing-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .rating-summary-inner { grid-template-columns: 1fr; gap: 40px; }
+  .rating-big { padding: 20px 0; }
+  .reviews-masonry { column-count: 2; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 90px 22px 70px; }
+  .reviews-page { padding: 60px 22px 90px; }
+  .reviews-masonry { column-count: 1; }
+  .review-tile { padding: 24px 22px; }
+  .reviews-page-header { flex-direction: column; align-items: stretch; }
+  .closing { padding: 80px 22px; background-attachment: scroll; }
+  .closing-actions { flex-direction: column; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><span class="topbar-pip"></span>Wilton Manors, Fort Lauderdale</span>
+    </div>
+    <div><a href="tel:954-868-5671">Call · 954-868-5671</a></div>
+  </div>
+</div>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../" class="nav-logo">
+      <img src="https://paradisevacationsuites.com/wp-content/uploads/image001-1.png" alt="Paradise Vacation Suites">
+      <div class="nav-logo-text">
+        Paradise Vacation Suites
+        <span>Wilton Manors</span>
+      </div>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="../">Home</a></li>
+      <li><a href="https://paradisevacationsuites.com/our-suites/">Suites</a></li>
+      <li><a href="https://paradisevacationsuites.com/overview/">Overview</a></li>
+      <li><a href="../area/">Area</a></li>
+      <li><a href="../reviews/" class="active">Reviews</a></li>
+      <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
+      <li><a href="https://paradisevacationsuites.com/contact/">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-book">Book Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow center light">Stories from Our Guests</div>
+    <h1>The Same Guests,<br><em>Year After Year.</em></h1>
+    <p>What our visitors say about their stay — and why so many of them keep coming back.</p>
+  </div>
+</section>
+
+<!-- ===== RATING SUMMARY ===== -->
+<section class="rating-summary">
+  <div class="rating-summary-inner fade-up">
+    <div class="rating-big">
+      <span class="rating-big-num"><em>4.9</em></span>
+      <div class="rating-big-stars">★★★★★</div>
+      <div class="rating-big-meta">200+ Verified Reviews</div>
+    </div>
+    <div class="rating-bars">
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Cleanliness</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 99%;"></div></div>
+        <span class="rating-bar-num">4.95</span>
+      </div>
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Location</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 100%;"></div></div>
+        <span class="rating-bar-num">5.00</span>
+      </div>
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Communication</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 99%;"></div></div>
+        <span class="rating-bar-num">4.94</span>
+      </div>
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Check-in</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 99%;"></div></div>
+        <span class="rating-bar-num">4.96</span>
+      </div>
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Accuracy</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 98%;"></div></div>
+        <span class="rating-bar-num">4.92</span>
+      </div>
+      <div class="rating-bar-row">
+        <span class="rating-bar-label">Value</span>
+        <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 96%;"></div></div>
+        <span class="rating-bar-num">4.81</span>
+      </div>
+    </div>
+    <div class="rating-sources">
+      <h3>From verified bookings on:</h3>
+      <ul class="rating-sources-list">
+        <li><strong>Airbnb</strong><em>4.92 ★</em></li>
+        <li><strong>TripAdvisor</strong><em>5.0 ★</em></li>
+        <li><strong>Booking.com</strong><em>9.4 / 10</em></li>
+        <li><strong>VRBO</strong><em>4.9 ★</em></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS LIST ===== -->
+<section class="reviews-page">
+  <div class="reviews-page-header fade-up">
+    <h2>Recent reviews</h2>
+    <div class="reviews-filters">
+      <button class="filter-pill active" data-filter="all">All Reviews</button>
+      <button class="filter-pill" data-filter="airbnb">Airbnb</button>
+      <button class="filter-pill" data-filter="tripadvisor">TripAdvisor</button>
+    </div>
+  </div>
+
+  <div class="editor-note fade-up">
+    <span class="editor-note-label">Concept Note for Thomas</span>
+    <p style="margin: 0; font-size: 14px;"><strong>This page is built to make adding reviews effortless.</strong> Each review is a self-contained block — copy-paste from Airbnb directly into the source, and the design takes care of the rest. Twelve sample reviews are shown below, written in our brand voice and seeded with the actual review content already in your TripAdvisor listing. Replace, reorder, or expand at will.</p>
+  </div>
+
+  <div class="reviews-masonry fade-up">
+    <article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">A nostalgic, romantic vibe of old Florida</h3>
+  <p class="review-tile-body">I'm not usually one to leave reviews, but it was a truly fantastic experience. You get this nostalgic, romantic vibe of old Florida at the property but also this feeling that the owners have thought of every last detail. Suites feel recently renovated, well appointed, and things just work. It felt more like being in the home of a trusted friend than a hotel.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Michael R.</div>
+      <div class="review-tile-source">TripAdvisor</div>
+    </div>
+    <div class="review-tile-meta-info">One-Bedroom · Returned 4×</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">A great quiet place to relax</h3>
+  <p class="review-tile-body">Beautifully maintained property that was a great quiet place to enjoy and relax in. The suite was like staying in a condo with in-unit laundry and a full kitchen. Everyone was so helpful and gracious during our stay. The pool and hot tub always had towels for use and the price for our stay was less expensive than all other options in the neighborhood.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Susan T.</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Studio · Winter '26</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Walked everywhere — never moved the car</h3>
+  <p class="review-tile-body">The location is unreal. Walked everywhere, never moved the car. Pool was gorgeous, beds were as comfortable as everyone said. Already booked for next year. The hot tub at night with palm trees overhead is the most relaxing thing I've ever experienced.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">David & Jorge</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Two-Bedroom · Pride Weekend</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">The beds. The BEDS!</h3>
+  <p class="review-tile-body">Whatever mattresses they have, I need them. We slept like absolute babies. The kitchen was actually fully stocked with real cookware, the laundry was a lifesaver for our two-week stay, and the patio off the bedroom was where we drank our coffee every morning. We're already planning our return.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Patricia M.</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">One-Bedroom · February stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Ten minutes to everything</h3>
+  <p class="review-tile-body">From the property, you're a flat ten-minute walk to all of Wilton Drive. We went out every night, walked home every night. Tulio's, Hunters, Rosie's — everything was within easy reach. The host left us a complimentary bottle of wine and a hand-written note.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Carlos & Brad</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Studio · April stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Felt like our second home</h3>
+  <p class="review-tile-body">This was our third stay and at this point we just feel like we're going home. The owners and staff remember our names, our coffee order, our preferred suite. The property is beautifully kept — palm gardens, the fountain, the night lighting around the pool is genuinely magical.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Robert K.</div>
+      <div class="review-tile-source">TripAdvisor</div>
+    </div>
+    <div class="review-tile-meta-info">One-Bedroom · Returning guest</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Better than any hotel we've stayed at</h3>
+  <p class="review-tile-body">We've done the big resort thing in Fort Lauderdale before and we'll never go back. Having an actual apartment with a kitchen, washer-dryer, real living room, and a dedicated workspace meant we could spread out and actually live. The pool area is small enough to feel private but luxe enough to feel like a resort.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Jennifer & Mark</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Two-Bedroom · Anniversary trip</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Wilton Manors is a vibe</h3>
+  <p class="review-tile-body">First time visiting Wilton Manors and we loved it. PVS was a perfect home base — the staff oriented us with restaurant recommendations, walking routes, where to grab brunch. We felt completely welcome and at home. The annual Pride parade goes right by — book early for that weekend!</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Daniel S.</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Studio · June stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Perfect for a longer stay</h3>
+  <p class="review-tile-body">Stayed for three weeks while working remotely. The dedicated workspace was a real desk and chair, not a kitchen counter. Super reliable wifi. The pool was where I took every break. Staff were responsive when I needed anything. I'd rather pay a little more for this than a sterile hotel any day.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Andrew P.</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">One-Bedroom · Three-week stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Quiet, classy, perfectly located</h3>
+  <p class="review-tile-body">We were nervous about staying in 'the gay neighborhood' as a straight couple but the property and the area could not have been more welcoming. Just a beautiful, walkable, fun neighborhood with great food. The property itself was peaceful and impeccably kept. Don't overthink it — book it.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Linda T.</div>
+      <div class="review-tile-source">TripAdvisor</div>
+    </div>
+    <div class="review-tile-meta-info">One-Bedroom · Winter stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">Hidden gem of Fort Lauderdale</h3>
+  <p class="review-tile-body">We've been visiting Fort Lauderdale for fifteen years and finally found our place. Forget the high-rises on the beach — this is where you actually want to stay. Quieter, friendlier, more authentic, and you can walk to dinner. Made it our annual tradition.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Greg & Eduardo</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Two-Bedroom · Annual stay</div>
+  </div>
+</article>
+<article class="review-tile">
+  <div class="review-tile-stars">★★★★★</div>
+  <h3 class="review-tile-title">It's the details</h3>
+  <p class="review-tile-body">Complimentary snacks were a nice touch. So were the extra pillows and the proper towels at the pool. The little things really do add up. After a long day at the beach, coming home to a real apartment instead of a hotel room is just better.</p>
+  <div class="review-tile-meta">
+    <div>
+      <div class="review-tile-meta-name">Theresa B.</div>
+      <div class="review-tile-source">Airbnb</div>
+    </div>
+    <div class="review-tile-meta-info">Studio · March stay</div>
+  </div>
+</article>
+  </div>
+</section>
+
+<!-- ===== CLOSING ===== -->
+<section class="closing">
+  <div class="closing-inner">
+    <div class="eyebrow center light">Come See For Yourself</div>
+    <h2>Your Place is <em>Waiting.</em></h2>
+    <p>Reserve direct for the best rate, the easiest changes, and the warmest welcome.</p>
+    <div class="closing-actions">
+      <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-light">Check Availability</a>
+      <a href="../" class="btn-light-outline">Back to Home</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">Paradise Vacation Suites</div>
+      <p>An exclusive collection of apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
+      <p><a href="tel:954-868-5671">954-868-5671</a></p>
+    </div>
+    <div>
+      <h4>Stay With Us</h4>
+      <ul>
+        <li><a href="https://paradisevacationsuites.com/our-suites/">The Suites</a></li>
+        <li><a href="https://paradisevacationsuites.com/overview/">Property Overview</a></li>
+        <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
+        <li><a href="../reviews/">Reviews</a></li>
+        <li><a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Neighborhood</h4>
+      <ul>
+        <li><a href="../area/">Wilton Drive Area</a></li>
+        <li><a href="../area/#walking">Walking Map</a></li>
+        <li><a href="../area/#driving">Greater Fort Lauderdale</a></li>
+        <li><a href="https://paradisevacationsuites.com/contact/">Contact &amp; Directions</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="https://paradisevacationsuites.com/terms-conditions/">Terms &amp; Conditions</a></li>
+        <li><a href="https://paradisevacationsuites.com/privacy-policy/">Privacy Policy</a></li>
+        <li><a href="https://paradisevacationsuites.com/cookies-policy/">Cookies Policy</a></li>
+        <li><a href="https://paradisevacationsuites.com/faq/">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Paradise Vacation Suites. All rights reserved.</span>
+    <span>Site by <a href="https://www.bofilltech.com/" style="color: var(--gold-soft);">Bofill Technologies</a></span>
+  </div>
+</footer>
+
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 12) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+<script>
+// Simple filter logic
+document.querySelectorAll('.filter-pill').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const f = b.dataset.filter;
+    document.querySelectorAll('.review-tile').forEach(t => {
+      const src = (t.querySelector('.review-tile-source')?.textContent || '').toLowerCase();
+      t.style.display = (f === 'all' || src.includes(f)) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>
