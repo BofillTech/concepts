@@ -1,4 +1,31 @@
 <!DOCTYPE html>
+<!--
+========================================================================
+IMAGE UPLOAD GUIDE — Cape Ann Whale Watch Concept
+========================================================================
+This homepage is fully image-friendly. There are 33 photo slots
+throughout, each labeled (e.g. "PHOTO · HUMPBACK", "PORTRAIT · CAPT JIM").
+
+To populate any slot, find the matching <div class="photo-slot empty">
+and either:
+  (1) Add a background-image: style="background:url('your.jpg') center/cover;"
+      and remove the "empty" class, OR
+  (2) Insert an <img src="your.jpg"> inside the div and remove "empty"
+
+Slot inventory:
+  HERO          1× background image (or video — recommend 1920x1080)
+  SIGHTINGS     5× recent sightings (4:3, ~600x450 each)
+  VOYAGE        5× thumbnails per timeline step (4:3, ~400x300)
+  SPECIES       6× whale/dolphin photos (16:10 horizontal, ~800x500)
+  STELLWAGEN    3× supporting images (1:1 square, ~600x600)
+  VESSEL        3× boat shots (mixed; full profile, sundeck, interior)
+  CREW          4× crew portraits (4:5 portrait, ~500x625)
+  GALLERY       6× featured frames (asymmetric — see grid)
+  FINAL CTA     1× full-bleed background
+
+Total: 33 image slots. All placeholder labels indicate intended subject.
+========================================================================
+-->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -662,12 +689,18 @@ section { position: relative; }
 
 .species-card .index {
   position: absolute;
-  top: 28px;
-  right: 28px;
+  top: 16px;
+  right: 16px;
   font-family: 'Geist Mono', monospace;
   font-size: 11px;
-  color: var(--slate);
+  color: var(--cyan);
   font-weight: 500;
+  letter-spacing: 0.1em;
+  background: rgba(3, 16, 29, 0.7);
+  padding: 5px 9px;
+  border: 1px solid rgba(22, 217, 224, 0.3);
+  backdrop-filter: blur(6px);
+  z-index: 4;
 }
 
 /* ============ STELLWAGEN SECTION ============ */
@@ -1459,6 +1492,341 @@ footer {
   .nav-actions .btn-ghost { display: none; }
 }
 
+/* ============ PHOTO SLOT SYSTEM ============ */
+.photo-slot {
+  position: relative;
+  background: var(--depth);
+  overflow: hidden;
+  border: 1px solid var(--hairline-strong);
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* placeholder state — visible only when no img loaded */
+.photo-slot.empty::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(22, 217, 224, 0.04) 0%, rgba(3, 16, 29, 0.6) 100%),
+    repeating-linear-gradient(135deg,
+      transparent 0, transparent 18px,
+      rgba(22, 217, 224, 0.06) 18px, rgba(22, 217, 224, 0.06) 19px);
+}
+
+.photo-slot.empty::after {
+  content: attr(data-caption);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: rgba(22, 217, 224, 0.65);
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 16px;
+  font-weight: 500;
+}
+
+/* small corner ticks for placeholder — like a photo reference frame */
+.photo-slot.empty {
+  outline: 1px solid rgba(22, 217, 224, 0.08);
+  outline-offset: -8px;
+}
+
+/* photo with caption frame */
+.photo-frame {
+  position: relative;
+}
+
+.photo-frame .photo-caption {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  color: var(--cyan);
+  text-transform: uppercase;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(3,16,29,0.85), transparent);
+  padding: 14px 8px 4px;
+}
+
+/* corner brackets ornament */
+.photo-frame::before, .photo-frame::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  border-color: var(--cyan);
+  border-style: solid;
+  z-index: 3;
+  opacity: 0.7;
+}
+.photo-frame::before { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+.photo-frame::after { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
+
+/* ============ RECENT SIGHTINGS STRIP ============ */
+.sightings-strip {
+  background: var(--ink);
+  border-bottom: 1px solid var(--hairline);
+  padding: 32px 0 28px;
+}
+
+.sightings-header {
+  max-width: 1440px;
+  margin: 0 auto 20px;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sightings-header .label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.sightings-header .label .live-dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  margin-right: 10px;
+  vertical-align: middle;
+  box-shadow: 0 0 6px var(--cyan);
+  animation: pulse 2.5s infinite;
+}
+
+.sightings-header .meta {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.sightings-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.sighting-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.sighting-card .photo-slot {
+  height: 100%;
+  border: none;
+}
+
+.sighting-card .meta-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-family: 'Geist Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  z-index: 2;
+  background: rgba(3, 16, 29, 0.7);
+  padding: 4px 8px;
+  border: 1px solid rgba(22, 217, 224, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.sighting-card .photo-info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 2;
+  font-family: 'Geist Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--foam);
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to top, rgba(3,16,29,0.9), transparent);
+  padding: 14px 0 0;
+}
+
+/* ============ VOYAGE TIMELINE THUMBNAIL ============ */
+.voyage-step-content {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  gap: 28px;
+  align-items: start;
+}
+
+.voyage-step-thumb {
+  aspect-ratio: 4 / 3;
+}
+
+/* ============ SPECIES CARD PHOTO ============ */
+.species-photo {
+  aspect-ratio: 16 / 10;
+  margin: -36px -28px 28px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid var(--hairline-strong);
+}
+
+/* ============ STELLWAGEN GALLERY ============ */
+.stellwagen-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+  margin-top: 60px;
+  background: var(--hairline-strong);
+  border: 1px solid var(--hairline-strong);
+}
+
+.stellwagen-gallery .photo-slot {
+  aspect-ratio: 1 / 1;
+  border: none;
+}
+
+/* ============ VESSEL IMAGE GRID ============ */
+.vessel-image-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1px;
+  background: var(--hairline-strong);
+  margin-top: 60px;
+  border: 1px solid var(--hairline-strong);
+  aspect-ratio: 16 / 9;
+}
+
+.vessel-image-grid .photo-slot:first-child {
+  grid-row: 1 / 3;
+  border: none;
+}
+
+.vessel-image-grid .photo-slot {
+  border: none;
+}
+
+/* ============ CREW PORTRAIT ============ */
+.crew-portrait {
+  aspect-ratio: 4 / 5;
+  margin: -36px -28px 22px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid var(--hairline);
+}
+
+/* ============ MAIN GALLERY (FROM THE LOG) ============ */
+.gallery-section {
+  background: var(--ink);
+  padding: 120px 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 140px;
+  gap: 1px;
+  background: var(--hairline);
+  margin-top: 60px;
+  border: 1px solid var(--hairline);
+}
+
+.gallery-grid .photo-slot {
+  border: none;
+}
+
+/* asymmetric pattern */
+.gallery-grid .g-1 { grid-column: span 7; grid-row: span 3; }
+.gallery-grid .g-2 { grid-column: span 5; grid-row: span 2; }
+.gallery-grid .g-3 { grid-column: span 5; grid-row: span 1; }
+.gallery-grid .g-4 { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g-5 { grid-column: span 4; grid-row: span 2; }
+.gallery-grid .g-6 { grid-column: span 4; grid-row: span 2; }
+
+/* ============ FINAL CTA WITH BG IMAGE ============ */
+.final-cta {
+  background: var(--ink);
+  border-top: 1px solid var(--hairline);
+  padding: 140px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(3, 16, 29, 0.65) 0%, rgba(3, 16, 29, 0.85) 80%),
+    url('https://stellwagen.noaa.gov/media/img/20210809-sunset-600.jpg') center/cover no-repeat;
+  background-color: var(--depth);
+  z-index: 0;
+}
+
+/* ============ MOBILE PHOTO ADJUSTMENTS ============ */
+@media (max-width: 1024px) {
+  .sightings-row { grid-template-columns: repeat(3, 1fr); }
+  .sighting-card:nth-child(n+4) { display: none; }
+  .voyage-step-content { grid-template-columns: 1fr; }
+  .voyage-step-thumb { max-width: 280px; }
+  .stellwagen-gallery { grid-template-columns: 1fr 1fr; }
+  .stellwagen-gallery .photo-slot:nth-child(3) { display: none; }
+  .vessel-image-grid { grid-template-columns: 1fr; grid-template-rows: 1.5fr 1fr 1fr; aspect-ratio: auto; }
+  .vessel-image-grid .photo-slot:first-child { grid-row: auto; aspect-ratio: 16/9; }
+  .vessel-image-grid .photo-slot { aspect-ratio: 16/9; }
+  /* gallery: collapse to simpler grid */
+  .gallery-grid { grid-template-columns: repeat(6, 1fr); grid-auto-rows: 130px; }
+  .gallery-grid .g-1 { grid-column: span 6; grid-row: span 2; }
+  .gallery-grid .g-2 { grid-column: span 3; grid-row: span 2; }
+  .gallery-grid .g-3 { grid-column: span 3; grid-row: span 2; }
+  .gallery-grid .g-4 { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .g-5 { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .g-6 { grid-column: span 2; grid-row: span 2; }
+}
+
+@media (max-width: 720px) {
+  .sightings-row { grid-template-columns: 1fr 1fr; }
+  .sighting-card:nth-child(n+3) { display: none; }
+  .stellwagen-gallery { grid-template-columns: 1fr; }
+  .stellwagen-gallery .photo-slot:nth-child(n+2) { display: none; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 110px; }
+  .gallery-grid .g-1 { grid-column: span 2; grid-row: span 2; }
+  .gallery-grid .g-2, .gallery-grid .g-3, .gallery-grid .g-4, .gallery-grid .g-5, .gallery-grid .g-6 {
+    grid-column: span 1; grid-row: span 1;
+  }
+}
+
 /* ============ REVEAL ANIM ============ */
 .reveal {
   opacity: 0;
@@ -1522,6 +1890,9 @@ footer {
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-bg"></div>
+  <div style="position:absolute; bottom:24px; right:32px; z-index:3; font-family:'Geist Mono', monospace; font-size:10.5px; letter-spacing:0.13em; text-transform:uppercase; color:rgba(245,241,234,0.5);">
+    PHOTO · HERO IMAGE / BACKGROUND VIDEO
+  </div>
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="bar"></span>
@@ -1597,6 +1968,41 @@ footer {
   </div>
 </section>
 
+<!-- ============ RECENT SIGHTINGS STRIP ============ -->
+<section class="sightings-strip">
+  <div class="sightings-header">
+    <span class="label"><span class="live-dot"></span>Recent Sightings · 2025 Season Log</span>
+    <span class="meta">Updated daily · 1,247 cetacean encounters logged</span>
+  </div>
+  <div class="sightings-row">
+    <div class="sighting-card">
+      <span class="meta-tag">08.14.25</span>
+      <div class="photo-slot empty" data-caption="PHOTO 01 · HUMPBACK BREACH" style="height:100%;border:none;"></div>
+      <div class="photo-info"><span>Humpback · "Salt"</span><span>2:47 PM</span></div>
+    </div>
+    <div class="sighting-card">
+      <span class="meta-tag">08.10.25</span>
+      <div class="photo-slot empty" data-caption="PHOTO 02 · FLUKE SHOT" style="height:100%;border:none;"></div>
+      <div class="photo-info"><span>Humpback fluke</span><span>11:22 AM</span></div>
+    </div>
+    <div class="sighting-card">
+      <span class="meta-tag">08.07.25</span>
+      <div class="photo-slot empty" data-caption="PHOTO 03 · DOLPHIN POD" style="height:100%;border:none;"></div>
+      <div class="photo-info"><span>White-Sided Pod</span><span>3:15 PM</span></div>
+    </div>
+    <div class="sighting-card">
+      <span class="meta-tag">07.29.25</span>
+      <div class="photo-slot empty" data-caption="PHOTO 04 · FIN WHALE" style="height:100%;border:none;"></div>
+      <div class="photo-info"><span>Fin Whale</span><span>1:08 PM</span></div>
+    </div>
+    <div class="sighting-card">
+      <span class="meta-tag">07.21.25</span>
+      <div class="photo-slot empty" data-caption="PHOTO 05 · LUNGE FEED" style="height:100%;border:none;"></div>
+      <div class="photo-info"><span>Lunge feeding</span><span>10:54 AM</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ VOYAGE TIMELINE ============ -->
 <section class="voyage section-pad" id="voyage">
   <div class="container">
@@ -1637,37 +2043,52 @@ footer {
       <div class="voyage-steps">
         <div class="voyage-step">
           <div class="voyage-step-time">T-30 MIN</div>
-          <div>
-            <h3 class="voyage-step-title">Boarding at 415 Main St.</h3>
-            <p class="voyage-step-text">Free easy parking right at the dock. Crew checks you in, a naturalist briefs the trip ahead. Light layers and a wind shell recommended — open Atlantic gets cool even in July.</p>
+          <div class="voyage-step-content">
+            <div>
+              <h3 class="voyage-step-title">Boarding at 415 Main St.</h3>
+              <p class="voyage-step-text">Free easy parking right at the dock. Crew checks you in, a naturalist briefs the trip ahead. Light layers and a wind shell recommended — open Atlantic gets cool even in July.</p>
+            </div>
+            <div class="photo-slot empty voyage-step-thumb" data-caption="PHOTO · BOARDING"></div>
           </div>
         </div>
         <div class="voyage-step">
           <div class="voyage-step-time">T+0:00</div>
-          <div>
-            <h3 class="voyage-step-title">Departure from Gloucester Harbor</h3>
-            <p class="voyage-step-text">Lines off, four Caterpillar diesels at idle, then ahead-half. Past Eastern Point Light, past Ten Pound Island, into Massachusetts Bay. The naturalist takes the mic.</p>
+          <div class="voyage-step-content">
+            <div>
+              <h3 class="voyage-step-title">Departure from Gloucester Harbor</h3>
+              <p class="voyage-step-text">Lines off, four Caterpillar diesels at idle, then ahead-half. Past Eastern Point Light, past Ten Pound Island, into Massachusetts Bay. The naturalist takes the mic.</p>
+            </div>
+            <div class="photo-slot empty voyage-step-thumb" data-caption="PHOTO · HARBOR DEPARTURE"></div>
           </div>
         </div>
         <div class="voyage-step">
           <div class="voyage-step-time">T+1:00</div>
-          <div>
-            <h3 class="voyage-step-title">Arrival at Stellwagen Bank</h3>
-            <p class="voyage-step-text">A 638-square-mile undersea plateau — federal marine sanctuary, one of the most active whale habitats on Earth. The captain slows. Binoculars come out. Crew calls out blows.</p>
+          <div class="voyage-step-content">
+            <div>
+              <h3 class="voyage-step-title">Arrival at Stellwagen Bank</h3>
+              <p class="voyage-step-text">A 638-square-mile undersea plateau — federal marine sanctuary, one of the most active whale habitats on Earth. The captain slows. Binoculars come out. Crew calls out blows.</p>
+            </div>
+            <div class="photo-slot empty voyage-step-thumb" data-caption="PHOTO · OPEN OCEAN"></div>
           </div>
         </div>
         <div class="voyage-step">
           <div class="voyage-step-time">T+1:00 → 3:00</div>
-          <div>
-            <h3 class="voyage-step-title">On the Bank</h3>
-            <p class="voyage-step-text">Two hours working the bank. Humpbacks lunge-feed, fin whales blow tall, minkes rise mid-circuit. Atlantic white-sided dolphins surf the bow. The naturalist IDs each animal by fluke and dorsal — many are returning regulars they've named.</p>
+          <div class="voyage-step-content">
+            <div>
+              <h3 class="voyage-step-title">On the Bank</h3>
+              <p class="voyage-step-text">Two hours working the bank. Humpbacks lunge-feed, fin whales blow tall, minkes rise mid-circuit. Atlantic white-sided dolphins surf the bow. The naturalist IDs each animal by fluke and dorsal — many are returning regulars they've named.</p>
+            </div>
+            <div class="photo-slot empty voyage-step-thumb" data-caption="PHOTO · WHALE SIGHTING"></div>
           </div>
         </div>
         <div class="voyage-step">
           <div class="voyage-step-time">T+4:00</div>
-          <div>
-            <h3 class="voyage-step-title">Return to Gloucester</h3>
-            <p class="voyage-step-text">Cruise back at speed. Galley still open. The stories are already getting bigger.</p>
+          <div class="voyage-step-content">
+            <div>
+              <h3 class="voyage-step-title">Return to Gloucester</h3>
+              <p class="voyage-step-text">Cruise back at speed. Galley still open. The stories are already getting bigger.</p>
+            </div>
+            <div class="photo-slot empty voyage-step-thumb" data-caption="PHOTO · GUESTS ON DECK"></div>
           </div>
         </div>
       </div>
@@ -1693,6 +2114,7 @@ footer {
       <!-- 1. Humpback -->
       <div class="species-card">
         <span class="index">01</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · HUMPBACK"></div>
         <div class="scientific">Megaptera novaeangliae</div>
         <h3 class="common">Humpback Whale</h3>
         <p class="desc">The acrobat of Stellwagen. Returns each spring to feed on sand lance, herring, and krill. Famous for breaching, fluking, and lunge-feeding through bait balls. Each animal is identified by the unique pattern on the underside of its tail.</p>
@@ -1719,6 +2141,7 @@ footer {
       <!-- 2. Fin -->
       <div class="species-card">
         <span class="index">02</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · FIN WHALE"></div>
         <div class="scientific">Balaenoptera physalus</div>
         <h3 class="common">Fin Whale</h3>
         <p class="desc">The second-largest animal that has ever lived. Sleek, fast, and asymmetric — its right lower jaw is white, the left dark. Travels in small pods, often surfacing at predictable intervals. The blow is tall and narrow, visible from miles off.</p>
@@ -1745,6 +2168,7 @@ footer {
       <!-- 3. Minke -->
       <div class="species-card">
         <span class="index">03</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · MINKE"></div>
         <div class="scientific">Balaenoptera acutorostrata</div>
         <h3 class="common">Minke Whale</h3>
         <p class="desc">The smallest baleen whale of the bank. Quick, curious, often solo. White diagonal bands on the pectoral flippers are a distinctive ID mark. Surfaces with a sharp pointed rostrum and a low, almost invisible blow.</p>
@@ -1771,6 +2195,7 @@ footer {
       <!-- 4. Atlantic White-Sided Dolphin -->
       <div class="species-card">
         <span class="index">04</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · DOLPHINS"></div>
         <div class="scientific">Lagenorhynchus acutus</div>
         <h3 class="common">Atlantic White-Sided Dolphin</h3>
         <p class="desc">Travels in tight pods of 50 to several hundred. Frequently rides the bow wave of the Hurricane II — leap, dive, leap again, all in formation. Distinctive yellow and white flank stripe. A reliable highlight on Stellwagen voyages.</p>
@@ -1797,6 +2222,7 @@ footer {
       <!-- 5. Right Whale -->
       <div class="species-card">
         <span class="index">05</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · RIGHT WHALE"></div>
         <div class="scientific">Eubalaena glacialis</div>
         <h3 class="common">North Atlantic Right Whale</h3>
         <p class="desc">Among the rarest large mammals on Earth — fewer than 360 remain. Stellwagen is critical habitat. Identifiable by callosities on the head, V-shaped blow, and absence of a dorsal fin. Federal regulations require careful, distant viewing — and we follow them strictly.</p>
@@ -1823,6 +2249,7 @@ footer {
       <!-- 6. Other species -->
       <div class="species-card">
         <span class="index">06</span>
+        <div class="species-photo photo-slot empty" data-caption="PHOTO · OTHER SPECIES"></div>
         <div class="scientific">+ Other Species Logged</div>
         <h3 class="common">Pilot · Sperm · Sei · Blue</h3>
         <p class="desc">Less frequent but possible: long-finned pilot whales in summer, sperm whales offshore, sei whales (the third-largest baleen), and — once or twice a season — the largest animal ever to exist, the blue whale. Plus harbor porpoises, harbor seals, and Atlantic puffins on the right run.</p>
@@ -1949,13 +2376,18 @@ footer {
         </div>
       </div>
     </div>
+
+    <!-- Supporting photo gallery -->
+    <div class="stellwagen-gallery">
+      <div class="photo-slot empty" data-caption="PHOTO · BANK FROM ABOVE / DRONE"></div>
+      <div class="photo-slot empty" data-caption="PHOTO · GULF OF MAINE LIGHT"></div>
+      <div class="photo-slot empty" data-caption="PHOTO · STELLWAGEN SEABIRDS"></div>
+    </div>
   </div>
 </section>
-
-<!-- ============ HURRICANE II SPEC SHEET ============ -->
 <section class="vessel section-pad" id="vessel">
   <div class="container">
-    <div class="vessel-header">
+    <div class="vessel-header" style="display:block;">
       <div>
         <div class="section-eyebrow">
           <span class="num">04</span>
@@ -1965,7 +2397,13 @@ footer {
         <h2 class="section-title">M/V Hurricane II</h2>
         <p class="section-lead">The largest, fastest whale watch vessel north of Boston. Four Caterpillar diesels at eleven hundred horsepower each — forty-four hundred total — deliver a 30-knot cruise. You spend less time getting there and more time on the bank.</p>
       </div>
-      <div class="vessel-image"></div>
+    </div>
+
+    <!-- Vessel image grid -->
+    <div class="vessel-image-grid">
+      <div class="photo-slot empty" data-caption="PHOTO · HURRICANE II FULL PROFILE"></div>
+      <div class="photo-slot empty" data-caption="PHOTO · OPEN SUNDECK"></div>
+      <div class="photo-slot empty" data-caption="PHOTO · GALLEY / CABIN INTERIOR"></div>
     </div>
 
     <div class="spec-sheet">
@@ -2051,6 +2489,7 @@ footer {
 
     <div class="crew-grid">
       <div class="crew-card">
+        <div class="crew-portrait photo-slot empty" data-caption="PORTRAIT · CAPT. JIM DOUGLASS"></div>
         <div class="role">Captain · Owner</div>
         <h3 class="name">Jim Douglass</h3>
         <p style="color:rgba(245,241,234,0.7); font-size:14px; line-height:1.5;">Founded Cape Ann Whale Watch in 1979. Holds USCG Master license. Has logged the seasonal return of named humpbacks like Salt, Pepper, and Nile across decades.</p>
@@ -2060,6 +2499,7 @@ footer {
         </div>
       </div>
       <div class="crew-card">
+        <div class="crew-portrait photo-slot empty" data-caption="PORTRAIT · CAPT. NICK DANIKAS"></div>
         <div class="role">Captain</div>
         <h3 class="name">Nick Danikas</h3>
         <p style="color:rgba(245,241,234,0.7); font-size:14px; line-height:1.5;">Joined the crew in 1991. USCG licensed. Knows every sea-state quirk of the bay and the bank, and can read whale behavior from a half mile off.</p>
@@ -2069,6 +2509,7 @@ footer {
         </div>
       </div>
       <div class="crew-card">
+        <div class="crew-portrait photo-slot empty" data-caption="PORTRAIT · CAPT. JOHN KARVELAS"></div>
         <div class="role">Captain</div>
         <h3 class="name">John Karvelas</h3>
         <p style="color:rgba(245,241,234,0.7); font-size:14px; line-height:1.5;">Aboard since 1994. Steady hand at the wheel and a deep relationship with the regular returning population on Stellwagen Bank.</p>
@@ -2078,6 +2519,7 @@ footer {
         </div>
       </div>
       <div class="crew-card">
+        <div class="crew-portrait photo-slot empty" data-caption="PORTRAIT · TINA McMAHON"></div>
         <div class="role">Head Naturalist</div>
         <h3 class="name">Tina McMahon</h3>
         <p style="color:rgba(245,241,234,0.7); font-size:14px; line-height:1.5;">Marine biologist and educator. Identifies individual whales by fluke pattern and dorsal markings, narrates each voyage, contributes to ongoing research.</p>
@@ -2135,6 +2577,30 @@ footer {
           <li>Restrooms onboard, but go before boarding</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FROM THE LOG GALLERY ============ -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+    <div class="section-eyebrow">
+      <span class="num">07.5</span>
+      <span class="bar"></span>
+      <span>From the Log</span>
+    </div>
+    <h2 class="section-title">Forty-seven seasons, <span class="italic">documented.</span></h2>
+    <p class="section-lead">Selected frames from voyages past. Tap any frame for full size. The full archive lives in our gallery.</p>
+  </div>
+
+  <div class="container">
+    <div class="gallery-grid">
+      <div class="photo-slot empty g-1" data-caption="PHOTO 01 · HERO BREACH SHOT"></div>
+      <div class="photo-slot empty g-2" data-caption="PHOTO 02 · DOLPHIN POD"></div>
+      <div class="photo-slot empty g-3" data-caption="PHOTO 03 · FLUKE"></div>
+      <div class="photo-slot empty g-4" data-caption="PHOTO 04 · GUESTS ON DECK"></div>
+      <div class="photo-slot empty g-5" data-caption="PHOTO 05 · SUNSET RETURN"></div>
+      <div class="photo-slot empty g-6" data-caption="PHOTO 06 · HURRICANE II AT SEA"></div>
     </div>
   </div>
 </section>
@@ -2228,6 +2694,7 @@ footer {
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta">
+  <div class="final-cta-bg"></div>
   <div class="final-cta-inner">
     <div class="final-cta-eyebrow">⌖ &nbsp; STELLWAGEN BANK · 28 NM E</div>
     <h2>Come <span class="italic">see</span> the whales with us.</h2>
