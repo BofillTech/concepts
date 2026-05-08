@@ -10,22 +10,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream: #fdf9f1;
-  --cream-warm: #f5ede0;
-  --ivory: #faf5ec;
-  --palm: #1f4d3d;
-  --palm-deep: #133328;
-  --palm-light: #4a7565;
-  --gold: #b8924d;
-  --gold-deep: #8d6e36;
-  --gold-soft: #d4b87e;
+  --cream: #faf3e1;
+  --cream-warm: #f4e8c8;
+  --ivory: #fef9eb;
+  --paper: #ffffff;
+  --palm: #2a8262;
+  --palm-deep: #1a5a40;
+  --palm-darker: #0f3d2c;
+  --palm-light: #65b290;
+  --bop-orange: #e07b32;
+  --bop-orange-bright: #f08a3e;
+  --bop-orange-soft: #f5b88c;
+  --bop-blue: #3a4d8a;
+  --coral: #d6557a;
+  --sun: #f0bc3e;
+  --aqua: #4fa8b0;
+  --gold: #e07b32;
+  --gold-deep: #b8662a;
+  --gold-soft: #f5b88c;
   --charcoal: #2a2520;
   --charcoal-soft: #5a4f44;
-  --paper: #ffffff;
   --line: rgba(42, 37, 32, 0.12);
-  --shadow-sm: 0 4px 16px rgba(31, 77, 61, 0.08);
-  --shadow-md: 0 12px 40px rgba(31, 77, 61, 0.12);
-  --shadow-lg: 0 24px 60px rgba(31, 77, 61, 0.18);
+  --line-warm: rgba(224, 123, 50, 0.25);
+  --shadow-sm: 0 4px 16px rgba(26, 90, 64, 0.08);
+  --shadow-md: 0 12px 40px rgba(26, 90, 64, 0.14);
+  --shadow-lg: 0 24px 60px rgba(26, 90, 64, 0.20);
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
 }
@@ -233,7 +242,7 @@ a:hover { color: var(--gold-deep); }
 .hero h1 em {
   font-style: italic;
   font-weight: 400;
-  color: var(--gold-soft);
+  color: var(--bop-orange-bright);
 }
 .hero-sub {
   font-size: 19px;
@@ -845,10 +854,44 @@ p:last-child { margin-bottom: 0; }
     padding: 18px 22px;
   }
 }
+
+.promo-banner {
+  background: linear-gradient(90deg, var(--bop-orange) 0%, var(--bop-orange-bright) 100%);
+  color: #fff; padding: 11px 28px; font-size: 14px; font-weight: 500;
+  letter-spacing: 0.04em; text-align: center; position: relative;
+}
+.promo-banner-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap;
+}
+.promo-banner-flag {
+  background: rgba(255,255,255,0.25); padding: 3px 10px; border-radius: 2px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.promo-banner a { color: #fff; text-decoration: underline; font-weight: 600; margin-left: 8px; }
+.promo-banner a:hover { color: var(--cream); }
+.promo-banner-close {
+  position: absolute; top: 50%; right: 18px; transform: translateY(-50%);
+  background: transparent; border: none; color: #fff; cursor: pointer;
+  font-size: 20px; line-height: 1; padding: 4px 8px; opacity: 0.7;
+}
+.promo-banner-close:hover { opacity: 1; }
+.promo-banner.dismissed { display: none; }
+@media (max-width: 768px) {
+  .promo-banner { font-size: 13px; padding: 10px 50px 10px 18px; }
+  .promo-banner-flag { font-size: 10px; }
+}
 </style>
 </head>
 <body>
-
+<div class="promo-banner" id="promoBanner">
+  <div class="promo-banner-inner">
+    <span class="promo-banner-flag">Spring Special</span>
+    <span>Save 10% on stays of 5 nights or more, now through May 31.</span>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book direct →</a>
+  </div>
+  <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
+</div>
 <!-- ===== TOP BAR ===== -->
 <div class="topbar">
   <div class="topbar-inner">

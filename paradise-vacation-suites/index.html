@@ -7,26 +7,47 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <title>Paradise Vacation Suites · Wilton Manors, Fort Lauderdale</title>
-<meta name="description" content="An exclusive collection of luxury apartment suites in the Island City of Wilton Manors — moments from Wilton Drive's restaurants and nightlife, minutes to Fort Lauderdale Beach.">
+<meta name="description" content="An exclusive collection of nine luxury apartment suites in the Island City of Wilton Manors — moments from Wilton Drive's restaurants and nightlife, minutes to Fort Lauderdale Beach.">
 <style>
 :root {
-  --cream: #fdf9f1;
-  --cream-warm: #f5ede0;
-  --ivory: #faf5ec;
-  --palm: #1f4d3d;
-  --palm-deep: #133328;
-  --palm-light: #4a7565;
-  --gold: #b8924d;
-  --gold-deep: #8d6e36;
-  --gold-soft: #d4b87e;
-  --coral: #c87455;
+  /* Tropical sand & cream */
+  --cream: #faf3e1;
+  --cream-warm: #f4e8c8;
+  --ivory: #fef9eb;
+  --paper: #ffffff;
+
+  /* Tropical greens */
+  --palm: #2a8262;
+  --palm-deep: #1a5a40;
+  --palm-darker: #0f3d2c;
+  --palm-light: #65b290;
+
+  /* Bird of Paradise palette */
+  --bop-orange: #e07b32;
+  --bop-orange-bright: #f08a3e;
+  --bop-orange-soft: #f5b88c;
+  --bop-blue: #3a4d8a;
+
+  /* Tropical accents */
+  --coral: #d6557a;
+  --sun: #f0bc3e;
+  --aqua: #4fa8b0;
+
+  /* Legacy gold tokens (mapped for compatibility) */
+  --gold: var(--bop-orange);
+  --gold-deep: #b8662a;
+  --gold-soft: var(--bop-orange-soft);
+
   --charcoal: #2a2520;
   --charcoal-soft: #5a4f44;
-  --paper: #ffffff;
   --line: rgba(42, 37, 32, 0.12);
-  --shadow-sm: 0 4px 16px rgba(31, 77, 61, 0.08);
-  --shadow-md: 0 12px 40px rgba(31, 77, 61, 0.12);
-  --shadow-lg: 0 24px 60px rgba(31, 77, 61, 0.18);
+  --line-warm: rgba(224, 123, 50, 0.25);
+
+  --shadow-sm: 0 4px 16px rgba(26, 90, 64, 0.08);
+  --shadow-md: 0 12px 40px rgba(26, 90, 64, 0.14);
+  --shadow-lg: 0 24px 60px rgba(26, 90, 64, 0.20);
+  --shadow-orange: 0 12px 40px rgba(224, 123, 50, 0.18);
+
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
 }
@@ -45,11 +66,48 @@ body {
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--palm); text-decoration: none; transition: color 0.25s ease; }
-a:hover { color: var(--gold-deep); }
+a:hover { color: var(--bop-orange); }
+
+/* ===== PROMO BANNER (NEW) ===== */
+.promo-banner {
+  background: linear-gradient(90deg, var(--bop-orange) 0%, var(--bop-orange-bright) 100%);
+  color: #fff;
+  padding: 11px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  position: relative;
+}
+.promo-banner-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.promo-banner-flag {
+  background: rgba(255,255,255,0.25);
+  padding: 3px 10px; border-radius: 2px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.promo-banner a {
+  color: #fff; text-decoration: underline;
+  font-weight: 600; margin-left: 8px;
+}
+.promo-banner a:hover { color: var(--cream); }
+.promo-banner-close {
+  position: absolute; top: 50%; right: 18px;
+  transform: translateY(-50%);
+  background: transparent; border: none; color: #fff;
+  cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px;
+  opacity: 0.7;
+}
+.promo-banner-close:hover { opacity: 1; }
+.promo-banner.dismissed { display: none; }
 
 /* ===== TOP BAR / NAV ===== */
 .topbar {
-  background: var(--palm-deep);
+  background: var(--palm-darker);
   color: var(--cream);
   padding: 8px 0;
   font-size: 14px;
@@ -60,22 +118,22 @@ a:hover { color: var(--gold-deep); }
   display: flex; justify-content: space-between; align-items: center; gap: 24px;
 }
 .topbar a { color: var(--cream); }
-.topbar a:hover { color: var(--gold-soft); }
-.topbar-left { display: flex; gap: 18px; align-items: center; opacity: 0.9; }
+.topbar a:hover { color: var(--bop-orange-soft); }
+.topbar-left { display: flex; gap: 18px; align-items: center; opacity: 0.95; }
 .topbar-pip {
   display: inline-block; width: 6px; height: 6px;
-  background: var(--gold-soft); border-radius: 50%; vertical-align: middle; margin-right: 8px;
+  background: var(--bop-orange); border-radius: 50%; vertical-align: middle; margin-right: 8px;
 }
 
 .nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(253, 249, 241, 0.96);
+  background: rgba(250, 243, 225, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.3s ease;
 }
-.nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.nav.scrolled { box-shadow: 0 4px 20px rgba(26, 90, 64, 0.08); }
 .nav-inner {
   max-width: 1340px; margin: 0 auto; padding: 18px 28px;
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -88,7 +146,7 @@ a:hover { color: var(--gold-deep); }
 }
 .nav-logo-text span {
   display: block; font-size: 11px; letter-spacing: 0.25em;
-  color: var(--gold-deep); text-transform: uppercase;
+  color: var(--bop-orange); text-transform: uppercase;
   font-family: var(--sans); font-weight: 600; margin-top: 4px;
 }
 .nav-menu {
@@ -101,22 +159,22 @@ a:hover { color: var(--gold-deep); }
 }
 .nav-menu a::after {
   content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 1px; background: var(--gold);
+  height: 2px; background: var(--bop-orange);
   transform: scaleX(0); transition: transform 0.3s ease; transform-origin: right;
 }
 .nav-menu a:hover::after, .nav-menu a.active::after {
   transform: scaleX(1); transform-origin: left;
 }
-.nav-menu a.active { color: var(--palm); }
+.nav-menu a.active { color: var(--palm-deep); }
 .btn-book {
-  background: var(--palm); color: var(--cream) !important;
+  background: var(--bop-orange); color: #fff !important;
   padding: 13px 28px; font-size: 13px; font-weight: 600;
   letter-spacing: 0.18em; text-transform: uppercase;
-  border: 1px solid var(--palm); border-radius: 0;
+  border: 1px solid var(--bop-orange); border-radius: 0;
   transition: all 0.3s ease; white-space: nowrap; display: inline-block;
 }
 .btn-book:hover {
-  background: var(--gold); color: var(--paper) !important; border-color: var(--gold);
+  background: var(--palm); color: #fff !important; border-color: var(--palm);
 }
 .btn-book::after { display: none; }
 .nav-actions { display: flex; align-items: center; gap: 14px; }
@@ -128,25 +186,34 @@ a:hover { color: var(--gold-deep); }
   background: var(--palm-deep); margin: 5px 0; transition: all 0.3s ease;
 }
 
+/* ===== BIRD OF PARADISE MARKERS ===== */
+.bop {
+  display: inline-block; vertical-align: middle;
+  width: 18px; height: 22px;
+  flex-shrink: 0;
+}
+.bop-lg { width: 36px; height: 44px; }
+.bop-xl { width: 52px; height: 64px; }
+
 /* ===== TYPOGRAPHY HELPERS ===== */
 .eyebrow {
   font-family: var(--sans); font-weight: 600; font-size: 12px;
   letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--gold-deep); margin-bottom: 18px;
+  color: var(--bop-orange); margin-bottom: 18px;
   display: flex; align-items: center; gap: 14px;
 }
 .eyebrow::before {
-  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold);
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
 }
 .eyebrow.center { justify-content: center; }
 .eyebrow.center::after {
-  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--gold);
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
 }
-.eyebrow.light { color: var(--gold-soft); }
-.eyebrow.light::before, .eyebrow.light::after { background: var(--gold-soft); }
+.eyebrow.light { color: var(--bop-orange-soft); }
+.eyebrow.light::before, .eyebrow.light::after { background: var(--bop-orange-soft); }
 
 h1, h2, h3, h4 { color: var(--palm-deep); }
-h1 em, h2 em, h3 em { font-style: italic; color: var(--gold-deep); font-weight: 400; }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--bop-orange); font-weight: 400; }
 section h2 {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
@@ -156,7 +223,7 @@ p { margin-bottom: 18px; color: var(--charcoal-soft); font-size: 17px; line-heig
 p:last-child { margin-bottom: 0; }
 .lead {
   font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400;
-  color: var(--palm); line-height: 1.5;
+  color: var(--palm-deep); line-height: 1.5;
 }
 
 /* ===== SECTION BASE ===== */
@@ -167,26 +234,26 @@ section { padding: 110px 28px; position: relative; }
 .btn-primary {
   display: inline-block; padding: 18px 44px; font-size: 13px;
   font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: var(--palm); color: var(--cream) !important;
-  border: 1px solid var(--palm); transition: all 0.3s ease;
+  background: var(--bop-orange); color: #fff !important;
+  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
 }
 .btn-primary:hover {
-  background: var(--gold); color: var(--paper) !important; border-color: var(--gold);
+  background: var(--palm); color: #fff !important; border-color: var(--palm);
 }
 .btn-outline {
   display: inline-block; padding: 18px 44px; font-size: 13px;
   font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: transparent; color: var(--palm) !important;
-  border: 1px solid var(--palm); transition: all 0.3s ease;
+  background: transparent; color: var(--palm-deep) !important;
+  border: 1px solid var(--palm-deep); transition: all 0.3s ease;
 }
 .btn-outline:hover {
-  background: var(--palm); color: var(--cream) !important;
+  background: var(--palm-deep); color: var(--cream) !important;
 }
 .btn-light {
   display: inline-block; padding: 18px 44px; font-size: 13px;
   font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: var(--gold); color: var(--palm-deep) !important;
-  border: 1px solid var(--gold); transition: all 0.3s ease;
+  background: var(--bop-orange); color: #fff !important;
+  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
 }
 .btn-light:hover {
   background: var(--cream); border-color: var(--cream); color: var(--palm-deep) !important;
@@ -203,8 +270,8 @@ section { padding: 110px 28px; position: relative; }
 
 /* ===== FOOTER ===== */
 .footer {
-  background: var(--palm-deep);
-  color: rgba(253, 249, 241, 0.75);
+  background: var(--palm-darker);
+  color: rgba(250, 243, 225, 0.8);
   padding: 70px 28px 32px;
   font-size: 14px;
 }
@@ -218,10 +285,10 @@ section { padding: 110px 28px; position: relative; }
 }
 .footer ul { list-style: none; }
 .footer li { margin-bottom: 10px; }
-.footer a { color: rgba(253, 249, 241, 0.75); }
-.footer a:hover { color: var(--gold-soft); }
+.footer a { color: rgba(250, 243, 225, 0.8); }
+.footer a:hover { color: var(--bop-orange-soft); }
 .footer-brand p {
-  color: rgba(253, 249, 241, 0.7); font-size: 14px; line-height: 1.7; margin-bottom: 20px;
+  color: rgba(250, 243, 225, 0.75); font-size: 14px; line-height: 1.7; margin-bottom: 20px;
 }
 .footer-brand-logo {
   font-family: var(--serif); font-size: 24px; font-weight: 500;
@@ -229,7 +296,7 @@ section { padding: 110px 28px; position: relative; }
 }
 .footer-bottom {
   max-width: 1340px; margin: 0 auto;
-  padding-top: 28px; border-top: 1px solid rgba(253, 249, 241, 0.15);
+  padding-top: 28px; border-top: 1px solid rgba(250, 243, 225, 0.15);
   display: flex; justify-content: space-between; align-items: center;
   flex-wrap: wrap; gap: 14px; font-size: 12px; letter-spacing: 0.06em;
 }
@@ -248,6 +315,8 @@ section { padding: 110px 28px; position: relative; }
 @media (max-width: 768px) {
   body { font-size: 16px; }
   .topbar { display: none; }
+  .promo-banner { font-size: 13px; padding: 10px 50px 10px 18px; }
+  .promo-banner-flag { font-size: 10px; }
   .nav-menu {
     position: fixed; top: 78px; left: 0; right: 0;
     background: var(--cream); flex-direction: column;
@@ -283,7 +352,7 @@ section { padding: 110px 28px; position: relative; }
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(to bottom, rgba(19,51,40,0.25) 0%, rgba(19,51,40,0.45) 60%, rgba(19,51,40,0.85) 100%),
+    linear-gradient(to bottom, rgba(15, 61, 44, 0.20) 0%, rgba(15, 61, 44, 0.4) 60%, rgba(15, 61, 44, 0.85) 100%),
     url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg') center/cover no-repeat;
   z-index: 0;
 }
@@ -298,11 +367,11 @@ section { padding: 110px 28px; position: relative; }
 .hero-eyebrow {
   font-family: var(--sans); font-weight: 600; font-size: 13px;
   letter-spacing: 0.4em; text-transform: uppercase;
-  color: var(--gold-soft); margin-bottom: 26px;
+  color: var(--bop-orange-bright); margin-bottom: 26px;
   display: flex; align-items: center; gap: 14px;
 }
 .hero-eyebrow::before {
-  content: ''; display: inline-block; width: 36px; height: 1px; background: var(--gold-soft);
+  content: ''; display: inline-block; width: 36px; height: 1px; background: var(--bop-orange-bright);
 }
 .hero h1 {
   color: var(--cream);
@@ -313,32 +382,31 @@ section { padding: 110px 28px; position: relative; }
   margin-bottom: 32px;
   max-width: 14ch;
 }
-.hero h1 em { color: var(--gold-soft); font-style: italic; font-weight: 400; }
+.hero h1 em { color: var(--bop-orange-bright); font-style: italic; font-weight: 400; }
 .hero-sub {
   font-size: 19px; font-weight: 300; line-height: 1.6;
-  max-width: 640px; color: rgba(253, 249, 241, 0.92); margin-bottom: 36px;
+  max-width: 640px; color: rgba(250, 243, 225, 0.95); margin-bottom: 36px;
 }
 .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
 
-/* Right column: floating credentials card */
 .hero-card {
-  background: rgba(253, 249, 241, 0.97);
+  background: rgba(250, 243, 225, 0.97);
   color: var(--charcoal);
   padding: 36px 32px;
-  box-shadow: 0 30px 80px rgba(19,51,40,0.4);
-  border-top: 3px solid var(--gold);
+  box-shadow: 0 30px 80px rgba(15, 61, 44, 0.4);
+  border-top: 4px solid var(--bop-orange);
   backdrop-filter: blur(8px);
 }
 .hero-card-eyebrow {
   font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--gold-deep); font-weight: 700; margin-bottom: 16px;
+  color: var(--bop-orange); font-weight: 700; margin-bottom: 16px;
 }
 .hero-card h3 {
   font-family: var(--serif); font-size: 22px; font-weight: 500;
   color: var(--palm-deep); line-height: 1.35; margin-bottom: 22px;
 }
 .hero-card-stars {
-  font-size: 18px; color: var(--gold); letter-spacing: 4px; margin-bottom: 12px;
+  font-size: 18px; color: var(--bop-orange); letter-spacing: 4px; margin-bottom: 12px;
 }
 .hero-card-meta {
   font-size: 13px; color: var(--charcoal-soft);
@@ -355,18 +423,14 @@ section { padding: 110px 28px; position: relative; }
   padding: 130px 28px 130px;
   text-align: center;
 }
-.welcome-inner {
-  max-width: 880px; margin: 0 auto;
-}
+.welcome-inner { max-width: 880px; margin: 0 auto; }
+.welcome-bop { display: flex; justify-content: center; margin-bottom: 22px; }
 .welcome h2 {
   font-family: var(--serif); font-weight: 400;
   font-size: clamp(38px, 5.5vw, 64px); line-height: 1.05;
   margin-bottom: 32px;
 }
-.welcome .lead {
-  font-size: 24px; margin-bottom: 28px;
-  padding: 0 20px;
-}
+.welcome .lead { font-size: 24px; margin-bottom: 28px; padding: 0 20px; }
 .welcome p {
   font-size: 18px; max-width: 720px; margin-left: auto; margin-right: auto;
 }
@@ -379,15 +443,15 @@ section { padding: 110px 28px; position: relative; }
 }
 .stat-num {
   font-family: var(--serif); font-size: 52px; font-weight: 400;
-  color: var(--palm); line-height: 1; display: block; margin-bottom: 10px;
+  color: var(--palm-deep); line-height: 1; display: block; margin-bottom: 10px;
 }
-.stat-num em { font-style: italic; color: var(--gold-deep); font-weight: 500; }
+.stat-num em { font-style: italic; color: var(--bop-orange); font-weight: 500; }
 .stat-label {
   font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--charcoal-soft); font-weight: 600; line-height: 1.4;
 }
 
-/* ============ THE SUITES ============ */
+/* ============ THE NINE SUITES ============ */
 .suites {
   background: var(--cream);
   padding: 130px 28px;
@@ -402,63 +466,96 @@ section { padding: 110px 28px; position: relative; }
 }
 .suites-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 36px;
+  gap: 28px;
 }
 .suite-card {
   background: var(--paper);
-  display: flex; flex-direction: column;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  padding: 36px 32px 32px;
   border: 1px solid var(--line);
+  display: flex; flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+  overflow: hidden;
 }
-.suite-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
-.suite-card-img {
-  position: relative; aspect-ratio: 4/3; overflow: hidden;
+.suite-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: var(--bop-orange);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s ease;
 }
-.suite-card-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+.suite-card.two-bed::before { background: var(--palm); }
+.suite-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.suite-card:hover::before { transform: scaleX(1); }
+.suite-card-head {
+  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px;
 }
-.suite-card:hover .suite-card-img img { transform: scale(1.06); }
-.suite-card-badge {
-  position: absolute; top: 16px; left: 16px;
-  background: var(--cream); color: var(--palm-deep);
-  padding: 6px 14px; font-size: 11px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  font-weight: 700; z-index: 2;
-}
-.suite-card-body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
 .suite-card-num {
-  font-family: var(--serif); font-style: italic; font-size: 14px;
-  color: var(--gold-deep); margin-bottom: 8px; letter-spacing: 0.05em;
+  font-family: var(--serif); font-weight: 500;
+  font-size: 56px; line-height: 0.9; color: var(--palm-deep);
+  letter-spacing: -0.02em;
+}
+.suite-card-num span {
+  display: block; font-size: 11px; font-family: var(--sans);
+  font-weight: 700; color: var(--bop-orange);
+  letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px;
+}
+.suite-card-tag {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; padding: 5px 11px;
+  background: var(--cream-warm); color: var(--palm-deep);
+  align-self: flex-start;
+}
+.suite-card.two-bed .suite-card-tag {
+  background: var(--palm); color: var(--cream);
 }
 .suite-card h3 {
-  font-family: var(--serif); font-weight: 500; font-size: 26px;
-  color: var(--palm-deep); line-height: 1.25; margin-bottom: 14px;
+  font-family: var(--serif); font-weight: 500; font-size: 22px;
+  color: var(--palm-deep); line-height: 1.3; margin-bottom: 14px;
 }
-.suite-card-meta {
+.suite-card-specs {
+  list-style: none; padding: 0; margin: 0 0 22px 0;
+  display: grid; grid-template-columns: 1fr 1fr;
+  row-gap: 8px; column-gap: 14px;
+}
+.suite-card-specs li {
   font-size: 13px; color: var(--charcoal-soft);
-  letter-spacing: 0.06em; margin-bottom: 18px;
-  display: flex; gap: 22px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 8px;
 }
-.suite-card-meta span { display: inline-flex; align-items: center; gap: 6px; }
-.suite-card-meta strong { color: var(--palm-deep); font-weight: 600; }
-.suite-card-desc {
-  font-size: 15px; color: var(--charcoal-soft); line-height: 1.65;
-  margin-bottom: 22px; flex: 1;
+.suite-card-specs li::before {
+  content: ''; display: inline-block; width: 5px; height: 5px;
+  background: var(--bop-orange); border-radius: 50%;
+  flex-shrink: 0;
+}
+.suite-card.two-bed .suite-card-specs li::before { background: var(--palm); }
+.suite-card-specs li strong { color: var(--palm-deep); font-weight: 600; }
+.suite-card-rate {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: end;
+}
+.suite-card-rate-num {
+  font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--palm-deep);
+  line-height: 1;
+}
+.suite-card-rate-num span { font-size: 14px; color: var(--charcoal-soft); font-weight: 400; }
+.suite-card-rate-label {
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--charcoal-soft); font-weight: 700;
+  display: block; margin-top: 4px;
 }
 .suite-card-cta {
   font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
-  font-weight: 600; color: var(--palm); padding-top: 16px;
-  border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center;
+  font-weight: 600; color: var(--bop-orange);
 }
 .suite-card-cta::after {
-  content: '→'; font-size: 18px; transition: transform 0.3s ease;
+  content: ' →'; transition: transform 0.3s ease; display: inline-block;
 }
-.suite-card:hover .suite-card-cta::after { transform: translateX(6px); }
+.suite-card:hover .suite-card-cta::after { transform: translateX(4px); }
 
 /* ============ AMENITIES ============ */
 .amenities {
-  background: var(--palm-deep);
+  background: var(--palm-darker);
   color: var(--cream);
   padding: 110px 28px;
 }
@@ -466,29 +563,31 @@ section { padding: 110px 28px; position: relative; }
 .amenities-header {
   text-align: center; max-width: 760px; margin: 0 auto 70px;
 }
-.amenities-header p { color: rgba(253, 249, 241, 0.85); }
+.amenities-header p { color: rgba(250, 243, 225, 0.85); }
 .amenities-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 0;
-  border-top: 1px solid rgba(253, 249, 241, 0.2);
-  border-left: 1px solid rgba(253, 249, 241, 0.2);
+  border-top: 1px solid rgba(250, 243, 225, 0.2);
+  border-left: 1px solid rgba(250, 243, 225, 0.2);
 }
 .amenity {
   padding: 36px 28px;
-  border-bottom: 1px solid rgba(253, 249, 241, 0.2);
-  border-right: 1px solid rgba(253, 249, 241, 0.2);
+  border-bottom: 1px solid rgba(250, 243, 225, 0.2);
+  border-right: 1px solid rgba(250, 243, 225, 0.2);
   text-align: center;
+  transition: background 0.3s ease;
 }
+.amenity:hover { background: rgba(224, 123, 50, 0.12); }
 .amenity-icon {
-  font-family: var(--serif); font-style: italic;
-  font-size: 36px; color: var(--gold-soft); line-height: 1; margin-bottom: 14px;
+  display: flex; justify-content: center; margin-bottom: 14px;
 }
+.amenity-icon svg { width: 30px; height: 36px; }
 .amenity-label {
   font-size: 14px; font-weight: 500; letter-spacing: 0.04em;
   color: var(--cream); line-height: 1.4;
 }
 
-/* ============ THE AREA TEASER (merged pool + Wilton Drive) ============ */
+/* ============ AREA TEASER ============ */
 .area-teaser {
   background: var(--cream);
   padding: 0;
@@ -501,15 +600,14 @@ section { padding: 110px 28px; position: relative; }
 }
 .area-teaser-visual {
   position: relative;
-  background: var(--palm-deep);
+  background: var(--palm-darker);
   overflow: hidden;
 }
-/* The "merged" composition: pool photo as base, Wilton Drive overlay floats on top */
 .area-teaser-visual::before {
   content: '';
   position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(19,51,40,0.2) 0%, rgba(19,51,40,0.55) 100%),
+    linear-gradient(135deg, rgba(15, 61, 44, 0.25) 0%, rgba(15, 61, 44, 0.5) 100%),
     url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg') center/cover no-repeat;
 }
 .area-teaser-overlay {
@@ -519,15 +617,15 @@ section { padding: 110px 28px; position: relative; }
   aspect-ratio: 4/3;
   background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg');
   background-size: cover; background-position: center;
-  box-shadow: -30px -30px 70px rgba(19,51,40,0.5), 0 0 0 1px rgba(216, 192, 132, 0.2);
-  border-top: 3px solid var(--gold);
-  border-left: 3px solid var(--gold);
+  box-shadow: -30px -30px 70px rgba(15, 61, 44, 0.5), 0 0 0 1px rgba(224, 123, 50, 0.3);
+  border-top: 4px solid var(--bop-orange);
+  border-left: 4px solid var(--bop-orange);
   z-index: 2;
 }
 .area-teaser-tag {
   position: absolute;
   top: 60px; left: 60px;
-  background: var(--gold); color: var(--palm-deep);
+  background: var(--bop-orange); color: #fff;
   padding: 14px 22px;
   font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
   font-weight: 700; z-index: 3;
@@ -542,7 +640,7 @@ section { padding: 110px 28px; position: relative; }
 .area-teaser-quote p {
   font-family: var(--serif); font-style: italic; font-size: 22px;
   line-height: 1.4; color: var(--cream);
-  text-shadow: 0 2px 16px rgba(19,51,40,0.6);
+  text-shadow: 0 2px 16px rgba(15, 61, 44, 0.7);
   margin: 0;
 }
 .area-teaser-content {
@@ -563,13 +661,19 @@ section { padding: 110px 28px; position: relative; }
   border-top: 1px solid var(--line);
 }
 .area-teaser-list li {
-  padding: 10px 0;
+  padding: 12px 0;
   display: flex; justify-content: space-between; align-items: center;
   font-size: 15px; border-bottom: 1px solid var(--line);
 }
-.area-teaser-list li strong { color: var(--palm-deep); font-weight: 500; }
+.area-teaser-list li::before {
+  content: ''; flex-shrink: 0;
+  width: 8px; height: 8px; margin-right: 14px;
+  background: var(--bop-orange);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+.area-teaser-list li strong { color: var(--palm-deep); font-weight: 500; flex: 1; }
 .area-teaser-list li span {
-  font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--gold-deep);
+  font-family: var(--serif); font-style: italic; font-size: 14px; color: var(--bop-orange);
 }
 
 /* ============ REVIEWS PREVIEW ============ */
@@ -585,7 +689,7 @@ section { padding: 110px 28px; position: relative; }
   gap: 16px; margin-bottom: 32px;
 }
 .reviews-stars {
-  font-size: 22px; color: var(--gold); letter-spacing: 5px;
+  font-size: 22px; color: var(--bop-orange); letter-spacing: 5px;
 }
 .reviews-rating-num {
   font-family: var(--serif); font-size: 28px; color: var(--palm-deep);
@@ -603,19 +707,20 @@ section { padding: 110px 28px; position: relative; }
   padding: 36px 32px 32px;
   border: 1px solid var(--line);
   display: flex; flex-direction: column;
+  position: relative;
+}
+.review-card::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 60px; height: 4px;
+  background: var(--bop-orange);
 }
 .review-card-stars {
-  font-size: 16px; color: var(--gold); letter-spacing: 3px; margin-bottom: 18px;
+  font-size: 16px; color: var(--bop-orange); letter-spacing: 3px; margin-bottom: 18px;
 }
 .review-card-quote {
   font-family: var(--serif); font-size: 19px; font-style: italic;
   line-height: 1.55; color: var(--palm-deep); margin-bottom: 24px;
-  flex: 1; position: relative;
-}
-.review-card-quote::before {
-  content: '"'; font-family: var(--serif); font-size: 80px;
-  color: var(--gold-soft); line-height: 0.4; display: block;
-  margin-bottom: 6px; opacity: 0.6;
+  flex: 1;
 }
 .review-card-author {
   padding-top: 20px; border-top: 1px solid var(--line);
@@ -630,10 +735,10 @@ section { padding: 110px 28px; position: relative; }
 }
 .reviews-cta { text-align: center; }
 
-/* ============ RETURNING GUESTS / CLOSING ============ */
+/* ============ CLOSING ============ */
 .closing {
   background:
-    linear-gradient(rgba(19,51,40,0.65), rgba(19,51,40,0.85)),
+    linear-gradient(rgba(15, 61, 44, 0.6), rgba(15, 61, 44, 0.85)),
     url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
   color: var(--cream);
   padding: 140px 28px;
@@ -646,19 +751,17 @@ section { padding: 110px 28px; position: relative; }
   font-size: clamp(42px, 6vw, 72px); line-height: 1.05;
   margin-bottom: 30px;
 }
-.closing h2 em { color: var(--gold-soft); }
+.closing h2 em { color: var(--bop-orange-bright); }
 .closing-lead {
   font-family: var(--serif); font-style: italic;
-  font-size: 24px; color: rgba(253, 249, 241, 0.95);
+  font-size: 24px; color: rgba(250, 243, 225, 0.95);
   margin-bottom: 20px; line-height: 1.45;
 }
 .closing-sub {
-  font-size: 17px; color: rgba(253, 249, 241, 0.85);
+  font-size: 17px; color: rgba(250, 243, 225, 0.85);
   margin-bottom: 44px; max-width: 600px; margin-left: auto; margin-right: auto;
 }
-.closing-actions {
-  display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
-}
+.closing-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1024px) {
@@ -684,13 +787,11 @@ section { padding: 110px 28px; position: relative; }
   .amenities { padding: 80px 22px; }
   .amenities-grid { grid-template-columns: 1fr 1fr; }
   .amenity { padding: 24px 14px; }
-  .amenity-icon { font-size: 28px; }
-  .amenity-label { font-size: 13px; }
   .area-teaser-content { padding: 60px 24px; }
   .area-teaser-visual { min-height: 380px; }
   .area-teaser-overlay { width: 75%; bottom: 30px; }
   .area-teaser-tag { top: 30px; left: 30px; padding: 10px 16px; font-size: 10px; }
-  .area-teaser-quote { left: 30px; bottom: 50px; max-width: calc(100% - 60px); }
+  .area-teaser-quote { left: 30px; max-width: calc(100% - 60px); }
   .area-teaser-quote p { font-size: 17px; }
   .reviews-preview { padding: 80px 22px; }
   .reviews-grid { gap: 22px; }
@@ -737,16 +838,26 @@ section { padding: 110px 28px; position: relative; }
 </nav>
 
 
+<!-- ===== PROMO BANNER (TEMPLATE) ===== -->
+<div class="promo-banner" id="promoBanner">
+  <div class="promo-banner-inner">
+    <span class="promo-banner-flag">Spring Special</span>
+    <span>Save 10% on stays of 5 nights or more, now through May 31.</span>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book direct →</a>
+  </div>
+  <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
+</div>
+
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow">Wilton Manors · Fort Lauderdale</div>
       <h1>Your private<br>place on <em>The Drive.</em></h1>
-      <p class="hero-sub">An exclusive collection of apartment suites built around a tropical pool, in the heart of Wilton Manors. Five-star comfort with the privacy of your own place — and the entire neighborhood, ten minutes on foot.</p>
+      <p class="hero-sub">Nine designer-appointed apartment suites built around a tropical pool, in the heart of the Island City. Five-star comfort with the privacy of your own place — and the entire neighborhood, ten minutes on foot.</p>
       <div class="hero-actions">
         <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-light">Check Availability</a>
-        <a href="https://paradisevacationsuites.com/our-suites/" class="btn-light-outline">Explore the Suites</a>
+        <a href="#suites" class="btn-light-outline">Explore the Suites</a>
       </div>
     </div>
     <div class="hero-card">
@@ -763,22 +874,30 @@ section { padding: 110px 28px; position: relative; }
 <!-- ===== WELCOME ===== -->
 <section class="welcome">
   <div class="welcome-inner fade-up">
+    <div class="welcome-bop"><svg class="bop bop-lg" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div>
     <div class="eyebrow center">A Welcome From Paradise</div>
     <h2>Lavish Apartment Suites,<br>Priced Like a <em>Hotel Room.</em></h2>
-    <p class="lead">A small, designer-appointed collection of suites in the Island City of Wilton Manors — the only true Island City in South Florida.</p>
-    <p>Each suite is a fully equipped apartment: full kitchen, washer/dryer, premium linens, dedicated workspace, and the famously comfortable beds our guests email us about. Outside your door, a tropical resort pool surrounded by pergolas, hot tub, lush gardens, and the buzzing bars and restaurants of Wilton Drive a short walk away.</p>
+    <p class="lead">Nine designer-appointed suites in the Island City of Wilton Manors — the only true Island City in South Florida.</p>
+    <p>Each suite is a fully equipped apartment: full kitchen, washer/dryer, premium linens, dedicated workspace, and the famously comfortable beds our guests email us about. Outside your door, a tropical resort pool surrounded by pergolas, hot tub, lush gardens — and the buzzing bars and restaurants of Wilton Drive a short walk away.</p>
     <div class="welcome-stats">
       <div>
         <span class="stat-num"><em>4.9</em></span>
         <span class="stat-label">Average<br>Guest Rating</span>
       </div>
       <div>
-        <span class="stat-num"><em>10</em></span>
-        <span class="stat-label">Minutes Walk to<br>Wilton Drive</span>
+        <span class="stat-num"><em>9</em></span>
+        <span class="stat-label">Apartment<br>Suites</span>
       </div>
       <div>
-        <span class="stat-num"><em>30+</em></span>
-        <span class="stat-label">Bars &amp; Restaurants<br>Within One Mile</span>
+        <span class="stat-num"><em>10</em></span>
+        <span class="stat-label">Minutes Walk to<br>Wilton Drive</span>
       </div>
       <div>
         <span class="stat-num"><em>18</em></span>
@@ -788,71 +907,218 @@ section { padding: 110px 28px; position: relative; }
   </div>
 </section>
 
-<!-- ===== THE SUITES ===== -->
-<section class="suites">
+<!-- ===== THE SUITES (9 INDIVIDUAL UNITS) ===== -->
+<section class="suites" id="suites">
   <div class="container">
     <div class="suites-header fade-up">
       <div>
-        <div class="eyebrow">Our Apartment Suites</div>
-        <h2>Designer-appointed.<br><em>Effortlessly equipped.</em></h2>
+        <div class="eyebrow">Our Nine Suites</div>
+        <h2>Choose Your<br><em>Suite by Number.</em></h2>
       </div>
       <div>
-        <p>Three configurations sleeping anywhere from two to six. Every suite includes a full kitchen, in-suite laundry, designated workspace, and our signature pillow-top beds — built for stays from a long weekend to a long winter.</p>
-        <p style="margin-top: 14px;"><a href="https://paradisevacationsuites.com/our-suites/" style="font-weight:600; letter-spacing:0.08em; text-transform:uppercase; font-size:13px;">Explore all suites →</a></p>
+        <p>Six one-bedroom apartments and three two-bedroom villas, each designer-appointed with a fully equipped kitchen, in-suite laundry, designated workspace, and our signature pillow-top beds. Choose your suite by number — they're all available to view and book individually.</p>
+        <p style="margin-top: 14px;"><a href="https://paradisevacationsuites.com/our-suites/" style="font-weight:600; letter-spacing:0.08em; text-transform:uppercase; font-size:13px; color: var(--bop-orange);">Full suite gallery →</a></p>
       </div>
     </div>
     <div class="suites-grid">
-      <article class="suite-card fade-up">
-        <div class="suite-card-img">
-          <span class="suite-card-badge">Studio</span>
-          <img src="https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg" alt="Studio suite at Paradise Vacation Suites" loading="lazy">
-        </div>
-        <div class="suite-card-body">
-          <div class="suite-card-num">No. 01</div>
-          <h3>The Studio Suite</h3>
-          <div class="suite-card-meta">
-            <span><strong>Sleeps 2</strong></span>
-            <span><strong>1 Bath</strong></span>
-            <span><strong>Full Kitchen</strong></span>
-          </div>
-          <p class="suite-card-desc">Compact and beautifully composed — full kitchen, queen bed, dedicated workspace, washer/dryer. Perfect for a long weekend on the Drive.</p>
-          <div class="suite-card-cta">View Details</div>
-        </div>
-      </article>
-      <article class="suite-card fade-up">
-        <div class="suite-card-img">
-          <span class="suite-card-badge">Most Popular</span>
-          <img src="https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg" alt="One bedroom suite at Paradise Vacation Suites" loading="lazy">
-        </div>
-        <div class="suite-card-body">
-          <div class="suite-card-num">No. 02</div>
-          <h3>One-Bedroom Suite</h3>
-          <div class="suite-card-meta">
-            <span><strong>Sleeps 4</strong></span>
-            <span><strong>1 Bath</strong></span>
-            <span><strong>Private Patio</strong></span>
-          </div>
-          <p class="suite-card-desc">A separate bedroom, full living room, and the legendary pillow-top bed — with a private patio overlooking the pool gardens.</p>
-          <div class="suite-card-cta">View Details</div>
-        </div>
-      </article>
-      <article class="suite-card fade-up">
-        <div class="suite-card-img">
-          <span class="suite-card-badge">Two Bedroom</span>
-          <img src="https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg" alt="Two bedroom suite at Paradise Vacation Suites" loading="lazy">
-        </div>
-        <div class="suite-card-body">
-          <div class="suite-card-num">No. 03</div>
-          <h3>Two-Bedroom Suite</h3>
-          <div class="suite-card-meta">
-            <span><strong>Sleeps 6</strong></span>
-            <span><strong>2 Baths</strong></span>
-            <span><strong>1,150 sq ft</strong></span>
-          </div>
-          <p class="suite-card-desc">Designed for groups and longer stays — two full bedrooms, two baths, gourmet kitchen, generous living space, and pool views.</p>
-          <div class="suite-card-cta">View Details</div>
-        </div>
-      </article>
+      <article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>01</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Garden View Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>02</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Pool View Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>03</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Pergola Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>04</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Palm Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>05</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Hibiscus Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Apt.</span>06</div>
+    <div class="suite-card-tag">One-Bedroom</div>
+  </div>
+  <h3>Bougainvillea Suite</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 2</strong></li>
+    <li><strong>1 Bath</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>~800 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$99<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card two-bed">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Suite</span>2112</div>
+    <div class="suite-card-tag">Two-Bedroom</div>
+  </div>
+  <h3>Two-Bedroom Garden Villa</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 4</strong></li>
+    <li><strong>2 Baths</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>1,150 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$170<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card two-bed">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Suite</span>2120</div>
+    <div class="suite-card-tag">Two-Bedroom</div>
+  </div>
+  <h3>Two-Bedroom Poolside Villa</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 4</strong></li>
+    <li><strong>2 Baths</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>1,150 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$170<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
+<article class="suite-card two-bed">
+  <div class="suite-card-head">
+    <div class="suite-card-num"><span>Suite</span>2124</div>
+    <div class="suite-card-tag">Two-Bedroom</div>
+  </div>
+  <h3>Two-Bedroom Premier Villa</h3>
+  <ul class="suite-card-specs">
+    <li><strong>Sleeps 4</strong></li>
+    <li><strong>2 Baths</strong></li>
+    <li><strong>Full Kitchen</strong></li>
+    <li><strong>1,150 sq ft</strong></li>
+    <li>Washer / Dryer</li>
+    <li>Pool Access</li>
+  </ul>
+  <div class="suite-card-rate">
+    <div>
+      <div class="suite-card-rate-num">$170<span> /night</span></div>
+      <span class="suite-card-rate-label">Starting Rate</span>
+    </div>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="suite-card-cta">Book</a>
+  </div>
+</article>
     </div>
   </div>
 </section>
@@ -866,19 +1132,75 @@ section { padding: 110px 28px; position: relative; }
       <p>Just nine suites tucked around a tropical pool, with the amenities of a much larger property and the privacy of a much smaller one.</p>
     </div>
     <div class="amenities-grid fade-up">
-      <div class="amenity"><div class="amenity-icon">i</div><div class="amenity-label">Heated Tropical Pool</div></div>
-      <div class="amenity"><div class="amenity-icon">ii</div><div class="amenity-label">Hot Tub &amp; Cabanas</div></div>
-      <div class="amenity"><div class="amenity-icon">iii</div><div class="amenity-label">Lush Gardens &amp; Pergolas</div></div>
-      <div class="amenity"><div class="amenity-icon">iv</div><div class="amenity-label">Fully Equipped Kitchens</div></div>
-      <div class="amenity"><div class="amenity-icon">v</div><div class="amenity-label">In-Suite Washer/Dryer</div></div>
-      <div class="amenity"><div class="amenity-icon">vi</div><div class="amenity-label">Free Private Parking</div></div>
-      <div class="amenity"><div class="amenity-icon">vii</div><div class="amenity-label">Walk to Wilton Drive</div></div>
-      <div class="amenity"><div class="amenity-icon">viii</div><div class="amenity-label">Adults-Only Sanctuary</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Heated Tropical Pool</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Hot Tub &amp; Cabanas</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Lush Gardens &amp; Pergolas</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Fully Equipped Kitchens</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">In-Suite Washer/Dryer</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Free Private Parking</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Walk to Wilton Drive</div></div>
+      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
+<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+</svg></div><div class="amenity-label">Adults-Only Sanctuary</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== AREA TEASER (POOL + WILTON DRIVE MERGED) ===== -->
+<!-- ===== AREA TEASER ===== -->
 <section class="area-teaser">
   <div class="area-teaser-grid">
     <div class="area-teaser-visual">
@@ -925,7 +1247,7 @@ section { padding: 110px 28px; position: relative; }
         <p class="review-card-quote">A truly fantastic experience at a quaint but very well-run resort. You get this nostalgic, romantic vibe of old Florida, but also the feeling that the owners have thought of every last detail.</p>
         <div class="review-card-author">
           <div class="review-card-author-name">Michael R.</div>
-          <div class="review-card-author-meta">One-Bedroom · Returned 4×</div>
+          <div class="review-card-author-meta">Apt. 02 · Returned 4×</div>
         </div>
       </article>
       <article class="review-card">
@@ -933,7 +1255,7 @@ section { padding: 110px 28px; position: relative; }
         <p class="review-card-quote">Beautifully maintained property, a great quiet place to relax. The suite was like staying in a condo — full kitchen, in-suite laundry. Less expensive than every other option in the neighborhood.</p>
         <div class="review-card-author">
           <div class="review-card-author-name">Susan T.</div>
-          <div class="review-card-author-meta">Studio · Winter '26</div>
+          <div class="review-card-author-meta">Apt. 04 · Winter '26</div>
         </div>
       </article>
       <article class="review-card">
@@ -941,7 +1263,7 @@ section { padding: 110px 28px; position: relative; }
         <p class="review-card-quote">The location is unreal. Walked everywhere, never moved the car. Pool was gorgeous, beds were as comfortable as everyone said. We're already booked for next year.</p>
         <div class="review-card-author">
           <div class="review-card-author-name">David &amp; Jorge</div>
-          <div class="review-card-author-meta">Two-Bedroom · Pride Weekend</div>
+          <div class="review-card-author-meta">Suite 2120 · Pride Weekend</div>
         </div>
       </article>
     </div>
@@ -970,13 +1292,13 @@ section { padding: 110px 28px; position: relative; }
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-brand-logo">Paradise Vacation Suites</div>
-      <p>An exclusive collection of apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
+      <p>An exclusive collection of nine apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
       <p><a href="tel:954-868-5671">954-868-5671</a></p>
     </div>
     <div>
       <h4>Stay With Us</h4>
       <ul>
-        <li><a href="https://paradisevacationsuites.com/our-suites/">The Suites</a></li>
+        <li><a href="https://paradisevacationsuites.com/our-suites/">All Nine Suites</a></li>
         <li><a href="https://paradisevacationsuites.com/overview/">Property Overview</a></li>
         <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
         <li><a href="./reviews/">Reviews</a></li>
@@ -1004,7 +1326,7 @@ section { padding: 110px 28px; position: relative; }
   </div>
   <div class="footer-bottom">
     <span>© 2026 Paradise Vacation Suites. All rights reserved.</span>
-    <span>Site by <a href="https://www.bofilltech.com/" style="color: var(--gold-soft);">Bofill Technologies</a></span>
+    <span>Site by <a href="https://www.bofilltech.com/" style="color: var(--bop-orange-soft);">Bofill Technologies</a></span>
   </div>
 </footer>
 
