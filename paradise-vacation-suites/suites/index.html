@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>The Suites · Paradise Vacation Suites · Wilton Manors</title>
+<meta name="description" content="Six one-bedroom apartments and three two-bedroom villas in the Island City of Wilton Manors. Each fully equipped with kitchen, in-suite laundry, premium linens, and pool access.">
+<style>
+:root {
+  /* Tropical sand & cream */
+  --cream: #faf3e1;
+  --cream-warm: #f4e8c8;
+  --ivory: #fef9eb;
+  --paper: #ffffff;
+
+  /* Tropical greens */
+  --palm: #2a8262;
+  --palm-deep: #1a5a40;
+  --palm-darker: #0f3d2c;
+  --palm-light: #65b290;
+
+  /* Bird of Paradise palette */
+  --bop-orange: #e07b32;
+  --bop-orange-bright: #f08a3e;
+  --bop-orange-soft: #f5b88c;
+  --bop-blue: #3a4d8a;
+
+  /* Tropical accents */
+  --coral: #d6557a;
+  --sun: #f0bc3e;
+  --aqua: #4fa8b0;
+
+  /* Legacy gold tokens (mapped for compatibility) */
+  --gold: var(--bop-orange);
+  --gold-deep: #b8662a;
+  --gold-soft: var(--bop-orange-soft);
+
+  --charcoal: #2a2520;
+  --charcoal-soft: #5a4f44;
+  --line: rgba(42, 37, 32, 0.12);
+  --line-warm: rgba(224, 123, 50, 0.25);
+
+  --shadow-sm: 0 4px 16px rgba(26, 90, 64, 0.08);
+  --shadow-md: 0 12px 40px rgba(26, 90, 64, 0.14);
+  --shadow-lg: 0 24px 60px rgba(26, 90, 64, 0.20);
+  --shadow-orange: 0 12px 40px rgba(224, 123, 50, 0.18);
+
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--charcoal);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--palm); text-decoration: none; transition: color 0.25s ease; }
+a:hover { color: var(--bop-orange); }
+
+/* ===== PROMO BANNER (NEW) ===== */
+.promo-banner {
+  background: linear-gradient(90deg, var(--bop-orange) 0%, var(--bop-orange-bright) 100%);
+  color: #fff;
+  padding: 11px 28px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-align: center;
+  position: relative;
+}
+.promo-banner-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap;
+}
+.promo-banner-flag {
+  background: rgba(255,255,255,0.25);
+  padding: 3px 10px; border-radius: 2px;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+}
+.promo-banner a {
+  color: #fff; text-decoration: underline;
+  font-weight: 600; margin-left: 8px;
+}
+.promo-banner a:hover { color: var(--cream); }
+.promo-banner-close {
+  position: absolute; top: 50%; right: 18px;
+  transform: translateY(-50%);
+  background: transparent; border: none; color: #fff;
+  cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px;
+  opacity: 0.7;
+}
+.promo-banner-close:hover { opacity: 1; }
+.promo-banner.dismissed { display: none; }
+
+/* ===== TOP BAR / NAV ===== */
+.topbar {
+  background: var(--palm-darker);
+  color: var(--cream);
+  padding: 8px 0;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+}
+.topbar-inner {
+  max-width: 1340px; margin: 0 auto; padding: 0 28px;
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+}
+.topbar a { color: var(--cream); }
+.topbar a:hover { color: var(--bop-orange-soft); }
+.topbar-left { display: flex; gap: 18px; align-items: center; opacity: 0.95; }
+.topbar-pip {
+  display: inline-block; width: 6px; height: 6px;
+  background: var(--bop-orange); border-radius: 50%; vertical-align: middle; margin-right: 8px;
+}
+
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250, 243, 225, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+  transition: box-shadow 0.3s ease;
+}
+.nav.scrolled { box-shadow: 0 4px 20px rgba(26, 90, 64, 0.08); }
+.nav-inner {
+  max-width: 1340px; margin: 0 auto; padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; }
+.nav-logo img { height: 56px; width: auto; }
+.nav-logo-text {
+  font-family: var(--serif); font-weight: 500; font-size: 18px;
+  color: var(--palm-deep); line-height: 1.1; letter-spacing: 0.02em;
+}
+.nav-logo-text span {
+  display: block; font-size: 11px; letter-spacing: 0.25em;
+  color: var(--bop-orange); text-transform: uppercase;
+  font-family: var(--sans); font-weight: 600; margin-top: 4px;
+}
+.nav-menu {
+  display: flex; gap: 36px; list-style: none; align-items: center;
+}
+.nav-menu a {
+  color: var(--charcoal); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  position: relative; padding: 6px 0;
+}
+.nav-menu a::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--bop-orange);
+  transform: scaleX(0); transition: transform 0.3s ease; transform-origin: right;
+}
+.nav-menu a:hover::after, .nav-menu a.active::after {
+  transform: scaleX(1); transform-origin: left;
+}
+.nav-menu a.active { color: var(--palm-deep); }
+.btn-book {
+  background: var(--bop-orange); color: #fff !important;
+  padding: 13px 28px; font-size: 13px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid var(--bop-orange); border-radius: 0;
+  transition: all 0.3s ease; white-space: nowrap; display: inline-block;
+}
+.btn-book:hover {
+  background: var(--palm); color: #fff !important; border-color: var(--palm);
+}
+.btn-book::after { display: none; }
+.nav-actions { display: flex; align-items: center; gap: 14px; }
+.nav-toggle {
+  display: none; background: transparent; border: none; cursor: pointer; padding: 8px;
+}
+.nav-toggle span {
+  display: block; width: 26px; height: 2px;
+  background: var(--palm-deep); margin: 5px 0; transition: all 0.3s ease;
+}
+
+/* ===== BIRD OF PARADISE MARKERS ===== */
+.bop {
+  display: inline-block; vertical-align: middle;
+  width: 18px; height: 22px;
+  flex-shrink: 0;
+}
+.bop-lg { width: 36px; height: 44px; }
+.bop-xl { width: 52px; height: 64px; }
+
+/* ===== TYPOGRAPHY HELPERS ===== */
+.eyebrow {
+  font-family: var(--sans); font-weight: 600; font-size: 12px;
+  letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--bop-orange); margin-bottom: 18px;
+  display: flex; align-items: center; gap: 14px;
+}
+.eyebrow::before {
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
+}
+.eyebrow.center { justify-content: center; }
+.eyebrow.center::after {
+  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
+}
+.eyebrow.light { color: var(--bop-orange-soft); }
+.eyebrow.light::before, .eyebrow.light::after { background: var(--bop-orange-soft); }
+
+h1, h2, h3, h4 { color: var(--palm-deep); }
+h1 em, h2 em, h3 em { font-style: italic; color: var(--bop-orange); font-weight: 400; }
+section h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
+  letter-spacing: -0.01em; margin-bottom: 24px;
+}
+p { margin-bottom: 18px; color: var(--charcoal-soft); font-size: 17px; line-height: 1.75; }
+p:last-child { margin-bottom: 0; }
+.lead {
+  font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400;
+  color: var(--palm-deep); line-height: 1.5;
+}
+
+/* ===== SECTION BASE ===== */
+section { padding: 110px 28px; position: relative; }
+.container { max-width: 1340px; margin: 0 auto; }
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--bop-orange); color: #fff !important;
+  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--palm); color: #fff !important; border-color: var(--palm);
+}
+.btn-outline {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: transparent; color: var(--palm-deep) !important;
+  border: 1px solid var(--palm-deep); transition: all 0.3s ease;
+}
+.btn-outline:hover {
+  background: var(--palm-deep); color: var(--cream) !important;
+}
+.btn-light {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: var(--bop-orange); color: #fff !important;
+  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
+}
+.btn-light:hover {
+  background: var(--cream); border-color: var(--cream); color: var(--palm-deep) !important;
+}
+.btn-light-outline {
+  display: inline-block; padding: 18px 44px; font-size: 13px;
+  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  background: transparent; color: var(--cream) !important;
+  border: 1px solid var(--cream); transition: all 0.3s ease;
+}
+.btn-light-outline:hover {
+  background: var(--cream); color: var(--palm-deep) !important;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: var(--palm-darker);
+  color: rgba(250, 243, 225, 0.8);
+  padding: 70px 28px 32px;
+  font-size: 14px;
+}
+.footer-inner {
+  max-width: 1340px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;
+}
+.footer h4 {
+  font-family: var(--serif); font-size: 18px; font-weight: 500;
+  color: var(--cream); margin-bottom: 20px; letter-spacing: 0.02em;
+}
+.footer ul { list-style: none; }
+.footer li { margin-bottom: 10px; }
+.footer a { color: rgba(250, 243, 225, 0.8); }
+.footer a:hover { color: var(--bop-orange-soft); }
+.footer-brand p {
+  color: rgba(250, 243, 225, 0.75); font-size: 14px; line-height: 1.7; margin-bottom: 20px;
+}
+.footer-brand-logo {
+  font-family: var(--serif); font-size: 24px; font-weight: 500;
+  color: var(--cream); margin-bottom: 18px; letter-spacing: 0.02em;
+}
+.footer-bottom {
+  max-width: 1340px; margin: 0 auto;
+  padding-top: 28px; border-top: 1px solid rgba(250, 243, 225, 0.15);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 14px; font-size: 12px; letter-spacing: 0.06em;
+}
+
+/* ===== SCROLL REVEAL ===== */
+.fade-up {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE - SHARED ===== */
+@media (max-width: 1024px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .topbar { display: none; }
+  .promo-banner { font-size: 13px; padding: 10px 50px 10px 18px; }
+  .promo-banner-flag { font-size: 10px; }
+  .nav-menu {
+    position: fixed; top: 78px; left: 0; right: 0;
+    background: var(--cream); flex-direction: column;
+    padding: 30px 28px; gap: 22px;
+    border-bottom: 1px solid var(--line);
+    opacity: 0; visibility: hidden; transform: translateY(-12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    box-shadow: var(--shadow-md);
+  }
+  .nav-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+  .nav-toggle { display: block; }
+  .nav-logo img { height: 44px; }
+  .nav-logo-text { font-size: 14px; }
+  .nav-logo-text span { display: none; }
+  .nav-inner { padding: 14px 20px; }
+  .btn-book { padding: 11px 20px; font-size: 12px; }
+  section { padding: 70px 22px; }
+  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+.page-hero {
+  position: relative; padding: 140px 28px 100px; text-align: center;
+  background:
+    linear-gradient(rgba(15, 61, 44, 0.7), rgba(15, 61, 44, 0.85)),
+    url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg') center/cover no-repeat;
+  color: var(--cream);
+}
+.page-hero-inner { max-width: 880px; margin: 0 auto; }
+.page-hero h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(46px, 7vw, 84px); line-height: 1.05;
+  color: var(--cream); margin-bottom: 20px; letter-spacing: -0.01em;
+}
+.page-hero h1 em { font-style: italic; color: var(--bop-orange-bright); font-weight: 400; }
+.page-hero p {
+  font-size: 19px; color: rgba(250, 243, 225, 0.95);
+  max-width: 620px; margin: 0 auto;
+}
+.intro {
+  background: var(--ivory); padding: 90px 28px;
+  text-align: center; border-bottom: 1px solid var(--line);
+}
+.intro-inner { max-width: 760px; margin: 0 auto; }
+.intro p {
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: var(--palm-deep); line-height: 1.55; margin: 0;
+}
+.intro p em { color: var(--bop-orange); }
+
+.suite-section { padding: 90px 28px; }
+.suite-section:nth-child(odd) { background: var(--cream); }
+.suite-section:nth-child(even) { background: var(--ivory); }
+.suite-detail {
+  max-width: 1340px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
+}
+.suite-detail.reverse .suite-detail-photo { order: 2; }
+.suite-detail-photo {
+  position: relative; aspect-ratio: 4/3;
+  background-size: cover; background-position: center;
+  border-top: 4px solid var(--bop-orange);
+}
+.suite-detail.two-bed .suite-detail-photo { border-top-color: var(--palm); }
+.suite-detail-num {
+  position: absolute; top: 24px; left: 24px;
+  background: var(--cream); padding: 14px 22px;
+  font-family: var(--serif); font-size: 36px; font-weight: 500;
+  color: var(--palm-deep); line-height: 1; letter-spacing: -0.02em;
+  box-shadow: var(--shadow-sm);
+}
+.suite-detail-num span {
+  display: block; font-size: 10px; font-family: var(--sans);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--bop-orange); font-weight: 700; margin-bottom: 4px;
+}
+.suite-detail-content h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05;
+  margin-bottom: 14px; color: var(--palm-deep);
+}
+.suite-detail-content h2 em { color: var(--bop-orange); }
+.suite-detail-tag {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; color: var(--bop-orange); margin-bottom: 22px;
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.suite-detail.two-bed .suite-detail-tag { color: var(--palm); }
+.suite-detail-tag::before {
+  content: ''; width: 24px; height: 1px; background: currentColor;
+}
+.suite-detail-content p {
+  font-size: 17px; line-height: 1.7; color: var(--charcoal-soft); margin-bottom: 18px;
+}
+.suite-detail-specs {
+  list-style: none; padding: 26px 0; margin: 26px 0;
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+.suite-detail-specs li {
+  font-size: 13px; color: var(--charcoal-soft);
+}
+.suite-detail-specs li strong {
+  display: block; font-family: var(--serif); font-size: 22px;
+  color: var(--palm-deep); font-weight: 500; line-height: 1.2;
+}
+.suite-detail-specs li span {
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--bop-orange); font-weight: 600; display: block; margin-top: 4px;
+}
+.suite-detail-rate {
+  display: flex; align-items: center; gap: 30px; margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.suite-detail-rate-num {
+  font-family: var(--serif); font-size: 42px; font-weight: 500;
+  color: var(--palm-deep); line-height: 1;
+}
+.suite-detail-rate-num span { font-size: 16px; color: var(--charcoal-soft); font-weight: 400; }
+.suite-detail-rate-label {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--charcoal-soft); font-weight: 700; line-height: 1.5;
+}
+.suite-detail-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.divider {
+  background: var(--palm-darker);
+  color: var(--cream);
+  padding: 90px 28px; text-align: center;
+}
+.divider-inner { max-width: 720px; margin: 0 auto; }
+.divider h3 {
+  color: var(--cream); font-family: var(--serif); font-weight: 400;
+  font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin-bottom: 18px;
+}
+.divider h3 em { color: var(--bop-orange-bright); }
+.divider p { color: rgba(250, 243, 225, 0.85); font-size: 17px; margin-bottom: 0; }
+
+.closing {
+  background:
+    linear-gradient(rgba(15, 61, 44, 0.65), rgba(15, 61, 44, 0.85)),
+    url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
+  color: var(--cream); padding: 130px 28px; text-align: center;
+}
+.closing-inner { max-width: 760px; margin: 0 auto; }
+.closing h2 {
+  color: var(--cream); font-family: var(--serif); font-weight: 400;
+  font-size: clamp(38px, 5vw, 60px); line-height: 1.1; margin-bottom: 28px;
+}
+.closing h2 em { color: var(--bop-orange-bright); }
+.closing p { color: rgba(250, 243, 225, 0.92); font-size: 18px; margin-bottom: 40px; }
+.closing-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 1024px) {
+  .suite-detail { grid-template-columns: 1fr; gap: 40px; }
+  .suite-detail.reverse .suite-detail-photo { order: 0; }
+}
+@media (max-width: 768px) {
+  .page-hero { padding: 90px 22px 70px; }
+  .intro { padding: 60px 22px; }
+  .intro p { font-size: 19px; }
+  .suite-section { padding: 60px 22px; }
+  .suite-detail-num { padding: 10px 16px; font-size: 28px; top: 16px; left: 16px; }
+  .suite-detail-specs { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .suite-detail-specs li strong { font-size: 18px; }
+  .suite-detail-actions { flex-direction: column; align-items: stretch; }
+  .closing { padding: 80px 22px; background-attachment: scroll; }
+  .closing-actions { flex-direction: column; align-items: stretch; }
+}
+</style>
+</head>
+<body>
+<div class="promo-banner" id="promoBanner">
+  <div class="promo-banner-inner">
+    <span class="promo-banner-flag">Spring Special</span>
+    <span>Save 10% on stays of 5 nights or more, now through May 31.</span>
+    <a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book direct →</a>
+  </div>
+  <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
+</div>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <span><span class="topbar-pip"></span>Wilton Manors, Fort Lauderdale</span>
+    </div>
+    <div><a href="tel:954-868-5671">Call · 954-868-5671</a></div>
+  </div>
+</div>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href=".././" class="nav-logo">
+      <img src="https://paradisevacationsuites.com/wp-content/uploads/image001-1.png" alt="Paradise Vacation Suites">
+      <div class="nav-logo-text">
+        Paradise Vacation Suites
+        <span>Wilton Manors</span>
+      </div>
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href=".././">Home</a></li>
+      <li><a href=".././suites/" class="active">Suites</a></li>
+      <li><a href=".././overview/">Overview</a></li>
+      <li><a href=".././area/">Area</a></li>
+      <li><a href=".././reviews/">Reviews</a></li>
+      <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
+      <li><a href=".././contact/">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-book">Book Now</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+<section class="page-hero">
+  <div class="page-hero-inner">
+    <div class="eyebrow center light">Our Nine Suites</div>
+    <h1>Pick Your<br><em>Suite by Number.</em></h1>
+    <p>Six one-bedroom apartments and three two-bedroom villas. Every one fully equipped, designer-appointed, and ten minutes on foot from the heart of Wilton Drive.</p>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="intro-inner fade-up">
+    <p>"Our suites are full apartments — kitchen, washer/dryer, real living room, the comfort of home. Then you step outside and the whole property is yours: pool, gardens, hot tub, the pergolas. It's the size of a boutique hotel with the privacy of a vacation rental. <em>That's what makes Paradise different.</em>"</p>
+  </div>
+</section>
+
+<section class="suite-section" id="apt-01">
+  <div class="suite-detail fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>01</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 01</div>
+      <h2>Garden View Suite</h2>
+      <p>A west-facing one-bedroom that opens onto the lushest corner of the gardens — the bougainvillea, the bird-of-paradise, the koi pond fountain. Late-afternoon light pours through the patio doors right when you're settling in for a glass of wine.</p>
+      <p>Queen bed, full kitchen, in-suite washer/dryer, dedicated workspace, and the same pillow-top bed our returning guests email us about. Sleeps 2.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-02">
+  <div class="suite-detail reverse fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>02</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 02 · Most Popular</div>
+      <h2>Pool View Suite</h2>
+      <p>The suite our regulars request first. A direct view of the heated pool from your own private patio — the fountains, the pergolas, the palms. Mornings start with coffee out here. Evenings end the same way.</p>
+      <p>Queen bed with a separate sitting area, full kitchen, in-suite washer/dryer, dedicated workspace. Sleeps 2 — book early; this one fills up fastest.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-03">
+  <div class="suite-detail fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>03</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 03</div>
+      <h2>Pergola Suite</h2>
+      <p>Steps from the main pergola dining area — perfect if you plan on cooking a few nights and eating outdoors with cocktails. The pergola seats six comfortably, and it's where most of our long-stay guests end up holding court.</p>
+      <p>Queen bed, full kitchen, washer/dryer, premium linens. The kitchen is genuinely cookable: real cookware, sharp knives, a French press, and a proper coffee setup. Sleeps 2.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-04">
+  <div class="suite-detail reverse fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>04</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 04</div>
+      <h2>Palm Suite</h2>
+      <p>On the quieter east side of the property, looking out over the palms and the koi pond. The suite our long-stay guests pick — readers, writers, remote workers. The dedicated workspace has a real desk and chair, not a kitchen counter.</p>
+      <p>Queen bed, full kitchen, in-suite washer/dryer, fast wifi (we run dedicated business-class fiber). Sleeps 2.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-05">
+  <div class="suite-detail fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>05</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 05</div>
+      <h2>Hibiscus Suite</h2>
+      <p>A second-floor suite with a private balcony overlooking the gardens. Slightly more privacy, slightly more breeze, and a quiet little perch that puts you above the action without taking you out of it.</p>
+      <p>Queen bed, full kitchen, washer/dryer, balcony seating for two. The balcony is where you'll have your morning coffee whether you planned to or not. Sleeps 2.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-06">
+  <div class="suite-detail reverse fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+      <div class="suite-detail-num"><span>Apt.</span>06</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">One-Bedroom · Apt. 06</div>
+      <h2>Bougainvillea Suite</h2>
+      <p>Named for the cascade of magenta bougainvillea right outside the window — the most photographed corner of the property. South-facing, bright all day, and tucked in a way that feels surprisingly private given how close everything is.</p>
+      <p>Queen bed, full kitchen, washer/dryer, dedicated workspace. A favorite for couples on a first visit who want something a little more private. Sleeps 2.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>2</strong><span>Sleeps</span></li>
+        <li><strong>1</strong><span>Bath</span></li>
+        <li><strong>~800</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$99<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider">
+  <div class="divider-inner">
+    <div class="eyebrow center light">For Groups &amp; Longer Stays</div>
+    <h3>Three Two-Bedroom Villas</h3>
+    <p>Twice the space. The same proximity to everything.</p>
+  </div>
+</div>
+
+<section class="suite-section" id="apt-2112">
+  <div class="suite-detail two-bed fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Suite</span>2112</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">Two-Bedroom · Suite 2112</div>
+      <h2>Two-Bedroom Garden Villa</h2>
+      <p>Our smallest two-bedroom — but "smallest" still means 1,150 square feet, two private bedrooms, two full bathrooms, and a generous open living/dining/kitchen with garden views. The right call for two couples traveling together, or one family with a teenager who needs a door.</p>
+      <p>Two queen bedrooms, two full baths, gourmet kitchen, full-size washer/dryer, dedicated workspace. Sleeps 4 comfortably, 6 with the sleeper sofa.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>4-6</strong><span>Sleeps</span></li>
+        <li><strong>2</strong><span>Baths</span></li>
+        <li><strong>1,150</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$170<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-2120">
+  <div class="suite-detail two-bed reverse fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+      <div class="suite-detail-num"><span>Suite</span>2120</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">Two-Bedroom · Suite 2120</div>
+      <h2>Two-Bedroom Poolside Villa</h2>
+      <p>The two-bedroom villa with the best pool view on the property. A wraparound patio with private outdoor dining puts you essentially poolside — which is exactly what your group came here for.</p>
+      <p>Two queen bedrooms, two full baths, full kitchen with island bar, washer/dryer, oversized living room. Sleeps 4 comfortably, 6 with the sleeper sofa.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>4-6</strong><span>Sleeps</span></li>
+        <li><strong>2</strong><span>Baths</span></li>
+        <li><strong>1,150</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$170<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="suite-section" id="apt-2124">
+  <div class="suite-detail two-bed fade-up">
+    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+      <div class="suite-detail-num"><span>Suite</span>2124</div>
+    </div>
+    <div class="suite-detail-content">
+      <div class="suite-detail-tag">Two-Bedroom · Suite 2124 · Premier</div>
+      <h2>Two-Bedroom Premier Villa</h2>
+      <p>Our largest, most-requested suite for groups of four to six. King bed in the primary, queen in the second bedroom, two full baths, an actual living room with a real sofa, and a kitchen large enough to actually cook a holiday dinner in.</p>
+      <p>King + Queen bedrooms, two full baths, gourmet kitchen with full-size appliances, washer/dryer, oversized patio. The villa we recommend for anniversary trips, milestone birthdays, and groups who want to host a few people from outside.</p>
+      <ul class="suite-detail-specs">
+        <li><strong>4-6</strong><span>Sleeps</span></li>
+        <li><strong>2</strong><span>Baths</span></li>
+        <li><strong>1,150</strong><span>Sq Ft</span></li>
+      </ul>
+      <div class="suite-detail-rate">
+        <div>
+          <div class="suite-detail-rate-num">$170<span> /night</span></div>
+          <span class="suite-detail-rate-label">Starting Rate</span>
+        </div>
+      </div>
+      <div class="suite-detail-actions">
+        <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-primary">Check Availability</a>
+        <a href="../reviews/" class="btn-outline">Read Reviews</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="closing-inner">
+    <div class="eyebrow center light">Ready When You Are</div>
+    <h2>See What's <em>Available.</em></h2>
+    <p>Our calendar updates in real time across Airbnb, VRBO, Booking.com, and direct.</p>
+    <div class="closing-actions">
+      <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-light">Check All Suites</a>
+      <a href="tel:954-868-5671" class="btn-light-outline">Call 954-868-5671</a>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">Paradise Vacation Suites</div>
+      <p>An exclusive collection of nine apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
+      <p><a href="tel:954-868-5671">954-868-5671</a></p>
+    </div>
+    <div>
+      <h4>Stay With Us</h4>
+      <ul>
+        <li><a href=".././suites/">All Nine Suites</a></li>
+        <li><a href=".././overview/">Property Overview</a></li>
+        <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
+        <li><a href=".././reviews/">Reviews</a></li>
+        <li><a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book Now</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>The Neighborhood</h4>
+      <ul>
+        <li><a href=".././area/">Wilton Drive Area</a></li>
+        <li><a href=".././area/#walking">Walking Map</a></li>
+        <li><a href=".././area/#driving">Greater Fort Lauderdale</a></li>
+        <li><a href=".././contact/">Directions &amp; Parking</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Helpful</h4>
+      <ul>
+        <li><a href=".././contact/">Contact</a></li>
+        <li><a href=".././faq/">FAQ</a></li>
+        <li><a href="https://paradisevacationsuites.com/terms-conditions/">Terms &amp; Conditions</a></li>
+        <li><a href="https://paradisevacationsuites.com/privacy-policy/">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Paradise Vacation Suites. All rights reserved.</span>
+    <span>Site by <a href="https://www.bofilltech.com/" style="color: var(--bop-orange-soft);">Bofill Technologies</a></span>
+  </div>
+</footer>
+
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 12) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
