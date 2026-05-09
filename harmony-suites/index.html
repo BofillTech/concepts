@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harmony Suites — All-Suites Luxury Near NYC | Secaucus, NJ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,400;1,6..96,500;1,6..96,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0f1117;
+    --ink-soft:#1a1d27;
+    --gold:#c9a961;
+    --gold-bright:#d9b870;
+    --gold-soft:#e6cf94;
+    --ivory:#f5f1ea;
+    --bg:#fafaf7;
+    --line:rgba(15,17,23,.12);
+    --line-light:rgba(255,255,255,.18);
+    --muted:#6b6b6b;
+    --shadow-sm:0 4px 18px rgba(15,17,23,.06);
+    --shadow:0 24px 60px -20px rgba(15,17,23,.18);
+    --display:'Bodoni Moda', serif;
+    --body:'Outfit', sans-serif;
+    --max:1320px;
+    --pad:clamp(20px,4vw,48px);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);font-size:16px;line-height:1.65;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;padding-bottom:72px}
+
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  button{font:inherit;cursor:pointer;border:none;background:none}
+
+  /* ===== TOP UTILITY BAR ===== */
+  .topbar{background:var(--ink);color:var(--ivory);font-size:13px;letter-spacing:.04em}
+  .topbar-inner{max-width:var(--max);margin:0 auto;padding:10px var(--pad);display:flex;justify-content:space-between;align-items:center;gap:24px}
+  .topbar a{transition:color .25s}
+  .topbar a:hover{color:var(--gold-bright)}
+  .topbar-left{display:flex;gap:24px;align-items:center}
+  .topbar-left .sep{opacity:.3}
+  .topbar-right{font-style:italic;color:var(--gold-soft);font-family:var(--display);font-size:14px}
+  @media(max-width:720px){.topbar-right{display:none}.topbar-left{font-size:12px;gap:14px}}
+
+  /* ===== HEADER / NAV ===== */
+  .nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);transition:all .35s}
+  .nav-inner{max-width:var(--max);margin:0 auto;padding:18px var(--pad);display:flex;align-items:center;gap:32px}
+  .logo{display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .logo img{height:54px;width:auto}
+  .logo-text{display:flex;flex-direction:column;line-height:1}
+  .logo-text .name{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:.02em}
+  .logo-text .sub{font-family:var(--display);font-style:italic;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+
+  .nav-links{display:flex;gap:30px;flex:1;justify-content:center}
+  .nav-links a{font-size:13.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;position:relative;padding:6px 0;transition:color .25s}
+  .nav-links a::after{content:'';position:absolute;left:50%;bottom:0;width:0;height:1px;background:var(--gold);transition:all .3s}
+  .nav-links a:hover{color:var(--gold)}
+  .nav-links a:hover::after{width:100%;left:0}
+
+  .nav-cta{display:flex;align-items:center;gap:18px;flex-shrink:0}
+  .nav-phone{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;letter-spacing:.02em;color:var(--ink);transition:color .25s}
+  .nav-phone:hover{color:var(--gold)}
+  .nav-phone svg{width:16px;height:16px;color:var(--gold)}
+
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;font-family:var(--body);font-weight:600;font-size:13px;letter-spacing:.18em;text-transform:uppercase;transition:all .35s;cursor:pointer;border:1px solid transparent;position:relative;overflow:hidden}
+  .btn-gold{background:var(--gold);color:var(--ink)}
+  .btn-gold:hover{background:var(--ink);color:var(--gold);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+  .btn-outline{background:transparent;color:var(--ivory);border:1px solid var(--ivory)}
+  .btn-outline:hover{background:var(--ivory);color:var(--ink)}
+  .btn-dark{background:var(--ink);color:var(--ivory)}
+  .btn-dark:hover{background:var(--gold);color:var(--ink)}
+
+  .menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px;margin-left:auto}
+  .menu-toggle span{display:block;width:22px;height:2px;background:var(--ink);transition:all .3s}
+
+  @media(max-width:1100px){
+    .nav-links{display:none}
+    .menu-toggle{display:flex}
+    .nav-inner{gap:16px}
+  }
+  @media(max-width:640px){
+    .logo-text{display:none}
+    .logo img{height:46px}
+    .nav-phone span{display:none}
+    .nav-phone{padding:8px;border:1px solid var(--line);border-radius:50%}
+    .btn{padding:12px 18px;font-size:11.5px;letter-spacing:.14em}
+  }
+
+  /* ===== MOBILE MENU ===== */
+  .mobile-menu{position:fixed;top:0;right:0;width:88%;max-width:380px;height:100vh;background:var(--ink);color:var(--ivory);transform:translateX(100%);transition:transform .45s cubic-bezier(.7,0,.3,1);z-index:200;padding:30px 32px;overflow-y:auto}
+  .mobile-menu.open{transform:translateX(0)}
+  .mobile-menu-close{position:absolute;top:24px;right:28px;font-size:30px;color:var(--ivory);cursor:pointer;font-weight:300;line-height:1}
+  .mobile-menu nav{margin-top:80px;display:flex;flex-direction:column;gap:4px}
+  .mobile-menu nav a{font-family:var(--display);font-size:24px;letter-spacing:.01em;padding:14px 0;border-bottom:1px solid var(--line-light);transition:color .25s,padding-left .25s}
+  .mobile-menu nav a:hover{color:var(--gold);padding-left:8px}
+  .mobile-menu .contact{margin-top:40px;padding-top:30px;border-top:1px solid var(--line-light);font-size:14px;line-height:2}
+  .mobile-menu .contact .label{font-family:var(--display);font-style:italic;color:var(--gold);font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px}
+  .menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .35s;z-index:150}
+  .menu-overlay.open{opacity:1;pointer-events:auto}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;height:88vh;min-height:620px;max-height:880px;overflow:hidden;color:var(--ivory)}
+  .hero-bg{position:absolute;inset:0;background:url('https://www.harmonysuites.com/wp-content/uploads/2023/08/Copy-of-Harmony-7-King-1-scaled.jpg') center/cover no-repeat;transform:scale(1.06);transition:transform 6s ease-out}
+  .hero.loaded .hero-bg{transform:scale(1)}
+  .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,23,.4) 0%,rgba(15,17,23,.45) 40%,rgba(15,17,23,.7) 100%);z-index:1}
+  .hero::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top right,rgba(201,169,97,.12),transparent 60%);z-index:1}
+
+  .hero-content{position:relative;z-index:2;height:100%;max-width:var(--max);margin:0 auto;padding:0 var(--pad);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:14vh}
+  .hero-eyebrow{font-family:var(--display);font-style:italic;font-size:14px;letter-spacing:.32em;color:var(--gold-bright);text-transform:uppercase;margin-bottom:24px;opacity:0;animation:fadeUp .9s .3s forwards}
+  .hero-eyebrow::before{content:'';display:inline-block;width:36px;height:1px;background:var(--gold-bright);margin-right:18px;vertical-align:middle}
+  .hero h1{font-family:var(--display);font-weight:500;font-size:clamp(44px,7.8vw,108px);line-height:.96;letter-spacing:-.02em;max-width:14ch;opacity:0;animation:fadeUp 1s .5s forwards}
+  .hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:400}
+  .hero-sub{margin-top:28px;font-size:18px;line-height:1.55;max-width:540px;opacity:0;color:rgba(245,241,234,.92);animation:fadeUp 1s .7s forwards}
+  .hero-cta-row{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .9s forwards}
+  .hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;color:var(--ivory);font-family:var(--display);font-style:italic;font-size:13px;letter-spacing:.2em;opacity:.7;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .hero-scroll::after{content:'';width:1px;height:40px;background:var(--ivory);animation:scrollLine 2.4s ease-in-out infinite}
+  @keyframes scrollLine{0%,100%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:640px){
+    .hero{height:80vh;min-height:520px}
+    .hero-content{padding-bottom:90px}
+    .hero-sub{font-size:16px}
+    .hero-scroll{display:none}
+  }
+
+  /* ===== SECTION BASE ===== */
+  section{padding:clamp(70px,9vw,130px) var(--pad)}
+  .container{max-width:var(--max);margin:0 auto}
+  .eyebrow{font-family:var(--display);font-style:italic;font-size:13px;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;display:inline-flex;align-items:center;gap:14px}
+  .eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+  .display{font-family:var(--display);font-weight:500;font-size:clamp(34px,4.8vw,62px);line-height:1.05;letter-spacing:-.015em}
+  .display em{font-style:italic;color:var(--gold);font-weight:400}
+
+  /* ===== WELCOME ===== */
+  .welcome{background:var(--bg)}
+  .welcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,100px);align-items:center}
+  .welcome-img{position:relative;aspect-ratio:4/5;overflow:hidden}
+  .welcome-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.6,.2,1)}
+  .welcome-img:hover img{transform:scale(1.04)}
+  .welcome-img::after{content:'';position:absolute;inset:0;border:1px solid var(--gold);transform:translate(20px,20px);transition:transform .6s,border-color .6s;pointer-events:none}
+  .welcome-img:hover::after{transform:translate(14px,14px)}
+  .welcome-text p{font-size:17px;line-height:1.85;color:#3a3a3a;margin-top:30px;max-width:520px}
+  .welcome-text .display{margin-top:14px}
+  .welcome-stats{display:flex;gap:50px;margin-top:48px;padding-top:36px;border-top:1px solid var(--line)}
+  .stat .num{font-family:var(--display);font-size:38px;font-weight:500;color:var(--gold);line-height:1}
+  .stat .label{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:8px;font-weight:500}
+  @media(max-width:880px){.welcome-grid{grid-template-columns:1fr}.welcome-img{aspect-ratio:5/4;max-height:500px}.welcome-stats{gap:30px}}
+
+  /* ===== HARMONY DIFFERENCE STRIP ===== */
+  .difference{background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
+  .difference::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,97,.18),transparent 70%);pointer-events:none}
+  .difference-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,7vw,90px);align-items:center;position:relative;z-index:1}
+  .difference-text .display{color:var(--ivory)}
+  .difference-text p{margin-top:28px;color:rgba(245,241,234,.78);font-size:16.5px;line-height:1.85;max-width:480px}
+  .difference-img{aspect-ratio:5/4;overflow:hidden;position:relative}
+  .difference-img img{width:100%;height:100%;object-fit:cover;filter:saturate(.95)}
+  .difference-img::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 60%,rgba(201,169,97,.15));z-index:1;pointer-events:none}
+  @media(max-width:880px){.difference-grid{grid-template-columns:1fr}.difference-img{aspect-ratio:5/3}}
+
+  /* ===== ROOMS ===== */
+  .rooms-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:60px;gap:30px;flex-wrap:wrap}
+  .rooms-head p{max-width:380px;color:var(--muted);line-height:1.7}
+  .rooms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,3vw,40px) clamp(20px,2.5vw,36px)}
+  .room{position:relative;cursor:pointer;display:block}
+  .room-img{aspect-ratio:4/3;overflow:hidden;position:relative;background:var(--ink)}
+  .room-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.6,.2,1),filter .6s}
+  .room:hover .room-img img{transform:scale(1.05);filter:brightness(.85)}
+  .room-img::after{content:'View Details →';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--ivory);font-family:var(--display);font-style:italic;font-size:18px;letter-spacing:.06em;opacity:0;transition:opacity .4s;background:rgba(15,17,23,.18)}
+  .room:hover .room-img::after{opacity:1}
+  .room-meta{padding:24px 4px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+  .room-name{font-family:var(--display);font-size:24px;font-weight:500;letter-spacing:-.005em;line-height:1.15}
+  .room-num{font-family:var(--display);font-style:italic;font-size:13px;color:var(--gold);letter-spacing:.16em}
+  .room-desc{font-size:14.5px;line-height:1.7;color:var(--muted);margin-top:10px;padding-right:4px}
+  .rooms-foot{margin-top:70px;text-align:center}
+  @media(max-width:780px){.rooms-grid{grid-template-columns:1fr;gap:38px}}
+
+  /* ===== AMENITIES ===== */
+  .amenities{background:var(--ivory)}
+  .amenities-head{text-align:center;max-width:660px;margin:0 auto 70px}
+  .amenities-head .eyebrow{display:inline-flex}
+  .amenities-head p{margin-top:18px;color:var(--muted);line-height:1.7}
+  .amenities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .amenity{background:var(--ivory);padding:42px 28px;text-align:center;transition:all .4s}
+  .amenity:hover{background:var(--bg);transform:translateY(-2px)}
+  .amenity svg{width:34px;height:34px;color:var(--gold);margin-bottom:18px;stroke-width:1.4}
+  .amenity-name{font-family:var(--display);font-size:17px;font-weight:500;letter-spacing:.005em}
+  .amenity-sub{font-size:12.5px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+  @media(max-width:1000px){.amenities-grid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:680px){.amenities-grid{grid-template-columns:repeat(2,1fr)}.amenity{padding:32px 18px}}
+
+  /* ===== MEETINGS ===== */
+  .meetings-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,7vw,90px);align-items:center}
+  .meetings-img{aspect-ratio:5/4;overflow:hidden;position:relative}
+  .meetings-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.6,.2,1)}
+  .meetings-img:hover img{transform:scale(1.04)}
+  .meetings-text p{margin-top:28px;color:#3a3a3a;font-size:16.5px;line-height:1.8;max-width:520px}
+  .meetings-text .btn{margin-top:36px}
+  @media(max-width:880px){.meetings-grid{grid-template-columns:1fr}}
+
+  /* ===== LOCATION ===== */
+  .location{background:var(--ink);color:var(--ivory);text-align:center;padding-top:clamp(60px,8vw,110px);padding-bottom:clamp(60px,8vw,110px)}
+  .location .eyebrow{color:var(--gold)}
+  .location .display{color:var(--ivory);max-width:14ch;margin:0 auto}
+  .location-sub{margin-top:24px;color:rgba(245,241,234,.7);font-size:17px;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .nearby{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin-top:60px;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
+  .nearby-item{flex:1;min-width:200px;padding:36px 24px;border-right:1px solid var(--line-light)}
+  .nearby-item:last-child{border-right:none}
+  .nearby-item .dist{font-family:var(--display);font-size:32px;font-weight:500;color:var(--gold-bright);line-height:1}
+  .nearby-item .dist .unit{font-size:14px;font-style:italic;color:var(--gold-soft);margin-left:4px}
+  .nearby-item .place{margin-top:10px;font-size:13.5px;letter-spacing:.06em;color:rgba(245,241,234,.85)}
+  @media(max-width:780px){.nearby-item{flex-basis:50%;border-bottom:1px solid var(--line-light)}.nearby-item:nth-child(2n){border-right:none}}
+
+  .location-address{margin-top:54px;font-family:var(--display);font-style:italic;font-size:18px;color:var(--gold-soft);letter-spacing:.04em}
+  .location-address strong{font-style:normal;color:var(--ivory);font-weight:500;display:block;font-size:22px;letter-spacing:0;margin-bottom:6px}
+
+  /* ===== FINAL CTA ===== */
+  .final{background:url('https://www.harmonysuites.com/wp-content/uploads/2023/09/Harmony-27-Living-Room-Executive-Suite-1024x683.jpg') center/cover no-repeat;color:var(--ivory);text-align:center;position:relative;padding:clamp(90px,12vw,160px) var(--pad)}
+  .final::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,23,.55),rgba(15,17,23,.75))}
+  .final-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+  .final .display{color:var(--ivory)}
+  .final-sub{margin-top:22px;font-size:17px;color:rgba(245,241,234,.85);line-height:1.7}
+  .final-cta{margin-top:42px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+  /* ===== FOOTER ===== */
+  .footer{background:#0a0c12;color:rgba(245,241,234,.7);padding:80px var(--pad) 40px;font-size:14px}
+  .footer-grid{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid var(--line-light)}
+  .footer-brand .name{font-family:var(--display);font-size:24px;color:var(--ivory);font-weight:500;letter-spacing:.01em}
+  .footer-brand .name em{color:var(--gold);font-style:italic;font-weight:400}
+  .footer-brand p{margin-top:18px;line-height:1.8;max-width:320px}
+  .footer h4{font-family:var(--display);font-size:13px;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;margin-bottom:20px;font-weight:500}
+  .footer ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .footer ul a{transition:color .25s,padding-left .25s}
+  .footer ul a:hover{color:var(--gold);padding-left:6px}
+  .footer-bottom{max-width:var(--max);margin:0 auto;padding-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font-size:13px;color:rgba(245,241,234,.5)}
+  .footer-bottom .credit{font-style:italic;color:var(--gold-soft)}
+  @media(max-width:880px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px}.footer-brand{grid-column:1 / -1}}
+  @media(max-width:540px){.footer-grid{grid-template-columns:1fr}}
+
+  /* ===== BOTTOM BOOKING BAR ===== */
+  .booking-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:var(--ivory);z-index:90;border-top:2px solid var(--gold);box-shadow:0 -8px 30px rgba(0,0,0,.18)}
+  .booking-bar-inner{max-width:1100px;margin:0 auto;padding:0 var(--pad);display:grid;grid-template-columns:1fr 1fr auto;align-items:center;gap:0}
+  .booking-field{padding:14px 24px;border-right:1px solid var(--line-light);position:relative;cursor:pointer;transition:background .25s}
+  .booking-field:hover{background:rgba(255,255,255,.04)}
+  .booking-field label{display:block;font-family:var(--display);font-style:italic;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+  .booking-field input{width:100%;background:transparent;border:none;color:var(--ivory);font-family:var(--body);font-size:15px;font-weight:500;letter-spacing:.02em;outline:none;padding:0;cursor:pointer}
+  .booking-field input::-webkit-calendar-picker-indicator{filter:invert(1) sepia(1) saturate(3) hue-rotate(10deg);opacity:.5;cursor:pointer}
+  .booking-bar .btn{padding:24px 36px;height:100%;font-size:13px;letter-spacing:.22em;background:var(--gold);color:var(--ink);border-radius:0}
+  .booking-bar .btn:hover{background:var(--gold-bright);color:var(--ink);transform:none}
+  @media(max-width:640px){
+    .booking-bar-inner{grid-template-columns:1fr 1fr 1fr}
+    .booking-field{padding:10px 12px}
+    .booking-field label{font-size:9.5px;letter-spacing:.14em}
+    .booking-field input{font-size:13px}
+    .booking-bar .btn{padding:18px 14px;font-size:11px;letter-spacing:.14em}
+  }
+
+  /* Reveal animation */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity 1s,transform 1s}
+  .reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<!-- Top utility bar -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="tel:201-381-3000">201-381-3000</a>
+      <span class="sep">|</span>
+      <a href="mailto:frontdesk@harmonysuites.com">frontdesk@harmonysuites.com</a>
+    </div>
+    <div class="topbar-right">An All-Suites Hotel · Secaucus, NJ</div>
+  </div>
+</div>
+
+<!-- Sticky Nav -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">
+      <img src="https://www.harmonysuites.com/wp-content/uploads/2023/04/Harmony-Suites-Final-Logo-Gold-2-150x150.png" alt="Harmony Suites">
+      <span class="logo-text">
+        <span class="name">Harmony Suites</span>
+        <span class="sub">Secaucus · NJ</span>
+      </span>
+    </a>
+    <nav class="nav-links">
+      <a href="#rooms">Rooms &amp; Suites</a>
+      <a href="#amenities">Amenities</a>
+      <a href="#meetings">Meetings</a>
+      <a href="#location">Location</a>
+      <a href="https://www.harmonysuites.com/photo-gallery/">Gallery</a>
+      <a href="https://www.harmonysuites.com/about-us/">About</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:201-381-3000" class="nav-phone" aria-label="Call 201-381-3000">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h2.28a1 1 0 01.95.68l1.5 4.5a1 1 0 01-.5 1.21l-2.26 1.13a11 11 0 005.52 5.52l1.13-2.26a1 1 0 011.21-.5l4.5 1.5a1 1 0 01.68.95V19a2 2 0 01-2 2A18 18 0 013 5z"/></svg>
+        <span>201-381-3000</span>
+      </a>
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="btn btn-gold">Book Now</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="menu-overlay" id="menuOverlay"></div>
+<aside class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-close" id="menuClose">×</span>
+  <nav>
+    <a href="#rooms">Rooms &amp; Suites</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#meetings">Meetings &amp; Events</a>
+    <a href="#location">Location</a>
+    <a href="https://www.harmonysuites.com/photo-gallery/">Photo Gallery</a>
+    <a href="https://www.harmonysuites.com/attractions/">Attractions</a>
+    <a href="https://www.harmonysuites.com/dining/">Dining</a>
+    <a href="https://www.harmonysuites.com/about-us/">About Us</a>
+  </nav>
+  <div class="contact">
+    <div class="label">Reservations</div>
+    <a href="tel:201-381-3000">201-381-3000</a><br>
+    <a href="mailto:frontdesk@harmonysuites.com">frontdesk@harmonysuites.com</a>
+    <div class="label" style="margin-top:24px">Visit</div>
+    455 Plaza Drive<br>Secaucus, NJ 07094
+  </div>
+</aside>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Refined Indulgence · Steps from NYC</div>
+    <h1>The art of <em>arriving</em><br>at ease.</h1>
+    <p class="hero-sub">An all-suites retreat moments from the American Dream Mall, MetLife Stadium, and the lights of Manhattan — where every stay feels measured, considered, and quietly grand.</p>
+    <div class="hero-cta-row">
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="btn btn-gold">Reserve a Suite</a>
+      <a href="#rooms" class="btn btn-outline">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- Welcome -->
+<section class="welcome">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-img reveal">
+        <img src="https://www.harmonysuites.com/wp-content/uploads/2023/08/Untitled-design-2-768x658.jpg" alt="Harmony Suites — exterior">
+      </div>
+      <div class="welcome-text reveal">
+        <span class="eyebrow">Welcome to Harmony Suites</span>
+        <h2 class="display">Spacious sophistication, <em>just over the river.</em></h2>
+        <p>Nestled in the vibrant heart of Secaucus, New Jersey, Harmony Suites welcomes you to a world of refined indulgence — moments from the American Dream Mall, MetLife Stadium, and the cultural pulse of New York City. Our suites set the stage for unforgettable stays, weaving comfort, convenience, and quiet luxury into every detail.</p>
+        <div class="welcome-stats">
+          <div class="stat"><div class="num">10+</div><div class="label">Suite Layouts</div></div>
+          <div class="stat"><div class="num">4PM</div><div class="label">Check-In</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="label">Front Desk</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Harmony Difference (dark band) -->
+<section class="difference">
+  <div class="container">
+    <div class="difference-grid">
+      <div class="difference-text reveal">
+        <span class="eyebrow" style="color:var(--gold-bright)">The Harmony Difference</span>
+        <h2 class="display">A stay measured in <em>moments,</em> not minutes.</h2>
+        <p>Behind every detail is a team that understands hospitality is built on the small things — the made-to-order omelet at breakfast, the cocktail crafted just for the evening, the quiet of a suite that finally feels like room to breathe. This is what we mean by Harmony.</p>
+        <a href="#rooms" class="btn btn-gold" style="margin-top:36px">Discover Our Suites</a>
+      </div>
+      <div class="difference-img reveal">
+        <img src="https://www.harmonysuites.com/wp-content/uploads/2024/01/image_2024_01_18T10_32_59_007Z.jpg" alt="The Harmony Difference">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section id="rooms">
+  <div class="container">
+    <div class="rooms-head reveal">
+      <div>
+        <span class="eyebrow">Accommodations</span>
+        <h2 class="display">Suites built for <em>every kind</em> of traveler.</h2>
+      </div>
+      <p>From spacious executive suites with separate living areas to family-friendly two-bedroom layouts, every room is curated for comfort, work, and rest in equal measure.</p>
+    </div>
+    <div class="rooms-grid">
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="room reveal">
+        <div class="room-img"><img src="https://www.harmonysuites.com/wp-content/uploads/2023/09/Harmony-7-King-1024x683.jpg" alt="One King Bed Executive Suite"></div>
+        <div class="room-meta"><h3 class="room-name">One King Bed Executive Suite</h3><span class="room-num">01</span></div>
+        <p class="room-desc">A king-size bed, distinct living space, and dining/conference area — comfortable for up to four with the addition of a sofa bed. Includes complimentary American breakfast.</p>
+      </a>
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="room reveal">
+        <div class="room-img"><img src="https://www.harmonysuites.com/wp-content/uploads/2023/09/Harmony-4-King-1024x683.jpg" alt="Two King Bedrooms"></div>
+        <div class="room-meta"><h3 class="room-name">Two King Bedrooms</h3><span class="room-num">02</span></div>
+        <p class="room-desc">Two distinct bedrooms, each with a luxurious king-size bed — privacy and ample space, perfect for couples traveling together or families spreading out.</p>
+      </a>
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="room reveal">
+        <div class="room-img"><img src="https://www.harmonysuites.com/wp-content/uploads/2023/09/Harmony-27-Living-Room-Executive-Suite-1024x683.jpg" alt="Presidential Executive Suite"></div>
+        <div class="room-meta"><h3 class="room-name">Presidential Executive Suite</h3><span class="room-num">03</span></div>
+        <p class="room-desc">Our most expansive offering. Two bedrooms with king-size beds, two full bathrooms, and a generous living area — a home-like sanctuary for up to four guests.</p>
+      </a>
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="room reveal">
+        <div class="room-img"><img src="https://www.harmonysuites.com/wp-content/uploads/2023/09/Harmony-32-Standard-Queen-1024x697.jpg" alt="Queen Standard Room"></div>
+        <div class="room-meta"><h3 class="room-name">Queen Standard Room</h3><span class="room-num">04</span></div>
+        <p class="room-desc">A simply elegant room with a queen-size bed, work desk, and full in-room kitchenette essentials — ideal for the focused business traveler or efficient short stay.</p>
+      </a>
+    </div>
+    <div class="rooms-foot reveal">
+      <a href="https://www.harmonysuites.com/rooms-suites/" class="btn btn-dark">View All Suites</a>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+<section class="amenities" id="amenities">
+  <div class="container">
+    <div class="amenities-head reveal">
+      <span class="eyebrow">On Property</span>
+      <h2 class="display">Everything you need, <em>quietly considered.</em></h2>
+      <p>From a hot American breakfast buffet with omelet and waffle stations to a year-round indoor pool, every amenity is designed to make a busy trip feel effortless.</p>
+    </div>
+    <div class="amenities-grid reveal">
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12.55a11 11 0 0114 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+        <div class="amenity-name">Free Wi-Fi</div>
+        <div class="amenity-sub">Throughout the hotel</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8zm5-5v3M12 3v3M16 3v3"/></svg>
+        <div class="amenity-name">Hot Breakfast</div>
+        <div class="amenity-sub">Omelet &amp; waffle stations</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2 12h20M2 12c0-3 4-6 10-6s10 3 10 6M2 12c0 3 4 6 10 6s10-3 10-6M7 9V6m10 3V6"/></svg>
+        <div class="amenity-name">Indoor Pool</div>
+        <div class="amenity-sub">Year-round access</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 2v6h.01L6 8.01 10 12l-4 4 .01.01L6 16v6h12v-6l-.01-.01L18 16l-4-4 4-3.99-.01-.01L18 8V2H6z"/></svg>
+        <div class="amenity-name">Fitness Center</div>
+        <div class="amenity-sub">Modern equipment</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16l7-3 7 3z"/></svg>
+        <div class="amenity-name">Free Parking</div>
+        <div class="amenity-sub">On-site, complimentary</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="amenity-name">Bar on Premises</div>
+        <div class="amenity-sub">Open nightly</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17H7A5 5 0 017 7h2m6 10h2a5 5 0 000-10h-2m-6 5h8"/></svg>
+        <div class="amenity-name">Meeting Facilities</div>
+        <div class="amenity-sub">Versatile event spaces</div>
+      </div>
+      <div class="amenity">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.82l.88.66A2.99 2.99 0 0012 16c1.66 0 3-1.34 3-3s-1.34-3-3-3-3-1.34-3-3 1.34-3 3-3a3 3 0 012.12.82L13 5"/></svg>
+        <div class="amenity-name">ATM &amp; Business Center</div>
+        <div class="amenity-sub">24-hour access</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Meetings -->
+<section id="meetings">
+  <div class="container">
+    <div class="meetings-grid">
+      <div class="meetings-img reveal">
+        <img src="https://www.harmonysuites.com/wp-content/uploads/2023/09/3-1024x791.jpg" alt="Meetings &amp; Events at Harmony Suites">
+      </div>
+      <div class="meetings-text reveal">
+        <span class="eyebrow">Meetings &amp; Events</span>
+        <h2 class="display">A haven for <em>memorable</em> gatherings.</h2>
+        <p>From intimate boardroom meetings to celebrations with a guest list, our versatile spaces fuse modern luxury with practical functionality. State-of-the-art technology, considered catering, and a dedicated team — all in a location that makes arrivals from anywhere effortless.</p>
+        <a href="https://www.harmonysuites.com/meetings-events/" class="btn btn-dark">Plan Your Event</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section class="location" id="location">
+  <div class="container">
+    <span class="eyebrow">The Neighborhood</span>
+    <h2 class="display">Closer to <em>everything.</em></h2>
+    <p class="location-sub">From the Meadowlands to Manhattan, the region's most-loved destinations are minutes — not miles — from your suite.</p>
+    <div class="nearby">
+      <div class="nearby-item"><div class="dist">2<span class="unit">mi</span></div><div class="place">American Dream Mall</div></div>
+      <div class="nearby-item"><div class="dist">3<span class="unit">mi</span></div><div class="place">MetLife Stadium</div></div>
+      <div class="nearby-item"><div class="dist">3<span class="unit">mi</span></div><div class="place">Meadowlands Expo</div></div>
+      <div class="nearby-item"><div class="dist">8<span class="unit">mi</span></div><div class="place">Midtown Manhattan</div></div>
+    </div>
+    <div class="location-address">
+      <strong>455 Plaza Drive</strong>
+      Secaucus, New Jersey 07094
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final">
+  <div class="final-inner">
+    <span class="eyebrow" style="color:var(--gold-bright)">Reserve Your Stay</span>
+    <h2 class="display">Your suite is <em>waiting.</em></h2>
+    <p class="final-sub">Book direct for our best available rate. No middlemen, no fine print — just refined hospitality from the moment you arrive.</p>
+    <div class="final-cta">
+      <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="btn btn-gold">Book Now</a>
+      <a href="tel:201-381-3000" class="btn btn-outline">Call 201-381-3000</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="name">Harmony <em>Suites</em></div>
+      <p>An all-suites hotel in Secaucus, New Jersey — minutes from the American Dream Mall, MetLife Stadium, and Manhattan.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li>455 Plaza Drive</li>
+        <li>Secaucus, NJ 07094</li>
+        <li><a href="tel:201-381-3000">201-381-3000</a></li>
+        <li><a href="mailto:frontdesk@harmonysuites.com">frontdesk@harmonysuites.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Stay</h4>
+      <ul>
+        <li><a href="#rooms">Rooms &amp; Suites</a></li>
+        <li><a href="https://www.harmonysuites.com/group-sales/">Group Sales</a></li>
+        <li><a href="#meetings">Meetings &amp; Events</a></li>
+        <li><a href="https://www.harmonysuites.com/photo-gallery/">Photo Gallery</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="https://www.harmonysuites.com/attractions/">Attractions</a></li>
+        <li><a href="https://www.harmonysuites.com/shopping/">Shopping</a></li>
+        <li><a href="https://www.harmonysuites.com/dining/">Dining</a></li>
+        <li><a href="https://www.harmonysuites.com/about-us/">About Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Harmony Suites. All rights reserved.</span>
+    <span class="credit">Concept by Bofill Technologies</span>
+  </div>
+</footer>
+
+<!-- Bottom Booking Bar -->
+<div class="booking-bar">
+  <div class="booking-bar-inner">
+    <label class="booking-field" for="checkin">
+      <span>Check In</span>
+      <input type="date" id="checkin" name="checkin">
+    </label>
+    <label class="booking-field" for="checkout">
+      <span>Check Out</span>
+      <input type="date" id="checkout" name="checkout">
+    </label>
+    <a href="https://be.synxis.com/?Hotel=47946&Chain=33147" class="btn btn-gold" id="bookBtn">Book</a>
+  </div>
+</div>
+
+<script>
+  // Hero loaded animation
+  window.addEventListener('load', () => {
+    document.getElementById('hero').classList.add('loaded');
+  });
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menuToggle');
+  const menuClose = document.getElementById('menuClose');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuOverlay = document.getElementById('menuOverlay');
+  const openMenu = () => { mobileMenu.classList.add('open'); menuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const closeMenu = () => { mobileMenu.classList.remove('open'); menuOverlay.classList.remove('open'); document.body.style.overflow = ''; };
+  menuToggle?.addEventListener('click', openMenu);
+  menuClose?.addEventListener('click', closeMenu);
+  menuOverlay?.addEventListener('click', closeMenu);
+  document.querySelectorAll('.mobile-menu nav a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Booking bar — pass dates to booking URL
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const fmt = d => d.toISOString().split('T')[0];
+  const ci = document.getElementById('checkin');
+  const co = document.getElementById('checkout');
+  ci.value = fmt(today);
+  co.value = fmt(tomorrow);
+  ci.min = fmt(today);
+  co.min = fmt(tomorrow);
+  ci.addEventListener('change', () => {
+    const next = new Date(ci.value); next.setDate(next.getDate() + 1);
+    co.min = fmt(next);
+    if (new Date(co.value) <= new Date(ci.value)) co.value = fmt(next);
+  });
+  const updateBookHref = () => {
+    const base = 'https://be.synxis.com/?Hotel=47946&Chain=33147';
+    document.getElementById('bookBtn').href = `${base}&arrive=${ci.value}&depart=${co.value}`;
+  };
+  ci.addEventListener('change', updateBookHref);
+  co.addEventListener('change', updateBookHref);
+  updateBookHref();
+
+  // Smooth anchor scroll w/ offset for sticky nav
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const target = document.querySelector(id);
+        if (target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' }); }
+      }
+    });
+  });
+</script>
+</body>
+</html>
