@@ -79,9 +79,40 @@ body.solid-header .header {
   transition: color 0.3s ease;
 }
 .nav-link, .nav-flyout-btn { text-transform: uppercase; }
-.nav-flyout-btn { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+
+/* Unified animated underline used for hover, active, and open states */
+.nav-link, .nav-flyout-btn {
+  position: relative;
+  padding-bottom: 0.375rem;
+}
+.nav-link::after, .nav-flyout-btn::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-flyout-btn:hover::after,
+.nav-link.active::after,
+.nav-flyout-btn.active::after,
+.nav-flyout.open > .nav-flyout-btn::after { transform: scaleX(1); }
+
+.nav-flyout-btn {
+  background: none; border: 0; cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 0.375rem;
+}
+.nav-flyout-btn .chevron {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.nav-flyout.open > .nav-flyout-btn .chevron { transform: rotate(180deg); }
+
 .nav-phone { display: inline-flex; align-items: center; gap: 0.375rem; white-space: nowrap; }
-.nav-link.active, .nav-flyout-btn.active { border-bottom: 2px solid var(--gold); padding-bottom: 0.25rem; }
 
 .header.scrolled .nav-link,
 .header.scrolled .nav-phone,
@@ -89,13 +120,13 @@ body.solid-header .header {
 body.solid-header .nav-link,
 body.solid-header .nav-phone,
 body.solid-header .nav-flyout-btn { color: var(--foreground); }
-.nav-link:hover, .nav-phone:hover, .nav-flyout-btn:hover { color: rgba(255,255,255,0.85); }
+.nav-link:hover, .nav-phone:hover, .nav-flyout-btn:hover { color: rgba(255,255,255,0.9); }
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-phone:hover,
 .header.scrolled .nav-flyout-btn:hover,
 body.solid-header .nav-link:hover,
 body.solid-header .nav-phone:hover,
-body.solid-header .nav-flyout-btn:hover { color: var(--navy-light); }
+body.solid-header .nav-flyout-btn:hover { color: var(--primary); }
 
 .header-actions { display: none; align-items: center; gap: 1.25rem; }
 @media (min-width: 1024px) { .header-actions { display: flex; } }
@@ -985,14 +1016,20 @@ footer {
     <nav class="nav-desktop">
       <a href="../rooms/" class="nav-link">Rooms</a><a href="../specials/" class="nav-link">Specials</a><a href="../gallery/" class="nav-link">Gallery</a><a href="../activities/" class="nav-link active">Activities</a><a href="../contact/" class="nav-link">Contact</a>
       <div class="nav-flyout" id="eventsFlyout">
-        <button class="nav-flyout-btn" id="eventsBtn" aria-haspopup="true" aria-expanded="false">Events</button>
+        <button class="nav-flyout-btn" id="eventsBtn" aria-haspopup="true" aria-expanded="false">
+          <span>Events</span>
+          <svg class="chevron" viewBox="0 0 12 8" width="10" height="6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 1 6 6 11 1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="flyout-menu">
           <a href="../events/">Group &amp; Private Events</a>
           <a href="../weddings/">Weddings</a>
         </div>
       </div>
       <div class="nav-flyout" id="ownersFlyout">
-        <button class="nav-flyout-btn" id="ownersBtn" aria-haspopup="true" aria-expanded="false">Owners</button>
+        <button class="nav-flyout-btn" id="ownersBtn" aria-haspopup="true" aria-expanded="false">
+          <span>Owners</span>
+          <svg class="chevron" viewBox="0 0 12 8" width="10" height="6" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="1 1 6 6 11 1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
         <div class="flyout-menu">
           <a href="../owners/">Owner Reference Material</a>
           <a href="../owner-resales/">Owner Resales</a>
