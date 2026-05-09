@@ -70,31 +70,32 @@ body.solid-header .header {
   .header-inner { padding: 0.75rem 2rem; }
 }
 .logo img { height: 64px; width: auto; }
-.nav-desktop { display: none; align-items: center; gap: 2rem; }
+.nav-desktop { display: none; align-items: center; gap: 1.5rem; }
 @media (min-width: 1024px) { .nav-desktop { display: flex; } }
-.nav-link, .nav-phone, .nav-owners-btn {
-  font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em;
+@media (min-width: 1280px) { .nav-desktop { gap: 1.875rem; } }
+.nav-link, .nav-phone, .nav-flyout-btn {
+  font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.05em;
   color: var(--primary-foreground);
   transition: color 0.3s ease;
 }
-.nav-link, .nav-owners-btn { text-transform: uppercase; }
-.nav-owners-btn { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
+.nav-link, .nav-flyout-btn { text-transform: uppercase; }
+.nav-flyout-btn { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; }
 .nav-phone { display: inline-flex; align-items: center; gap: 0.375rem; white-space: nowrap; }
-.nav-link.active { border-bottom: 2px solid var(--gold); padding-bottom: 0.25rem; }
+.nav-link.active, .nav-flyout-btn.active { border-bottom: 2px solid var(--gold); padding-bottom: 0.25rem; }
 
 .header.scrolled .nav-link,
 .header.scrolled .nav-phone,
-.header.scrolled .nav-owners-btn,
+.header.scrolled .nav-flyout-btn,
 body.solid-header .nav-link,
 body.solid-header .nav-phone,
-body.solid-header .nav-owners-btn { color: var(--foreground); }
-.nav-link:hover, .nav-phone:hover, .nav-owners-btn:hover { color: rgba(255,255,255,0.85); }
+body.solid-header .nav-flyout-btn { color: var(--foreground); }
+.nav-link:hover, .nav-phone:hover, .nav-flyout-btn:hover { color: rgba(255,255,255,0.85); }
 .header.scrolled .nav-link:hover,
 .header.scrolled .nav-phone:hover,
-.header.scrolled .nav-owners-btn:hover,
+.header.scrolled .nav-flyout-btn:hover,
 body.solid-header .nav-link:hover,
 body.solid-header .nav-phone:hover,
-body.solid-header .nav-owners-btn:hover { color: var(--navy-light); }
+body.solid-header .nav-flyout-btn:hover { color: var(--navy-light); }
 
 .header-actions { display: none; align-items: center; gap: 1.25rem; }
 @media (min-width: 1024px) { .header-actions { display: flex; } }
@@ -115,20 +116,20 @@ body.solid-header .nav-owners-btn:hover { color: var(--navy-light); }
 body.solid-header .menu-toggle { color: var(--foreground); }
 @media (min-width: 1024px) { .menu-toggle { display: none; } }
 
-.owners-flyout { position: relative; }
-.owners-menu {
+.nav-flyout { position: relative; }
+.flyout-menu {
   position: absolute; top: 100%; right: 0; margin-top: 0.5rem;
-  width: 12rem; background: var(--background);
+  width: 14rem; background: var(--background);
   border: 1px solid var(--border); border-radius: var(--radius);
   box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
   padding: 0.5rem 0; display: none;
 }
-.owners-flyout.open .owners-menu { display: block; }
-.owners-menu a {
-  display: block; padding: 0.5rem 1rem; font-size: 0.875rem;
+.nav-flyout.open .flyout-menu { display: block; }
+.flyout-menu a {
+  display: block; padding: 0.5rem 1rem; font-size: 0.8125rem;
   color: var(--foreground);
 }
-.owners-menu a:hover { background: var(--muted); }
+.flyout-menu a:hover { background: var(--muted); }
 
 .mobile-menu { display: none; background: var(--background); border-top: 1px solid var(--border); }
 .mobile-menu.open { display: block; }
@@ -141,8 +142,9 @@ body.solid-header .menu-toggle { color: var(--foreground); }
   letter-spacing: 0.05em; text-transform: uppercase;
   color: var(--foreground);
 }
-.mobile-menu .mobile-owner {
+.mobile-menu .mobile-section {
   font-size: 0.75rem; color: var(--muted-foreground);
+  letter-spacing: 0.1em;
 }
 .mobile-menu .mobile-book {
   background: var(--gold); color: var(--accent-foreground);
@@ -714,6 +716,256 @@ footer {
 .contact-info-list .item .value-row a { color: var(--primary); }
 .contact-info-list .ico { color: var(--primary); margin-top: 0.25rem; flex-shrink: 0; }
 
+/* ===== ALERT BANNER (Owner announcements) ===== */
+.alert-banner {
+  background: var(--primary);
+  color: #fff;
+  padding: 1.25rem 0;
+  margin-top: 80px; /* offset fixed header */
+}
+/* When a page-hero immediately follows the alert banner, drop its own margin-top */
+.alert-banner + section.page-hero { margin-top: 0; }
+.alert-banner-inner {
+  display: flex; flex-wrap: wrap; align-items: center;
+  gap: 1rem 2rem;
+}
+.alert-banner-label {
+  font-size: 0.6875rem; letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gold); color: var(--accent-foreground);
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.alert-banner-links {
+  display: flex; flex-wrap: wrap; gap: 1.25rem 2rem;
+  flex: 1;
+}
+.alert-banner-links a {
+  font-size: 0.875rem;
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+  padding-bottom: 0.125rem;
+  transition: border-color 0.2s ease;
+}
+.alert-banner-links a:hover { border-bottom-color: var(--gold); }
+
+/* ===== RESOURCE GRID (Owner Reference) ===== */
+.resource-section {
+  margin-bottom: 4rem;
+}
+.resource-section-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--gold);
+}
+.resource-section-intro {
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+  margin: 0 0 2rem;
+}
+.resource-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1rem;
+}
+@media (min-width: 640px) { .resource-grid { grid-template-columns: repeat(2, 1fr); gap: 1.25rem; } }
+@media (min-width: 1024px) { .resource-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.resource-card {
+  display: flex; gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--background);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.resource-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px -8px rgba(0,0,0,0.08);
+}
+.resource-card .resource-icon {
+  flex-shrink: 0;
+  width: 2.5rem; height: 2.5rem;
+  background: var(--section-alt);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--primary);
+  border-radius: 50%;
+}
+.resource-card-body { flex: 1; min-width: 0; }
+.resource-card h3 {
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: var(--foreground);
+}
+.resource-card p {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.resource-card .resource-link {
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+.resource-card .external::after { content: " ↗"; }
+
+/* ===== HERO STATS / INFO STRIP ===== */
+.info-strip {
+  display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+  padding: 2.5rem 0;
+  background: var(--section-alt);
+}
+@media (min-width: 768px) { .info-strip { grid-template-columns: repeat(3, 1fr); } }
+.info-strip .item { text-align: center; }
+.info-strip .item .num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--primary);
+  line-height: 1;
+}
+.info-strip .item .label {
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  margin-top: 0.5rem;
+}
+
+/* ===== INQUIRY FORM (Events / Weddings) ===== */
+.inquiry-grid {
+  display: grid; grid-template-columns: 1fr; gap: 3rem;
+}
+@media (min-width: 1024px) { .inquiry-grid { grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; } }
+.inquiry-intro h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.inquiry-intro p {
+  color: var(--muted-foreground);
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+.inquiry-features {
+  list-style: none;
+  display: grid; grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.inquiry-features li {
+  display: flex; gap: 0.75rem; align-items: flex-start;
+  font-size: 0.9375rem;
+  color: var(--foreground);
+}
+.inquiry-features li .check {
+  flex-shrink: 0; width: 1.25rem; height: 1.25rem;
+  background: var(--gold); color: var(--accent-foreground);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 0.625rem;
+  margin-top: 0.125rem;
+}
+
+.inquiry-form {
+  background: var(--section-alt);
+  padding: 2.5rem;
+}
+.inquiry-form h3 {
+  font-size: 1.375rem;
+  margin-bottom: 0.5rem;
+}
+.inquiry-form .form-intro {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1.75rem;
+}
+.inquiry-form .form-grid {
+  display: grid; grid-template-columns: 1fr; gap: 1.25rem;
+}
+@media (min-width: 540px) { .inquiry-form .form-grid { grid-template-columns: 1fr 1fr; } }
+.inquiry-form .field-full { grid-column: 1 / -1; }
+.inquiry-form label {
+  display: block;
+  font-size: 0.6875rem; letter-spacing: 0.15em;
+  text-transform: uppercase; font-weight: 600;
+  color: var(--muted-foreground); margin-bottom: 0.4rem;
+}
+.inquiry-form input,
+.inquiry-form textarea,
+.inquiry-form select {
+  width: 100%; padding: 0.6875rem 0.75rem;
+  border: 1px solid var(--border); background: var(--background);
+  font-size: 0.9375rem; color: var(--foreground);
+  border-radius: 0;
+  font-family: inherit;
+}
+.inquiry-form input:focus,
+.inquiry-form textarea:focus,
+.inquiry-form select:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px hsla(19, 93%, 65%, 0.15); }
+.inquiry-form textarea { min-height: 120px; resize: vertical; }
+.inquiry-form button[type="submit"] {
+  background: var(--primary); color: var(--primary-foreground);
+  font-weight: 600; font-size: 0.875rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.875rem 2rem;
+  border: 0; cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+.inquiry-form button[type="submit"]:hover { background: var(--navy-light); }
+
+/* ===== RESALES / EVENTS — feature blocks ===== */
+.feature-grid {
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  margin-top: 2.5rem;
+}
+@media (min-width: 768px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+.feature-block {
+  text-align: center;
+  padding: 2rem 1.25rem;
+}
+.feature-block .feature-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 2.5rem;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.feature-block h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+.feature-block p {
+  font-size: 0.9375rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+}
+
+/* ===== PHOTO PLACEHOLDER (Events/Weddings, awaiting client photos) ===== */
+.photo-strip {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem;
+  margin-top: 3rem;
+}
+@media (min-width: 768px) { .photo-strip { grid-template-columns: repeat(4, 1fr); gap: 0.75rem; } }
+.photo-strip > div {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.photo-strip img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.photo-strip > div:hover img { transform: scale(1.05); }
+
 /* ===== UTILITIES ===== */
 .ico { width: 1em; height: 1em; stroke: currentColor; stroke-width: 2; fill: none; vertical-align: middle; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -732,11 +984,19 @@ footer {
     </a>
     <nav class="nav-desktop">
       <a href="../rooms/" class="nav-link">Rooms</a><a href="../specials/" class="nav-link active">Specials</a><a href="../gallery/" class="nav-link">Gallery</a><a href="../activities/" class="nav-link">Activities</a><a href="../contact/" class="nav-link">Contact</a>
-      <div class="owners-flyout" id="ownersFlyout">
-        <button class="nav-owners-btn" id="ownersBtn" aria-haspopup="true" aria-expanded="false">Owners</button>
-        <div class="owners-menu">
-          <a href="https://coveatyarmouth.com/pinnacle/owner-resales/">Become an Owner</a>
-          <a href="https://coveatyarmouth.com/owners/">Owner Resources</a>
+      <div class="nav-flyout" id="eventsFlyout">
+        <button class="nav-flyout-btn" id="eventsBtn" aria-haspopup="true" aria-expanded="false">Events</button>
+        <div class="flyout-menu">
+          <a href="../events/">Group &amp; Private Events</a>
+          <a href="../weddings/">Weddings</a>
+        </div>
+      </div>
+      <div class="nav-flyout" id="ownersFlyout">
+        <button class="nav-flyout-btn" id="ownersBtn" aria-haspopup="true" aria-expanded="false">Owners</button>
+        <div class="flyout-menu">
+          <a href="../owners/">Owner Reference Material</a>
+          <a href="../owner-resales/">Owner Resales</a>
+          <a href="https://www.vacatia.com/clubhouse" target="_blank" rel="noopener noreferrer">Owner Pay ↗</a>
         </div>
       </div>
     </nav>
@@ -753,7 +1013,11 @@ footer {
   <div class="mobile-menu" id="mobileMenu">
     <nav class="container">
       <a href="../rooms/">Rooms</a><a href="../specials/">Specials</a><a href="../gallery/">Gallery</a><a href="../activities/">Activities</a><a href="../contact/">Contact</a>
-      <a href="https://coveatyarmouth.com/pinnacle/owner-resales/" class="mobile-owner">Become an Owner</a>
+      <a href="../events/">Group &amp; Private Events</a>
+      <a href="../weddings/">Weddings</a>
+      <a href="../owners/" class="mobile-section">Owner Reference</a>
+      <a href="../owner-resales/" class="mobile-section">Owner Resales</a>
+      <a href="https://www.vacatia.com/clubhouse" target="_blank" rel="noopener noreferrer" class="mobile-section">Owner Pay ↗</a>
       <a href="https://vacatia.com/cape-cod-vacation-resort-rentals/the-cove-at-yarmouth-and-vacation-internationale-the-cove-at-yarmouth/west-yarmouth-massachusetts" target="_blank" rel="noopener noreferrer" class="mobile-book">Book Now</a>
     </nav>
   </div>
@@ -842,6 +1106,9 @@ footer {
           <a href="../gallery/">Gallery</a>
           <a href="https://www.theloftatthecove.com" target="_blank" rel="noopener">The Loft Restaurant</a>
           <a href="../activities/">Activities</a>
+          <a href="../events/">Events</a>
+          <a href="../weddings/">Weddings</a>
+          <a href="../owners/">Owner Resources</a>
           <a href="../contact/">Contact</a>
         </div>
       </div>
@@ -889,17 +1156,29 @@ footer {
   });
 })();
 (function () {
-  var wrap = document.getElementById('ownersFlyout');
-  var btn = document.getElementById('ownersBtn');
-  btn.addEventListener('click', function (e) {
-    e.stopPropagation();
-    var nowOpen = !wrap.classList.contains('open');
-    wrap.classList.toggle('open', nowOpen);
-    btn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+  var flyouts = document.querySelectorAll('.nav-flyout');
+  flyouts.forEach(function (wrap) {
+    var btn = wrap.querySelector('.nav-flyout-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var nowOpen = !wrap.classList.contains('open');
+      // close all flyouts before toggling
+      flyouts.forEach(function (other) {
+        other.classList.remove('open');
+        var b = other.querySelector('.nav-flyout-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      wrap.classList.toggle('open', nowOpen);
+      btn.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+    });
   });
   document.addEventListener('click', function () {
-    wrap.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
+    flyouts.forEach(function (wrap) {
+      wrap.classList.remove('open');
+      var b = wrap.querySelector('.nav-flyout-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
   });
 })();
 (function () {
