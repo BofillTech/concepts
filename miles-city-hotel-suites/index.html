@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miles City Hotel &amp; Suites — Big Sky Hospitality, Eastern Montana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F4EFE5;
+    --cream-dark: #EAE2D2;
+    --charcoal: #1F1B16;
+    --charcoal-soft: #3A332B;
+    --rust: #B14A2C;
+    --rust-dark: #913820;
+    --sage: #6E7666;
+    --gold: #C8A560;
+    --white: #FFFFFF;
+    --line: rgba(31, 27, 22, 0.12);
+    --shadow-sm: 0 2px 8px rgba(31, 27, 22, 0.06);
+    --shadow-md: 0 8px 24px rgba(31, 27, 22, 0.10);
+    --shadow-lg: 0 24px 60px rgba(31, 27, 22, 0.18);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'DM Sans', -apple-system, sans-serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding-bottom: 64px; /* space for sticky booking bar */
+  }
+
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--charcoal);
+  }
+
+  /* ---------- Header ---------- */
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 32px;
+    transition: all 0.3s var(--ease);
+    background: transparent;
+  }
+  .header.scrolled {
+    background: rgba(244, 239, 229, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--shadow-sm);
+    padding: 14px 32px;
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .logo {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--white);
+    transition: color 0.3s var(--ease);
+    line-height: 1.1;
+  }
+  .logo .logo-amp {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .header.scrolled .logo {
+    color: var(--charcoal);
+  }
+  .nav-links {
+    display: none;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    transition: color 0.3s var(--ease);
+    position: relative;
+  }
+  .header.scrolled .nav-links a {
+    color: var(--charcoal);
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0;
+    height: 1px;
+    background: currentColor;
+    transition: width 0.3s var(--ease);
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .header-cta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .phone-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    transition: color 0.3s var(--ease);
+    white-space: nowrap;
+  }
+  .header.scrolled .phone-link {
+    color: var(--charcoal);
+  }
+  .phone-link svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+  .phone-link .phone-num { display: none; }
+
+  .btn-book {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 22px;
+    background: var(--rust);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s var(--ease);
+    white-space: nowrap;
+  }
+  .btn-book:hover {
+    background: var(--rust-dark);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 120px 32px 140px;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-4-1.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(31, 27, 22, 0.55) 0%,
+      rgba(31, 27, 22, 0.35) 40%,
+      rgba(31, 27, 22, 0.65) 100%
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    color: var(--white);
+  }
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.2s forwards;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--gold);
+    margin-right: 14px;
+    vertical-align: middle;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 9vw, 120px);
+    font-weight: 300;
+    line-height: 0.95;
+    margin-bottom: 28px;
+    color: var(--white);
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.4s forwards;
+    letter-spacing: -0.03em;
+  }
+  .hero-title em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold);
+    font-feature-settings: "ss01" on;
+  }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 400;
+    max-width: 560px;
+    margin-bottom: 40px;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.6s forwards;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 1s var(--ease) 0.8s forwards;
+  }
+  .btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 36px;
+    background: var(--rust);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s var(--ease);
+  }
+  .btn-hero-primary:hover {
+    background: var(--rust-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  .btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 32px;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease);
+  }
+  .btn-hero-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--white);
+  }
+
+  .hero-trust {
+    position: absolute;
+    bottom: 56px;
+    left: 32px;
+    right: 32px;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    color: var(--white);
+    pointer-events: none;
+  }
+  .hero-trust-text {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .hero-trust-text strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--gold);
+    margin-top: 4px;
+  }
+  .scroll-indicator {
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: var(--gold);
+    animation: scrollDown 2s var(--ease) infinite;
+  }
+
+  @keyframes scrollDown {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(200%); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Section Base ---------- */
+  section { padding: 120px 32px; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .section-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--rust);
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    margin-bottom: 24px;
+    max-width: 900px;
+    letter-spacing: -0.025em;
+  }
+  .section-title em {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 300;
+  }
+  .section-lede {
+    font-size: 17px;
+    color: var(--charcoal-soft);
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  /* ---------- Welcome ---------- */
+  .welcome {
+    background: var(--cream);
+  }
+  .welcome-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .welcome-text-col .section-lede {
+    font-size: 19px;
+    margin-top: 28px;
+    line-height: 1.65;
+    color: var(--charcoal-soft);
+  }
+  .welcome-meta {
+    display: flex;
+    gap: 48px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .welcome-meta-item .label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+  .welcome-meta-item .value {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+  }
+  .welcome-image-col {
+    position: relative;
+  }
+  .welcome-image-col img {
+    width: 100%;
+    height: 580px;
+    object-fit: cover;
+    border-radius: 2px;
+    box-shadow: var(--shadow-lg);
+  }
+  .welcome-image-tag {
+    position: absolute;
+    bottom: -32px;
+    left: -32px;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 28px 36px;
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.4;
+    max-width: 280px;
+    box-shadow: var(--shadow-md);
+  }
+  .welcome-image-tag em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  /* ---------- Rooms ---------- */
+  .rooms {
+    background: var(--cream-dark);
+    position: relative;
+  }
+  .rooms-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-bottom: 80px;
+  }
+  .rooms-header-text { max-width: 720px; }
+  .view-all-link {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rust);
+    border-bottom: 1px solid var(--rust);
+    padding-bottom: 4px;
+    transition: gap 0.3s var(--ease);
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .view-all-link:hover { gap: 14px; }
+
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .room-card {
+    background: var(--white);
+    overflow: hidden;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+  }
+  .room-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+  .room-card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+  }
+  .room-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--ease);
+  }
+  .room-card:hover .room-card-image img {
+    transform: scale(1.06);
+  }
+  .room-card-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 2px;
+  }
+  .room-card-body {
+    padding: 32px 28px 36px;
+  }
+  .room-card-title {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .room-card-meta {
+    display: flex;
+    gap: 16px;
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--sage);
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .room-card-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .room-card-desc {
+    color: var(--charcoal-soft);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  .room-card-link {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    border-bottom: 1px solid var(--charcoal);
+    padding-bottom: 4px;
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    transition: all 0.3s var(--ease);
+  }
+  .room-card:hover .room-card-link {
+    color: var(--rust);
+    border-color: var(--rust);
+    gap: 14px;
+  }
+
+  /* ---------- Amenities ---------- */
+  .amenities {
+    background: var(--cream);
+  }
+  .amenities-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--line);
+    margin-top: 80px;
+    border: 1px solid var(--line);
+  }
+  .amenity-item {
+    background: var(--cream);
+    padding: 40px 32px;
+    transition: background 0.4s var(--ease);
+  }
+  .amenity-item:hover {
+    background: var(--white);
+  }
+  .amenity-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--rust);
+    margin-bottom: 24px;
+  }
+  .amenity-icon svg { width: 100%; height: 100%; stroke-width: 1.4; }
+  .amenity-name {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .amenity-desc {
+    font-size: 14px;
+    color: var(--charcoal-soft);
+    line-height: 1.6;
+  }
+
+  /* ---------- Story / Local ---------- */
+  .story {
+    background: var(--charcoal);
+    color: var(--cream);
+    position: relative;
+  }
+  .story .section-eyebrow { color: var(--gold); }
+  .story .section-eyebrow::before { background: var(--gold); }
+  .story .section-title { color: var(--cream); }
+  .story .section-title em { color: var(--gold); }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .story-text p {
+    color: rgba(244, 239, 229, 0.85);
+    font-size: 17px;
+    line-height: 1.75;
+    margin-top: 24px;
+  }
+  .story-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .story-feature {
+    border-top: 1px solid rgba(244, 239, 229, 0.15);
+    padding-top: 24px;
+  }
+  .story-feature-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .story-feature-desc {
+    color: rgba(244, 239, 229, 0.7);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .story-image img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.95);
+  }
+
+  /* ---------- Gallery ---------- */
+  .gallery {
+    padding: 120px 0;
+    background: var(--cream);
+  }
+  .gallery .container-narrow {
+    padding: 0 32px;
+    max-width: 1280px;
+    margin: 0 auto 60px;
+  }
+  .gallery-strip {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 0 32px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .gallery-strip::-webkit-scrollbar { height: 6px; }
+  .gallery-strip::-webkit-scrollbar-track { background: var(--cream-dark); }
+  .gallery-strip::-webkit-scrollbar-thumb { background: var(--rust); }
+  .gallery-strip img {
+    flex-shrink: 0;
+    width: 70vw;
+    max-width: 580px;
+    height: 420px;
+    object-fit: cover;
+    scroll-snap-align: start;
+    border-radius: 2px;
+    transition: transform 0.5s var(--ease);
+  }
+  .gallery-strip img:hover { transform: scale(1.02); }
+
+  /* ---------- Location ---------- */
+  .location {
+    background: var(--cream-dark);
+  }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .location-info .section-title {
+    margin-bottom: 32px;
+  }
+  .location-address {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    color: var(--charcoal);
+  }
+  .location-details {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .location-detail-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 6px;
+  }
+  .location-detail-value {
+    font-family: var(--serif);
+    font-size: 18px;
+    color: var(--charcoal);
+  }
+  .location-map-card {
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, var(--sage) 0%, var(--charcoal-soft) 100%);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cream);
+    box-shadow: var(--shadow-md);
+  }
+  .location-map-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(244, 239, 229, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(244, 239, 229, 0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .location-map-card .pin-wrap {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  .location-map-card .pin {
+    font-size: 48px;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+  .location-map-card .pin-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+  }
+  .location-map-card .pin-sub {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    opacity: 0.8;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta {
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 140px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-2-1.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+    filter: grayscale(0.4);
+  }
+  .final-cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .final-cta-title {
+    font-family: var(--serif);
+    font-size: clamp(40px, 6vw, 76px);
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 24px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .final-cta-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .final-cta-sub {
+    font-size: 17px;
+    color: rgba(244, 239, 229, 0.8);
+    margin-bottom: 48px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .final-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    background: var(--charcoal);
+    color: rgba(244, 239, 229, 0.7);
+    padding: 80px 32px 40px;
+    border-top: 1px solid rgba(244, 239, 229, 0.1);
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(244, 239, 229, 0.1);
+  }
+  .footer h4 {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+  .footer-brand {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 16px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .footer-brand .amp { color: var(--gold); font-style: italic; }
+  .footer-tag {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+  .footer-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .footer-list a, .footer-list span {
+    font-size: 14px;
+    color: rgba(244, 239, 229, 0.7);
+    transition: color 0.3s var(--ease);
+  }
+  .footer-list a:hover { color: var(--gold); }
+  .footer-bottom {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 12px;
+    color: rgba(244, 239, 229, 0.45);
+  }
+  .footer-bottom .credit {
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  /* ---------- Bottom Booking Bar (Sticky) ---------- */
+  .booking-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    background: var(--charcoal);
+    color: var(--cream);
+    padding: 0;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.18);
+  }
+  .booking-bar-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: stretch;
+    height: 64px;
+  }
+  .booking-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 16px;
+    border-right: 1px solid rgba(244, 239, 229, 0.12);
+    cursor: pointer;
+    transition: background 0.25s var(--ease);
+  }
+  .booking-field:hover {
+    background: rgba(244, 239, 229, 0.04);
+  }
+  .booking-field-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2px;
+  }
+  .booking-field input[type="date"] {
+    background: transparent;
+    border: none;
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    cursor: pointer;
+    width: 100%;
+    color-scheme: dark;
+  }
+  .booking-field input[type="date"]:focus { outline: none; }
+  .booking-field input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) sepia(1) saturate(2) hue-rotate(15deg) brightness(0.85);
+    opacity: 0.6;
+    cursor: pointer;
+  }
+  .booking-bar .btn-book-bar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 32px;
+    background: var(--rust);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s var(--ease);
+    min-width: 140px;
+  }
+  .booking-bar .btn-book-bar:hover { background: var(--rust-dark); }
+
+  /* ---------- Responsive ---------- */
+  @media (min-width: 700px) {
+    .phone-link .phone-num { display: inline; }
+    .welcome-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    .rooms-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .amenities-grid { grid-template-columns: 1fr 1fr; }
+    .story-grid { grid-template-columns: 1fr 1fr; gap: 80px; }
+    .story-features { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .location-grid { grid-template-columns: 1fr 1fr; }
+    .location-details { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1.5fr 1fr 1fr 1fr; }
+    .booking-bar-inner {
+      grid-template-columns: 1fr 1fr auto;
+    }
+    .booking-field { padding: 8px 24px; }
+  }
+  @media (min-width: 1000px) {
+    .nav-links { display: flex; }
+    .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+    .amenities-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 699px) {
+    .header { padding: 14px 20px; }
+    .header.scrolled { padding: 12px 20px; }
+    .hero { padding: 110px 20px 100px; }
+    .hero-trust { left: 20px; right: 20px; bottom: 36px; }
+    section { padding: 80px 20px; }
+    .gallery .container-narrow { padding: 0 20px; }
+    .gallery-strip { padding: 0 20px; }
+    .gallery-strip img { width: 80vw; height: 320px; }
+    .welcome-image-col img { height: 380px; }
+    .welcome-image-tag {
+      bottom: -16px; left: 16px;
+      padding: 20px 24px;
+      font-size: 16px;
+      max-width: 70%;
+    }
+    .welcome-meta { flex-direction: column; gap: 24px; }
+    .story-image img { height: 380px; }
+    .final-cta { padding: 100px 20px; }
+    .footer { padding: 60px 20px 32px; }
+    .booking-bar-inner { height: 60px; }
+    .booking-field { padding: 6px 12px; }
+    .booking-bar .btn-book-bar { padding: 0 18px; min-width: 100px; font-size: 11px; }
+    .booking-field input[type="date"] { font-size: 12px; }
+    .booking-field-label { font-size: 8px; }
+  }
+  @media (max-width: 420px) {
+    .header-cta .phone-link span:not(.phone-num) ~ * { display: none; }
+    .phone-link .phone-num { display: none; }
+    .btn-book { padding: 10px 16px; font-size: 12px; }
+  }
+
+  /* ---------- Scroll Reveal ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+  }
+  .reveal.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="#" class="logo">Miles City Hotel <span class="logo-amp">&amp;</span> Suites</a>
+    <ul class="nav-links">
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#location">Location</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="header-cta">
+      <a href="tel:14062341000" class="phone-link" aria-label="Call us">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="phone-num">406-234-1000</span>
+      </a>
+      <a href="https://s006159.officialbookings.com/" target="_blank" rel="noopener" class="btn-book">Book Now</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Eastern Montana &middot; Big Sky Country</div>
+    <h1 class="hero-title">Big sky.<br>Quiet luxury.<br><em>Home away from home.</em></h1>
+    <p class="hero-sub">Locally owned, newly remodeled, and proudly named TripAdvisor's #1 Rated Hotel in Miles City. Just off I-94 at Highway 59.</p>
+    <div class="hero-actions">
+      <a href="https://s006159.officialbookings.com/" target="_blank" rel="noopener" class="btn-hero-primary">
+        Reserve Your Stay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#rooms" class="btn-hero-secondary">Explore Rooms</a>
+    </div>
+  </div>
+  <div class="hero-trust">
+    <div class="hero-trust-text">
+      <span>Recognized by</span>
+      <strong>Tripadvisor &mdash; #1 Rated Hotel in Miles City</strong>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- Welcome -->
+<section class="welcome" id="about">
+  <div class="container">
+    <div class="welcome-grid">
+      <div class="welcome-text-col reveal">
+        <div class="section-eyebrow">Welcome</div>
+        <h2 class="section-title">A modern Montana hotel, <em>locally owned</em> and locally loved.</h2>
+        <p class="section-lede">Newly remodeled, refurnished, and redecorated &mdash; the Miles City Hotel &amp; Suites was recently purchased by three lifelong residents of Miles City who've directed considerable resources toward making it the new standard for hotels in eastern Montana.</p>
+        <p class="section-lede" style="margin-top: 16px;">Smoke-free, comfortably appointed, and just off I-94. Whether you're passing through Big Sky Country or settling in for the week, we make sure the welcome feels like home.</p>
+        <div class="welcome-meta">
+          <div class="welcome-meta-item">
+            <div class="label">Owners</div>
+            <div class="value">Local since 1997</div>
+          </div>
+          <div class="welcome-meta-item">
+            <div class="label">Rating</div>
+            <div class="value">Tripadvisor #1</div>
+          </div>
+          <div class="welcome-meta-item">
+            <div class="label">Location</div>
+            <div class="value">Off I-94, Hwy 59</div>
+          </div>
+        </div>
+      </div>
+      <div class="welcome-image-col reveal">
+        <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/MCHS-Common-Areas-1-28-2021_008_1900x700_slider.jpg" alt="Miles City Hotel & Suites lounge area with fireplace" loading="lazy">
+        <div class="welcome-image-tag">Three local owners. <em>One standard:</em> the very best hotel in eastern Montana.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rooms -->
+<section class="rooms" id="rooms">
+  <div class="container">
+    <div class="rooms-header reveal">
+      <div class="rooms-header-text">
+        <div class="section-eyebrow">Rooms &amp; Suites</div>
+        <h2 class="section-title">Seven room types. <em>Every detail considered.</em></h2>
+        <p class="section-lede">From our flagship Presidential Suite to thoughtfully designed accessible rooms, every space at Miles City Hotel &amp; Suites is spacious, well-appointed, and built for a worry-free night.</p>
+      </div>
+      <a href="#" class="view-all-link">
+        View all rooms
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+    <div class="rooms-grid">
+      <article class="room-card reveal">
+        <div class="room-card-image">
+          <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-1-2.jpg" alt="The Presidential Suite" loading="lazy">
+          <span class="room-card-badge">Signature</span>
+        </div>
+        <div class="room-card-body">
+          <h3 class="room-card-title">The Presidential Suite</h3>
+          <div class="room-card-meta">
+            <span>&middot; Top-tier</span>
+            <span>&middot; Sleeps 4</span>
+            <span>&middot; King &amp; sofa</span>
+          </div>
+          <p class="room-card-desc">Our flagship suite &mdash; the most spacious and luxurious room in the hotel. Designed for special stays, executive travel, and anyone who wants more room to spread out.</p>
+          <a href="https://milescityhotelandsuites.com/the-presidential-suite/" class="room-card-link">
+            View Room
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-card-image">
+          <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-7-1.jpg" alt="King Spa Suite with Jacuzzi" loading="lazy">
+          <span class="room-card-badge">Most Popular</span>
+        </div>
+        <div class="room-card-body">
+          <h3 class="room-card-title">King Spa Suite</h3>
+          <div class="room-card-meta">
+            <span>&middot; King bed</span>
+            <span>&middot; Jacuzzi</span>
+            <span>&middot; Sofa</span>
+          </div>
+          <p class="room-card-desc">A king bed, a sitting area with sofa, and an in-room jacuzzi tub. The room our guests come back for &mdash; perfect for anniversaries, getaways, and a long road weekend.</p>
+          <a href="https://milescityhotelandsuites.com/king-bed-with-jaccuzi/" class="room-card-link">
+            View Room
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-card-image">
+          <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-2-1.jpg" alt="Double Queen Deluxe with two queen beds" loading="lazy">
+          <span class="room-card-badge">For Families</span>
+        </div>
+        <div class="room-card-body">
+          <h3 class="room-card-title">Double Queen Deluxe</h3>
+          <div class="room-card-meta">
+            <span>&middot; Two queens</span>
+            <span>&middot; Sleeps 4</span>
+            <span>&middot; Spacious</span>
+          </div>
+          <p class="room-card-desc">Two queen beds, room to breathe, and every standard amenity &mdash; microwave, refrigerator, and ultra hi-speed WiFi included. Built for families and traveling teams.</p>
+          <a href="https://milescityhotelandsuites.com/two-queen-bed-room/" class="room-card-link">
+            View Room
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+
+      <article class="room-card reveal">
+        <div class="room-card-image">
+          <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-6-1.jpg" alt="Queen Suite with sofa" loading="lazy">
+          <span class="room-card-badge">Comfort+</span>
+        </div>
+        <div class="room-card-body">
+          <h3 class="room-card-title">Queen Suite</h3>
+          <div class="room-card-meta">
+            <span>&middot; Queen bed</span>
+            <span>&middot; Sofa</span>
+            <span>&middot; Extras</span>
+          </div>
+          <p class="room-card-desc">A queen bed paired with a comfortable sofa and a few extra features that elevate the everyday. Spacious enough to relax, smartly priced for value-minded travelers.</p>
+          <a href="https://milescityhotelandsuites.com/one-queen-bed-with-sofa-xtra-features/" class="room-card-link">
+            View Room
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+<section class="amenities" id="amenities">
+  <div class="container">
+    <div class="reveal" style="max-width: 800px;">
+      <div class="section-eyebrow">Amenities</div>
+      <h2 class="section-title">The little things <em>done well.</em></h2>
+      <p class="section-lede">Everything our guests need for a comfortable, worry-free stay &mdash; included.</p>
+    </div>
+    <div class="amenities-grid reveal">
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+        </div>
+        <div class="amenity-name">Hot Breakfast</div>
+        <div class="amenity-desc">Delicious hot breakfast served daily from 6&ndash;9 AM. Eggs, biscuits and gravy, fresh-baked rolls, and a Montana-sized pour of coffee.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-5 10-5 10 5 10 5-3 5-10 5S2 12 2 12z"/><circle cx="12" cy="12" r="2"/><path d="M12 4l1.5 3M12 20l1.5-3"/></svg>
+        </div>
+        <div class="amenity-name">Heated Pool &amp; Spa</div>
+        <div class="amenity-desc">A heated indoor swimming pool and whirlpool spa &mdash; the perfect way to wind down after a long day on the road.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0114 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+        </div>
+        <div class="amenity-name">Ultra Hi-Speed WiFi</div>
+        <div class="amenity-desc">Fast, reliable WiFi throughout the property &mdash; built for streaming, working, and everything in between.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+        </div>
+        <div class="amenity-name">In-Room Essentials</div>
+        <div class="amenity-desc">Microwave, refrigerator, satellite TV, and 24-hour coffee service &mdash; standard in every room.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 9h.01M15 9h.01M9 13h.01M15 13h.01"/></svg>
+        </div>
+        <div class="amenity-name">Lounge &amp; Fireplace</div>
+        <div class="amenity-desc">A dining and lounge area with media center and fireplace &mdash; for quiet mornings and easy evenings.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="amenity-name">Business Media Center</div>
+        <div class="amenity-desc">A dedicated workspace with media center, fax access, and safety deposit boxes &mdash; ready when you are.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="amenity-name">Guest Laundry</div>
+        <div class="amenity-desc">On-site guest laundry, available throughout your stay &mdash; reasonably priced, conveniently placed.</div>
+      </div>
+
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <div class="amenity-name">ADA Compliant Rooms</div>
+        <div class="amenity-desc">Fully accessible rooms designed for comfort and ease &mdash; with the same generous space as the rest of our property.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text reveal">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-title">Owned by three<br>lifelong locals.<br><em>Run by people you'll remember.</em></h2>
+        <p>The Miles City Hotel &amp; Suites was previously part of a national hotel chain franchise. When three lifelong residents of Miles City took ownership, they did it with a single goal: make this the very best hotel not just in eastern Montana, but in all of Montana.</p>
+        <p>That commitment shows up in the rooms, the breakfast, the lobby, and most importantly, in the people on staff &mdash; all of whom are local folks, participating in extensive ongoing training. From custodial work to food preparation to guest accommodation, the standard is the same: do it like you'd want it done in your own home.</p>
+        <div class="story-features">
+          <div class="story-feature">
+            <div class="story-feature-title">Locally Owned</div>
+            <div class="story-feature-desc">Three lifelong Miles City residents, deeply invested in this community.</div>
+          </div>
+          <div class="story-feature">
+            <div class="story-feature-title">Smoke-Free</div>
+            <div class="story-feature-desc">Every room, every common space &mdash; clean air, every stay.</div>
+          </div>
+          <div class="story-feature">
+            <div class="story-feature-title">Newly Remodeled</div>
+            <div class="story-feature-desc">Refurnished and redecorated with significant ongoing investment.</div>
+          </div>
+          <div class="story-feature">
+            <div class="story-feature-title">Local Staff</div>
+            <div class="story-feature-desc">Hired locally, trained continuously &mdash; the difference is real.</div>
+          </div>
+        </div>
+      </div>
+      <div class="story-image reveal">
+        <img src="https://milescityhotelandsuites.com/hotel/uploads/2014/10/MCHS_Exterior_6-3-15_800-wide.jpg" alt="Miles City Hotel & Suites exterior" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery">
+  <div class="container-narrow reveal">
+    <div class="section-eyebrow">Gallery</div>
+    <h2 class="section-title">A look around <em>the property.</em></h2>
+  </div>
+  <div class="gallery-strip reveal">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/MCHS_5-26-2018_Website_1900x700_5-27-18.jpg" alt="Hotel exterior" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-4-1.jpg" alt="Hotel grounds" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/MCHS-Common-Areas-1-28-2021_008_1900x700_slider.jpg" alt="Lounge" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-1-2.jpg" alt="Suite" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-7-1.jpg" alt="Spa room" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-2-1.jpg" alt="Hotel interior" loading="lazy">
+    <img src="https://milescityhotelandsuites.com/hotel/uploads/2015/07/Slider-1900x700-6-1.jpg" alt="Property view" loading="lazy">
+  </div>
+</section>
+
+<!-- Location -->
+<section class="location" id="location">
+  <div class="container">
+    <div class="location-grid">
+      <div class="location-info reveal">
+        <div class="section-eyebrow">Find Us</div>
+        <h2 class="section-title">Right off I-94 at <em>Highway 59.</em></h2>
+        <p class="location-address">1720 S. Haynes Avenue<br>Miles City, Montana</p>
+        <p class="section-lede">An easy stop for anyone driving I-94 across eastern Montana &mdash; whether you're headed to Yellowstone, Glacier, the Little Bighorn Battlefield, or just home.</p>
+        <div class="location-details">
+          <div class="location-detail">
+            <div class="location-detail-label">Phone</div>
+            <div class="location-detail-value"><a href="tel:14062341000">406-234-1000</a></div>
+          </div>
+          <div class="location-detail">
+            <div class="location-detail-label">Check-In</div>
+            <div class="location-detail-value">3:00 PM</div>
+          </div>
+          <div class="location-detail">
+            <div class="location-detail-label">Check-Out</div>
+            <div class="location-detail-value">11:00 AM</div>
+          </div>
+          <div class="location-detail">
+            <div class="location-detail-label">Access</div>
+            <div class="location-detail-value">I-94, Hwy 59</div>
+          </div>
+        </div>
+      </div>
+      <a href="https://goo.gl/maps/nJIOb" target="_blank" rel="noopener" class="location-map-card reveal" aria-label="View on Google Maps">
+        <div class="pin-wrap">
+          <div class="pin">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
+          </div>
+          <div class="pin-text">Miles City, MT</div>
+          <div class="pin-sub">Open in Google Maps</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="final-cta-content reveal">
+    <h2 class="final-cta-title">Ready to <em>book your stay</em> in Miles City?</h2>
+    <p class="final-cta-sub">Reserve direct for the best available rate &mdash; or give us a call. We'll take care of you like the locals we are.</p>
+    <div class="final-cta-actions">
+      <a href="https://s006159.officialbookings.com/" target="_blank" rel="noopener" class="btn-hero-primary">
+        Reserve Your Stay
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="tel:14062341000" class="btn-hero-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Call 406-234-1000
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Miles City Hotel <span class="amp">&amp;</span> Suites</div>
+      <p class="footer-tag">Locally owned and operated. Newly remodeled. Tripadvisor's #1 Rated Hotel in Miles City.</p>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul class="footer-list">
+        <li><span>1720 S. Haynes Avenue</span></li>
+        <li><span>Miles City, Montana</span></li>
+        <li><a href="tel:14062341000">406-234-1000</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul class="footer-list">
+        <li><a href="#rooms">Rooms &amp; Suites</a></li>
+        <li><a href="#amenities">Amenities</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Reserve</h4>
+      <ul class="footer-list">
+        <li><a href="https://s006159.officialbookings.com/" target="_blank" rel="noopener">Book a Room</a></li>
+        <li><a href="https://milescityhotelandsuites.com/rewards/" target="_blank" rel="noopener">Rewards Program</a></li>
+        <li><a href="https://milescityhotelandsuites.com/groups/" target="_blank" rel="noopener">Group Bookings</a></li>
+        <li><a href="https://milescityhotelandsuites.com/business-travel/" target="_blank" rel="noopener">Business Travel</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>&copy; 2026 Miles City Hotel &amp; Suites. All rights reserved.</div>
+    <div class="credit">Concept by Bofill Technologies</div>
+  </div>
+</footer>
+
+<!-- Sticky Bottom Booking Bar -->
+<div class="booking-bar" role="region" aria-label="Quick booking">
+  <div class="booking-bar-inner">
+    <label class="booking-field">
+      <span class="booking-field-label">Check-In</span>
+      <input type="date" id="checkin" aria-label="Check-in date">
+    </label>
+    <label class="booking-field">
+      <span class="booking-field-label">Check-Out</span>
+      <input type="date" id="checkout" aria-label="Check-out date">
+    </label>
+    <button class="btn-book-bar" id="bookBtn" type="button">
+      Book
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  // Sticky header
+  const header = document.getElementById('header');
+  const onScroll = () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Booking bar default dates
+  (function() {
+    const today = new Date();
+    const tomorrow = new Date(today.getTime() + 86400000);
+    const fmt = (d) => d.toISOString().split('T')[0];
+    document.getElementById('checkin').value = fmt(today);
+    document.getElementById('checkout').value = fmt(tomorrow);
+    document.getElementById('checkin').min = fmt(today);
+    document.getElementById('checkout').min = fmt(tomorrow);
+  })();
+
+  // Booking bar action — pass dates to booking engine if it accepts query params, otherwise just open
+  document.getElementById('bookBtn').addEventListener('click', () => {
+    const ci = document.getElementById('checkin').value;
+    const co = document.getElementById('checkout').value;
+    const base = 'https://s006159.officialbookings.com/';
+    // Most booking engines accept arrival/departure params; harmless if ignored
+    const url = ci && co ? `${base}?arrival=${ci}&departure=${co}` : base;
+    window.open(url, '_blank', 'noopener');
+  });
+
+  // Keep checkout > checkin
+  document.getElementById('checkin').addEventListener('change', (e) => {
+    const ci = new Date(e.target.value);
+    const co = new Date(ci.getTime() + 86400000);
+    const fmt = (d) => d.toISOString().split('T')[0];
+    document.getElementById('checkout').min = fmt(co);
+    if (document.getElementById('checkout').value <= e.target.value) {
+      document.getElementById('checkout').value = fmt(co);
+    }
+  });
+</script>
+
+</body>
+</html>
