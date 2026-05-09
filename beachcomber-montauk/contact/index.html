@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Beachcomber Resort at Montauk</title>
+<meta name="description" content="Contact the Beachcomber Resort at Montauk: 727 Old Montauk Highway, Montauk NY 11954. Phone (631) 668-2894 or email info@beachcombermontauk.com.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+
+.contact-wrap { padding: clamp(5rem, 10vw, 9rem) 0; background: var(--paper); }
+.contact-grid { display: grid; grid-template-columns: 1fr; gap: clamp(3rem, 6vw, 5rem); align-items: start; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1fr 1.2fr; gap: 5rem; } }
+
+.contact-info h2 { font-family: var(--display); font-weight: 300; font-size: clamp(2rem, 4vw, 3rem); color: var(--navy); line-height: 1.1; margin: 1rem 0 1.5rem; letter-spacing: -0.015em; font-variation-settings: "SOFT" 30, "opsz" 144; }
+.contact-info h2 em { font-style: italic; color: var(--coral); font-weight: 400; }
+.contact-info > p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 38ch; }
+
+.info-block { padding: 1.75rem 0; border-top: 1px solid var(--line); }
+.info-block:last-child { border-bottom: 1px solid var(--line); }
+.info-block .label { font-family: var(--sans); font-size: .7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: .85rem; display: flex; align-items: center; gap: .65rem; }
+.info-block .label svg { color: var(--coral); }
+.info-block .value { font-family: var(--display); font-weight: 300; font-size: 1.25rem; color: var(--navy); line-height: 1.4; font-variation-settings: "SOFT" 30; }
+.info-block .value a:hover { color: var(--coral); }
+.info-block .meta { font-family: var(--sans); font-size: .8rem; color: var(--muted); margin-top: .35rem; letter-spacing: 0.04em; }
+
+.contact-form { padding: clamp(2.5rem, 5vw, 4rem); background: var(--cream); border-radius: 4px; }
+.contact-form .form-eyebrow { font-family: var(--sans); font-size: .72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--coral); font-weight: 500; margin-bottom: 1rem; display: inline-flex; align-items: center; gap: .85rem; }
+.contact-form .form-eyebrow:before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--coral); }
+.contact-form h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.7rem, 3vw, 2.25rem); color: var(--navy); line-height: 1.1; margin-bottom: .85rem; letter-spacing: -0.01em; font-variation-settings: "SOFT" 30, "opsz" 144; }
+.contact-form h3 em { font-style: italic; color: var(--coral); font-weight: 400; }
+.contact-form > p { color: var(--muted); margin-bottom: 2rem; font-size: .98rem; }
+
+.field-row { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 1.25rem; }
+.field-row.two { grid-template-columns: 1fr 1fr; }
+@media (max-width: 540px) { .field-row.two { grid-template-columns: 1fr; } }
+.field { display: block; }
+.field label { display: block; font-family: var(--sans); font-size: .7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 600; margin-bottom: .6rem; }
+.field input, .field textarea {
+  width: 100%;
+  padding: .85rem 1rem;
+  font-family: var(--sans); font-size: .98rem;
+  color: var(--navy);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  transition: border-color .25s ease, box-shadow .25s ease;
+  outline: none;
+}
+.field input:focus, .field textarea:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgba(201,117,81,.12); }
+.field textarea { resize: vertical; min-height: 140px; line-height: 1.6; }
+
+.submit-row { display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; margin-top: 2rem; }
+.submit-row button {
+  display: inline-flex; align-items: center; gap: .65rem;
+  padding: 1.05rem 2.4rem;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 999px;
+  font-family: var(--sans); font-weight: 600; font-size: .8rem;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+}
+.submit-row button:hover { background: var(--coral); transform: translateY(-1px); }
+.submit-row .note { font-family: var(--sans); font-size: .78rem; color: var(--muted); }
+
+.map-block { background: var(--navy); padding: clamp(4rem, 8vw, 7rem) 0; color: #fff; text-align: center; }
+.map-block h3 { font-family: var(--display); font-weight: 300; font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #fff; margin-bottom: 1rem; font-variation-settings: "SOFT" 30, "opsz" 144; }
+.map-block h3 em { font-style: italic; color: var(--cream); font-weight: 400; }
+.map-block p { color: rgba(255,255,255,.85); margin-bottom: 2.5rem; }
+.map-iframe { width: 100%; max-width: 1100px; margin: 0 auto; aspect-ratio: 16/9; border-radius: 4px; overflow: hidden; }
+.map-iframe iframe { width: 100%; height: 100%; border: 0; filter: grayscale(.4) contrast(.95); }
+
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <a href="../" class="header-logo" aria-label="Beachcomber Resort at Montauk">
+    <img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Logo-FNL-Horiz.png" alt="Beachcomber Resort at Montauk">
+  </a>
+  <nav class="nav-primary" aria-label="Primary">
+    <a href="../why-beachcomber/">Why Beachcomber</a>
+    <a href="../suites/">Suites</a>
+    <a href="../amenities/">Amenities</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../explore-montauk/">Explore Montauk</a>
+    <a href="../policies/">Policies</a>
+    <a href="../contact/" class="active">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a href="tel:6316682894" class="header-phone">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      631.668.2894
+    </a>
+    <a href="https://secure.irm1.net/irmng?resort=2g" class="btn-book" target="_blank" rel="noopener">Book Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="../why-beachcomber/">Why Beachcomber</a>
+    <a href="../suites/">Suites</a>
+    <a href="../amenities/">Amenities</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../explore-montauk/">Explore Montauk</a>
+    <a href="../policies/">Policies</a>
+    <a href="../contact/" class="active">Contact</a>
+  <div class="mobile-extras">
+    <a href="tel:6316682894">631.668.2894</a>
+    <a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a>
+    <a href="https://www.facebook.com/BeachcomberMTK" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com/beachcombermtk/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</aside>
+
+<!-- Page hero -->
+<section class="page-hero" style="min-height:50vh;">
+  <div class="page-hero-bg"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Exterior-Pool-Cabana.jpg" alt=""></div>
+  <div class="container">
+    <div class="crumbs"><a href="../">Home</a><span class="sep">·</span><span>Contact</span></div>
+    <span class="eyebrow">Contact Us</span>
+    <h1>Here for you, when you <em>need us.</em></h1>
+    <p class="lede">If you have any questions, email or call us — we're here to help.</p>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="contact-wrap">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>The <em>quickest</em> way to reach us.</h2>
+        <p>Reservations, questions about your suite, the beach, or the property — we answer the phone and we answer the email.</p>
+
+        <div class="info-block">
+          <div class="label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Address
+          </div>
+          <div class="value">727 Old Montauk Highway</div>
+          <div class="meta">Montauk, NY 11954</div>
+        </div>
+
+        <div class="info-block">
+          <div class="label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Call Us
+          </div>
+          <div class="value"><a href="tel:6316682894">(631) 668-2894</a></div>
+        </div>
+
+        <div class="info-block">
+          <div class="label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Reservations & General
+          </div>
+          <div class="value"><a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a></div>
+        </div>
+
+        <div class="info-block">
+          <div class="label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Pool & Events
+          </div>
+          <div class="value"><a href="mailto:events@beachcombermontauk.com">events@beachcombermontauk.com</a></div>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <span class="form-eyebrow">Get in touch with us</span>
+        <h3>Tell us what's on <em>your mind.</em></h3>
+        <p>We are happy to help you out — fill the form and we'll be in touch shortly.</p>
+
+        <form id="contactForm">
+          <div class="field-row two">
+            <div class="field">
+              <label for="cf-fn">First Name</label>
+              <input type="text" id="cf-fn" name="firstName" required>
+            </div>
+            <div class="field">
+              <label for="cf-ln">Last Name</label>
+              <input type="text" id="cf-ln" name="lastName" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cf-em">Email Address</label>
+              <input type="email" id="cf-em" name="email" required>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="cf-msg">Message</label>
+              <textarea id="cf-msg" name="message" rows="5" required></textarea>
+            </div>
+          </div>
+          <div class="submit-row">
+            <button type="submit">Submit <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></button>
+            <span class="note">Your message goes straight to info@beachcombermontauk.com.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Map -->
+<section class="map-block">
+  <div class="container">
+    <span class="eyebrow">Find Us</span>
+    <h3 style="margin-top:1.25rem;">A quiet stretch of <em>Old Montauk.</em></h3>
+    <p>727 Old Montauk Highway · Montauk, NY 11954</p>
+    <div class="map-iframe">
+      <iframe
+        src="https://maps.google.com/maps?q=727+Old+Montauk+Highway+Montauk+NY&t=&z=14&ie=UTF8&iwloc=&output=embed"
+        loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="Beachcomber Resort at Montauk location map"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-cta-bg"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Drone-Overview.jpg" alt="Aerial view of Beachcomber Resort"></div>
+  <div class="container">
+    <span class="eyebrow">Ready When You Are</span>
+    <h2>Book your <em>season.</em></h2>
+    <div class="final-cta-actions">
+      <a href="https://secure.irm1.net/irmng?resort=2g" class="btn-primary" target="_blank" rel="noopener">Book Your Stay <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:6316682894" class="btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>631.668.2894</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Logo-FNL-Horiz.png" alt="Beachcomber Resort logo">
+        <p>Steps from everything a great Montauk get-away has to offer.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/BeachcomberMTK" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7c4.7-.8 8.4-4.9 8.4-9.9z"/></svg></a>
+          <a href="https://www.instagram.com/beachcombermtk/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Visit</h4>
+        <p class="footer-line">727 Old Montauk Highway</p>
+        <p class="footer-meta">Montauk, NY 11954</p>
+        <p class="footer-line"><a href="tel:6316682894">631.668.2894</a></p>
+        <p class="footer-line"><a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a></p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../why-beachcomber/">Why Beachcomber</a></li>
+          <li><a href="../suites/">Suites</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../gallery/">Photo Gallery</a></li>
+          <li><a href="../explore-montauk/">Explore Montauk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reservations</h4>
+        <ul>
+          <li><a href="https://secure.irm1.net/irmng?resort=2g" target="_blank" rel="noopener">Book Online</a></li>
+          <li><a href="../policies/">Policies & Safety</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="https://secure.irm1.net/owner/#/login?resort=2g" target="_blank" rel="noopener">Owner Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Beachcomber Resort at Montauk. All rights reserved.</span>
+      <span class="credit">A concept by <a href="https://bofilltech.com" target="_blank" rel="noopener">Bofill Technologies</a></span>
+    </div>
+  </div>
+</footer>
+
+<form class="booking-bar" id="bookingBar" onsubmit="return submitBooking(event)">
+  <label class="bb-field"><span class="bb-label">Check In</span><input class="bb-input" type="date" id="bbCheckIn" required></label>
+  <label class="bb-field"><span class="bb-label">Check Out</span><input class="bb-input" type="date" id="bbCheckOut" required></label>
+  <button type="submit" class="bb-book">Book</button>
+</form>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>

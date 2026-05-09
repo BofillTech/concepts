@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explore Montauk — Beachcomber Resort at Montauk</title>
+<meta name="description" content="Discover Montauk during your stay at the Beachcomber Resort: Hither Hills State Park, Montauk Downs Golf, the Montauk Lighthouse, downtown dining, sailing, fishing, wineries and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+
+.section-pad { padding: clamp(5rem, 10vw, 9rem) 0; }
+.section-pad.cream { background: var(--cream); }
+.section-pad.paper { background: var(--paper); }
+.section-pad.soft { background: var(--cream-soft); }
+.section-pad.navy { background: var(--navy); color: #fff; }
+.section-pad.navy h2 { color: #fff; }
+.section-pad.navy h2 em { color: var(--cream); }
+.section-pad.navy p { color: rgba(255,255,255,.85); }
+.section-pad.navy .eyebrow { color: var(--cream); }
+.section-pad.navy .eyebrow:before { background: var(--cream); }
+
+.intro { text-align: center; max-width: 760px; margin: 0 auto; padding: clamp(4rem, 7vw, 6.5rem) var(--gutter) 0; background: var(--paper); }
+.intro p { color: var(--char); font-size: 1.05rem; line-height: 1.75; margin-top: 1.5rem; }
+
+.distance-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin: 4rem auto 0; max-width: 900px; }
+.distance-card { padding: 2rem 1.75rem; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; text-align: center; transition: transform .35s ease, border-color .35s ease; }
+.distance-card:hover { transform: translateY(-4px); border-color: var(--coral); }
+.distance-card .dist-num { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 2rem; color: var(--coral); margin-bottom: .35rem; line-height: 1; font-variation-settings: "SOFT" 30; }
+.distance-card .dist-label { font-family: var(--sans); font-size: .72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); font-weight: 500; }
+@media (min-width: 640px) { .distance-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 900px) { .distance-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.spot-feature { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.spot-feature .spot-image { position: relative; aspect-ratio: 4/5; overflow: hidden; border-radius: 4px; background: var(--cream); }
+.spot-feature .spot-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s ease; }
+.spot-feature:hover .spot-image img { transform: scale(1.04); }
+.spot-feature p { font-size: 1.05rem; line-height: 1.75; margin-bottom: 1.25rem; }
+.spot-feature .meta { font-family: var(--sans); font-size: .75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+.section-pad.navy .spot-feature .meta { color: rgba(255,255,255,.65); border-top-color: rgba(255,255,255,.15); }
+@media (min-width: 768px) {
+  .spot-feature { grid-template-columns: 1fr 1fr; }
+  .spot-feature.reverse > .spot-image { order: 2; }
+}
+
+.activities-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 4rem; }
+.activity-card { padding: 2rem 1.75rem; background: var(--paper); border-radius: 4px; border: 1px solid var(--line); transition: transform .35s ease, border-color .35s ease; }
+.activity-card:hover { transform: translateY(-4px); border-color: var(--coral); }
+.activity-card h3 { font-family: var(--display); font-weight: 400; font-size: 1.25rem; color: var(--navy); margin-bottom: .5rem; font-variation-settings: "SOFT" 30; }
+.activity-card p { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+.activity-card .num { display: block; font-family: var(--display); font-style: italic; font-size: .85rem; color: var(--coral); margin-bottom: .85rem; }
+@media (min-width: 640px) { .activities-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .activities-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.checklist { padding: clamp(4rem, 7vw, 6rem) clamp(2rem, 5vw, 4rem); background: var(--cream); border-radius: 4px; max-width: 900px; margin: 0 auto; }
+.checklist h3 { font-family: var(--display); font-weight: 400; font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--navy); margin-bottom: 1rem; font-variation-settings: "SOFT" 30; }
+.checklist h3 em { font-style: italic; color: var(--coral); font-weight: 400; }
+.checklist p { color: var(--muted); margin-bottom: 1.5rem; }
+.checklist ul { list-style: none; columns: 1; column-gap: 2rem; padding: 0; }
+.checklist ul li { padding: .55rem 0; border-bottom: 1px solid var(--line); font-family: var(--sans); font-size: .95rem; color: var(--navy); break-inside: avoid; }
+.checklist ul li:before { content: '☐'; color: var(--coral); margin-right: .65rem; font-size: 1rem; }
+@media (min-width: 768px) { .checklist ul { columns: 2; } }
+
+</style>
+</head>
+<body>
+
+<header class="header" id="header">
+  <a href="../" class="header-logo" aria-label="Beachcomber Resort at Montauk">
+    <img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Logo-FNL-Horiz.png" alt="Beachcomber Resort at Montauk">
+  </a>
+  <nav class="nav-primary" aria-label="Primary">
+    <a href="../why-beachcomber/">Why Beachcomber</a>
+    <a href="../suites/">Suites</a>
+    <a href="../amenities/">Amenities</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../explore-montauk/" class="active">Explore Montauk</a>
+    <a href="../policies/">Policies</a>
+    <a href="../contact/">Contact</a>
+  </nav>
+  <div class="header-actions">
+    <a href="tel:6316682894" class="header-phone">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      631.668.2894
+    </a>
+    <a href="https://secure.irm1.net/irmng?resort=2g" class="btn-book" target="_blank" rel="noopener">Book Now</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<aside class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <a href="../why-beachcomber/">Why Beachcomber</a>
+    <a href="../suites/">Suites</a>
+    <a href="../amenities/">Amenities</a>
+    <a href="../gallery/">Gallery</a>
+    <a href="../explore-montauk/" class="active">Explore Montauk</a>
+    <a href="../policies/">Policies</a>
+    <a href="../contact/">Contact</a>
+  <div class="mobile-extras">
+    <a href="tel:6316682894">631.668.2894</a>
+    <a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a>
+    <a href="https://www.facebook.com/BeachcomberMTK" target="_blank" rel="noopener">Facebook</a>
+    <a href="https://www.instagram.com/beachcombermtk/" target="_blank" rel="noopener">Instagram</a>
+  </div>
+</aside>
+
+<!-- Page hero -->
+<section class="page-hero">
+  <div class="page-hero-bg"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Beach-Entrance.jpg" alt=""></div>
+  <div class="container">
+    <div class="crumbs"><a href="../">Home</a><span class="sep">·</span><span>Explore Montauk</span></div>
+    <span class="eyebrow">Explore Montauk</span>
+    <h1>Out the door, into the <em>End.</em></h1>
+    <p class="lede">Beaches, golf, the iconic Lighthouse, parks, museums, art galleries, sailing, fishing, wineries — all minutes from your suite.</p>
+  </div>
+</section>
+
+<!-- Intro -->
+<div class="intro">
+  <span class="eyebrow">The End of Long Island</span>
+  <p>The Beachcomber sits on a quiet stretch of Old Montauk Highway — close enough to walk or bike into town, but far enough from the traffic to feel like its own neighborhood. Whatever Montauk you're after — windswept and wild, polished and refined, family-friendly and affordable — it's a short ride away.</p>
+</div>
+
+<!-- Distance grid -->
+<section class="section-pad paper" style="padding-top: clamp(3rem, 5vw, 4rem);">
+  <div class="container">
+    <div class="distance-grid">
+      <div class="distance-card reveal"><div class="dist-num">5 min</div><div class="dist-label">Hither Hills State Park</div></div>
+      <div class="distance-card reveal"><div class="dist-num">10 min</div><div class="dist-label">Montauk Downs Golf</div></div>
+      <div class="distance-card reveal"><div class="dist-num">A few mi.</div><div class="dist-label">Montauk Lighthouse</div></div>
+      <div class="distance-card reveal"><div class="dist-num">Walk</div><div class="dist-label">Downtown Montauk</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Hither Hills -->
+<section class="section-pad cream" id="hither-hills">
+  <div class="container">
+    <div class="spot-feature">
+      <div class="spot-image reveal"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Beach-Area.jpg" alt="Beach near Hither Hills"></div>
+      <div class="spot-text reveal">
+        <span class="eyebrow">Spot — 01</span>
+        <h2 class="section-title">Hither Hills <em>State Park.</em></h2>
+        <p>Five minutes down the road, Hither Hills sprawls across nearly two miles of oceanfront — open dune trails, rolling sand, and some of the best protected beach access on the East End. A perfect first stop for guests who want the beach big and uncrowded.</p>
+        <div class="meta">5 minutes from the Beachcomber</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Montauk Downs Golf -->
+<section class="section-pad navy" id="golf">
+  <div class="container">
+    <div class="spot-feature reverse">
+      <div class="spot-image reveal"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Drone-Overview.jpg" alt="Aerial view of Montauk"></div>
+      <div class="spot-text reveal">
+        <span class="eyebrow">Spot — 02</span>
+        <h2 class="section-title">Montauk Downs <em>State Park</em> Golf.</h2>
+        <p>A scenic, public 18-hole course set in the hills above town, and one of the best public courses anywhere on Long Island. Bring your clubs — it's a 10-minute drive, and tee times are easier to land than the private alternatives.</p>
+        <div class="meta">10 minutes from the Beachcomber</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lighthouse -->
+<section class="section-pad cream" id="lighthouse">
+  <div class="container">
+    <div class="spot-feature">
+      <div class="spot-image reveal"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Beach-Entrance.jpg" alt="Coastal cliffs near Montauk Point"></div>
+      <div class="spot-text reveal">
+        <span class="eyebrow">Spot — 03</span>
+        <h2 class="section-title">The <em>iconic</em> Montauk Lighthouse.</h2>
+        <p>The easternmost tip of Long Island, a few miles past town — and the postcard image of Montauk for over two centuries. Climb the tower for the long view, walk the rocky shoreline, or visit the small museum at the base.</p>
+        <div class="meta">A few miles east of town</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Downtown -->
+<section class="section-pad paper" id="downtown">
+  <div class="container">
+    <div class="spot-feature reverse">
+      <div class="spot-image reveal"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Exterior-Front-Entrance.jpg" alt="Local Montauk dining"></div>
+      <div class="spot-text reveal">
+        <span class="eyebrow">Spot — 04</span>
+        <h2 class="section-title">Downtown <em>Montauk.</em></h2>
+        <p>You can walk it or bike it — the Beachcomber sits close enough to town that you don't have to plan a trip just to grab dinner. Local dining and shopping, parks, museums, art galleries, and the docks for charter fishing and sailing are all within easy reach.</p>
+        <div class="meta">Walk or bike — minutes from the property</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- More Activities -->
+<section class="section-pad soft">
+  <div class="container">
+    <div style="text-align:center;max-width:760px;margin:0 auto;">
+      <span class="eyebrow">And A Whole Lot More</span>
+      <h2 class="section-title">A few more <em>ways</em> to spend the day.</h2>
+      <p class="lede" style="margin-top:1.5rem;">From the water to the vineyards, Montauk has more than enough to fill a long stay.</p>
+    </div>
+    <div class="activities-grid">
+      <article class="activity-card reveal"><span class="num">— 01</span><h3>Sailing & Fishing</h3><p>Charter a half-day or full-day trip out of Montauk Harbor — one of the best sportfishing ports on the Atlantic.</p></article>
+      <article class="activity-card reveal"><span class="num">— 02</span><h3>Wineries</h3><p>The North Fork's wineries are a scenic afternoon drive away — perfect for a tasting and a long lunch.</p></article>
+      <article class="activity-card reveal"><span class="num">— 03</span><h3>Parks & Trails</h3><p>Beyond Hither Hills, you'll find Camp Hero, Shadmoor, and a network of preserves with hiking and biking.</p></article>
+      <article class="activity-card reveal"><span class="num">— 04</span><h3>Museums & Art</h3><p>Local museums and art galleries — the East End has a quiet but serious art scene worth a half-day.</p></article>
+      <article class="activity-card reveal"><span class="num">— 05</span><h3>Craft Fairs</h3><p>Seasonal craft fairs pop up throughout the summer — check the Chamber of Commerce calendar.</p></article>
+      <article class="activity-card reveal"><span class="num">— 06</span><h3>The Beach, Again</h3><p>Sometimes the best plan is no plan. Beach chair, umbrella, book, repeat.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- Packing checklist -->
+<section class="section-pad paper">
+  <div class="container">
+    <div class="checklist reveal">
+      <h3>Pack for the <em>day.</em></h3>
+      <p>The Beachcomber's "Optimizing Your Stay" tip list — what to bring along so you're ready for whatever Montauk throws at you.</p>
+      <ul>
+        <li>Suntan lotion</li>
+        <li>Sun hats</li>
+        <li>Sunglasses</li>
+        <li>Beach towel</li>
+        <li>Bathing suit</li>
+        <li>Golf clubs</li>
+        <li>Tennis racquet</li>
+        <li>Fishing gear</li>
+        <li>Bike (or rent in town)</li>
+        <li>Hiking shoes</li>
+        <li>Light jacket for evenings</li>
+        <li>Camera — for the Lighthouse</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="final-cta-bg"><img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Drone-Overview.jpg" alt="Aerial view of Beachcomber Resort"></div>
+  <div class="container">
+    <span class="eyebrow">Ready When You Are</span>
+    <h2>Book your <em>season.</em></h2>
+    <div class="final-cta-actions">
+      <a href="https://secure.irm1.net/irmng?resort=2g" class="btn-primary" target="_blank" rel="noopener">Book Your Stay <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:6316682894" class="btn-ghost"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>631.668.2894</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="https://beachcombermontauk.com/wp-content/uploads/2022/08/Beachcomber-Logo-FNL-Horiz.png" alt="Beachcomber Resort logo">
+        <p>Steps from everything a great Montauk get-away has to offer.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/BeachcomberMTK" target="_blank" rel="noopener" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.5-4.5-10-10-10S2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7c4.7-.8 8.4-4.9 8.4-9.9z"/></svg></a>
+          <a href="https://www.instagram.com/beachcombermtk/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h4>Visit</h4>
+        <p class="footer-line">727 Old Montauk Highway</p>
+        <p class="footer-meta">Montauk, NY 11954</p>
+        <p class="footer-line"><a href="tel:6316682894">631.668.2894</a></p>
+        <p class="footer-line"><a href="mailto:info@beachcombermontauk.com">info@beachcombermontauk.com</a></p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="../why-beachcomber/">Why Beachcomber</a></li>
+          <li><a href="../suites/">Suites</a></li>
+          <li><a href="../amenities/">Amenities</a></li>
+          <li><a href="../gallery/">Photo Gallery</a></li>
+          <li><a href="../explore-montauk/">Explore Montauk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Reservations</h4>
+        <ul>
+          <li><a href="https://secure.irm1.net/irmng?resort=2g" target="_blank" rel="noopener">Book Online</a></li>
+          <li><a href="../policies/">Policies & Safety</a></li>
+          <li><a href="../contact/">Contact</a></li>
+          <li><a href="https://secure.irm1.net/owner/#/login?resort=2g" target="_blank" rel="noopener">Owner Login</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Beachcomber Resort at Montauk. All rights reserved.</span>
+      <span class="credit">A concept by <a href="https://bofilltech.com" target="_blank" rel="noopener">Bofill Technologies</a></span>
+    </div>
+  </div>
+</footer>
+
+<form class="booking-bar" id="bookingBar" onsubmit="return submitBooking(event)">
+  <label class="bb-field"><span class="bb-label">Check In</span><input class="bb-input" type="date" id="bbCheckIn" required></label>
+  <label class="bb-field"><span class="bb-label">Check Out</span><input class="bb-input" type="date" id="bbCheckOut" required></label>
+  <button type="submit" class="bb-book">Book</button>
+</form>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
