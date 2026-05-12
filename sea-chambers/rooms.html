@@ -93,11 +93,13 @@
 .sc-rmap-detail-tag.ocean{background:#BDD8EC;border-color:#7FAED1;color:var(--ocean-deep);}
 .sc-rmap-detail h3{font-family:var(--font-display);font-size:clamp(28px,3.5vw,38px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;margin:6px 0 4px;line-height:1;}
 .sc-rmap-detail-subtitle{font-family:var(--font-body);font-size:14px;color:var(--gray);margin-bottom:18px;}
-.sc-rmap-photos{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:16px;}
-.sc-rmap-photos img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;cursor:zoom-in;}
-.sc-rmap-view{position:relative;border-radius:6px;overflow:hidden;width:50%;}
+.sc-rmap-hero{margin-bottom:14px;border-radius:6px;overflow:hidden;}
+.sc-rmap-hero img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;cursor:zoom-in;}
+.sc-rmap-view-row{display:grid;grid-template-columns:1fr 1.4fr;gap:18px;align-items:start;margin-bottom:18px;}
+.sc-rmap-view{position:relative;border-radius:6px;overflow:hidden;}
 .sc-rmap-view img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;cursor:zoom-in;}
 .sc-rmap-view-label{position:absolute;bottom:0;left:0;right:0;padding:8px 14px;background:linear-gradient(0deg,rgba(30,30,42,.85) 0%,rgba(30,30,42,0) 100%);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+.sc-rmap-view-row .sc-rmap-detail-desc{margin-bottom:0;margin-top:0;}
 .sc-rmap-detail-desc{font-family:var(--font-body);font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:18px;}
 .sc-rmap-actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;}
 .sc-rmap-btn{flex:1;padding:14px 22px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;display:block;}
@@ -111,7 +113,7 @@ a.sc-rmap-btn-secondary:hover,.sc-rmap-btn-secondary:hover{background:var(--ocea
   .sc-rmap-body{grid-template-columns:1fr;}
   .sc-rmap-diagram{border-right:none;border-bottom:1px solid var(--sand);padding:24px 20px;}
   .sc-rmap-panel{padding:24px 20px;scroll-margin-top:80px;}
-  .sc-rmap-view{width:70%;}
+  .sc-rmap-view-row{grid-template-columns:1fr;}
   .sc-rmap-tab{font-size:11px;letter-spacing:.08em;padding:14px 10px;gap:6px;}
   .sc-rmap-tab::before{width:6px;height:6px;}
   .sc-rmap-tabs{gap:6px;}
@@ -373,43 +375,55 @@ const BLDG = {
 // Photo sets — keyed by bed config or specific room number override
 const PHOTOS = {
   // Specific real photos from seachambers.com
-  "35": [
-    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
-  ],
-  // Fallback by category
-  king: [
-    "img/room-king.jpg",
-    "img/room-2-view.jpg",
-    "img/room-46-pool.jpg"
-  ],
-  queendouble: [
-    "img/room-double.jpg",
-    "img/room-38-deck.jpg",
-    "img/room-2-view.jpg"
-  ],
-  twoqueens: [
-    "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
-    "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg"
-  ],
-  suite: [
-    "img/room-suite.jpg",
-    "img/room-2-view.jpg",
-    "img/room-46-pool.jpg"
-  ]
+  "35": {
+    interior: [
+      "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairsreversed.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/4-34-3.jpg"
+    ],
+    view: "img/beach-view.jpg"
+  },
+  // Fallback by category — each has an interior hero set + a "view from room" photo
+  king: {
+    interior: ["img/room-king.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg"],
+    view: "img/beach-view.jpg"
+  },
+  queendouble: {
+    interior: ["img/room-double.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg"],
+    view: "img/beach-view.jpg"
+  },
+  twoqueens: {
+    interior: [
+      "https://www.seachambers.com/wp-content/uploads/2023/03/1-34-3.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/34tableandchairs.jpg",
+      "https://www.seachambers.com/wp-content/uploads/2023/03/3-34-3.jpg"
+    ],
+    view: "img/beach-view.jpg"
+  },
+  suite: {
+    interior: ["img/room-suite.jpg", "img/room-2-view.jpg", "img/room-46-pool.jpg"],
+    view: "img/beach-view.jpg"
+  },
+  // Non-ocean-view fallback uses the property grounds shot since there's no Atlantic view
+  standardview: {
+    interior: ["img/room-king.jpg", "img/room-double.jpg"],
+    view: "img/building-wide.jpg"
+  }
 };
 
 function getPhotos(room){
   if(PHOTOS[room.n]) return PHOTOS[room.n];
   const b = (room.b || "").toLowerCase();
-  if(b.includes("two queens") || b.includes("q/q")) return PHOTOS.twoqueens;
-  if(b.includes("suite") || b.includes("apartment")) return PHOTOS.suite;
-  if(b.startsWith("king") || b === "king") return PHOTOS.king;
-  return PHOTOS.queendouble;
+  let set;
+  if(b.includes("two queens") || b.includes("q/q")) set = PHOTOS.twoqueens;
+  else if(b.includes("suite") || b.includes("apartment")) set = PHOTOS.suite;
+  else if(b.startsWith("king") || b === "king") set = PHOTOS.king;
+  else set = PHOTOS.queendouble;
+  // Non-ocean-view rooms get the standard grounds shot instead of the beach view
+  if(!room.v) return {interior: set.interior, view: PHOTOS.standardview.view};
+  return set;
 }
 
 function renderBuilding(key){
@@ -476,14 +490,16 @@ function showRoom(bldg, bldgKey, room, chipEl){
       <div class="sc-rmap-detail-tags">${tags.join('')}</div>
       <h3>Room ${room.n}</h3>
       <div class="sc-rmap-detail-subtitle">${room.b}</div>
-      <div class="sc-rmap-photos">
-        <img src="${photos[0]}" alt="Room ${room.n}" loading="lazy">
+      <div class="sc-rmap-hero">
+        <img src="${photos.interior[0]}" alt="Room ${room.n}" loading="lazy">
+      </div>
+      <div class="sc-rmap-view-row">
         <div class="sc-rmap-view">
-          <img src="${photos[1] || photos[0]}" alt="View from Room ${room.n}" loading="lazy">
+          <img src="${photos.view}" alt="View from Room ${room.n}" loading="lazy">
           <div class="sc-rmap-view-label">View from room</div>
         </div>
+        <p class="sc-rmap-detail-desc">${desc}</p>
       </div>
-      <p class="sc-rmap-detail-desc">${desc}</p>
       <div class="sc-rmap-actions">
         <a href="https://reservations.seachambers.com" class="sc-rmap-btn sc-rmap-btn-primary">Book Now</a>
         <a href="room.html?id=${room.n}&bldg=${bldgKey}" class="sc-rmap-btn sc-rmap-btn-secondary">More Info</a>
