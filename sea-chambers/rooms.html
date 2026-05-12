@@ -91,12 +91,13 @@
 .sc-rmap-detail-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px;}
 .sc-rmap-detail-tag{display:inline-block;padding:4px 10px;background:var(--warm);border:1px solid var(--sand);border-radius:99px;font-family:var(--font-body);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ocean-deep);}
 .sc-rmap-detail-tag.ocean{background:#BDD8EC;border-color:#7FAED1;color:var(--ocean-deep);}
-.sc-rmap-detail h3{font-family:var(--font-display);font-size:clamp(28px,3.5vw,38px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;margin:6px 0 4px;line-height:1;}
-.sc-rmap-detail-subtitle{font-family:var(--font-body);font-size:14px;color:var(--gray);margin-bottom:18px;}
-.sc-rmap-photos{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:16px;}
-.sc-rmap-photos img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:6px;cursor:zoom-in;}
-.sc-rmap-photos-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.sc-rmap-photos-row img{aspect-ratio:1;}
+.sc-rmap-detail-top{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;align-items:start;}
+.sc-rmap-photo{position:relative;border-radius:6px;overflow:hidden;background:var(--sand);}
+.sc-rmap-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;cursor:zoom-in;display:block;}
+.sc-rmap-photo-label{position:absolute;bottom:0;left:0;right:0;padding:8px 14px;background:linear-gradient(0deg,rgba(30,30,42,.85) 0%,rgba(30,30,42,0) 100%);color:var(--white);font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;}
+.sc-rmap-detail-text{display:flex;flex-direction:column;}
+.sc-rmap-detail h3{font-family:var(--font-display);font-size:clamp(26px,3vw,34px);font-weight:400;color:var(--ocean-deep);letter-spacing:.02em;text-transform:uppercase;margin:6px 0 4px;line-height:1;}
+.sc-rmap-detail-subtitle{font-family:var(--font-body);font-size:14px;color:var(--gray);margin-bottom:14px;}
 .sc-rmap-detail-desc{font-family:var(--font-body);font-size:13px;color:var(--gray);line-height:1.7;margin-bottom:18px;}
 .sc-rmap-actions{display:flex;gap:10px;margin-top:auto;padding-top:14px;}
 .sc-rmap-btn{flex:1;padding:14px 22px;font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;border-radius:3px;text-align:center;transition:all .25s;border:1px solid transparent;display:block;}
@@ -109,7 +110,8 @@ a.sc-rmap-btn-secondary:hover,.sc-rmap-btn-secondary:hover{background:var(--ocea
 @media(max-width:900px){
   .sc-rmap-body{grid-template-columns:1fr;}
   .sc-rmap-diagram{border-right:none;border-bottom:1px solid var(--sand);padding:24px 20px;}
-  .sc-rmap-panel{padding:24px 20px;}
+  .sc-rmap-panel{padding:24px 20px;scroll-margin-top:80px;}
+  .sc-rmap-detail-top{grid-template-columns:1fr;}
   .sc-rmap-tab{font-size:11px;letter-spacing:.08em;padding:14px 10px;gap:6px;}
   .sc-rmap-tab::before{width:6px;height:6px;}
   .sc-rmap-tabs{gap:6px;}
@@ -444,6 +446,12 @@ function renderBuilding(key){
     const num = c.dataset.room;
     const room = b.levels.flatMap(l => l.rooms.map(r => ({...r, _level:l.name}))).find(r => r.n === num);
     showRoom(b, key, room, c);
+    // On mobile (stacked layout), jump the user down to the room details panel
+    if(window.matchMedia('(max-width: 900px)').matches){
+      setTimeout(() => {
+        document.getElementById('sc-rmap-panel').scrollIntoView({behavior:'smooth', block:'start'});
+      }, 30);
+    }
   }));
 }
 
@@ -465,13 +473,15 @@ function showRoom(bldg, bldgKey, room, chipEl){
 
   document.getElementById('sc-rmap-panel').innerHTML = `
     <div class="sc-rmap-detail">
-      <div class="sc-rmap-detail-tags">${tags.join('')}</div>
-      <h3>Room ${room.n}</h3>
-      <div class="sc-rmap-detail-subtitle">${room.b}</div>
-      <div class="sc-rmap-photos">
-        <img src="${photos[0]}" alt="Room ${room.n}" loading="lazy">
-        <div class="sc-rmap-photos-row">
-          ${photos.slice(1,4).map(p => `<img src="${p}" alt="Room ${room.n}" loading="lazy">`).join('')}
+      <div class="sc-rmap-detail-top">
+        <div class="sc-rmap-photo">
+          <img src="${photos[0]}" alt="View from Room ${room.n}" loading="lazy">
+          <div class="sc-rmap-photo-label">View from room</div>
+        </div>
+        <div class="sc-rmap-detail-text">
+          <div class="sc-rmap-detail-tags">${tags.join('')}</div>
+          <h3>Room ${room.n}</h3>
+          <div class="sc-rmap-detail-subtitle">${room.b}</div>
         </div>
       </div>
       <p class="sc-rmap-detail-desc">${desc}</p>
