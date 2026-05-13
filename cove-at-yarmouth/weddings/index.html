@@ -786,10 +786,16 @@ footer {
   margin-bottom: 4rem;
 }
 .resource-section-title {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--gold);
+}
+.resource-section-title em {
+  font-style: italic;
+  font-weight: 500;
 }
 .resource-section-intro {
   color: var(--muted-foreground);
@@ -997,6 +1003,103 @@ footer {
 }
 .photo-strip > div:hover img { transform: scale(1.05); }
 
+/* ===== WEDDING GALLERY (asymmetric 5-image layout) ===== */
+.wedding-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+@media (min-width: 640px) {
+  .wedding-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .wedding-gallery {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .wedding-gallery > .wg-tall {
+    grid-row: 1 / 3;
+  }
+}
+.wedding-gallery a {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--muted);
+}
+.wedding-gallery > .wg-tall {
+  aspect-ratio: 3/4;
+}
+@media (max-width: 1023px) {
+  .wedding-gallery > .wg-tall { aspect-ratio: 16/10; }
+}
+.wedding-gallery img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.wedding-gallery a:hover img { transform: scale(1.04); opacity: 0.95; }
+
+/* ===== SPACES & CAPACITY (Events page) ===== */
+.spaces-grid {
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) { .spaces-grid { grid-template-columns: repeat(3, 1fr); } }
+.space-card {
+  display: flex; flex-direction: column;
+  background: var(--background);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.space-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
+}
+.space-image { aspect-ratio: 16/10; overflow: hidden; }
+.space-image img { width: 100%; height: 100%; object-fit: cover; }
+.space-body { padding: 1.5rem 1.75rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+.space-body h3 {
+  font-size: 1.375rem;
+  margin-bottom: 0.625rem;
+}
+.space-body > p {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+.capacity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.capacity-table tr {
+  border-top: 1px solid var(--border);
+}
+.capacity-table tr:last-child { border-bottom: 1px solid var(--border); }
+.capacity-table th {
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  padding: 0.625rem 0;
+  font-size: 0.8125rem;
+}
+.capacity-table td {
+  text-align: right;
+  padding: 0.625rem 0;
+  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+}
+
 /* ===== UTILITIES ===== */
 .ico { width: 1em; height: 1em; stroke: currentColor; stroke-width: 2; fill: none; vertical-align: middle; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -1060,7 +1163,7 @@ footer {
   </div>
 </header>
 <section class="page-hero">
-  <img src="https://coveatyarmouth.com/wp-content/uploads/qtq50-2w4ssm-scaled.jpeg" alt="" loading="eager">
+  <img src="https://images.unsplash.com/photo-1745768522240-6604343470c0?fm=jpg&q=70&w=1920&auto=format&fit=crop" alt="" loading="eager">
   <div class="page-hero-content">
     <p class="page-hero-eyebrow">Cape Cod Weddings</p>
     <h1>Say I Do at the Cove</h1>
@@ -1096,7 +1199,36 @@ footer {
   </div>
 </section>
 
+<!-- ===== WEDDING ATMOSPHERE GALLERY ===== -->
 <section class="bg-alt">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <p class="section-eyebrow">The Atmosphere</p>
+      <h2 class="section-title">A Relaxed, Beautiful Day</h2>
+      <p class="section-intro">From the ceremony arch to the long tables and the first dance — here's the feel we aim for. Soft, intimate, unhurried, with the Cape Cod summer doing half the work.</p>
+    </div>
+    <div class="wedding-gallery fade-in">
+      <a href="https://images.unsplash.com/photo-1745768522240-6604343470c0?fm=jpg&q=80&w=2000&auto=format&fit=crop" data-lightbox class="wg-tall">
+        <img src="https://images.unsplash.com/photo-1745768522240-6604343470c0?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Outdoor wedding ceremony arch under green trees" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1720749406941-a899d2e38be3?fm=jpg&q=80&w=2000&auto=format&fit=crop" data-lightbox>
+        <img src="https://images.unsplash.com/photo-1720749406941-a899d2e38be3?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Long banquet table with white and blue flowers" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1691550593351-b3586f6be77e?fm=jpg&q=80&w=2000&auto=format&fit=crop" data-lightbox>
+        <img src="https://images.unsplash.com/photo-1691550593351-b3586f6be77e?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Reception table set with plates and silverware" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?fm=jpg&q=80&w=2000&auto=format&fit=crop" data-lightbox>
+        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Wedding guests raising glasses in a toast" loading="lazy">
+      </a>
+      <a href="https://images.unsplash.com/photo-1714972383523-7c636d2f0e9b?fm=jpg&q=80&w=2000&auto=format&fit=crop" data-lightbox>
+        <img src="https://images.unsplash.com/photo-1714972383523-7c636d2f0e9b?fm=jpg&q=70&w=900&auto=format&fit=crop" alt="Wedding reception dancing" loading="lazy">
+      </a>
+    </div>
+    <p style="text-align:center; margin-top:2rem; font-size:0.8125rem; color:var(--muted-foreground); font-style:italic;">Stock imagery shown for atmosphere — photography from real weddings at the Cove coming soon.</p>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="inquiry-grid">
       <div class="inquiry-intro fade-in">
@@ -1169,11 +1301,12 @@ footer {
   </div>
 </section>
 
-<section>
+<section class="bg-alt">
   <div class="container">
     <div class="text-center" style="margin-bottom:1rem">
-      <p class="section-eyebrow">A Look at the Cove</p>
-      <h2 class="section-title">Where Your Weekend Will Happen</h2>
+      <p class="section-eyebrow">The Setting</p>
+      <h2 class="section-title">Your Venue at the Cove</h2>
+      <p class="section-intro">Where on property your wedding weekend actually happens — the lawn for ceremony, the Loft for reception, the pool deck for cocktail hour.</p>
     </div>
     <div class="photo-strip fade-in">
       <div><img src="https://coveatyarmouth.com/wp-content/uploads/qtq50-2w4ssm-scaled.jpeg" alt="Resort grounds" loading="lazy"></div>
@@ -1181,10 +1314,15 @@ footer {
       <div><img src="https://coveatyarmouth.com/wp-content/uploads/1968-The-Cove-at-Yarmouth_3776-scaled.jpg" alt="Pool deck" loading="lazy"></div>
       <div><img src="https://coveatyarmouth.com/wp-content/uploads/Adirondack-chairs-scaled.jpg" alt="Outdoor seating" loading="lazy"></div>
     </div>
-    <p style="text-align:center; margin-top:2rem; font-size:0.875rem; color:var(--muted-foreground); font-style:italic;">Wedding photography from past celebrations coming soon.</p>
   </div>
 </section>
 </main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" aria-label="Close lightbox">×</button>
+  <img src="" alt="">
+</div>
 
 <script>
 document.getElementById('weddingsForm').addEventListener('submit', function (e) {

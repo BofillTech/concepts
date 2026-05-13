@@ -786,10 +786,16 @@ footer {
   margin-bottom: 4rem;
 }
 .resource-section-title {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 0.5rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid var(--gold);
+}
+.resource-section-title em {
+  font-style: italic;
+  font-weight: 500;
 }
 .resource-section-intro {
   color: var(--muted-foreground);
@@ -997,6 +1003,103 @@ footer {
 }
 .photo-strip > div:hover img { transform: scale(1.05); }
 
+/* ===== WEDDING GALLERY (asymmetric 5-image layout) ===== */
+.wedding-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+@media (min-width: 640px) {
+  .wedding-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
+@media (min-width: 1024px) {
+  .wedding-gallery {
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .wedding-gallery > .wg-tall {
+    grid-row: 1 / 3;
+  }
+}
+.wedding-gallery a {
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 3/2;
+  background: var(--muted);
+}
+.wedding-gallery > .wg-tall {
+  aspect-ratio: 3/4;
+}
+@media (max-width: 1023px) {
+  .wedding-gallery > .wg-tall { aspect-ratio: 16/10; }
+}
+.wedding-gallery img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.wedding-gallery a:hover img { transform: scale(1.04); opacity: 0.95; }
+
+/* ===== SPACES & CAPACITY (Events page) ===== */
+.spaces-grid {
+  display: grid; grid-template-columns: 1fr; gap: 2rem;
+  margin-top: 2rem;
+}
+@media (min-width: 768px) { .spaces-grid { grid-template-columns: repeat(3, 1fr); } }
+.space-card {
+  display: flex; flex-direction: column;
+  background: var(--background);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.space-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
+}
+.space-image { aspect-ratio: 16/10; overflow: hidden; }
+.space-image img { width: 100%; height: 100%; object-fit: cover; }
+.space-body { padding: 1.5rem 1.75rem 1.75rem; flex: 1; display: flex; flex-direction: column; }
+.space-body h3 {
+  font-size: 1.375rem;
+  margin-bottom: 0.625rem;
+}
+.space-body > p {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+.capacity-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.capacity-table tr {
+  border-top: 1px solid var(--border);
+}
+.capacity-table tr:last-child { border-bottom: 1px solid var(--border); }
+.capacity-table th {
+  text-align: left;
+  font-family: var(--font-body);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  padding: 0.625rem 0;
+  font-size: 0.8125rem;
+}
+.capacity-table td {
+  text-align: right;
+  padding: 0.625rem 0;
+  font-weight: 600;
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+}
+
 /* ===== UTILITIES ===== */
 .ico { width: 1em; height: 1em; stroke: currentColor; stroke-width: 2; fill: none; vertical-align: middle; stroke-linecap: round; stroke-linejoin: round; }
 
@@ -1096,7 +1199,65 @@ footer {
   </div>
 </section>
 
+<!-- ===== SPACES & CAPACITY ===== -->
 <section class="bg-alt">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:3rem">
+      <p class="section-eyebrow">Spaces &amp; Capacity</p>
+      <h2 class="section-title">Where Your Group Will Meet</h2>
+      <p class="section-intro">A versatile main event space plus a smaller boardroom and outdoor options. Configurations below are typical starting points — we'll work with you on the right setup for your agenda.</p>
+    </div>
+
+    <div class="spaces-grid fade-in">
+      <article class="space-card">
+        <div class="space-image"><img src="https://coveatyarmouth.com/wp-content/uploads/1968-The-Cove-at-Yarmouth_3989-scaled.jpg" alt="The Loft Main Event Space" loading="lazy"></div>
+        <div class="space-body">
+          <h3>The Loft — Main Event Space</h3>
+          <p>Our most flexible space. Hosts everything from morning meetings to evening receptions with full bar and kitchen service available.</p>
+          <table class="capacity-table">
+            <tr><th>Theater</th><td>100</td></tr>
+            <tr><th>Classroom</th><td>75</td></tr>
+            <tr><th>Banquet (rounds)</th><td>120</td></tr>
+            <tr><th>Reception (standing)</th><td>150</td></tr>
+            <tr><th>U-Shape / Hollow Square</th><td>40</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <article class="space-card">
+        <div class="space-image"><img src="https://coveatyarmouth.com/wp-content/uploads/1968-The-Cove-at-Yarmouth_3809-1-scaled.jpg" alt="Boardroom" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Boardroom</h3>
+          <p>Quieter space for executive meetings, breakouts, or smaller working sessions. Single conference table with full A/V hookups.</p>
+          <table class="capacity-table">
+            <tr><th>Conference Table</th><td>12</td></tr>
+            <tr><th>Classroom</th><td>20</td></tr>
+            <tr><th>Theater</th><td>30</td></tr>
+            <tr><th>Reception</th><td>35</td></tr>
+          </table>
+        </div>
+      </article>
+
+      <article class="space-card">
+        <div class="space-image"><img src="https://coveatyarmouth.com/wp-content/uploads/1968-The-Cove-at-Yarmouth_3776-scaled.jpg" alt="Outdoor lawn and pool deck" loading="lazy"></div>
+        <div class="space-body">
+          <h3>Outdoor Lawn &amp; Pool Deck</h3>
+          <p>Seasonal outdoor space for ceremonies, cocktail hours, and casual receptions. Cape Cod air, garden surroundings.</p>
+          <table class="capacity-table">
+            <tr><th>Ceremony (seated)</th><td>150</td></tr>
+            <tr><th>Cocktail Reception</th><td>200</td></tr>
+            <tr><th>Clambake / BBQ</th><td>120</td></tr>
+            <tr><th>Season</th><td>Apr&ndash;Oct</td></tr>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <p style="text-align:center; margin-top:2rem; font-size:0.8125rem; color:var(--muted-foreground); font-style:italic;">All capacities are approximate. Final layouts are confirmed during planning to match your AV, catering, and access needs.</p>
+  </div>
+</section>
+
+<section>
   <div class="container">
     <div class="inquiry-grid">
       <div class="inquiry-intro fade-in">
