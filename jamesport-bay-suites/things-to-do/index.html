@@ -314,7 +314,7 @@
     line-height: 1.65;
   }
 
-  /* ---------- THE PENINSULA MAP ---------- */
+  /* ---------- THE NEIGHBORHOOD MAP ---------- */
   .map-section {
     padding: 110px 32px;
     max-width: 1400px;
@@ -333,28 +333,129 @@
   }
 
   .map-canvas {
-    background: linear-gradient(180deg, #e8f0f3 0%, #d8e6ea 50%, #c9dde2 100%);
-    border-radius: 4px;
-    padding: 40px 20px;
-    box-shadow: 0 30px 60px -25px rgba(42, 79, 90, 0.25);
     position: relative;
+    border-radius: 4px;
     overflow: hidden;
+    box-shadow: 0 30px 60px -25px rgba(42, 79, 90, 0.3);
+    line-height: 0;
   }
-  .map-canvas::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image:
-      radial-gradient(circle at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 50%),
-      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.3) 0%, transparent 40%);
-    pointer-events: none;
-  }
-  .map-canvas svg {
+  .map-canvas img {
     width: 100%;
     height: auto;
     display: block;
+  }
+
+  /* Marker pinned over the property location on the satellite photo.
+     The marker is positioned by the % coordinates of JBS in the image. */
+  .map-marker {
+    position: absolute;
+    /* JBS is at approximately ~67% across, ~37% down in the image.
+       We sit the marker BELOW the property and point the label up,
+       so we don't collide with the existing Google Maps label. */
+    top: 50%;
+    left: 67%;
+    transform: translate(-50%, 0);
+    z-index: 3;
+    pointer-events: none;
+  }
+  .map-marker .pin-pulse {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(184, 137, 92, 0.6);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  .map-marker .pin-pulse.delay {
+    animation-delay: 1.2s;
+  }
+  @keyframes pulse {
+    0%   { transform: translateX(-50%) scale(0.6); opacity: 0.8; }
+    100% { transform: translateX(-50%) scale(2.4); opacity: 0; }
+  }
+  .map-marker .pin-dot {
+    position: absolute;
+    top: -46px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: var(--gold);
+    border: 2px solid #faf6ef;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    z-index: 2;
+  }
+  .map-marker .pin-label {
+    background: var(--bay-deep);
+    color: #f0d9b8;
+    padding: 8px 16px 7px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+    border-radius: 2px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
     position: relative;
-    z-index: 1;
+    margin-top: 8px;
+  }
+  .map-marker .pin-label em {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: #faf6ef;
+    text-transform: none;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+  .map-marker .pin-label::before {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0; height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid var(--bay-deep);
+  }
+  @media (max-width: 600px) {
+    .map-marker .pin-label { font-size: 9px; padding: 6px 12px 5px; }
+    .map-marker .pin-label em { font-size: 10px; }
+  }
+
+  /* Subtle compass + caption strip below the map */
+  .map-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 22px;
+    padding: 0 8px;
+    font-size: 12px;
+    color: var(--driftwood);
+    letter-spacing: 0.04em;
+  }
+  .map-caption .left {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--bay-deep);
+  }
+  .map-caption .right {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--driftwood);
+  }
+  @media (max-width: 600px) {
+    .map-caption { flex-direction: column; gap: 8px; text-align: center; }
   }
 
   .map-note {
@@ -612,164 +713,28 @@
 </section>
 
 
-<!-- ============ PENINSULA MAP ============ -->
+<!-- ============ NEIGHBORHOOD MAP ============ -->
 <section class="map-section">
   <div class="map-header reveal">
-    <div class="section-label">The Peninsula</div>
+    <div class="section-label">Where We Are</div>
     <h2 class="section-title">Right in <em>the middle of it all.</em></h2>
-    <p class="section-intro">From our spot on the bay, the entire North Fork is within a short, scenic drive — Riverhead to the west, Orient Point lighthouse to the east, and Shelter Island just across the water.</p>
+    <p class="section-intro">A working village on one side, a quiet sandy beach on the other, and the bay just steps away. Walking distance to dinner, drinks, and the water.</p>
   </div>
 
   <div class="map-canvas reveal">
-    <!-- ============================================================
-         NORTH FORK PENINSULA — Stylized Map
-         (Placeholder — replace with custom map artwork when ready)
-    ============================================================ -->
-    <svg viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of the North Fork peninsula">
-
-      <!-- Subtle water wave lines (decorative) -->
-      <g stroke="#9bbac4" stroke-width="0.8" fill="none" opacity="0.5">
-        <path d="M 40 480 Q 200 470, 400 480 T 800 478 T 1160 480"/>
-        <path d="M 40 510 Q 200 500, 400 510 T 800 508 T 1160 510"/>
-        <path d="M 40 540 Q 200 530, 400 540 T 800 538 T 1160 540"/>
-        <path d="M 40 95 Q 200 85, 400 92 T 800 88 T 1160 92"/>
-        <path d="M 40 65 Q 200 55, 400 62 T 800 58 T 1160 62"/>
-      </g>
-
-      <!-- Long Island Sound label (north / top) -->
-      <text x="600" y="40" text-anchor="middle"
-            font-family="Fraunces, serif" font-style="italic" font-size="22"
-            fill="#5a8694" letter-spacing="2">
-        Long Island Sound
-      </text>
-
-      <!-- Peconic Bay label (south / bottom) -->
-      <text x="500" y="565" text-anchor="middle"
-            font-family="Fraunces, serif" font-style="italic" font-size="26"
-            fill="#5a8694" letter-spacing="3">
-        Peconic Bay
-      </text>
-
-      <!-- THE PENINSULA — North Fork land mass -->
-      <path d="M 60 280
-               Q 100 220, 200 215
-               Q 320 205, 480 200
-               Q 640 195, 780 195
-               Q 900 195, 990 200
-               Q 1070 205, 1130 215
-               L 1145 225
-               L 1130 245
-               Q 1060 255, 990 258
-               Q 880 265, 760 270
-               Q 600 278, 440 280
-               Q 280 285, 180 295
-               Q 110 305, 60 320 Z"
-            fill="#f5ecd9"
-            stroke="#b8895c"
-            stroke-width="1.6"
-            stroke-linejoin="round"/>
-
-      <!-- Inner road line (Route 25 / Main Road) -->
-      <path d="M 80 270 Q 280 265, 480 255 Q 700 248, 900 245 Q 1020 245, 1120 250"
-            fill="none"
-            stroke="#b8895c"
-            stroke-width="1"
-            stroke-dasharray="2 5"
-            opacity="0.6"/>
-
-      <!-- Shelter Island -->
-      <path d="M 850 380
-               Q 820 360, 830 345
-               Q 850 335, 880 340
-               Q 920 345, 940 360
-               Q 950 380, 935 400
-               Q 910 415, 880 410
-               Q 855 405, 850 380 Z"
-            fill="#f5ecd9"
-            stroke="#b8895c"
-            stroke-width="1.4"
-            stroke-linejoin="round"/>
-      <text x="890" y="380" text-anchor="middle"
-            font-family="Fraunces, serif" font-style="italic" font-size="14"
-            fill="#6b6660">
-        Shelter Island
-      </text>
-
-      <!-- Town labels along the peninsula -->
-      <g font-family="DM Sans, sans-serif" font-size="13" fill="#1d3a44" font-weight="500">
-        <!-- Riverhead (west) -->
-        <circle cx="130" cy="255" r="3" fill="#8b7355"/>
-        <text x="130" y="180" text-anchor="middle" letter-spacing="2">RIVERHEAD</text>
-        <line x1="130" y1="190" x2="130" y2="245" stroke="#b8895c" stroke-width="0.8" stroke-dasharray="2 3"/>
-
-        <!-- Cutchogue -->
-        <circle cx="540" cy="235" r="2.5" fill="#8b7355"/>
-        <text x="540" y="155" text-anchor="middle" font-size="11" letter-spacing="1.5">CUTCHOGUE</text>
-        <line x1="540" y1="165" x2="540" y2="227" stroke="#b8895c" stroke-width="0.6" stroke-dasharray="2 3"/>
-
-        <!-- Southold -->
-        <circle cx="730" cy="232" r="2.5" fill="#8b7355"/>
-        <text x="730" y="180" text-anchor="middle" font-size="11" letter-spacing="1.5">SOUTHOLD</text>
-        <line x1="730" y1="190" x2="730" y2="224" stroke="#b8895c" stroke-width="0.6" stroke-dasharray="2 3"/>
-
-        <!-- Greenport -->
-        <circle cx="920" cy="230" r="3" fill="#8b7355"/>
-        <text x="920" y="155" text-anchor="middle" letter-spacing="2">GREENPORT</text>
-        <line x1="920" y1="165" x2="920" y2="222" stroke="#b8895c" stroke-width="0.8" stroke-dasharray="2 3"/>
-
-        <!-- Orient Point (east) -->
-        <circle cx="1110" cy="235" r="3" fill="#8b7355"/>
-        <text x="1110" y="180" text-anchor="middle" letter-spacing="2">ORIENT POINT</text>
-        <line x1="1110" y1="190" x2="1110" y2="227" stroke="#b8895c" stroke-width="0.8" stroke-dasharray="2 3"/>
-      </g>
-
-      <!-- "YOU ARE HERE" — South Jamesport star marker -->
-      <g transform="translate(310, 290)">
-        <!-- Pulsing circle (animated) -->
-        <circle cx="0" cy="0" r="22" fill="#b8895c" opacity="0.15">
-          <animate attributeName="r" values="18;28;18" dur="2.4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="0.3;0;0.3" dur="2.4s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="0" cy="0" r="12" fill="#b8895c" opacity="0.25"/>
-        <!-- Star -->
-        <path d="M 0 -10 L 3 -3 L 10 -3 L 4.5 1.5 L 6.5 9 L 0 5 L -6.5 9 L -4.5 1.5 L -10 -3 L -3 -3 Z"
-              fill="#b8895c"
-              stroke="#1d3a44"
-              stroke-width="0.8"
-              stroke-linejoin="round"/>
-        <!-- Label callout -->
-        <line x1="0" y1="-22" x2="0" y2="-78" stroke="#1d3a44" stroke-width="1"/>
-        <rect x="-90" y="-108" width="180" height="28" fill="#1d3a44" rx="2"/>
-        <text x="0" y="-97" text-anchor="middle"
-              font-family="DM Sans, sans-serif" font-size="10"
-              fill="#f0d9b8" letter-spacing="3" font-weight="500">
-          JAMESPORT BAY SUITES
-        </text>
-        <text x="0" y="-85" text-anchor="middle"
-              font-family="Fraunces, serif" font-style="italic" font-size="11"
-              fill="#faf6ef">
-          you are here
-        </text>
-      </g>
-
-      <!-- Compass rose (bottom left) -->
-      <g transform="translate(80, 470)">
-        <circle cx="0" cy="0" r="26" fill="none" stroke="#8b7355" stroke-width="0.8" opacity="0.6"/>
-        <path d="M 0 -20 L 4 0 L 0 20 L -4 0 Z" fill="#8b7355" opacity="0.6"/>
-        <path d="M -20 0 L 0 4 L 20 0 L 0 -4 Z" fill="#8b7355" opacity="0.4"/>
-        <text x="0" y="-30" text-anchor="middle" font-family="DM Sans, sans-serif" font-size="10" fill="#8b7355" font-weight="600">N</text>
-      </g>
-
-      <!-- Tiny boat / scale element (bottom right) -->
-      <g transform="translate(1080, 490)" opacity="0.5">
-        <path d="M -14 0 L 14 0 L 10 6 L -10 6 Z" fill="none" stroke="#5a8694" stroke-width="1"/>
-        <line x1="0" y1="0" x2="0" y2="-12" stroke="#5a8694" stroke-width="1"/>
-        <path d="M 0 -12 L 8 -2 L 0 -2 Z" fill="#5a8694"/>
-      </g>
-
-    </svg>
+    <img src="satellite-map.jpg" alt="Satellite map of South Jamesport showing Jamesport Bay Suites between Front Street and Peconic Bay" />
+    <div class="map-marker">
+      <div class="pin-label">Jamesport Bay Suites<em>67 Front Street</em></div>
+      <div class="pin-pulse"></div>
+      <div class="pin-pulse delay"></div>
+      <div class="pin-dot"></div>
+    </div>
   </div>
-  <p class="map-note">A custom illustrated map will replace this placeholder.</p>
+
+  <div class="map-caption">
+    <span class="left">A 30-second walk to the bay. A 5-minute stroll to dinner.</span>
+    <span class="right">South Jamesport · NY · 11970</span>
+  </div>
 </section>
 
 
