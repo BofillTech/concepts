@@ -762,27 +762,27 @@ img { max-width: 100%; display: block; }
 // ---------- DATA: 20 UNITS ----------
 const UNITS = [
   // OCEANFRONT (4)
-  { slug:'unit-a',  label:'Unit A',  type:'oceanfront', beds:'2BR', poster:'../sundeck_chaises.jpg',     video:null },
-  { slug:'unit-b',  label:'Unit B',  type:'oceanfront', beds:'2BR', poster:'../blue_loungers.jpg',       video:null },
-  { slug:'unit-c',  label:'Unit C',  type:'oceanfront', beds:'2BR', poster:'../property_from_beach.jpg', video:null },
-  { slug:'unit-d',  label:'Unit D',  type:'oceanfront', beds:'1BR', poster:'../garlands_sign.jpg',       video:null },
+  { slug:'unit-a',  label:'Unit A',  type:'oceanfront', beds:'2BR', poster:'./img/unit-a.jpg',  video:null },
+  { slug:'unit-b',  label:'Unit B',  type:'oceanfront', beds:'2BR', poster:'../property_from_beach.jpg', video:null, comingSoon:true },
+  { slug:'unit-c',  label:'Unit C',  type:'oceanfront', beds:'2BR', poster:'./img/unit-c.jpg',  video:null },
+  { slug:'unit-d',  label:'Unit D',  type:'oceanfront', beds:'1BR', poster:'../property_from_beach.jpg', video:null, comingSoon:true },
   // OCEAN VIEW (16)
-  { slug:'unit-01', label:'Unit 1',  type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null },
-  { slug:'unit-02', label:'Unit 2',  type:'oceanview',  beds:'2BR', poster:'../interior_ahoy.jpg',       video:null },
-  { slug:'unit-03', label:'Unit 3',  type:'oceanview',  beds:'2BR', poster:'../kitchenette.jpg',         video:null },
-  { slug:'unit-04', label:'Unit 4',  type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null },
-  { slug:'unit-05', label:'Unit 5',  type:'oceanview',  beds:'2BR', poster:'../interior_ahoy.jpg',       video:null },
-  { slug:'unit-06', label:'Unit 6',  type:'oceanview',  beds:'2BR', poster:'../kitchenette.jpg',         video:null },
-  { slug:'unit-07', label:'Unit 7',  type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null },
-  { slug:'unit-08', label:'Unit 8',  type:'oceanview',  beds:'2BR', poster:'../interior_ahoy.jpg',       video:null },
-  { slug:'unit-09', label:'Unit 9',  type:'oceanview',  beds:'2BR', poster:'../kitchenette.jpg',         video:null },
-  { slug:'unit-10', label:'Unit 10', type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null },
-  { slug:'unit-11', label:'Unit 11', type:'oceanview',  beds:'2BR', poster:'../interior_ahoy.jpg',       video:null },
-  { slug:'unit-12', label:'Unit 12', type:'oceanview',  beds:'2BR', poster:'../kitchenette.jpg',         video:null },
-  { slug:'unit-13', label:'Unit 13', type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null },
-  { slug:'unit-14', label:'Unit 14', type:'oceanview',  beds:'2BR', poster:'../interior_ahoy.jpg',       video:null },
-  { slug:'unit-15', label:'Unit 15', type:'oceanview',  beds:'2BR', poster:'../kitchenette.jpg',         video:null },
-  { slug:'unit-16', label:'Unit 16', type:'oceanview',  beds:'2BR', poster:'../bedroom_twins.jpg',       video:null }
+  { slug:'unit-01', label:'Unit 1',  type:'oceanview',  beds:'2BR', poster:'./img/unit-01.jpg', video:null },
+  { slug:'unit-02', label:'Unit 2',  type:'oceanview',  beds:'2BR', poster:'./img/unit-02.jpg', video:null },
+  { slug:'unit-03', label:'Unit 3',  type:'oceanview',  beds:'2BR', poster:'./img/unit-03.jpg', video:null },
+  { slug:'unit-04', label:'Unit 4',  type:'oceanview',  beds:'2BR', poster:'./img/unit-04.jpg', video:null },
+  { slug:'unit-05', label:'Unit 5',  type:'oceanview',  beds:'2BR', poster:'./img/unit-05.jpg', video:null },
+  { slug:'unit-06', label:'Unit 6',  type:'oceanview',  beds:'2BR', poster:'./img/unit-06.jpg', video:null },
+  { slug:'unit-07', label:'Unit 7',  type:'oceanview',  beds:'2BR', poster:'./img/unit-07.jpg', video:null },
+  { slug:'unit-08', label:'Unit 8',  type:'oceanview',  beds:'2BR', poster:'./img/unit-08.jpg', video:null },
+  { slug:'unit-09', label:'Unit 9',  type:'oceanview',  beds:'2BR', poster:'./img/unit-09.jpg', video:null },
+  { slug:'unit-10', label:'Unit 10', type:'oceanview',  beds:'2BR', poster:'./img/unit-10.jpg', video:null },
+  { slug:'unit-11', label:'Unit 11', type:'oceanview',  beds:'2BR', poster:'./img/unit-11.jpg', video:null },
+  { slug:'unit-12', label:'Unit 12', type:'oceanview',  beds:'2BR', poster:'./img/unit-12.jpg', video:null },
+  { slug:'unit-13', label:'Unit 13', type:'oceanview',  beds:'2BR', poster:'./img/unit-13.jpg', video:null },
+  { slug:'unit-14', label:'Unit 14', type:'oceanview',  beds:'2BR', poster:'./img/unit-14.jpg', video:null },
+  { slug:'unit-15', label:'Unit 15', type:'oceanview',  beds:'2BR', poster:'./img/unit-15.jpg', video:null },
+  { slug:'unit-16', label:'Unit 16', type:'oceanview',  beds:'2BR', poster:'./img/unit-16.jpg', video:null }
 ];
 
 // ---------- RENDER ----------
@@ -807,7 +807,7 @@ UNITS.forEach((u, idx) => {
       <div class="unit-card__play">
         <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg>
       </div>
-      <div class="unit-card__count">Walk-Through</div>
+      <div class="unit-card__count">${u.comingSoon ? 'Photos Coming Soon' : 'Walk-Through'}</div>
     </div>
     <div class="unit-card__body">
       <div class="unit-card__title">${u.label}</div>
