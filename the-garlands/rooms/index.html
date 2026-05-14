@@ -287,7 +287,7 @@ img { max-width: 100%; display: block; }
 .room__media img {
   width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 1.2s ease;
+  transition: transform 1.2s ease, opacity .3s ease;
 }
 .room:hover .room__media img { transform: scale(1.03); }
 .room__media-tag {
@@ -301,7 +301,47 @@ img { max-width: 100%; display: block; }
   text-transform: uppercase;
   font-weight: 500;
   backdrop-filter: blur(4px);
+  transition: opacity .25s ease;
 }
+
+/* Gallery: main image + clickable thumbnail strip */
+.room__gallery { display: flex; flex-direction: column; gap: .65rem; }
+.room__thumbs {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: .5rem;
+}
+.room__thumb {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  background: var(--atlantic-deep);
+  border: 0;
+  cursor: pointer;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+  outline: 2px solid transparent;
+  outline-offset: -2px;
+  transition: outline-color .2s ease, transform .25s ease;
+}
+.room__thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity .25s ease;
+}
+.room__thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(15,42,68,.35);
+  transition: background .2s ease;
+  pointer-events: none;
+}
+.room__thumb:hover::after { background: rgba(15,42,68,.0); }
+.room__thumb:hover { transform: translateY(-2px); }
+.room__thumb:focus-visible { outline-color: var(--coral); }
+.room__thumb.is-active { outline-color: var(--coral); }
+.room__thumb.is-active::after { background: transparent; }
 
 .room__body {
   padding: 2.5rem 0 0 0;
@@ -587,11 +627,11 @@ img { max-width: 100%; display: block; }
   .room {
     grid-template-columns: 1fr 1fr;
     gap: clamp(2.5rem, 5vw, 4.5rem);
-    align-items: center;
+    align-items: start;
   }
   .room__media { aspect-ratio: 5/4; }
   .room__body { padding: 0; }
-  .room--reverse .room__media { order: 2; }
+  .room--reverse .room__gallery { order: 2; }
   .room--reverse .room__body { order: 1; }
 }
 @media (max-width: 540px) {
@@ -665,9 +705,11 @@ img { max-width: 100%; display: block; }
 
   <!-- 1. Deluxe Two-Bedroom Oceanfront (Unit B) -->
   <article class="room reveal">
-    <div class="room__media">
-      <span class="room__media-tag">Photos Coming Soon</span>
-      <img src="../property_from_beach.jpg" alt="Unit B photos coming soon - Deluxe Two-Bedroom Oceanfront suite">
+    <div class="room__gallery">
+      <div class="room__media">
+        <span class="room__media-tag">Photos Coming Soon</span>
+        <img src="../property_from_beach.jpg" alt="Unit B photos coming soon - Deluxe Two-Bedroom Oceanfront suite">
+      </div>
     </div>
     <div class="room__body">
       <div class="room__unit">Unit B · 1 of a kind</div>
@@ -700,9 +742,19 @@ img { max-width: 100%; display: block; }
 
   <!-- 2. Superior Suite with Sea View (Unit A) -->
   <article class="room room--reverse reveal">
-    <div class="room__media">
-      <span class="room__media-tag">Living &amp; Ocean</span>
-      <img src="../room-tours/img/unit-a.jpg" alt="Living area inside Unit A with ocean view through the sliders">
+    <div class="room__gallery">
+      <div class="room__media">
+        <span class="room__media-tag">The Living Room</span>
+        <img src="img/superior-living.jpg" alt="Living area inside Unit A with sliding doors to the balcony" data-default-tag="The Living Room">
+      </div>
+      <div class="room__thumbs" role="tablist" aria-label="Unit A photos">
+        <button class="room__thumb is-active" data-src="img/superior-living.jpg" data-tag="The Living Room" data-alt="Living area inside Unit A"><img src="img/superior-living-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/superior-balcony.jpg" data-tag="Balcony View" data-alt="Balcony view from Unit A over Nantucket Sound"><img src="img/superior-balcony-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/superior-bedroom1.jpg" data-tag="Primary Bedroom" data-alt="Primary bedroom in Unit A"><img src="img/superior-bedroom1-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/superior-bedroom2.jpg" data-tag="Second Bedroom" data-alt="Second bedroom in Unit A"><img src="img/superior-bedroom2-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/superior-kitchen.jpg" data-tag="Full Kitchenette" data-alt="Full kitchenette in Unit A"><img src="img/superior-kitchen-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/superior-bath.jpg" data-tag="Private Bath" data-alt="Private bathroom in Unit A"><img src="img/superior-bath-thumb.jpg" alt=""></button>
+      </div>
     </div>
     <div class="room__body">
       <div class="room__unit">Unit A · 1 of a kind</div>
@@ -735,9 +787,19 @@ img { max-width: 100%; display: block; }
 
   <!-- 3. One-Bedroom Oceanfront (Units C & D) -->
   <article class="room reveal">
-    <div class="room__media">
-      <span class="room__media-tag">Full Kitchen</span>
-      <img src="../kitchenette.jpg" alt="Full kitchenette inside a One-Bedroom Oceanfront unit">
+    <div class="room__gallery">
+      <div class="room__media">
+        <span class="room__media-tag">Living &amp; Ocean</span>
+        <img src="img/oceanfront1br-living.jpg" alt="Wraparound windows of ocean inside a One-Bedroom Oceanfront unit" data-default-tag="Living &amp; Ocean">
+      </div>
+      <div class="room__thumbs" role="tablist" aria-label="One-Bedroom Oceanfront photos">
+        <button class="room__thumb is-active" data-src="img/oceanfront1br-living.jpg" data-tag="Living &amp; Ocean" data-alt="Living area with wraparound ocean windows"><img src="img/oceanfront1br-living-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanfront1br-balcony.jpg" data-tag="Private Balcony" data-alt="Private balcony with chair facing Nantucket Sound"><img src="img/oceanfront1br-balcony-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanfront1br-bedroom.jpg" data-tag="The Bedroom" data-alt="Queen bedroom in a One-Bedroom Oceanfront unit"><img src="img/oceanfront1br-bedroom-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanfront1br-kitchen.jpg" data-tag="Full Kitchenette" data-alt="Full kitchenette with retro blue fridge"><img src="img/oceanfront1br-kitchen-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanfront1br-bath.jpg" data-tag="Private Bath" data-alt="Private bathroom"><img src="img/oceanfront1br-bath-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanfront1br-layout.jpg" data-tag="Open Layout" data-alt="Open layout connecting living, dining and kitchen"><img src="img/oceanfront1br-layout-thumb.jpg" alt=""></button>
+      </div>
     </div>
     <div class="room__body">
       <div class="room__unit">Units C &amp; D · 2 available</div>
@@ -770,9 +832,19 @@ img { max-width: 100%; display: block; }
 
   <!-- 4. Two-Bedroom Ocean View (Units 1-16) -->
   <article class="room room--reverse reveal">
-    <div class="room__media">
-      <span class="room__media-tag">The Bedroom</span>
-      <img src="../bedroom_twins.jpg" alt="Twin-bed bedroom in a Two-Bedroom Ocean View unit">
+    <div class="room__gallery">
+      <div class="room__media">
+        <span class="room__media-tag">The Living Room</span>
+        <img src="img/oceanview2br-living.jpg" alt="Living room inside a Two-Bedroom Ocean View unit" data-default-tag="The Living Room">
+      </div>
+      <div class="room__thumbs" role="tablist" aria-label="Two-Bedroom Ocean View photos">
+        <button class="room__thumb is-active" data-src="img/oceanview2br-living.jpg" data-tag="The Living Room" data-alt="Living room in a Two-Bedroom Ocean View unit"><img src="img/oceanview2br-living-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanview2br-bedroom1.jpg" data-tag="Queen Bedroom" data-alt="Queen bedroom with starfish bedding"><img src="img/oceanview2br-bedroom1-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanview2br-bedroom2.jpg" data-tag="Second Bedroom" data-alt="Second bedroom with twin beds"><img src="img/oceanview2br-bedroom2-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanview2br-dining.jpg" data-tag="Dining &amp; Slider" data-alt="Dining area with slider to balcony"><img src="img/oceanview2br-dining-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanview2br-bath.jpg" data-tag="Private Bath" data-alt="Private bathroom"><img src="img/oceanview2br-bath-thumb.jpg" alt=""></button>
+        <button class="room__thumb" data-src="img/oceanview2br-patio.jpg" data-tag="Patio Doors" data-alt="Patio doors opening to a private patio"><img src="img/oceanview2br-patio-thumb.jpg" alt=""></button>
+      </div>
     </div>
     <div class="room__body">
       <div class="room__unit">Units 1 &ndash; 16 · 16 available</div>
@@ -961,6 +1033,37 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Room photo gallery — main image swaps when a thumbnail is clicked
+document.querySelectorAll('.room__gallery').forEach(gallery => {
+  const mainImg = gallery.querySelector('.room__media img');
+  const tag = gallery.querySelector('.room__media-tag');
+  const thumbs = gallery.querySelectorAll('.room__thumb');
+  if (!thumbs.length) return;
+  // Preload main images so swaps are instant
+  thumbs.forEach(t => { const src = t.dataset.src; if (src) { const p = new Image(); p.src = src; } });
+  thumbs.forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      const src = thumb.dataset.src;
+      if (!src || mainImg.src.endsWith(src.split('/').pop())) {
+        // already showing — still update active state
+      } else {
+        mainImg.style.opacity = '0';
+        const next = new Image();
+        next.onload = () => {
+          mainImg.src = src;
+          if (thumb.dataset.alt) mainImg.alt = thumb.dataset.alt;
+          mainImg.style.opacity = '1';
+        };
+        next.src = src;
+      }
+      if (tag && thumb.dataset.tag) tag.innerHTML = thumb.dataset.tag;
+      thumbs.forEach(t => { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+      thumb.classList.add('is-active');
+      thumb.setAttribute('aria-selected', 'true');
+    });
+  });
+});
 </script>
 
 </body>
