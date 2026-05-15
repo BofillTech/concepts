@@ -143,3 +143,136 @@
   },{threshold:0.1});
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 })();
+
+
+/* ============================================================
+   HOMEPAGE — hero slideshow, dropdowns, mobile menu, date pickers
+   (Only attaches to elements present on the page; safe everywhere)
+   ============================================================ */
+(function(){
+  // --- Hero slideshow ---
+  var slides = document.querySelectorAll('.hero-slide');
+  var dots   = document.querySelectorAll('.hero-dot');
+  if(slides.length && dots.length){
+    var current = 0;
+    var timer;
+    function goToSlide(n){
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = n;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      clearInterval(timer);
+      timer = setInterval(function(){ goToSlide((current+1)%slides.length); }, 5500);
+    }
+    dots.forEach(function(dot, i){
+      dot.addEventListener('click', function(){ goToSlide(i); });
+    });
+    timer = setInterval(function(){ goToSlide((current+1)%slides.length); }, 5500);
+  }
+
+  // --- Reveal-on-scroll observer ---
+  if(typeof IntersectionObserver !== 'undefined'){
+    var revealObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
+  }
+
+  // --- Nav dropdown click toggles ---
+  document.querySelectorAll('.nav-links > li').forEach(function(li){
+    var link = li.querySelector('a');
+    var menu = li.querySelector('.nav-dropdown-menu');
+    if(!link || !menu) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var isOpen = li.classList.contains('open');
+      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+      if(!isOpen) li.classList.add('open');
+    });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-links')){
+      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+    }
+  });
+
+  // --- Mobile menu toggle (was inline onclick="toggleMenu()") ---
+  var hamburger = document.getElementById('hamburger');
+  if(hamburger){
+    hamburger.addEventListener('click', function(){
+      var mm = document.getElementById('mobileMenu');
+      if(mm) mm.classList.toggle('open');
+    });
+  }
+
+  // --- Booking bar Book Now (was inline onclick window.open) ---
+  var bookBtn = document.querySelector('.booking-bar-btn');
+  if(bookBtn && !bookBtn.dataset.bound){
+    bookBtn.dataset.bound = '1';
+    bookBtn.addEventListener('click', function(){
+      window.open('https://terracebythesea.client.innroad.com/', '_blank');
+    });
+  }
+
+  // --- Date pickers default to today / tomorrow ---
+  var ci = document.getElementById('checkin');
+  var co = document.getElementById('checkout');
+  if(ci && co){
+    var today = new Date();
+    var tomorrow = new Date(today);
+    tomorrow.setDate(today.getDate()+1);
+    var fmt = function(d){ return d.toISOString().split('T')[0]; };
+    ci.value = fmt(today);
+    co.value = fmt(tomorrow);
+    ci.min = fmt(today);
+    co.min = fmt(tomorrow);
+    ci.addEventListener('change', function(e){
+      var next = new Date(e.target.value);
+      next.setDate(next.getDate()+1);
+      co.min = fmt(next);
+      if(co.value <= e.target.value) co.value = fmt(next);
+    });
+  }
+})();
+
+
+/* ============================================================
+   GALLERY PAGE — tab switcher (was inline onclick="showGallery(...)")
+   ============================================================ */
+(function(){
+  var tabs = document.querySelectorAll('.gtab[data-tab]');
+  if(!tabs.length) return;
+
+  function showGallery(tab, btn){
+    document.querySelectorAll('.gallery-section').forEach(function(s){ s.classList.remove('active'); });
+    document.querySelectorAll('.gtab').forEach(function(t){ t.classList.remove('active'); });
+    var section = document.getElementById('tab-' + tab);
+    if(section) section.classList.add('active');
+    if(btn) btn.classList.add('active');
+    history.replaceState(null, null, '#' + tab);
+  }
+
+  tabs.forEach(function(btn){
+    btn.addEventListener('click', function(){ showGallery(btn.dataset.tab, btn); });
+  });
+
+  // Restore from URL hash
+  window.addEventListener('load', function(){
+    var hash = window.location.hash.replace('#', '');
+    if(hash){
+      var match = document.querySelector('.gtab[data-tab="' + hash + '"]');
+      if(match) match.click();
+    }
+  });
+})();
