@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gift Certificates — Terrace By The Sea</title>
+<link rel="stylesheet" href="../shared.css">
+<style>
+.gc-intro{display:grid;grid-template-columns:1.1fr 1fr;background:var(--cream-deep);min-height:520px}
+.gc-intro-text{padding:80px 64px;display:flex;flex-direction:column;justify-content:center}
+.gc-intro-text h2{font-family:var(--font-title);font-weight:400;font-size:clamp(30px,3.4vw,48px);color:var(--navy);margin-bottom:22px;line-height:1.15}
+.gc-intro-text h2 em{font-style:italic;color:var(--steel)}
+.gc-intro-text p{font-family:var(--font-body);font-weight:300;font-size:16px;line-height:2;color:#4a5260;margin-bottom:16px;max-width:460px}
+.gc-intro-text .gc-bullets{list-style:none;margin-top:16px;padding:0}
+.gc-intro-text .gc-bullets li{font-family:var(--font-body);font-size:14px;font-weight:300;color:var(--navy);padding:9px 0;border-bottom:1px solid rgba(10,45,73,.1);display:flex;align-items:center;gap:12px;letter-spacing:.04em}
+.gc-intro-text .gc-bullets li::before{content:"";width:18px;height:1px;background:var(--tan);flex-shrink:0}
+.gc-intro-img{background:var(--cream);display:flex;align-items:center;justify-content:center;padding:56px 48px;position:relative}
+.gc-intro-img::before{content:"";position:absolute;inset:24px;border:1px solid rgba(10,45,73,.08)}
+.gc-intro-img img{max-width:100%;max-height:440px;width:auto;height:auto;display:block;box-shadow:0 16px 48px rgba(10,45,73,.18);border:1px solid rgba(10,45,73,.06);position:relative;z-index:1}
+.gc-intro-img .gc-img-caption{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:var(--font-body);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);background:var(--cream);padding:6px 14px;z-index:2}
+
+.gc-amounts{background:var(--navy);padding:64px 56px;text-align:center}
+.gc-amounts .section-label{color:var(--mist) !important;margin-bottom:10px}
+.gc-amounts h2{font-family:var(--font-title);font-weight:400;font-size:clamp(26px,2.8vw,40px);color:white;margin-bottom:36px}
+.gc-amounts h2 em{font-style:italic;color:var(--tan)}
+.gc-amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:880px;margin:0 auto}
+.gc-amt-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:32px 18px;text-align:center}
+.gc-amt-card .gc-amt-num{font-family:var(--font-title);font-size:38px;font-weight:400;color:var(--tan);line-height:1;margin-bottom:6px}
+.gc-amt-card .gc-amt-label{font-family:var(--font-body);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+.gc-amounts > p.gc-custom{font-family:var(--font-sub);font-style:italic;font-size:16px;color:rgba(255,255,255,.7);margin-top:30px}
+
+/* Form expanded styles */
+.gc-form-section{background:var(--sky);padding:80px 0}
+.gc-form-wrap{max-width:920px;margin:0 auto;padding:0 32px}
+.gc-form-wrap > .section-label{margin-bottom:8px}
+.gc-form-wrap > h2{font-family:var(--font-title);font-weight:400;font-size:clamp(28px,3vw,42px);color:var(--navy);margin-bottom:10px}
+.gc-form-wrap > .form-intro{font-family:var(--font-sub);font-style:italic;font-size:16.5px;color:#4a5260;line-height:1.8;margin-bottom:42px;max-width:680px}
+.gc-fieldset{background:white;padding:36px 36px 16px;margin-bottom:18px;border:1px solid rgba(10,45,73,.06);border-top:3px solid var(--tan)}
+.gc-fieldset-head{display:flex;align-items:baseline;gap:14px;margin-bottom:6px}
+.gc-fieldset-head .gc-num{font-family:var(--font-title);font-style:italic;font-weight:400;font-size:32px;color:var(--tan);line-height:1;flex-shrink:0}
+.gc-fieldset-head h3{font-family:var(--font-title);font-weight:400;font-size:22px;color:var(--navy)}
+.gc-fieldset-desc{font-family:var(--font-body);font-size:13.5px;font-weight:300;color:#4a5260;line-height:1.8;margin-bottom:26px;padding-left:46px}
+.gc-form-actions{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px;flex-wrap:wrap}
+.gc-required-note{font-family:var(--font-body);font-size:12.5px;font-weight:300;color:#5a6470;font-style:italic}
+.gc-required-note span{color:var(--steel);font-style:normal;font-weight:500}
+
+/* Override form-row for 3-col layouts */
+.gc-form-wrap .form-row.row-3{grid-template-columns:1fr 1fr 1fr}
+.gc-form-wrap .form-row.row-1-2{grid-template-columns:1fr 2fr}
+.gc-form-wrap .form-row.row-2-1{grid-template-columns:2fr 1fr}
+
+@media(max-width:860px){
+  .gc-intro{grid-template-columns:1fr}
+  .gc-intro-text{padding:56px 28px}
+  .gc-intro-img{padding:40px 28px;min-height:380px}
+  .gc-amount-grid{grid-template-columns:1fr 1fr}
+  .gc-amounts{padding:48px 24px}
+  .gc-form-wrap{padding:0 20px}
+  .gc-fieldset{padding:26px 22px 8px}
+  .gc-form-wrap .form-row,.gc-form-wrap .form-row.row-3,.gc-form-wrap .form-row.row-1-2,.gc-form-wrap .form-row.row-2-1{grid-template-columns:1fr}
+  .gc-fieldset-desc{padding-left:0}
+}
+</style>
+</head>
+<body>
+<section class="inner-hero">
+  <img src="https://bofilltech.com/wp-content/uploads/2026/05/chairsandoceanview.jpg" alt="Gift Certificates at Terrace By The Sea">
+  <div class="inner-hero-content">
+    <p class="eyebrow">A Maine Coast Getaway</p>
+    <h1>Gift <em>Certificates</em></h1>
+  </div>
+</section>
+
+<div class="gc-intro">
+  <div class="gc-intro-text">
+    <p class="section-label reveal">A Thoughtful Gift</p>
+    <h2 class="reveal reveal-delay-1">Give the Gift of <em>The Maine Coast</em></h2>
+    <p class="reveal reveal-delay-2">A Terrace By The Sea gift certificate is the perfect way to share the experience of Ogunquit — oceanfront mornings, garden afternoons, and starlit Maine evenings — with the people you care about.</p>
+    <p class="reveal reveal-delay-3">Available in any amount, for any occasion. Just complete the form below and we'll process your request promptly. Your recipient will receive a beautifully presented certificate ready to redeem toward any stay.</p>
+    <ul class="gc-bullets reveal reveal-delay-3">
+      <li>Available in any amount</li>
+      <li>Redeemable toward any room type</li>
+      <li>Anniversaries, birthdays, weddings, holidays</li>
+      <li>Mailed to you or directly to the recipient</li>
+    </ul>
+  </div>
+  <div class="gc-intro-img">
+    <img src="https://bofilltech.com/wp-content/uploads/2026/05/terracebytheseagiftcertificate.jpg" alt="Terrace By The Sea Gift Certificate" loading="lazy">
+    <span class="gc-img-caption">Sample Certificate</span>
+  </div>
+</div>
+
+<section class="gc-amounts">
+  <p class="section-label reveal">Popular Amounts</p>
+  <h2 class="reveal reveal-delay-1">Choose Any Amount <em>That's Right For You</em></h2>
+  <div class="gc-amount-grid">
+    <div class="gc-amt-card reveal"><div class="gc-amt-num">$100</div><div class="gc-amt-label">Welcome Gift</div></div>
+    <div class="gc-amt-card reveal reveal-delay-1"><div class="gc-amt-num">$250</div><div class="gc-amt-label">A Night Away</div></div>
+    <div class="gc-amt-card reveal reveal-delay-2"><div class="gc-amt-num">$500</div><div class="gc-amt-label">Weekend Stay</div></div>
+    <div class="gc-amt-card reveal reveal-delay-3"><div class="gc-amt-num">$1,000</div><div class="gc-amt-label">Maine Escape</div></div>
+  </div>
+  <p class="gc-custom reveal reveal-delay-3">Or enter any custom amount in the form below.</p>
+</section>
+
+<section class="gc-form-section">
+  <div class="gc-form-wrap">
+    <p class="section-label reveal">Order Your Certificate</p>
+    <h2 class="reveal reveal-delay-1">Gift Certificate Request</h2>
+    <p class="form-intro reveal reveal-delay-2">Fill out the form below and we'll process your request promptly. Required fields are marked with <span style="color:var(--steel)">*</span>.</p>
+
+    <form action="#" method="post" autocomplete="on">
+
+      <!-- 1. PURCHASER -->
+      <div class="gc-fieldset reveal">
+        <div class="gc-fieldset-head">
+          <span class="gc-num">01</span>
+          <h3>Purchaser Information</h3>
+        </div>
+        <p class="gc-fieldset-desc">Who's sending the gift? We'll use this to confirm your order and process payment.</p>
+        <div class="form-group"><label>Your Name *</label><input type="text" name="purchaser_name" placeholder="Jane Smith" required></div>
+        <div class="form-group"><label>Street Address *</label><input type="text" name="purchaser_street" placeholder="123 Main Street" required></div>
+        <div class="form-row row-3">
+          <div class="form-group"><label>City *</label><input type="text" name="purchaser_city" required></div>
+          <div class="form-group"><label>State / Province *</label><input type="text" name="purchaser_state" required></div>
+          <div class="form-group"><label>ZIP / Postal *</label><input type="text" name="purchaser_zip" required></div>
+        </div>
+        <div class="form-group"><label>Country (if outside USA)</label>
+          <select name="purchaser_country">
+            <option value="USA" selected>United States of America (USA)</option>
+            <option>Canada</option><option>United Kingdom</option><option>Mexico</option>
+            <option>France</option><option>Germany</option><option>Australia</option>
+            <option>Other (specify in instructions)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>Email Address *</label><input type="email" name="purchaser_email" placeholder="jane@email.com" required></div>
+          <div class="form-group"><label>Phone Number *</label><input type="tel" name="purchaser_phone" placeholder="(555) 000-0000" maxlength="12" required></div>
+        </div>
+      </div>
+
+      <!-- 2. RECIPIENT -->
+      <div class="gc-fieldset reveal">
+        <div class="gc-fieldset-head">
+          <span class="gc-num">02</span>
+          <h3>Gift Recipient Information</h3>
+        </div>
+        <p class="gc-fieldset-desc">Who's receiving the gift? We can mail the certificate directly to them, or send it to you to present in person.</p>
+        <div class="form-group"><label>Recipient Name *</label><input type="text" name="recipient_name" placeholder="John Smith" required></div>
+        <div class="form-group"><label>Street Address *</label><input type="text" name="recipient_street" required></div>
+        <div class="form-row row-3">
+          <div class="form-group"><label>City *</label><input type="text" name="recipient_city" required></div>
+          <div class="form-group"><label>State / Province *</label><input type="text" name="recipient_state" required></div>
+          <div class="form-group"><label>ZIP / Postal *</label><input type="text" name="recipient_zip" required></div>
+        </div>
+        <div class="form-group"><label>To, From &amp; Personal Message *</label>
+          <textarea name="recipient_message" placeholder="To: John&#10;From: Jane&#10;&#10;Happy anniversary! Looking forward to our trip together this summer…" required></textarea>
+        </div>
+        <div class="form-group"><label>Delivery Instructions</label>
+          <textarea name="delivery_instructions" placeholder="Mail to recipient by [date], or hold for purchaser pickup, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- 3. AMOUNT -->
+      <div class="gc-fieldset reveal">
+        <div class="gc-fieldset-head">
+          <span class="gc-num">03</span>
+          <h3>Gift Amount</h3>
+        </div>
+        <p class="gc-fieldset-desc">Choose any amount you'd like — there's no minimum or maximum.</p>
+        <div class="form-row row-1-2">
+          <div class="form-group"><label>Amount (USD) *</label><input type="number" name="amount" min="1" step="1" placeholder="500" required></div>
+          <div class="form-group"><label>Additional Instructions</label><input type="text" name="amount_notes" maxlength="180" placeholder="Any other notes about this gift…"></div>
+        </div>
+      </div>
+
+      <!-- 4. PAYMENT -->
+      <div class="gc-fieldset reveal">
+        <div class="gc-fieldset-head">
+          <span class="gc-num">04</span>
+          <h3>Payment Information</h3>
+        </div>
+        <p class="gc-fieldset-desc">Your payment is processed securely. We accept all major credit cards.</p>
+        <div class="form-row row-2-1">
+          <div class="form-group"><label>Credit Card Number *</label><input type="text" name="cc_number" inputmode="numeric" maxlength="16" placeholder="1234 5678 9012 3456" required></div>
+          <div class="form-group"><label>Card Type *</label>
+            <select name="cc_type" required>
+              <option value="">Select…</option>
+              <option>Visa</option><option>MasterCard</option><option>American Express</option><option>Discover</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row row-3">
+          <div class="form-group"><label>Expiration Month *</label>
+            <select name="cc_month" required>
+              <option value="">Month</option>
+              <option>January</option><option>February</option><option>March</option><option>April</option>
+              <option>May</option><option>June</option><option>July</option><option>August</option>
+              <option>September</option><option>October</option><option>November</option><option>December</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Expiration Year *</label>
+            <select name="cc_year" required>
+              <option value="">Year</option>
+              <option>2026</option><option>2027</option><option>2028</option><option>2029</option>
+              <option>2030</option><option>2031</option><option>2032</option><option>2033</option><option>2034</option>
+            </select>
+          </div>
+          <div class="form-group"><label>CVC *</label><input type="text" name="cc_cvc" inputmode="numeric" maxlength="4" placeholder="123" required></div>
+        </div>
+      </div>
+
+      <div class="gc-form-actions">
+        <p class="gc-required-note"><span>*</span> Required fields. Your information is secure and never shared.</p>
+        <button type="submit" class="form-submit">Submit Request</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script src="../shared.js"></script>
+</body>
+</html>
