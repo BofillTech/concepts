@@ -76,7 +76,7 @@
   const supportsIO = 'IntersectionObserver' in window;
   if (supportsIO) {
     const observed = document.querySelectorAll(
-      '.service, .why__card, .area__item, .trust__item'
+      '.service, .why__card, .area__item, .trust__item, .clients__row'
     );
 
     observed.forEach(el => {
@@ -105,7 +105,7 @@
   /* ---------- Respect reduced motion ---------- */
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (reduceMotion.matches) {
-    document.querySelectorAll('.service, .why__card, .area__item, .trust__item').forEach(el => {
+    document.querySelectorAll('.service, .why__card, .area__item, .trust__item, .clients__row').forEach(el => {
       el.style.opacity = '1';
       el.style.transform = 'none';
       el.style.transition = 'none';
