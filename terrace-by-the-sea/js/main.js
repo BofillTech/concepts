@@ -85,12 +85,19 @@
   var BOOKING = '<div class="booking-bar-wrapper"><div class="booking-bar">'
     + '<div class="booking-field"><label for="checkin">Check In</label><input type="date" id="checkin"></div>'
     + '<div class="booking-field"><label for="checkout">Check Out</label><input type="date" id="checkout"></div>'
-    + '<button class="booking-bar-btn" onclick="window.open(\'https://terracebythesea.client.innroad.com/\',\'_blank\')">Book Now</button>'
+    + '<button class="booking-bar-btn">Book Now</button>'
     + '</div></div>';
 
-  // Inject
-  document.body.insertAdjacentHTML('afterbegin', NAV + MOB);
-  document.body.insertAdjacentHTML('beforeend', FOOTER + BOOKING);
+  // Inject — only if the element isn't already in the markup (homepage has hardcoded copies)
+  if(!document.getElementById('mainNav')){
+    document.body.insertAdjacentHTML('afterbegin', NAV + MOB);
+  }
+  if(!document.querySelector('footer')){
+    document.body.insertAdjacentHTML('beforeend', FOOTER);
+  }
+  if(!document.querySelector('.booking-bar-wrapper')){
+    document.body.insertAdjacentHTML('beforeend', BOOKING);
+  }
 
   // Set active nav
   var path = window.location.pathname;
@@ -98,11 +105,12 @@
     if(path.indexOf(a.getAttribute('href').split('/').filter(Boolean).pop()) > -1) a.parentElement.classList.add('active');
   });
 
-  // Dropdown click toggles
+  // Dropdown click toggles — guard against double-binding via flag on each li
   document.querySelectorAll('.nav-links > li').forEach(function(li){
     var link = li.querySelector('a');
     var menu = li.querySelector('.nav-dropdown-menu');
-    if(!menu) return;
+    if(!menu || li.dataset.bound) return;
+    li.dataset.bound = '1';
     link.addEventListener('click', function(e){
       e.preventDefault();
       var isOpen = li.classList.contains('open');
@@ -110,32 +118,42 @@
       if(!isOpen) li.classList.add('open');
     });
   });
-  // Close dropdowns on outside click or Escape
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.nav-links')){
-      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-    }
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key==='Escape') document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-  });
+  // Close dropdowns on outside click or Escape — guard with body-level flag
+  if(!document.body.dataset.navGlobalBound){
+    document.body.dataset.navGlobalBound = '1';
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.nav-links')){
+        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+    });
+  }
 
-  // Mobile menu
-  document.getElementById('hamburger').addEventListener('click', function(){
-    document.getElementById('mobileMenu').classList.toggle('open');
-  });
+  // Mobile menu — guard against double-binding if homepage also binds it
+  var hamb = document.getElementById('hamburger');
+  if(hamb && !hamb.dataset.bound){
+    hamb.dataset.bound = '1';
+    hamb.addEventListener('click', function(){
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  }
 
-  // Dates
+  // Dates — guard against double-binding if homepage also binds them
   var today = new Date(), tomorrow = new Date(today);
   tomorrow.setDate(today.getDate()+1);
   var fmt = function(d){return d.toISOString().split('T')[0]};
   var ci = document.getElementById('checkin'), co = document.getElementById('checkout');
-  ci.value = fmt(today); co.value = fmt(tomorrow);
-  ci.min = fmt(today); co.min = fmt(tomorrow);
-  ci.addEventListener('change', function(e){
-    var next = new Date(e.target.value); next.setDate(next.getDate()+1);
-    co.min = fmt(next); if(co.value <= e.target.value) co.value = fmt(next);
-  });
+  if(ci && co && !ci.dataset.bound){
+    ci.dataset.bound = '1';
+    ci.value = fmt(today); co.value = fmt(tomorrow);
+    ci.min = fmt(today); co.min = fmt(tomorrow);
+    ci.addEventListener('change', function(e){
+      var next = new Date(e.target.value); next.setDate(next.getDate()+1);
+      co.min = fmt(next); if(co.value <= e.target.value) co.value = fmt(next);
+    });
+  }
 
   // Scroll reveals
   var obs = new IntersectionObserver(function(entries){
@@ -184,11 +202,12 @@
     document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
   }
 
-  // --- Nav dropdown click toggles ---
+  // --- Nav dropdown click toggles (guarded) ---
   document.querySelectorAll('.nav-links > li').forEach(function(li){
     var link = li.querySelector('a');
     var menu = li.querySelector('.nav-dropdown-menu');
-    if(!link || !menu) return;
+    if(!link || !menu || li.dataset.bound) return;
+    li.dataset.bound = '1';
     link.addEventListener('click', function(e){
       e.preventDefault();
       var isOpen = li.classList.contains('open');
@@ -196,16 +215,19 @@
       if(!isOpen) li.classList.add('open');
     });
   });
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.nav-links')){
-      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-    }
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape'){
-      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-    }
-  });
+  if(!document.body.dataset.navGlobalBound){
+    document.body.dataset.navGlobalBound = '1';
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.nav-links')){
+        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+      }
+    });
+  }
 
   // --- Mobile menu toggle (was inline onclick="toggleMenu()") ---
   var hamburger = document.getElementById('hamburger');
