@@ -452,7 +452,7 @@ p { margin: 0 0 var(--sp-3); }
 }
 
 /* -----------------------------------------------------------------------
-   Hero — Postcard Frame
+   Hero — Full-Screen Postcard
    ----------------------------------------------------------------------- */
 .hero {
   position: relative;
@@ -460,8 +460,11 @@ p { margin: 0 0 var(--sp-3); }
   background-image:
     radial-gradient(circle at 20% 30%, rgba(255, 200, 87, 0.20) 0, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(244, 166, 152, 0.18) 0, transparent 50%);
-  padding-top: calc(var(--header-h) + var(--sp-6));
-  padding-bottom: var(--sp-8);
+  padding: calc(var(--header-h) + 16px) 18px calc(var(--bar-h) + 16px);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border-bottom: 2px solid var(--c-ink);
 }
@@ -470,7 +473,7 @@ p { margin: 0 0 var(--sp-3); }
 .hero::before {
   content: "";
   position: absolute;
-  top: -50px; right: -120px;
+  top: -80px; right: -120px;
   width: 360px; height: 360px;
   background: var(--c-yellow);
   border-radius: 50%;
@@ -480,125 +483,167 @@ p { margin: 0 0 var(--sp-3); }
   z-index: 0;
 }
 
-.hero__inner {
+/* The whole hero IS one giant postcard */
+.hero__postcard {
   position: relative;
   z-index: 2;
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 0 var(--sp-4);
+  width: 100%;
+  max-width: 1480px;
+  background: var(--c-paper);
+  padding: 22px 22px 18px;
+  border: 2px solid var(--c-ink);
+  box-shadow: 10px 10px 0 0 var(--c-ink),
+              20px 20px 0 0 var(--c-yellow);
+  transform: rotate(-0.5deg);
+  animation: postcardIn 1.2s var(--ease) 0.2s both;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--sp-6);
-  align-items: center;
+  grid-template-rows: auto auto auto auto;
+  gap: 16px;
 }
 
-.hero__content {
-  color: var(--c-ink);
-  animation: heroRise 1.0s var(--ease) 0.1s both;
+@keyframes postcardIn {
+  from { opacity: 0; transform: rotate(-2deg) translateY(20px); }
+  to   { opacity: 1; transform: rotate(-0.5deg) translateY(0); }
 }
 
-@keyframes heroRise {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* Top row inside postcard: greetings + headline + stamp */
+.hero__postcard-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--sp-4);
+  align-items: flex-start;
+  padding: 0 6px;
 }
 
 .hero__greetings {
   font-family: var(--f-label);
   text-transform: uppercase;
-  letter-spacing: 0.32em;
-  font-size: 0.85rem;
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
   color: var(--c-red);
   font-weight: 700;
-  margin: 0 0 var(--sp-3);
+  margin: 0 0 var(--sp-2);
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .hero__greetings::before {
   content: "";
-  width: 34px; height: 2px;
+  width: 28px; height: 2px;
   background: var(--c-red);
 }
 
 .hero__headline {
   font-family: var(--f-display);
   font-weight: 400;
-  font-size: clamp(2.8rem, 7.5vw, 5.5rem);
+  font-size: clamp(2rem, 5.5vw, 4.2rem);
   line-height: 0.92;
   letter-spacing: -0.005em;
-  margin: 0 0 var(--sp-4);
+  margin: 0 0 var(--sp-2);
   color: var(--c-ink);
   text-transform: uppercase;
 }
 
-.hero__headline-mark {
-  display: block;
+.hero__location {
+  font-family: var(--f-label);
+  font-size: clamp(0.7rem, 0.95vw, 0.88rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--c-red);
-  font-size: 0.32em;
-  letter-spacing: 0.12em;
-  margin-top: 12px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Stamp graphic — moved to header area */
+.hero__stamp {
+  width: 76px;
+  height: 86px;
+  background: var(--c-red);
+  border: 3px solid var(--c-paper);
+  outline: 2px solid var(--c-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-family: var(--f-display);
+  color: var(--c-paper);
+  text-transform: uppercase;
+  line-height: 1.0;
+  transform: rotate(8deg);
+  padding: 6px;
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+.hero__stamp-num {
+  font-size: 1.6rem;
+  color: var(--c-yellow);
+  line-height: 1;
+  margin-bottom: 3px;
+  font-family: var(--f-display);
+}
+
+.hero__stamp-label {
+  font-size: 0.5rem;
+  letter-spacing: 0.14em;
   font-family: var(--f-label);
   font-weight: 700;
 }
 
+/* The big image — takes most of the postcard */
+.hero__postcard-image {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--c-line);
+  min-height: 300px;
+}
+
+.hero__postcard-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* Bottom row: subtitle + actions */
+.hero__postcard-footer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+  align-items: end;
+  padding: 4px 6px 0;
+}
+
 .hero__sub {
   font-family: var(--f-body);
-  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+  font-size: clamp(0.98rem, 1.2vw, 1.1rem);
   line-height: 1.55;
   color: var(--c-ink);
-  max-width: 480px;
-  margin: 0 0 var(--sp-5);
+  margin: 0;
   font-weight: 500;
+  max-width: 580px;
 }
 
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--sp-3);
-}
-
-/* Postcard frame containing the hero photo */
-.hero__postcard {
-  position: relative;
-  background: var(--c-paper);
-  padding: 14px 14px 50px;
-  border: 2px solid var(--c-ink);
-  box-shadow: 10px 10px 0 0 var(--c-ink),
-              18px 18px 0 0 var(--c-yellow);
-  transform: rotate(-1.5deg);
-  transition: transform 600ms var(--ease);
-  animation: postcardIn 1.2s var(--ease) 0.3s both;
-}
-
-@keyframes postcardIn {
-  from { opacity: 0; transform: rotate(-4deg) translateY(20px); }
-  to   { opacity: 1; transform: rotate(-1.5deg) translateY(0); }
-}
-
-.hero__postcard:hover {
-  transform: rotate(0deg);
-}
-
-.hero__postcard img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  display: block;
-  border: 1px solid var(--c-line);
+  gap: var(--sp-2);
+  align-self: end;
 }
 
 .hero__postcard-caption {
-  position: absolute;
-  bottom: 14px; left: 14px; right: 14px;
   font-family: var(--f-display);
-  text-align: center;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.92rem;
-  color: var(--c-ink);
-  padding-top: 12px;
+  letter-spacing: 0.04em;
+  font-size: 0.78rem;
+  color: var(--c-ink-soft);
+  text-align: center;
+  padding: 8px 0 0;
+  border-top: 1.5px dashed var(--c-line);
+  margin-top: 4px;
 }
 
 .hero__postcard-caption small {
@@ -611,63 +656,43 @@ p { margin: 0 0 var(--sp-3); }
   margin-top: 4px;
 }
 
-/* Stamp graphic */
-.hero__stamp {
-  position: absolute;
-  top: -14px;
-  right: 18px;
-  width: 78px;
-  height: 88px;
-  background: var(--c-red);
-  border: 3px solid var(--c-paper);
-  outline: 2px solid var(--c-ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  font-family: var(--f-display);
-  font-size: 0.6rem;
-  color: var(--c-paper);
-  text-transform: uppercase;
-  line-height: 1.0;
-  letter-spacing: 0.06em;
-  transform: rotate(8deg);
-  padding: 6px;
-  z-index: 5;
-}
-
-.hero__stamp-num {
-  font-size: 1.5rem;
-  color: var(--c-yellow);
-  line-height: 1;
-  margin-bottom: 4px;
-  font-family: var(--f-display);
-}
-
-.hero__stamp-label {
-  font-size: 0.52rem;
-  letter-spacing: 0.14em;
-  font-family: var(--f-label);
-  font-weight: 700;
-}
-
-@media (min-width: 900px) {
-  .hero__inner {
-    grid-template-columns: 1fr 1.05fr;
-    gap: var(--sp-7);
-  }
-  .hero {
-    padding-top: calc(var(--header-h) + var(--sp-7));
-    padding-bottom: var(--sp-9);
+@media (min-width: 600px) {
+  .hero__postcard-header {
+    gap: var(--sp-6);
   }
   .hero__stamp {
     width: 92px;
     height: 104px;
-    top: -22px;
-    right: 28px;
   }
-  .hero__stamp-num { font-size: 1.8rem; }
+  .hero__stamp-num { font-size: 1.9rem; }
+  .hero__stamp-label { font-size: 0.55rem; }
+}
+
+@media (min-width: 900px) {
+  .hero {
+    padding: calc(var(--header-h) + 20px) 28px calc(var(--bar-h) + 20px);
+  }
+  .hero__postcard {
+    padding: 28px 32px 22px;
+    gap: 18px;
+    height: calc(100vh - var(--header-h) - var(--bar-h) - 40px);
+    max-height: 900px;
+    grid-template-rows: auto 1fr auto auto;
+  }
+  .hero__postcard-image img {
+    aspect-ratio: auto;
+  }
+  .hero__postcard-footer {
+    grid-template-columns: 1.5fr auto;
+    gap: var(--sp-5);
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero__postcard {
+    padding: 32px 36px 24px;
+    gap: 20px;
+  }
 }
 
 /* -----------------------------------------------------------------------
