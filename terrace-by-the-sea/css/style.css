@@ -433,12 +433,26 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:60px 56px 100p
 
   /* ===== EST BADGE SECTION ===== */
   .est-section {
-    background: var(--cream); padding: 72px 40px;
-    display: flex; align-items: center; justify-content: center; gap: 80px;
-    flex-wrap: wrap;
+    background: var(--cream); padding: 96px 40px;
+    display: grid; grid-template-columns: 1fr minmax(420px, 560px) 1fr;
+    align-items: stretch; gap: 56px;
+    max-width: 1600px; margin: 0 auto;
+  }
+  .est-flank { position: relative; overflow: hidden; min-height: 520px; }
+  .est-flank img { width: 100%; height: 100%; object-fit: cover; display: block; filter: saturate(0.85) brightness(0.97); }
+  .est-flank::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(240,232,222,0.18), transparent 30%, transparent 70%, rgba(240,232,222,0.18));
+    pointer-events: none;
+  }
+  .est-flank--left { border-right: 1px solid rgba(10,45,73,0.06); }
+  .est-flank--right { border-left: 1px solid rgba(10,45,73,0.06); }
+  .est-center {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 28px;
   }
   .est-badge img { width: 220px; height: 220px; object-fit: contain; opacity: 0.92; }
-  .est-text { max-width: 460px; }
+  .est-text { max-width: 540px; }
   .est-text h2 { font-family: var(--font-title); font-weight: 400; font-size: clamp(32px, 3.2vw, 52px); color: var(--navy); margin-bottom: 18px; line-height: 1.25; }
   .est-text h2 em { font-style: italic; color: var(--steel); }
   .est-text p { font-family: var(--font-body); font-weight: 300; font-size: 18px; line-height: 2; color: #4a5260; }
@@ -514,7 +528,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:60px 56px 100p
     .mosaic { grid-template-columns: 1fr 1fr; }
     .mosaic-item.tall { grid-row: span 1; }
     .location-features { grid-template-columns: 1fr 1fr; }
-    .est-section { gap: 48px; padding: 56px 32px; }
+    .est-section { grid-template-columns: 1fr; gap: 36px; padding: 64px 28px; }
+    .est-flank { min-height: 280px; max-height: 380px; }
+    .est-flank--left, .est-flank--right { border: none; }
   }
   @media (max-width: 768px) {
     nav { padding: 0 18px; }
@@ -541,7 +557,9 @@ footer{background:var(--navy);color:rgba(255,255,255,.55);padding:60px 56px 100p
     .booking-bar-btn { min-height: 50px; }
     .mosaic { grid-template-columns: 1fr; grid-template-rows: auto; }
     .welcome-text { padding: 44px 24px; }
-    .est-section { flex-direction: column; text-align: center; padding: 52px 24px; gap: 32px; }
+    .est-section { text-align: center; padding: 48px 20px; gap: 28px; }
+    .est-flank { min-height: 220px; max-height: 280px; }
+    .est-badge img { width: 160px; height: 160px; }
   }
 
 /* === AMENITIES === */
