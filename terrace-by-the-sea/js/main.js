@@ -289,12 +289,19 @@
     btn.addEventListener('click', function(){ showGallery(btn.dataset.tab, btn); });
   });
 
-  // Restore from URL hash
-  window.addEventListener('load', function(){
+  // Restore from URL hash — run immediately if doc is ready, or wait for load
+  function restoreFromHash(){
     var hash = window.location.hash.replace('#', '');
     if(hash){
       var match = document.querySelector('.gtab[data-tab="' + hash + '"]');
       if(match) match.click();
     }
-  });
+  }
+  if(document.readyState === 'complete'){
+    restoreFromHash();
+  } else {
+    window.addEventListener('load', restoreFromHash);
+  }
+  // Also react to hash changes (e.g. user clicks a nav dropdown item while already on /gallery/)
+  window.addEventListener('hashchange', restoreFromHash);
 })();
