@@ -1463,6 +1463,44 @@
     grid-template-columns: 1fr;
     gap: 18px;
   }
+
+  /* Section dividers inside tab panels (Ferries / Water Taxis groupings) */
+  .options-section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin: 32px 0 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
+  }
+  .options-section-header:first-of-type { margin-top: 8px; }
+  .options-section-header h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+  .options-section-header .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--gold);
+  }
+  .options-section-header .blurb {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--ink-soft);
+    font-style: italic;
+    text-align: right;
+    max-width: 360px;
+    line-height: 1.4;
+  }
+  @media (max-width: 640px) {
+    .options-section-header { flex-wrap: wrap; }
+    .options-section-header .blurb { margin-left: 0; text-align: left; }
+  }
   .option-row {
     display: grid;
     grid-template-columns: 240px 1fr;
@@ -1816,7 +1854,7 @@
 <!-- QUICK ANSWER -->
 <section class="quick-answer">
   <span class="quick-label">The short version</span>
-  <h2 class="serif">Fly into <strong>Tortola (EIS)</strong> if you can — it's the most direct. Otherwise fly into <strong>St. Thomas (STT)</strong> and take a ferry or water taxi. Either way, aim to land before <strong>3 PM local time.</strong></h2>
+  <h2 class="serif">Fly into <strong>Tortola (EIS)</strong> if you can — it's the most direct, with a more forgiving <strong>4 PM landing deadline.</strong> Otherwise fly into <strong>St. Thomas (STT)</strong> and take a ferry or water taxi — but land by <strong>3 PM</strong> to make the last connection.</h2>
 </section>
 
 <!-- REGIONAL MAP -->
@@ -1839,8 +1877,12 @@
 <section class="disclaimer-band">
   <div class="disclaimer-inner">
     <div class="disclaimer alert">
-      <span class="label">⚠ Critical timing rule</span>
-      <p><strong>Flying into STT?</strong> Land by <strong>3:00 PM local time</strong> to comfortably make the last 5:00 PM ferry to Tortola. Later than that, you'll need a private water taxi or an overnight in St. Thomas.</p>
+      <span class="label">⚠ STT arrival rule</span>
+      <p><strong>Flying into St. Thomas?</strong> Land by <strong>3:00 PM local time</strong> to comfortably make the last 5:00 PM ferry to Tortola. Later than that, you'll need a private water taxi or an overnight in St. Thomas.</p>
+    </div>
+    <div class="disclaimer alert">
+      <span class="label">⚠ EIS arrival rule</span>
+      <p><strong>Flying into Tortola?</strong> Land by <strong>4:00 PM local time</strong> to make the last 6:00 PM New Horizon Ferry to JVD. The land taxi from EIS to West End ferry dock takes about 45–50 minutes.</p>
     </div>
     <div class="disclaimer">
       <span class="label">Always book ahead</span>
@@ -1878,7 +1920,45 @@
   <div class="tab-panel active" id="tab-eis" role="tabpanel">
     <div class="options-grid">
 
-      <!-- EIS Option 1: Allure (FEATURED) -->
+      <!-- ===== SECTION: FERRIES ===== -->
+      <div class="options-section-header">
+        <span class="num">01</span>
+        <h3>Ferries</h3>
+        <span class="blurb">The most affordable route — public ferry service runs every few hours.</span>
+      </div>
+
+      <!-- EIS Ferry: Land Taxi + New Horizon Ferry -->
+      <div class="option-row">
+        <div class="option-image">
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/jost-van-dyke-ferry-6.jpg" alt="New Horizon Ferry — West End Tortola to Great Harbour Jost Van Dyke" loading="lazy" />
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Land Taxi + New Horizon Ferry</h4>
+            <div class="option-tags">
+              <span class="opt-tag daily">Daily</span>
+              <span class="price-tier">$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Public ferry · ~1h 45m total · most common and affordable</p>
+          <p class="desc">A <strong>land taxi</strong> (not a water taxi — be specific) takes you 45–55 min across Tortola from EIS to West End ferry dock. From there, the New Horizon Ferry runs to Great Harbour, JVD multiple times daily. <strong>Land by 4 PM</strong> to comfortably make the last 6 PM ferry.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~1h 45m total</span>
+            <span><strong>Last ferry:</strong> 6:00 PM from West End</span>
+            <span><strong>Schedule:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Solo travelers · budget-conscious · daytime arrivals</p>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: WATER TAXIS / PRIVATE CHARTERS ===== -->
+      <div class="options-section-header">
+        <span class="num">02</span>
+        <h3>Water Taxis / Private Charters</h3>
+        <span class="blurb">More direct, more luxurious, more expensive. Pickup near the airport, direct to JVD.</span>
+      </div>
+
+      <!-- EIS Water Taxi: Allure (FEATURED) -->
       <div class="option-row featured">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
@@ -1902,7 +1982,7 @@
         </div>
       </div>
 
-      <!-- EIS Option 2: Trellis Bay Water Taxi -->
+      <!-- EIS Water Taxi: Trellis Bay -->
       <div class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Water taxi at Trellis Bay Marina" loading="lazy" />
@@ -1925,49 +2005,118 @@
         </div>
       </div>
 
-      <!-- EIS Option 3: Land Taxi + New Horizon Ferry -->
-      <div class="option-row">
-        <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/jost-van-dyke-ferry-6.jpg" alt="New Horizon Ferry — West End Tortola to Great Harbour Jost Van Dyke" loading="lazy" />
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">Land Taxi + New Horizon Ferry</h4>
-            <div class="option-tags">
-              <span class="opt-tag daily">Daily</span>
-              <span class="price-tier">$</span>
-            </div>
-          </div>
-          <p class="option-vibe">Public ferry · ~1h 45m total · most affordable</p>
-          <p class="desc">A <strong>land taxi</strong> (not a water taxi — be specific) takes you 45–55 min across Tortola from EIS to West End ferry dock. From there, the New Horizon Ferry runs to Great Harbour, JVD multiple times daily.</p>
-          <div class="option-meta">
-            <span><strong>Time:</strong> ~1h 45m total</span>
-            <span><strong>Last ferry:</strong> 6:00 PM from West End</span>
-            <span><strong>Schedule:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Solo travelers · budget-conscious · daytime arrivals</p>
-        </div>
-      </div>
-
     </div>
   </div>
 
   <!-- ===== STT TAB ===== -->
   <div class="tab-panel" id="tab-stt" role="tabpanel">
 
-    <!-- Aquatic Tue/Wed warning (Updated May 1) -->
+    <!-- Aquatic Tue/Wed warning (May 1 onward) -->
     <div class="tab-notice">
       <div class="icon">!</div>
       <div class="body">
-        <strong>Important — Aquatic Ferry no longer runs Tuesdays or Wednesdays</strong>
-        <p>Starting <strong>May 1st</strong> and through the summer months, Aquatic Ferry has suspended Red Hook → West End service on Tue/Wed. Daily runs continue Mon / Thu / Fri / Sat / Sun at <strong>9:15 AM, 2:30 PM, and 5:00 PM.</strong></p>
-        <p style="margin-top:10px;"><strong>Arriving on a Tuesday or Wednesday?</strong> You have three options — see the cards below: <strong>Road Town Fast Ferry</strong>, a <strong>private water taxi</strong> (Allure or Dolphin), or <strong>extend your villa stay 50% off</strong> to shift your arrival day. Call Amy at <a href="tel:+13059650553" style="color:#8a3520;font-weight:700;border-bottom:1px solid currentColor;text-decoration:none;">+1 305-965-0553</a> to coordinate.</p>
+        <strong>Summer schedule — Aquatic Ferry doesn't run Tuesdays or Wednesdays</strong>
+        <p>Starting <strong>May 1st</strong> through the summer months, Aquatic Ferry has suspended Red Hook → West End service on Tue/Wed. Daily runs continue Mon / Thu / Fri / Sat / Sun at <strong>9:15 AM, 2:30 PM, and 5:00 PM.</strong></p>
+        <p style="margin-top:10px;"><strong>Arriving on a Tuesday or Wednesday?</strong> Your two options are Road Town Fast Ferry (with an Allure water-taxi connection — see Ferries below) or a fully private water taxi (Allure or Dolphin — see below).</p>
       </div>
     </div>
 
     <div class="options-grid">
 
-      <!-- STT Option 1: Allure Private Water Taxi (FEATURED) -->
+      <!-- ===== SECTION: FERRIES ===== -->
+      <div class="options-section-header">
+        <span class="num">01</span>
+        <h3>Ferries</h3>
+        <span class="blurb">The most common route. Two ferries with a customs clearance in the middle.</span>
+      </div>
+
+      <!-- STT Ferry: Aquatic Ferry + New Horizon -->
+      <div class="option-row">
+        <div class="option-image">
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola" loading="lazy" />
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Aquatic Ferry + New Horizon Ferry</h4>
+            <div class="option-tags">
+              <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
+              <span class="price-tier">$</span>
+            </div>
+          </div>
+          <p class="option-vibe">The standard route · two ferries with a customs stop · ~2h 30m total</p>
+          <p class="desc">Land taxi from STT airport to Red Hook (~30 min). Aquatic Ferry to West End Tortola, where you clear BVI customs. Walk back to the same dock for the New Horizon Ferry to Great Harbour, JVD. We strongly recommend buying tickets online ahead of time. <strong>Land by 3 PM</strong> to comfortably make the last 5 PM Aquatic.</p>
+          <div class="option-meta" style="background: var(--sand-light); border:1px solid var(--gold); border-radius: 2px; padding: 12px 14px; margin: 10px 0;">
+            <span style="color:var(--ink);"><strong style="color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; font-size:11px;">💡 Insider tip</strong> &nbsp; Be the <strong>first off the Aquatic Ferry</strong> at West End. The customs line builds fast, and the New Horizon Ferry won't wait long for stragglers.</span>
+          </div>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~2h 30m total</span>
+            <span><strong>Aquatic:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
+            <span><strong>New Horizon:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Standard arrivals · daytime flights · independent travelers</p>
+        </div>
+      </div>
+
+      <!-- STT Ferry: Road Town Fast Ferry (Tue/Wed substitute, with Allure water-taxi bridge) -->
+      <div class="option-row">
+        <div class="option-image">
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/why_travel2.1.jpg" alt="Road Town Fast Ferry — Charlotte Amalie to Road Town Tortola" loading="lazy" />
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Road Town Fast Ferry + Allure Water Taxi</h4>
+            <div class="option-tags">
+              <span class="opt-tag alt">Tue / Wed substitute</span>
+              <span class="price-tier">$$</span>
+            </div>
+          </div>
+          <p class="option-vibe">Tue/Wed alternative · ferry + private water taxi bridge · ~3 hours total</p>
+          <p class="desc"><strong>You must call ahead to confirm — they won't wait for you otherwise.</strong> Road Town Fast Ferry runs Charlotte Amalie (St. Thomas) directly to Road Town (Tortola), arriving around <strong>5:45 PM — too late for the 6 PM New Horizon to JVD.</strong></p>
+          <p class="desc" style="margin-top:8px;"><strong>To bridge the gap</strong>, Allure Charters offers a <strong>$50 per person water taxi</strong> from Tortola directly to JVD for guests on this route. It's a special summer-only offering set up to solve exactly this missed-connection problem. Coordinate this through your villa concierge when you book.</p>
+          <div class="option-meta">
+            <span><strong>Call to confirm:</strong> <a href="tel:+12844964444">+1 284-496-4444 (BVI)</a> · <a href="tel:+13407153800">+1 340-715-3800 (STT)</a></span>
+            <span><strong>Road Town:</strong> <a href="https://www.roadtownfastferry.com/" target="_blank" rel="noopener">roadtownfastferry.com →</a></span>
+            <span><strong>Allure bridge:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Tue/Wed STT arrivals wanting the public-ferry price · willing to confirm by phone</p>
+        </div>
+      </div>
+
+      <!-- STT Ferry: Inter-Island Direct -->
+      <div class="option-row">
+        <div class="option-image">
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/Breeze-in-Sunset-1-scaled-1.jpg" alt="Inter Island Boat Services ferry — direct to Jost Van Dyke" loading="lazy" />
+        </div>
+        <div class="option-body">
+          <div class="option-head">
+            <h4 class="serif">Inter-Island Direct Ferry to JVD</h4>
+            <div class="option-tags">
+              <span class="opt-tag limited">Tue · Fri · Sun mornings only</span>
+              <span class="price-tier">$$</span>
+            </div>
+          </div>
+          <div style="background: var(--sand-light); border-left: 4px solid var(--ocean); padding: 12px 16px; border-radius: 2px; margin: 6px 0 14px;">
+            <p style="font-size:13px; color:var(--ink); line-height:1.55;"><strong>This is for people already on St. Thomas or St. John.</strong> An early-morning direct ferry to JVD, three days a week. <strong>It is NOT</strong> for same-day flight arrivals landing later in the day — despite what Google sometimes suggests.</p>
+          </div>
+          <p class="option-vibe">Direct to JVD · skips West End · ~1h 30m on water</p>
+          <p class="desc">Departs Red Hook at 7:30 AM and Cruz Bay (St. John) at 8:00 AM, arriving Great Harbour JVD around 9:30 AM. Check-in is 45 minutes prior. If you're already in the USVI on a multi-day itinerary, or you've landed STT the night before, this is the cleanest way over.</p>
+          <div class="option-meta">
+            <span><strong>Time:</strong> ~1h 30m on water</span>
+            <span><strong>Customs:</strong> $30/person extra</span>
+            <span><strong>Schedule:</strong> <a href="https://interislandboatservices.com" target="_blank" rel="noopener">interislandboatservices.com →</a></span>
+          </div>
+          <p class="best-for"><strong>Best for:</strong> Multi-day USVI itineraries · overnights in St. John or St. Thomas first</p>
+        </div>
+      </div>
+
+      <!-- ===== SECTION: WATER TAXIS / PRIVATE CHARTERS ===== -->
+      <div class="options-section-header">
+        <span class="num">02</span>
+        <h3>Water Taxis / Private Charters</h3>
+        <span class="blurb">Skip the two-ferry routine and the customs lines. Direct from STT-area docks to JVD.</span>
+      </div>
+
+      <!-- STT Water Taxi: Allure (FEATURED) -->
       <div class="option-row featured">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
@@ -1991,54 +2140,7 @@
         </div>
       </div>
 
-      <!-- STT Option 2: Aquatic Ferry → New Horizon -->
-      <div class="option-row">
-        <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola" loading="lazy" />
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">Aquatic Ferry + New Horizon Ferry</h4>
-            <div class="option-tags">
-              <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
-              <span class="price-tier">$</span>
-            </div>
-          </div>
-          <p class="option-vibe">Public ferry combo · ~2h 30m total · most popular budget option</p>
-          <p class="desc">Land taxi from STT airport to Red Hook (~30 min), Aquatic Ferry to West End Tortola (clear BVI customs), then walk to the same dock for the New Horizon Ferry to Great Harbour, JVD. We strongly recommend buying tickets online ahead of time. <strong>Land by 3 PM</strong> to comfortably make the last 5 PM Aquatic.</p>
-          <div class="option-meta">
-            <span><strong>Time:</strong> ~2h 30m total</span>
-            <span><strong>Aquatic:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
-            <span><strong>New Horizon:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Affordable arrivals · daytime flights · independent travelers</p>
-        </div>
-      </div>
-
-      <!-- STT Option 2b: Roadtown Fast Ferry (Tue/Wed alternative — UPDATED May 1) -->
-      <div class="option-row">
-        <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/why_travel2.1.jpg" alt="Road Town Fast Ferry — Charlotte Amalie to Road Town Tortola" loading="lazy" />
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">Road Town Fast Ferry + New Horizon Ferry</h4>
-            <div class="option-tags">
-              <span class="opt-tag alt">Tue / Wed substitute</span>
-              <span class="price-tier">$$</span>
-            </div>
-          </div>
-          <p class="option-vibe">Tue/Wed alternative · Charlotte Amalie → Road Town · reservation required</p>
-          <p class="desc"><strong>You must call ahead to confirm — they won't wait for you otherwise.</strong> Road Town Fast Ferry runs Charlotte Amalie (St. Thomas) directly to Road Town (Tortola). From Road Town you'll take a land taxi to West End to catch the New Horizon Ferry to JVD. Different route than Aquatic — heart of St. Thomas to heart of Tortola.</p>
-          <div class="option-meta">
-            <span><strong>Call to confirm:</strong> <a href="tel:+12844964444">+1 284-496-4444 (BVI)</a> · <a href="tel:+13407153800">+1 340-715-3800 (STT)</a></span>
-            <span><strong>Web:</strong> <a href="https://www.roadtownfastferry.com/" target="_blank" rel="noopener">roadtownfastferry.com →</a></span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Tue/Wed STT arrivals who want the public-ferry price · willing to confirm by phone</p>
-        </div>
-      </div>
-
-      <!-- STT Option 2c: Dolphin Water Taxi (NEW — Tue/Wed private alternative) -->
+      <!-- STT Water Taxi: Dolphin (with reliability caveat) -->
       <div class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/dolphinwatertaxi2.jpg" alt="Dolphin Water Taxi boat — VIP transfers from STT airport to BVI" loading="lazy" />
@@ -2047,65 +2149,18 @@
           <div class="option-head">
             <h4 class="serif">Dolphin Water Taxi</h4>
             <div class="option-tags">
-              <span class="opt-tag alt">Tue / Wed substitute</span>
+              <span class="opt-tag" style="background:var(--ink-soft); color:white;">Backup option</span>
               <span class="price-tier">$$$</span>
             </div>
           </div>
-          <p class="option-vibe">Private water taxi · airport meet-and-greet · door-to-dock</p>
-          <p class="desc">Greg Aberle's team is the only operator with a check-in counter <strong>inside STT baggage claim</strong>. Door-to-dock service: they meet you at the airport, ExpressClear customs, deliver you directly to JVD. Especially useful for Tue/Wed arrivals when the Aquatic ferry isn't running.</p>
+          <p class="option-vibe">Private water taxi · airport meet-and-greet · door-to-dock when running</p>
+          <p class="desc">Greg Aberle's team is the only operator with a check-in counter <strong>inside STT baggage claim</strong>. When they run direct to JVD, the service is excellent — meet at the airport, ExpressClear customs, deliver you to JVD.</p>
+          <p class="desc" style="margin-top:8px; background:#fcf1ec; border-left:3px solid #c64a2b; padding:10px 14px; border-radius:2px;"><strong>Caveat:</strong> Dolphin frequently runs only as far as Tortola, which means you'll need a second ferry (or another water taxi) to actually reach JVD. Confirm your final destination is JVD when you book — and have Allure on speed-dial as a backup.</p>
           <div class="option-meta">
             <span><strong>Call:</strong> <a href="tel:+13407742628">+1 340-774-2628</a></span>
             <span><strong>Web:</strong> <a href="https://dolphinshuttle.com/" target="_blank" rel="noopener">dolphinshuttle.com →</a></span>
           </div>
-          <p class="best-for"><strong>Best for:</strong> Tue/Wed arrivals · late-evening flights (accommodates landings up to 7 PM) · groups 2–45</p>
-        </div>
-      </div>
-
-      <!-- STT Option 2d: Extend Your Stay (NEW — WBV 50% off offer) -->
-      <div class="option-row" style="border-top:4px solid var(--teal);">
-        <div class="option-image" style="background: var(--ocean); display:flex; align-items:center; justify-content:center;">
-          <div style="text-align:center; padding:24px; color:white;">
-            <div style="font-family:'Fraunces', serif; font-size:48px; font-weight:300; line-height:1; color:var(--teal);">50%</div>
-            <div style="font-family:'DM Sans', sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:0.18em; margin-top:8px; opacity:0.9;">Off villa rates</div>
-          </div>
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">Extend your stay — and we'll take 50% off</h4>
-            <div class="option-tags">
-              <span class="opt-tag" style="background:var(--teal); color:var(--ink);">WBV exclusive</span>
-            </div>
-          </div>
-          <p class="option-vibe">Skip the Tue/Wed scramble entirely · sleep here · roll into your trip the easy way</p>
-          <p class="desc">If your travel dates land on a Tuesday or Wednesday and the alternative options feel like work, we have a better idea. <strong>Stay an extra night with us at 50% off our regular rate.</strong> Fly in on Monday, settle in, and start your real vacation in the morning. We made this offer because last-minute ferry changes shouldn't be your problem — they should be ours.</p>
-          <div class="option-meta">
-            <span><strong>Call to coordinate:</strong> Amy at <a href="tel:+13059650553">+1 305-965-0553</a></span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Families · groups · anyone who'd rather start the trip relaxed than stressed</p>
-        </div>
-      </div>
-
-      <!-- STT Option 3: InterIsland Direct -->
-      <div class="option-row">
-        <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/Breeze-in-Sunset-1-scaled-1.jpg" alt="Inter Island Boat Services ferry — direct to Jost Van Dyke" loading="lazy" />
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">InterIsland Direct Ferry to JVD</h4>
-            <div class="option-tags">
-              <span class="opt-tag limited">Tue · Fri · Sun mornings only</span>
-              <span class="price-tier">$$</span>
-            </div>
-          </div>
-          <p class="option-vibe">Direct to JVD · skips West End · ~1h 30m on water</p>
-          <p class="desc">A direct ferry from Red Hook (7:30 AM) and Cruz Bay (8:00 AM) to Great Harbour, JVD — three days a week. <strong>Important:</strong> this is for guests already in the islands or with very early arrivals — not for same-day flights landing later in the day. Despite what Google sometimes suggests.</p>
-          <div class="option-meta">
-            <span><strong>Time:</strong> ~1h 30m on water</span>
-            <span><strong>Customs:</strong> $30/person extra</span>
-            <span><strong>Schedule:</strong> <a href="https://interislandboatservices.com" target="_blank" rel="noopener">interislandboatservices.com →</a></span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Multi-day USVI itineraries · guests already on St. John or St. Thomas</p>
+          <p class="best-for"><strong>Best for:</strong> Late-evening flights (accommodates landings up to 7 PM) · guests who've confirmed direct-to-JVD service</p>
         </div>
       </div>
 
@@ -2256,25 +2311,12 @@
       <!-- ===== Return via EIS ===== -->
       <div class="tab-panel active" id="tab-back-eis" role="tabpanel">
         <div class="options-grid">
-          <div class="option-row featured">
-            <div class="option-image">
-              <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
-            </div>
-            <div class="option-body">
-              <div class="option-head">
-                <h4 class="serif">Allure Charters & Water Taxi</h4>
-                <div class="option-tags">
-                  <span class="opt-tag preferred">Stress-free departure</span>
-                  <span class="price-tier">$$$</span>
-                </div>
-              </div>
-              <p class="option-vibe">Private charter · pickup from White Bay · ~30 min direct</p>
-              <p class="desc">The smoothest way to leave. Picked up from White Bay, dropped at Trellis Bay just minutes from EIS. No customs lines, no two-ferry connections.</p>
-              <div class="option-meta">
-                <span><strong>Time:</strong> ~30 min direct</span>
-                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a> (book early — return slots fill up)</span>
-              </div>
-            </div>
+
+          <!-- ===== SECTION: FERRIES ===== -->
+          <div class="options-section-header">
+            <span class="num">01</span>
+            <h3>Ferries</h3>
+            <span class="blurb">Reverse of the inbound. First ferry at 7 AM catches most morning flights.</span>
           </div>
 
           <div class="option-row">
@@ -2298,6 +2340,35 @@
               </div>
             </div>
           </div>
+
+          <!-- ===== SECTION: WATER TAXIS / PRIVATE CHARTERS ===== -->
+          <div class="options-section-header">
+            <span class="num">02</span>
+            <h3>Water Taxis / Private Charters</h3>
+            <span class="blurb">Picked up at White Bay, dropped near EIS. No two-ferry routine on the way out.</span>
+          </div>
+
+          <div class="option-row featured">
+            <div class="option-image">
+              <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">Allure Charters & Water Taxi</h4>
+                <div class="option-tags">
+                  <span class="opt-tag preferred">Stress-free departure</span>
+                  <span class="price-tier">$$$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Private charter · pickup from White Bay · ~30 min direct</p>
+              <p class="desc">The smoothest way to leave. Picked up from White Bay, dropped at Trellis Bay just minutes from EIS. No customs lines, no two-ferry connections.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~30 min direct</span>
+                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a> (book early — return slots fill up)</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -2313,26 +2384,12 @@
         </div>
 
         <div class="options-grid">
-          <div class="option-row featured">
-            <div class="option-image">
-              <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
-            </div>
-            <div class="option-body">
-              <div class="option-head">
-                <h4 class="serif">Allure Charters Private Water Taxi</h4>
-                <div class="option-tags">
-                  <span class="opt-tag preferred">Required for early flights</span>
-                  <span class="price-tier">$$$</span>
-                </div>
-              </div>
-              <p class="option-vibe">Private water taxi · ~1 hour door-to-door</p>
-              <p class="desc">Pickup from White Bay, direct to Red Hook or Crown Bay. Skip the customs-twice routine. <strong>Essentially required if your STT flight is before 1:30 PM</strong> — public ferries can't get you there in time.</p>
-              <div class="option-meta">
-                <span><strong>Time:</strong> ~1 hour total</span>
-                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
-                <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
-              </div>
-            </div>
+
+          <!-- ===== SECTION: FERRIES ===== -->
+          <div class="options-section-header">
+            <span class="num">01</span>
+            <h3>Ferries</h3>
+            <span class="blurb">Two ferries with US customs clearance in St. John en route. Plan generously.</span>
           </div>
 
           <div class="option-row">
@@ -2363,20 +2420,51 @@
             </div>
             <div class="option-body">
               <div class="option-head">
-                <h4 class="serif">New Horizon + Roadtown Fast Ferry</h4>
+                <h4 class="serif">New Horizon + Road Town Fast Ferry</h4>
                 <div class="option-tags">
                   <span class="opt-tag alt">Tue / Wed substitute</span>
                   <span class="price-tier">$</span>
                 </div>
               </div>
               <p class="option-vibe">Tue/Wed alternative when Aquatic isn't running</p>
-              <p class="desc">Use this combo when departing on a Tuesday or Wednesday. Same route, same St. John customs clearance, different operator on the second leg. Confirm latest schedule the day before — these are the days most prone to last-minute changes.</p>
+              <p class="desc">Use this combo when departing on a Tuesday or Wednesday. New Horizon to West End, land taxi to Road Town, then Road Town Fast Ferry direct to Charlotte Amalie. <strong>You must call ahead to confirm — they won't wait for you otherwise.</strong></p>
               <div class="option-meta">
-                <span><strong>Time:</strong> ~3 hours from JVD to STT</span>
+                <span><strong>Call to confirm:</strong> <a href="tel:+12844964444">+1 284-496-4444 (BVI)</a></span>
+                <span><strong>Web:</strong> <a href="https://www.roadtownfastferry.com/" target="_blank" rel="noopener">roadtownfastferry.com →</a></span>
                 <span><strong>Use only when:</strong> Departing on Tuesday or Wednesday</span>
               </div>
             </div>
           </div>
+
+          <!-- ===== SECTION: WATER TAXIS / PRIVATE CHARTERS ===== -->
+          <div class="options-section-header">
+            <span class="num">02</span>
+            <h3>Water Taxis / Private Charters</h3>
+            <span class="blurb">Direct from White Bay to STT-area docks. Required for STT flights before 1:30 PM.</span>
+          </div>
+
+          <div class="option-row featured">
+            <div class="option-image">
+              <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
+            </div>
+            <div class="option-body">
+              <div class="option-head">
+                <h4 class="serif">Allure Charters Private Water Taxi</h4>
+                <div class="option-tags">
+                  <span class="opt-tag preferred">Required for early flights</span>
+                  <span class="price-tier">$$$</span>
+                </div>
+              </div>
+              <p class="option-vibe">Private water taxi · ~1 hour door-to-door</p>
+              <p class="desc">Pickup from White Bay, direct to Red Hook or Crown Bay. Skip the customs-twice routine. <strong>Essentially required if your STT flight is before 1:30 PM</strong> — public ferries can't get you there in time.</p>
+              <div class="option-meta">
+                <span><strong>Time:</strong> ~1 hour total</span>
+                <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
+                <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
