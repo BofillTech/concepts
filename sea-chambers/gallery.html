@@ -7,69 +7,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-@font-face{font-family:'Cronder';src:url('img/fonts/CRONDERegular.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap;}
-:root{--ocean:#2D5680;--ocean-deep:#2A4764;--ocean-light:#5B9BD5;--mist:#FDFBF2;--warm:#F9F9EF;--sand:#E8DFD0;--white:#FFFFFF;--dark:#1E1E2A;--gray:#6E7B8B;--font-display:'Cronder','Libre Baskerville',serif;--font-body:'Jost',sans-serif;}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--font-body);color:var(--dark);background:var(--warm);overflow-x:hidden;}img{max-width:100%;display:block;}a{text-decoration:none;color:inherit;}
-.sc-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 48px;display:flex;align-items:center;justify-content:space-between;background:var(--ocean-deep);box-shadow:0 2px 16px rgba(0,0,0,.1);}
-.sc-nav-logo img{height:50px;width:auto;}
-.sc-nav-links{display:flex;align-items:center;gap:24px;}
-.sc-nav-links a{font-family:var(--font-body);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--white);transition:color .3s;}
-.sc-nav-links a:hover,.sc-nav-links a.active{color:var(--ocean-light);}
-.sc-nav-phone{font-size:12px;color:rgba(255,255,255,.6);}
-.sc-nav-cta{padding:9px 22px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
-.sc-nav-cta:hover{background:var(--ocean-light);}
-
-.sc-page-hero{position:relative;height:40vh;min-height:260px;overflow:hidden;text-align:center;display:flex;align-items:center;justify-content:center;}
-.sc-page-hero-bg{position:absolute;inset:0;background:url('https://bofilltech.com/wp-content/uploads/2026/03/poolhomepageblurb-1.jpg') center/cover no-repeat;}
-.sc-page-hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,71,100,.75) 0%,rgba(42,71,100,.3) 60%);}
-.sc-page-hero-content{position:relative;z-index:2;padding:80px 40px 40px;}
-.sc-page-hero h1{font-family:var(--font-display);font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--white);margin-bottom:10px;}
-.sc-page-hero p{font-size:15px;color:rgba(255,255,255,.6);}
-
-.sc-content{padding:60px;max-width:1100px;margin:0 auto;}
-
-/* GALLERY NAV TABS */
-.sc-gallery-tabs{display:flex;justify-content:center;gap:8px;margin-bottom:50px;flex-wrap:wrap;}
-.sc-gallery-tab{padding:10px 28px;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--gray);border:2px solid var(--sand);border-radius:50px;cursor:pointer;transition:all .3s;}
-.sc-gallery-tab:hover{border-color:var(--ocean);color:var(--ocean);}
-.sc-gallery-tab.active{background:var(--ocean);border-color:var(--ocean);color:var(--white);}
-
-/* GALLERY SECTIONS */
-.sc-gallery-section{margin-bottom:60px;}
-.sc-gallery-section h2{font-family:var(--font-display);font-size:clamp(22px,3vw,30px);font-weight:400;color:var(--ocean-deep);margin-bottom:8px;}
-.sc-gallery-section p{font-size:14px;color:var(--gray);margin-bottom:24px;}
-
-/* MASONRY-STYLE GRID */
-.sc-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.sc-gallery-grid img{width:100%;height:260px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .3s,box-shadow .3s;}
-.sc-gallery-grid img:hover{transform:scale(1.02);box-shadow:0 8px 30px rgba(0,0,0,.12);}
-.sc-gallery-grid img.tall{grid-row:span 2;height:100%;}
-
-/* LIGHTBOX */
-.sc-lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.9);align-items:center;justify-content:center;cursor:pointer;}
-.sc-lightbox.open{display:flex;}
-.sc-lightbox img{max-width:90%;max-height:85vh;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.5);}
-.sc-lightbox-close{position:absolute;top:20px;right:30px;font-size:32px;color:var(--white);cursor:pointer;font-family:var(--font-body);font-weight:300;}
-
-.sc-book-cta{text-align:center;margin:40px 0 20px;padding:50px 40px;background:var(--ocean-deep);border-radius:12px;}
-.sc-book-cta h2{font-family:var(--font-display);font-size:28px;font-weight:400;color:var(--white);margin-bottom:8px;}
-.sc-book-cta p{font-size:15px;color:rgba(255,255,255,.5);margin-bottom:20px;}
-.sc-book-cta .sc-btn{display:inline-block;padding:16px 44px;font-family:var(--font-body);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--ocean);color:var(--white);border-radius:3px;transition:all .3s;}
-.sc-book-cta .sc-btn:hover{background:var(--ocean-light);}
-
-.sc-footer{background:#111118;padding:40px 60px;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;font-size:13px;color:rgba(255,255,255,.35);}
-.sc-footer h4{font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--white);margin-bottom:16px;letter-spacing:.16em;text-transform:uppercase;}
-.sc-footer p{line-height:1.7;}.sc-footer ul{list-style:none;}.sc-footer li{margin-bottom:6px;}
-.sc-footer a{color:rgba(255,255,255,.35);transition:color .2s;}.sc-footer a:hover{color:var(--ocean-light);}
-.sc-footer-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.06);padding-top:20px;text-align:center;font-size:11px;color:rgba(255,255,255,.2);}
-@media(max-width:1024px){.sc-nav-links a:not(.sc-nav-cta){display:none;}.sc-nav-phone{display:none;}.sc-gallery-grid{grid-template-columns:1fr 1fr;}.sc-footer{grid-template-columns:1fr;}}
-@media(max-width:768px){.sc-nav{padding:12px 20px;}.sc-page-hero{height:30vh;min-height:200px;}.sc-content{padding:40px 24px;}.sc-gallery-grid{grid-template-columns:1fr;}.sc-gallery-grid img{height:220px;}.sc-footer{padding:30px 24px;}}
-</style>
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Hotel",
+  "name":"Sea Chambers",
+  "image":"https://bofilltech.github.io/concepts/sea-chambers/img/main-building.jpg",
+  "description":"Oceanfront motel in Ogunquit, Maine with heated pool, hot tub, fire pits, and direct beach access.",
+  "url":"https://www.seachambers.com/",
+  "telephone":"+1-207-646-9311",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"67 Shore Road",
+    "addressLocality":"Ogunquit",
+    "addressRegion":"ME",
+    "postalCode":"03907",
+    "addressCountry":"US"
+  },
+  "geo":{"@type":"GeoCoordinates","latitude":43.243056,"longitude":-70.591389},
+  "amenityFeature":[
+    {"@type":"LocationFeatureSpecification","name":"Outdoor pool","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Hot tub","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Beach access","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Free breakfast","value":true},
+    {"@type":"LocationFeatureSpecification","name":"Free parking","value":true},
+    {"@type":"LocationFeatureSpecification","name":"WiFi","value":true}
+  ]
+}
+</script>
 </head>
 <body>
 
-<nav class="sc-nav">
+<nav class="sc-nav nav-primary" id="sc-nav" role="navigation" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement">
   <a href="index.html" class="sc-nav-logo"><img src="img/logo-white.png" alt="Sea Chambers"></a>
   <div class="sc-nav-links">
     <a href="rooms.html">Rooms</a>
@@ -90,12 +60,12 @@
   </div>
 </section>
 
-<section class="sc-content">
+<section class="sc-content sc-content--gallery">
 
   <div class="sc-gallery-tabs">
-    <a href="#all" class="sc-gallery-tab active" onclick="filterGallery('all',this)">All</a>
-    <a href="#rooms" class="sc-gallery-tab" onclick="filterGallery('rooms',this)">Rooms</a>
-    <a href="#grounds" class="sc-gallery-tab" onclick="filterGallery('grounds',this)">Grounds</a>
+    <a href="#all" class="sc-gallery-tab active" data-cat="all">All</a>
+    <a href="#rooms" class="sc-gallery-tab" data-cat="rooms">Rooms</a>
+    <a href="#grounds" class="sc-gallery-tab" data-cat="grounds">Grounds</a>
   </div>
 
   <!-- ROOMS SECTION -->
@@ -103,15 +73,15 @@
     <h2>Guest Rooms & Suites</h2>
     <p>Newly remodeled rooms with coastal-inspired decor, kitchenettes, and modern comforts</p>
     <div class="sc-gallery-grid">
-      <img src="img/room-king.jpg" alt="King Guest Room with hardwood floors" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-suite.jpg" alt="Ocean View Suite with exposed brick" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-double.jpg" alt="Double Queen Room" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-2-view.jpg" alt="Room 2 with ocean view" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-38-deck.jpg" alt="Room 38 private deck with river view" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-46-pool.jpg" alt="Room 46 with pool and ocean view" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/roomhomepageblurg-1.jpg" alt="Newly remodeled guest room" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakastroomfromdoor.jpg" alt="Breakfast room with fireplace" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakfastroomcoffeeandhearth.jpg" alt="24-hour coffee station" loading="lazy" onclick="openLightbox(this)">
+      <img src="img/room-king.jpg" alt="King Guest Room with hardwood floors" loading="lazy">
+      <img src="img/room-suite.jpg" alt="Ocean View Suite with exposed brick" loading="lazy">
+      <img src="img/room-double.jpg" alt="Double Queen Room" loading="lazy">
+      <img src="img/room-2-view.jpg" alt="Room 2 with ocean view" loading="lazy">
+      <img src="img/room-38-deck.jpg" alt="Room 38 private deck with river view" loading="lazy">
+      <img src="img/room-46-pool.jpg" alt="Room 46 with pool and ocean view" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/roomhomepageblurg-1.jpg" alt="Newly remodeled guest room" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakastroomfromdoor.jpg" alt="Breakfast room with fireplace" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/breakfastroomcoffeeandhearth.jpg" alt="24-hour coffee station" loading="lazy">
     </div>
   </div>
 
@@ -120,21 +90,21 @@
     <h2>Property & Grounds</h2>
     <p>Ocean views, heated pool, hot tub, fire pits, and beautiful gardens</p>
     <div class="sc-gallery-grid">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/alladirondacksandflag1200px.jpg" alt="Adirondack chairs overlooking the ocean" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/room-46-pool.jpg" alt="Pool overlooking the ocean" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Aerial-rooms-page-website-2026.jpg" alt="Aerial view of Sea Chambers" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/outdoorhottub.jpg" alt="Ocean view hot tub" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/firepit-dusk.jpg" alt="Fire pit at dusk with ocean backdrop" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/firepit-day.jpg" alt="Fire pit during daytime" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/building-wide.jpg" alt="Adirondack chairs and buildings along the oceanfront" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/terrace-ramp.jpg" alt="Top of the terrace ramp" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/lounge-grass.jpg" alt="Lounge chairs on the grass near the river" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/beach-view.jpg" alt="Upper view looking toward the beach" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/inn-across-street.jpg" alt="Inn building viewed from across the street" loading="lazy" onclick="openLightbox(this)">
-      <img src="img/main-building.jpg" alt="Main building exterior" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/riverfrontdeck360X300.jpg" alt="Oceanfront deck" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Website-2026-Oceanside-Building.jpg" alt="Oceanside Building" loading="lazy" onclick="openLightbox(this)">
-      <img src="https://bofilltech.com/wp-content/uploads/2026/04/Website-2026-Poolside-Building.jpg" alt="Poolside Building" loading="lazy" onclick="openLightbox(this)">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/alladirondacksandflag1200px.jpg" alt="Adirondack chairs overlooking the ocean" loading="lazy">
+      <img src="img/room-46-pool.jpg" alt="Pool overlooking the ocean" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Aerial-rooms-page-website-2026.jpg" alt="Aerial view of Sea Chambers" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/outdoorhottub.jpg" alt="Ocean view hot tub" loading="lazy">
+      <img src="img/firepit-dusk.jpg" alt="Fire pit at dusk with ocean backdrop" loading="lazy">
+      <img src="img/firepit-day.jpg" alt="Fire pit during daytime" loading="lazy">
+      <img src="img/building-wide.jpg" alt="Adirondack chairs and buildings along the oceanfront" loading="lazy">
+      <img src="img/terrace-ramp.jpg" alt="Top of the terrace ramp" loading="lazy">
+      <img src="img/lounge-grass.jpg" alt="Lounge chairs on the grass near the river" loading="lazy">
+      <img src="img/beach-view.jpg" alt="Upper view looking toward the beach" loading="lazy">
+      <img src="img/inn-across-street.jpg" alt="Inn building viewed from across the street" loading="lazy">
+      <img src="img/main-building.jpg" alt="Main building exterior" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/riverfrontdeck360X300.jpg" alt="Oceanfront deck" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/03/Website-2026-Oceanside-Building.jpg" alt="Oceanside Building" loading="lazy">
+      <img src="https://bofilltech.com/wp-content/uploads/2026/04/Website-2026-Poolside-Building.jpg" alt="Poolside Building" loading="lazy">
     </div>
   </div>
 
@@ -147,38 +117,18 @@
 </section>
 
 <!-- LIGHTBOX -->
-<div class="sc-lightbox" id="lightbox" onclick="closeLightbox()">
+<div class="sc-lightbox" id="lightbox">
   <span class="sc-lightbox-close">&times;</span>
   <img id="lightbox-img" src="" alt="">
 </div>
 
 <div class="sc-footer">
-  <div><img src="img/logo-white.png" alt="Sea Chambers" style="height:50px;margin-bottom:14px;"><h4>Sea Chambers</h4><p>Oceanfront motel on Shore Road in Ogunquit, Maine.</p></div>
+  <div><img src="img/logo-white.png" alt="Sea Chambers" class="sc-footer__logo"><h4>Sea Chambers</h4><p>Oceanfront motel on Shore Road in Ogunquit, Maine.</p></div>
   <div><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="rooms.html">Rooms</a></li><li><a href="amenities.html">Amenities</a></li><li><a href="faq.html">Perks & FAQ</a></li><li><a href="webcam.html">Live Webcam</a></li></ul></div>
   <div><h4>Contact</h4><ul><li><a href="tel:2076469311">207.646.9311</a></li><li><a href="mailto:lodging@seachambers.com">lodging@seachambers.com</a></li><li>67 Shore Road, Ogunquit, ME 03907</li></ul></div>
   <div class="sc-footer-bottom">© 2026 Sea Chambers. All rights reserved.</div>
 </div>
 
-<script>
-function filterGallery(cat,el){
-  document.querySelectorAll('.sc-gallery-tab').forEach(function(t){t.classList.remove('active');});
-  el.classList.add('active');
-  document.querySelectorAll('.sc-gallery-section').forEach(function(s){
-    if(cat==='all'){s.style.display='block';}
-    else{s.style.display=s.dataset.cat===cat?'block':'none';}
-  });
-}
-function openLightbox(img){
-  var lb=document.getElementById('lightbox');
-  document.getElementById('lightbox-img').src=img.src;
-  lb.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLightbox(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
-</script>
+<script src="js/main.js" defer></script>
 </body>
 </html>
