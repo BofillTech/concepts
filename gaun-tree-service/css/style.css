@@ -2234,6 +2234,57 @@ a.cta__contact-value:hover { color: var(--c-rust); }
   .fleet__spec { grid-column: 2; text-align: left; font-size: 0.65rem; }
 }
 
+.fleet__gallery {
+  max-width: 1200px;
+  margin: var(--space-md, 2rem) auto 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+.fleet__shot {
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--c-pine-deep);
+}
+.fleet__shot img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+  transition: transform var(--t-slow, 700ms) var(--ease);
+}
+.fleet__shot:hover img { transform: scale(1.03); }
+.fleet__cap {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.55rem 0.9rem;
+  background: var(--c-rust);
+  color: var(--c-cream);
+  font-family: var(--f-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+.fleet__cap-mark {
+  font-family: var(--f-serif);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--c-gold);
+}
+@media (min-width: 700px) {
+  .fleet__gallery {
+    grid-template-columns: 1.2fr 1fr 0.85fr;
+    gap: 1.25rem;
+  }
+}
+
 /* =============================================================
    AREA-LIST / AREA-MAP (service-area.html)
    ============================================================= */
