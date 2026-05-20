@@ -1422,6 +1422,265 @@
   .disclaimer p strong { color: var(--ocean); font-weight: 700; }
   .disclaimer.alert p strong { color: #8a3520; }
 
+  /* ------------ ROUTE PLANNER ------------ */
+  .planner-section {
+    background: var(--sand-light);
+    border-bottom: 1px solid var(--line);
+    padding: 56px 24px 64px;
+    scroll-margin-top: 130px;
+  }
+  .planner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .planner-section .section-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .planner-section .section-header h2 { margin-bottom: 12px; }
+  .planner-section .section-header p {
+    max-width: 640px;
+    margin: 0 auto;
+    color: var(--ink-soft);
+  }
+
+  /* Form */
+  .planner-form {
+    background: white;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--ocean);
+    border-radius: 4px;
+    padding: 28px 28px 24px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) auto;
+    gap: 18px;
+    align-items: end;
+  }
+  @media (max-width: 800px) {
+    .planner-form { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .planner-form { grid-template-columns: 1fr; }
+  }
+
+  .planner-field { display: flex; flex-direction: column; }
+  .planner-field label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: var(--ocean);
+    margin-bottom: 8px;
+  }
+  .planner-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 12px 36px 12px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%232D9CDB' stroke-width='2' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+  .planner-field select:focus {
+    outline: none;
+    border-color: var(--ocean);
+    background-color: white;
+  }
+  .planner-submit {
+    background: var(--ocean);
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 2px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+  }
+  .planner-submit:hover { background: var(--ocean-deep); }
+  .planner-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+  @media (max-width: 800px) {
+    .planner-submit { grid-column: 1 / -1; padding: 14px; }
+  }
+
+  /* Results */
+  .planner-results {
+    margin-top: 32px;
+    display: none;
+  }
+  .planner-results.has-results { display: block; }
+  .planner-results-scenario {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .planner-results-scenario h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .planner-results-scenario h3 em { font-style: italic; color: var(--ocean); }
+  .planner-results-scenario .sub {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .result-group-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    color: var(--ocean);
+    margin: 28px 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .result-group-label.recommendation { color: var(--gold); }
+  .result-group-label .count {
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+    text-transform: none;
+    font-size: 12px;
+  }
+
+  .result-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    transition: all 0.22s ease;
+  }
+  .result-card.recommended {
+    border: 2px solid var(--gold);
+    background: #fdf9ee;
+    padding: 24px 26px;
+  }
+  .result-card-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .result-card h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .result-card .result-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 100px;
+  }
+  .result-card .price-tier {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+  .result-card .blurb {
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+  }
+  .result-card .why {
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+  .result-card .why strong { color: var(--ocean); }
+  .result-card.recommended .why strong { color: var(--gold); }
+  .result-jump {
+    display: inline-block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--ocean);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    letter-spacing: 0.02em;
+  }
+  .result-jump:hover { color: var(--ocean-deep); }
+
+  /* Excluded options note */
+  .excluded-note {
+    margin-top: 24px;
+    padding: 16px 18px;
+    background: #fcf1ec;
+    border-left: 4px solid #c64a2b;
+    border-radius: 2px;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+  .excluded-note strong {
+    display: block;
+    color: #8a3520;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .excluded-note ul {
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+  }
+  .excluded-note li {
+    margin: 6px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .excluded-note li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #c64a2b;
+  }
+
+  /* Option-row highlighted when jumped to */
+  .option-row.highlight-flash {
+    animation: highlightFlash 2.5s ease;
+  }
+  @keyframes highlightFlash {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+    20%, 60% { box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.55); border-color: var(--gold); }
+  }
+
   /* ------------ TABBED ROUTE PICKER ------------ */
   .tabs-section {
     max-width: 1100px;
@@ -1972,6 +2231,68 @@
   </div>
 </section>
 
+<!-- ============ ROUTE PLANNER ============ -->
+<section class="planner-section" id="planner">
+  <div class="planner-inner">
+    <div class="section-header">
+      <p class="num">— Build your route</p>
+      <h2 class="serif">Tell us about your flight.</h2>
+      <p>We'll show you our recommended option for your scenario — plus every other option that still works. Skip ahead to browse all options if you'd rather.</p>
+    </div>
+
+    <div class="planner-form">
+      <div class="planner-field">
+        <label for="planner-airport">Arrival airport</label>
+        <select id="planner-airport">
+          <option value="">Choose…</option>
+          <option value="EIS">Tortola (EIS · Beef Island)</option>
+          <option value="STT">St. Thomas (STT · Cyril E. King)</option>
+        </select>
+      </div>
+
+      <div class="planner-field">
+        <label for="planner-day">Day of arrival</label>
+        <select id="planner-day">
+          <option value="">Choose…</option>
+          <option value="Mon">Monday</option>
+          <option value="Tue">Tuesday</option>
+          <option value="Wed">Wednesday</option>
+          <option value="Thu">Thursday</option>
+          <option value="Fri">Friday</option>
+          <option value="Sat">Saturday</option>
+          <option value="Sun">Sunday</option>
+        </select>
+      </div>
+
+      <div class="planner-field">
+        <label for="planner-time">Landing time (local)</label>
+        <select id="planner-time">
+          <option value="">Choose…</option>
+          <option value="700">Before 8 AM</option>
+          <option value="800">8 AM</option>
+          <option value="900">9 AM</option>
+          <option value="1000">10 AM</option>
+          <option value="1100">11 AM</option>
+          <option value="1200">12 PM (noon)</option>
+          <option value="1300">1 PM</option>
+          <option value="1400">2 PM</option>
+          <option value="1500">3 PM</option>
+          <option value="1600">4 PM</option>
+          <option value="1700">5 PM</option>
+          <option value="1800">6 PM</option>
+          <option value="1900">7 PM</option>
+          <option value="2000">8 PM</option>
+          <option value="2100">9 PM or later</option>
+        </select>
+      </div>
+
+      <button class="planner-submit" id="planner-go" type="button">Build my route →</button>
+    </div>
+
+    <div class="planner-results" id="planner-results" aria-live="polite"></div>
+  </div>
+</section>
+
 <!-- ============ TABBED ROUTE PICKER ============ -->
 <section class="tabs-section" id="getting-here-tabs">
   <div class="section-header">
@@ -2005,7 +2326,7 @@
       </div>
 
       <!-- EIS Ferry: Land Taxi + New Horizon Ferry -->
-      <div class="option-row">
+      <div id="option-eis-ferry" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/jost-van-dyke-ferry-6.jpg" alt="New Horizon Ferry — West End Tortola to Great Harbour Jost Van Dyke" loading="lazy" />
         </div>
@@ -2036,7 +2357,7 @@
       </div>
 
       <!-- EIS Water Taxi: Allure (FEATURED) -->
-      <div class="option-row featured">
+      <div id="option-eis-allure" class="option-row featured">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
         </div>
@@ -2060,7 +2381,7 @@
       </div>
 
       <!-- EIS Water Taxi: Trellis Bay -->
-      <div class="option-row">
+      <div id="option-eis-trellis" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Water taxi at Trellis Bay Marina" loading="lazy" />
         </div>
@@ -2108,7 +2429,7 @@
       </div>
 
       <!-- STT Ferry: Aquatic Ferry + New Horizon -->
-      <div class="option-row">
+      <div id="option-stt-aquatic" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola" loading="lazy" />
         </div>
@@ -2135,7 +2456,7 @@
       </div>
 
       <!-- STT Ferry: Road Town Fast Ferry (Tue/Wed substitute, with Allure water-taxi bridge) -->
-      <div class="option-row">
+      <div id="option-stt-roadtown" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/why_travel2.1.jpg" alt="Road Town Fast Ferry — Charlotte Amalie to Road Town Tortola" loading="lazy" />
         </div>
@@ -2160,7 +2481,7 @@
       </div>
 
       <!-- STT Ferry: Inter-Island Direct -->
-      <div class="option-row">
+      <div id="option-stt-interisland" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/Breeze-in-Sunset-1-scaled-1.jpg" alt="Inter Island Boat Services ferry — direct to Jost Van Dyke" loading="lazy" />
         </div>
@@ -2194,7 +2515,7 @@
       </div>
 
       <!-- STT Water Taxi: Allure (FEATURED) -->
-      <div class="option-row featured">
+      <div id="option-stt-allure" class="option-row featured">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Allure Charters boat — private water taxi captained by Michael Clyne" loading="lazy" />
         </div>
@@ -2218,7 +2539,7 @@
       </div>
 
       <!-- STT Water Taxi: Dolphin (with reliability caveat) -->
-      <div class="option-row">
+      <div id="option-stt-dolphin" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/dolphinwatertaxi2.jpg" alt="Dolphin Water Taxi boat — VIP transfers from STT airport to BVI" loading="lazy" />
         </div>
@@ -2715,6 +3036,275 @@
   }
 
   renderVenues();
+
+  // ============ ROUTE PLANNER LOGIC ============
+  /**
+   * Each route option has a check(scenario) that returns one of:
+   *   { status: 'recommend' | 'works' | 'too-late' | 'no-aquatic' | 'not-applicable', reason?: string, whyRecommend?: string }
+   * The planner runs each route through check() and partitions the results.
+   * Among routes returning 'works' or 'recommend', the highest-scoring becomes the recommendation.
+   */
+  const ROUTES = [
+    // ===== EIS =====
+    {
+      id: 'option-eis-ferry',
+      airport: 'EIS',
+      name: 'Land Taxi + New Horizon Ferry',
+      priceTier: '$',
+      blurb: 'Public ferry · ~1h 45m total · most common',
+      check: ({ hourMin }) => {
+        if (hourMin > 1600) return { status: 'too-late', reason: 'The last New Horizon Ferry from West End is 6 PM, and you need ~50 minutes by land taxi from EIS to West End. Landing after 4 PM makes the connection too tight.' };
+        if (hourMin >= 1530) return { status: 'works', whyRecommend: 'You\'re cutting it close but should make the 6 PM ferry if your land taxi is ready when you land. Have a backup in mind.' };
+        return { status: 'works', whyRecommend: 'You\'re landing in plenty of time. This is the most affordable and most-used route — cheap, simple, runs daily.' };
+      },
+      score: 100
+    },
+    {
+      id: 'option-eis-allure',
+      airport: 'EIS',
+      name: 'Allure Charters & Water Taxi',
+      priceTier: '$$$',
+      blurb: 'Private charter · ~25 min direct · captained',
+      check: ({ hourMin }) => {
+        const baseWhy = 'A short transfer from EIS to a private boat at Trellis Bay, direct to White Bay Villas. We\'ve worked with Captain Michael Clyne for thirty years.';
+        if (hourMin > 1600) return { status: 'works', whyRecommend: 'You\'re landing past the public-ferry deadline, so this is effectively required — or at least the smoothest option. Allure runs on appointment, no schedule pressure.' };
+        return { status: 'works', whyRecommend: baseWhy + ' Worth the upgrade if you\'re traveling with a group of 4+ or want maximum peace of mind.' };
+      },
+      score: 60   // base score - high but ferry is preferred for budget when it works
+    },
+    {
+      id: 'option-eis-trellis',
+      airport: 'EIS',
+      name: 'Trellis Bay Water Taxi',
+      priceTier: '$$',
+      blurb: 'Shared water taxi · 4-min walk from EIS · ~30 min',
+      check: ({ hourMin }) => {
+        if (hourMin > 1730) return { status: 'too-late', reason: 'Trellis Bay water taxis run on demand during daylight hours only. After dark they\'re not reliable.' };
+        return { status: 'works', whyRecommend: 'Faster than the public ferry and cheaper than a private charter. Walk 4 minutes from EIS to the marina, find a shared taxi.' };
+      },
+      score: 65
+    },
+
+    // ===== STT =====
+    {
+      id: 'option-stt-aquatic',
+      airport: 'STT',
+      name: 'Aquatic Ferry + New Horizon Ferry',
+      priceTier: '$',
+      blurb: 'Public ferry combo · ~2h 30m total · most popular',
+      check: ({ day, hourMin }) => {
+        if (day === 'Tue' || day === 'Wed') {
+          return { status: 'no-aquatic', reason: 'Aquatic Ferry doesn\'t run from STT on Tuesdays or Wednesdays through the summer months — see the Road Town option instead.' };
+        }
+        if (hourMin > 1500) return { status: 'too-late', reason: 'The last Aquatic Ferry from Red Hook is 5 PM. With a 30-min land taxi from STT to Red Hook, landing after 3 PM is too tight to make it.' };
+        if (hourMin >= 1430) return { status: 'works', whyRecommend: 'You\'re landing close to the 3 PM rule. Should make the 5 PM Aquatic if you taxi straight to Red Hook — no dawdling. Have Allure on standby.' };
+        return { status: 'works', whyRecommend: 'You\'re landing in plenty of time. This is the standard route — cheapest, runs five days a week, well-trodden.' };
+      },
+      score: 100
+    },
+    {
+      id: 'option-stt-roadtown',
+      airport: 'STT',
+      name: 'Road Town Fast Ferry + Allure Water Taxi',
+      priceTier: '$$',
+      blurb: 'Tue/Wed alternative · ferry + private bridge · ~3h total',
+      check: ({ day, hourMin }) => {
+        if (day !== 'Tue' && day !== 'Wed') {
+          return { status: 'not-applicable', reason: 'Road Town Fast Ferry is the Tue/Wed substitute for Aquatic Ferry. The standard Aquatic route is better on other days.' };
+        }
+        if (hourMin > 1500) return { status: 'too-late', reason: 'You need to make the late-afternoon Road Town Fast Ferry departure from Charlotte Amalie. Landing after 3 PM is too tight for the land transfer.' };
+        return { status: 'works', whyRecommend: 'Since Aquatic isn\'t running on your travel day, this is the only public-ferry path. Road Town Fast Ferry arrives at 5:45 PM (too late for the 6 PM New Horizon to JVD), so Allure runs a special $50/person water taxi from Tortola to JVD to bridge the gap. Call ahead.' };
+      },
+      score: 95   // higher than Allure private because it's cheaper and explicitly built for this scenario
+    },
+    {
+      id: 'option-stt-interisland',
+      airport: 'STT',
+      name: 'Inter-Island Direct Ferry to JVD',
+      priceTier: '$$',
+      blurb: 'Direct to JVD · Tue/Fri/Sun mornings only',
+      check: () => {
+        // Inter-Island leaves Red Hook at 7:30 AM. Same-day flight arrivals can't catch this.
+        return { status: 'not-applicable', reason: 'Inter-Island Direct leaves Red Hook at 7:30 AM, before any same-day flight arrivals make sense. It\'s for guests already overnighting in St. Thomas or St. John.' };
+      },
+      score: 0
+    },
+    {
+      id: 'option-stt-allure',
+      airport: 'STT',
+      name: 'Allure Charters & Water Taxi (Private)',
+      priceTier: '$$$',
+      blurb: 'Private water taxi · ~1 hour door-to-door',
+      check: ({ day, hourMin }) => {
+        if (hourMin > 1500 || (day === 'Tue' || day === 'Wed')) {
+          return { status: 'works', whyRecommend: 'Your scenario makes the public-ferry path tough — Allure direct from Red Hook or Crown Bay to JVD bypasses the two-ferry routine and the customs lines. Best for late arrivals, Tue/Wed days, and groups.' };
+        }
+        return { status: 'works', whyRecommend: 'A premium upgrade — skip the two ferries and the customs queue. Best for groups of 4+, families with kids, or anyone wanting maximum peace of mind.' };
+      },
+      score: 70
+    },
+    {
+      id: 'option-stt-dolphin',
+      airport: 'STT',
+      name: 'Dolphin Water Taxi',
+      priceTier: '$$$',
+      blurb: 'Private water taxi · airport meet-and-greet',
+      check: ({ hourMin }) => {
+        if (hourMin > 1900) return { status: 'too-late', reason: 'Dolphin accommodates landings up to about 7 PM. After that, you\'d need to overnight in St. Thomas.' };
+        return { status: 'works', whyRecommend: 'Greg Aberle\'s team meets you inside STT baggage claim — the only operator that does. Useful especially for late evening landings up to 7 PM. Caveat: Dolphin frequently runs only as far as Tortola, requiring a second ferry — confirm JVD as your final destination when booking.' };
+      },
+      score: 50   // works but Allure is preferred private given the caveat
+    }
+  ];
+
+  const DAY_NAMES = { Mon: 'Monday', Tue: 'Tuesday', Wed: 'Wednesday', Thu: 'Thursday', Fri: 'Friday', Sat: 'Saturday', Sun: 'Sunday' };
+  const TIME_LABELS = {
+    '700': 'before 8 AM', '800': '8 AM', '900': '9 AM', '1000': '10 AM', '1100': '11 AM',
+    '1200': '12 PM', '1300': '1 PM', '1400': '2 PM', '1500': '3 PM', '1600': '4 PM',
+    '1700': '5 PM', '1800': '6 PM', '1900': '7 PM', '2000': '8 PM', '2100': '9 PM or later'
+  };
+  const AIRPORT_LABELS = { EIS: 'Tortola (EIS)', STT: 'St. Thomas (STT)' };
+
+  function planRoute(airport, day, timeStr) {
+    const hourMin = parseInt(timeStr, 10);
+    const scenario = { airport, day, hourMin, timeStr };
+
+    const candidates = ROUTES.filter(r => r.airport === airport);
+    const evaluated = candidates.map(r => ({ route: r, result: r.check(scenario) }));
+
+    const works = evaluated.filter(e => e.result.status === 'works');
+    const excluded = evaluated.filter(e => ['too-late', 'no-aquatic', 'not-applicable'].includes(e.result.status));
+
+    // Pick the highest-scoring 'works' option as the recommendation
+    works.sort((a, b) => b.route.score - a.route.score);
+    const recommendation = works[0] || null;
+    const alsoWorks = works.slice(1);
+
+    return { scenario, recommendation, alsoWorks, excluded };
+  }
+
+  function renderResultCard(entry, isRecommended) {
+    const r = entry.route;
+    const why = entry.result.whyRecommend || '';
+    return `
+      <div class="result-card${isRecommended ? ' recommended' : ''}">
+        <div class="result-card-head">
+          <h4 class="serif">${r.name}</h4>
+          <div style="display:flex; gap:10px; align-items:baseline;">
+            ${isRecommended ? '<span class="result-badge">Our recommendation</span>' : ''}
+            <span class="price-tier">${r.priceTier}</span>
+          </div>
+        </div>
+        <p class="blurb">${r.blurb}</p>
+        <p class="why">${why}</p>
+        <a class="result-jump" href="#${r.id}" data-jump="${r.id}">See full details ↓</a>
+      </div>
+    `;
+  }
+
+  function renderPlannerResults({ scenario, recommendation, alsoWorks, excluded }) {
+    const container = document.getElementById('planner-results');
+
+    if (!recommendation && alsoWorks.length === 0) {
+      // Edge case: nothing works at all (shouldn't happen since Allure always works)
+      container.innerHTML = `
+        <div class="excluded-note">
+          <strong>⚠ No public-ferry options work for this scenario</strong>
+          <p>Your scenario is outside what the regular ferries can handle. Reach out to the WBV team directly — they'll help you put together a private water taxi or overnight plan. Call <a href="tel:+18007788066" style="color:var(--ocean); font-weight:700;">+1 800-778-8066</a>.</p>
+        </div>
+      `;
+      container.classList.add('has-results');
+      return;
+    }
+
+    const scenarioLine = `<em>${AIRPORT_LABELS[scenario.airport]}</em> · <em>${DAY_NAMES[scenario.day]}</em> · landing at <em>${TIME_LABELS[scenario.timeStr]}</em>`;
+
+    let html = `
+      <div class="planner-results-scenario">
+        <h3>Your route options</h3>
+        <p class="sub">${scenarioLine}</p>
+      </div>
+    `;
+
+    if (recommendation) {
+      html += `<div class="result-group-label recommendation">⭐ Our pick for you <span class="count">— the option we'd choose in your scenario</span></div>`;
+      html += renderResultCard(recommendation, true);
+    }
+
+    if (alsoWorks.length > 0) {
+      html += `<div class="result-group-label">Also works for your scenario <span class="count">— ${alsoWorks.length} other ${alsoWorks.length === 1 ? 'option' : 'options'}</span></div>`;
+      alsoWorks.forEach(entry => {
+        html += renderResultCard(entry, false);
+      });
+    }
+
+    if (excluded.length > 0) {
+      html += `
+        <div class="excluded-note">
+          <strong>⚠ Not viable for this scenario</strong>
+          <ul>
+            ${excluded.map(e => `<li><strong style="color:#8a3520;">${e.route.name}:</strong> ${e.result.reason}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+    container.classList.add('has-results');
+
+    // Wire up jump links — scroll smoothly and flash the target card
+    container.querySelectorAll('a.result-jump').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.dataset.jump;
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        // First switch to the right tab if needed
+        const isEis = targetId.startsWith('option-eis-');
+        const desiredTab = isEis ? 'eis' : 'stt';
+        document.querySelectorAll('#getting-here-tabs .tab-btn').forEach(btn => {
+          const active = btn.dataset.tab === desiredTab;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active);
+        });
+        document.querySelectorAll('#getting-here-tabs .tab-panel').forEach(p => {
+          p.classList.toggle('active', p.id === `tab-${desiredTab}`);
+        });
+        // Then scroll
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          target.classList.remove('highlight-flash');
+          // Force a reflow so the animation can re-trigger if clicked twice
+          void target.offsetWidth;
+          target.classList.add('highlight-flash');
+        }, 100);
+      });
+    });
+  }
+
+  document.getElementById('planner-go').addEventListener('click', () => {
+    const airport = document.getElementById('planner-airport').value;
+    const day = document.getElementById('planner-day').value;
+    const time = document.getElementById('planner-time').value;
+    if (!airport || !day || !time) {
+      // Highlight missing fields briefly
+      [['planner-airport', airport], ['planner-day', day], ['planner-time', time]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!val) {
+          el.style.borderColor = '#c64a2b';
+          setTimeout(() => { el.style.borderColor = ''; }, 1800);
+        }
+      });
+      return;
+    }
+    const plan = planRoute(airport, day, time);
+    renderPlannerResults(plan);
+    // Scroll the results into view (just below the form)
+    setTimeout(() => {
+      document.getElementById('planner-results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      window.scrollBy(0, -120);  // account for sticky headers
+    }, 100);
+  });
 </script>
 
 </body>
