@@ -29,8 +29,8 @@ Auto-play hero video slot ready (currently photo fallback)
   --sky-light: #EAF6FB;         /* lightest */
   --sun: #FFB627;               /* sunshine accent */
   --sun-light: #FFD672;
-  --coral: #E84545;             /* primary CTA */
-  --coral-dark: #C73838;
+  --coral: #B33A2E;             /* primary CTA — toned-down brick */
+  --coral-dark: #8E2E24;
   --foam: #FDFCFA;              /* off-white */
   --cream: #FFF8EC;             /* warm cream */
   --ink: #0A2540;               /* near-black for body text */
@@ -181,12 +181,12 @@ a { color: inherit; text-decoration: none; }
 .btn-primary {
   background: var(--coral);
   color: white;
-  box-shadow: 0 6px 18px rgba(232, 69, 69, 0.35);
+  box-shadow: 0 6px 18px rgba(179, 58, 46, 0.3);
 }
 .btn-primary:hover {
   background: var(--coral-dark);
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(232, 69, 69, 0.45);
+  box-shadow: 0 10px 24px rgba(179, 58, 46, 0.4);
 }
 
 .btn-secondary {
@@ -242,15 +242,104 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   z-index: 0;
+  overflow: hidden;
+  background: var(--ocean-deep);
 }
 
-.hero-media img,
-.hero-media video {
+.hero-media video,
+.hero-media .slide {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
   display: block;
+}
+
+/* Slideshow slides */
+.hero-media .slide {
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.6s ease-in-out;
+  z-index: 0;
+}
+
+.hero-media .slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Slow Ken Burns zoom on active slide */
+@keyframes kenBurns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.hero-media .slide.active {
+  animation: kenBurns 9s ease-in-out forwards;
+}
+
+/* Slide indicator dots */
+.hero-dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 4;
+}
+
+.hero-dot {
+  width: 36px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s;
+}
+
+.hero-dot.active {
+  background: var(--sun);
+}
+
+.hero-dot:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Audio toggle button — only relevant when video mode is on */
+.hero-audio-toggle {
+  position: absolute;
+  bottom: 28px;
+  right: 32px;
+  z-index: 4;
+  width: 46px;
+  height: 46px;
+  background: rgba(10, 74, 110, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  display: none; /* Hidden until video mode is active */
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.hero-audio-toggle.visible {
+  display: flex;
+}
+
+.hero-audio-toggle:hover {
+  background: var(--coral);
+  border-color: var(--coral);
 }
 
 /* subtle gradient ONLY for text contrast, not heavy fade */
@@ -542,9 +631,9 @@ section { position: relative; }
 }
 
 .why-card.coral .icon-wrap {
-  background: linear-gradient(135deg, var(--coral) 0%, #FF6B6B 100%);
+  background: linear-gradient(135deg, var(--coral) 0%, #C7493B 100%);
   color: white;
-  box-shadow: 0 8px 20px rgba(232, 69, 69, 0.35);
+  box-shadow: 0 8px 20px rgba(179, 58, 46, 0.3);
 }
 
 .why-card h3 {
@@ -970,7 +1059,7 @@ section { position: relative; }
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 900;
   font-size: 18px;
-  box-shadow: 0 6px 16px rgba(232, 69, 69, 0.35);
+  box-shadow: 0 6px 16px rgba(179, 58, 46, 0.3);
 }
 
 .voyage-step .step-emoji {
@@ -1663,15 +1752,57 @@ footer {
 
 <!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="hero-media">
+  <div class="hero-media" id="heroMedia">
     <!--
-    VIDEO SLOT: To enable autoplay video hero, replace the <img> below with:
-    <video autoplay muted loop playsinline poster="img/hero-iconic-breach.jpg">
+    ====================================================================
+    HERO MEDIA — three modes, pick one:
+    ====================================================================
+    MODE A: VIDEO (preferred — autoplay with audio toggle for whale screams)
+      Uncomment the <video> block below, then comment out the slideshow.
+      Browsers REQUIRE muted by default for autoplay; the audio button
+      lets the user unmute to hear the screaming/whales surfacing.
+
+    <video autoplay muted loop playsinline poster="img/hero-iconic-breach.jpg" id="heroVideo">
       <source src="video/hero-video.mp4" type="video/mp4">
     </video>
+
+    MODE B: SLIDESHOW (currently active — photo slideshow with crossfade)
+      Drop in client photos by updating the background-image URLs below.
+
+    MODE C: STATIC PHOTO
+      Just leave the first slide and delete the others; remove the dots.
+    ====================================================================
     -->
-    <img src="img/hero-iconic-breach.jpg" alt="Humpback whale breaching alongside the Hurricane II">
+
+    <!-- Slideshow slides (5 frames, ~5s each with 1.6s crossfade) -->
+    <div class="slide active" style="background-image: url('img/hero-iconic-breach.jpg');"></div>
+    <div class="slide" style="background-image: url('img/gallery-big-breach.jpg');"></div>
+    <div class="slide" style="background-image: url('img/species-humpback.jpg');"></div>
+    <div class="slide" style="background-image: url('img/sighting-fluke.jpg');"></div>
+    <div class="slide" style="background-image: url('img/vessel-hurricane-dock.jpg');"></div>
   </div>
+
+  <!-- Slide indicator dots -->
+  <div class="hero-dots" id="heroDots">
+    <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+    <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+    <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
+    <button class="hero-dot" data-slide="3" aria-label="Slide 4"></button>
+    <button class="hero-dot" data-slide="4" aria-label="Slide 5"></button>
+  </div>
+
+  <!-- Audio toggle (only shows when video mode is active) -->
+  <button class="hero-audio-toggle" id="heroAudioToggle" aria-label="Toggle sound">
+    <svg id="heroAudioOff" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+    <svg id="heroAudioOn" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+  </button>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="hero-badges">
@@ -2255,6 +2386,74 @@ footer {
     <span>World Cetacean Alliance Partner · Concept by Bofill Technologies</span>
   </div>
 </footer>
+
+<script>
+// ============ HERO SLIDESHOW ============
+(function() {
+  const slides = document.querySelectorAll('.hero-media .slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  const video = document.getElementById('heroVideo');
+
+  if (video) {
+    // Video mode is active — hide the slideshow dots
+    document.getElementById('heroDots').style.display = 'none';
+    document.getElementById('heroAudioToggle').classList.add('visible');
+    return; // skip slideshow logic
+  }
+
+  if (slides.length <= 1) return;
+
+  let currentIndex = 0;
+  let timer = null;
+  const INTERVAL = 5000; // 5 seconds per slide
+
+  function showSlide(index) {
+    slides[currentIndex].classList.remove('active');
+    dots[currentIndex].classList.remove('active');
+    currentIndex = (index + slides.length) % slides.length;
+    slides[currentIndex].classList.add('active');
+    dots[currentIndex].classList.add('active');
+  }
+
+  function next() { showSlide(currentIndex + 1); }
+
+  function startTimer() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(next, INTERVAL);
+  }
+
+  // Dot click handlers
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      showSlide(i);
+      startTimer(); // reset timer after manual nav
+    });
+  });
+
+  // Pause on hover (good UX)
+  const heroMedia = document.getElementById('heroMedia');
+  heroMedia.addEventListener('mouseenter', () => timer && clearInterval(timer));
+  heroMedia.addEventListener('mouseleave', startTimer);
+
+  startTimer();
+})();
+
+// ============ VIDEO AUDIO TOGGLE ============
+(function() {
+  const video = document.getElementById('heroVideo');
+  const toggle = document.getElementById('heroAudioToggle');
+  if (!video || !toggle) return;
+
+  const iconOff = document.getElementById('heroAudioOff');
+  const iconOn = document.getElementById('heroAudioOn');
+
+  toggle.addEventListener('click', () => {
+    video.muted = !video.muted;
+    iconOff.style.display = video.muted ? '' : 'none';
+    iconOn.style.display = video.muted ? 'none' : '';
+  });
+})();
+</script>
 
 </body>
 </html>
