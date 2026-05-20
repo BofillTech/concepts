@@ -522,6 +522,68 @@
     color: var(--ink-soft);
   }
 
+  /* Hero beach photo strip (full-bleed below text) */
+  .hero-photo {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 42vw, 480px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .hero-photo .credit {
+    position: absolute;
+    bottom: 8px;
+    right: 12px;
+    color: white;
+    font-size: 11px;
+    font-style: italic;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    opacity: 0.85;
+  }
+  .hero-photo .credit a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  /* "Airports are not on JVD" callout that sits below the hero photo */
+  .arrival-reality {
+    background: var(--ocean);
+    color: white;
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .arrival-reality-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .arrival-reality .label {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 700;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .arrival-reality p {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(17px, 2.2vw, 22px);
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+    color: white;
+  }
+  .arrival-reality p strong {
+    font-weight: 500;
+    color: var(--teal);
+  }
+
   /* ------------ QUICK ANSWER ------------ */
   .quick-answer {
     max-width: 900px;
@@ -1326,37 +1388,39 @@
     background: var(--sand-light);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
-    padding: 36px 24px;
+    padding: 56px 24px;
   }
   .disclaimer-inner {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
   }
   .disclaimer {
-    border-left: 4px solid var(--gold);
-    padding: 14px 18px;
+    border-left: 6px solid var(--gold);
+    padding: 24px 28px;
     background: #fdf9ee;
+    border-radius: 2px;
   }
   .disclaimer.alert { border-left-color: #c64a2b; background: #fcf1ec; }
   .disclaimer .label {
     display: block;
-    font-size: 10px;
+    font-size: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     font-weight: 700;
     color: var(--gold);
-    margin-bottom: 6px;
+    margin-bottom: 12px;
   }
   .disclaimer.alert .label { color: #c64a2b; }
   .disclaimer p {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--ink);
-    line-height: 1.5;
+    line-height: 1.55;
   }
   .disclaimer p strong { color: var(--ocean); font-weight: 700; }
+  .disclaimer.alert p strong { color: #8a3520; }
 
   /* ------------ TABBED ROUTE PICKER ------------ */
   .tabs-section {
@@ -1848,28 +1912,44 @@
 <section class="hero">
   <p class="eyebrow">Arrivals Guide · Jost Van Dyke, BVI</p>
   <h1 class="serif">How to <em>get here.</em></h1>
-  <p class="intro">Three airports. Four good ways across the water. One short ride up the hill. We'll walk you through every step — no guesswork, no panicked WhatsApps from the ferry dock.</p>
+  <p class="intro">Two airports. Four good ways across the water. One short ride up the hill. We'll walk you through every step — no guesswork, no panicked WhatsApps from the ferry dock.</p>
+</section>
+
+<!-- HERO PHOTO - White Bay beach
+     NOTE: currently using the property aerial as placeholder since a clean White Bay hero photo
+     wasn't available to upload this turn. Drop a wide White Bay beach photo into
+     /assets/white-bay-hero.jpg and the <img> src will pick it up automatically once renamed. -->
+<div class="hero-photo">
+  <img src="assets/wbv-property-aerial.jpg" alt="White Bay beach on Jost Van Dyke, with White Bay Villas overlooking the turquoise water" />
+</div>
+
+<!-- ARRIVAL REALITY - airports are NOT on JVD -->
+<section class="arrival-reality">
+  <div class="arrival-reality-inner">
+    <span class="label">⚠ Important to remember</span>
+    <p>The airports are <strong>NOT on Jost Van Dyke.</strong> You'll land on Tortola (EIS) or St. Thomas (STT) and then take a <strong>ferry or water taxi</strong> across to JVD. If you're flying into St. Thomas, you'll also <strong>pass through customs</strong> en route.</p>
+  </div>
 </section>
 
 <!-- QUICK ANSWER -->
 <section class="quick-answer">
   <span class="quick-label">The short version</span>
-  <h2 class="serif">Fly into <strong>Tortola (EIS)</strong> if you can — it's the most direct, with a more forgiving <strong>4 PM landing deadline.</strong> Otherwise fly into <strong>St. Thomas (STT)</strong> and take a ferry or water taxi — but land by <strong>3 PM</strong> to make the last connection.</h2>
+  <h2 class="serif">Fly into <strong>either airport.</strong> If you're flying into <strong>St. Thomas (STT)</strong>, land by <strong>3 PM</strong>. If you're flying into <strong>Tortola (EIS)</strong>, land by <strong>4 PM</strong>. Either way, you'll be at White Bay Villas before sunset.</h2>
 </section>
 
-<!-- REGIONAL MAP -->
+<!-- REGIONAL MAP - Wikipedia BVI map showing the archipelago -->
 <section class="map-section">
   <div class="section-header">
     <p class="num">— The big picture</p>
     <h2 class="serif">Where in the world is Jost Van Dyke?</h2>
-    <p>You'll fly into either the US Virgin Islands or the British Virgin Islands, then cross a short stretch of open water. Here's how all the pieces fit together.</p>
+    <p>Jost Van Dyke is one of the four main islands of the British Virgin Islands, sitting at the western edge of the archipelago — about 5 miles from Tortola and 5 miles north of the US Virgin Islands.</p>
   </div>
-  <div class="map-wrap" id="regional-map-wrap">
-    <img src="assets/regional-map.jpg" alt="Map of the US Virgin Islands and British Virgin Islands showing St. Thomas, Tortola, and Jost Van Dyke" />
+  <div class="map-wrap" id="regional-map-wrap" style="max-width: 720px; margin: 0 auto; padding: 20px; background: #cfe7f5;">
+    <img src="assets/bvi-regional-map.jpg" alt="Map of the British Virgin Islands showing Jost Van Dyke (highlighted in red), Tortola, Virgin Gorda, and Anegada, with the Caribbean Sea to the south and Atlantic Ocean to the north" style="width: 100%; height: auto; display: block; image-rendering: -webkit-optimize-contrast;" />
   </div>
   <div class="map-caption">
-    <span>Four crossings connect the airports to Jost Van Dyke. Pick the one that matches your flight.</span>
-    <em>Scroll down to choose your airport →</em>
+    <span>JVD sits at the western edge of the BVI, closest to the US Virgin Islands.</span>
+    <em>Map: <a href="https://en.wikipedia.org/wiki/British_Virgin_Islands" target="_blank" rel="noopener" style="color:var(--gold); text-decoration:underline;">Wikipedia / British Virgin Islands</a></em>
   </div>
 </section>
 
@@ -1899,7 +1979,7 @@
 <section class="tabs-section" id="getting-here-tabs">
   <div class="section-header">
     <p class="num">— Choose your arrival airport</p>
-    <h2 class="serif">How you'll get from the airport to Jost.</h2>
+    <h2 class="serif">How you'll get from the airport to Jost Van Dyke Island.</h2>
     <p>Pick the airport you're flying into, and we'll show you every realistic way to make the crossing.</p>
   </div>
 
@@ -2095,8 +2175,8 @@
               <span class="price-tier">$$</span>
             </div>
           </div>
-          <div style="background: var(--sand-light); border-left: 4px solid var(--ocean); padding: 12px 16px; border-radius: 2px; margin: 6px 0 14px;">
-            <p style="font-size:13px; color:var(--ink); line-height:1.55;"><strong>This is for people already on St. Thomas or St. John.</strong> An early-morning direct ferry to JVD, three days a week. <strong>It is NOT</strong> for same-day flight arrivals landing later in the day — despite what Google sometimes suggests.</p>
+          <div style="background: #fcf1ec; border-left: 4px solid #c64a2b; padding: 14px 18px; border-radius: 2px; margin: 6px 0 14px;">
+            <p style="font-size:14px; color:var(--ink); line-height:1.55;"><strong style="color:#8a3520;">⚠ This is for people already on St. Thomas or St. John who have already cleared customs.</strong> This is <strong style="color:#8a3520;">NOT</strong> for people who have just flown in. An early-morning direct ferry to JVD, three days a week. <strong style="color:#8a3520;">It is NOT for same-day flight arrivals</strong> landing later in the day — despite what Google sometimes suggests.</p>
           </div>
           <p class="option-vibe">Direct to JVD · skips West End · ~1h 30m on water</p>
           <p class="desc">Departs Red Hook at 7:30 AM and Cruz Bay (St. John) at 8:00 AM, arriving Great Harbour JVD around 9:30 AM. Check-in is 45 minutes prior. If you're already in the USVI on a multi-day itinerary, or you've landed STT the night before, this is the cleanest way over.</p>
