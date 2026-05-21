@@ -139,30 +139,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .btn-book:hover { background: var(--coral-deep); transform: translateY(-1px); box-shadow: 0 12px 28px -8px rgba(201, 117, 81, 0.7); }
 
-/* Owner Login — subtle outlined button next to Book Now */
-.btn-owner {
-  display: none;
-  align-items: center;
-  gap: .45rem;
-  padding: .65rem 1.1rem;
-  font-family: var(--sans);
-  font-size: .68rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: rgba(255,255,255,.85);
-  border: 1px solid rgba(255,255,255,.35);
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
-}
-.btn-owner svg { opacity: .9; }
-.btn-owner:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; transform: translateY(-1px); }
-.header.scrolled .btn-owner,
-.header.solid .btn-owner { color: var(--navy); border-color: var(--line); }
-.header.scrolled .btn-owner:hover,
-.header.solid .btn-owner:hover { background: var(--cream); border-color: var(--navy); color: var(--navy); }
-
 .menu-toggle {
   display: flex; flex-direction: column; gap: 5px;
   background: none; border: none;
@@ -554,6 +530,33 @@ h2.section-title em, h1.section-title em { font-style: italic; color: var(--cora
   transition: border-color .25s ease, background .25s ease, transform .25s ease;
 }
 .footer-social a:hover { border-color: var(--cream); background: rgba(244,236,221,.1); transform: translateY(-2px); }
+
+/* Footer owner login — outlined button below the column lists */
+.btn-footer-owner {
+  display: inline-flex;
+  align-items: center;
+  gap: .55rem;
+  margin-top: 1.25rem;
+  padding: .8rem 1.4rem;
+  font-family: var(--sans);
+  font-size: .68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--cream);
+  border: 1px solid rgba(244,236,221,.35);
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+.btn-footer-owner svg { opacity: .9; }
+.btn-footer-owner:hover {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--navy-deep);
+  transform: translateY(-1px);
+}
+
 .footer-bottom {
   padding-top: 2rem;
   display: flex;
@@ -608,8 +611,4 @@ h2.section-title em, h1.section-title em { font-style: italic; color: var(--cora
 
 @media (min-width: 1400px) {
   .header-phone { display: inline-flex; align-items: center; }
-}
-
-@media (min-width: 1500px) {
-  .btn-owner { display: inline-flex; }
 }
