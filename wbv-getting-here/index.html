@@ -2339,37 +2339,14 @@
               <span class="price-tier">$$$</span>
             </div>
           </div>
-          <p class="option-vibe">Private charter · 25 min direct · captained service</p>
-          <p class="desc">A short transfer from EIS to a private boat at Trellis Bay, captained directly to White Bay Villas. We've worked with Captain Michael Clyne for thirty years — his boats are the best in class, and the same charter can take you island-hopping during your stay.</p>
+          <p class="option-vibe">Private charter · ~25 min direct · captained service</p>
+          <p class="desc">Book Allure ahead of time and walk <strong>4–5 minutes outside the EIS terminal</strong> to Trellis Bay Marina, where Captain Michael Clyne's boat will be waiting to take you directly to White Bay Villas. We've worked with Captain Michael for thirty years — his boats are the best in class, and the same charter can take you island-hopping during your stay.</p>
           <div class="option-meta">
-            <span><strong>Time:</strong> ~25 min direct</span>
+            <span><strong>Time:</strong> ~25 min direct (after the 4–5 min walk)</span>
             <span><strong>Book:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
             <span><strong>Or call WBV:</strong> <a href="tel:+18007788066">+1 800-778-8066</a></span>
           </div>
           <p class="best-for"><strong>Best for:</strong> Best experience · groups of 4+ · late arrivals · maximum peace of mind</p>
-        </div>
-      </div>
-
-      <!-- EIS Water Taxi: Trellis Bay -->
-      <div id="option-eis-trellis" class="option-row">
-        <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/our-boat.jpg" alt="Water taxi at Trellis Bay Marina" loading="lazy" />
-        </div>
-        <div class="option-body">
-          <div class="option-head">
-            <h4 class="serif">Trellis Bay Water Taxi</h4>
-            <div class="option-tags">
-              <span class="opt-tag daily">Daily on demand</span>
-              <span class="price-tier">$$</span>
-            </div>
-          </div>
-          <p class="option-vibe">Shared water taxi · 4-min walk from EIS · ~30 min crossing</p>
-          <p class="desc">Walk four minutes from the EIS terminal to Trellis Bay Marina, where shared water taxis run direct to JVD on demand. Faster and more flexible than the public ferry route, without the cost of a private charter.</p>
-          <div class="option-meta">
-            <span><strong>Time:</strong> ~35 min total</span>
-            <span><strong>Book:</strong> Through your villa concierge or at the dock</span>
-          </div>
-          <p class="best-for"><strong>Best for:</strong> Couples and small groups · daytime arrivals · light luggage</p>
         </div>
       </div>
 
@@ -3036,23 +3013,11 @@
       priceTier: '$$$',
       blurb: 'Private charter · ~25 min direct · captained',
       check: ({ hourMin }) => {
-        const baseWhy = 'A short transfer from EIS to a private boat at Trellis Bay, direct to White Bay Villas. We\'ve worked with Captain Michael Clyne for thirty years.';
+        const baseWhy = 'Book ahead, then walk 4–5 minutes from EIS to Trellis Bay Marina where Captain Michael Clyne\'s boat takes you direct to White Bay Villas. We\'ve worked with Captain Michael for thirty years.';
         if (hourMin > 1600) return { status: 'works', whyRecommend: 'You\'re landing past the public-ferry deadline, so this is effectively required — or at least the smoothest option. Allure runs on appointment, no schedule pressure.' };
         return { status: 'works', whyRecommend: baseWhy + ' Worth the upgrade if you\'re traveling with a group of 4+ or want maximum peace of mind.' };
       },
-      score: 60   // base score - high but ferry is preferred for budget when it works
-    },
-    {
-      id: 'option-eis-trellis',
-      airport: 'EIS',
-      name: 'Trellis Bay Water Taxi',
-      priceTier: '$$',
-      blurb: 'Shared water taxi · 4-min walk from EIS · ~30 min',
-      check: ({ hourMin }) => {
-        if (hourMin > 1730) return { status: 'too-late', reason: 'Trellis Bay water taxis run on demand during daylight hours only. After dark they\'re not reliable.' };
-        return { status: 'works', whyRecommend: 'Faster than the public ferry and cheaper than a private charter. Walk 4 minutes from EIS to the marina, find a shared taxi.' };
-      },
-      score: 65
+      score: 60
     },
 
     // ===== STT =====
