@@ -1,307 +1,427 @@
-(function(){
-  var BASE = '/concepts/terrace-by-the-sea';
-  var LOGO = 'https://bofilltech.github.io/concepts/terrace-by-the-sea/img/logo-primary.png';
-  var SEAL = 'https://bofilltech.github.io/concepts/terrace-by-the-sea/img/logo-circle.png';
+/**
+ * Terrace By The Sea — main.js
+ * Vanilla ES6+ · No jQuery · No inline handlers
+ * WordPress/Genesis nav class conventions applied
+ */
 
-  var NAV = '<nav id="mainNav">'
-    + '<a href="'+BASE+'/" class="nav-logo"><img src="'+LOGO+'" alt="Terrace By The Sea"></a>'
-    + '<div class="nav-right">'
-    + '<ul class="nav-links">'
-    // Accommodations dropdown
-    + '<li><a href="'+BASE+'/buildings/">Accommodations <span class="nav-chevron"></span></a>'
-    + '<div class="nav-dropdown-menu">'
-    + '<a href="'+BASE+'/buildings/">All Buildings</a>'
-    + '<a href="'+BASE+'/buildings/main-inn/">The Main Inn</a>'
-    + '<a href="'+BASE+'/buildings/deluxe-motel/">Deluxe Motel</a>'
-    + '<a href="'+BASE+'/buildings/suites/">The Suites</a>'
-    + '<a href="'+BASE+'/buildings/side-motel-cottage/">Side Motel &amp; Cottage</a>'
-    + '<a href="'+BASE+'/buildings/court-motel/">Court Motel</a>'
-    + '</div></li>'
-    + '<li><a href="'+BASE+'/amenities/">Amenities</a></li>'
-    // Gallery dropdown
-    + '<li><a href="'+BASE+'/gallery/">Gallery <span class="nav-chevron"></span></a>'
-    + '<div class="nav-dropdown-menu">'
-    + '<a href="'+BASE+'/gallery/#buildings">Buildings</a>'
-    + '<a href="'+BASE+'/gallery/#rooms">Rooms</a>'
-    + '<a href="'+BASE+'/gallery/#grounds">Grounds</a>'
-    + '<a href="'+BASE+'/gallery/#video">Video</a>'
-    + '</div></li>'
-    + '<li><a href="'+BASE+'/attractions/">Attractions</a></li>'
-    + '<li><a href="'+BASE+'/virtual-tour/">Virtual Tour</a></li>'
-    + '<li><a href="'+BASE+'/gift-certificates/">Gift Certificates</a></li>'
-    + '<li><a href="'+BASE+'/weddings/">Weddings</a></li>'
-    + '<li><a href="'+BASE+'/contact/">Contact</a></li>'
-    + '</ul>'
-    + '<a href="tel:2076463232" class="nav-phone">207-646-3232</a>'
-    + '<a href="https://terracebythesea.client.innroad.com/" class="nav-book-btn" target="_blank">Book Now</a>'
-    + '</div>'
-    + '<div class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></div>'
-    + '</nav>';
-
-  var MOB = '<div class="mobile-menu" id="mobileMenu">'
-    + '<span class="mob-section-head">Accommodations</span>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/">All Buildings</a>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/main-inn/">The Main Inn</a>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/deluxe-motel/">Deluxe Motel</a>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/suites/">The Suites</a>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/side-motel-cottage/">Side Motel &amp; Cottage</a>'
-    + '<a class="mob-sub" href="'+BASE+'/buildings/court-motel/">Court Motel</a>'
-    + '<a href="'+BASE+'/amenities/">Amenities</a>'
-    + '<span class="mob-section-head">Gallery</span>'
-    + '<a class="mob-sub" href="'+BASE+'/gallery/#buildings">Buildings</a>'
-    + '<a class="mob-sub" href="'+BASE+'/gallery/#rooms">Rooms</a>'
-    + '<a class="mob-sub" href="'+BASE+'/gallery/#grounds">Grounds</a>'
-    + '<a class="mob-sub" href="'+BASE+'/gallery/#video">Video</a>'
-    + '<a href="'+BASE+'/attractions/">Attractions</a>'
-    + '<a href="'+BASE+'/virtual-tour/">Virtual Tour</a>'
-    + '<a href="'+BASE+'/gift-certificates/">Gift Certificates</a>'
-    + '<a href="'+BASE+'/weddings/">Weddings</a>'
-    + '<a href="'+BASE+'/contact/">Contact</a>'
-    + '<a href="tel:2076463232">207-646-3232</a>'
-    + '<a href="https://terracebythesea.client.innroad.com/" target="_blank">Book Now</a>'
-    + '</div>';
-
-  var FOOTER = '<footer>'
-    + '<div class="footer-brand"><img src="'+SEAL+'" class="footer-seal" alt="Terrace By The Sea Est 1920"><p>A special place on the Maine coast since 1920. Deluxe motel comfort with colonial inn elegance, directly overlooking Ogunquit Beach.</p></div>'
-    + '<div class="footer-col"><h4>Accommodations</h4><ul>'
-    + '<li><a href="'+BASE+'/buildings/main-inn/">The Main Inn</a></li>'
-    + '<li><a href="'+BASE+'/buildings/deluxe-motel/">Deluxe Motel</a></li>'
-    + '<li><a href="'+BASE+'/buildings/side-motel-cottage/">Side Motel &amp; Cottage</a></li>'
-    + '<li><a href="'+BASE+'/buildings/court-motel/">Court Motel</a></li>'
-    + '<li><a href="'+BASE+'/buildings/suites/">The Suites</a></li>'
-    + '</ul></div>'
-    + '<div class="footer-col"><h4>Explore</h4><ul>'
-    + '<li><a href="'+BASE+'/amenities/">Amenities</a></li>'
-    + '<li><a href="'+BASE+'/gallery/">Gallery</a></li>'
-    + '<li><a href="'+BASE+'/virtual-tour/">Virtual Tour</a></li>'
-    + '<li><a href="'+BASE+'/gift-certificates/">Gift Certificates</a></li>'
-    + '<li><a href="'+BASE+'/weddings/">Weddings &amp; Events</a></li>'
-    + '<li><a href="'+BASE+'/attractions/">Nearby Attractions</a></li>'
-    + '</ul></div>'
-    + '<div class="footer-col"><h4>Find Us</h4><address>23 Wharf Lane<br>Ogunquit, Maine 03907<br><br><a href="tel:2076463232">207-646-3232</a><br><a href="mailto:info@terracebythesea.com">info@terracebythesea.com</a></address></div>'
-    + '</footer>'
-    + '<div class="footer-bottom"><span>&copy; 2025 Terrace By The Sea. All rights reserved.</span><div class="footer-social"><a href="https://www.facebook.com/TerraceOgunquit" target="_blank">Facebook</a><a href="https://www.youtube.com/watch?v=Gek-lAB1DSM" target="_blank">YouTube</a></div></div>';
-
-  var BOOKING = '<div class="booking-bar-wrapper"><div class="booking-bar">'
-    + '<div class="booking-field"><label for="checkin">Check In</label><input type="date" id="checkin"></div>'
-    + '<div class="booking-field"><label for="checkout">Check Out</label><input type="date" id="checkout"></div>'
-    + '<button class="booking-bar-btn">Book Now</button>'
-    + '</div></div>';
-
-  // Inject — only if the element isn't already in the markup (homepage has hardcoded copies)
-  if(!document.getElementById('mainNav')){
-    document.body.insertAdjacentHTML('afterbegin', NAV + MOB);
-  }
-  if(!document.querySelector('footer')){
-    document.body.insertAdjacentHTML('beforeend', FOOTER);
-  }
-  if(!document.querySelector('.booking-bar-wrapper')){
-    document.body.insertAdjacentHTML('beforeend', BOOKING);
-  }
-
-  // Set active nav
-  var path = window.location.pathname;
-  document.querySelectorAll('.nav-links > li > a').forEach(function(a){
-    if(path.indexOf(a.getAttribute('href').split('/').filter(Boolean).pop()) > -1) a.parentElement.classList.add('active');
-  });
-
-  // Dropdown click toggles — guard against double-binding via flag on each li
-  document.querySelectorAll('.nav-links > li').forEach(function(li){
-    var link = li.querySelector('a');
-    var menu = li.querySelector('.nav-dropdown-menu');
-    if(!menu || li.dataset.bound) return;
-    li.dataset.bound = '1';
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      var isOpen = li.classList.contains('open');
-      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-      if(!isOpen) li.classList.add('open');
-    });
-  });
-  // Close dropdowns on outside click or Escape — guard with body-level flag
-  if(!document.body.dataset.navGlobalBound){
-    document.body.dataset.navGlobalBound = '1';
-    document.addEventListener('click', function(e){
-      if(!e.target.closest('.nav-links')){
-        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-      }
-    });
-    document.addEventListener('keydown', function(e){
-      if(e.key==='Escape') document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-    });
-  }
-
-  // Mobile menu — guard against double-binding if homepage also binds it
-  var hamb = document.getElementById('hamburger');
-  if(hamb && !hamb.dataset.bound){
-    hamb.dataset.bound = '1';
-    hamb.addEventListener('click', function(){
-      document.getElementById('mobileMenu').classList.toggle('open');
-    });
-  }
-
-  // Dates — guard against double-binding if homepage also binds them
-  var today = new Date(), tomorrow = new Date(today);
-  tomorrow.setDate(today.getDate()+1);
-  var fmt = function(d){return d.toISOString().split('T')[0]};
-  var ci = document.getElementById('checkin'), co = document.getElementById('checkout');
-  if(ci && co && !ci.dataset.bound){
-    ci.dataset.bound = '1';
-    ci.value = fmt(today); co.value = fmt(tomorrow);
-    ci.min = fmt(today); co.min = fmt(tomorrow);
-    ci.addEventListener('change', function(e){
-      var next = new Date(e.target.value); next.setDate(next.getDate()+1);
-      co.min = fmt(next); if(co.value <= e.target.value) co.value = fmt(next);
-    });
-  }
-
-  // Scroll reveals
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
-  },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
-})();
-
+'use strict';
 
 /* ============================================================
-   HOMEPAGE — hero slideshow, dropdowns, mobile menu, date pickers
-   (Only attaches to elements present on the page; safe everywhere)
+   CONSTANTS
    ============================================================ */
-(function(){
-  // --- Hero slideshow ---
-  var slides = document.querySelectorAll('.hero-slide');
-  var dots   = document.querySelectorAll('.hero-dot');
-  if(slides.length && dots.length){
-    var current = 0;
-    var timer;
-    function goToSlide(n){
-      slides[current].classList.remove('active');
-      dots[current].classList.remove('active');
-      current = n;
-      slides[current].classList.add('active');
-      dots[current].classList.add('active');
-      clearInterval(timer);
-      timer = setInterval(function(){ goToSlide((current+1)%slides.length); }, 5500);
-    }
-    dots.forEach(function(dot, i){
-      dot.addEventListener('click', function(){ goToSlide(i); });
-    });
-    timer = setInterval(function(){ goToSlide((current+1)%slides.length); }, 5500);
-  }
+const BASE   = '/concepts/terrace-by-the-sea';
+const IMG    = `https://bofilltech.github.io${BASE}/img`;
+const BOOK_URL = 'https://terracebythesea.client.innroad.com/';
 
-  // --- Reveal-on-scroll observer ---
-  if(typeof IntersectionObserver !== 'undefined'){
-    var revealObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-          revealObserver.unobserve(e.target);
-        }
+/* ============================================================
+   NAV HTML (WordPress/Genesis class conventions)
+   .nav-primary  → primary nav wrapper
+   .menu + .genesis-nav-menu + .menu-primary → ul classes
+   .menu-item    → every li
+   .menu-item-has-children → li with sub-menu
+   .sub-menu     → dropdown ul
+   ============================================================ */
+const buildNav = () => `
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
+  <a href="${BASE}/" class="site-logo" aria-label="Terrace By The Sea — Home">
+    <img src="${IMG}/logo-primary.png" alt="Terrace By The Sea — Ogunquit, Maine" class="site-logo__img" width="180" height="50">
+  </a>
+  <nav class="nav-primary" role="navigation" aria-label="Primary" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <ul class="menu genesis-nav-menu menu-primary" role="menubar">
+      <li class="menu-item menu-item-type-post_type menu-item-has-children" role="none">
+        <a href="${BASE}/buildings/" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
+          <span itemprop="name">Accommodations</span>
+        </a>
+        <ul class="sub-menu" role="menu" aria-label="Accommodations submenu">
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/" role="menuitem" itemprop="url"><span itemprop="name">All Buildings</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/main-inn/" role="menuitem" itemprop="url"><span itemprop="name">The Main Inn</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/deluxe-motel/" role="menuitem" itemprop="url"><span itemprop="name">Deluxe Motel</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/suites/" role="menuitem" itemprop="url"><span itemprop="name">The Suites</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/side-motel-cottage/" role="menuitem" itemprop="url"><span itemprop="name">Side Motel &amp; Cottage</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings/court-motel/" role="menuitem" itemprop="url"><span itemprop="name">Court Motel</span></a></li>
+        </ul>
+      </li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/amenities/" role="menuitem" itemprop="url"><span itemprop="name">Amenities</span></a></li>
+      <li class="menu-item menu-item-type-post_type menu-item-has-children" role="none">
+        <a href="${BASE}/gallery/" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
+          <span itemprop="name">Gallery</span>
+        </a>
+        <ul class="sub-menu" role="menu" aria-label="Gallery submenu">
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery/#buildings" role="menuitem">Buildings</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery/#rooms" role="menuitem">Rooms</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery/#grounds" role="menuitem">Grounds</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery/#video" role="menuitem">Video</a></li>
+        </ul>
+      </li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/attractions/" role="menuitem" itemprop="url"><span itemprop="name">Attractions</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/virtual-tour/" role="menuitem" itemprop="url"><span itemprop="name">Virtual Tour</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gift-certificates/" role="menuitem" itemprop="url"><span itemprop="name">Gift Certificates</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/weddings/" role="menuitem" itemprop="url"><span itemprop="name">Weddings</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/contact/" role="menuitem" itemprop="url"><span itemprop="name">Contact</span></a></li>
+    </ul>
+  </nav>
+  <div class="site-header__actions">
+    <a href="tel:2076463232" class="site-header__phone" aria-label="Call us: 207-646-3232">207-646-3232</a>
+    <a href="${BOOK_URL}" class="btn btn--book-now" target="_blank" rel="noopener" aria-label="Book your stay (opens booking system)">Book Now</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+    <span class="nav-toggle__bar" aria-hidden="true"></span>
+  </button>
+</header>`;
+
+const buildMobileMenu = () => `
+<nav class="nav-secondary" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <span class="nav-secondary__heading" aria-hidden="true">Accommodations</span>
+  <ul class="menu">
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/">All Buildings</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/main-inn/">The Main Inn</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/deluxe-motel/">Deluxe Motel</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/suites/">The Suites</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/side-motel-cottage/">Side Motel &amp; Cottage</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings/court-motel/">Court Motel</a></li>
+    <li class="menu-item" role="none"><a href="${BASE}/amenities/">Amenities</a></li>
+  </ul>
+  <span class="nav-secondary__heading" aria-hidden="true">Gallery</span>
+  <ul class="menu">
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery/#buildings">Buildings</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery/#rooms">Rooms</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery/#grounds">Grounds</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery/#video">Video</a></li>
+  </ul>
+  <ul class="menu">
+    <li class="menu-item" role="none"><a href="${BASE}/attractions/">Attractions</a></li>
+    <li class="menu-item" role="none"><a href="${BASE}/virtual-tour/">Virtual Tour</a></li>
+    <li class="menu-item" role="none"><a href="${BASE}/gift-certificates/">Gift Certificates</a></li>
+    <li class="menu-item" role="none"><a href="${BASE}/weddings/">Weddings</a></li>
+    <li class="menu-item" role="none"><a href="${BASE}/contact/">Contact</a></li>
+    <li class="menu-item" role="none"><a href="tel:2076463232">207-646-3232</a></li>
+    <li class="menu-item" role="none"><a href="${BOOK_URL}" target="_blank" rel="noopener">Book Now</a></li>
+  </ul>
+</nav>`;
+
+const buildFooter = () => `
+<footer class="site-footer" role="contentinfo" itemscope itemtype="https://schema.org/WPFooter">
+  <div class="site-footer__brand">
+    <img src="${IMG}/logo-circle.png" class="site-footer__seal" alt="Terrace By The Sea Est. 1920 seal" width="80" height="80">
+    <p class="site-footer__tagline">A special place on the Maine coast since 1920. Deluxe motel comfort with colonial inn elegance, directly overlooking Ogunquit Beach.</p>
+  </div>
+  <div class="site-footer__col">
+    <span class="site-footer__col-heading">Accommodations</span>
+    <ul>
+      <li><a href="${BASE}/buildings/main-inn/">The Main Inn</a></li>
+      <li><a href="${BASE}/buildings/deluxe-motel/">Deluxe Motel</a></li>
+      <li><a href="${BASE}/buildings/side-motel-cottage/">Side Motel &amp; Cottage</a></li>
+      <li><a href="${BASE}/buildings/court-motel/">Court Motel</a></li>
+      <li><a href="${BASE}/buildings/suites/">The Suites</a></li>
+    </ul>
+  </div>
+  <div class="site-footer__col">
+    <span class="site-footer__col-heading">Explore</span>
+    <ul>
+      <li><a href="${BASE}/amenities/">Amenities</a></li>
+      <li><a href="${BASE}/gallery/">Gallery</a></li>
+      <li><a href="${BASE}/virtual-tour/">Virtual Tour</a></li>
+      <li><a href="${BASE}/gift-certificates/">Gift Certificates</a></li>
+      <li><a href="${BASE}/weddings/">Weddings &amp; Events</a></li>
+      <li><a href="${BASE}/attractions/">Nearby Attractions</a></li>
+    </ul>
+  </div>
+  <div class="site-footer__col">
+    <span class="site-footer__col-heading">Find Us</span>
+    <address class="site-footer__address" itemscope itemtype="https://schema.org/PostalAddress">
+      <span itemprop="streetAddress">23 Wharf Lane</span><br>
+      <span itemprop="addressLocality">Ogunquit</span>, <span itemprop="addressRegion">Maine</span> <span itemprop="postalCode">03907</span><br><br>
+      <a href="tel:2076463232" itemprop="telephone">207-646-3232</a><br>
+      <a href="mailto:info@terracebythesea.com" itemprop="email">info@terracebythesea.com</a>
+    </address>
+  </div>
+</footer>
+<div class="site-footer__bottom">
+  <span>&copy; 2025 Terrace By The Sea. All rights reserved.</span>
+  <div class="site-footer__social">
+    <a href="https://www.facebook.com/TerraceOgunquit" target="_blank" rel="noopener noreferrer" aria-label="Terrace By The Sea on Facebook">Facebook</a>
+    <a href="https://www.youtube.com/watch?v=Gek-lAB1DSM" target="_blank" rel="noopener noreferrer" aria-label="Terrace By The Sea on YouTube">YouTube</a>
+  </div>
+</div>`;
+
+const buildBookingBar = () => `
+<div class="booking-bar" role="search" aria-label="Room availability search">
+  <div class="booking-bar__field">
+    <label class="booking-bar__label" for="checkinDate">Check In</label>
+    <input class="booking-bar__input" type="date" id="checkinDate" name="checkin" aria-label="Check-in date">
+  </div>
+  <div class="booking-bar__field">
+    <label class="booking-bar__label" for="checkoutDate">Check Out</label>
+    <input class="booking-bar__input" type="date" id="checkoutDate" name="checkout" aria-label="Check-out date">
+  </div>
+  <button class="booking-bar__btn" id="bookNowBtn" aria-label="Book now — opens booking system in new tab">Book Now</button>
+</div>`;
+
+/* ============================================================
+   INJECT SHARED CHROME
+   ============================================================ */
+const injectChrome = () => {
+  if (!document.querySelector('.site-header')) {
+    document.body.insertAdjacentHTML('afterbegin', buildNav() + buildMobileMenu());
+  }
+  if (!document.querySelector('.site-footer')) {
+    document.body.insertAdjacentHTML('beforeend', buildFooter());
+  }
+  if (!document.querySelector('.booking-bar')) {
+    document.body.insertAdjacentHTML('beforeend', buildBookingBar());
+  }
+};
+
+/* ============================================================
+   DROPDOWN NAVIGATION
+   ============================================================ */
+const initDropdowns = () => {
+  const items = document.querySelectorAll('.nav-primary .menu-item-has-children');
+
+  items.forEach(li => {
+    if (li.dataset.navBound) return;
+    li.dataset.navBound = '1';
+
+    const trigger = li.querySelector(':scope > a');
+    const submenu = li.querySelector('.sub-menu');
+    if (!trigger || !submenu) return;
+
+    trigger.addEventListener('click', e => {
+      e.preventDefault();
+      const isOpen = li.classList.contains('open');
+      // Close all
+      items.forEach(el => {
+        el.classList.remove('open');
+        const t = el.querySelector(':scope > a');
+        if (t) t.setAttribute('aria-expanded', 'false');
       });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(function(el){ revealObserver.observe(el); });
-  }
+      // Toggle clicked
+      if (!isOpen) {
+        li.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
 
-  // --- Nav dropdown click toggles (guarded) ---
-  document.querySelectorAll('.nav-links > li').forEach(function(li){
-    var link = li.querySelector('a');
-    var menu = li.querySelector('.nav-dropdown-menu');
-    if(!link || !menu || li.dataset.bound) return;
-    li.dataset.bound = '1';
-    link.addEventListener('click', function(e){
-      e.preventDefault();
-      var isOpen = li.classList.contains('open');
-      document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
-      if(!isOpen) li.classList.add('open');
+    // Keyboard: close on Escape, navigate submenu with arrows
+    li.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        li.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
     });
   });
-  if(!document.body.dataset.navGlobalBound){
+
+  // Close on outside interaction
+  if (!document.body.dataset.navGlobalBound) {
     document.body.dataset.navGlobalBound = '1';
-    document.addEventListener('click', function(e){
-      if(!e.target.closest('.nav-links')){
-        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.nav-primary')) {
+        items.forEach(el => {
+          el.classList.remove('open');
+          const t = el.querySelector(':scope > a');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
       }
     });
-    document.addEventListener('keydown', function(e){
-      if(e.key === 'Escape'){
-        document.querySelectorAll('.nav-links > li').forEach(function(l){ l.classList.remove('open'); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        items.forEach(el => {
+          el.classList.remove('open');
+          const t = el.querySelector(':scope > a');
+          if (t) t.setAttribute('aria-expanded', 'false');
+        });
       }
     });
   }
-
-  // --- Mobile menu toggle (was inline onclick="toggleMenu()") ---
-  var hamburger = document.getElementById('hamburger');
-  if(hamburger){
-    hamburger.addEventListener('click', function(){
-      var mm = document.getElementById('mobileMenu');
-      if(mm) mm.classList.toggle('open');
-    });
-  }
-
-  // --- Booking bar Book Now (was inline onclick window.open) ---
-  var bookBtn = document.querySelector('.booking-bar-btn');
-  if(bookBtn && !bookBtn.dataset.bound){
-    bookBtn.dataset.bound = '1';
-    bookBtn.addEventListener('click', function(){
-      window.open('https://terracebythesea.client.innroad.com/', '_blank');
-    });
-  }
-
-  // --- Date pickers default to today / tomorrow ---
-  var ci = document.getElementById('checkin');
-  var co = document.getElementById('checkout');
-  if(ci && co){
-    var today = new Date();
-    var tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate()+1);
-    var fmt = function(d){ return d.toISOString().split('T')[0]; };
-    ci.value = fmt(today);
-    co.value = fmt(tomorrow);
-    ci.min = fmt(today);
-    co.min = fmt(tomorrow);
-    ci.addEventListener('change', function(e){
-      var next = new Date(e.target.value);
-      next.setDate(next.getDate()+1);
-      co.min = fmt(next);
-      if(co.value <= e.target.value) co.value = fmt(next);
-    });
-  }
-})();
-
+};
 
 /* ============================================================
-   GALLERY PAGE — tab switcher (was inline onclick="showGallery(...)")
+   MOBILE MENU TOGGLE
    ============================================================ */
-(function(){
-  var tabs = document.querySelectorAll('.gtab[data-tab]');
-  if(!tabs.length) return;
+const initMobileMenu = () => {
+  const toggle = document.getElementById('navToggle');
+  const menu   = document.getElementById('mobileMenu');
+  if (!toggle || !menu) return;
 
-  function showGallery(tab, btn){
-    document.querySelectorAll('.gallery-section').forEach(function(s){ s.classList.remove('active'); });
-    document.querySelectorAll('.gtab').forEach(function(t){ t.classList.remove('active'); });
-    var section = document.getElementById('tab-' + tab);
-    if(section) section.classList.add('active');
-    if(btn) btn.classList.add('active');
-    history.replaceState(null, null, '#' + tab);
-  }
+  toggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+};
 
-  tabs.forEach(function(btn){
-    btn.addEventListener('click', function(){ showGallery(btn.dataset.tab, btn); });
+/* ============================================================
+   ACTIVE NAV STATE
+   ============================================================ */
+const setActiveNavItem = () => {
+  const path = window.location.pathname;
+  document.querySelectorAll('.nav-primary .menu-item > a').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    // Match current page path segment
+    const segment = href.replace(BASE, '').replace(/\/$/, '').split('/').filter(Boolean).pop();
+    if (segment && path.includes(segment)) {
+      a.closest('.menu-item').classList.add('current-menu-item');
+      const parent = a.closest('.menu-item-has-children');
+      if (parent && parent !== a.closest('.menu-item')) {
+        parent.classList.add('current-menu-ancestor');
+      }
+    }
+  });
+};
+
+/* ============================================================
+   BOOKING BAR
+   ============================================================ */
+const initBookingBar = () => {
+  const ci = document.getElementById('checkinDate');
+  const co = document.getElementById('checkoutDate');
+  const btn = document.getElementById('bookNowBtn');
+
+  if (!ci || !co) return;
+  if (ci.dataset.barBound) return;
+  ci.dataset.barBound = '1';
+
+  const today    = new Date();
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const fmt = d => d.toISOString().split('T')[0];
+
+  ci.value = fmt(today);
+  co.value = fmt(tomorrow);
+  ci.min   = fmt(today);
+  co.min   = fmt(tomorrow);
+
+  ci.addEventListener('change', () => {
+    const next = new Date(ci.value);
+    next.setDate(next.getDate() + 1);
+    co.min = fmt(next);
+    if (co.value <= ci.value) co.value = fmt(next);
   });
 
-  // Restore from URL hash — run immediately if doc is ready, or wait for load
-  function restoreFromHash(){
-    var hash = window.location.hash.replace('#', '');
-    if(hash){
-      var match = document.querySelector('.gtab[data-tab="' + hash + '"]');
-      if(match) match.click();
+  if (btn) {
+    btn.addEventListener('click', () => window.open(BOOK_URL, '_blank', 'noopener'));
+  }
+};
+
+/* ============================================================
+   HERO SLIDESHOW
+   ============================================================ */
+const initHero = () => {
+  const slides = document.querySelectorAll('.hero__slide');
+  const dots   = document.querySelectorAll('.hero__dot');
+  if (!slides.length || !dots.length) return;
+
+  let current = 0;
+  let timer;
+
+  const goTo = n => {
+    slides[current].classList.remove('is-active');
+    dots[current].classList.remove('is-active');
+    dots[current].setAttribute('aria-selected', 'false');
+    current = n;
+    slides[current].classList.add('is-active');
+    dots[current].classList.add('is-active');
+    dots[current].setAttribute('aria-selected', 'true');
+    clearInterval(timer);
+    timer = setInterval(() => goTo((current + 1) % slides.length), 5500);
+  };
+
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+  timer = setInterval(() => goTo((current + 1) % slides.length), 5500);
+};
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+const initReveal = () => {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: show all immediately
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+    return;
+  }
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+};
+
+/* ============================================================
+   GALLERY TAB SWITCHER
+   ============================================================ */
+const initGalleryTabs = () => {
+  const tabs = document.querySelectorAll('.gallery-tab[data-tab]');
+  if (!tabs.length) return;
+
+  const showPanel = (tab, btn) => {
+    document.querySelectorAll('.gallery-panel').forEach(p => {
+      p.classList.remove('is-active');
+      p.setAttribute('hidden', '');
+    });
+    document.querySelectorAll('.gallery-tab').forEach(t => {
+      t.classList.remove('is-active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    const panel = document.getElementById('panel-' + tab);
+    if (panel) {
+      panel.classList.add('is-active');
+      panel.removeAttribute('hidden');
     }
-  }
-  if(document.readyState === 'complete'){
-    restoreFromHash();
-  } else {
-    window.addEventListener('load', restoreFromHash);
-  }
-  // Also react to hash changes (e.g. user clicks a nav dropdown item while already on /gallery/)
+    if (btn) {
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected', 'true');
+    }
+    history.replaceState(null, null, '#' + tab);
+  };
+
+  tabs.forEach(btn => {
+    btn.addEventListener('click', () => showPanel(btn.dataset.tab, btn));
+  });
+
+  const restoreFromHash = () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const match = document.querySelector(`.gallery-tab[data-tab="${hash}"]`);
+      if (match) showPanel(hash, match);
+    }
+  };
+
+  if (document.readyState === 'complete') restoreFromHash();
+  else window.addEventListener('load', restoreFromHash);
   window.addEventListener('hashchange', restoreFromHash);
-})();
+};
+
+/* ============================================================
+   INIT ON DOM READY
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  injectChrome();
+  initDropdowns();
+  initMobileMenu();
+  setActiveNavItem();
+  initBookingBar();
+  initHero();
+  initReveal();
+  initGalleryTabs();
+});
+
+/* ============================================================
+   HERO SLIDE BACKGROUND IMAGES — applied from data-bg attr
+   (avoids inline style= in HTML, keeping SOP compliant)
+   ============================================================ */
+(function () {
+  document.querySelectorAll('.hero__slide[data-bg]').forEach(function (slide) {
+    var bg = slide.getAttribute('data-bg');
+    if (bg) slide.style.backgroundImage = 'url("' + bg + '")';
+  });
+}());
