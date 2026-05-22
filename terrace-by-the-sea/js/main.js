@@ -9,7 +9,7 @@
 /* ============================================================
    CONSTANTS
    ============================================================ */
-// BASE path kept for reference; nav uses relative links
+const BASE   = '/concepts/terrace-by-the-sea'; // used for IMG paths
 const IMG    = `https://bofilltech.github.io${BASE}/img`;
 const BOOK_URL = 'https://terracebythesea.client.innroad.com/';
 
