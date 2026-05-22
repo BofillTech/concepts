@@ -9,7 +9,7 @@
 /* ============================================================
    CONSTANTS
    ============================================================ */
-const BASE   = '/concepts/terrace-by-the-sea';
+// BASE path kept for reference; nav uses relative links
 const IMG    = `https://bofilltech.github.io${BASE}/img`;
 const BOOK_URL = 'https://terracebythesea.client.innroad.com/';
 
@@ -24,41 +24,41 @@ const BOOK_URL = 'https://terracebythesea.client.innroad.com/';
 const buildNav = () => `
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header" role="banner" itemscope itemtype="https://schema.org/WPHeader">
-  <a href="${BASE}/" class="site-logo" aria-label="Terrace By The Sea — Home">
+  <a href="index.html" class="site-logo" aria-label="Terrace By The Sea — Home">
     <img src="${IMG}/logo-primary.png" alt="Terrace By The Sea — Ogunquit, Maine" class="site-logo__img" width="180" height="50">
   </a>
   <nav class="nav-primary" role="navigation" aria-label="Primary" itemscope itemtype="https://schema.org/SiteNavigationElement">
     <ul class="menu genesis-nav-menu menu-primary" role="menubar">
       <li class="menu-item menu-item-type-post_type menu-item-has-children" role="none">
-        <a href="${BASE}/buildings.html" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
+        <a href="buildings.html" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
           <span itemprop="name">Accommodations</span>
         </a>
         <ul class="sub-menu" role="menu" aria-label="Accommodations submenu">
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings.html" role="menuitem" itemprop="url"><span itemprop="name">All Buildings</span></a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings-main-inn.html" role="menuitem" itemprop="url"><span itemprop="name">The Main Inn</span></a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings-deluxe-motel.html" role="menuitem" itemprop="url"><span itemprop="name">Deluxe Motel</span></a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings-suites.html" role="menuitem" itemprop="url"><span itemprop="name">The Suites</span></a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings-side-motel-cottage.html" role="menuitem" itemprop="url"><span itemprop="name">Side Motel &amp; Cottage</span></a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/buildings-court-motel.html" role="menuitem" itemprop="url"><span itemprop="name">Court Motel</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings.html" role="menuitem" itemprop="url"><span itemprop="name">All Buildings</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings-main-inn.html" role="menuitem" itemprop="url"><span itemprop="name">The Main Inn</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings-deluxe-motel.html" role="menuitem" itemprop="url"><span itemprop="name">Deluxe Motel</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings-suites.html" role="menuitem" itemprop="url"><span itemprop="name">The Suites</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings-side-motel-cottage.html" role="menuitem" itemprop="url"><span itemprop="name">Side Motel &amp; Cottage</span></a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="buildings-court-motel.html" role="menuitem" itemprop="url"><span itemprop="name">Court Motel</span></a></li>
         </ul>
       </li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/amenities.html" role="menuitem" itemprop="url"><span itemprop="name">Amenities</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="amenities.html" role="menuitem" itemprop="url"><span itemprop="name">Amenities</span></a></li>
       <li class="menu-item menu-item-type-post_type menu-item-has-children" role="none">
-        <a href="${BASE}/gallery.html" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
+        <a href="gallery.html" role="menuitem" aria-haspopup="true" aria-expanded="false" itemprop="url">
           <span itemprop="name">Gallery</span>
         </a>
         <ul class="sub-menu" role="menu" aria-label="Gallery submenu">
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery.html#buildings" role="menuitem">Buildings</a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery.html#rooms" role="menuitem">Rooms</a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery.html#grounds" role="menuitem">Grounds</a></li>
-          <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gallery.html#video" role="menuitem">Video</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="gallery.html#buildings" role="menuitem">Buildings</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="gallery.html#rooms" role="menuitem">Rooms</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="gallery.html#grounds" role="menuitem">Grounds</a></li>
+          <li class="menu-item menu-item-type-post_type" role="none"><a href="gallery.html#video" role="menuitem">Video</a></li>
         </ul>
       </li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/attractions.html" role="menuitem" itemprop="url"><span itemprop="name">Attractions</span></a></li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/virtual-tour.html" role="menuitem" itemprop="url"><span itemprop="name">Virtual Tour</span></a></li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/gift-certificates.html" role="menuitem" itemprop="url"><span itemprop="name">Gift Certificates</span></a></li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/weddings.html" role="menuitem" itemprop="url"><span itemprop="name">Weddings</span></a></li>
-      <li class="menu-item menu-item-type-post_type" role="none"><a href="${BASE}/contact.html" role="menuitem" itemprop="url"><span itemprop="name">Contact</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="attractions.html" role="menuitem" itemprop="url"><span itemprop="name">Attractions</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="virtual-tour.html" role="menuitem" itemprop="url"><span itemprop="name">Virtual Tour</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="gift-certificates.html" role="menuitem" itemprop="url"><span itemprop="name">Gift Certificates</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="weddings.html" role="menuitem" itemprop="url"><span itemprop="name">Weddings</span></a></li>
+      <li class="menu-item menu-item-type-post_type" role="none"><a href="contact.html" role="menuitem" itemprop="url"><span itemprop="name">Contact</span></a></li>
     </ul>
   </nav>
   <div class="site-header__actions">
@@ -76,27 +76,27 @@ const buildMobileMenu = () => `
 <nav class="nav-secondary" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
   <span class="nav-secondary__heading" aria-hidden="true">Accommodations</span>
   <ul class="menu">
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings.html">All Buildings</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings-main-inn.html">The Main Inn</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings-deluxe-motel.html">Deluxe Motel</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings-suites.html">The Suites</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings-side-motel-cottage.html">Side Motel &amp; Cottage</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/buildings-court-motel.html">Court Motel</a></li>
-    <li class="menu-item" role="none"><a href="${BASE}/amenities.html">Amenities</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings.html">All Buildings</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings-main-inn.html">The Main Inn</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings-deluxe-motel.html">Deluxe Motel</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings-suites.html">The Suites</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings-side-motel-cottage.html">Side Motel &amp; Cottage</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="buildings-court-motel.html">Court Motel</a></li>
+    <li class="menu-item" role="none"><a href="amenities.html">Amenities</a></li>
   </ul>
   <span class="nav-secondary__heading" aria-hidden="true">Gallery</span>
   <ul class="menu">
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery.html#buildings">Buildings</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery.html#rooms">Rooms</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery.html#grounds">Grounds</a></li>
-    <li class="menu-item sub-menu-item" role="none"><a href="${BASE}/gallery.html#video">Video</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="gallery.html#buildings">Buildings</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="gallery.html#rooms">Rooms</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="gallery.html#grounds">Grounds</a></li>
+    <li class="menu-item sub-menu-item" role="none"><a href="gallery.html#video">Video</a></li>
   </ul>
   <ul class="menu">
-    <li class="menu-item" role="none"><a href="${BASE}/attractions.html">Attractions</a></li>
-    <li class="menu-item" role="none"><a href="${BASE}/virtual-tour.html">Virtual Tour</a></li>
-    <li class="menu-item" role="none"><a href="${BASE}/gift-certificates.html">Gift Certificates</a></li>
-    <li class="menu-item" role="none"><a href="${BASE}/weddings.html">Weddings</a></li>
-    <li class="menu-item" role="none"><a href="${BASE}/contact.html">Contact</a></li>
+    <li class="menu-item" role="none"><a href="attractions.html">Attractions</a></li>
+    <li class="menu-item" role="none"><a href="virtual-tour.html">Virtual Tour</a></li>
+    <li class="menu-item" role="none"><a href="gift-certificates.html">Gift Certificates</a></li>
+    <li class="menu-item" role="none"><a href="weddings.html">Weddings</a></li>
+    <li class="menu-item" role="none"><a href="contact.html">Contact</a></li>
     <li class="menu-item" role="none"><a href="tel:2076463232">207-646-3232</a></li>
     <li class="menu-item" role="none"><a href="${BOOK_URL}" target="_blank" rel="noopener">Book Now</a></li>
   </ul>
@@ -111,22 +111,22 @@ const buildFooter = () => `
   <div class="site-footer__col">
     <span class="site-footer__col-heading">Accommodations</span>
     <ul>
-      <li><a href="${BASE}/buildings-main-inn.html">The Main Inn</a></li>
-      <li><a href="${BASE}/buildings-deluxe-motel.html">Deluxe Motel</a></li>
-      <li><a href="${BASE}/buildings-side-motel-cottage.html">Side Motel &amp; Cottage</a></li>
-      <li><a href="${BASE}/buildings-court-motel.html">Court Motel</a></li>
-      <li><a href="${BASE}/buildings-suites.html">The Suites</a></li>
+      <li><a href="buildings-main-inn.html">The Main Inn</a></li>
+      <li><a href="buildings-deluxe-motel.html">Deluxe Motel</a></li>
+      <li><a href="buildings-side-motel-cottage.html">Side Motel &amp; Cottage</a></li>
+      <li><a href="buildings-court-motel.html">Court Motel</a></li>
+      <li><a href="buildings-suites.html">The Suites</a></li>
     </ul>
   </div>
   <div class="site-footer__col">
     <span class="site-footer__col-heading">Explore</span>
     <ul>
-      <li><a href="${BASE}/amenities.html">Amenities</a></li>
-      <li><a href="${BASE}/gallery.html">Gallery</a></li>
-      <li><a href="${BASE}/virtual-tour.html">Virtual Tour</a></li>
-      <li><a href="${BASE}/gift-certificates.html">Gift Certificates</a></li>
-      <li><a href="${BASE}/weddings.html">Weddings &amp; Events</a></li>
-      <li><a href="${BASE}/attractions.html">Nearby Attractions</a></li>
+      <li><a href="amenities.html">Amenities</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="virtual-tour.html">Virtual Tour</a></li>
+      <li><a href="gift-certificates.html">Gift Certificates</a></li>
+      <li><a href="weddings.html">Weddings &amp; Events</a></li>
+      <li><a href="attractions.html">Nearby Attractions</a></li>
     </ul>
   </div>
   <div class="site-footer__col">
