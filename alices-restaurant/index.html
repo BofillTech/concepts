@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alice's Restaurant &amp; Bar — White Bay, Jost Van Dyke</title>
+  <meta name="description" content="Beachfront Italian-Caribbean dining at the White Bay Beach Club on Jost Van Dyke, BVI. Home of the only wood-fired oven in the BVI. Get anything you want.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..900,0..100;1,9..144,300..900,0..100&family=Manrope:wght@300..800&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --sand:        #F6EDD9;
+      --sand-deep:   #EFE2C4;
+      --cream:       #FBF6EB;
+      --paper:       #FDF9EF;
+      --ink:         #1F2A28;
+      --ink-soft:    #3D4A47;
+      --teal:        #1F8085;
+      --teal-deep:   #155F63;
+      --teal-light:  #8BC5C7;
+      --terracotta:  #C45D3F;
+      --terracotta-deep: #9B4327;
+      --coral:       #E8896B;
+      --olive:       #5C6E3C;
+      --gold:        #D4A04C;
+      --shell:       #F4E4D0;
+
+      --ff-display:  "Fraunces", ui-serif, Georgia, serif;
+      --ff-body:     "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --ff-script:   "Caveat", "Brush Script MT", cursive;
+
+      --gutter:      clamp(1.25rem, 4vw, 3rem);
+      --maxw:        1320px;
+      --radius-soft: 14px;
+      --radius-pill: 999px;
+
+      --shadow-soft: 0 10px 30px -12px rgba(31, 42, 40, 0.18);
+      --shadow-lift: 0 24px 60px -20px rgba(31, 42, 40, 0.30);
+    }
+
+    /* ===== RESETS ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--ff-body);
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.6;
+      font-size: 17px;
+      font-weight: 400;
+      overflow-x: hidden;
+      /* paper texture */
+      background-image:
+        radial-gradient(circle at 20% 10%, rgba(196, 93, 63, 0.04) 0, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(31, 128, 133, 0.04) 0, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.85' numOctaves='2' seed='4' /%3E%3CfeColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.4 0 0 0 0 0.25 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+    ::selection { background: var(--terracotta); color: var(--paper); }
+
+    /* ===== SKIP LINK ===== */
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.75rem 1rem;
+      z-index: 9999;
+    }
+    .skip-link:focus { left: 1rem; top: 1rem; }
+
+    /* ===== LAYOUT HELPERS ===== */
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      padding-inline: var(--gutter);
+    }
+
+    /* ===== TYPOGRAPHY ===== */
+    h1, h2, h3, h4 {
+      font-family: var(--ff-display);
+      font-weight: 500;
+      font-variation-settings: "opsz" 144, "SOFT" 50;
+      letter-spacing: -0.015em;
+      line-height: 1.02;
+      margin: 0;
+      color: var(--ink);
+    }
+    .eyebrow {
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+    }
+    .script {
+      font-family: var(--ff-script);
+      font-weight: 500;
+      font-style: normal;
+      letter-spacing: -0.005em;
+      color: var(--terracotta);
+    }
+    .italic {
+      font-style: italic;
+      font-variation-settings: "opsz" 144, "SOFT" 100;
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      padding: 1rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    .nav.scrolled {
+      background: rgba(251, 246, 235, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 rgba(31, 42, 40, 0.07);
+      padding-top: 0.7rem;
+      padding-bottom: 0.7rem;
+    }
+    /* Always-on translucent nav backdrop so text never collides */
+    .nav__shade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(31, 42, 40, 0.55) 0%, rgba(31, 42, 40, 0) 100%);
+      z-index: -1;
+      transition: opacity 0.35s ease;
+    }
+    .nav.scrolled .nav__shade { opacity: 0; }
+    .nav__brand, .nav__links, .nav__cta { position: relative; z-index: 1; }
+    .nav:not(.scrolled) .nav__brand .mark { color: var(--coral); }
+    .nav:not(.scrolled) .nav__brand .sub { color: var(--shell); }
+    .nav:not(.scrolled) .nav__links a { color: var(--shell); }
+    .nav:not(.scrolled) .nav__links a:hover { color: var(--paper); }
+    .nav:not(.scrolled) .nav__links a::after { background: var(--coral); }
+    .nav:not(.scrolled) .nav__phone { color: var(--shell); }
+    .nav:not(.scrolled) .nav__phone:hover { color: var(--paper); }
+    .nav:not(.scrolled) .nav__toggle span { background: var(--shell); }
+    .nav__brand {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .nav__brand .mark {
+      font-family: var(--ff-script);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--terracotta);
+      line-height: 0.8;
+    }
+    .nav__brand .sub {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.05em;
+    }
+    .nav.scrolled .nav__brand .mark { color: var(--terracotta); }
+
+    .nav__links {
+      display: none;
+      gap: 1.75rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .nav__links a {
+      position: relative;
+      padding: 0.35rem 0;
+      color: var(--ink);
+      transition: color 0.2s ease;
+    }
+    .nav__links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--terracotta);
+      transition: width 0.25s ease;
+    }
+    .nav__links a:hover::after { width: 100%; }
+    .nav__links a:hover { color: var(--terracotta); }
+
+    .nav__cta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav__phone {
+      display: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--ink);
+      letter-spacing: 0.01em;
+    }
+    .nav__phone:hover { color: var(--terracotta); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.5rem;
+      background: var(--terracotta);
+      color: var(--paper);
+      font-family: var(--ff-body);
+      font-weight: 600;
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: var(--radius-pill);
+      transition: transform 0.2s ease, background 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: var(--shadow-soft);
+      white-space: nowrap;
+    }
+    .btn:hover {
+      background: var(--terracotta-deep);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lift);
+    }
+    .btn--ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1.5px solid var(--ink);
+      box-shadow: none;
+    }
+    .btn--ghost:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+    .btn--small { padding: 0.6rem 1.1rem; font-size: 0.78rem; }
+    .btn--large { padding: 1.1rem 2.25rem; font-size: 1rem; }
+
+    /* Mobile menu trigger */
+    .nav__toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 0.5rem;
+    }
+    .nav__toggle span {
+      width: 24px;
+      height: 1.8px;
+      background: var(--ink);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav__toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav__toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      padding: 5rem var(--gutter) 2rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(.7,0,.3,1);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .mobile-menu.open { transform: translateX(0); }
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(31, 42, 40, 0.08);
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--terracotta); padding-left: 0.5rem; }
+    .mobile-menu__foot {
+      margin-top: auto;
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.92rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      padding: 9rem var(--gutter) 5rem;
+      color: var(--paper);
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0f/dc/beachfront-dining.jpg?w=1800&h=1200&s=1");
+      background-size: cover;
+      background-position: center 60%;
+      filter: saturate(1.05);
+      z-index: 0;
+    }
+    .hero__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(31, 42, 40, 0.15) 0%, rgba(31, 42, 40, 0.55) 70%, rgba(31, 42, 40, 0.75) 100%);
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: var(--maxw);
+      margin-inline: auto;
+      display: grid;
+      gap: 2rem;
+    }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--shell);
+    }
+    .hero__eyebrow::before {
+      content: "";
+      width: 40px;
+      height: 1px;
+      background: var(--shell);
+      display: inline-block;
+    }
+    .hero__title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 9vw, 8.5rem);
+      font-weight: 400;
+      line-height: 0.95;
+      color: var(--paper);
+      max-width: 14ch;
+      letter-spacing: -0.03em;
+      text-wrap: balance;
+      font-variation-settings: "opsz" 144, "SOFT" 80;
+    }
+    .hero__title .you-want {
+      font-family: var(--ff-script);
+      font-style: normal;
+      color: var(--coral);
+      font-size: 1.05em;
+      letter-spacing: 0;
+      display: inline-block;
+      transform: translateY(0.05em) rotate(-2deg);
+      font-weight: 500;
+    }
+    .hero__sub {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      color: var(--shell);
+      max-width: 38ch;
+      line-height: 1.4;
+    }
+    .hero__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+    .hero__ctas .btn { background: var(--paper); color: var(--ink); }
+    .hero__ctas .btn:hover { background: var(--coral); color: var(--paper); }
+    .hero__ctas .btn--outline {
+      background: transparent;
+      color: var(--paper);
+      border: 1.5px solid var(--paper);
+      box-shadow: none;
+    }
+    .hero__ctas .btn--outline:hover { background: var(--paper); color: var(--ink); }
+
+    .hero__meta {
+      position: absolute;
+      bottom: 1.5rem;
+      right: var(--gutter);
+      z-index: 2;
+      display: none;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.3rem;
+      color: var(--shell);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero__meta .stars { color: var(--gold); letter-spacing: 0.2em; font-size: 1rem; }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: var(--shell);
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      opacity: 0.65;
+      animation: bob 2.4s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    /* ===== SECTION SCAFFOLDING ===== */
+    section { padding: clamp(4.5rem, 9vw, 8rem) 0; position: relative; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal.delay-1 { transition-delay: 0.08s; }
+    .reveal.delay-2 { transition-delay: 0.16s; }
+    .reveal.delay-3 { transition-delay: 0.24s; }
+
+    /* ===== STORY / WELCOME ===== */
+    .story {
+      background: var(--cream);
+    }
+    .story__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .story__copy .eyebrow { margin-bottom: 1.2rem; display: block; }
+    .story__copy h2 {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      max-width: 14ch;
+      margin-bottom: 1.5rem;
+    }
+    .story__copy h2 .island {
+      font-style: italic;
+      color: var(--teal);
+      font-weight: 400;
+    }
+    .story__copy p {
+      font-size: clamp(1rem, 1.4vw, 1.13rem);
+      color: var(--ink-soft);
+      max-width: 52ch;
+      margin: 0 0 1.2rem;
+    }
+    .story__copy p:last-of-type { margin-bottom: 1.8rem; }
+    .story__sig {
+      font-family: var(--ff-script);
+      color: var(--terracotta);
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .story__sig small {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+    }
+
+    .story__art {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-width: 480px;
+      margin-inline: auto;
+      margin-top: 2rem;
+    }
+    .story__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-soft);
+      box-shadow: var(--shadow-lift);
+    }
+    .story__art::before {
+      content: "";
+      position: absolute;
+      inset: 18px -18px -18px 18px;
+      border: 1.5px solid var(--terracotta);
+      border-radius: var(--radius-soft);
+      z-index: -1;
+    }
+    .story__sticker {
+      position: absolute;
+      top: -32px;
+      right: -8px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: var(--paper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--ff-script);
+      font-size: 1.25rem;
+      line-height: 1.05;
+      padding: 1rem;
+      transform: rotate(-12deg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* ===== OVEN FEATURE ===== */
+    .oven {
+      background: var(--ink);
+      color: var(--shell);
+      overflow: hidden;
+    }
+    .oven::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 80% 30%, rgba(196, 93, 63, 0.22) 0, transparent 50%),
+        radial-gradient(circle at 10% 80%, rgba(232, 137, 107, 0.10) 0, transparent 45%);
+      pointer-events: none;
+    }
+    .oven__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+    }
+    .oven .eyebrow { color: var(--coral); }
+    .oven h2 {
+      color: var(--paper);
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      margin: 1rem 0 1.5rem;
+      font-weight: 400;
+    }
+    .oven h2 em {
+      font-style: italic;
+      color: var(--coral);
+      font-weight: 400;
+    }
+    .oven p {
+      color: var(--shell);
+      opacity: 0.88;
+      font-size: clamp(1rem, 1.3vw, 1.1rem);
+      max-width: 50ch;
+      margin: 0 0 1rem;
+    }
+    .oven__stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(244, 228, 208, 0.18);
+    }
+    .oven__stat {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .oven__stat .num {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 400;
+      color: var(--paper);
+      line-height: 1;
+      font-variation-settings: "opsz" 144, "SOFT" 80;
+    }
+    .oven__stat .label {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--coral);
+    }
+    .oven__art {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .oven__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-soft);
+    }
+    .oven__art::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-soft);
+      box-shadow: inset 0 0 100px rgba(196, 93, 63, 0.3);
+      pointer-events: none;
+    }
+    .oven__caption {
+      position: absolute;
+      bottom: -18px;
+      left: -12px;
+      background: var(--coral);
+      color: var(--ink);
+      padding: 0.7rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--ff-script);
+      font-size: 1.3rem;
+      transform: rotate(-3deg);
+      box-shadow: var(--shadow-soft);
+      line-height: 1;
+    }
+
+    /* ===== MENU CATEGORIES ===== */
+    .menu {
+      background: var(--cream);
+    }
+    .menu__head {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+    .menu__head h2 {
+      font-size: clamp(2.3rem, 6vw, 4.25rem);
+      margin: 1rem 0 1rem;
+    }
+    .menu__head h2 .crave { color: var(--terracotta); font-style: italic; font-weight: 400; }
+    .menu__head p {
+      color: var(--ink-soft);
+      font-size: 1.05rem;
+      max-width: 50ch;
+      margin-inline: auto;
+    }
+    .menu__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    .menu__card {
+      position: relative;
+      background: var(--paper);
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      isolation: isolate;
+    }
+    .menu__card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lift);
+    }
+    .menu__card-img {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      position: relative;
+    }
+    .menu__card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(.2,.6,.2,1);
+    }
+    .menu__card:hover .menu__card-img img { transform: scale(1.06); }
+    .menu__card-num {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--paper);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      mix-blend-mode: difference;
+      opacity: 0.85;
+    }
+    .menu__card-body {
+      padding: 1.6rem 1.5rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .menu__card-tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      font-weight: 600;
+    }
+    .menu__card h3 {
+      font-size: 1.7rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--ink);
+    }
+    .menu__card p {
+      color: var(--ink-soft);
+      font-size: 0.96rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* ===== QUOTE BAND ===== */
+    .band {
+      background: var(--terracotta);
+      color: var(--paper);
+      padding: clamp(3rem, 6vw, 5rem) 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .band::before, .band::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 60vw;
+      height: 60vw;
+      max-width: 600px;
+      max-height: 600px;
+      border-radius: 50%;
+      background: rgba(244, 228, 208, 0.06);
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .band::before { left: -30%; }
+    .band::after { right: -30%; }
+    .band__inner { position: relative; z-index: 2; }
+    .band .marquee-text {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+      font-weight: 300;
+      line-height: 1.3;
+      max-width: 28ch;
+      margin: 0 auto 1.5rem;
+      text-wrap: balance;
+    }
+    .band .marquee-text::before { content: "\201C"; opacity: 0.6; margin-right: 0.1em; }
+    .band .marquee-text::after { content: "\201D"; opacity: 0.6; margin-left: 0.1em; }
+    .band__attr {
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--shell);
+    }
+    .band__attr .stars {
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.35rem;
+      display: block;
+      font-size: 1rem;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      background: var(--sand);
+      padding-bottom: 0;
+    }
+    .gallery__head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+    .gallery__head h2 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      max-width: 16ch;
+    }
+    .gallery__head h2 .scene { font-style: italic; color: var(--teal); font-weight: 400; }
+    .gallery__strip {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 0 var(--gutter) 4rem;
+      margin-inline: calc(var(--gutter) * -1);
+      scrollbar-width: none;
+    }
+    .gallery__strip::-webkit-scrollbar { display: none; }
+    .gallery__item {
+      flex: 0 0 auto;
+      width: 78vw;
+      max-width: 480px;
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      scroll-snap-align: start;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+    }
+    .gallery__item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(.2,.6,.2,1);
+    }
+    .gallery__item:hover img { transform: scale(1.04); }
+    .gallery__item:nth-child(even) { aspect-ratio: 4 / 3; align-self: end; }
+
+    /* ===== LOCATION / HOURS ===== */
+    .location {
+      background: var(--paper);
+    }
+    .location__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .location__copy h2 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      margin: 1rem 0 1.5rem;
+      max-width: 12ch;
+    }
+    .location__copy h2 .here { color: var(--teal); font-style: italic; font-weight: 400; }
+    .location__copy p {
+      color: var(--ink-soft);
+      max-width: 48ch;
+      margin: 0 0 1.5rem;
+    }
+    .location__details {
+      display: grid;
+      gap: 1.75rem;
+      margin: 2.5rem 0;
+    }
+    .detail {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .detail__icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--shell);
+      display: grid;
+      place-items: center;
+      color: var(--terracotta);
+    }
+    .detail__icon svg { width: 20px; height: 20px; }
+    .detail__label {
+      font-size: 0.76rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 0.2rem;
+      font-weight: 600;
+    }
+    .detail__value {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--ink);
+      line-height: 1.3;
+      font-weight: 400;
+    }
+    .detail__value a:hover { color: var(--terracotta); }
+
+    .location__art {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-width: 540px;
+      margin-inline: auto;
+      width: 100%;
+    }
+    .location__art img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-soft);
+    }
+    .location__art-tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      background: var(--paper);
+      color: var(--ink);
+      padding: 0.7rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-family: var(--ff-script);
+      font-size: 1.2rem;
+      line-height: 1;
+      box-shadow: var(--shadow-soft);
+    }
+    .location__art-tag::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--terracotta);
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.85); }
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final {
+      position: relative;
+      padding: clamp(5rem, 10vw, 9rem) 0;
+      color: var(--paper);
+      text-align: center;
+      overflow: hidden;
+    }
+    .final__bg {
+      position: absolute;
+      inset: 0;
+      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/fd/97/a6/caption.jpg?w=1800&h=1200&s=1");
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+    }
+    .final__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(155, 67, 39, 0.7), rgba(31, 42, 40, 0.65));
+    }
+    .final__inner {
+      position: relative;
+      z-index: 2;
+    }
+    .final .eyebrow { color: var(--shell); }
+    .final h2 {
+      color: var(--paper);
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      margin: 1.25rem auto 1.5rem;
+      max-width: 14ch;
+      font-weight: 400;
+    }
+    .final h2 .reserve {
+      font-family: var(--ff-script);
+      color: var(--coral);
+      font-weight: 500;
+      font-style: normal;
+      letter-spacing: 0;
+    }
+    .final p {
+      color: var(--shell);
+      font-size: 1.1rem;
+      max-width: 44ch;
+      margin: 0 auto 2.25rem;
+      font-style: italic;
+      font-family: var(--ff-display);
+      font-weight: 300;
+    }
+    .final__ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .final__ctas .btn {
+      background: var(--paper);
+      color: var(--ink);
+    }
+    .final__ctas .btn:hover { background: var(--coral); color: var(--paper); }
+    .final__ctas .btn--outline {
+      background: transparent;
+      color: var(--paper);
+      border: 1.5px solid var(--paper);
+      box-shadow: none;
+    }
+    .final__ctas .btn--outline:hover { background: var(--paper); color: var(--ink); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--ink);
+      color: var(--shell);
+      padding: 4rem 0 8rem;
+      font-size: 0.92rem;
+    }
+    .footer__top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(244, 228, 208, 0.12);
+    }
+    .footer__brand .mark {
+      font-family: var(--ff-script);
+      font-size: 3.5rem;
+      color: var(--coral);
+      line-height: 0.9;
+      display: block;
+    }
+    .footer__brand .sub {
+      font-family: var(--ff-display);
+      font-style: italic;
+      letter-spacing: 0.1em;
+      color: var(--shell);
+      opacity: 0.7;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      display: block;
+    }
+    .footer__brand p {
+      margin-top: 1.25rem;
+      max-width: 32ch;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .footer__col h4 {
+      font-family: var(--ff-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1.1rem;
+    }
+    .footer__col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+    .footer__col a:hover { color: var(--coral); }
+    .footer__col p { margin: 0; opacity: 0.85; line-height: 1.6; }
+    .footer__bottom {
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+      font-size: 0.82rem;
+      opacity: 0.65;
+    }
+    .footer__bottom a:hover { color: var(--coral); opacity: 1; }
+    .footer__socials {
+      display: flex;
+      gap: 0.85rem;
+    }
+    .footer__socials a {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      background: rgba(244, 228, 208, 0.08);
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer__socials a:hover { background: var(--coral); color: var(--ink); }
+    .footer__socials svg { width: 16px; height: 16px; }
+
+    /* ===== BOOKING BAR (mobile) ===== */
+    .book-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--ink);
+      color: var(--paper);
+      padding: 0.7rem var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      z-index: 80;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.18);
+    }
+    .book-bar__label {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 0.95rem;
+    }
+    .book-bar__label small {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--coral);
+      font-style: normal;
+      margin-bottom: 0.1rem;
+    }
+    .book-bar .btn { padding: 0.7rem 1.1rem; font-size: 0.8rem; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 640px) {
+      .menu__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 768px) {
+      .nav__links { display: flex; }
+      .nav__phone { display: inline-block; }
+      .nav__toggle { display: none; }
+      .hero__meta { display: flex; }
+      .story__inner {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 5rem;
+      }
+      .oven__inner {
+        grid-template-columns: 1fr 1.1fr;
+        gap: 5rem;
+      }
+      .oven__stats { grid-template-columns: repeat(4, 1fr); }
+      .location__inner {
+        grid-template-columns: 1.1fr 1fr;
+        gap: 5rem;
+      }
+      .footer__top {
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 3rem;
+      }
+      .footer__bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .book-bar { display: none; }
+      .footer { padding-bottom: 4rem; }
+    }
+    @media (min-width: 1024px) {
+      .menu__grid { grid-template-columns: repeat(4, 1fr); }
+      .gallery__item { width: 32vw; max-width: 420px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav" aria-label="Primary">
+    <div class="nav__shade" aria-hidden="true"></div>
+    <a href="#" class="nav__brand" aria-label="Alice's Restaurant and Bar">
+      <span class="mark">Alice's</span>
+      <span class="sub">Restaurant &amp; Bar</span>
+    </a>
+    <ul class="nav__links" role="list">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#oven">The Oven</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#location">Find Us</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="tel:+12843467665" class="nav__phone">+1 284 346 7665</a>
+      <a href="#reserve" class="btn btn--small">Reserve</a>
+      <button class="nav__toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#menu">Menu</a>
+    <a href="#oven">The Oven</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Find Us</a>
+    <a href="#reserve">Reserve a Table</a>
+    <div class="mobile-menu__foot">
+      <span>White Bay Beach Club</span>
+      <span>Jost Van Dyke, BVI</span>
+      <a href="tel:+12843467665"><strong>+1 284 346 7665</strong></a>
+    </div>
+  </div>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" aria-label="Welcome">
+      <div class="hero__bg" role="img" aria-label="Beachfront dining at Alice's Restaurant on White Bay"></div>
+      <div class="hero__inner">
+        <span class="hero__eyebrow">White Bay Beach Club · Jost Van Dyke · BVI</span>
+        <h1 class="hero__title">Get anything <span class="you-want">you want</span>.</h1>
+        <p class="hero__sub">Beachfront Italian-Caribbean cooking under coconut palms — and the only wood-fired oven in the BVI.</p>
+        <div class="hero__ctas">
+          <a href="#reserve" class="btn btn--large">Reserve a Table</a>
+          <a href="#menu" class="btn btn--outline btn--large">See the Menu</a>
+        </div>
+      </div>
+      <div class="hero__meta" aria-label="Tripadvisor rating">
+        <span class="stars">★ ★ ★ ★ ★</span>
+        <span>4.9 · Travelers' Choice</span>
+      </div>
+      <span class="hero__scroll" aria-hidden="true">Scroll</span>
+    </section>
+
+    <!-- STORY -->
+    <section class="story" id="story" aria-labelledby="story-title">
+      <div class="wrap">
+        <div class="story__inner">
+          <div class="story__copy reveal">
+            <span class="eyebrow">On The Last Virgin Island</span>
+            <h2 id="story-title">A little Italy on a <span class="island">quiet island</span>.</h2>
+            <p>Tucked into the corner of White Bay at the Beach Club, Alice's is the kind of place sailors moor up for and barefoot guests stay all afternoon. Caribbean breeze, an Italian-leaning kitchen, and a menu that moves with whatever came in off the boats and out of the gardens.</p>
+            <p>We source on-island first — even the wood for the oven is gathered locally — and the rest comes straight from Italy. It's a small place with a big point of view: come hungry, stay late, leave full.</p>
+            <span class="story__sig">— from the team at Alice's<small>White Bay, Jost Van Dyke</small></span>
+          </div>
+          <div class="story__art reveal delay-2">
+            <span class="story__sticker">Open<br>12&ndash;9 daily</span>
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/9b/d2/a8/caption.jpg?w=1100&h=1400&s=1" alt="Wood-fired pizza with a sweeping view of White Bay" referrerpolicy="no-referrer" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVEN FEATURE -->
+    <section class="oven" id="oven" aria-labelledby="oven-title">
+      <div class="wrap">
+        <div class="oven__inner">
+          <div class="oven__art reveal">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0b/fb/handbuilt-wood-fired.jpg?w=1100&h=1100&s=1" alt="The handbuilt wood-fired oven at Alice's" referrerpolicy="no-referrer" loading="lazy">
+            <span class="oven__caption">handbuilt &amp; hand-fed</span>
+          </div>
+          <div class="oven__copy reveal delay-2">
+            <span class="eyebrow">The Oven</span>
+            <h2 id="oven-title">The only <em>wood-fired</em> oven in the BVI.</h2>
+            <p>Built by hand and powered by locally-gathered wood, our oven runs hot enough to char a sourdough crust in ninety seconds and tender enough to cradle a two-pound lobster tail. Same fire, two very different stories.</p>
+            <p>It sits under solar panels that run the rest of the kitchen, so the meal you're eating leaves about as small a footprint as a meal can. Pizza for lunch, lobster for dinner, sustainability for everyone.</p>
+            <div class="oven__stats">
+              <div class="oven__stat">
+                <span class="num">90s</span>
+                <span class="label">Pizza in &amp; out</span>
+              </div>
+              <div class="oven__stat">
+                <span class="num">2lb</span>
+                <span class="label">Whole lobster tails</span>
+              </div>
+              <div class="oven__stat">
+                <span class="num">100%</span>
+                <span class="label">Solar-powered kitchen</span>
+              </div>
+              <div class="oven__stat">
+                <span class="num">1</span>
+                <span class="label">Of its kind on island</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="wrap">
+        <div class="menu__head reveal">
+          <span class="eyebrow">The Kitchen</span>
+          <h2 id="menu-title">Eat what you're <span class="crave">craving</span>.</h2>
+          <p>The menu shifts with the boats and the gardens. These are the corners of it you can always count on.</p>
+        </div>
+        <div class="menu__grid">
+          <article class="menu__card reveal">
+            <div class="menu__card-img">
+              <span class="menu__card-num">No. 01</span>
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2e/caption.jpg?w=900&h=700&s=1" alt="Wood-fired pizza" referrerpolicy="no-referrer" loading="lazy">
+            </div>
+            <div class="menu__card-body">
+              <span class="menu__card-tag">Wood-Fired</span>
+              <h3>Pizza, properly</h3>
+              <p>Sourdough crust, San Marzano tomatoes, ingredients flown in from Italy and finished on island. Prosciutto, onion &amp; pineapple is the local heretic-favorite.</p>
+            </div>
+          </article>
+          <article class="menu__card reveal delay-1">
+            <div class="menu__card-img">
+              <span class="menu__card-num">No. 02</span>
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/5f/8d/a6/caption.jpg?w=900&h=700&s=1" alt="Grilled Mahi Mahi" referrerpolicy="no-referrer" loading="lazy">
+            </div>
+            <div class="menu__card-body">
+              <span class="menu__card-tag">From the Boats</span>
+              <h3>Sea, plated</h3>
+              <p>Grilled mahi, garlic shrimp, whole-roasted snapper, two-pound lobster from the oven. Whatever the line brought in is what's on the board today.</p>
+            </div>
+          </article>
+          <article class="menu__card reveal delay-2">
+            <div class="menu__card-img">
+              <span class="menu__card-num">No. 03</span>
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/57/70/2c/caption.jpg?w=900&h=700&s=1" alt="Cocktails at Alice's" referrerpolicy="no-referrer" loading="lazy">
+            </div>
+            <div class="menu__card-body">
+              <span class="menu__card-tag">Full Bar</span>
+              <h3>Cocktails &amp; cold ones</h3>
+              <p>Painkillers and rum punches, espresso martinis with island twists, an actual wine list. We pour with the sunset in mind.</p>
+            </div>
+          </article>
+          <article class="menu__card reveal delay-3">
+            <div class="menu__card-img">
+              <span class="menu__card-num">No. 04</span>
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/9b/d2/a7/caption.jpg?w=900&h=700&s=1" alt="Key lime pie dessert" referrerpolicy="no-referrer" loading="lazy">
+            </div>
+            <div class="menu__card-body">
+              <span class="menu__card-tag">The Last Word</span>
+              <h3>Sweet finishes</h3>
+              <p>Key lime pie, tiramisu, whatever the kitchen felt like making this morning. Worth saving room.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEW BAND -->
+    <section class="band" aria-label="Guest review">
+      <div class="wrap">
+        <div class="band__inner reveal">
+          <p class="marquee-text">Pizza with the most beautiful view. The kind of place that makes your whole trip better — we left already wishing we could go back.</p>
+          <div class="band__attr">
+            <span class="stars">★ ★ ★ ★ ★</span>
+            Shoshi B · Tripadvisor
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <div class="gallery__head reveal">
+          <span class="eyebrow">A Few Frames</span>
+          <h2 id="gallery-title">The <span class="scene">scene</span>, more or less.</h2>
+        </div>
+      </div>
+      <div class="gallery__strip" role="list">
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/9d/14/c5/caption.jpg?w=900&h=1200&s=1" alt="Beachfront dining at Alice's" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/9d/14/c6/caption.jpg?w=1200&h=900&s=1" alt="The bar and dining area" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/1f/cc/89/caption.jpg?w=900&h=1200&s=1" alt="Fresh fish prepared three ways" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2f/caption.jpg?w=1200&h=900&s=1" alt="Wood-fired pizza fresh out of the oven" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/30/caption.jpg?w=900&h=1200&s=1" alt="A plate of pasta with island view" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/5f/8d/9d/caption.jpg?w=1200&h=900&s=1" alt="Garlic shrimp at Alice's" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section class="location" id="location" aria-labelledby="location-title">
+      <div class="wrap">
+        <div class="location__inner">
+          <div class="location__copy reveal">
+            <span class="eyebrow">Find Us</span>
+            <h2 id="location-title">Right <span class="here">here</span>, on the sand.</h2>
+            <p>We're at the White Bay Beach Club, on the quiet end of White Bay. Wade in from the boat, taxi over from Great Harbour, or walk down from the villas. Either way, you'll know it when you see it.</p>
+            <div class="location__details">
+              <div class="detail">
+                <div class="detail__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <div class="detail__label">The Spot</div>
+                  <div class="detail__value">White Bay Belle Vue<br>VG1160 Jost Van Dyke, BVI</div>
+                </div>
+              </div>
+              <div class="detail">
+                <div class="detail__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <div class="detail__label">Open Daily</div>
+                  <div class="detail__value">11:30am — 10:00pm<br><small style="font-family: var(--ff-body); font-style: normal; font-size: 0.82rem; color: var(--ink-soft); letter-spacing: 0;">Hours vary seasonally — call ahead</small></div>
+                </div>
+              </div>
+              <div class="detail">
+                <div class="detail__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <div class="detail__label">Say Hi</div>
+                  <div class="detail__value">
+                    <a href="tel:+12843467665">+1 (284) 346-7665</a><br>
+                    <a href="mailto:alices@jostvandyke.com" style="font-size: 0.95rem;">alices@jostvandyke.com</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="#reserve" class="btn btn--large">Request a Table</a>
+          </div>
+          <div class="location__art reveal delay-2">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7b/cb/13/white-bay-beach.jpg?w=1100&h=1400&s=1" alt="White Bay beach, Jost Van Dyke" referrerpolicy="no-referrer" loading="lazy">
+            <span class="location__art-tag">White Bay, BVI</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="final" id="reserve" aria-labelledby="reserve-title">
+      <div class="final__bg" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="final__inner reveal">
+          <span class="eyebrow">Save Yourself a Seat</span>
+          <h2 id="reserve-title">Come hungry. <br><span class="reserve">Stay late.</span></h2>
+          <p>Pizza for two, the whole crew, or a wedding on the beach — we've done all of it. Tell us what you're up to and we'll make it work.</p>
+          <div class="final__ctas">
+            <a href="tel:+12843467665" class="btn btn--large">Call +1 (284) 346-7665</a>
+            <a href="mailto:alices@jostvandyke.com?subject=Reservation%20Request" class="btn btn--outline btn--large">Email Reservations</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <span class="mark">Alice's</span>
+          <span class="sub">Restaurant &amp; Bar</span>
+          <p>Beachfront Italian-Caribbean dining at the private White Bay Beach Club on Jost Van Dyke, BVI.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Visit</h4>
+          <ul role="list">
+            <li>White Bay Belle Vue</li>
+            <li>VG1160 Jost Van Dyke</li>
+            <li>British Virgin Islands</li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Reach Us</h4>
+          <ul role="list">
+            <li><a href="tel:+12843467665">+1 (284) 346-7665</a></li>
+            <li><a href="mailto:alices@jostvandyke.com">alices@jostvandyke.com</a></li>
+            <li>Open 11:30am — 10:00pm</li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Wander</h4>
+          <ul role="list">
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#oven">The Oven</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="https://www.jostvandyke.com" target="_blank" rel="noopener">White Bay Villas</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span>© 2026 Alice's Restaurant &amp; Bar · Powered by sunshine.</span>
+        <div class="footer__socials" aria-label="Social media">
+          <a href="https://www.facebook.com/WhiteBayVillas/" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88V14.9H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.9h-2.33v6.98A10 10 0 0 0 22 12"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.tripadvisor.com/Restaurant_Review-g580449-d25917576-Reviews-Alice_s_Restaurant_Bar-Jost_Van_Dyke_British_Virgin_Islands.html" aria-label="Tripadvisor" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 16c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z" opacity="0.5"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE BOOKING BAR -->
+  <div class="book-bar" aria-label="Quick reserve">
+    <div class="book-bar__label">
+      <small>Open 11:30 – 10</small>
+      Get a table tonight
+    </div>
+    <a href="#reserve" class="btn">Reserve</a>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Sticky nav background on scroll
+      const nav = document.getElementById('nav');
+      const onScroll = function () {
+        if (window.scrollY > 30) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      // Mobile menu toggle
+      const toggle = document.querySelector('.nav__toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', function () {
+          const open = menu.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+          document.body.style.overflow = open ? 'hidden' : '';
+        });
+        menu.querySelectorAll('a').forEach(function (link) {
+          link.addEventListener('click', function () {
+            menu.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          });
+        });
+      }
+
+      // Scroll reveal
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      }
+    })();
+  </script>
+</body>
+</html>
