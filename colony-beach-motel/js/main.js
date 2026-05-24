@@ -141,4 +141,71 @@
     revealTargets.forEach((el) => observer.observe(el));
   }
 
+  // --------------------------------------------
+  // 5. HERO SLIDER — auto-rotating with crossfade
+  // --------------------------------------------
+  const slides = document.querySelectorAll('.hero__slide');
+  const dots   = document.querySelectorAll('.hero__dot');
+  const SLIDE_INTERVAL = 6000; // 6 seconds per slide
+
+  if (slides.length > 1 && dots.length === slides.length) {
+    let currentIndex = 0;
+    let slideTimer   = null;
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const goToSlide = (nextIndex) => {
+      if (nextIndex === currentIndex) return;
+      // Update slides
+      slides[currentIndex].classList.remove('is-active');
+      slides[currentIndex].setAttribute('aria-hidden', 'true');
+      slides[nextIndex].classList.add('is-active');
+      slides[nextIndex].setAttribute('aria-hidden', 'false');
+      // Update dots
+      dots[currentIndex].classList.remove('is-active');
+      dots[currentIndex].setAttribute('aria-selected', 'false');
+      dots[nextIndex].classList.add('is-active');
+      dots[nextIndex].setAttribute('aria-selected', 'true');
+      currentIndex = nextIndex;
+    };
+
+    const advance = () => {
+      const next = (currentIndex + 1) % slides.length;
+      goToSlide(next);
+    };
+
+    const startAutoplay = () => {
+      if (prefersReducedMotion) return;
+      stopAutoplay();
+      slideTimer = window.setInterval(advance, SLIDE_INTERVAL);
+    };
+
+    const stopAutoplay = () => {
+      if (slideTimer !== null) {
+        window.clearInterval(slideTimer);
+        slideTimer = null;
+      }
+    };
+
+    // Wire dot clicks
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goToSlide(i);
+        startAutoplay(); // restart timer so user gets full interval after manual change
+      });
+    });
+
+    // Pause when tab is hidden, resume when visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    // Start
+    startAutoplay();
+  }
+
 })();
