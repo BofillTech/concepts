@@ -347,7 +347,7 @@
     .hero__bg {
       position: absolute;
       inset: 0;
-      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0f/dc/beachfront-dining.jpg?w=1800&h=1200&s=1");
+      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0f/dc/beachfront-dining.jpg?w=2400&h=1500&s=1");
       background-size: cover;
       background-position: center 60%;
       filter: saturate(1.05);
@@ -972,7 +972,7 @@
     .final__bg {
       position: absolute;
       inset: 0;
-      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/fd/97/a6/caption.jpg?w=1800&h=1200&s=1");
+      background-image: url("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/fd/97/a6/caption.jpg?w=2400&h=1500&s=1");
       background-size: cover;
       background-position: center;
       z-index: 0;
@@ -1146,6 +1146,207 @@
     }
     .book-bar .btn { padding: 0.7rem 1.1rem; font-size: 0.8rem; }
 
+    /* ===== ADDITIONS — LARGER IMAGERY ===== */
+    /* Full-bleed cinematic photo break sections between content */
+    .photo-break {
+      position: relative;
+      width: 100%;
+      height: clamp(360px, 60vh, 640px);
+      overflow: hidden;
+      padding: 0;
+      isolation: isolate;
+    }
+    .photo-break__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+      transition: transform 1.2s cubic-bezier(.2,.6,.2,1);
+    }
+    .photo-break__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15, 27, 61, 0.10) 0%, rgba(15, 27, 61, 0.35) 100%);
+    }
+    .photo-break__caption {
+      position: absolute;
+      bottom: clamp(1.5rem, 4vw, 3rem);
+      left: var(--gutter);
+      right: var(--gutter);
+      z-index: 2;
+      color: var(--paper);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      max-width: 540px;
+    }
+    .photo-break__caption .eyebrow {
+      color: var(--shell);
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+    }
+    .photo-break__caption .script {
+      font-family: var(--ff-script);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--gold);
+      font-weight: 500;
+      line-height: 1;
+      transform: rotate(-1.5deg);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+    }
+    .photo-break__caption .quote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.6vw, 1.85rem);
+      line-height: 1.32;
+      color: var(--paper);
+      max-width: 22ch;
+      font-weight: 300;
+      text-wrap: balance;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    }
+    .photo-break--right .photo-break__caption {
+      left: auto;
+      right: var(--gutter);
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    /* Story section: dual-photo composition */
+    .story__art-stack {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .story__art-main {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      width: 100%;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      box-shadow: var(--shadow-lift);
+      transform: rotate(-1.2deg);
+      transition: transform 0.8s cubic-bezier(.2,.6,.2,1);
+    }
+    .story__art-main img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .story__art-stack:hover .story__art-main { transform: rotate(0deg); }
+    .story__art-second {
+      position: absolute;
+      width: 55%;
+      aspect-ratio: 4 / 3;
+      bottom: -8%;
+      right: -10%;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      box-shadow: var(--shadow-lift);
+      border: 6px solid var(--paper);
+      transform: rotate(4deg);
+      transition: transform 0.8s cubic-bezier(.2,.6,.2,1);
+      z-index: 2;
+    }
+    .story__art-second img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .story__art-stack:hover .story__art-second { transform: rotate(1deg); }
+    .story__art-stack::before {
+      content: "";
+      position: absolute;
+      inset: 14px -14px -14px 14px;
+      border: 1.5px solid var(--cobalt);
+      border-radius: var(--radius-soft);
+      z-index: -1;
+      transform: rotate(-1.2deg);
+    }
+    /* Override the old single-photo block when stack is present */
+    .story__art:has(.story__art-stack)::before { display: none; }
+
+    /* Oven: cinematic large photo treatment */
+    .oven__art {
+      max-width: none;
+      aspect-ratio: auto;
+      width: 100%;
+      height: clamp(380px, 65vh, 640px);
+    }
+    .oven__art-second {
+      position: absolute;
+      bottom: -32px;
+      right: -32px;
+      width: 42%;
+      max-width: 220px;
+      aspect-ratio: 1 / 1;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      border: 6px solid var(--ink);
+      box-shadow: var(--shadow-lift);
+      z-index: 3;
+      display: none;
+    }
+    .oven__art-second img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 1024px) {
+      .oven__art-second { display: block; }
+    }
+
+    /* Review band: real atmospheric background image */
+    .band {
+      padding: clamp(5rem, 10vw, 8rem) 0 !important;
+    }
+    .band__bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center 60%;
+      z-index: 0;
+    }
+    .band__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(16, 48, 144, 0.85), rgba(10, 34, 112, 0.92));
+    }
+    .band::before, .band::after { z-index: 1; }
+    .band__inner { z-index: 3 !important; }
+
+    /* Location: bigger photo treatment + secondary thumbnail */
+    .location__art {
+      max-width: 640px;
+      aspect-ratio: 3 / 4;
+    }
+    .location__art-second {
+      position: absolute;
+      width: 48%;
+      aspect-ratio: 4 / 3;
+      bottom: -28px;
+      left: -28px;
+      border-radius: var(--radius-soft);
+      overflow: hidden;
+      border: 6px solid var(--paper);
+      box-shadow: var(--shadow-lift);
+      transform: rotate(-3deg);
+      z-index: 2;
+      display: none;
+    }
+    .location__art-second img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    @media (min-width: 768px) {
+      .location__art-second { display: block; }
+    }
+    /* ===== END ADDITIONS ===== */
+
     /* ===== RESPONSIVE ===== */
     @media (min-width: 640px) {
       .menu__grid { grid-template-columns: repeat(2, 1fr); }
@@ -1267,10 +1468,26 @@
             <span class="story__sig">— from the team at Alice's<small>White Bay, Jost Van Dyke</small></span>
           </div>
           <div class="story__art reveal delay-2">
-            <span class="story__sticker">Open<br>12&ndash;9 daily</span>
-            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/9b/d2/a8/caption.jpg?w=1100&h=1400&s=1" alt="Wood-fired pizza with a sweeping view of White Bay" referrerpolicy="no-referrer" loading="lazy">
+            <div class="story__art-stack">
+              <span class="story__sticker">Open<br>12&ndash;9 daily</span>
+              <div class="story__art-main">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/9b/d2/a8/caption.jpg?w=1100&h=1400&s=1" alt="Wood-fired pizza with a sweeping view of White Bay" referrerpolicy="no-referrer" loading="lazy">
+              </div>
+              <div class="story__art-second">
+                <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2d/caption.jpg?w=900&h=700&s=1" alt="Dining at Alice's at golden hour" referrerpolicy="no-referrer" loading="lazy">
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PHOTO BREAK 1 — atmospheric panorama between Story and Oven -->
+    <section class="photo-break" aria-hidden="true">
+      <div class="photo-break__bg" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/9d/14/c6/caption.jpg?w=2000&h=1100&s=1');"></div>
+      <div class="photo-break__caption">
+        <span class="eyebrow">The Beach Club</span>
+        <p class="quote">Sailors moor up. Barefoot guests stay all afternoon.</p>
       </div>
     </section>
 
@@ -1279,8 +1496,11 @@
       <div class="wrap">
         <div class="oven__inner">
           <div class="oven__art reveal">
-            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0b/fb/handbuilt-wood-fired.jpg?w=1100&h=1100&s=1" alt="The handbuilt wood-fired oven at Alice's" referrerpolicy="no-referrer" loading="lazy">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/29/ee/0b/fb/handbuilt-wood-fired.jpg?w=1400&h=1400&s=1" alt="The handbuilt wood-fired oven at Alice's" referrerpolicy="no-referrer" loading="lazy">
             <span class="oven__caption">handbuilt &amp; hand-fed</span>
+            <div class="oven__art-second">
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2f/caption.jpg?w=600&h=600&s=1" alt="Pizza fresh out of the wood-fired oven" referrerpolicy="no-referrer" loading="lazy">
+            </div>
           </div>
           <div class="oven__copy reveal delay-2">
             <span class="eyebrow">The Oven</span>
@@ -1367,8 +1587,18 @@
       </div>
     </section>
 
+    <!-- PHOTO BREAK 2 — atmospheric food close-up between Menu and Review -->
+    <section class="photo-break photo-break--right" aria-hidden="true">
+      <div class="photo-break__bg" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/1f/cc/8c/caption.jpg?w=2000&h=1100&s=1');"></div>
+      <div class="photo-break__caption">
+        <span class="eyebrow">Fish, Three Ways</span>
+        <p class="quote">Caught this morning. On your plate by tonight.</p>
+      </div>
+    </section>
+
     <!-- REVIEW BAND -->
     <section class="band" aria-label="Guest review">
+      <div class="band__bg" aria-hidden="true" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/31/caption.jpg?w=2000&h=1200&s=1');"></div>
       <div class="wrap">
         <div class="band__inner reveal">
           <p class="marquee-text">Pizza with the most beautiful view. The kind of place that makes your whole trip better — we left already wishing we could go back.</p>
@@ -1407,6 +1637,31 @@
         <figure class="gallery__item" role="listitem">
           <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/5f/8d/9d/caption.jpg?w=1200&h=900&s=1" alt="Garlic shrimp at Alice's" referrerpolicy="no-referrer" loading="lazy">
         </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/5f/8d/73/caption.jpg?w=900&h=1200&s=1" alt="A complimentary birthday dessert" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/1f/cc/88/caption.jpg?w=1200&h=900&s=1" alt="A plate of grilled fish prepared three ways" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/1f/cc/8a/caption.jpg?w=900&h=1200&s=1" alt="A second look at Chef Dale's fish three ways" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2c/caption.jpg?w=1200&h=900&s=1" alt="Pizza by the water at Alice's" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+        <figure class="gallery__item" role="listitem">
+          <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/30/9e/c6/2b/caption.jpg?w=900&h=1200&s=1" alt="Lunch on the patio" referrerpolicy="no-referrer" loading="lazy">
+        </figure>
+      </div>
+    </section>
+
+    <!-- PHOTO BREAK 3 — atmospheric sunset/beach moment before Find Us -->
+    <section class="photo-break" aria-hidden="true">
+      <div class="photo-break__bg" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/31/fd/97/a6/caption.jpg?w=2000&h=1100&s=1');"></div>
+      <div class="photo-break__caption">
+        <span class="eyebrow">White Bay · Golden Hour</span>
+        <p class="quote">A wedding on the sand, a sunset on the boats, a long table under the palms.</p>
+        <span class="script">all of the above.</span>
       </div>
     </section>
 
@@ -1453,8 +1708,11 @@
             <a href="#reserve" class="btn btn--large">Request a Table</a>
           </div>
           <div class="location__art reveal delay-2">
-            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7b/cb/13/white-bay-beach.jpg?w=1100&h=1400&s=1" alt="White Bay beach, Jost Van Dyke" referrerpolicy="no-referrer" loading="lazy">
+            <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/7b/cb/13/white-bay-beach.jpg?w=1400&h=1750&s=1" alt="White Bay beach, Jost Van Dyke" referrerpolicy="no-referrer" loading="lazy">
             <span class="location__art-tag">White Bay, BVI</span>
+            <div class="location__art-second">
+              <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/9d/14/c5/caption.jpg?w=600&h=450&s=1" alt="Dining at the beach club" referrerpolicy="no-referrer" loading="lazy">
+            </div>
           </div>
         </div>
       </div>
