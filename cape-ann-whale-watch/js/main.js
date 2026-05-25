@@ -165,7 +165,7 @@
       overlay.classList.add('mobile-drawer__overlay--visible');
       toggle.setAttribute('aria-expanded', 'true');
       drawer.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('is-scroll-locked');
     }
 
     function close() {
@@ -173,7 +173,7 @@
       overlay.classList.remove('mobile-drawer__overlay--visible');
       toggle.setAttribute('aria-expanded', 'false');
       drawer.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
+      document.body.classList.remove('is-scroll-locked');
     }
 
     toggle.addEventListener('click', open);
