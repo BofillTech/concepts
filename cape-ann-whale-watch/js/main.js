@@ -81,7 +81,7 @@
     startTimer();
   }
 
-  /* ---------- Video Audio Toggle ---------- */
+  /* ---------- Video Audio Toggle (Hero) ---------- */
   function initAudioToggle() {
     const video = $('#hero-video');
     const toggle = $('#hero-audio-toggle');
@@ -101,6 +101,54 @@
         muted ? 'Unmute video' : 'Mute video'
       );
     });
+  }
+
+  /* ---------- Live Video Section ---------- */
+  function initLiveVideo() {
+    const video = $('#live-video');
+    const toggle = $('#live-audio-toggle');
+    const stage = $('#live-video-stage');
+
+    if (!toggle || !stage) return;
+
+    // Only show audio toggle if a real video is present (placeholder skips this)
+    if (!video) return;
+
+    toggle.classList.add('live-video__audio-toggle--visible');
+
+    const iconOff = $('#live-audio-off');
+    const iconOn = $('#live-audio-on');
+
+    toggle.addEventListener('click', () => {
+      video.muted = !video.muted;
+      const muted = video.muted;
+      if (iconOff) iconOff.hidden = !muted;
+      if (iconOn) iconOn.hidden = muted;
+      toggle.setAttribute('aria-pressed', String(!muted));
+      toggle.setAttribute(
+        'aria-label',
+        muted ? 'Unmute video' : 'Mute video'
+      );
+    });
+
+    // Auto-play when scrolled into view, pause when out of view
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              video.play().catch(() => {
+                /* autoplay can fail; that's fine — user can tap */
+              });
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      obs.observe(stage);
+    }
   }
 
   /* ---------- Mobile Drawer ---------- */
@@ -149,6 +197,7 @@
   function init() {
     initSlideshow();
     initAudioToggle();
+    initLiveVideo();
     initMobileDrawer();
   }
 
