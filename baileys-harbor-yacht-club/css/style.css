@@ -665,3 +665,63 @@ a.contact-item__value:hover { color: var(--color-gold); }
   .room-type-grid { grid-template-columns: repeat(4,1fr); }
   .dc-categories { grid-template-columns: repeat(3,1fr); }
 }
+
+/* ── LOGO UPDATE: Full wordmark ── */
+.site-header__logo img {
+  height: 44px;  /* taller circle was 58px; wordmark is wide so constrain height */
+  width: auto;
+  max-width: 260px;
+}
+nav.scrolled .site-header__logo img {
+  height: 36px;
+}
+/* Footer keeps the blue/gold circle */
+.site-footer__brand img {
+  height: 64px;
+  width: auto;
+  max-width: 64px;
+}
+
+/* ── AMENITIES GALLERY ── */
+.amenities-gallery__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+.amenities-gallery__item {
+  position: relative;
+  overflow: hidden;
+  height: 240px;
+}
+.amenities-gallery__item--wide {
+  grid-column: 1 / -1;
+  height: 280px;
+}
+.amenities-gallery__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.7s ease;
+}
+.amenities-gallery__item:hover img { transform: scale(1.04); }
+.amenities-gallery__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: linear-gradient(to top, rgba(11,31,58,0.7) 0%, transparent 100%);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+@media (min-width: 768px) {
+  .amenities-gallery__grid { grid-template-columns: repeat(3, 1fr); }
+  .amenities-gallery__item--wide { grid-column: 1 / -1; height: 320px; }
+  .amenities-gallery__item { height: 260px; }
+}
