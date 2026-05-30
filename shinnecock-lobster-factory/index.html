@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shinnecock Lobster Factory — The Hamptons' #1 Seafood &amp; Catering</title>
+<meta name="description" content="The Hamptons' number one seafood take-out and catering. Famous lobster rolls and the best of local seafood, on the Shinnecock reservation in Southampton, NY.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,600&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c2733;
+  --ink-soft:#33414f;
+  --coral:#d5482e;
+  --coral-deep:#b23a23;
+  --cream:#f6efe4;
+  --sand:#ece0cc;
+  --ivory:#fdfaf4;
+  --gold:#c9a24b;
+  --sea:#5b7e84;
+  --shadow:rgba(28,39,51,.16);
+  --display:"Bodoni Moda",Georgia,serif;
+  --body:"Work Sans",-apple-system,sans-serif;
+  --gut:clamp(20px,5vw,100px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--ivory);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.01em}
+.eyebrow{font-family:var(--body);font-weight:600;font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--coral)}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--ink);color:#fff;padding:10px 16px;z-index:2000;border-radius:4px}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;
+  padding:18px var(--gut);transition:background .4s ease,padding .4s ease,box-shadow .4s ease}
+.nav__brand{font-family:var(--display);font-weight:700;font-size:1.18rem;color:#fff;letter-spacing:.01em;transition:color .4s,opacity .4s;line-height:1.05}
+.nav__brand small{display:block;font-family:var(--body);font-weight:600;font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;opacity:.8;margin-top:3px}
+.nav__links{display:none;gap:34px;align-items:center}
+.nav__links a{font-size:.82rem;font-weight:500;letter-spacing:.04em;color:#fff;opacity:.92;transition:opacity .25s,color .4s;position:relative}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--coral);transition:width .3s}
+.nav__links a:hover{opacity:1}
+.nav__links a:hover::after{width:100%}
+.nav__actions{display:flex;align-items:center;gap:16px}
+.nav__phone{display:none;font-weight:600;font-size:.84rem;letter-spacing:.02em;color:#fff;transition:color .4s}
+.btn{font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:13px 24px;border-radius:2px;background:var(--coral);color:#fff;border:1.5px solid var(--coral);
+  cursor:pointer;transition:background .3s,transform .3s,box-shadow .3s;white-space:nowrap}
+.btn:hover{background:var(--coral-deep);border-color:var(--coral-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(178,58,35,.32)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 10px 24px var(--shadow)}
+.btn--lg{padding:17px 40px;font-size:.88rem}
+
+.nav.scrolled{background:var(--ivory);padding-top:13px;padding-bottom:13px;box-shadow:0 2px 30px rgba(28,39,51,.1)}
+.nav.scrolled .nav__brand,.nav.scrolled .nav__links a,.nav.scrolled .nav__phone{color:var(--ink)}
+.nav.scrolled .nav__brand small{opacity:.55}
+
+.burger{display:flex;flex-direction:column;gap:5px;width:28px;background:none;border:0;cursor:pointer;padding:4px}
+.burger span{height:2px;width:100%;background:#fff;transition:background .4s}
+.nav.scrolled .burger span{background:var(--ink)}
+@media(min-width:1024px){
+  .burger{display:none}
+  .nav__links{display:flex}
+  .nav__phone{display:block}
+}
+
+/* mobile menu */
+.mobile{position:fixed;inset:0;background:var(--ink);z-index:1500;display:flex;flex-direction:column;justify-content:center;
+  align-items:center;gap:6px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.3,1)}
+.mobile.open{transform:translateY(0)}
+.mobile a{color:var(--cream);font-family:var(--display);font-size:2rem;font-weight:500;padding:10px}
+.mobile a:hover{color:var(--coral)}
+.mobile__close{position:absolute;top:22px;right:24px;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+.mobile__phone{margin-top:20px;font-family:var(--body);letter-spacing:.1em;color:var(--gold);font-size:1rem}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;
+  transform:scale(1.08);animation:heroZoom 9s ease forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,28,37,.45) 0%,rgba(20,28,37,.12) 38%,rgba(20,28,37,.78) 100%)}
+.hero__inner{position:relative;z-index:2;padding:0 var(--gut) clamp(48px,9vh,110px);max-width:1000px}
+.hero .eyebrow{color:var(--cream);opacity:0;animation:rise .9s ease .25s forwards}
+.hero h1{font-size:clamp(3rem,9vw,7.4rem);font-weight:600;margin:.18em 0 .35em;text-shadow:0 2px 40px rgba(0,0,0,.3)}
+.hero h1 span{display:block}
+.hero h1 .italic{font-style:italic;font-weight:500;color:var(--cream)}
+.hero__line{opacity:0;animation:rise .9s ease forwards}
+.hero h1 .l1{animation-delay:.4s}
+.hero h1 .l2{animation-delay:.55s}
+.hero__sub{max-width:520px;font-size:1.05rem;font-weight:300;color:#f3ece0;margin-bottom:30px;opacity:0;animation:rise .9s ease .7s forwards}
+.hero__cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .9s ease .85s forwards}
+.hero__cta .btn--ghost{color:#fff;border-color:rgba(255,255,255,.7)}
+.hero__cta .btn--ghost:hover{background:#fff;color:var(--ink)}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;writing-mode:vertical-rl;
+  font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.75);opacity:0;animation:rise 1s ease 1.2s forwards}
+.scrollcue::after{content:"";display:block;width:1px;height:42px;background:rgba(255,255,255,.6);margin:12px auto 0;
+  animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+/* ---------- MARQUEE ---------- */
+.marquee{background:var(--ink);color:var(--cream);padding:16px 0;overflow:hidden;white-space:nowrap}
+.marquee__track{display:inline-flex;gap:48px;animation:scrollx 28s linear infinite;font-family:var(--display);
+  font-style:italic;font-size:1.15rem;font-weight:500}
+.marquee__track span{display:inline-flex;align-items:center;gap:48px}
+.marquee__track span::after{content:"✦";color:var(--coral);font-style:normal}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- SECTION SHELL ---------- */
+.section{padding:clamp(64px,11vh,140px) var(--gut)}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- INTRO / STORY ---------- */
+.intro{background:var(--cream);text-align:center}
+.intro__wrap{max-width:880px;margin:0 auto}
+.intro h2{font-size:clamp(1.9rem,4.5vw,3.4rem);font-weight:500;margin:.4em 0 .5em;line-height:1.12}
+.intro h2 em{font-style:italic;color:var(--coral)}
+.intro p{font-size:1.12rem;color:var(--ink-soft);max-width:640px;margin:0 auto 30px}
+.intro__rule{width:54px;height:2px;background:var(--coral);margin:0 auto 8px}
+
+/* ---------- TAGLINE BAND (Mason's style caps) ---------- */
+.band{background:var(--ink);color:var(--ivory);text-align:center;padding:clamp(56px,9vh,100px) var(--gut)}
+.band h2{font-family:var(--body);font-weight:700;font-size:clamp(1.6rem,5vw,3.2rem);letter-spacing:.06em;
+  line-height:1.18;text-transform:uppercase}
+.band h2 b{color:var(--coral);font-weight:700}
+.band p{margin-top:18px;font-style:italic;font-family:var(--display);font-size:1.15rem;color:var(--sand)}
+
+/* ---------- ROLL SHOWCASE (alternating) ---------- */
+.rolls{background:var(--ivory)}
+.rolls__head{text-align:center;max-width:680px;margin:0 auto clamp(40px,7vh,80px)}
+.rolls__head h2{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:600;margin-top:.2em}
+.rolls__head h2 em{font-style:italic;color:var(--coral)}
+.roll{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,72px);align-items:center;
+  max-width:1180px;margin:0 auto;padding:clamp(30px,6vh,60px) 0}
+.roll__media{position:relative}
+.roll__media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;box-shadow:0 24px 60px var(--shadow)}
+.roll__num{position:absolute;top:-26px;left:-10px;font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:5.2rem;color:var(--sand);z-index:-1;line-height:1}
+.roll__body .eyebrow{margin-bottom:14px;display:block}
+.roll__body h3{font-size:clamp(1.9rem,4vw,3rem);font-weight:600;margin-bottom:8px}
+.roll__body h3 .sub{display:block;font-style:italic;font-weight:500;color:var(--coral);font-size:.86em}
+.roll__body p{color:var(--ink-soft);max-width:430px;margin:16px 0 26px;font-size:1.04rem}
+@media(min-width:860px){
+  .roll{grid-template-columns:1fr 1fr}
+  .roll--flip .roll__media{order:2}
+  .roll--flip .roll__num{left:auto;right:-10px}
+}
+
+/* ---------- SERVICES TRIPTYCH ---------- */
+.serv{background:var(--cream)}
+.serv__head{text-align:center;max-width:680px;margin:0 auto clamp(40px,6vh,64px)}
+.serv__head h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:.2em}
+.serv__grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:1180px;margin:0 auto}
+.card{position:relative;overflow:hidden;border-radius:3px;min-height:440px;display:flex;align-items:flex-end;
+  color:#fff;box-shadow:0 16px 40px var(--shadow)}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.3,1)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,37,0) 30%,rgba(20,28,37,.85) 100%)}
+.card:hover img{transform:scale(1.07)}
+.card__body{position:relative;z-index:2;padding:32px}
+.card__body h3{font-size:1.8rem;font-weight:600;margin-bottom:8px}
+.card__body p{font-size:.97rem;color:#eadfce;max-width:320px}
+.card__body .link{display:inline-block;margin-top:16px;font-weight:600;font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--gold);border-bottom:1.5px solid var(--gold);padding-bottom:3px}
+@media(min-width:760px){.serv__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* ---------- GALLERY STRIP ---------- */
+.gallery{background:var(--ivory);padding-bottom:clamp(64px,11vh,140px)}
+.gallery__head{text-align:center;margin-bottom:clamp(34px,5vh,54px)}
+.gallery__head h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:.2em}
+.gallery__scroll{display:flex;gap:16px;overflow-x:auto;padding:8px var(--gut) 26px;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch}
+.gallery__scroll::-webkit-scrollbar{height:6px}
+.gallery__scroll::-webkit-scrollbar-thumb{background:var(--sand);border-radius:10px}
+.gallery__scroll figure{flex:0 0 clamp(240px,40vw,360px);scroll-snap-align:center}
+.gallery__scroll img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;filter:saturate(1.04)}
+.gallery__note{text-align:center;font-size:.84rem;color:var(--sea);letter-spacing:.1em;margin-top:6px}
+
+/* ---------- VISIT / LOCATION ---------- */
+.visit{background:var(--ink);color:var(--ivory)}
+.visit__grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,6vw,70px);max-width:1180px;margin:0 auto;align-items:center}
+.visit .eyebrow{color:var(--gold)}
+.visit h2{font-size:clamp(2.1rem,5vw,3.6rem);margin:.25em 0 .5em}
+.visit h2 em{font-style:italic;color:var(--cream)}
+.visit__addr{font-size:1.1rem;color:var(--sand);margin-bottom:26px;line-height:1.8}
+.visit__addr a{color:var(--gold)}
+.hours{border-top:1px solid rgba(255,255,255,.18);padding-top:24px;margin-bottom:30px}
+.hours h4{font-family:var(--body);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;
+  color:var(--gold);margin-bottom:14px}
+.hours__row{display:flex;justify-content:space-between;max-width:380px;padding:7px 0;
+  border-bottom:1px dashed rgba(255,255,255,.12);font-size:.96rem}
+.hours__row span:first-child{color:#fff}
+.hours__row span:last-child{color:var(--sand)}
+.visit__map{border-radius:3px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);min-height:340px}
+.visit__map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.2) contrast(1.05)}
+@media(min-width:900px){.visit__grid{grid-template-columns:1fr 1fr}}
+
+/* ---------- FINAL CTA ---------- */
+.final{position:relative;text-align:center;color:#fff;padding:clamp(80px,16vh,180px) var(--gut);overflow:hidden}
+.final__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
+.final::after{content:"";position:absolute;inset:0;background:rgba(20,28,37,.62)}
+.final__inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
+.final h2{font-size:clamp(2.4rem,6.5vw,5rem);font-weight:600;line-height:1.05;margin-bottom:.4em}
+.final h2 em{font-style:italic;color:var(--cream)}
+.final__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.final__phone{display:block;margin-top:26px;font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--cream)}
+.final__phone a{border-bottom:1px solid var(--coral)}
+
+/* ---------- FOOTER ---------- */
+.footer{background:#141c25;color:#9fb0bd;padding:clamp(56px,8vh,88px) var(--gut) 30px}
+.footer__grid{display:grid;grid-template-columns:1fr;gap:38px;max-width:1180px;margin:0 auto 44px}
+.footer__brand h3{font-family:var(--display);color:#fff;font-size:1.5rem;font-weight:700}
+.footer__brand small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);margin-top:6px}
+.footer__brand p{margin-top:18px;font-size:.95rem;max-width:300px;line-height:1.75}
+.footer__col h4{font-family:var(--body);color:#fff;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  font-size:.72rem;margin-bottom:18px}
+.footer__col a,.footer__col p{display:block;font-size:.95rem;color:#9fb0bd;padding:5px 0;transition:color .25s}
+.footer__col a:hover{color:var(--coral)}
+.footer__social{display:flex;gap:14px;margin-top:8px}
+.footer__social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;
+  align-items:center;justify-content:center;color:#9fb0bd;transition:all .3s}
+.footer__social a:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-3px)}
+.footer__social svg{width:17px;height:17px;fill:currentColor}
+.footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;max-width:1180px;margin:0 auto;
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.82rem;color:#6b7b88}
+@media(min-width:760px){.footer__grid{grid-template-columns:1.6fr 1fr 1fr}}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .hero__img{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top">Shinnecock Lobster Factory<small>Southampton · The Hamptons</small></a>
+  <div class="nav__links">
+    <a href="#story">Our Story</a>
+    <a href="#rolls">Lobster Rolls</a>
+    <a href="#serve">Catering</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <div class="nav__actions">
+    <a class="nav__phone" href="tel:6312593334">631.259.3334</a>
+    <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile" id="mobile">
+  <button class="mobile__close" id="mclose" aria-label="Close menu">&times;</button>
+  <a href="#story">Our Story</a>
+  <a href="#rolls">Lobster Rolls</a>
+  <a href="#serve">Catering</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#visit">Visit</a>
+  <a class="mobile__phone" href="tel:6312593334">631.259.3334</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <img class="hero__img" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/IMG_8182-scaled.jpg" alt="Fresh lobster roll from Shinnecock Lobster Factory" referrerpolicy="no-referrer">
+  <div class="hero__inner" id="main">
+    <span class="eyebrow">The Hamptons' #1 Seafood Take-Out &amp; Catering</span>
+    <h1>
+      <span class="hero__line l1">Local catch,</span>
+      <span class="hero__line l2 italic">famously simple.</span>
+    </h1>
+    <p class="hero__sub">From our spot on the Shinnecock reservation in Southampton — the best of local seafood and the lobster rolls the Hamptons can't stop talking about.</p>
+    <div class="hero__cta">
+      <a class="btn btn--lg" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn--ghost btn--lg" href="#rolls">See the Rolls</a>
+    </div>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Lobster Rolls</span><span>Fresh Local Seafood</span><span>Catering</span><span>The Food Truck</span><span>Raw Bar</span><span>Lobster Bakes</span>
+    <span>Lobster Rolls</span><span>Fresh Local Seafood</span><span>Catering</span><span>The Food Truck</span><span>Raw Bar</span><span>Lobster Bakes</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="section intro" id="story">
+  <div class="intro__wrap reveal">
+    <div class="intro__rule"></div>
+    <span class="eyebrow">Our Story</span>
+    <h2>On the reservation in Southampton, we feature the best of <em>local seafood</em> — along with our famous lobster rolls.</h2>
+    <p>We don't say we're the best. Our customers do. Whether it's the variety of lobster rolls, the fresh local catch, or our catering, the Hamptons keep coming back. Stop by, try us, and get hooked.</p>
+    <a class="btn btn--ghost" href="#visit">Plan Your Visit</a>
+  </div>
+</section>
+
+<!-- TAGLINE BAND -->
+<section class="band">
+  <div class="reveal">
+    <h2>Fresh. Local. <b>Hooked.</b></h2>
+    <p>The Hamptons love us — and they're not shy about it.</p>
+  </div>
+</section>
+
+<!-- ROLL SHOWCASE -->
+<section class="section rolls" id="rolls">
+  <div class="rolls__head reveal">
+    <span class="eyebrow">The Lineup</span>
+    <h2>The rolls that <em>made our name</em></h2>
+  </div>
+
+  <article class="roll reveal">
+    <div class="roll__media">
+      <span class="roll__num">01</span>
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2022/02/lobster-roll-classic.jpg" alt="The Classic lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="eyebrow">The Original</span>
+      <h3>The Classic<span class="sub">lobster roll</span></h3>
+      <p>Big, hearty chunks of fresh local lobster, served the way a lobster roll should be. Sometimes less is more.</p>
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </article>
+
+  <article class="roll roll--flip reveal">
+    <div class="roll__media">
+      <span class="roll__num">02</span>
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Diavolo-scaled.jpg" alt="The Diavolo lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="eyebrow">Bring the Heat</span>
+      <h3>The Diavolo<span class="sub">lobster roll</span></h3>
+      <p>For those who like a little fire with their catch — our signature roll with a spirited kick.</p>
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </article>
+
+  <article class="roll reveal">
+    <div class="roll__media">
+      <span class="roll__num">03</span>
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/Shinnecock-Lobster-Factory-11052020__Cajun-lobster-roll-046-1.jpg" alt="The Cajun lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="eyebrow">A Little Spice</span>
+      <h3>The Cajun<span class="sub">lobster roll</span></h3>
+      <p>Fresh lobster with a Southern accent. A bold twist on the roll that put us on the map.</p>
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </article>
+
+  <article class="roll roll--flip reveal">
+    <div class="roll__media">
+      <span class="roll__num">04</span>
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-melt.jpg" alt="The Lobster Melt" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="eyebrow">Warm &amp; Toasted</span>
+      <h3>The Lobster<span class="sub">melt</span></h3>
+      <p>Lobster, toasted and melty, for the days a chilled roll just won't do. Comfort, Hamptons-style.</p>
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
+    </div>
+  </article>
+</section>
+
+<!-- SERVICES -->
+<section class="section serv" id="serve">
+  <div class="serv__head reveal">
+    <span class="eyebrow">Beyond the Counter</span>
+    <h2>More than a take-out window</h2>
+  </div>
+  <div class="serv__grid">
+    <a class="card reveal" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Lobster-Bake2.jpg" alt="Catered lobster bake" referrerpolicy="no-referrer" loading="lazy">
+      <div class="card__body">
+        <h3>We Cater</h3>
+        <p>Make your summer unforgettable. Let us cater your next event with fresh seafood, raw bars, and lobster bakes.</p>
+        <span class="link">Cater Your Event</span>
+      </div>
+    </a>
+    <a class="card reveal" href="https://shinnecocklobsterfactory.com/food-truck/" target="_blank" rel="noopener">
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/11/marco-lance-food-truck.jpeg" alt="The Shinnecock Lobster Factory food truck" referrerpolicy="no-referrer" loading="lazy">
+      <div class="card__body">
+        <h3>The Food Truck</h3>
+        <p>The Hamptons' favorite seafood, rolling to a spot near you. Bring the factory to your party.</p>
+        <span class="link">Book the Truck</span>
+      </div>
+    </a>
+    <a class="card reveal" href="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Raw-Bar.jpg" target="_blank" rel="noopener">
+      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Raw-Bar.jpg" alt="Fresh raw bar with oysters" referrerpolicy="no-referrer" loading="lazy">
+      <div class="card__body">
+        <h3>The Raw Bar</h3>
+        <p>Oysters, shrimp, and the freshest of the local catch — shucked, chilled, and ready to impress.</p>
+        <span class="link">See the Spread</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="gallery__head reveal">
+    <span class="eyebrow">Straight From the Kitchen</span>
+    <h2>A taste of the factory</h2>
+  </div>
+  <div class="gallery__scroll">
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Shinnecock.jpg" alt="The Shinnecock lobster roll" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Main-Whole-Lobsters-Half-scaled.jpg" alt="Whole lobsters" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-mac.jpg" alt="Lobster mac and cheese" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Shrimp-Cocktail.jpg" alt="Shrimp cocktail" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/oyster-raw-bar.jpg" alt="Oysters on the raw bar" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/fish-and-chips.jpg" alt="Fish and chips" referrerpolicy="no-referrer" loading="lazy"></figure>
+    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Six-Lobster-Rolls.jpg" alt="Six lobster rolls" referrerpolicy="no-referrer" loading="lazy"></figure>
+  </div>
+  <p class="gallery__note">Follow @shinnecocklobster for the daily catch</p>
+</section>
+
+<!-- VISIT -->
+<section class="section visit" id="visit">
+  <div class="visit__grid">
+    <div class="reveal">
+      <span class="eyebrow">Find Us</span>
+      <h2>Right on the <em>Montauk Highway</em></h2>
+      <p class="visit__addr">
+        42 Montauk Hwy, Southampton, NY 11968<br>
+        <span style="font-size:.92rem;color:#9fb0bd">At the St. Andrews intersection, across from the Southampton Fire Department.</span><br><br>
+        <a href="tel:6312593334">631.259.3334</a>
+      </p>
+      <div class="hours">
+        <h4>In-Season Hours · May – September</h4>
+        <div class="hours__row"><span>Sunday – Thursday</span><span>11:00 AM – 8:00 PM</span></div>
+        <div class="hours__row"><span>Friday &amp; Saturday</span><span>11:00 AM – 9:00 PM</span></div>
+      </div>
+      <div class="hours">
+        <h4>Off-Season Hours · October – April</h4>
+        <div class="hours__row"><span>Thursday – Sunday</span><span>11:00 AM – 8:00 PM</span></div>
+        <div class="hours__row"><span style="color:#9fb0bd">Hours subject to weather</span><span></span></div>
+      </div>
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+    </div>
+    <div class="visit__map reveal">
+      <iframe title="Map to Shinnecock Lobster Factory" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48262.61862025213!2d-72.4616735794424!3d40.884739999999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd39a43a42e962bbe!2sShinnecock%20Lobster%20Factory!5e0!3m2!1sen!2sus!4v1631975045003!5m2!1sen!2sus"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <img class="final__img" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/D1A12421-F91B-4F7E-8B53-4A46D121104E.jpg" alt="Lobster roll close up" referrerpolicy="no-referrer" loading="lazy">
+  <div class="final__inner reveal">
+    <span class="eyebrow" style="color:var(--cream)">Come Get Hooked</span>
+    <h2>Try us once.<br><em>You'll be back.</em></h2>
+    <div class="final__cta">
+      <a class="btn btn--lg" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn--ghost btn--lg" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,.7)">Cater an Event</a>
+    </div>
+    <span class="final__phone">Or call <a href="tel:6312593334">631.259.3334</a></span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__grid">
+    <div class="footer__brand">
+      <h3>Shinnecock Lobster Factory<small>Southampton · The Hamptons</small></h3>
+      <p>The Hamptons' number one seafood take-out and catering, on the Shinnecock reservation in Southampton, New York.</p>
+      <div class="footer__social">
+        <a href="https://www.facebook.com/hamptonsseafood" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="https://instagram.com/shinnecocklobster" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm5-8.2a1.1 1.1 0 1 1 0-2.3 1.1 1.1 0 0 1 0 2.3Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Explore</h4>
+      <a href="#story">Our Story</a>
+      <a href="#rolls">Lobster Rolls</a>
+      <a href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">Catering</a>
+      <a href="https://shinnecocklobsterfactory.com/food-truck/" target="_blank" rel="noopener">Food Truck</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <div class="footer__col">
+      <h4>Visit</h4>
+      <p>42 Montauk Hwy<br>Southampton, NY 11968</p>
+      <a href="tel:6312593334">631.259.3334</a>
+      <a href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2026 Shinnecock Lobster Factory. All rights reserved.</span>
+    <span>Concept design by Bofill Technologies</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>60);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var burger=document.getElementById('burger'),mobile=document.getElementById('mobile'),
+      mclose=document.getElementById('mclose');
+  var openM=function(){mobile.classList.add('open');document.body.style.overflow='hidden';};
+  var closeM=function(){mobile.classList.remove('open');document.body.style.overflow='';};
+  burger.addEventListener('click',openM);
+  mclose.addEventListener('click',closeM);
+  mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</body>
+</html>
