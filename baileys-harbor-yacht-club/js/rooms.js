@@ -240,6 +240,9 @@
       `<li><strong>Floor:</strong> ${room.floor === 1 ? '1st Floor (Ground Level)' : '2nd Floor'}</li>`,
       room.desc   ? `<li style="border-top:1px solid rgba(11,31,58,.08);padding-top:10px;margin-top:4px">${room.desc}</li>` : '',
     ].join('');
+    // Update Learn More link
+    const learnMoreBtn = document.getElementById('panelLearnMore');
+    if (learnMoreBtn) learnMoreBtn.href = `rooms/room-${roomNum}.html`;
     scrollPanelTop();
   }
 
