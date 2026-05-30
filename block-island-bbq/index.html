@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Island BBQ — Authentic Texas BBQ at the Sullivan House</title>
+<meta name="description" content="Authentic Texas-style BBQ on Block Island. Book a private event under the marquee tent at the Sullivan House, or get slow-smoked BBQ delivered across the island.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Rye&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --char:#17120f;
+    --char-2:#221a15;
+    --char-3:#2c221b;
+    --ember:#c5442a;
+    --ember-deep:#9c3420;
+    --amber:#e3a23a;
+    --cream:#f4ead9;
+    --cream-2:#ece0c9;
+    --ink:#281f18;
+    --smoke:#b6a489;
+    --line:rgba(244,234,217,.14);
+    --shadow:0 24px 60px rgba(0,0,0,.45);
+    --maxw:1240px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'DM Sans',-apple-system,sans-serif;
+    background:var(--char);
+    color:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;width:100%;height:100%;object-fit:cover}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.01em;line-height:.98;text-transform:uppercase}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:'Rye',serif;color:var(--amber);font-size:1.05rem;
+    letter-spacing:.04em;display:inline-block;margin-bottom:18px;
+  }
+  .eyebrow--dark{color:var(--ember-deep)}
+
+  /* film grain + smoke atmosphere */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    transition:background .4s ease, box-shadow .4s ease, padding .4s ease;
+    padding:22px 0;
+  }
+  header.scrolled{background:rgba(20,15,12,.92);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line);padding:14px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand b{font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--cream)}
+  .brand b span{color:var(--ember)}
+  .brand small{font-family:'Rye',serif;font-size:.62rem;color:var(--amber);letter-spacing:.18em;margin-top:3px}
+  .menu{display:flex;align-items:center;gap:30px}
+  .menu a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--cream);opacity:.85;transition:opacity .2s, color .2s;position:relative}
+  .menu a:hover{opacity:1;color:var(--amber)}
+  .menu .btn--fill{display:none}
+  .soon{font-family:'DM Sans';font-size:.55rem;font-weight:700;background:var(--ember);color:#fff;padding:2px 6px;border-radius:20px;margin-left:6px;letter-spacing:.08em;vertical-align:middle}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:.82rem;
+    letter-spacing:.08em;text-transform:uppercase;cursor:pointer;border:none;
+    padding:14px 26px;border-radius:2px;transition:transform .25s, box-shadow .25s, background .25s;
+  }
+  .btn--fill{background:var(--ember);color:#fff;box-shadow:0 8px 24px rgba(197,68,42,.35)}
+  .btn--fill:hover{background:var(--ember-deep);transform:translateY(-2px);box-shadow:0 12px 30px rgba(197,68,42,.45)}
+  .btn--ghost{background:transparent;color:var(--cream);border:1.5px solid var(--line)}
+  .btn--ghost:hover{border-color:var(--amber);color:var(--amber)}
+  .btn--ink{background:var(--ink);color:var(--cream)}
+  .btn--ink:hover{background:#1a140f;transform:translateY(-2px)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+  .burger span{width:26px;height:2px;background:var(--cream);transition:.3s}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero__bg{position:absolute;inset:0;z-index:0}
+  .hero__bg img{transform:scale(1.08);filter:saturate(1.05) contrast(1.05)}
+  .hero__bg::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(15,11,9,.55) 0%,rgba(15,11,9,.15) 35%,rgba(15,11,9,.78) 78%,rgba(15,11,9,.96) 100%);}
+  .hero__inner{position:relative;z-index:2;width:100%;padding-bottom:9vh;padding-top:120px}
+  .hero h1{font-size:clamp(3.4rem,9.5vw,9rem);color:#fff;text-shadow:0 4px 40px rgba(0,0,0,.4);max-width:14ch}
+  .hero h1 em{font-style:normal;color:var(--amber);display:block}
+  .hero p{max-width:48ch;font-size:1.12rem;color:var(--cream);margin:26px 0 34px;text-shadow:0 2px 18px rgba(0,0,0,.6)}
+  .hero__cta{display:flex;gap:16px;flex-wrap:wrap}
+  .scroll-cue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;color:var(--cream);
+    font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;opacity:.7;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-cue::after{content:"";width:1px;height:34px;background:var(--cream);animation:cue 1.8s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);opacity:.3;transform-origin:top}50%{transform:scaleY(1);opacity:.9;transform-origin:top}}
+
+  /* season ribbon */
+  .ribbon{background:var(--ember);color:#fff;overflow:hidden;white-space:nowrap;border-top:1px solid rgba(255,255,255,.12);border-bottom:3px solid var(--char)}
+  .ribbon__track{display:inline-block;padding:12px 0;animation:scrollx 28s linear infinite;font-family:'Anton';letter-spacing:.05em;text-transform:uppercase;font-size:.95rem}
+  .ribbon__track span{margin:0 26px;opacity:.95}
+  .ribbon__track span b{color:var(--amber);font-family:'Anton'}
+  @keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== SECTIONS ===== */
+  section{position:relative}
+  .pad{padding:clamp(70px,11vw,140px) 0}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ABOUT */
+  .about{background:var(--cream);color:var(--ink)}
+  .about__grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .about h2{font-size:clamp(2.4rem,5vw,4.4rem);color:var(--ink);max-width:13ch}
+  .about h2 i{font-style:normal;color:var(--ember)}
+  .about p{font-size:1.12rem;margin-top:24px;color:#4a3d31;max-width:52ch}
+  .about__media{position:relative;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:var(--shadow)}
+  .about__media::after{content:"EST. ON BLOCK ISLAND";position:absolute;left:18px;bottom:16px;font-family:'Rye';color:#fff;font-size:.7rem;letter-spacing:.12em;text-shadow:0 2px 10px rgba(0,0,0,.7)}
+  .tag-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+  .tag-row span{border:1.5px solid rgba(40,31,24,.2);padding:8px 16px;border-radius:30px;font-size:.78rem;font-weight:600;letter-spacing:.04em}
+
+  /* MENU / PLATTERS */
+  .menu-sec{background:var(--char);color:var(--cream)}
+  .sec-head{text-align:center;max-width:620px;margin:0 auto clamp(44px,6vw,72px)}
+  .sec-head h2{font-size:clamp(2.4rem,5.5vw,5rem)}
+  .sec-head h2 em{font-style:normal;color:var(--ember)}
+  .sec-head p{color:var(--smoke);margin-top:16px;font-size:1.05rem}
+  .platters{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .platter{background:var(--char-2);border:1px solid var(--line);border-radius:5px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s, border-color .35s}
+  .platter:hover{transform:translateY(-8px);border-color:rgba(227,162,58,.5)}
+  .platter__img{aspect-ratio:4/3;position:relative;overflow:hidden}
+  .platter__img img{transition:transform .7s ease}
+  .platter:hover .platter__img img{transform:scale(1.07)}
+  .platter__tier{position:absolute;top:14px;left:14px;font-family:'Anton';font-size:.8rem;letter-spacing:.1em;padding:6px 12px;border-radius:3px;color:var(--char);text-transform:uppercase}
+  .t-bronze{background:#c8895a}.t-silver{background:#cfd2d6}.t-gold{background:var(--amber)}
+  .platter__body{padding:26px 24px 28px;flex:1;display:flex;flex-direction:column}
+  .platter h3{font-size:1.7rem;color:var(--cream)}
+  .platter .combo{color:var(--amber);font-weight:600;font-size:.85rem;letter-spacing:.04em;margin:6px 0 16px;text-transform:uppercase}
+  .platter ul{list-style:none;margin:0 0 22px;flex:1}
+  .platter li{font-size:.95rem;color:var(--smoke);padding:5px 0;border-bottom:1px solid rgba(244,234,217,.07);display:flex;align-items:center;gap:9px}
+  .platter li::before{content:"";width:5px;height:5px;background:var(--ember);border-radius:50%;flex:none}
+  .platter__price{display:flex;align-items:baseline;justify-content:space-between;margin-top:auto}
+  .platter__price b{font-family:'Anton';font-size:2.1rem;color:#fff}
+  .platter__price small{color:var(--smoke);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase}
+  .menu-note{text-align:center;margin-top:46px}
+  .menu-note .sub{color:var(--smoke);font-size:.82rem;margin-top:14px}
+
+  /* sides + dessert band */
+  .extras{background:var(--char-3);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .extras__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px}
+  .extras h4{font-family:'Anton';font-size:1.3rem;letter-spacing:.04em;color:var(--amber);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .extras h4::after{content:"";flex:1;height:1px;background:var(--line)}
+  .extras ul{list-style:none}
+  .extras li{padding:7px 0;color:var(--cream);font-size:1rem;border-bottom:1px dashed rgba(244,234,217,.1)}
+
+  /* EVENTS split */
+  .split{display:grid;grid-template-columns:1fr 1fr;min-height:78vh}
+  .split__media{position:relative;overflow:hidden;min-height:340px}
+  .split__media img{transition:transform 1.2s ease}
+  .split:hover .split__media img{transform:scale(1.05)}
+  .split__media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--char) 100%);opacity:.5}
+  .split__text{background:var(--char);display:flex;align-items:center;padding:clamp(40px,7vw,100px)}
+  .split--rev .split__text{background:var(--ink)}
+  .split__text .inner{max-width:520px}
+  .split h2{font-size:clamp(2.2rem,4.5vw,4rem);color:#fff}
+  .split h2 em{font-style:normal;color:var(--amber)}
+  .split p{color:var(--smoke);margin:22px 0;font-size:1.06rem}
+  .how{list-style:none;margin:24px 0 32px}
+  .how li{display:flex;gap:16px;padding:12px 0;border-top:1px solid var(--line);align-items:flex-start}
+  .how li b{font-family:'Anton';color:var(--ember);font-size:1.2rem;flex:none;width:34px}
+  .how li span{color:var(--cream);font-size:.97rem}
+  .chips{display:flex;gap:9px;flex-wrap:wrap;margin:20px 0 30px}
+  .chips span{background:rgba(244,234,217,.08);border:1px solid var(--line);padding:7px 15px;border-radius:30px;font-size:.78rem;letter-spacing:.03em;color:var(--cream)}
+
+  /* ONLINE ORDER coming soon */
+  .soon-sec{background:var(--ember);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .soon-sec::before{content:"COMING SOON · COMING SOON · COMING SOON · COMING SOON · COMING SOON · ";position:absolute;top:50%;left:0;font-family:'Anton';font-size:7rem;white-space:nowrap;opacity:.07;transform:translateY(-50%)}
+  .soon-sec .wrap{position:relative;z-index:2}
+  .soon-sec h2{font-size:clamp(2.2rem,5vw,4.4rem)}
+  .soon-sec p{max-width:46ch;margin:18px auto 0;font-size:1.08rem;opacity:.95}
+  .soon-sec .btn--ink{margin-top:30px}
+
+  /* GALLERY */
+  .gallery{background:var(--char)}
+  .gallery__grid{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:150px;gap:12px}
+  .gallery__grid figure{overflow:hidden;border-radius:4px;position:relative}
+  .gallery__grid img{transition:transform .8s ease;filter:saturate(.98)}
+  .gallery__grid figure:hover img{transform:scale(1.08)}
+  .g1{grid-column:span 2;grid-row:span 2}
+  .g2{grid-column:span 2}.g3{grid-column:span 2}
+  .g4{grid-column:span 2}.g5{grid-column:span 2;grid-row:span 2}.g6{grid-column:span 2}
+
+  /* LOCATION */
+  .loc{background:var(--cream);color:var(--ink)}
+  .loc__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:center}
+  .loc h2{font-size:clamp(2.2rem,5vw,4rem);color:var(--ink)}
+  .loc h2 i{font-style:normal;color:var(--ember)}
+  .loc .addr{font-size:1.4rem;font-weight:600;margin:24px 0 8px}
+  .loc .small{color:#5a4c3e}
+  .loc__card{background:var(--char);color:var(--cream);border-radius:6px;padding:38px;box-shadow:var(--shadow)}
+  .loc__card h3{font-size:1.5rem;color:var(--amber);margin-bottom:8px}
+  .loc__card .row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+  .loc__card .row span:first-child{color:var(--smoke)}
+  .loc__card .btn{margin-top:24px;width:100%;justify-content:center}
+
+  /* FINAL CTA */
+  .final{position:relative;text-align:center;color:#fff;overflow:hidden}
+  .final__bg{position:absolute;inset:0;z-index:0}
+  .final__bg::after{content:"";position:absolute;inset:0;background:rgba(15,11,9,.78)}
+  .final .wrap{position:relative;z-index:2;padding:clamp(80px,12vw,150px) 28px}
+  .final h2{font-size:clamp(2.6rem,6.5vw,6rem)}
+  .final h2 em{font-style:normal;color:var(--amber)}
+  .final p{max-width:46ch;margin:20px auto 34px;font-size:1.12rem}
+  .final__cta{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+  /* FOOTER */
+  footer{background:#100c0a;color:var(--smoke);padding:70px 0 34px}
+  .foot__grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--line)}
+  footer .brand b{font-size:1.8rem}
+  footer p{margin-top:16px;max-width:38ch;font-size:.95rem}
+  .foot__grid h5{font-family:'Anton';color:var(--cream);font-size:1rem;letter-spacing:.06em;margin-bottom:16px}
+  .foot__grid a{display:block;padding:6px 0;font-size:.92rem;transition:color .2s}
+  .foot__grid a:hover{color:var(--amber)}
+  .foot__bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;padding-top:26px;font-size:.82rem}
+  .foot__bot a:hover{color:var(--cream)}
+
+  /* mobile bottom bar */
+  .mbar{display:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:1024px){
+    .extras__grid{gap:34px}
+    .gallery__grid{grid-template-columns:repeat(4,1fr)}
+    .g1{grid-column:span 2;grid-row:span 2}.g5{grid-column:span 2;grid-row:span 1}
+  }
+  @media(max-width:860px){
+    .menu{position:fixed;inset:0 0 0 auto;width:78%;max-width:340px;background:var(--char-2);flex-direction:column;justify-content:center;gap:26px;transform:translateX(100%);transition:transform .4s ease;box-shadow:-20px 0 60px rgba(0,0,0,.5);padding:40px}
+    .menu.open{transform:translateX(0)}
+    .menu a{font-size:1.05rem}
+    .menu .btn--fill{display:flex}
+    .menu .btn{width:100%;justify-content:center}
+    .burger{display:flex}
+    .nav .btn--fill.desk{display:none}
+    .about__grid,.split,.loc__grid{grid-template-columns:1fr}
+    .split{min-height:auto}
+    .split--rev .split__media{order:-1}
+    .platters{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+    .extras__grid{grid-template-columns:1fr;gap:26px}
+    .foot__grid{grid-template-columns:1fr;gap:30px}
+    .hero__inner{padding-bottom:120px}
+    .scroll-cue{display:none}
+    .mbar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:1100;background:rgba(20,15,12,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:10px 14px;gap:10px}
+    .mbar .btn{flex:1;justify-content:center;font-size:.78rem;padding:13px}
+    body{padding-bottom:64px}
+  }
+  @media(max-width:480px){
+    .wrap{padding:0 18px}
+    .gallery__grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
+    .g1,.g5{grid-column:span 2;grid-row:span 1}
+    .hero h1{font-size:clamp(2.8rem,13vw,4rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Block Island BBQ home">
+      <b>BI<span>BBQ</span></b>
+      <small>Texas Style · Block Island</small>
+    </a>
+    <nav class="menu" id="menu" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#menu">Menus</a>
+      <a href="#events">Events &amp; Catering</a>
+      <a href="#delivered">Delivered BBQ</a>
+      <a href="#order">Online Order<span class="soon">Soon</span></a>
+      <a href="#events" class="btn btn--fill">Book an Event</a>
+    </nav>
+    <a href="#events" class="btn btn--fill desk">Book an Event</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__bg">
+    <img src="https://images.pexels.com/photos/13068565/pexels-photo-13068565.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1920&h=1280" alt="Pitmaster holding a freshly smoked Texas-style brisket">
+  </div>
+  <div class="hero__inner">
+    <div class="wrap">
+      <span class="eyebrow">Authentic Texas BBQ on Block Island</span>
+      <h1>Low &amp; Slow.<em>Worth The Ferry.</em></h1>
+      <p>Slow-smoked brisket, ribs and all the fixings — served under the marquee tent at the Sullivan House, or delivered across Block Island.</p>
+      <div class="hero__cta">
+        <a href="#events" class="btn btn--fill">Book an Event</a>
+        <a href="#menu" class="btn btn--ghost">View the Menus</a>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- SEASON RIBBON -->
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon__track">
+    <span>★ Smoked Daily</span><span>Brisket <b>·</b> Ribs <b>·</b> Turkey <b>·</b> Sausage</span><span>★ Sullivan House Events</span><span>Delivered Across Block Island</span>
+    <span>★ Smoked Daily</span><span>Brisket <b>·</b> Ribs <b>·</b> Turkey <b>·</b> Sausage</span><span>★ Sullivan House Events</span><span>Delivered Across Block Island</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about pad" id="about">
+  <div class="wrap about__grid">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--dark">The BIBBQ Story</span>
+      <h2>One of the world's <i>all-time great</i> comfort foods.</h2>
+      <p>BIBBQ brings authentic Texas-style BBQ to Block Island. Set at the beautiful Sullivan House Inn, we strive to deliver a barbecue experience of the highest quality — every brisket trimmed by hand and smoked low and slow.</p>
+      <p>Whether you book a fun-filled BBQ under the marquee tent at the Sullivan House or order delivery across the island, you'll be certain to be satisfied.</p>
+      <div class="tag-row">
+        <span>Hand-Trimmed Brisket</span><span>Smoked On-Island</span><span>Private Events</span><span>Island Delivery</span>
+      </div>
+    </div>
+    <div class="about__media reveal">
+      <img src="https://images.pexels.com/photos/12645502/pexels-photo-12645502.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1100&h=1380" alt="Slicing smoked beef brisket on a wooden board" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- MENU / PLATTERS -->
+<section class="menu-sec pad" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Platters</span>
+      <h2>Built For <em>The Table</em></h2>
+      <p>Family-style combos, priced per person — the easiest way to feed a crowd. Choose your tier and we'll bring the smoke.</p>
+    </div>
+    <div class="platters">
+      <article class="platter reveal">
+        <div class="platter__img">
+          <span class="platter__tier t-bronze">Bronze</span>
+          <img src="https://images.pexels.com/photos/8250723/pexels-photo-8250723.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=680" alt="Slow-smoked pork spareribs" loading="lazy">
+        </div>
+        <div class="platter__body">
+          <h3>Bronze Platter</h3>
+          <div class="combo">3 Meats · 2 Sides</div>
+          <ul>
+            <li>Slow-Cooked Brisket</li><li>Pork Spareribs</li><li>Sausage Link</li><li>Pickle &amp; Dip</li>
+          </ul>
+          <div class="platter__price"><b>$50</b><small>per person</small></div>
+        </div>
+      </article>
+      <article class="platter reveal">
+        <div class="platter__img">
+          <span class="platter__tier t-silver">Silver</span>
+          <img src="https://images.pexels.com/photos/36869209/pexels-photo-36869209.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=680" alt="Sliced barbecue brisket and chicken on a board" loading="lazy">
+        </div>
+        <div class="platter__body">
+          <h3>Silver Platter</h3>
+          <div class="combo">4 Meats · 3 Sides</div>
+          <ul>
+            <li>Slow-Cooked Brisket</li><li>Pork Spareribs</li><li>Sausage Link</li><li>Peppered Turkey Breast</li>
+          </ul>
+          <div class="platter__price"><b>$60</b><small>per person</small></div>
+        </div>
+      </article>
+      <article class="platter reveal">
+        <div class="platter__img">
+          <span class="platter__tier t-gold">Gold</span>
+          <img src="https://images.pexels.com/photos/8964567/pexels-photo-8964567.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=680" alt="Full Texas barbecue spread with meats and sides" loading="lazy">
+        </div>
+        <div class="platter__body">
+          <h3>Gold Platter</h3>
+          <div class="combo">5 Meats · 4 Sides</div>
+          <ul>
+            <li>Slow-Cooked Brisket</li><li>Pork Spareribs</li><li>Sausage Link</li><li>Peppered Turkey Breast &amp; More</li>
+          </ul>
+          <div class="platter__price"><b>$70</b><small>per person</small></div>
+        </div>
+      </article>
+    </div>
+    <div class="menu-note reveal">
+      <a href="#menu" class="btn btn--ghost">View the Full Menu (PDF)</a>
+      <div class="sub">All platters include pickle &amp; dip. Prices subject to change.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SIDES + DESSERTS -->
+<section class="extras pad">
+  <div class="wrap extras__grid reveal">
+    <div>
+      <h4>Sides</h4>
+      <ul>
+        <li>Mac &amp; Cheese</li><li>Smoked Beans</li><li>Coleslaw</li><li>Potato Salad</li>
+      </ul>
+      <div class="sub" style="color:var(--smoke);font-size:.82rem;margin-top:10px">Single · Pint · Quart</div>
+    </div>
+    <div>
+      <h4>Add-Ons</h4>
+      <ul>
+        <li>Extra Dips</li><li>Sandwich Buns</li><li>Corn Chips</li><li>Meats By The Pound</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Dessert</h4>
+      <ul>
+        <li>Sweet Corn Bread</li><li>Banana Pudding Crunch</li><li>Chocolate Ganache</li><li>Cookies</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS & CATERING -->
+<section class="split" id="events">
+  <div class="split__media reveal">
+    <img src="https://images.pexels.com/photos/30198263/pexels-photo-30198263.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1500&h=1100" alt="Outdoor event tent set with string lights at golden hour" loading="lazy">
+  </div>
+  <div class="split__text">
+    <div class="inner reveal">
+      <span class="eyebrow">Book the Sullivan House</span>
+      <h2>Your Event, <em>Under The Tent</em></h2>
+      <p>Host a fun-filled BBQ under the marquee tent at the Sullivan House — private parties, corporate gatherings, birthdays and island festivals, all served family-style with optional bar packages.</p>
+      <ul class="how">
+        <li><b>01</b><span>Tell us your headcount, date and the package menu you'd like.</span></li>
+        <li><b>02</b><span>Add a bar package and any tent or party rentals.</span></li>
+        <li><b>03</b><span>We confirm your total, sign the contract and lock the date.</span></li>
+      </ul>
+      <div class="chips">
+        <span>Private Parties</span><span>Corporate</span><span>Birthdays</span><span>Festivals</span>
+      </div>
+      <p style="color:var(--amber);font-size:.9rem;margin:0 0 24px">Season: June 15 – Sept 12 · Wed–Sat · 6–9 PM</p>
+      <a href="#book" class="btn btn--fill">Request a Date</a>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERED BBQ -->
+<section class="split split--rev" id="delivered">
+  <div class="split__text">
+    <div class="inner reveal">
+      <span class="eyebrow">Delivered BBQ</span>
+      <h2>Smoke, <em>Brought To You</em></h2>
+      <p>Can't make it to the tent? We deliver slow-smoked package platters right across Block Island — pick your menu, your date and let us handle the rest.</p>
+      <ul class="how">
+        <li><b>01</b><span>Choose a package platter and your number of guests.</span></li>
+        <li><b>02</b><span>Add tent &amp; party rentals or service items like chafers.</span></li>
+        <li><b>03</b><span>Select your delivery date and pay — we roll up with the BBQ.</span></li>
+      </ul>
+      <p style="color:var(--amber);font-size:.9rem;margin:0 0 24px">Delivery available Wed–Sat · 6–9 PM in season</p>
+      <a href="#book" class="btn btn--fill">Order Delivery</a>
+    </div>
+  </div>
+  <div class="split__media reveal">
+    <img src="https://images.pexels.com/photos/34495427/pexels-photo-34495427.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=1000" alt="Brisket sandwich with coleslaw in a checkered basket" loading="lazy">
+  </div>
+</section>
+
+<!-- ONLINE ORDER COMING SOON -->
+<section class="soon-sec pad" id="order">
+  <div class="wrap reveal">
+    <span class="eyebrow" style="color:#fff">Coming Soon</span>
+    <h2>Online Ordering</h2>
+    <p>Simple click &amp; pay pickup and delivery for individuals — by the pound, by the side, by the platter. Launching once the smoke gets going.</p>
+    <a href="#book" class="btn btn--ink">Get Launch Updates</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery pad">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The Pit</span>
+      <h2>Straight From <em>The Smoker</em></h2>
+    </div>
+    <div class="gallery__grid reveal">
+      <figure class="g1"><img src="https://images.pexels.com/photos/23325845/pexels-photo-23325845.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=900" alt="Pouring barbecue sauce over smoked ribs" loading="lazy"></figure>
+      <figure class="g2"><img src="https://images.pexels.com/photos/36700839/pexels-photo-36700839.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=420" alt="Two slices of smoked brisket on a board" loading="lazy"></figure>
+      <figure class="g3"><img src="https://images.pexels.com/photos/8250702/pexels-photo-8250702.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=420" alt="Ribs smoking on the grill" loading="lazy"></figure>
+      <figure class="g4"><img src="https://images.pexels.com/photos/28376171/pexels-photo-28376171.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=420" alt="Plated barbecue ribs" loading="lazy"></figure>
+      <figure class="g5"><img src="https://images.pexels.com/photos/69056/pexels-photo-69056.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=900&h=900" alt="Meat cooking over open flame" loading="lazy"></figure>
+      <figure class="g6"><img src="https://images.pexels.com/photos/30198265/pexels-photo-30198265.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=700&h=420" alt="Outdoor dining set under string lights" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc pad" id="location">
+  <div class="wrap loc__grid">
+    <div class="reveal">
+      <span class="eyebrow eyebrow--dark">Find Us</span>
+      <h2>At The <i>Sullivan House</i></h2>
+      <div class="addr">605 Corn Neck Road</div>
+      <div class="small">Block Island, Rhode Island 02807</div>
+      <p style="margin-top:22px;color:#5a4c3e;max-width:46ch">Tucked into the grounds of the Sullivan House Inn — the home of Block Island BBQ and your venue under the tent.</p>
+    </div>
+    <div class="loc__card reveal">
+      <h3>Season &amp; Hours</h3>
+      <div class="row"><span>Season</span><span>June 15 – Sept 12</span></div>
+      <div class="row"><span>Days</span><span>Wed · Thu · Fri · Sat</span></div>
+      <div class="row"><span>Service</span><span>6:00 – 9:00 PM</span></div>
+      <div class="row"><span>Venue</span><span>Sullivan House, Block Island</span></div>
+      <a href="#book" class="btn btn--fill">Plan Your BBQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="book">
+  <div class="final__bg">
+    <img src="https://images.pexels.com/photos/69056/pexels-photo-69056.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1920&h=1100" alt="Barbecue cooking over fire" loading="lazy">
+  </div>
+  <div class="wrap">
+    <span class="eyebrow">Let's Fire It Up</span>
+    <h2>Ready To <em>Eat?</em></h2>
+    <p>Book your event under the tent at the Sullivan House, or get authentic Texas BBQ delivered across Block Island.</p>
+    <div class="final__cta">
+      <a href="#events" class="btn btn--fill">Book an Event</a>
+      <a href="#delivered" class="btn btn--ghost">Order Delivery</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot__grid">
+      <div>
+        <div class="brand"><b>BI<span style="color:var(--ember)">BBQ</span></b><small style="font-family:'Rye';color:var(--amber);font-size:.62rem;letter-spacing:.18em">Texas Style · Block Island</small></div>
+        <p>Authentic Texas-style BBQ on Block Island, smoked low and slow at the Sullivan House Inn.</p>
+      </div>
+      <div>
+        <h5>Explore</h5>
+        <a href="#about">About</a>
+        <a href="#menu">Menus</a>
+        <a href="#events">Events &amp; Catering</a>
+        <a href="#delivered">Delivered BBQ</a>
+      </div>
+      <div>
+        <h5>Visit</h5>
+        <a href="#location">605 Corn Neck Road</a>
+        <a href="#location">Block Island, RI 02807</a>
+        <a href="#order">Online Order — Soon</a>
+        <a href="#book">Book an Event</a>
+      </div>
+    </div>
+    <div class="foot__bot">
+      <span>© 2026 Block Island BBQ · At the Sullivan House Inn</span>
+      <span>BlockIslandBBQ.com</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="mbar">
+  <a href="#menu" class="btn btn--ghost">Menus</a>
+  <a href="#events" class="btn btn--fill">Book an Event</a>
+</div>
+
+<script>
+(function(){
+  // sticky nav
+  var hdr=document.getElementById('hdr');
+  var onScroll=function(){hdr.classList.toggle('scrolled',window.scrollY>40)};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // mobile menu
+  var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',function(){
+    var open=menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open);
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){menu.classList.remove('open');burger.setAttribute('aria-expanded',false);});
+  });
+
+  // scroll reveals
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  }else{
+    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
+  }
+})();
+</script>
+</body>
+</html>
