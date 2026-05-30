@@ -7,448 +7,604 @@
 <meta name="description" content="The Hamptons' number one seafood take-out and catering. Famous lobster rolls and the best of local seafood, on the Shinnecock reservation in Southampton, NY.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;1,6..96,500;1,6..96,600&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500;1,6..72,600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1c2733;
-  --ink-soft:#33414f;
-  --coral:#d5482e;
-  --coral-deep:#b23a23;
-  --cream:#f6efe4;
-  --sand:#ece0cc;
-  --ivory:#fdfaf4;
-  --gold:#c9a24b;
-  --sea:#5b7e84;
-  --shadow:rgba(28,39,51,.16);
-  --display:"Bodoni Moda",Georgia,serif;
-  --body:"Work Sans",-apple-system,sans-serif;
-  --gut:clamp(20px,5vw,100px);
+  --coral:#d9402c;
+  --coral-deep:#b8311f;
+  --navy:#16242e;
+  --navy-soft:#23394a;
+  --cream:#f5ecdb;
+  --butter:#fbf4e6;
+  --ivory:#fffdf8;
+  --teal:#2f7d72;
+  --gold:#cf9b3e;
+  --sand:#e7d8bd;
+  --disp:"Bricolage Grotesque",-apple-system,sans-serif;
+  --serif:"Newsreader",Georgia,serif;
+  --gut:clamp(22px,5vw,110px);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:var(--body);color:var(--ink);background:var(--ivory);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:var(--disp);color:var(--navy);background:var(--ivory);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.04;letter-spacing:-.01em}
-.eyebrow{font-family:var(--body);font-weight:600;font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--coral)}
 .skip{position:absolute;left:-999px}
-.skip:focus{left:12px;top:12px;background:var(--ink);color:#fff;padding:10px 16px;z-index:2000;border-radius:4px}
+.skip:focus{left:12px;top:12px;background:var(--navy);color:#fff;padding:10px 16px;z-index:3000;border-radius:4px}
+
+/* ---- shared type ---- */
+.kicker{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.34em;text-transform:uppercase}
+.serif-it{font-family:var(--serif);font-style:italic;font-weight:500}
+
+/* ---- buttons ---- */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:700;font-size:.8rem;
+  letter-spacing:.16em;text-transform:uppercase;padding:15px 30px;border-radius:50px;background:var(--coral);
+  color:#fff;border:2px solid var(--coral);cursor:pointer;transition:.3s;white-space:nowrap}
+.btn:hover{background:var(--coral-deep);border-color:var(--coral-deep);transform:translateY(-2px)}
+.btn--ghost{background:transparent;border-color:currentColor;color:var(--navy)}
+.btn--ghost:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-2px)}
+.btn--on-dark{background:var(--coral);color:#fff}
+.link-u{font-family:var(--disp);font-weight:700;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:8px;padding-bottom:4px;border-bottom:2px solid var(--coral);transition:.25s}
+.link-u .arr{transition:transform .25s}
+.link-u:hover .arr{transform:translateX(5px)}
+
+/* ---- SEAL badge ---- */
+.seal{display:block}
+.seal__ring-text{font-family:var(--disp);font-weight:700;font-size:9.2px;letter-spacing:2.4px;text-transform:uppercase}
+
+/* ---------- UTILITY BAR ---------- */
+.util{background:var(--navy);color:var(--cream);font-family:var(--disp);font-weight:600;
+  font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;display:flex;justify-content:space-between;
+  align-items:center;padding:9px var(--gut);position:relative;z-index:60}
+.util a{transition:color .25s}.util a:hover{color:var(--coral)}
+.util__r{display:flex;gap:22px;align-items:center}
+.util__r .dot{color:var(--coral)}
+@media(max-width:760px){.util{font-size:.58rem;letter-spacing:.14em}.util__l{display:none}.util{justify-content:center}}
 
 /* ---------- NAV ---------- */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;display:flex;align-items:center;justify-content:space-between;
-  padding:18px var(--gut);transition:background .4s ease,padding .4s ease,box-shadow .4s ease}
-.nav__brand{font-family:var(--display);font-weight:700;font-size:1.18rem;color:#fff;letter-spacing:.01em;transition:color .4s,opacity .4s;line-height:1.05}
-.nav__brand small{display:block;font-family:var(--body);font-weight:600;font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;opacity:.8;margin-top:3px}
-.nav__links{display:none;gap:34px;align-items:center}
-.nav__links a{font-size:.82rem;font-weight:500;letter-spacing:.04em;color:#fff;opacity:.92;transition:opacity .25s,color .4s;position:relative}
-.nav__links a::after{content:"";position:absolute;left:0;bottom:-5px;width:0;height:1.5px;background:var(--coral);transition:width .3s}
-.nav__links a:hover{opacity:1}
+.nav{position:absolute;top:34px;left:0;width:100%;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:14px var(--gut);transition:background .4s,box-shadow .4s,top .4s,padding .4s,color .4s}
+.nav__seal{width:78px;height:78px;flex:0 0 auto;transition:transform .4s}
+.nav__seal .seal__ring-text,.nav__seal .seal__center,.nav__seal .seal__ring{fill:#fff;stroke:#fff}
+.nav__links{display:none;gap:30px;align-items:center}
+.nav__links a{font-family:var(--disp);font-weight:600;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;position:relative;transition:opacity .25s}
+.nav__links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--coral);transition:width .3s}
 .nav__links a:hover::after{width:100%}
-.nav__actions{display:flex;align-items:center;gap:16px}
-.nav__phone{display:none;font-weight:600;font-size:.84rem;letter-spacing:.02em;color:#fff;transition:color .4s}
-.btn{font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
-  padding:13px 24px;border-radius:2px;background:var(--coral);color:#fff;border:1.5px solid var(--coral);
-  cursor:pointer;transition:background .3s,transform .3s,box-shadow .3s;white-space:nowrap}
-.btn:hover{background:var(--coral-deep);border-color:var(--coral-deep);transform:translateY(-2px);box-shadow:0 10px 24px rgba(178,58,35,.32)}
-.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn--ghost:hover{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 10px 24px var(--shadow)}
-.btn--lg{padding:17px 40px;font-size:.88rem}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.burger{display:flex;flex-direction:column;gap:5px;width:30px;background:none;border:0;cursor:pointer;padding:5px}
+.burger span{height:2.5px;width:100%;background:#fff;border-radius:2px;transition:background .4s}
 
-.nav.scrolled{background:var(--ivory);padding-top:13px;padding-bottom:13px;box-shadow:0 2px 30px rgba(28,39,51,.1)}
-.nav.scrolled .nav__brand,.nav.scrolled .nav__links a,.nav.scrolled .nav__phone{color:var(--ink)}
-.nav.scrolled .nav__brand small{opacity:.55}
+/* scrolled state — solid cream nav fixed to top */
+.nav.fixed{position:fixed;top:0;background:var(--butter);box-shadow:0 2px 26px rgba(22,36,46,.12);padding-top:10px;padding-bottom:10px}
+.nav.fixed .nav__seal{width:60px;height:60px}
+.nav.fixed .nav__seal .seal__ring-text,.nav.fixed .nav__seal .seal__center,.nav.fixed .nav__seal .seal__ring{fill:var(--navy);stroke:var(--navy)}
+.nav.fixed .nav__links a{color:var(--navy)}
+.nav.fixed .burger span{background:var(--navy)}
+@media(min-width:1040px){.burger{display:none}.nav__links{display:flex}}
 
-.burger{display:flex;flex-direction:column;gap:5px;width:28px;background:none;border:0;cursor:pointer;padding:4px}
-.burger span{height:2px;width:100%;background:#fff;transition:background .4s}
-.nav.scrolled .burger span{background:var(--ink)}
-@media(min-width:1024px){
-  .burger{display:none}
-  .nav__links{display:flex}
-  .nav__phone{display:block}
-}
+/* mobile drawer */
+.drawer{position:fixed;inset:0;background:var(--navy);z-index:2000;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;gap:4px;transform:translateY(-100%);transition:transform .55s cubic-bezier(.7,0,.2,1)}
+.drawer.open{transform:none}
+.drawer a{font-family:var(--disp);font-weight:700;font-size:1.9rem;letter-spacing:.02em;text-transform:uppercase;color:var(--cream);padding:9px}
+.drawer a:hover{color:var(--coral)}
+.drawer .serif-it{text-transform:none;letter-spacing:0}
+.drawer__x{position:absolute;top:22px;right:26px;background:none;border:0;color:#fff;font-size:2.6rem;line-height:1;cursor:pointer}
+.drawer__ph{margin-top:18px;color:var(--gold);font-family:var(--serif);font-style:italic;font-size:1.2rem}
 
-/* mobile menu */
-.mobile{position:fixed;inset:0;background:var(--ink);z-index:1500;display:flex;flex-direction:column;justify-content:center;
-  align-items:center;gap:6px;transform:translateY(-100%);transition:transform .5s cubic-bezier(.7,0,.3,1)}
-.mobile.open{transform:translateY(0)}
-.mobile a{color:var(--cream);font-family:var(--display);font-size:2rem;font-weight:500;padding:10px}
-.mobile a:hover{color:var(--coral)}
-.mobile__close{position:absolute;top:22px;right:24px;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
-.mobile__phone{margin-top:20px;font-family:var(--body);letter-spacing:.1em;color:var(--gold);font-size:1rem}
+/* ---------- HERO SLIDER ---------- */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;background:var(--navy)}
+.hero__slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease;will-change:opacity}
+.hero__slide.active{opacity:1}
+.hero__slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 7s ease}
+.hero__slide.active img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg,rgba(15,22,28,.46) 0%,rgba(15,22,28,.05) 32%,rgba(15,22,28,.06) 55%,rgba(15,22,28,.82) 100%)}
+.hero__tag{position:absolute;z-index:3;left:var(--gut);bottom:clamp(120px,20vh,200px);color:#fff;max-width:780px}
+.hero__tag .kicker{color:var(--cream);opacity:.92;display:block;margin-bottom:18px;
+  animation:rise .9s ease .2s both}
+.hero__big{font-family:var(--disp);font-weight:800;line-height:.92;letter-spacing:-.02em;text-transform:uppercase;
+  font-size:clamp(2.9rem,8.6vw,7.6rem);text-shadow:0 4px 40px rgba(0,0,0,.28)}
+.hero__big span{display:block;animation:rise .9s ease both}
+.hero__big span:nth-child(1){animation-delay:.3s}
+.hero__big span:nth-child(2){animation-delay:.42s}
+.hero__big .amp{color:var(--coral)}
+.hero__big .out{-webkit-text-stroke:2px #fff;color:transparent;text-stroke:2px #fff}
+@keyframes rise{from{opacity:0;transform:translateY(34px)}to{opacity:1;transform:none}}
 
-/* ---------- HERO ---------- */
-.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
-.hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 55%;
-  transform:scale(1.08);animation:heroZoom 9s ease forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
-.hero::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(20,28,37,.45) 0%,rgba(20,28,37,.12) 38%,rgba(20,28,37,.78) 100%)}
-.hero__inner{position:relative;z-index:2;padding:0 var(--gut) clamp(48px,9vh,110px);max-width:1000px}
-.hero .eyebrow{color:var(--cream);opacity:0;animation:rise .9s ease .25s forwards}
-.hero h1{font-size:clamp(3rem,9vw,7.4rem);font-weight:600;margin:.18em 0 .35em;text-shadow:0 2px 40px rgba(0,0,0,.3)}
-.hero h1 span{display:block}
-.hero h1 .italic{font-style:italic;font-weight:500;color:var(--cream)}
-.hero__line{opacity:0;animation:rise .9s ease forwards}
-.hero h1 .l1{animation-delay:.4s}
-.hero h1 .l2{animation-delay:.55s}
-.hero__sub{max-width:520px;font-size:1.05rem;font-weight:300;color:#f3ece0;margin-bottom:30px;opacity:0;animation:rise .9s ease .7s forwards}
-.hero__cta{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:rise .9s ease .85s forwards}
-.hero__cta .btn--ghost{color:#fff;border-color:rgba(255,255,255,.7)}
-.hero__cta .btn--ghost:hover{background:#fff;color:var(--ink)}
-@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-.scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;writing-mode:vertical-rl;
-  font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.75);opacity:0;animation:rise 1s ease 1.2s forwards}
-.scrollcue::after{content:"";display:block;width:1px;height:42px;background:rgba(255,255,255,.6);margin:12px auto 0;
-  animation:cue 1.8s ease-in-out infinite}
-@keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+/* hero controls */
+.hero__ctrl{position:absolute;z-index:3;right:var(--gut);bottom:42px;display:flex;align-items:center;gap:18px;color:#fff}
+.hero__count{font-family:var(--disp);font-weight:700;font-size:.82rem;letter-spacing:.14em}
+.hero__count b{font-size:1.05rem}
+.hero__count .tot{opacity:.6}
+.hero__pp{width:46px;height:46px;border-radius:50%;border:2px solid rgba(255,255,255,.55);background:rgba(255,255,255,.08);
+  color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.3s;backdrop-filter:blur(3px)}
+.hero__pp:hover{background:#fff;color:var(--navy)}
+.hero__pp svg{width:15px;height:15px;fill:currentColor}
+.hero__dots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:50px;display:flex;gap:9px}
+.hero__dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.42);cursor:pointer;transition:.3s;padding:0}
+.hero__dots button.on{background:var(--coral);width:26px;border-radius:5px}
+.hero__scroll{position:absolute;z-index:3;left:var(--gut);bottom:44px;color:rgba(255,255,255,.8);
+  font-family:var(--disp);font-weight:600;font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;display:flex;align-items:center;gap:12px}
+.hero__scroll::before{content:"";width:42px;height:2px;background:rgba(255,255,255,.6);display:block;
+  transform-origin:left;animation:slide 1.8s ease-in-out infinite}
+@keyframes slide{0%,100%{transform:scaleX(.3)}50%{transform:scaleX(1)}}
+@media(max-width:760px){.hero__scroll,.hero__dots{display:none}.hero__ctrl{bottom:30px}.hero__tag{bottom:130px}}
 
-/* ---------- MARQUEE ---------- */
-.marquee{background:var(--ink);color:var(--cream);padding:16px 0;overflow:hidden;white-space:nowrap}
-.marquee__track{display:inline-flex;gap:48px;animation:scrollx 28s linear infinite;font-family:var(--display);
-  font-style:italic;font-size:1.15rem;font-weight:500}
-.marquee__track span{display:inline-flex;align-items:center;gap:48px}
-.marquee__track span::after{content:"✦";color:var(--coral);font-style:normal}
-@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* ---------- MANIFESTO ---------- */
+.manifesto{background:var(--butter);text-align:center;padding:clamp(78px,13vh,150px) var(--gut)}
+.manifesto__in{max-width:960px;margin:0 auto}
+.manifesto .star{color:var(--coral);font-size:1.1rem;letter-spacing:.5em;display:block;margin-bottom:26px}
+.manifesto p{font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3.6vw,2.65rem);line-height:1.34;color:var(--navy)}
+.manifesto p em{font-style:italic;color:var(--coral)}
+.manifesto .sign{display:block;margin-top:30px;font-family:var(--disp);font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;font-size:clamp(1.05rem,2.4vw,1.5rem);color:var(--navy)}
 
-/* ---------- SECTION SHELL ---------- */
-.section{padding:clamp(64px,11vh,140px) var(--gut)}
-.reveal{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s ease}
-.reveal.in{opacity:1;transform:none}
+/* ---------- CAPS BAND (Mason's) ---------- */
+.capband{background:var(--coral);color:#fff;text-align:center;padding:clamp(40px,7vh,72px) var(--gut);overflow:hidden}
+.capband h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1;
+  font-size:clamp(1.9rem,6.4vw,4.6rem)}
+.capband h2 .dot{color:var(--navy)}
 
-/* ---------- INTRO / STORY ---------- */
-.intro{background:var(--cream);text-align:center}
-.intro__wrap{max-width:880px;margin:0 auto}
-.intro h2{font-size:clamp(1.9rem,4.5vw,3.4rem);font-weight:500;margin:.4em 0 .5em;line-height:1.12}
-.intro h2 em{font-style:italic;color:var(--coral)}
-.intro p{font-size:1.12rem;color:var(--ink-soft);max-width:640px;margin:0 auto 30px}
-.intro__rule{width:54px;height:2px;background:var(--coral);margin:0 auto 8px}
-
-/* ---------- TAGLINE BAND (Mason's style caps) ---------- */
-.band{background:var(--ink);color:var(--ivory);text-align:center;padding:clamp(56px,9vh,100px) var(--gut)}
-.band h2{font-family:var(--body);font-weight:700;font-size:clamp(1.6rem,5vw,3.2rem);letter-spacing:.06em;
-  line-height:1.18;text-transform:uppercase}
-.band h2 b{color:var(--coral);font-weight:700}
-.band p{margin-top:18px;font-style:italic;font-family:var(--display);font-size:1.15rem;color:var(--sand)}
-
-/* ---------- ROLL SHOWCASE (alternating) ---------- */
-.rolls{background:var(--ivory)}
-.rolls__head{text-align:center;max-width:680px;margin:0 auto clamp(40px,7vh,80px)}
-.rolls__head h2{font-size:clamp(2.2rem,5.5vw,4rem);font-weight:600;margin-top:.2em}
-.rolls__head h2 em{font-style:italic;color:var(--coral)}
-.roll{display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,72px);align-items:center;
-  max-width:1180px;margin:0 auto;padding:clamp(30px,6vh,60px) 0}
-.roll__media{position:relative}
-.roll__media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:3px;box-shadow:0 24px 60px var(--shadow)}
-.roll__num{position:absolute;top:-26px;left:-10px;font-family:var(--display);font-style:italic;font-weight:500;
-  font-size:5.2rem;color:var(--sand);z-index:-1;line-height:1}
-.roll__body .eyebrow{margin-bottom:14px;display:block}
-.roll__body h3{font-size:clamp(1.9rem,4vw,3rem);font-weight:600;margin-bottom:8px}
-.roll__body h3 .sub{display:block;font-style:italic;font-weight:500;color:var(--coral);font-size:.86em}
-.roll__body p{color:var(--ink-soft);max-width:430px;margin:16px 0 26px;font-size:1.04rem}
-@media(min-width:860px){
-  .roll{grid-template-columns:1fr 1fr}
+/* ---------- ROLL BANDS ---------- */
+.roll{padding:clamp(64px,11vh,128px) var(--gut);position:relative;overflow:hidden}
+.roll--cream{background:var(--cream)}
+.roll--navy{background:var(--navy);color:var(--cream)}
+.roll--teal{background:var(--teal);color:#fff}
+.roll__in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(34px,6vw,80px);align-items:center}
+.roll__media{position:relative;justify-self:center;width:min(86vw,460px);aspect-ratio:1;display:flex;align-items:center;justify-content:center}
+.roll__disc{position:absolute;inset:0;border-radius:50%;}
+.roll--cream .roll__disc{background:radial-gradient(circle at 38% 32%,#fff 0%,var(--butter) 60%,var(--sand) 100%)}
+.roll--navy .roll__disc{background:radial-gradient(circle at 38% 32%,var(--navy-soft) 0%,#1b2c38 70%,#0f1920 100%)}
+.roll--teal .roll__disc{background:radial-gradient(circle at 38% 32%,#3a9286 0%,#2f7d72 70%,#245f57 100%)}
+.roll__photo{position:relative;width:86%;height:86%;border-radius:50%;object-fit:cover;
+  box-shadow:0 30px 70px rgba(22,36,46,.34);}
+.roll__stamp{position:absolute;z-index:3;width:108px;height:108px}
+.roll__stamp--tr{top:-6px;right:-6px}
+.roll__stamp--bl{bottom:-4px;left:-6px}
+.roll__num{position:absolute;z-index:1;font-family:var(--disp);font-weight:800;font-size:clamp(7rem,16vw,12rem);
+  line-height:.8;opacity:.1;top:-.12em;left:-.06em}
+.roll--cream .roll__num{color:var(--coral)}
+.roll--navy .roll__num,.roll--teal .roll__num{color:#fff}
+.roll__body{position:relative}
+.roll__top{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.3rem,3vw,1.9rem);
+  color:var(--coral);display:block;margin-bottom:-.12em}
+.roll--navy .roll__top,.roll--teal .roll__top{color:var(--gold)}
+.roll__name{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.94;
+  font-size:clamp(2.6rem,6.6vw,5.2rem)}
+.roll__sub{font-family:var(--disp);font-weight:600;text-transform:uppercase;letter-spacing:.22em;
+  font-size:.82rem;margin-top:14px;opacity:.7}
+.roll__desc{font-family:var(--serif);font-size:1.16rem;line-height:1.6;max-width:430px;margin:20px 0 6px}
+.roll__serve{font-family:var(--disp);font-weight:700;font-size:1rem;margin:14px 0 6px}
+.roll__wry{font-family:var(--serif);font-style:italic;font-size:1.06rem;opacity:.82;max-width:400px;margin-bottom:26px}
+.roll--navy .roll__serve,.roll--teal .roll__serve{color:#fff}
+.roll--navy .link-u,.roll--teal .link-u{border-color:var(--gold)}
+@media(min-width:880px){
+  .roll__in{grid-template-columns:1fr 1fr}
   .roll--flip .roll__media{order:2}
-  .roll--flip .roll__num{left:auto;right:-10px}
 }
 
-/* ---------- SERVICES TRIPTYCH ---------- */
-.serv{background:var(--cream)}
-.serv__head{text-align:center;max-width:680px;margin:0 auto clamp(40px,6vh,64px)}
-.serv__head h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:.2em}
-.serv__grid{display:grid;grid-template-columns:1fr;gap:24px;max-width:1180px;margin:0 auto}
-.card{position:relative;overflow:hidden;border-radius:3px;min-height:440px;display:flex;align-items:flex-end;
-  color:#fff;box-shadow:0 16px 40px var(--shadow)}
-.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.3,1)}
-.card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,37,0) 30%,rgba(20,28,37,.85) 100%)}
-.card:hover img{transform:scale(1.07)}
-.card__body{position:relative;z-index:2;padding:32px}
-.card__body h3{font-size:1.8rem;font-weight:600;margin-bottom:8px}
-.card__body p{font-size:.97rem;color:#eadfce;max-width:320px}
-.card__body .link{display:inline-block;margin-top:16px;font-weight:600;font-size:.78rem;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--gold);border-bottom:1.5px solid var(--gold);padding-bottom:3px}
-@media(min-width:760px){.serv__grid{grid-template-columns:repeat(3,1fr)}}
+/* ---------- FAMOUSLY SIMPLE divider ---------- */
+.simple{background:var(--navy);color:var(--cream);text-align:center;padding:clamp(64px,11vh,120px) var(--gut);position:relative;overflow:hidden}
+.simple .kicker{color:var(--coral);display:block;margin-bottom:18px}
+.simple h2{font-family:var(--serif);font-style:italic;font-weight:500;line-height:.96;
+  font-size:clamp(3.4rem,13vw,10rem);letter-spacing:-.02em}
+.simple h2 .pd{color:var(--coral);font-style:normal}
+.simple p{font-family:var(--serif);font-size:1.15rem;max-width:540px;margin:26px auto 0;opacity:.86;line-height:1.6}
 
-/* ---------- GALLERY STRIP ---------- */
-.gallery{background:var(--ivory);padding-bottom:clamp(64px,11vh,140px)}
-.gallery__head{text-align:center;margin-bottom:clamp(34px,5vh,54px)}
-.gallery__head h2{font-size:clamp(2rem,5vw,3.4rem);margin-top:.2em}
-.gallery__scroll{display:flex;gap:16px;overflow-x:auto;padding:8px var(--gut) 26px;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch}
-.gallery__scroll::-webkit-scrollbar{height:6px}
-.gallery__scroll::-webkit-scrollbar-thumb{background:var(--sand);border-radius:10px}
-.gallery__scroll figure{flex:0 0 clamp(240px,40vw,360px);scroll-snap-align:center}
-.gallery__scroll img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:3px;filter:saturate(1.04)}
-.gallery__note{text-align:center;font-size:.84rem;color:var(--sea);letter-spacing:.1em;margin-top:6px}
+/* ---------- BEYOND (services as full rows) ---------- */
+.beyond{background:var(--butter)}
+.beyond__head{text-align:center;padding:clamp(64px,10vh,110px) var(--gut) clamp(18px,4vh,40px)}
+.beyond__head .kicker{color:var(--coral);display:block;margin-bottom:16px}
+.beyond__head h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(2.2rem,6vw,4.4rem);line-height:.98}
+.srow{display:grid;grid-template-columns:1fr;align-items:stretch;min-height:clamp(360px,52vh,560px)}
+.srow__media{position:relative;overflow:hidden;min-height:300px}
+.srow__media img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.3,1)}
+.srow:hover .srow__media img{transform:scale(1.06)}
+.srow__body{display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,6vw,80px) var(--gut)}
+.srow:nth-child(odd){background:var(--cream)}
+.srow:nth-child(even){background:var(--navy);color:var(--cream)}
+.srow__top{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.5rem;color:var(--coral);margin-bottom:-.1em}
+.srow:nth-child(even) .srow__top{color:var(--gold)}
+.srow__name{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(2.2rem,5.4vw,4rem);line-height:.94;margin-bottom:18px}
+.srow__desc{font-family:var(--serif);font-size:1.14rem;line-height:1.6;max-width:440px;margin-bottom:26px}
+.srow:nth-child(even) .link-u{border-color:var(--gold)}
+@media(min-width:880px){
+  .srow{grid-template-columns:1fr 1fr}
+  .srow--flip .srow__media{order:2}
+}
 
-/* ---------- VISIT / LOCATION ---------- */
-.visit{background:var(--ink);color:var(--ivory)}
-.visit__grid{display:grid;grid-template-columns:1fr;gap:clamp(36px,6vw,70px);max-width:1180px;margin:0 auto;align-items:center}
-.visit .eyebrow{color:var(--gold)}
-.visit h2{font-size:clamp(2.1rem,5vw,3.6rem);margin:.25em 0 .5em}
-.visit h2 em{font-style:italic;color:var(--cream)}
-.visit__addr{font-size:1.1rem;color:var(--sand);margin-bottom:26px;line-height:1.8}
-.visit__addr a{color:var(--gold)}
-.hours{border-top:1px solid rgba(255,255,255,.18);padding-top:24px;margin-bottom:30px}
-.hours h4{font-family:var(--body);font-weight:600;letter-spacing:.18em;text-transform:uppercase;font-size:.72rem;
-  color:var(--gold);margin-bottom:14px}
-.hours__row{display:flex;justify-content:space-between;max-width:380px;padding:7px 0;
-  border-bottom:1px dashed rgba(255,255,255,.12);font-size:.96rem}
-.hours__row span:first-child{color:#fff}
-.hours__row span:last-child{color:var(--sand)}
-.visit__map{border-radius:3px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);min-height:340px}
-.visit__map iframe{width:100%;height:100%;min-height:340px;border:0;filter:grayscale(.2) contrast(1.05)}
-@media(min-width:900px){.visit__grid{grid-template-columns:1fr 1fr}}
+/* ---------- GALLERY marquee ---------- */
+.gal{background:var(--ivory);padding:clamp(60px,10vh,120px) 0 clamp(40px,7vh,80px)}
+.gal__head{text-align:center;padding:0 var(--gut) clamp(34px,5vh,54px)}
+.gal__head .kicker{color:var(--coral);display:block;margin-bottom:14px}
+.gal__head h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;font-size:clamp(2rem,5.4vw,3.8rem);line-height:.98}
+.gal__track{display:flex;gap:14px;width:max-content;animation:marq 46s linear infinite}
+.gal:hover .gal__track{animation-play-state:paused}
+.gal__track img{height:clamp(220px,30vw,330px);width:auto;border-radius:6px;object-fit:cover}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.gal__note{text-align:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--teal);margin-top:30px}
+
+/* ---------- QUOTE band ---------- */
+.quote{background:var(--coral);color:#fff;text-align:center;padding:clamp(70px,12vh,140px) var(--gut)}
+.quote__in{max-width:900px;margin:0 auto}
+.quote .mark{font-family:var(--serif);font-style:italic;font-size:6rem;line-height:.4;display:block;opacity:.4}
+.quote p{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,4.2vw,3rem);line-height:1.28;margin:10px 0 24px}
+.quote cite{font-family:var(--disp);font-weight:700;font-style:normal;text-transform:uppercase;letter-spacing:.22em;font-size:.78rem;opacity:.9}
+
+/* ---------- VISIT ---------- */
+.visit{background:var(--cream);padding:clamp(64px,11vh,130px) var(--gut)}
+.visit__in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.visit .kicker{color:var(--coral);display:block;margin-bottom:16px}
+.visit h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.01em;
+  font-size:clamp(2.3rem,5.6vw,4.2rem);line-height:.96;margin-bottom:8px}
+.visit h2 .it{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0;color:var(--coral);display:block}
+.visit__addr{font-family:var(--serif);font-size:1.2rem;line-height:1.75;margin:22px 0}
+.visit__addr a{color:var(--coral);border-bottom:1px solid currentColor}
+.visit__phone{font-family:var(--disp);font-weight:800;font-size:1.8rem;letter-spacing:.01em;display:inline-block;margin-bottom:8px}
+.hours{margin-top:30px}
+.hours h3{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;
+  color:var(--coral);margin-bottom:14px}
+.hours__row{display:flex;justify-content:space-between;max-width:400px;padding:9px 0;border-bottom:1px dashed rgba(22,36,46,.22);
+  font-family:var(--serif);font-size:1.04rem}
+.hours__row span:last-child{font-weight:600}
+.visit__map{border-radius:8px;overflow:hidden;box-shadow:0 24px 60px rgba(22,36,46,.2);min-height:380px;align-self:stretch}
+.visit__map iframe{width:100%;height:100%;min-height:380px;border:0;filter:saturate(1.05) contrast(1.03)}
+@media(min-width:900px){.visit__in{grid-template-columns:1.05fr .95fr}}
 
 /* ---------- FINAL CTA ---------- */
-.final{position:relative;text-align:center;color:#fff;padding:clamp(80px,16vh,180px) var(--gut);overflow:hidden}
-.final__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%}
-.final::after{content:"";position:absolute;inset:0;background:rgba(20,28,37,.62)}
-.final__inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
-.final h2{font-size:clamp(2.4rem,6.5vw,5rem);font-weight:600;line-height:1.05;margin-bottom:.4em}
-.final h2 em{font-style:italic;color:var(--cream)}
-.final__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-.final__phone{display:block;margin-top:26px;font-family:var(--display);font-style:italic;font-size:1.3rem;color:var(--cream)}
-.final__phone a{border-bottom:1px solid var(--coral)}
+.final{position:relative;text-align:center;color:#fff;padding:clamp(90px,18vh,200px) var(--gut);overflow:hidden}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 58%}
+.final::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,22,28,.5),rgba(15,22,28,.72))}
+.final__in{position:relative;z-index:2;max-width:840px;margin:0 auto}
+.final .kicker{color:var(--cream);display:block;margin-bottom:18px}
+.final h2{font-family:var(--disp);font-weight:800;text-transform:uppercase;letter-spacing:-.02em;line-height:.92;
+  font-size:clamp(2.8rem,8vw,6.4rem)}
+.final h2 .it{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0;color:var(--cream);display:block}
+.final__btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.final .btn--ghost{color:#fff;border-color:rgba(255,255,255,.7)}
+.final .btn--ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+.final__ph{display:block;margin-top:28px;font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--cream)}
+.final__ph a{border-bottom:1px solid var(--coral)}
 
 /* ---------- FOOTER ---------- */
-.footer{background:#141c25;color:#9fb0bd;padding:clamp(56px,8vh,88px) var(--gut) 30px}
-.footer__grid{display:grid;grid-template-columns:1fr;gap:38px;max-width:1180px;margin:0 auto 44px}
-.footer__brand h3{font-family:var(--display);color:#fff;font-size:1.5rem;font-weight:700}
-.footer__brand small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;
-  color:var(--gold);margin-top:6px}
-.footer__brand p{margin-top:18px;font-size:.95rem;max-width:300px;line-height:1.75}
-.footer__col h4{font-family:var(--body);color:#fff;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  font-size:.72rem;margin-bottom:18px}
-.footer__col a,.footer__col p{display:block;font-size:.95rem;color:#9fb0bd;padding:5px 0;transition:color .25s}
-.footer__col a:hover{color:var(--coral)}
-.footer__social{display:flex;gap:14px;margin-top:8px}
-.footer__social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:flex;
-  align-items:center;justify-content:center;color:#9fb0bd;transition:all .3s}
-.footer__social a:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-3px)}
-.footer__social svg{width:17px;height:17px;fill:currentColor}
-.footer__bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;max-width:1180px;margin:0 auto;
-  display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.82rem;color:#6b7b88}
-@media(min-width:760px){.footer__grid{grid-template-columns:1.6fr 1fr 1fr}}
+.foot{background:var(--navy);color:#9fb2bd;padding:clamp(60px,9vh,96px) var(--gut) 30px}
+.foot__top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;
+  padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:40px}
+.foot__seal{width:104px;height:104px}
+.foot__seal .seal__ring-text,.foot__seal .seal__center,.foot__seal .seal__ring{fill:var(--cream);stroke:var(--cream)}
+.foot__top p{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--sand);max-width:420px}
+.foot__grid{display:grid;grid-template-columns:1fr;gap:34px;max-width:1100px;margin:0 auto 40px;text-align:center}
+.foot__col h4{font-family:var(--disp);font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem;color:#fff;margin-bottom:16px}
+.foot__col a,.foot__col p{display:block;font-family:var(--serif);font-size:1rem;color:#9fb2bd;padding:5px 0;transition:color .25s}
+.foot__col a:hover{color:var(--coral)}
+.foot__soc{display:flex;gap:14px;justify-content:center}
+.foot__soc a{width:42px;height:42px;border:1px solid rgba(255,255,255,.22);border-radius:50%;display:flex;
+  align-items:center;justify-content:center;color:#9fb2bd;transition:.3s}
+.foot__soc a:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-3px)}
+.foot__soc svg{width:17px;height:17px;fill:currentColor}
+.foot__base{border-top:1px solid rgba(255,255,255,.1);padding-top:24px;max-width:1100px;margin:0 auto;
+  display:flex;flex-direction:column;gap:10px;text-align:center;font-family:var(--disp);font-size:.74rem;
+  letter-spacing:.08em;color:#6b7c87;text-transform:uppercase}
+@media(min-width:760px){
+  .foot__grid{grid-template-columns:1.5fr 1fr 1fr;text-align:left}
+  .foot__col:first-child{text-align:left}
+  .foot__soc{justify-content:flex-start}
+  .foot__base{flex-direction:row;justify-content:space-between}
+}
 
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
-  .hero__img{transform:none}
+  .hero__slide{opacity:0}.hero__slide.active{opacity:1}
+  .hero__slide img{transform:none}
 }
 </style>
 </head>
-<body>
+<body id="top">
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- SVG seal symbol (reused) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="seal-mark">
+      <circle class="seal__ring" cx="60" cy="60" r="58" fill="none" stroke-width="1.4"/>
+      <circle class="seal__ring" cx="60" cy="60" r="44" fill="none" stroke-width="1"/>
+      <path id="seal-top" d="M60,9 a51,51 0 0,1 0,102 a51,51 0 0,1 0,-102" fill="none"/>
+      <path id="seal-bot" d="M60,111 a51,51 0 0,1 0,-102 a51,51 0 0,1 0,102" fill="none"/>
+      <text class="seal__ring-text"><textPath href="#seal-top" startOffset="50%" text-anchor="middle">SHINNECOCK LOBSTER FACTORY</textPath></text>
+      <text class="seal__ring-text"><textPath href="#seal-bot" startOffset="50%" text-anchor="middle">· SOUTHAMPTON · NEW YORK ·</textPath></text>
+      <!-- top-down lobster mark -->
+      <g class="seal__center" transform="translate(60,57) scale(1.04)">
+        <!-- antennae -->
+        <path d="M-3,-15 C-7,-22 -11,-25 -15,-27 M3,-15 C7,-22 11,-25 15,-27" fill="none" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- carapace / head -->
+        <ellipse cx="0" cy="-9" rx="5.2" ry="7"/>
+        <!-- abdomen segments -->
+        <path d="M-4.6,-2 H4.6 L4,2 H-4 Z"/>
+        <path d="M-4,2.6 H4 L3.4,6.6 H-3.4 Z"/>
+        <path d="M-3.4,7.2 H3.4 L2.8,11.2 H-2.8 Z"/>
+        <path d="M-2.8,11.8 H2.8 L2.2,15.4 H-2.2 Z"/>
+        <!-- tail fan -->
+        <g>
+          <path d="M0,15.4 C-1.4,15.4 -2.2,16 -2.6,18 C-3,21 -2.4,24 -1.2,25.6 C-.6,23 -.4,19 0,16.4 Z"/>
+          <path d="M0,15.4 C1.4,15.4 2.2,16 2.6,18 C3,21 2.4,24 1.2,25.6 C.6,23 .4,19 0,16.4 Z"/>
+          <path d="M0,16 C-.8,18.6 -1,22 -.6,25.8 C-.2,22 .2,22 .6,25.8 C1,22 .8,18.6 0,16 Z"/>
+        </g>
+        <!-- walking legs -->
+        <path d="M-4.2,-3 C-9,-2 -12,1 -13,5 M-4.2,1 C-9,2.5 -11.5,6 -12,10 M-4,5 C-8,7 -10,10.5 -10,14
+                 M4.2,-3 C9,-2 12,1 13,5 M4.2,1 C9,2.5 11.5,6 12,10 M4,5 C8,7 10,10.5 10,14"
+              fill="none" stroke-width="1.15" stroke-linecap="round"/>
+        <!-- left claw arm + pincer -->
+        <path d="M-4.6,-8 C-9,-10 -12,-12 -15,-14.5" fill="none" stroke-width="2.8" stroke-linecap="round"/>
+        <g transform="rotate(-30 -16.5 -15)">
+          <ellipse cx="-16.5" cy="-15" rx="6.6" ry="4.6"/>
+          <path d="M-21,-17 C-24.4,-18.4 -27,-17.8 -28,-15.2 C-26,-15.6 -23.6,-15.8 -21.4,-14.8 Z"/>
+        </g>
+        <!-- right claw arm + pincer -->
+        <path d="M4.6,-8 C9,-10 12,-12 15,-14.5" fill="none" stroke-width="2.8" stroke-linecap="round"/>
+        <g transform="rotate(30 16.5 -15)">
+          <ellipse cx="16.5" cy="-15" rx="6.6" ry="4.6"/>
+          <path d="M21,-17 C24.4,-18.4 27,-17.8 28,-15.2 C26,-15.6 23.6,-15.8 21.4,-14.8 Z"/>
+        </g>
+      </g>
+    </g>
+  </defs>
+</svg>
+
+<!-- UTILITY BAR -->
+<div class="util">
+  <span class="util__l">The Hamptons' #1 Seafood · Take-Out &amp; Catering</span>
+  <span class="util__r">
+    <a href="tel:6312593334">631·259·3334</a><span class="dot">●</span>
+    <a href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+  </span>
+</div>
+
 <!-- NAV -->
-<nav class="nav" id="nav">
-  <a class="nav__brand" href="#top">Shinnecock Lobster Factory<small>Southampton · The Hamptons</small></a>
+<nav class="nav" id="nav" aria-label="Primary">
+  <a href="#top" aria-label="Shinnecock Lobster Factory — home">
+    <svg class="nav__seal" viewBox="0 0 120 120"><use href="#seal-mark"/></svg>
+  </a>
   <div class="nav__links">
     <a href="#story">Our Story</a>
-    <a href="#rolls">Lobster Rolls</a>
-    <a href="#serve">Catering</a>
+    <a href="#rolls">The Rolls</a>
+    <a href="#beyond">Catering</a>
     <a href="#gallery">Gallery</a>
     <a href="#visit">Visit</a>
   </div>
-  <div class="nav__actions">
-    <a class="nav__phone" href="tel:6312593334">631.259.3334</a>
+  <div class="nav__cta">
     <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
-    <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
-<div class="mobile" id="mobile">
-  <button class="mobile__close" id="mclose" aria-label="Close menu">&times;</button>
+<!-- DRAWER -->
+<div class="drawer" id="drawer">
+  <button class="drawer__x" id="drawerX" aria-label="Close menu">&times;</button>
   <a href="#story">Our Story</a>
-  <a href="#rolls">Lobster Rolls</a>
-  <a href="#serve">Catering</a>
+  <a href="#rolls">The Rolls</a>
+  <a href="#beyond">Catering</a>
   <a href="#gallery">Gallery</a>
   <a href="#visit">Visit</a>
-  <a class="mobile__phone" href="tel:6312593334">631.259.3334</a>
+  <a class="drawer__ph" href="tel:6312593334">Call 631·259·3334</a>
 </div>
 
-<!-- HERO -->
-<header class="hero" id="top">
-  <img class="hero__img" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/IMG_8182-scaled.jpg" alt="Fresh lobster roll from Shinnecock Lobster Factory" referrerpolicy="no-referrer">
-  <div class="hero__inner" id="main">
-    <span class="eyebrow">The Hamptons' #1 Seafood Take-Out &amp; Catering</span>
-    <h1>
-      <span class="hero__line l1">Local catch,</span>
-      <span class="hero__line l2 italic">famously simple.</span>
-    </h1>
-    <p class="hero__sub">From our spot on the Shinnecock reservation in Southampton — the best of local seafood and the lobster rolls the Hamptons can't stop talking about.</p>
-    <div class="hero__cta">
-      <a class="btn btn--lg" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
-      <a class="btn btn--ghost btn--lg" href="#rolls">See the Rolls</a>
-    </div>
+<!-- HERO SLIDER -->
+<header class="hero" id="main">
+  <div class="hero__slide active"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/IMG_8182-scaled.jpg" alt="Fresh lobster roll" referrerpolicy="no-referrer"></div>
+  <div class="hero__slide"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Main-Whole-Lobsters-Half-scaled.jpg" alt="Whole Maine lobsters" referrerpolicy="no-referrer" loading="lazy"></div>
+  <div class="hero__slide"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/oyster-raw-bar.jpg" alt="Oysters on the raw bar" referrerpolicy="no-referrer" loading="lazy"></div>
+  <div class="hero__slide"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Lobster-Bake2.jpg" alt="Catered lobster bake" referrerpolicy="no-referrer" loading="lazy"></div>
+  <div class="hero__slide"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Six-Lobster-Rolls.jpg" alt="A spread of lobster rolls" referrerpolicy="no-referrer" loading="lazy"></div>
+  <div class="hero__slide"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Shrimp-Cocktail.jpg" alt="Shrimp cocktail" referrerpolicy="no-referrer" loading="lazy"></div>
+
+  <div class="hero__tag">
+    <span class="kicker">Southampton · On the Shinnecock Reservation</span>
+    <h1 class="hero__big"><span>Local catch.</span><span>Famously <span class="amp">simple.</span></span></h1>
   </div>
-  <div class="scrollcue">Scroll</div>
+
+  <div class="hero__scroll">Scroll</div>
+  <div class="hero__dots" id="dots" role="tablist" aria-label="Hero slides"></div>
+  <div class="hero__ctrl">
+    <span class="hero__count"><b id="cur">01</b> <span class="tot">/ 06</span></span>
+    <button class="hero__pp" id="pp" aria-label="Pause slideshow">
+      <svg id="ppIcon" viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg>
+    </button>
+  </div>
 </header>
 
-<!-- MARQUEE -->
-<div class="marquee" aria-hidden="true">
-  <div class="marquee__track">
-    <span>Lobster Rolls</span><span>Fresh Local Seafood</span><span>Catering</span><span>The Food Truck</span><span>Raw Bar</span><span>Lobster Bakes</span>
-    <span>Lobster Rolls</span><span>Fresh Local Seafood</span><span>Catering</span><span>The Food Truck</span><span>Raw Bar</span><span>Lobster Bakes</span>
-  </div>
-</div>
-
-<!-- STORY -->
-<section class="section intro" id="story">
-  <div class="intro__wrap reveal">
-    <div class="intro__rule"></div>
-    <span class="eyebrow">Our Story</span>
-    <h2>On the reservation in Southampton, we feature the best of <em>local seafood</em> — along with our famous lobster rolls.</h2>
-    <p>We don't say we're the best. Our customers do. Whether it's the variety of lobster rolls, the fresh local catch, or our catering, the Hamptons keep coming back. Stop by, try us, and get hooked.</p>
-    <a class="btn btn--ghost" href="#visit">Plan Your Visit</a>
+<!-- MANIFESTO -->
+<section class="manifesto" id="story">
+  <div class="manifesto__in">
+    <span class="star">✦ ✦ ✦</span>
+    <p>Sometimes the best thing you can do to a lobster is <em>very little</em>. Pull it fresh, dress it simple, and let the catch speak for itself. That's the whole idea here — the best of local seafood, and the rolls the Hamptons can't stop talking about.</p>
+    <span class="sign">This is Shinnecock Lobster Factory.</span>
   </div>
 </section>
 
-<!-- TAGLINE BAND -->
-<section class="band">
-  <div class="reveal">
-    <h2>Fresh. Local. <b>Hooked.</b></h2>
-    <p>The Hamptons love us — and they're not shy about it.</p>
-  </div>
+<!-- CAPS BAND -->
+<section class="capband">
+  <h2>Fresh<span class="dot">.</span> Local<span class="dot">.</span> Hooked<span class="dot">.</span></h2>
 </section>
 
-<!-- ROLL SHOWCASE -->
-<section class="section rolls" id="rolls">
-  <div class="rolls__head reveal">
-    <span class="eyebrow">The Lineup</span>
-    <h2>The rolls that <em>made our name</em></h2>
-  </div>
+<!-- ROLLS -->
+<div id="rolls"></div>
 
-  <article class="roll reveal">
+<section class="roll roll--cream">
+  <div class="roll__in">
     <div class="roll__media">
       <span class="roll__num">01</span>
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2022/02/lobster-roll-classic.jpg" alt="The Classic lobster roll" referrerpolicy="no-referrer" loading="lazy">
+      <span class="roll__disc"></span>
+      <img class="roll__photo" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2022/02/lobster-roll-classic.jpg" alt="The Classic lobster roll" referrerpolicy="no-referrer" loading="lazy">
     </div>
     <div class="roll__body">
-      <span class="eyebrow">The Original</span>
-      <h3>The Classic<span class="sub">lobster roll</span></h3>
-      <p>Big, hearty chunks of fresh local lobster, served the way a lobster roll should be. Sometimes less is more.</p>
-      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
+      <span class="roll__top">The</span>
+      <h2 class="roll__name">Classic</h2>
+      <span class="roll__sub">Lobster Roll</span>
+      <p class="roll__desc">Big, hearty chunks of fresh local lobster, served the way a lobster roll is meant to be.</p>
+      <p class="roll__serve">The original. The one we're known for.</p>
+      <p class="roll__wry">Sometimes less really is more.</p>
+      <a class="link-u" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now <span class="arr">→</span></a>
     </div>
-  </article>
-
-  <article class="roll roll--flip reveal">
-    <div class="roll__media">
-      <span class="roll__num">02</span>
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Diavolo-scaled.jpg" alt="The Diavolo lobster roll" referrerpolicy="no-referrer" loading="lazy">
-    </div>
-    <div class="roll__body">
-      <span class="eyebrow">Bring the Heat</span>
-      <h3>The Diavolo<span class="sub">lobster roll</span></h3>
-      <p>For those who like a little fire with their catch — our signature roll with a spirited kick.</p>
-      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
-    </div>
-  </article>
-
-  <article class="roll reveal">
-    <div class="roll__media">
-      <span class="roll__num">03</span>
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/Shinnecock-Lobster-Factory-11052020__Cajun-lobster-roll-046-1.jpg" alt="The Cajun lobster roll" referrerpolicy="no-referrer" loading="lazy">
-    </div>
-    <div class="roll__body">
-      <span class="eyebrow">A Little Spice</span>
-      <h3>The Cajun<span class="sub">lobster roll</span></h3>
-      <p>Fresh lobster with a Southern accent. A bold twist on the roll that put us on the map.</p>
-      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
-    </div>
-  </article>
-
-  <article class="roll roll--flip reveal">
-    <div class="roll__media">
-      <span class="roll__num">04</span>
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-melt.jpg" alt="The Lobster Melt" referrerpolicy="no-referrer" loading="lazy">
-    </div>
-    <div class="roll__body">
-      <span class="eyebrow">Warm &amp; Toasted</span>
-      <h3>The Lobster<span class="sub">melt</span></h3>
-      <p>Lobster, toasted and melty, for the days a chilled roll just won't do. Comfort, Hamptons-style.</p>
-      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now</a>
-    </div>
-  </article>
+  </div>
 </section>
 
-<!-- SERVICES -->
-<section class="section serv" id="serve">
-  <div class="serv__head reveal">
-    <span class="eyebrow">Beyond the Counter</span>
+<section class="roll roll--navy roll--flip">
+  <div class="roll__in">
+    <div class="roll__media">
+      <span class="roll__num">02</span>
+      <span class="roll__disc"></span>
+      <img class="roll__photo" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Diavolo-scaled.jpg" alt="The Diavolo lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="roll__top">The</span>
+      <h2 class="roll__name">Diavolo</h2>
+      <span class="roll__sub">Lobster Roll</span>
+      <p class="roll__desc">For the ones who like a little fire with their catch — our signature roll with a spirited kick.</p>
+      <p class="roll__serve">Bring the heat.</p>
+      <p class="roll__wry">Not for the faint of palate.</p>
+      <a class="link-u" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="roll roll--cream">
+  <div class="roll__in">
+    <div class="roll__media">
+      <span class="roll__num">03</span>
+      <span class="roll__disc"></span>
+      <img class="roll__photo" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/Shinnecock-Lobster-Factory-11052020__Cajun-lobster-roll-046-1.jpg" alt="The Cajun lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="roll__top">The</span>
+      <h2 class="roll__name">Cajun</h2>
+      <span class="roll__sub">Lobster Roll</span>
+      <p class="roll__desc">Fresh lobster with a Southern accent — a bold little twist on the roll that put us on the map.</p>
+      <p class="roll__serve">A little spice, done right.</p>
+      <p class="roll__wry">New England meets the bayou.</p>
+      <a class="link-u" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="roll roll--teal roll--flip">
+  <div class="roll__in">
+    <div class="roll__media">
+      <span class="roll__num">04</span>
+      <span class="roll__disc"></span>
+      <img class="roll__photo" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-melt.jpg" alt="The Lobster Melt" referrerpolicy="no-referrer" loading="lazy">
+    </div>
+    <div class="roll__body">
+      <span class="roll__top">The</span>
+      <h2 class="roll__name">Melt</h2>
+      <span class="roll__sub">Warm &amp; Toasted</span>
+      <p class="roll__desc">Lobster, toasted and melty, for the days a chilled roll just won't do. Comfort, Hamptons-style.</p>
+      <p class="roll__serve">Served warm.</p>
+      <p class="roll__wry">The cure for a cool morning.</p>
+      <a class="link-u" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Now <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FAMOUSLY SIMPLE -->
+<section class="simple">
+  <span class="kicker">Maine to Montauk Highway</span>
+  <h2>famously<br>simple<span class="pd">.</span></h2>
+  <p>No fuss, no froufrou. Just the catch, the roll, and the people who keep coming back for it.</p>
+</section>
+
+<!-- BEYOND -->
+<section class="beyond" id="beyond">
+  <div class="beyond__head">
+    <span class="kicker">Beyond the Counter</span>
     <h2>More than a take-out window</h2>
   </div>
-  <div class="serv__grid">
-    <a class="card reveal" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Lobster-Bake2.jpg" alt="Catered lobster bake" referrerpolicy="no-referrer" loading="lazy">
-      <div class="card__body">
-        <h3>We Cater</h3>
-        <p>Make your summer unforgettable. Let us cater your next event with fresh seafood, raw bars, and lobster bakes.</p>
-        <span class="link">Cater Your Event</span>
-      </div>
-    </a>
-    <a class="card reveal" href="https://shinnecocklobsterfactory.com/food-truck/" target="_blank" rel="noopener">
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/11/marco-lance-food-truck.jpeg" alt="The Shinnecock Lobster Factory food truck" referrerpolicy="no-referrer" loading="lazy">
-      <div class="card__body">
-        <h3>The Food Truck</h3>
-        <p>The Hamptons' favorite seafood, rolling to a spot near you. Bring the factory to your party.</p>
-        <span class="link">Book the Truck</span>
-      </div>
-    </a>
-    <a class="card reveal" href="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Raw-Bar.jpg" target="_blank" rel="noopener">
-      <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Raw-Bar.jpg" alt="Fresh raw bar with oysters" referrerpolicy="no-referrer" loading="lazy">
-      <div class="card__body">
-        <h3>The Raw Bar</h3>
-        <p>Oysters, shrimp, and the freshest of the local catch — shucked, chilled, and ready to impress.</p>
-        <span class="link">See the Spread</span>
-      </div>
-    </a>
-  </div>
+
+  <article class="srow">
+    <div class="srow__media"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Lobster-Bake2.jpg" alt="A catered lobster bake on the beach" referrerpolicy="no-referrer" loading="lazy"></div>
+    <div class="srow__body">
+      <span class="srow__top">We</span>
+      <h3 class="srow__name">Cater</h3>
+      <p class="srow__desc">Make your summer unforgettable. Let us bring fresh seafood, raw bars, and full lobster bakes to your next event.</p>
+      <a class="link-u" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">Cater Your Event <span class="arr">→</span></a>
+    </div>
+  </article>
+
+  <article class="srow srow--flip">
+    <div class="srow__media"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/11/marco-lance-food-truck.jpeg" alt="The Shinnecock Lobster Factory food truck" referrerpolicy="no-referrer" loading="lazy"></div>
+    <div class="srow__body">
+      <span class="srow__top">The</span>
+      <h3 class="srow__name">Food Truck</h3>
+      <p class="srow__desc">The Hamptons' favorite seafood, rolling to a spot near you. Bring the whole factory to your party.</p>
+      <a class="link-u" href="https://shinnecocklobsterfactory.com/food-truck/" target="_blank" rel="noopener">Book the Truck <span class="arr">→</span></a>
+    </div>
+  </article>
+
+  <article class="srow">
+    <div class="srow__media"><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Cater-Raw-Bar.jpg" alt="A fresh raw bar with oysters" referrerpolicy="no-referrer" loading="lazy"></div>
+    <div class="srow__body">
+      <span class="srow__top">The</span>
+      <h3 class="srow__name">Raw Bar</h3>
+      <p class="srow__desc">Oysters, shrimp, and the freshest of the local catch — shucked, chilled, and ready to impress.</p>
+      <a class="link-u" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">See the Spread <span class="arr">→</span></a>
+    </div>
+  </article>
 </section>
 
 <!-- GALLERY -->
-<section class="gallery">
-  <div class="gallery__head reveal">
-    <span class="eyebrow">Straight From the Kitchen</span>
+<section class="gal" id="gallery">
+  <div class="gal__head">
+    <span class="kicker">Straight from the Kitchen</span>
     <h2>A taste of the factory</h2>
   </div>
-  <div class="gallery__scroll">
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Shinnecock.jpg" alt="The Shinnecock lobster roll" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Main-Whole-Lobsters-Half-scaled.jpg" alt="Whole lobsters" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-mac.jpg" alt="Lobster mac and cheese" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Shrimp-Cocktail.jpg" alt="Shrimp cocktail" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/oyster-raw-bar.jpg" alt="Oysters on the raw bar" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/fish-and-chips.jpg" alt="Fish and chips" referrerpolicy="no-referrer" loading="lazy"></figure>
-    <figure><img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Six-Lobster-Rolls.jpg" alt="Six lobster rolls" referrerpolicy="no-referrer" loading="lazy"></figure>
+  <div class="gal__track" id="galTrack">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Lobster-Roll-Shinnecock.jpg" alt="The Shinnecock lobster roll" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Main-Whole-Lobsters-Half-scaled.jpg" alt="Whole lobsters" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/lobster-mac.jpg" alt="Lobster mac and cheese" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Shrimp-Cocktail.jpg" alt="Shrimp cocktail" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/oyster-raw-bar.jpg" alt="Oysters" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/10/fish-and-chips.jpg" alt="Fish and chips" referrerpolicy="no-referrer" loading="lazy">
+    <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2024/03/Six-Lobster-Rolls.jpg" alt="Six lobster rolls" referrerpolicy="no-referrer" loading="lazy">
   </div>
-  <p class="gallery__note">Follow @shinnecocklobster for the daily catch</p>
+  <p class="gal__note">Follow along @shinnecocklobster</p>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="quote__in">
+    <span class="mark">&ldquo;</span>
+    <p>We don't say we're the best. <br>Our customers do.</p>
+    <cite>— The Hamptons, every summer</cite>
+  </div>
 </section>
 
 <!-- VISIT -->
-<section class="section visit" id="visit">
-  <div class="visit__grid">
-    <div class="reveal">
-      <span class="eyebrow">Find Us</span>
-      <h2>Right on the <em>Montauk Highway</em></h2>
+<section class="visit" id="visit">
+  <div class="visit__in">
+    <div>
+      <span class="kicker">Find Us</span>
+      <h2>Right on the<span class="it">Montauk Highway</span></h2>
       <p class="visit__addr">
-        42 Montauk Hwy, Southampton, NY 11968<br>
-        <span style="font-size:.92rem;color:#9fb0bd">At the St. Andrews intersection, across from the Southampton Fire Department.</span><br><br>
-        <a href="tel:6312593334">631.259.3334</a>
+        42 Montauk Hwy<br>Southampton, NY 11968<br>
+        <span style="font-size:.96rem;opacity:.7">At the St. Andrews intersection, across from the Southampton Fire Department.</span>
       </p>
+      <a class="visit__phone" href="tel:6312593334">631·259·3334</a>
       <div class="hours">
-        <h4>In-Season Hours · May – September</h4>
-        <div class="hours__row"><span>Sunday – Thursday</span><span>11:00 AM – 8:00 PM</span></div>
-        <div class="hours__row"><span>Friday &amp; Saturday</span><span>11:00 AM – 9:00 PM</span></div>
+        <h3>In Season · May – September</h3>
+        <div class="hours__row"><span>Sun – Thu</span><span>11 AM – 8 PM</span></div>
+        <div class="hours__row"><span>Fri &amp; Sat</span><span>11 AM – 9 PM</span></div>
       </div>
       <div class="hours">
-        <h4>Off-Season Hours · October – April</h4>
-        <div class="hours__row"><span>Thursday – Sunday</span><span>11:00 AM – 8:00 PM</span></div>
-        <div class="hours__row"><span style="color:#9fb0bd">Hours subject to weather</span><span></span></div>
+        <h3>Off Season · October – April</h3>
+        <div class="hours__row"><span>Thu – Sun</span><span>11 AM – 8 PM</span></div>
+        <div class="hours__row"><span style="opacity:.6">Hours subject to weather</span><span></span></div>
       </div>
-      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
     </div>
-    <div class="visit__map reveal">
+    <div class="visit__map">
       <iframe title="Map to Shinnecock Lobster Factory" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48262.61862025213!2d-72.4616735794424!3d40.884739999999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd39a43a42e962bbe!2sShinnecock%20Lobster%20Factory!5e0!3m2!1sen!2sus!4v1631975045003!5m2!1sen!2sus"></iframe>
     </div>
@@ -457,72 +613,115 @@ h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.04;letter-spac
 
 <!-- FINAL CTA -->
 <section class="final">
-  <img class="final__img" src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/D1A12421-F91B-4F7E-8B53-4A46D121104E.jpg" alt="Lobster roll close up" referrerpolicy="no-referrer" loading="lazy">
-  <div class="final__inner reveal">
-    <span class="eyebrow" style="color:var(--cream)">Come Get Hooked</span>
-    <h2>Try us once.<br><em>You'll be back.</em></h2>
-    <div class="final__cta">
-      <a class="btn btn--lg" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
-      <a class="btn btn--ghost btn--lg" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener" style="color:#fff;border-color:rgba(255,255,255,.7)">Cater an Event</a>
+  <img src="https://shinnecocklobsterfactory.com/wp-content/uploads/2021/11/D1A12421-F91B-4F7E-8B53-4A46D121104E.jpg" alt="A lobster roll, up close" referrerpolicy="no-referrer" loading="lazy">
+  <div class="final__in">
+    <span class="kicker">Come get hooked</span>
+    <h2>Try us once.<span class="it">You'll be back.</span></h2>
+    <div class="final__btns">
+      <a class="btn" href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn--ghost" href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">Cater an Event</a>
     </div>
-    <span class="final__phone">Or call <a href="tel:6312593334">631.259.3334</a></span>
+    <span class="final__ph">Or call <a href="tel:6312593334">631·259·3334</a></span>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer__grid">
-    <div class="footer__brand">
-      <h3>Shinnecock Lobster Factory<small>Southampton · The Hamptons</small></h3>
-      <p>The Hamptons' number one seafood take-out and catering, on the Shinnecock reservation in Southampton, New York.</p>
-      <div class="footer__social">
-        <a href="https://www.facebook.com/hamptonsseafood" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-        </a>
-        <a href="https://instagram.com/shinnecocklobster" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm5-8.2a1.1 1.1 0 1 1 0-2.3 1.1 1.1 0 0 1 0 2.3Z"/></svg>
-        </a>
+<footer class="foot">
+  <div class="foot__top">
+    <svg class="foot__seal" viewBox="0 0 120 120"><use href="#seal-mark"/></svg>
+    <p>The Hamptons' number one seafood take-out &amp; catering, on the Shinnecock reservation in Southampton, New York.</p>
+  </div>
+  <div class="foot__grid">
+    <div class="foot__col">
+      <h4>Follow</h4>
+      <div class="foot__soc">
+        <a href="https://www.facebook.com/hamptonsseafood" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg></a>
+        <a href="https://instagram.com/shinnecocklobster" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8Zm0 8a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Zm5-8.2a1.1 1.1 0 1 1 0-2.3 1.1 1.1 0 0 1 0 2.3Z"/></svg></a>
       </div>
     </div>
-    <div class="footer__col">
+    <div class="foot__col">
       <h4>Explore</h4>
       <a href="#story">Our Story</a>
-      <a href="#rolls">Lobster Rolls</a>
+      <a href="#rolls">The Rolls</a>
       <a href="https://shinnecocklobsterfactory.com/we-cater/" target="_blank" rel="noopener">Catering</a>
       <a href="https://shinnecocklobsterfactory.com/food-truck/" target="_blank" rel="noopener">Food Truck</a>
-      <a href="#gallery">Gallery</a>
     </div>
-    <div class="footer__col">
+    <div class="foot__col">
       <h4>Visit</h4>
       <p>42 Montauk Hwy<br>Southampton, NY 11968</p>
-      <a href="tel:6312593334">631.259.3334</a>
+      <a href="tel:6312593334">631·259·3334</a>
       <a href="https://www.clover.com/online-ordering/shinnecocklobsterfactory" target="_blank" rel="noopener">Order Online</a>
     </div>
   </div>
-  <div class="footer__bottom">
-    <span>© 2026 Shinnecock Lobster Factory. All rights reserved.</span>
-    <span>Concept design by Bofill Technologies</span>
+  <div class="foot__base">
+    <span>© 2026 Shinnecock Lobster Factory</span>
+    <span>Concept Design — Bofill Technologies</span>
   </div>
 </footer>
 
 <script>
 (function(){
+  /* nav: switch to fixed solid state after hero */
   var nav=document.getElementById('nav');
-  var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>60);};
+  var hero=document.getElementById('main');
+  var onScroll=function(){
+    var trigger=hero.offsetHeight-90;
+    nav.classList.toggle('fixed',window.scrollY>trigger);
+  };
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  var burger=document.getElementById('burger'),mobile=document.getElementById('mobile'),
-      mclose=document.getElementById('mclose');
-  var openM=function(){mobile.classList.add('open');document.body.style.overflow='hidden';};
-  var closeM=function(){mobile.classList.remove('open');document.body.style.overflow='';};
-  burger.addEventListener('click',openM);
-  mclose.addEventListener('click',closeM);
-  mobile.querySelectorAll('a').forEach(function(a){a.addEventListener('click',closeM);});
+  /* drawer */
+  var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),x=document.getElementById('drawerX');
+  var open=function(){drawer.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';};
+  var close=function(){drawer.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';};
+  burger.addEventListener('click',open);x.addEventListener('click',close);
+  drawer.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:.14});
-  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  /* hero slider */
+  var slides=[].slice.call(document.querySelectorAll('.hero__slide'));
+  var total=slides.length,i=0,timer=null,playing=true;
+  var cur=document.getElementById('cur'),pp=document.getElementById('pp'),ppIcon=document.getElementById('ppIcon');
+  var dotWrap=document.getElementById('dots');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pad=function(n){return (n<10?'0':'')+n;};
+  // build dots
+  slides.forEach(function(_,n){
+    var b=document.createElement('button');b.setAttribute('role','tab');b.setAttribute('aria-label','Slide '+(n+1));
+    if(n===0)b.className='on';
+    b.addEventListener('click',function(){go(n);reset();});
+    dotWrap.appendChild(b);
+  });
+  var dots=[].slice.call(dotWrap.children);
+  function go(n){
+    slides[i].classList.remove('active');dots[i]&&dots[i].classList.remove('on');
+    i=(n+total)%total;
+    slides[i].classList.add('active');dots[i]&&dots[i].classList.add('on');
+    cur.textContent=pad(i+1);
+  }
+  function next(){go(i+1);}
+  function start(){if(reduce)return;timer=setInterval(next,5000);playing=true;setIcon();}
+  function stop(){clearInterval(timer);playing=false;setIcon();}
+  function reset(){clearInterval(timer);if(playing&&!reduce)timer=setInterval(next,5000);}
+  function setIcon(){
+    ppIcon.innerHTML=playing
+      ? '<rect x="6" y="5" width="4" height="14"></rect><rect x="14" y="5" width="4" height="14"></rect>'
+      : '<path d="M7 4l12 8-12 8z"></path>';
+    pp.setAttribute('aria-label',playing?'Pause slideshow':'Play slideshow');
+  }
+  pp.addEventListener('click',function(){playing?stop():start();});
+  document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(timer):reset();});
+  start();
+
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.style.opacity=1;e.target.style.transform='none';io.unobserve(e.target);}});
+  },{threshold:.12});
+  document.querySelectorAll('.roll__body,.roll__media,.srow__body,.manifesto__in,.visit__in>div').forEach(function(el){
+    if(reduce)return;
+    el.style.opacity=0;el.style.transform='translateY(34px)';el.style.transition='opacity .9s ease,transform .9s ease';
+    io.observe(el);
+  });
 })();
 </script>
 </body>
