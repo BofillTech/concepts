@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore all rooms and suites at Baileys Harbor Yacht Club Resort. Browse our interactive property map to find your perfect room.">
-  <title>Guest Rooms &amp; Suites | Baileys Harbor Yacht Club Resort</title>
+  <meta name="description" content="Browse all 66 rooms and suites at Baileys Harbor Yacht Club Resort — interactive floor plans, building map, and full room descriptions. Harbor views, full kitchens, gas fireplaces.">
+  <title>Guest Rooms & Suites | Baileys Harbor Yacht Club Resort</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -42,392 +42,221 @@
 
   <main id="main-content" role="main">
 
-    <!-- Page Hero -->
-    <section class="page-hero" style="background-image:url('img/christianne.jpg')" aria-label="Guest Rooms and Suites">
-      <div class="page-hero__overlay" aria-hidden="true"></div>
-      <div class="page-hero__content">
-        <span class="hero__eyebrow">Accommodations</span>
-        <h1 class="page-hero__title">Guest Rooms <em>&amp; Suites</em></h1>
-        <p class="page-hero__sub">Four lodges, 60+ individually-owned rooms and suites &mdash; each one meticulously maintained and uniquely decorated.</p>
+    <!-- Hero -->
+    <section class="rooms-page-hero" aria-label="Guest Rooms &amp; Suites">
+      <div class="rooms-page-hero__bg" aria-hidden="true"></div>
+      <div class="rooms-page-hero__content">
+        <span class="rooms-page-hero__eyebrow">Baileys Harbor Yacht Club Resort</span>
+        <h1 class="rooms-page-hero__title">Guest Rooms <em>&amp; Suites</em></h1>
+        <p class="rooms-page-hero__sub">66 individually owned accommodations across four lodges &mdash; from cozy staterooms to spacious two-bedroom suites overlooking Baileys Harbor.</p>
       </div>
     </section>
 
-    <!-- Room Type Legend + Filter -->
-    <div class="rooms-page__intro">
-      <div class="rooms-page__intro-inner">
-        <div class="rooms-legend">
-          <button class="legend-btn legend-btn--active" data-filter="all">All Rooms</button>
-          <button class="legend-btn" data-filter="Stateroom" data-color="#7BA7C2">
-            <span class="legend-swatch" style="background:#7BA7C2"></span>Staterooms
-          </button>
-          <button class="legend-btn" data-filter="Deluxe Stateroom" data-color="#4E86A8">
-            <span class="legend-swatch" style="background:#4E86A8"></span>Deluxe Staterooms
-          </button>
-          <button class="legend-btn" data-filter="Junior Suite" data-color="#8AB5A0">
-            <span class="legend-swatch" style="background:#8AB5A0"></span>Junior Suites
-          </button>
-          <button class="legend-btn" data-filter="One Bedroom Suite" data-color="#C8A84B">
-            <span class="legend-swatch" style="background:#C8A84B"></span>One Bedroom Suites
-          </button>
-          <button class="legend-btn" data-filter="Two Bedroom Suite" data-color="#B07D3C">
-            <span class="legend-swatch" style="background:#B07D3C"></span>Two Bedroom Suites
-          </button>
+    <!-- Room Type Cards -->
+    <div class="room-types-strip">
+      <div class="room-types-strip__inner">
+        <div class="room-types-strip__heading">
+          <span class="section-label">Accommodation Types</span>
+          <h2 class="section-header__title" style="font-size:clamp(24px,3vw,36px);margin-top:8px">What kind of stay are you looking for?</h2>
         </div>
-        <div class="rooms-hint" aria-live="polite">
-          <span class="rooms-hint__icon" aria-hidden="true">&#9679;</span>
-          Select a building or room number on the map to see details
+        <div class="room-types-grid">
+          <div class="room-type-card" data-filter="Stateroom" role="button" tabindex="0" aria-label="Filter by Staterooms">
+            <div class="room-type-card__swatch" style="background:#7BA7C2"></div>
+            <div class="room-type-card__name">Staterooms</div>
+            <div class="room-type-card__sub">King or 2 Queens &middot; Kitchenette &middot; Patio or Balcony</div>
+          </div>
+          <div class="room-type-card" data-filter="Junior Suite" role="button" tabindex="0" aria-label="Filter by Junior Suites">
+            <div class="room-type-card__swatch" style="background:#8AB5A0"></div>
+            <div class="room-type-card__name">Junior Suites</div>
+            <div class="room-type-card__sub">Private bedroom &middot; Kitchenette &middot; Harbor views</div>
+          </div>
+          <div class="room-type-card" data-filter="One Bedroom Suite" role="button" tabindex="0" aria-label="Filter by One Bedroom Suites">
+            <div class="room-type-card__swatch" style="background:#C8A84B"></div>
+            <div class="room-type-card__name">One Bedroom Suites</div>
+            <div class="room-type-card__sub">Full kitchen &middot; Living room &middot; Gas fireplace</div>
+          </div>
+          <div class="room-type-card" data-filter="Two Bedroom Suite" role="button" tabindex="0" aria-label="Filter by Two Bedroom Suites">
+            <div class="room-type-card__swatch" style="background:#B07D3C"></div>
+            <div class="room-type-card__name">Two Bedroom Suites</div>
+            <div class="room-type-card__sub">2 private bedrooms &middot; 2 baths &middot; Full kitchen</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Main Layout: Map + Panel -->
-    <div class="rooms-layout">
+    <!-- Map Section -->
+    <section class="rooms-map-section" aria-labelledby="map-heading">
+      <div class="rooms-map-section__inner">
 
-      <!-- LEFT: Map + Building Tabs -->
-      <div class="rooms-layout__map" role="region" aria-label="Property map">
-
-        <!-- Building selector tabs -->
-        <div class="building-tabs" role="tablist" aria-label="Select building">
-          <button class="building-tab building-tab--active" role="tab" aria-selected="true"  data-building="all"         id="tab-all"    aria-controls="map-all">Property Map</button>
-          <button class="building-tab" role="tab" aria-selected="false" data-building="Christianne" id="tab-chrs"  aria-controls="map-chrs">Christianne<span class="building-tab__sub">Rooms 101&ndash;121</span></button>
-          <button class="building-tab" role="tab" aria-selected="false" data-building="Main Lodge"  id="tab-main"  aria-controls="map-main">Main Lodge<span class="building-tab__sub">Rooms 201&ndash;223</span></button>
-          <button class="building-tab" role="tab" aria-selected="false" data-building="Brighton"    id="tab-brig"  aria-controls="map-brig">Brighton<span class="building-tab__sub">Rooms 301&ndash;318</span></button>
-          <button class="building-tab" role="tab" aria-selected="false" data-building="Adriana"     id="tab-adri"  aria-controls="map-adri">Adriana<span class="building-tab__sub">Rooms 401&ndash;408</span></button>
+        <!-- Map toggle bar -->
+        <div class="map-toggle-bar">
+          <span class="map-toggle-bar__label" id="map-heading">Interactive Map</span>
+          <div class="map-toggle-btns" role="group" aria-label="Map view">
+            <button class="map-toggle-btn map-toggle-btn--active" id="btnSiteMap" aria-pressed="true">Property Map</button>
+            <button class="map-toggle-btn" id="btnFloorPlans" aria-pressed="false">Floor Plans</button>
+          </div>
         </div>
 
-        <!-- ── PROPERTY MAP (overview) ── -->
-        <div class="map-view map-view--active" id="map-all" role="tabpanel" aria-labelledby="tab-all">
-          <svg class="resort-map" viewBox="0 0 700 520" xmlns="http://www.w3.org/2000/svg" aria-label="Resort property map" role="img">
-            <!-- Water / Harbor -->
-            <rect x="0" y="0" width="700" height="520" fill="#f0f4f8"/>
-            <path d="M0,0 L140,0 L140,520 L0,520 Z" fill="#b8d4e8" opacity="0.6"/>
-            <text x="60" y="260" font-family="Georgia,serif" font-size="13" fill="#5589aa" text-anchor="middle" transform="rotate(-90,60,260)" font-style="italic">Lake Michigan Harbor</text>
+        <!-- Map body: map + panel -->
+        <div class="rooms-map-body">
 
-            <!-- North arrow -->
-            <g transform="translate(650,30)">
-              <circle cx="0" cy="0" r="16" fill="white" stroke="#0B1F3A" stroke-width="1.5"/>
-              <text x="0" y="5" font-size="12" font-family="Montserrat,sans-serif" font-weight="600" fill="#0B1F3A" text-anchor="middle">N</text>
-              <line x1="0" y1="-6" x2="0" y2="-14" stroke="#0B1F3A" stroke-width="1.5" marker-end="url(#arrowN)"/>
-            </g>
-            <defs>
-              <marker id="arrowN" viewBox="0 0 6 6" refX="3" refY="3" markerWidth="4" markerHeight="4" orient="auto">
-                <path d="M 0 0 L 6 3 L 0 6 z" fill="#0B1F3A"/>
-              </marker>
-            </defs>
+          <!-- Interactive map area -->
+          <div class="imap-wrap" id="imapWrap">
 
-            <!-- Roads -->
-            <path d="M 180,0 L 200,520" stroke="#d4c9b0" stroke-width="8" fill="none" stroke-dasharray="none"/>
-            <text x="192" y="18" font-family="Montserrat,sans-serif" font-size="9" fill="#8a7e68" transform="rotate(88,192,18)">RIDGES RD.</text>
-            <path d="M 190,90 L 380,90" stroke="#d4c9b0" stroke-width="6" fill="none"/>
-            <text x="290" y="84" font-family="Montserrat,sans-serif" font-size="9" fill="#8a7e68" text-anchor="middle">HARBOR LN.</text>
+            <!-- VIEW 1: Property site map -->
+            <div class="imap imap--active" id="imapSite" aria-label="Resort property map — click a building">
+              <img src="img/map-site.jpg" alt="Baileys Harbor Yacht Club Resort property overview map" class="imap__img" width="2125" height="2750">
 
-            <!-- Walkways (dashed) -->
-            <path d="M 250,200 L 460,200 L 460,440 L 250,440 Z" stroke="#9aac9a" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
-
-            <!-- ── BUILDINGS ── -->
-            <!-- Christianne Lodge -->
-            <g class="map-building" data-building="Christianne" role="button" tabindex="0" aria-label="Christianne Lodge, Rooms 101-121" style="cursor:pointer">
-              <rect x="215" y="300" width="115" height="140" rx="4" fill="#1a3a5c" stroke="#C8A84B" stroke-width="2"/>
-              <text x="272" y="356" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="white" text-anchor="middle" letter-spacing="0.05em">CHRISTIANNE</text>
-              <text x="272" y="370" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle">Rooms 101–121</text>
-              <text x="272" y="384" font-family="Montserrat,sans-serif" font-size="7" fill="#C8A84B" text-anchor="middle">Click to explore</text>
-            </g>
-
-            <!-- Main Lodge -->
-            <g class="map-building" data-building="Main Lodge" role="button" tabindex="0" aria-label="Main Lodge, Rooms 201-223" style="cursor:pointer">
-              <rect x="355" y="200" width="135" height="160" rx="4" fill="#0d2d4a" stroke="#C8A84B" stroke-width="2"/>
-              <text x="422" y="270" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="white" text-anchor="middle" letter-spacing="0.05em">MAIN LODGE</text>
-              <text x="422" y="284" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle">Rooms 201–223</text>
-              <text x="422" y="298" font-family="Montserrat,sans-serif" font-size="7" fill="#C8A84B" text-anchor="middle">Front Desk Here</text>
-              <text x="422" y="312" font-family="Montserrat,sans-serif" font-size="7" fill="#C8A84B" text-anchor="middle">Click to explore</text>
-            </g>
-
-            <!-- Brighton Lodge -->
-            <g class="map-building" data-building="Brighton" role="button" tabindex="0" aria-label="Brighton Lodge, Rooms 301-318" style="cursor:pointer">
-              <rect x="340" y="100" width="120" height="85" rx="4" fill="#1a3a5c" stroke="#C8A84B" stroke-width="2"/>
-              <text x="400" y="137" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="white" text-anchor="middle" letter-spacing="0.05em">BRIGHTON</text>
-              <text x="400" y="151" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle">Rooms 301–318</text>
-              <text x="400" y="165" font-family="Montserrat,sans-serif" font-size="7" fill="#C8A84B" text-anchor="middle">Click to explore</text>
-            </g>
-
-            <!-- Adriana Lodge -->
-            <g class="map-building" data-building="Adriana" role="button" tabindex="0" aria-label="Adriana Lodge, Rooms 401-408" style="cursor:pointer">
-              <rect x="500" y="100" width="110" height="80" rx="4" fill="#1a3a5c" stroke="#C8A84B" stroke-width="2"/>
-              <text x="555" y="136" font-family="Montserrat,sans-serif" font-size="9" font-weight="600" fill="white" text-anchor="middle" letter-spacing="0.05em">ADRIANA</text>
-              <text x="555" y="150" font-family="Montserrat,sans-serif" font-size="8" fill="rgba(255,255,255,0.7)" text-anchor="middle">Rooms 401–408</text>
-              <text x="555" y="164" font-family="Montserrat,sans-serif" font-size="7" fill="#C8A84B" text-anchor="middle">Click to explore</text>
-            </g>
-
-            <!-- Pool -->
-            <ellipse cx="305" cy="255" rx="32" ry="24" fill="#5bb3d8" opacity="0.8" stroke="#2d8eb5" stroke-width="1.5"/>
-            <text x="305" y="259" font-family="Montserrat,sans-serif" font-size="8" fill="white" text-anchor="middle" font-weight="600">POOL</text>
-
-            <!-- BBQ Area -->
-            <rect x="390" y="380" width="50" height="36" rx="3" fill="#c4a97a" opacity="0.7"/>
-            <text x="415" y="394" font-family="Montserrat,sans-serif" font-size="7" fill="#5a3e1b" text-anchor="middle" font-weight="600">BBQ</text>
-            <text x="415" y="406" font-family="Montserrat,sans-serif" font-size="7" fill="#5a3e1b" text-anchor="middle">AREA</text>
-
-            <!-- Gazebo -->
-            <polygon points="560,240 575,225 590,240 590,260 560,260" fill="#9aac9a" opacity="0.8" stroke="#6a8c6a" stroke-width="1"/>
-            <text x="575" y="254" font-family="Montserrat,sans-serif" font-size="7" fill="#2a4a2a" text-anchor="middle">Gazebo</text>
-
-            <!-- Playground -->
-            <rect x="540" y="290" width="40" height="30" rx="3" fill="#e8b89a" opacity="0.7"/>
-            <text x="560" y="309" font-family="Montserrat,sans-serif" font-size="7" fill="#7a3a1a" text-anchor="middle">Play</text>
-
-            <!-- Parking indicators -->
-            <circle cx="290" cy="460" r="10" fill="#7a8a7a" opacity="0.6"/>
-            <text x="290" y="464" font-family="Montserrat,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">P</text>
-            <circle cx="460" cy="390" r="10" fill="#7a8a7a" opacity="0.6"/>
-            <text x="460" y="394" font-family="Montserrat,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">P</text>
-            <circle cx="480" cy="160" r="10" fill="#7a8a7a" opacity="0.6"/>
-            <text x="480" y="164" font-family="Montserrat,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">P</text>
-            <circle cx="580" cy="200" r="10" fill="#7a8a7a" opacity="0.6"/>
-            <text x="580" y="204" font-family="Montserrat,sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="700">P</text>
-
-            <!-- To Bailey's Harbor label -->
-            <text x="190" y="500" font-family="Montserrat,sans-serif" font-size="9" fill="#8a7e68" text-anchor="middle">&#8594; To Baileys Harbor</text>
-          </svg>
-        </div>
-
-        <!-- ── FLOOR PLANS (individual buildings) ── -->
-        <!-- Christianne -->
-        <div class="map-view" id="map-chrs" role="tabpanel" aria-labelledby="tab-chrs">
-          <div class="floor-plan-header">
-            <h3>Christianne Lodge</h3>
-            <div class="floor-toggle">
-              <button class="floor-btn floor-btn--active" data-floor="1" data-building="Christianne">1st Floor</button>
-              <button class="floor-btn" data-floor="2" data-building="Christianne">2nd Floor</button>
+              <!-- Building hotspots — % coordinates estimated from visual inspection of map -->
+              <button class="imap__building" data-building="Christianne" style="left:29%;top:64%" aria-label="Christianne Lodge — Rooms 102–120">Christianne</button>
+              <button class="imap__building" data-building="Main Lodge"  style="left:46%;top:52%" aria-label="Main Lodge — Rooms 201–223">Main Lodge</button>
+              <button class="imap__building" data-building="Brighton"    style="left:30%;top:40%" aria-label="Brighton Lodge — Rooms 302–318">Brighton</button>
+              <button class="imap__building" data-building="Adriana"     style="left:57%;top:30%" aria-label="Adriana Lodge — Rooms 401–408">Adriana</button>
             </div>
-          </div>
-          <svg class="floor-plan" viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="620" height="300" fill="#f8f8f6"/>
-            <!-- Corridor -->
-            <rect x="40" y="130" width="540" height="40" fill="#e8e4dc" stroke="#ccc" stroke-width="1"/>
-            <text x="310" y="155" font-family="Montserrat,sans-serif" font-size="8" fill="#888" text-anchor="middle" letter-spacing="0.1em">CORRIDOR</text>
-            <!-- Harbor side label -->
-            <text x="310" y="25" font-family="Montserrat,sans-serif" font-size="9" fill="#5589aa" text-anchor="middle" letter-spacing="0.08em">&#127754; HARBOR / LAKE MICHIGAN</text>
-            <line x1="40" y1="30" x2="580" y2="30" stroke="#5589aa" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-            <!-- Courtyard side label -->
-            <text x="310" y="285" font-family="Montserrat,sans-serif" font-size="9" fill="#6a8c6a" text-anchor="middle" letter-spacing="0.08em">COURTYARD / POOL SIDE</text>
-            <!-- Floor 1 rooms -->
-            <g id="chrs-f1">
-              <!-- Harbor side (top) rooms 101-112 -->
-              <!-- Row 1: 101,102 left corner -->
-              <g class="room-cell" data-room="101"><rect x="40" y="40" width="60" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="70" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">101</text></g>
-              <g class="room-cell" data-room="102"><rect x="102" y="40" width="60" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="132" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">102</text></g>
-              <g class="room-cell" data-room="103"><rect x="164" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="191" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">103</text></g>
-              <g class="room-cell" data-room="104"><rect x="221" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="248" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">104</text></g>
-              <g class="room-cell" data-room="105"><rect x="278" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="305" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">105</text></g>
-              <g class="room-cell" data-room="106"><rect x="335" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="362" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">106</text></g>
-              <g class="room-cell" data-room="107"><rect x="392" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="419" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">107</text></g>
-              <g class="room-cell" data-room="108"><rect x="449" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="476" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">108</text></g>
-              <!-- Courtyard side (bottom) rooms 109-112 -->
-              <g class="room-cell" data-room="109"><rect x="40" y="172" width="70" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="75" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">109</text></g>
-              <g class="room-cell" data-room="110"><rect x="112" y="172" width="70" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="147" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">110</text></g>
-              <g class="room-cell" data-room="111"><rect x="184" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="224" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">111</text></g>
-              <g class="room-cell" data-room="112"><rect x="266" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="306" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">112</text></g>
-            </g>
-            <!-- Floor 2 rooms (hidden by default) -->
-            <g id="chrs-f2" style="display:none">
-              <text x="310" y="25" font-family="Montserrat,sans-serif" font-size="9" fill="#5589aa" text-anchor="middle" letter-spacing="0.08em">&#127754; HARBOR / LAKE MICHIGAN</text>
-              <g class="room-cell" data-room="114"><rect x="40" y="40" width="60" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="70" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">114</text></g>
-              <g class="room-cell" data-room="115"><rect x="102" y="40" width="60" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="132" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">115</text></g>
-              <g class="room-cell" data-room="116"><rect x="164" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="191" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">116</text></g>
-              <g class="room-cell" data-room="117"><rect x="221" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="248" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">117</text></g>
-              <g class="room-cell" data-room="118"><rect x="278" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="305" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">118</text></g>
-              <g class="room-cell" data-room="119"><rect x="335" y="40" width="55" height="88" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="362" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">119</text></g>
-              <g class="room-cell" data-room="120"><rect x="392" y="172" width="85" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="434" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">120</text></g>
-              <g class="room-cell" data-room="121"><rect x="479" y="172" width="85" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="521" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">121</text></g>
-            </g>
-          </svg>
-        </div>
 
-        <!-- Main Lodge Floor Plan -->
-        <div class="map-view" id="map-main" role="tabpanel" aria-labelledby="tab-main">
-          <div class="floor-plan-header">
-            <h3>Main Lodge</h3>
-            <div class="floor-toggle">
-              <button class="floor-btn floor-btn--active" data-floor="1" data-building="Main Lodge">1st Floor</button>
-              <button class="floor-btn" data-floor="2" data-building="Main Lodge">2nd Floor</button>
+            <!-- VIEW 2: Floor plans -->
+            <div class="imap" id="imapFloor" aria-label="Floor plans — click a room number">
+              <img src="img/map-floorplans.png" alt="Baileys Harbor Yacht Club Resort floor plans for all four lodges" class="imap__img" width="1400" height="1811">
+
+              <!-- CHRISTIANNE 1st floor -->
+              <button class="imap__room" data-room="102" style="left:7.5%;top:19%">102</button>
+              <button class="imap__room" data-room="103" style="left:7.5%;top:14.5%">103</button>
+              <button class="imap__room" data-room="104" style="left:9.5%;top:10.5%">104</button>
+              <button class="imap__room" data-room="105" style="left:15.5%;top:10.5%">105</button>
+              <button class="imap__room" data-room="106" style="left:22%;top:10.5%">106</button>
+              <button class="imap__room" data-room="107" style="left:28.5%;top:10.5%">107</button>
+              <button class="imap__room" data-room="108" style="left:34.5%;top:10.5%">108</button>
+              <button class="imap__room" data-room="109" style="left:40.5%;top:10.5%">109</button>
+              <button class="imap__room" data-room="110" style="left:38.5%;top:16%">110</button>
+              <button class="imap__room" data-room="111" style="left:46.5%;top:16%">111</button>
+              <button class="imap__room" data-room="112" style="left:28.5%;top:16%">112</button>
+
+              <!-- CHRISTIANNE 2nd floor -->
+              <button class="imap__room imap__room--stairs" data-room="114" style="left:55.5%;top:17.5%">114</button>
+              <button class="imap__room imap__room--stairs" data-room="115" style="left:56%;top:11%">115</button>
+              <button class="imap__room imap__room--stairs" data-room="116" style="left:62.5%;top:10.5%">116</button>
+              <button class="imap__room imap__room--stairs" data-room="117" style="left:68.5%;top:10.5%">117</button>
+              <button class="imap__room imap__room--stairs" data-room="118" style="left:74.5%;top:10.5%">118</button>
+              <button class="imap__room imap__room--stairs" data-room="119" style="left:80.5%;top:10.5%">119</button>
+              <button class="imap__room imap__room--stairs" data-room="120" style="left:89%;top:10.5%">120</button>
+
+              <!-- MAIN LODGE 1st floor -->
+              <button class="imap__room" data-room="201" style="left:10.5%;top:38%">201</button>
+              <button class="imap__room" data-room="202" style="left:7.5%;top:34.5%">202</button>
+              <button class="imap__room" data-room="203" style="left:7.5%;top:30%">203</button>
+              <button class="imap__room" data-room="204" style="left:6.5%;top:26.5%">204</button>
+              <button class="imap__room" data-room="205" style="left:13.5%;top:26.5%">205</button>
+              <button class="imap__room" data-room="206" style="left:18.5%;top:29.5%">206</button>
+              <button class="imap__room" data-room="208" style="left:28.5%;top:29%">208</button>
+              <button class="imap__room" data-room="210" style="left:35%;top:25.5%">210</button>
+              <button class="imap__room" data-room="211" style="left:42.5%;top:25.5%">211</button>
+              <button class="imap__room" data-room="212" style="left:40%;top:30.5%">212</button>
+              <button class="imap__room" data-room="214" style="left:34.5%;top:34.5%">214</button>
+              <button class="imap__room" data-room="215" style="left:35%;top:38%">215</button>
+
+              <!-- MAIN LODGE 2nd floor -->
+              <button class="imap__room imap__room--stairs" data-room="216" style="left:67.5%;top:32.5%">216</button>
+              <button class="imap__room imap__room--stairs" data-room="217" style="left:67.5%;top:28.5%">217</button>
+              <button class="imap__room imap__room--stairs" data-room="218" style="left:62%;top:25.5%">218</button>
+              <button class="imap__room imap__room--stairs" data-room="219" style="left:55%;top:25.5%">219</button>
+              <button class="imap__room imap__room--stairs" data-room="220" style="left:80.5%;top:32.5%">220</button>
+              <button class="imap__room imap__room--stairs" data-room="221" style="left:80.5%;top:28%">221</button>
+              <button class="imap__room imap__room--stairs" data-room="222" style="left:87.5%;top:25.5%">222</button>
+              <button class="imap__room imap__room--stairs" data-room="223" style="left:93%;top:25.5%">223</button>
+
+              <!-- BRIGHTON 1st floor -->
+              <button class="imap__room" data-room="302" style="left:4%;top:48.5%">302</button>
+              <button class="imap__room" data-room="303" style="left:12.5%;top:48.5%">303</button>
+              <button class="imap__room" data-room="304" style="left:22.5%;top:48.5%">304</button>
+              <button class="imap__room" data-room="305" style="left:27.5%;top:52.5%">305</button>
+              <button class="imap__room" data-room="312" style="left:34.5%;top:47.5%">312</button>
+              <button class="imap__room" data-room="314" style="left:43%;top:47.5%">314</button>
+              <button class="imap__room" data-room="315" style="left:36%;top:55.5%">315</button>
+
+              <!-- BRIGHTON 2nd floor -->
+              <button class="imap__room imap__room--stairs" data-room="307" style="left:57%;top:53.5%">307</button>
+              <button class="imap__room imap__room--stairs" data-room="308" style="left:57.5%;top:47.5%">308</button>
+              <button class="imap__room imap__room--stairs" data-room="309" style="left:66.5%;top:47.5%">309</button>
+              <button class="imap__room imap__room--stairs" data-room="310" style="left:75%;top:47.5%">310</button>
+              <button class="imap__room imap__room--stairs" data-room="316" style="left:86.5%;top:47.5%">316</button>
+              <button class="imap__room imap__room--stairs" data-room="317" style="left:93%;top:47.5%">317</button>
+              <button class="imap__room imap__room--stairs" data-room="318" style="left:89%;top:55.5%">318</button>
+
+              <!-- ADRIANA 1st floor -->
+              <button class="imap__room" data-room="401" style="left:7.5%;top:78.5%">401</button>
+              <button class="imap__room" data-room="402" style="left:7.5%;top:68.5%">402</button>
+              <button class="imap__room" data-room="403" style="left:37%;top:68.5%">403</button>
+
+              <!-- ADRIANA 2nd floor -->
+              <button class="imap__room imap__room--stairs" data-room="405" style="left:61.5%;top:78.5%">405</button>
+              <button class="imap__room imap__room--stairs" data-room="406" style="left:61.5%;top:68.5%">406</button>
+              <button class="imap__room imap__room--stairs" data-room="407" style="left:89.5%;top:68.5%">407</button>
+              <button class="imap__room imap__room--stairs" data-room="408" style="left:89.5%;top:78.5%">408</button>
+
+            </div><!-- /imapFloor -->
+
+            <!-- Legend (floor plans only) -->
+            <div class="map-legend" id="mapLegend" style="display:none" role="group" aria-label="Filter by room type">
+              <button class="map-legend__btn map-legend__btn--active" data-filter="all">All Rooms</button>
+              <button class="map-legend__btn" data-filter="Stateroom"><span class="map-legend__swatch" style="background:#7BA7C2"></span>Staterooms</button>
+              <button class="map-legend__btn" data-filter="Junior Suite"><span class="map-legend__swatch" style="background:#8AB5A0"></span>Jr. Suites</button>
+              <button class="map-legend__btn" data-filter="One Bedroom Suite"><span class="map-legend__swatch" style="background:#C8A84B"></span>1 BR Suites</button>
+              <button class="map-legend__btn" data-filter="Two Bedroom Suite"><span class="map-legend__swatch" style="background:#B07D3C"></span>2 BR Suites</button>
+              <button class="map-legend__btn" data-filter="Loft Suite"><span class="map-legend__swatch" style="background:#9E8AB5"></span>Loft Suites</button>
             </div>
-          </div>
-          <svg class="floor-plan" viewBox="0 0 620 310" xmlns="http://www.w3.org/2000/svg">
-            <rect width="620" height="310" fill="#f8f8f6"/>
-            <rect x="40" y="135" width="540" height="40" fill="#e8e4dc" stroke="#ccc" stroke-width="1"/>
-            <text x="310" y="160" font-family="Montserrat,sans-serif" font-size="8" fill="#888" text-anchor="middle" letter-spacing="0.1em">CORRIDOR</text>
-            <text x="310" y="25" font-family="Montserrat,sans-serif" font-size="9" fill="#5589aa" text-anchor="middle" letter-spacing="0.08em">&#127754; HARBOR / LAKE MICHIGAN</text>
-            <line x1="40" y1="30" x2="580" y2="30" stroke="#5589aa" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-            <text x="310" y="295" font-family="Montserrat,sans-serif" font-size="9" fill="#6a8c6a" text-anchor="middle" letter-spacing="0.08em">COURTYARD SIDE</text>
-            <!-- Floor 1 -->
-            <g id="main-f1">
-              <g class="room-cell" data-room="201"><rect x="40" y="40" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="70" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">201</text></g>
-              <g class="room-cell" data-room="202"><rect x="102" y="40" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="132" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">202</text></g>
-              <g class="room-cell" data-room="203"><rect x="164" y="40" width="60" height="93" rx="2" fill="#4E86A8" stroke="white" stroke-width="1.5"/><text x="194" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">203</text></g>
-              <g class="room-cell" data-room="204"><rect x="226" y="40" width="65" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="258" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">204</text></g>
-              <g class="room-cell" data-room="205"><rect x="293" y="40" width="65" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="325" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">205</text></g>
-              <g class="room-cell" data-room="206"><rect x="360" y="40" width="70" height="93" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="395" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">206</text></g>
-              <g class="room-cell" data-room="207"><rect x="432" y="40" width="70" height="93" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="467" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">207</text></g>
-              <!-- Front desk / lobby -->
-              <rect x="503" y="40" width="77" height="93" rx="2" fill="#888" stroke="white" stroke-width="1.5" opacity="0.6"/>
-              <text x="541" y="83" font-size="9" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">FRONT</text>
-              <text x="541" y="95" font-size="9" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">DESK</text>
-              <!-- Courtyard side -->
-              <g class="room-cell" data-room="209"><rect x="40" y="177" width="68" height="93" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="74" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">209</text></g>
-              <g class="room-cell" data-room="210"><rect x="110" y="177" width="62" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="141" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">210</text></g>
-              <g class="room-cell" data-room="211"><rect x="174" y="177" width="62" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="205" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">211</text></g>
-              <g class="room-cell" data-room="212"><rect x="238" y="177" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="268" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">212</text></g>
-              <g class="room-cell" data-room="214"><rect x="300" y="177" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="330" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">214</text></g>
-              <g class="room-cell" data-room="215"><rect x="362" y="177" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="392" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">215</text></g>
-            </g>
-            <!-- Floor 2 -->
-            <g id="main-f2" style="display:none">
-              <g class="room-cell" data-room="216"><rect x="40" y="40" width="72" height="93" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="76" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">216</text></g>
-              <g class="room-cell" data-room="217"><rect x="114" y="40" width="80" height="93" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="154" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">217</text></g>
-              <g class="room-cell" data-room="218"><rect x="196" y="40" width="80" height="93" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="236" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">218</text></g>
-              <g class="room-cell" data-room="219"><rect x="278" y="40" width="72" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="314" y="88" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">219</text></g>
-              <g class="room-cell" data-room="220"><rect x="40" y="177" width="72" height="93" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="76" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">220</text></g>
-              <g class="room-cell" data-room="221"><rect x="114" y="177" width="72" height="93" rx="2" fill="#8AB5A0" stroke="white" stroke-width="1.5"/><text x="150" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">221</text></g>
-              <g class="room-cell" data-room="222"><rect x="188" y="177" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="218" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">222</text></g>
-              <g class="room-cell" data-room="223"><rect x="250" y="177" width="60" height="93" rx="2" fill="#7BA7C2" stroke="white" stroke-width="1.5"/><text x="280" y="225" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">223</text></g>
-            </g>
-          </svg>
-        </div>
 
-        <!-- Brighton Floor Plan -->
-        <div class="map-view" id="map-brig" role="tabpanel" aria-labelledby="tab-brig">
-          <div class="floor-plan-header">
-            <h3>Brighton Lodge</h3>
-            <div class="floor-toggle">
-              <button class="floor-btn floor-btn--active" data-floor="1" data-building="Brighton">1st Floor</button>
-              <button class="floor-btn" data-floor="2" data-building="Brighton">2nd Floor</button>
+          </div><!-- /imap-wrap -->
+
+          <!-- Right panel -->
+          <div class="room-panel" id="roomPanel" role="region" aria-label="Room details" aria-live="polite">
+
+            <!-- Default -->
+            <div class="room-panel__section room-panel__default" id="panelDefault">
+              <span class="room-panel__default-icon" aria-hidden="true">&#9875;</span>
+              <p class="room-panel__default-title">Explore Our Rooms</p>
+              <p class="room-panel__default-body">Click any building on the property map to learn more, or switch to Floor Plans and click a room number to see full details.</p>
+              <div style="margin-top:var(--space-lg);display:flex;flex-direction:column;gap:var(--space-sm)">
+                <a class="btn btn--primary" href="https://bhycr.lodgicalcrs.com/28" target="_blank" rel="noopener noreferrer">Check Availability</a>
+                <a class="btn btn--secondary" href="tel:8009272492">Call 800-927-2492</a>
+              </div>
             </div>
-          </div>
-          <svg class="floor-plan" viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="620" height="300" fill="#f8f8f6"/>
-            <rect x="40" y="130" width="540" height="40" fill="#e8e4dc" stroke="#ccc" stroke-width="1"/>
-            <text x="310" y="155" font-family="Montserrat,sans-serif" font-size="8" fill="#888" text-anchor="middle" letter-spacing="0.1em">CORRIDOR</text>
-            <text x="310" y="25" font-family="Montserrat,sans-serif" font-size="9" fill="#5589aa" text-anchor="middle">&#127754; HARBOR / WOODS VIEW</text>
-            <line x1="40" y1="30" x2="580" y2="30" stroke="#5589aa" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-            <text x="310" y="290" font-family="Montserrat,sans-serif" font-size="9" fill="#6a7a6a" text-anchor="middle">WOODS SIDE</text>
-            <g id="brig-f1">
-              <g class="room-cell" data-room="301"><rect x="40" y="40" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="80" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">301</text></g>
-              <g class="room-cell" data-room="302"><rect x="122" y="40" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="162" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">302</text></g>
-              <g class="room-cell" data-room="303"><rect x="204" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="249" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">303</text></g>
-              <g class="room-cell" data-room="304"><rect x="296" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="341" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">304</text></g>
-              <g class="room-cell" data-room="305"><rect x="40" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="80" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">305</text></g>
-              <g class="room-cell" data-room="306"><rect x="122" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="162" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">306</text></g>
-            </g>
-            <g id="brig-f2" style="display:none">
-              <g class="room-cell" data-room="307"><rect x="40" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="85" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">307</text></g>
-              <g class="room-cell" data-room="308"><rect x="132" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="177" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">308</text></g>
-              <g class="room-cell" data-room="309"><rect x="224" y="40" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="264" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">309</text></g>
-              <g class="room-cell" data-room="310"><rect x="306" y="40" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="346" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">310</text></g>
-              <g class="room-cell" data-room="311"><rect x="40" y="172" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="85" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">311</text></g>
-              <g class="room-cell" data-room="312"><rect x="132" y="172" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="177" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">312</text></g>
-              <g class="room-cell" data-room="314"><rect x="224" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="264" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">314</text></g>
-              <g class="room-cell" data-room="315"><rect x="306" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="346" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">315</text></g>
-              <g class="room-cell" data-room="316"><rect x="388" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="433" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">316</text></g>
-              <g class="room-cell" data-room="317"><rect x="480" y="40" width="90" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="525" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">317</text></g>
-              <g class="room-cell" data-room="318"><rect x="388" y="172" width="80" height="88" rx="2" fill="#C8A84B" stroke="white" stroke-width="1.5"/><text x="428" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">318</text></g>
-            </g>
-          </svg>
-        </div>
 
-        <!-- Adriana Floor Plan -->
-        <div class="map-view" id="map-adri" role="tabpanel" aria-labelledby="tab-adri">
-          <div class="floor-plan-header">
-            <h3>Adriana Lodge</h3>
-            <div class="floor-toggle">
-              <button class="floor-btn floor-btn--active" data-floor="1" data-building="Adriana">1st Floor</button>
-              <button class="floor-btn" data-floor="2" data-building="Adriana">2nd Floor</button>
+            <!-- Building -->
+            <div class="room-panel__section" id="panelBuilding" style="display:none">
+              <p class="room-panel__bldg-range" id="panelBuildingRooms"></p>
+              <h2 class="room-panel__bldg-name" id="panelBuildingName"></h2>
+              <p class="room-panel__bldg-desc" id="panelBuildingDesc"></p>
+              <div class="room-panel__counts" id="panelBuildingCounts"></div>
+              <div style="margin-top:var(--space-lg);display:flex;flex-direction:column;gap:var(--space-sm)">
+                <a class="btn btn--primary" href="https://bhycr.lodgicalcrs.com/28" target="_blank" rel="noopener noreferrer">Check Availability</a>
+                <button class="btn btn--secondary" id="panelBldgToFloor">View Floor Plan &rarr;</button>
+              </div>
             </div>
-          </div>
-          <svg class="floor-plan" viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg">
-            <rect width="620" height="300" fill="#f8f8f6"/>
-            <rect x="40" y="130" width="540" height="40" fill="#e8e4dc" stroke="#ccc" stroke-width="1"/>
-            <text x="310" y="155" font-family="Montserrat,sans-serif" font-size="8" fill="#888" text-anchor="middle" letter-spacing="0.1em">CORRIDOR</text>
-            <text x="310" y="25" font-family="Montserrat,sans-serif" font-size="9" fill="#5589aa" text-anchor="middle">&#127754; HARBOR / WOODS VIEW</text>
-            <line x1="40" y1="30" x2="580" y2="30" stroke="#5589aa" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
-            <text x="310" y="290" font-family="Montserrat,sans-serif" font-size="9" fill="#6a7a6a" text-anchor="middle">WOODS SIDE</text>
-            <g id="adri-f1">
-              <g class="room-cell" data-room="401"><rect x="40" y="40" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="95" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">401</text></g>
-              <g class="room-cell" data-room="402"><rect x="152" y="40" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="207" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">402</text></g>
-              <g class="room-cell" data-room="403"><rect x="40" y="172" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="95" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">403</text></g>
-              <g class="room-cell" data-room="404"><rect x="152" y="172" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="207" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">404</text></g>
-            </g>
-            <g id="adri-f2" style="display:none">
-              <g class="room-cell" data-room="405"><rect x="40" y="40" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="95" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">405</text></g>
-              <g class="room-cell" data-room="406"><rect x="152" y="40" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="207" y="82" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">406</text></g>
-              <g class="room-cell" data-room="407"><rect x="40" y="172" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="95" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">407</text></g>
-              <g class="room-cell" data-room="408"><rect x="152" y="172" width="110" height="88" rx="2" fill="#B07D3C" stroke="white" stroke-width="1.5"/><text x="207" y="214" font-size="11" font-family="Montserrat,sans-serif" font-weight="600" fill="white" text-anchor="middle">408</text></g>
-            </g>
-          </svg>
-        </div>
 
-      </div><!-- /rooms-layout__map -->
-
-      <!-- RIGHT: Detail Panel -->
-      <aside class="rooms-layout__panel" id="roomPanel" aria-label="Room details" aria-live="polite">
-
-        <!-- Default state -->
-        <div class="room-panel__default" id="panelDefault">
-          <div class="room-panel__default-icon" aria-hidden="true">&#9670;</div>
-          <h2 class="room-panel__default-title">Select a Room</h2>
-          <p class="room-panel__default-body">Click any building on the property map, then select a room number to see photos, bed configuration, view, and booking details.</p>
-          <div class="room-panel__type-list">
-            <div class="room-panel__type-item"><span class="room-panel__type-swatch" style="background:#7BA7C2"></span><span>Staterooms &mdash; Classic comfort, hotel-style</span></div>
-            <div class="room-panel__type-item"><span class="room-panel__type-swatch" style="background:#4E86A8"></span><span>Deluxe Staterooms &mdash; Enhanced amenities</span></div>
-            <div class="room-panel__type-item"><span class="room-panel__type-swatch" style="background:#8AB5A0"></span><span>Junior Suites &mdash; Bedroom + living area</span></div>
-            <div class="room-panel__type-item"><span class="room-panel__type-swatch" style="background:#C8A84B"></span><span>One Bedroom Suites &mdash; Full kitchen + fireplace</span></div>
-            <div class="room-panel__type-item"><span class="room-panel__type-swatch" style="background:#B07D3C"></span><span>Two Bedroom Suites &mdash; Ideal for families</span></div>
-          </div>
-        </div>
-
-        <!-- Building state -->
-        <div class="room-panel__building" id="panelBuilding" style="display:none">
-          <h2 class="room-panel__building-title" id="panelBuildingName"></h2>
-          <p class="room-panel__building-sub" id="panelBuildingRooms"></p>
-          <p class="room-panel__building-desc" id="panelBuildingDesc"></p>
-          <div class="room-panel__building-counts" id="panelBuildingCounts"></div>
-          <p class="room-panel__hint">Select a room number on the floor plan to see details.</p>
-        </div>
-
-        <!-- Room detail state -->
-        <div class="room-panel__detail" id="panelDetail" style="display:none">
-          <div class="room-panel__photo-wrap">
-            <div class="room-panel__photo-placeholder" id="panelPhoto">
-              <span class="room-panel__photo-icon" aria-hidden="true">&#128247;</span>
-              <span class="room-panel__photo-label">Photos Coming Soon</span>
+            <!-- Room Detail -->
+            <div id="panelDetail" style="display:none">
+              <div class="room-panel__section">
+                <p class="room-panel__badge" id="panelBadge"></p>
+                <p class="room-panel__number" id="panelRoomNum"></p>
+                <span class="room-panel__type" id="panelType"></span>
+                <div class="room-panel__photo-placeholder" id="panelPhoto">Photo coming soon</div>
+                <div id="panelStairsWarn" class="room-panel__stairs-warn" style="display:none">&#9888; 2nd Floor &mdash; Requires use of stairs</div>
+                <ul class="room-panel__specs" id="panelSpecs"></ul>
+              </div>
+              <div class="room-panel__section room-panel__actions">
+                <a class="btn btn--primary" href="https://bhycr.lodgicalcrs.com/28" target="_blank" rel="noopener noreferrer">Check Availability</a>
+                <a class="btn btn--secondary" href="tel:8009272492">Call 800-927-2492</a>
+              </div>
             </div>
-          </div>
-          <div class="room-panel__detail-body">
-            <div class="room-panel__room-badge" id="panelBadge"></div>
-            <h2 class="room-panel__room-num" id="panelRoomNum"></h2>
-            <div class="room-panel__type-tag" id="panelType"></div>
-            <ul class="room-panel__specs" id="panelSpecs"></ul>
-            <div class="room-panel__actions">
-              <a class="btn btn--primary" href="https://bhycr.lodgicalcrs.com/28" target="_blank" rel="noopener noreferrer">Check Availability</a>
-              <a class="room-panel__phone-link" href="tel:8009272492">Or call 800-927-2492</a>
-            </div>
-          </div>
-        </div>
 
-      </aside>
-    </div><!-- /rooms-layout -->
+          </div><!-- /room-panel -->
+        </div><!-- /rooms-map-body -->
+      </div><!-- /rooms-map-section__inner -->
+    </section>
 
-    <!-- CTA strip -->
-    <div class="rooms-cta-strip">
-      <div class="rooms-cta-strip__inner">
-        <div>
-          <h3 class="rooms-cta-strip__title">Need help choosing?</h3>
-          <p class="rooms-cta-strip__sub">Our front desk team knows every room &mdash; call us and we&apos;ll find the perfect fit for your stay.</p>
-        </div>
-        <div class="rooms-cta-strip__actions">
-          <a class="btn btn--primary" href="https://bhycr.lodgicalcrs.com/28" target="_blank" rel="noopener noreferrer">Book Online</a>
-          <a class="btn btn--primary" href="tel:8009272492" style="background:var(--color-navy);color:white;">Call 800-927-2492</a>
-        </div>
-      </div>
+    <!-- Notes -->
+    <div style="background:var(--color-navy);padding:var(--space-lg) var(--space-md);text-align:center">
+      <p style="font-size:13px;color:rgba(255,255,255,0.65);max-width:700px;margin:0 auto;line-height:1.8">All units are individually owned by families who take pride in sharing their homes with you. Rooms are meticulously maintained to our highest standards, though each unit is individually decorated &mdash; our photos represent a sampling of available decor. <strong style="color:white">No one-night stays.</strong> Free WiFi and parking included with all rooms.</p>
     </div>
 
   </main>
@@ -442,27 +271,25 @@
         <ul class="widget-area__menu">
           <li><a href="our-resort.html">Our Resort</a></li>
           <li><a href="amenities.html">Amenities</a></li>
+          <li><a href="specials.html">Packages &amp; Specials</a></li>
           <li><a href="contact.html">Contact &amp; Directions</a></li>
         </ul>
       </div>
       <div class="widget-area"><h4 class="widget-area__title">Accommodations</h4>
         <ul class="widget-area__menu">
-          <li><a href="https://www.bhycr.com/rooms-list/staterooms/">Staterooms</a></li>
-          <li><a href="https://www.bhycr.com/rooms-list/junior-suites/">Junior Suites</a></li>
-          <li><a href="https://www.bhycr.com/rooms-list/one-bedroom-suites/">One Bedroom Suites</a></li>
-          <li><a href="https://www.bhycr.com/rooms-list/two-bedroom-suites/">Two Bedroom Suites</a></li>
+          <li><a href="rooms.html">All Rooms &amp; Suites</a></li>
+          <li><a href="specials.html">Current Specials</a></li>
         </ul>
       </div>
       <div class="widget-area"><h4 class="widget-area__title">Door County</h4>
         <ul class="widget-area__menu">
-          <li><a href="door-county.html">Welcome</a></li>
-          <li><a href="https://www.bhycr.com/calendar/">Events Calendar</a></li>
-          <li><a href="specials.html">Specials</a></li>
+          <li><a href="door-county.html">Welcome to Door County</a></li>
+          <li><a href="contact.html">Getting Here</a></li>
         </ul>
       </div>
     </div>
     <div class="site-footer__bottom">
-      <p class="site-footer__copyright">&copy; 2026 Baileys Harbor Yacht Club Resort &middot; All Rights Reserved</p>
+      <p class="site-footer__copyright">&copy; 2026 Baileys Harbor Yacht Club Resort &middot; All Rights Reserved &middot; 8151 Ridges Road, Baileys Harbor, WI</p>
       <nav class="site-footer__social" aria-label="Social media">
         <a href="https://www.facebook.com/pages/Baileys-Harbor-Yacht-Club-Resort/111505222222876" target="_blank" rel="noopener noreferrer">Facebook</a>
         <a href="https://twitter.com/BHYCR" target="_blank" rel="noopener noreferrer">Twitter</a>
