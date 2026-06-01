@@ -127,6 +127,35 @@
       initRoomDetail();
     }
 
+    // ============================================
+    // 8. TESTIMONIALS CAROUSEL (homepage)
+    // ============================================
+    var testimonialsRoot = document.querySelector('.sc-testimonials');
+    if(testimonialsRoot){
+      var items = testimonialsRoot.querySelectorAll('.sc-testimonial');
+      var dots = testimonialsRoot.querySelectorAll('.sc-testimonials__dot');
+      var current = 0;
+      var timer = null;
+      var DURATION = 6000;
+      function show(idx){
+        items.forEach(function(el, i){ el.classList.toggle('sc-testimonial--active', i === idx); });
+        dots.forEach(function(el, i){ el.classList.toggle('sc-testimonials__dot--active', i === idx); });
+        current = idx;
+      }
+      function next(){ show((current + 1) % items.length); }
+      function start(){ stop(); timer = setInterval(next, DURATION); }
+      function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+      dots.forEach(function(dot){
+        dot.addEventListener('click', function(){
+          show(parseInt(dot.dataset.idx, 10));
+          start();
+        });
+      });
+      testimonialsRoot.addEventListener('mouseenter', stop);
+      testimonialsRoot.addEventListener('mouseleave', start);
+      start();
+    }
+
   });
 
   // ============================================
