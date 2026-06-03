@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reserve — Archway Hotel | Fishtown, Philadelphia</title>
+<meta name="description" content="A boutique hotel in the heart of Fishtown, Philadelphia. Eleven suites, one dedicated team. Reserve your stay at Archway.">
+<link rel="preconnect" href="https://archwayfishtown.com" crossorigin>
+<style>
+  /* Archway brand fonts (self-hosted on the live site) */
+  @font-face{
+    font-family:'Jadeite';
+    src:url("https://archwayfishtown.com/wp-content/themes/archfish-pro/assets/fonts/Jadeite-Regular.woff2") format("woff2"),
+        url("https://archwayfishtown.com/wp-content/themes/archfish-pro/assets/fonts/Jadeite-Regular.woff") format("woff");
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  @font-face{
+    font-family:'Brandon Grotesque';
+    src:url("https://archwayfishtown.com/wp-content/themes/archfish-pro/assets/fonts/brandon/HvDTrial_BrandonGrotesque-Regular.woff2") format("woff2"),
+        url("https://archwayfishtown.com/wp-content/themes/archfish-pro/assets/fonts/brandon/HvDTrial_BrandonGrotesque-Regular.woff") format("woff");
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  :root{
+    --bone:#F4EEE3;
+    --bone-deep:#EAE2D2;
+    --paper:#FBF8F1;
+    --ink:#211D18;
+    --ink-soft:#4A443B;
+    --muted:#857B6B;
+    --rust:#A4583A;
+    --rust-deep:#7E4129;
+    --olive:#5E5A45;
+    --line:#D9CFBD;
+    --shadow:rgba(33,29,24,.16);
+    --serif:'Jadeite','Didot','Bodoni MT','Playfair Display',Georgia,serif;
+    --sans:'Brandon Grotesque','Futura','Avenir Next','Century Gothic',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:16px;
+    line-height:1.8;
+    letter-spacing:.01em;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 24px;}
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-weight:400;
+    font-size:.72rem;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    color:var(--rust);
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:.01em;}
+  .serif-italic{font-family:var(--serif);font-weight:400;color:var(--rust);}
+
+  /* skip link */
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--bone);padding:10px 18px;z-index:200;}
+  .skip:focus{left:12px;top:12px;}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;width:100%;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 30px;
+    transition:background .5s ease,padding .5s ease,box-shadow .5s ease;
+  }
+  .nav.scrolled{background:var(--paper);padding:13px 30px;box-shadow:0 1px 0 var(--line);}
+  .nav__logo{font-family:var(--serif);font-size:1.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--paper);transition:color .5s ease;}
+  .nav.scrolled .nav__logo{color:var(--ink);}
+  .nav__logo span{display:block;font-family:var(--sans);font-weight:300;font-size:.5rem;letter-spacing:.5em;margin-top:3px;opacity:.85;}
+  .nav__links{display:none;gap:34px;align-items:center;}
+  .nav__links a{font-size:.74rem;letter-spacing:.26em;text-transform:uppercase;color:var(--paper);transition:color .5s ease,opacity .3s;}
+  .nav.scrolled .nav__links a{color:var(--ink-soft);}
+  .nav__links a:hover{opacity:.6;}
+  .nav__right{display:flex;align-items:center;gap:20px;}
+  .nav__phone{display:none;font-size:.74rem;letter-spacing:.18em;color:var(--paper);transition:color .5s ease;}
+  .nav.scrolled .nav__phone{color:var(--ink-soft);}
+  .btn{
+    display:inline-block;font-family:var(--sans);font-weight:400;
+    font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;
+    padding:13px 26px;border:1px solid currentColor;border-radius:1px;
+    transition:background .35s ease,color .35s ease,border-color .35s ease;
+    cursor:pointer;background:transparent;
+  }
+  .nav .btn{color:var(--paper);}
+  .nav .btn:hover{background:var(--paper);color:var(--ink);}
+  .nav.scrolled .btn{color:var(--rust);}
+  .nav.scrolled .btn:hover{background:var(--rust);color:var(--paper);}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.06);animation:slowzoom 14s ease-out forwards;}
+  @keyframes slowzoom{to{transform:scale(1);}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,16,12,.42) 0%,rgba(20,16,12,.18) 38%,rgba(20,16,12,.5) 100%);}
+  .hero__inner{position:relative;z-index:2;color:var(--paper);padding:0 22px;max-width:880px;}
+  .hero__eyebrow{color:var(--bone);opacity:0;animation:fadeup 1s ease .3s forwards;}
+  .hero__title{font-size:clamp(3.6rem,11vw,8.5rem);font-weight:400;letter-spacing:.03em;margin:.18em 0 .14em;opacity:0;animation:fadeup 1.1s ease .5s forwards;}
+  .hero__sub{font-family:var(--sans);font-weight:400;font-size:clamp(.8rem,1.6vw,1rem);letter-spacing:.34em;text-transform:uppercase;opacity:0;animation:fadeup 1.1s ease .75s forwards;}
+  .hero__cta{margin-top:34px;opacity:0;animation:fadeup 1.1s ease 1s forwards;}
+  .hero .btn{color:var(--paper);border-color:rgba(255,255,255,.7);backdrop-filter:blur(2px);}
+  .hero .btn:hover{background:var(--paper);color:var(--ink);border-color:var(--paper);}
+  @keyframes fadeup{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+  .scrollhint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:2;color:var(--bone);font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;opacity:0;animation:fadeup 1s ease 1.4s forwards;}
+  .scrollhint::after{content:"";display:block;width:1px;height:42px;background:rgba(255,255,255,.6);margin:14px auto 0;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
+  @keyframes pulse{0%,100%{transform:scaleY(.4);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
+
+  /* ---------- BOOKING BAR ---------- */
+  .booking{background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:10;}
+  .booking__grid{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0;}
+  .bk-field{flex:1 1 50%;min-width:50%;padding:20px 22px;border-bottom:1px solid var(--line);}
+  .bk-field:not(:last-child){border-right:1px solid var(--line);}
+  .bk-field label{display:block;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+  .bk-field input,.bk-field select{
+    width:100%;border:none;background:transparent;font-family:var(--serif);
+    font-size:1.18rem;color:var(--ink);outline:none;cursor:pointer;
+  }
+  .bk-field input::-webkit-calendar-picker-indicator{opacity:.4;cursor:pointer;}
+  .bk-submit{flex:1 1 100%;}
+  .bk-submit a{
+    display:flex;align-items:center;justify-content:center;height:100%;min-height:64px;
+    background:var(--rust);color:var(--paper);font-size:.74rem;letter-spacing:.3em;text-transform:uppercase;
+    transition:background .35s ease;padding:18px;
+  }
+  .bk-submit a:hover{background:var(--rust-deep);}
+
+  /* ---------- SECTIONS ---------- */
+  section{position:relative;}
+  .pad{padding:clamp(70px,11vw,140px) 0;}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity 1s ease,transform 1s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* intro */
+  .intro{text-align:center;background:var(--bone);}
+  .intro .wrap{max-width:820px;}
+  .intro h2{font-size:clamp(2.1rem,5vw,3.5rem);margin:.4em 0 .55em;}
+  .intro p{color:var(--ink-soft);font-size:1.12rem;}
+  .intro .divider{width:54px;height:1px;background:var(--rust);margin:42px auto 0;}
+  .count{display:flex;justify-content:center;gap:clamp(34px,7vw,90px);margin-top:54px;flex-wrap:wrap;}
+  .count__item{text-align:center;}
+  .count__n{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.4rem);color:var(--rust);line-height:1;}
+  .count__l{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+
+  /* suites */
+  .suites{background:var(--paper);}
+  .sec-head{text-align:center;margin-bottom:clamp(46px,7vw,74px);}
+  .sec-head h2{font-size:clamp(2.1rem,5vw,3.4rem);margin-top:.32em;}
+  .suite-grid{display:grid;grid-template-columns:1fr;gap:clamp(40px,5vw,64px);}
+  .suite{display:grid;grid-template-columns:1fr;gap:26px;align-items:center;}
+  .suite__media{overflow:hidden;position:relative;aspect-ratio:4/3;}
+  .suite__media img{width:100%;height:100%;object-fit:cover;transition:transform 1.4s cubic-bezier(.2,.8,.2,1);}
+  .suite:hover .suite__media img{transform:scale(1.06);}
+  .suite__num{font-family:var(--sans);font-weight:400;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rust);}
+  .suite__name{font-size:clamp(1.7rem,3.6vw,2.5rem);margin:.18em 0 .5em;}
+  .suite__desc{color:var(--ink-soft);margin-bottom:26px;max-width:46ch;}
+  .suite__link{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rust);border-bottom:1px solid var(--rust);padding-bottom:5px;transition:color .3s,border-color .3s;}
+  .suite__link:hover{color:var(--rust-deep);border-color:var(--rust-deep);}
+
+  /* services */
+  .services{background:var(--olive);color:var(--bone);}
+  .services .sec-head h2{color:var(--paper);}
+  .services .eyebrow{color:#D8A98F;}
+  .svc-grid{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid rgba(255,255,255,.16);}
+  .svc{padding:30px 4px;border-bottom:1px solid rgba(255,255,255,.16);display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;}
+  .svc__icon{width:34px;height:34px;stroke:#D8A98F;fill:none;stroke-width:1.1;}
+  .svc h3{font-size:1.5rem;font-weight:400;color:var(--paper);margin-bottom:6px;}
+  .svc p{font-size:.98rem;color:rgba(244,238,227,.8);line-height:1.7;}
+
+  /* neighborhood */
+  .hood{background:var(--bone);}
+  .hood__row{display:grid;grid-template-columns:1fr;gap:clamp(34px,5vw,70px);align-items:center;}
+  .hood__media{aspect-ratio:3/4;overflow:hidden;}
+  .hood__media img{width:100%;height:100%;object-fit:cover;}
+  .hood h2{font-size:clamp(2rem,4.6vw,3.2rem);margin:.3em 0 .55em;}
+  .hood p{color:var(--ink-soft);margin-bottom:20px;}
+  .hood__list{list-style:none;margin-top:14px;}
+  .hood__list li{padding:14px 0;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;font-size:.96rem;}
+  .hood__list li span:first-child{font-family:var(--serif);font-size:1.25rem;}
+  .hood__list li span:last-child{color:var(--muted);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;text-align:right;align-self:center;}
+
+  /* press */
+  .press{background:var(--paper);text-align:center;padding:clamp(54px,8vw,90px) 0;border-top:1px solid var(--line);}
+  .press .eyebrow{display:block;margin-bottom:30px;}
+  .press__row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:clamp(26px,5vw,64px);}
+  .press__row span{font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.7rem);color:var(--ink-soft);opacity:.85;}
+
+  /* final cta */
+  .final{position:relative;text-align:center;color:var(--paper);padding:clamp(90px,14vw,170px) 0;overflow:hidden;}
+  .final__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+  .final::after{content:"";position:absolute;inset:0;background:rgba(24,18,13,.58);}
+  .final__inner{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:0 22px;}
+  .final h2{font-size:clamp(2.4rem,6vw,4.4rem);margin:.3em 0 .5em;color:var(--paper);}
+  .final p{font-family:var(--serif);font-size:1.5rem;margin-bottom:36px;color:var(--bone);}
+  .final .btn{color:var(--paper);border-color:var(--paper);font-size:.78rem;padding:17px 40px;}
+  .final .btn:hover{background:var(--paper);color:var(--ink);}
+  .final__phone{display:block;margin-top:26px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--bone);}
+
+  /* footer */
+  .foot{background:var(--ink);color:var(--bone);padding:64px 0 40px;}
+  .foot__top{display:grid;grid-template-columns:1fr;gap:38px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12);}
+  .foot__brand .mark{font-family:var(--serif);font-size:2rem;letter-spacing:.18em;text-transform:uppercase;}
+  .foot__brand p{font-size:.84rem;color:rgba(244,238,227,.6);margin-top:12px;line-height:1.7;max-width:34ch;}
+  .foot__col h4{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--rust);margin-bottom:18px;font-family:var(--sans);font-weight:400;}
+  .foot__col a,.foot__col p{display:block;font-size:.92rem;color:rgba(244,238,227,.78);margin-bottom:11px;transition:color .3s;}
+  .foot__col a:hover{color:var(--paper);}
+  .foot__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:28px;font-size:.74rem;letter-spacing:.06em;color:rgba(244,238,227,.5);}
+
+  /* mobile sticky book */
+  .mbook{position:fixed;bottom:0;left:0;width:100%;z-index:90;display:flex;background:var(--rust);box-shadow:0 -2px 18px var(--shadow);}
+  .mbook a{flex:1;text-align:center;padding:16px;color:var(--paper);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;}
+  .mbook a:first-child{flex:0 0 46%;background:var(--ink);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(min-width:680px){
+    .bk-field{flex:1;min-width:0;border-bottom:none;}
+    .bk-submit{flex:0 0 auto;}
+    .bk-submit a{min-height:100%;padding:0 44px;}
+    .booking__grid{flex-wrap:nowrap;}
+    .count__l{font-size:.7rem;}
+  }
+  @media(min-width:860px){
+    .nav__links{display:flex;}
+    .nav__phone{display:block;}
+    .mbook{display:none;}
+    body{font-size:17px;}
+    .suite{grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,72px);}
+    .suite:nth-child(even) .suite__media{order:2;}
+    .svc-grid{grid-template-columns:1fr 1fr;column-gap:54px;}
+    .svc-grid .svc:nth-last-child(2){border-bottom:none;}
+    .hood__row{grid-template-columns:.85fr 1.15fr;}
+    .foot__top{grid-template-columns:1.6fr 1fr 1fr 1fr;}
+  }
+  @media(max-width:859px){
+    .svc-grid .svc:last-child{border-bottom:none;}
+    body{padding-bottom:54px;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;}
+    .reveal{opacity:1;transform:none;}
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#main" class="nav__logo">Archway<span>Boutique Hotel</span></a>
+  <div class="nav__links">
+    <a href="#suites">Suites</a>
+    <a href="#services">Services</a>
+    <a href="#neighborhood">Neighborhood</a>
+    <a href="https://archwayfishtown.com/contact/">Contact</a>
+  </div>
+  <div class="nav__right">
+    <a class="nav__phone" href="tel:800-216-0273">800·216·0273</a>
+    <a class="btn" href="https://archway.guestybookings.com/en/">Reserve</a>
+  </div>
+</nav>
+
+<main id="main">
+
+<!-- HERO -->
+<header class="hero">
+  <img class="hero__img" src="https://archwayfishtown.com/wp-content/uploads/2024/03/UNIT-205_LIVING-ROOM_265-FINAL-Credit-Jason-Varney-copy-2-2-scaled-2.jpg" alt="Sunlit living room of a suite at Archway Hotel" referrerpolicy="no-referrer" fetchpriority="high">
+  <div class="hero__inner">
+    <p class="eyebrow hero__eyebrow">Fishtown · Philadelphia</p>
+    <h1 class="hero__title">Archway</h1>
+    <p class="hero__sub">A boutique hotel in the heart of Fishtown</p>
+    <div class="hero__cta"><a class="btn" href="https://archway.guestybookings.com/en/">Reserve Your Stay</a></div>
+  </div>
+  <span class="scrollhint">Scroll</span>
+</header>
+
+<!-- BOOKING BAR -->
+<section class="booking" aria-label="Check availability">
+  <div class="wrap">
+    <div class="booking__grid">
+      <div class="bk-field">
+        <label for="arr">Arriving</label>
+        <input type="date" id="arr">
+      </div>
+      <div class="bk-field">
+        <label for="dep">Departing</label>
+        <input type="date" id="dep">
+      </div>
+      <div class="bk-field">
+        <label for="gst">Guests</label>
+        <select id="gst">
+          <option>1 Guest</option>
+          <option selected>2 Guests</option>
+          <option>3 Guests</option>
+          <option>4 Guests</option>
+        </select>
+      </div>
+      <div class="bk-field bk-submit">
+        <a href="https://archway.guestybookings.com/en/">Check Availability</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="pad intro">
+  <div class="wrap reveal">
+    <p class="eyebrow">The Hotel</p>
+    <h2>A service-unseen hotel,<br><span class="serif-italic">with the comfort of home.</span></h2>
+    <p>Eleven suites and a small, dedicated team. We carefully time each stay so that everything arrives just right — the quiet luxury of a home, with the ease of a hotel, tucked into one of Philadelphia's most spirited neighborhoods.</p>
+    <div class="count">
+      <div class="count__item"><div class="count__n">11</div><div class="count__l">Private Suites</div></div>
+      <div class="count__item"><div class="count__n">1</div><div class="count__l">Block to City Fitness</div></div>
+      <div class="count__item"><div class="count__n">∞</div><div class="count__l">Fishtown at the Door</div></div>
+    </div>
+    <div class="divider"></div>
+  </div>
+</section>
+
+<!-- SUITES -->
+<section class="pad suites" id="suites">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Accommodations</p>
+      <h2>The Suites</h2>
+    </div>
+    <div class="suite-grid">
+
+      <article class="suite reveal">
+        <div class="suite__media">
+          <img src="https://archwayfishtown.com/wp-content/uploads/2026/03/UNIT-205_LIVING-ROOM-DETAIL_288-FINAL-Credit-Jason-Varney-copy-2-scaled-1.jpg" alt="Grand Two Bedroom suite living detail with terrace at Archway" referrerpolicy="no-referrer" loading="lazy">
+        </div>
+        <div class="suite__body">
+          <span class="suite__num">No. 01</span>
+          <h3 class="suite__name">Grand Two Bedroom King + Queen, with Terrace</h3>
+          <p class="suite__desc">Our most expansive suite — two bedrooms, generous living space, and a private terrace for slow Fishtown mornings.</p>
+          <a class="suite__link" href="https://archway.guestybookings.com/en/">Reserve This Suite</a>
+        </div>
+      </article>
+
+      <article class="suite reveal">
+        <div class="suite__media">
+          <img src="https://archwayfishtown.com/wp-content/uploads/2024/10/Image_A_THE-ARCH_301_BEDROOM_058-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Loft King suite bedroom at Archway Hotel" referrerpolicy="no-referrer" loading="lazy">
+        </div>
+        <div class="suite__body">
+          <span class="suite__num">No. 02</span>
+          <h3 class="suite__name">Loft King Suite</h3>
+          <p class="suite__desc">An airy, light-filled loft anchored by a king bed — designed for the traveler who wants room to settle in and stay a while.</p>
+          <a class="suite__link" href="https://archway.guestybookings.com/en/">Reserve This Suite</a>
+        </div>
+      </article>
+
+      <article class="suite reveal">
+        <div class="suite__media">
+          <img src="https://archwayfishtown.com/wp-content/uploads/2024/10/Image_B_UNIT-202_BEDROOM_510-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Two Bedroom Deluxe Queen suite at Archway Hotel" referrerpolicy="no-referrer" loading="lazy">
+        </div>
+        <div class="suite__body">
+          <span class="suite__num">No. 03</span>
+          <h3 class="suite__name">Two Bedroom Deluxe Queen + Queen</h3>
+          <p class="suite__desc">Two queen bedrooms with a shared living heart — ideal for friends, families, and longer stays in the city.</p>
+          <a class="suite__link" href="https://archway.guestybookings.com/en/">Reserve This Suite</a>
+        </div>
+      </article>
+
+    </div>
+    <div class="sec-head reveal" style="margin-top:60px;margin-bottom:0;">
+      <a class="btn" style="color:var(--rust);" href="https://archwayfishtown.com/suites/">Explore All Suites</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad services" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="eyebrow">Guest Services</p>
+      <h2>Considered, never intrusive</h2>
+    </div>
+    <div class="svc-grid">
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><path d="M4 6v12M20 6v12M4 12h16M7 9v6M17 9v6"/></svg>
+        <div><h3>City Fitness</h3><p>A block away, with cutting-edge equipment and programming. Every Archway guest enjoys complimentary gym pass access.</p></div>
+      </div>
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><path d="M5 3v8a3 3 0 0 0 6 0V3M8 11v10M19 3c-2 0-3 2-3 5s1 4 3 4v9"/></svg>
+        <div><h3>Dining at the Door</h3><p>Sister restaurant Suraya sits directly across the street; the award-winning Kalaya is blocks north. We're glad to help arrange reservations with notice.</p></div>
+      </div>
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div><h3>Time to Spare</h3><p>Check-in 4PM, check-out 11AM. When availability allows, extend with early arrival from 2PM or late departure to 1PM for $50.</p></div>
+      </div>
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg>
+        <div><h3>Flowers</h3><p>Arrange a room delivery through our favorite local purveyors, Walter Pine. Just ask our guest services team.</p></div>
+      </div>
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="11" rx="1.5"/><path d="M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2M3 14h18"/></svg>
+        <div><h3>Luggage Storage</h3><p>Secured, complimentary storage on the ground floor for up to ten hours — arrive early, leave late, see the city unburdened.</p></div>
+      </div>
+
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 24 24"><path d="M5 11l2-5h10l2 5M5 11h14v6H5zM7 17v2M17 17v2"/><circle cx="8" cy="14" r="1"/><circle cx="16" cy="14" r="1"/></svg>
+        <div><h3>Parking</h3><p>A limited number of overnight spots are available to guests for a nightly fee. Reach out to reserve yours.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEIGHBORHOOD -->
+<section class="pad hood" id="neighborhood">
+  <div class="wrap">
+    <div class="hood__row">
+      <div class="hood__media reveal">
+        <img src="https://archwayfishtown.com/wp-content/uploads/2024/10/Image_A_THE-ARCH_301_BEDROOM_058-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Interior detail at Archway Hotel in Fishtown" referrerpolicy="no-referrer" loading="lazy">
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">The Neighborhood</p>
+        <h2>Fishtown, just outside your door</h2>
+        <p>Stay where Philadelphia is most alive — galleries, music, coffee, and some of the city's best tables, all within a short walk. Archway places you in the middle of it, then lets you retreat to the quiet of your own suite.</p>
+        <ul class="hood__list">
+          <li><span>Suraya</span><span>Across the street</span></li>
+          <li><span>Kalaya</span><span>Two blocks north</span></li>
+          <li><span>City Fitness</span><span>One block</span></li>
+          <li><span>Center City</span><span>Minutes away</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS / TRUST -->
+<section class="press">
+  <div class="wrap reveal">
+    <span class="eyebrow">A Boutique Stay</span>
+    <div class="press__row">
+      <span>Eleven Suites</span>
+      <span>·</span>
+      <span>A Small, Dedicated Team</span>
+      <span>·</span>
+      <span>Sister to Suraya &amp; Maison Rose</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <img class="final__img" src="https://archwayfishtown.com/wp-content/uploads/2024/03/UNIT-205_LIVING-ROOM_265-FINAL-Credit-Jason-Varney-copy-2-2-scaled-2.jpg" alt="Living room at Archway Hotel" referrerpolicy="no-referrer" loading="lazy">
+  <div class="final__inner reveal">
+    <p class="eyebrow" style="color:var(--bone);">Your Stay Awaits</p>
+    <h2>Reserve your stay in Fishtown</h2>
+    <p>Good things shouldn't have to end too soon.</p>
+    <a class="btn" href="https://archway.guestybookings.com/en/">Check Availability</a>
+    <a class="final__phone" href="tel:800-216-0273">Or call 800·216·0273</a>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__brand">
+        <div class="mark">Archway</div>
+        <p>A boutique hotel in the heart of Fishtown, Philadelphia. A service-unseen hotel with the comfort of home.</p>
+      </div>
+      <div class="foot__col">
+        <h4>Visit</h4>
+        <a href="#suites">Suites</a>
+        <a href="#services">Services</a>
+        <a href="https://archwayfishtown.com/contact/">Contact</a>
+        <a href="https://archwayfishtown.com/policies/">Policies</a>
+      </div>
+      <div class="foot__col">
+        <h4>Reserve</h4>
+        <a href="https://archway.guestybookings.com/en/">Book a Suite</a>
+        <a href="tel:800-216-0273">800·216·0273</a>
+        <a href="https://archway.guestybookings.com/en/properties/66ac3fab0ba9790012ae66f7">Maison Rose</a>
+      </div>
+      <div class="foot__col">
+        <h4>Follow</h4>
+        <a href="https://www.instagram.com/archwaycollective/">Instagram</a>
+        <a href="https://open.spotify.com/playlist/1ZaL3f7iwZgSDcWjghlNjD">Spotify</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© 2026 Archway Hotel</span>
+      <span>Fishtown · Philadelphia, PA</span>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY BOOK -->
+<div class="mbook">
+  <a href="tel:800-216-0273">Call</a>
+  <a href="https://archway.guestybookings.com/en/">Reserve Your Stay</a>
+</div>
+
+<script>
+  // sticky nav
+  var nav=document.getElementById('nav');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>60);}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // scroll reveals
+  var io=new IntersectionObserver(function(ents){
+    ents.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
