@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Soda Station — Drinks &amp; Treats on the Lincoln Highway | Lyman, WY</title>
+<meta name="description" content="Hand-crafted soda mixes, fresh treats and hot chocolate in a 1920s building on Main Street, Lyman, Wyoming. Drive-thru, outdoor seating, open Mon–Sat.">
+<meta property="og:title" content="The Soda Station — Drinks &amp; Treats">
+<meta property="og:description" content="A little fizz, a little nostalgia. Soda mixes, treats &amp; hot chocolate in the heart of Bridger Valley.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Limelight&family=Jost:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Yellowtail&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FoodEstablishment",
+  "name": "The Soda Station",
+  "description": "Drinks & Treats — hand-crafted soda mixes, fresh treats and hot chocolate in Lyman, Wyoming.",
+  "image": "https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg",
+  "url": "https://thesodastation.com/",
+  "telephone": "+1-307-787-7632",
+  "servesCuisine": ["Soda", "Desserts", "Hot Chocolate"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "228 N. Main St.",
+    "addressLocality": "Lyman",
+    "addressRegion": "WY",
+    "postalCode": "82937",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 41.330711, "longitude": -110.292485 },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "10:00", "closes": "20:00"
+  }],
+  "sameAs": [
+    "https://www.facebook.com/sodastationdrinksandtreats",
+    "https://www.instagram.com/thesodastation/"
+  ]
+}
+</script>
+<style>
+  :root{
+    --slate:#3c4e57;
+    --slate-deep:#2b383f;
+    --cream:#faf3e3;
+    --cream-2:#f1e6cd;
+    --cherry:#d8463a;
+    --cherry-deep:#bb3328;
+    --amber:#e0a33e;
+    --mint:#92c2b3;
+    --ink:#26302f;
+    --ink-soft:#5a6663;
+    --shadow:0 18px 48px -22px rgba(43,56,63,.55);
+    --ease:cubic-bezier(.2,.7,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:'Limelight',serif;font-weight:400;line-height:1.05;letter-spacing:.01em}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+  .eyebrow{font-family:'Yellowtail',cursive;color:var(--cherry);font-size:1.5rem;line-height:1}
+  .kicker{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.34em;font-size:.72rem;color:var(--amber)}
+
+  /* skip link */
+  .skip{position:absolute;left:-999px;top:0;background:var(--slate);color:var(--cream);padding:10px 16px;z-index:200}
+  .skip:focus{left:8px;top:8px}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5em;
+    font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:.78rem;
+    padding:.95em 1.7em;border:none;cursor:pointer;position:relative;
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;
+  }
+  .btn--primary{background:var(--cherry);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18), 0 12px 26px -14px rgba(187,51,40,.9)}
+  .btn--primary::after{content:"";position:absolute;inset:5px;border:1px solid rgba(255,255,255,.35);pointer-events:none}
+  .btn--primary:hover{background:var(--cherry-deep);transform:translateY(-3px)}
+  .btn--ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1.5px rgba(250,243,227,.6)}
+  .btn--ghost:hover{background:rgba(250,243,227,.12);transform:translateY(-3px)}
+  .btn--slate{background:var(--slate);color:var(--cream)}
+  .btn--slate::after{content:"";position:absolute;inset:5px;border:1px solid rgba(250,243,227,.3);pointer-events:none}
+  .btn--slate:hover{background:var(--slate-deep);transform:translateY(-3px)}
+
+  /* deco divider */
+  .deco-rule{display:flex;align-items:center;justify-content:center;gap:14px;margin:0 auto}
+  .deco-rule span{height:1.5px;width:64px;background:linear-gradient(90deg,transparent,var(--amber))}
+  .deco-rule span:last-child{background:linear-gradient(90deg,var(--amber),transparent)}
+  .deco-rule i{width:11px;height:11px;background:var(--amber);transform:rotate(45deg);display:block}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--slate-deep);color:var(--cream);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+  .topbar .wrap{display:flex;justify-content:space-between;align-items:center;height:38px}
+  .topbar .hours{opacity:.85;font-weight:300}
+  .topbar .socials{display:flex;gap:14px;align-items:center}
+  .topbar .socials a{display:flex;opacity:.8;transition:opacity .3s,transform .3s}
+  .topbar .socials a:hover{opacity:1;transform:translateY(-2px)}
+  .topbar svg{width:16px;height:16px;fill:var(--cream)}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:120;background:var(--cream);border-bottom:1px solid rgba(60,78,87,.12);transition:box-shadow .4s,background .4s}
+  header.nav.scrolled{box-shadow:0 8px 28px -18px rgba(43,56,63,.5)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:18px}
+  .nav__logo img{height:46px;width:auto}
+  .nav__links{display:flex;gap:30px;list-style:none}
+  .nav__links a{font-family:'Jost';font-weight:500;text-transform:uppercase;letter-spacing:.13em;font-size:.78rem;position:relative;padding:4px 0;color:var(--slate)}
+  .nav__links a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:var(--cherry);transition:width .35s var(--ease)}
+  .nav__links a:hover::after{width:100%}
+  .nav__cta{display:flex;align-items:center;gap:18px}
+  .nav__phone{display:flex;align-items:center;gap:8px;font-weight:600;letter-spacing:.05em;color:var(--slate);font-size:.92rem;white-space:nowrap}
+  .nav__phone svg{width:17px;height:17px;fill:var(--cherry)}
+  .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+  .hamburger span{width:26px;height:2px;background:var(--slate);transition:.3s}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;min-height:88vh;display:flex;align-items:center;color:var(--cream);overflow:hidden}
+  .hero__bg{position:absolute;inset:0}
+  .hero__bg img{width:100%;height:100%;object-fit:cover;object-position:center 60%}
+  .hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(43,56,63,.92) 0%,rgba(43,56,63,.7) 42%,rgba(43,56,63,.35) 100%)}
+  .hero .wrap{position:relative;z-index:3;padding-top:60px;padding-bottom:60px}
+  .hero__inner{max-width:660px}
+  .hero .eyebrow{color:var(--amber);margin-bottom:12px}
+  .hero h1{font-size:clamp(3rem,8.5vw,6.2rem);color:var(--cream);text-shadow:0 4px 30px rgba(0,0,0,.3)}
+  .hero h1 .pop{color:var(--cherry);-webkit-text-stroke:1px rgba(250,243,227,.15)}
+  .hero__sub{font-size:1.18rem;font-weight:300;max-width:460px;margin:22px 0 8px;opacity:.94}
+  .hero__loc{display:inline-flex;align-items:center;gap:9px;font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;margin-top:6px;opacity:.85}
+  .hero__loc svg{width:15px;height:15px;fill:var(--amber)}
+  .hero__btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:34px}
+  /* deco frame on hero */
+  .hero__frame{position:absolute;inset:22px;border:1px solid rgba(224,163,62,.45);z-index:2;pointer-events:none}
+  .hero__frame::before,.hero__frame::after{content:"";position:absolute;width:26px;height:26px;border:2px solid var(--amber)}
+  .hero__frame::before{top:-2px;left:-2px;border-right:none;border-bottom:none}
+  .hero__frame::after{bottom:-2px;right:-2px;border-left:none;border-top:none}
+  /* fizz bubbles */
+  .fizz{position:absolute;bottom:-30px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(250,243,227,.6),rgba(250,243,227,.05));z-index:2;animation:rise linear infinite}
+  @keyframes rise{0%{transform:translateY(0) scale(.6);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-92vh) scale(1.1);opacity:0}}
+
+  /* ---------- section base ---------- */
+  section{padding:96px 0}
+  .sec-head{text-align:center;max-width:680px;margin:0 auto 56px}
+  .sec-head .kicker{display:block;margin-bottom:14px}
+  .sec-head h2{font-size:clamp(2.1rem,5vw,3.3rem);color:var(--slate)}
+  .sec-head p{margin-top:18px;color:var(--ink-soft);font-size:1.05rem;font-weight:300}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- menu trio ---------- */
+  .menu{background:var(--cream)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .mcard{background:#fff;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;transition:transform .5s var(--ease)}
+  .mcard::before{content:"";position:absolute;inset:10px;border:1px solid rgba(224,163,62,.5);z-index:3;pointer-events:none}
+  .mcard:hover{transform:translateY(-8px)}
+  .mcard__img{aspect-ratio:1/1;overflow:hidden}
+  .mcard__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+  .mcard:hover .mcard__img img{transform:scale(1.07)}
+  .mcard__num{position:absolute;top:18px;left:50%;transform:translateX(-50%);z-index:4;font-family:'Limelight';color:var(--cream);font-size:.9rem;background:var(--cherry);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 4px var(--cream)}
+  .mcard__body{padding:26px 24px 30px;text-align:center}
+  .mcard__body h3{font-size:1.5rem;color:var(--slate);margin-bottom:8px}
+  .mcard__body p{color:var(--ink-soft);font-size:.94rem;font-weight:300;margin-bottom:18px}
+  .mcard__link{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--cherry);display:inline-flex;align-items:center;gap:7px}
+  .mcard__link span{transition:transform .3s}
+  .mcard__link:hover span{transform:translateX(5px)}
+
+  /* ---------- build your soda (deco sunburst) ---------- */
+  .build{position:relative;background:var(--slate-deep);color:var(--cream);overflow:hidden}
+  .build::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 78% 50%,rgba(224,163,62,.07) 0deg 6deg,transparent 6deg 12deg);opacity:.8}
+  .build .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+  .build h2{font-size:clamp(2.1rem,4.6vw,3.2rem);color:var(--cream)}
+  .build .eyebrow{color:var(--mint)}
+  .build p{font-weight:300;opacity:.9;margin:18px 0 26px;max-width:440px}
+  .build-list{list-style:none;display:grid;gap:14px}
+  .build-list li{display:flex;align-items:center;gap:14px;font-size:1.02rem;font-weight:300}
+  .build-list i{width:9px;height:9px;background:var(--amber);transform:rotate(45deg);flex:none}
+  .build-list b{font-weight:600;letter-spacing:.02em}
+  .build__visual{position:relative}
+  .build__visual img{width:100%;aspect-ratio:4/5;object-fit:cover;box-shadow:var(--shadow)}
+  .build__visual .tag{position:absolute;bottom:-18px;left:-18px;background:var(--cherry);color:#fff;font-family:'Limelight';padding:16px 22px;font-size:1.05rem;box-shadow:var(--shadow)}
+  .build__visual .tag small{display:block;font-family:'Jost';font-weight:300;text-transform:uppercase;letter-spacing:.18em;font-size:.6rem;opacity:.85;margin-top:3px}
+
+  /* ---------- about / history ---------- */
+  .about{background:var(--cream-2)}
+  .about__top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:54px}
+  .about__top h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--slate);margin:14px 0 18px}
+  .about__top p{color:var(--ink-soft);font-weight:300;margin-bottom:16px;font-size:1.05rem}
+  .about__photo{position:relative}
+  .about__photo img{width:100%;aspect-ratio:5/4;object-fit:cover;box-shadow:var(--shadow)}
+  .about__photo::after{content:"";position:absolute;inset:-14px -14px 14px 14px;border:1px solid var(--amber);z-index:-1}
+  .history{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .history figure{position:relative;overflow:hidden;box-shadow:var(--shadow)}
+  .history img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:sepia(.25) saturate(.9);transition:transform .8s var(--ease),filter .6s}
+  .history figure:hover img{transform:scale(1.06);filter:sepia(0) saturate(1)}
+  .history figcaption{position:absolute;bottom:0;left:0;right:0;padding:14px;color:#fff;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;background:linear-gradient(transparent,rgba(43,56,63,.85))}
+
+  /* ---------- why visit ---------- */
+  .why{background:var(--slate);color:var(--cream)}
+  .why .sec-head h2{color:var(--cream)}
+  .why .sec-head .kicker{color:var(--mint)}
+  .feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px}
+  .feat{text-align:center;padding:30px 18px;border:1px solid rgba(250,243,227,.16);transition:background .4s,transform .4s}
+  .feat:hover{background:rgba(250,243,227,.06);transform:translateY(-6px)}
+  .feat svg{width:42px;height:42px;stroke:var(--amber);fill:none;stroke-width:1.4;margin:0 auto 16px}
+  .feat h3{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.13em;font-size:.92rem;color:var(--cream);margin-bottom:8px}
+  .feat p{font-size:.86rem;font-weight:300;opacity:.82}
+
+  /* ---------- review ---------- */
+  .review{background:var(--cream);text-align:center}
+  .review__stars{color:var(--amber);font-size:1.3rem;letter-spacing:.3em;margin-bottom:22px}
+  .review blockquote{font-family:'Limelight';font-size:clamp(1.8rem,4.4vw,2.9rem);color:var(--slate);max-width:880px;margin:0 auto;line-height:1.2}
+  .review blockquote span{color:var(--cherry)}
+  .review cite{display:block;margin-top:26px;font-style:normal;text-transform:uppercase;letter-spacing:.24em;font-size:.76rem;color:var(--ink-soft)}
+
+  /* ---------- party CTA ---------- */
+  .party{position:relative;color:var(--cream);text-align:center;overflow:hidden}
+  .party__bg{position:absolute;inset:0}
+  .party__bg img{width:100%;height:100%;object-fit:cover}
+  .party__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(rgba(43,56,63,.86),rgba(187,51,40,.78))}
+  .party .wrap{position:relative;z-index:2}
+  .party .eyebrow{color:var(--amber)}
+  .party h2{font-size:clamp(2.2rem,5.4vw,3.6rem);color:var(--cream);margin:12px 0 18px}
+  .party p{font-weight:300;max-width:520px;margin:0 auto 30px;opacity:.95}
+
+  /* ---------- visit ---------- */
+  .visit{background:var(--cream-2)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .visit h2{font-size:clamp(2rem,4.6vw,3rem);color:var(--slate);margin-bottom:24px}
+  .info-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid rgba(60,78,87,.15)}
+  .info-row:last-of-type{border-bottom:none}
+  .info-row svg{width:22px;height:22px;fill:var(--cherry);flex:none;margin-top:3px}
+  .info-row h4{font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem;color:var(--slate);margin-bottom:3px}
+  .info-row p{color:var(--ink-soft);font-weight:300;font-size:.98rem}
+  .visit__map img{width:100%;aspect-ratio:1/1;object-fit:cover;box-shadow:var(--shadow)}
+  .visit__map a{display:block;position:relative}
+  .visit__map .pin{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .visit__map .pin span{background:var(--cherry);color:#fff;font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;padding:.7em 1.3em;box-shadow:var(--shadow)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--slate-deep);color:var(--cream);padding:64px 0 30px;text-align:center}
+  footer .flogo{height:54px;margin:0 auto 22px;filter:brightness(0) invert(1);opacity:.95}
+  footer .fsoc{display:flex;gap:18px;justify-content:center;margin:24px 0 22px}
+  footer .fsoc a{width:42px;height:42px;border:1px solid rgba(250,243,227,.3);display:flex;align-items:center;justify-content:center;transition:background .35s,transform .35s}
+  footer .fsoc a:hover{background:var(--cherry);border-color:var(--cherry);transform:translateY(-4px)}
+  footer .fsoc svg{width:18px;height:18px;fill:var(--cream)}
+  footer .faddr{font-weight:300;opacity:.85;line-height:1.9;font-size:.95rem}
+  footer .faddr a{color:var(--amber)}
+  footer .fnote{margin-top:26px;padding-top:22px;border-top:1px solid rgba(250,243,227,.14);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6}
+  footer .est{font-family:'Yellowtail';font-size:1.4rem;color:var(--amber);text-transform:none;letter-spacing:0;margin-bottom:10px}
+
+  /* ---------- mobile bottom bar ---------- */
+  .mbar{position:fixed;bottom:0;left:0;right:0;z-index:130;display:none;background:var(--slate-deep);box-shadow:0 -8px 24px -12px rgba(0,0,0,.5)}
+  .mbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 8px;font-family:'Jost';font-weight:600;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;color:var(--cream)}
+  .mbar a.order{background:var(--cherry)}
+  .mbar svg{width:16px;height:16px;fill:currentColor}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:980px){
+    .build .wrap{grid-template-columns:1fr;gap:44px}
+    .about__top{grid-template-columns:1fr;gap:34px}
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .visit-grid{grid-template-columns:1fr;gap:36px}
+  }
+  @media(max-width:760px){
+    .topbar .hours{display:none}
+    .topbar .wrap{justify-content:center}
+    .nav__links{position:fixed;top:0;right:-100%;height:100vh;width:78%;max-width:320px;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:26px;padding:40px;transition:right .4s var(--ease);box-shadow:var(--shadow);z-index:115}
+    .nav__links.open{right:0}
+    .nav__links a{font-size:1.05rem}
+    .nav__phone{display:none}
+    .hamburger{display:flex;z-index:130}
+    .hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .menu-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+    .history{grid-template-columns:1fr}
+    section{padding:72px 0}
+    body{padding-bottom:54px}
+    .mbar{display:flex}
+    .hero{min-height:82vh}
+  }
+</style>
+</head>
+<body>
+<a href="#menu" class="skip">Skip to content</a>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="hours">Open Mon–Sat · 10am–8pm · Closed Sunday</span>
+    <div class="socials">
+      <a href="https://www.facebook.com/sodastationdrinksandtreats" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/thesodastation/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 9.9 2.6 10.3 2.6 12s0 2.1.1 3.3c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-3.3s0-2.1-.1-3.3c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zM12 7.2a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="wrap">
+    <a href="#top" class="nav__logo" aria-label="The Soda Station home">
+      <img src="https://thesodastation.com/wp-content/uploads/2021/03/Header-Logo-Green.png" alt="The Soda Station — Drinks &amp; Treats" referrerpolicy="no-referrer">
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#build">Build a Soda</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav__cta">
+      <a href="tel:+13077877632" class="nav__phone">
+        <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
+        (307) 787-SODA
+      </a>
+      <a href="https://thesodastation.com/menu/" class="btn btn--primary" target="_blank" rel="noopener">Order Online</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero__bg">
+    <img src="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg" alt="The Soda Station building on Main Street, Lyman, Wyoming" referrerpolicy="no-referrer" fetchpriority="high">
+  </div>
+  <div class="hero__frame"></div>
+  <div class="wrap">
+    <div class="hero__inner reveal">
+      <p class="eyebrow">a little fizz &amp; a little nostalgia</p>
+      <h1>Drinks &amp; <span class="pop">Treats</span><br>on the Lincoln&nbsp;Highway</h1>
+      <p class="hero__sub">Hand-crafted soda mixes, fresh-baked treats and rich hot chocolate — poured and served from a 1920s landmark in the heart of Bridger Valley.</p>
+      <p class="hero__loc">
+        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        228 N. Main St · Lyman, Wyoming
+      </p>
+      <div class="hero__btns">
+        <a href="https://thesodastation.com/menu/" class="btn btn--primary" target="_blank" rel="noopener">Order Online</a>
+        <a href="#menu" class="btn btn--ghost">See the Menu</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU TRIO -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">The Menu</span>
+      <h2>Pick Your Pleasure</h2>
+      <p>Three little corners of happy — fizzy custom sodas, fresh treats, and cozy hot chocolate. Made the way you like it.</p>
+      <div class="deco-rule" style="margin-top:24px"><span></span><i></i><span></span></div>
+    </div>
+    <div class="menu-grid">
+      <article class="mcard reveal">
+        <span class="mcard__num">1</span>
+        <div class="mcard__img"><img src="https://thesodastation.com/wp-content/uploads/2021/08/IMG_2040-1024x1024.jpeg" alt="A custom soda mix from The Soda Station" referrerpolicy="no-referrer" loading="lazy"></div>
+        <div class="mcard__body">
+          <h3>Soda Mixes</h3>
+          <p>Your favorite fountain soda, dialed in with flavored syrups, real fruit and a splash of coconut cream.</p>
+          <a class="mcard__link" href="https://thesodastation.com/soda-mixes/" target="_blank" rel="noopener">Explore Sodas <span>→</span></a>
+        </div>
+      </article>
+      <article class="mcard reveal">
+        <span class="mcard__num">2</span>
+        <div class="mcard__img"><img src="https://thesodastation.com/wp-content/uploads/2021/04/Sugar-Cookie-1-edited-1-1024x1024.jpg" alt="Fresh sugar cookie treat from The Soda Station" referrerpolicy="no-referrer" loading="lazy"></div>
+        <div class="mcard__body">
+          <h3>Treats</h3>
+          <p>Sweet, soft and made to pair with your drink — from frosted sugar cookies to warm chocolate chip.</p>
+          <a class="mcard__link" href="https://thesodastation.com/cookies/" target="_blank" rel="noopener">Browse Treats <span>→</span></a>
+        </div>
+      </article>
+      <article class="mcard reveal">
+        <span class="mcard__num">3</span>
+        <div class="mcard__img"><img src="https://thesodastation.com/wp-content/uploads/2022/02/IMG_5302-2-1012x1024.jpg" alt="Cup of hot chocolate from The Soda Station" referrerpolicy="no-referrer" loading="lazy"></div>
+        <div class="mcard__body">
+          <h3>Hot Chocolate</h3>
+          <p>Rich, comforting and topped just right — the perfect way to warm up a Wyoming afternoon.</p>
+          <a class="mcard__link" href="https://thesodastation.com/menu/hot-chocolate/" target="_blank" rel="noopener">Warm Up <span>→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BUILD YOUR SODA -->
+<section class="build" id="build">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">make it yours</p>
+      <h2>Build Your Perfect Soda</h2>
+      <p>Start with a classic fountain pour, then make it unmistakably yours. Mix, match and stack your flavors however you like.</p>
+      <ul class="build-list">
+        <li><i></i><b>Flavored syrups</b> — a wall of options to choose from</li>
+        <li><i></i><b>Real fruit add-ins</b> — fresh and bright</li>
+        <li><i></i><b>Coconut cream</b> — smooth, creamy finish</li>
+        <li><i></i><b>Snack on the side</b> — pretzel bites &amp; treats</li>
+      </ul>
+      <a href="https://thesodastation.com/soda-mixes/" class="btn btn--primary" target="_blank" rel="noopener" style="margin-top:30px">Start Your Order</a>
+    </div>
+    <div class="build__visual reveal">
+      <img src="https://images.happycow.net/venues/1024/29/21/hcmp292160_1526350.jpeg" alt="Menu board and syrup options at The Soda Station" referrerpolicy="no-referrer" loading="lazy">
+      <div class="tag">Drive-Thru<small>quick &amp; easy</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / HISTORY -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about__top">
+      <div class="about__photo reveal">
+        <img src="https://images.happycow.net/venues/1024/29/21/hcmp292160_1526346.jpeg" alt="The front door of The Soda Station in Lyman, Wyoming" referrerpolicy="no-referrer" loading="lazy">
+      </div>
+      <div class="reveal">
+        <span class="kicker">Our Story</span>
+        <h2>The Corner of Main &amp; Clark</h2>
+        <p>The white building on the corner of Main and Clark is under new ownership — and we're thrilled to bring a little energy back to the Bridger Valley.</p>
+        <p>Sitting right on the original Lincoln Highway and surrounded by decades of history, The Soda Station serves up delicious caffeinated concoctions alongside a rich story that stretches back to what this building has given the town since the 1920s.</p>
+      </div>
+    </div>
+    <div class="history">
+      <figure class="reveal"><img src="https://thesodastation.com/wp-content/uploads/2021/05/LymanMotorPark-copy-1024x512.jpg" alt="Historic Lyman Motor Park" referrerpolicy="no-referrer" loading="lazy"><figcaption>Lyman Motor Park</figcaption></figure>
+      <figure class="reveal"><img src="https://thesodastation.com/wp-content/uploads/2021/05/Sinclair-1-1024x585.jpg" alt="Historic Sinclair station" referrerpolicy="no-referrer" loading="lazy"><figcaption>The Sinclair Days</figcaption></figure>
+      <figure class="reveal"><img src="https://thesodastation.com/wp-content/uploads/2021/05/blackburnaut-1024x512.jpg" alt="Historic Blackburn auto" referrerpolicy="no-referrer" loading="lazy"><figcaption>On the Lincoln Highway</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- WHY VISIT -->
+<section class="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker">Why Stop In</span>
+      <h2>Easy to Love, Easy to Reach</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24"><path d="M3 13l2-5h10l2 5M5 13h14v4H5zM7 17a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg>
+        <h3>Drive-Thru</h3>
+        <p>Grab your favorite without leaving the car.</p>
+      </div>
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M5 11l1 9h12l1-9"/></svg>
+        <h3>Outdoor Seating</h3>
+        <p>Sip and stay a while in the fresh air.</p>
+      </div>
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24"><path d="M2 7h20v10H2zM2 11h20M6 15h4"/></svg>
+        <h3>Cards Welcome</h3>
+        <p>Tap, swipe or insert — whatever's easy.</p>
+      </div>
+      <div class="feat reveal">
+        <svg viewBox="0 0 24 24"><circle cx="9" cy="5" r="2"/><path d="M9 8v5l-3 6M9 11h5a3 3 0 0 1 3 3v5"/></svg>
+        <h3>Accessible</h3>
+        <p>Wheelchair-friendly and welcoming to all.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section class="review">
+  <div class="wrap reveal">
+    <div class="review__stars">★ ★ ★ ★ ★</div>
+    <blockquote>“A nice treat during a long drive — lots of syrup options and <span>very clean inside.</span>”</blockquote>
+    <cite>— Guest review via HappyCow</cite>
+  </div>
+</section>
+
+<!-- PARTY CTA -->
+<section class="party">
+  <div class="party__bg">
+    <img src="https://thesodastation.com/wp-content/uploads/2021/05/Chocolate-Chip-1-scaled.jpg" alt="Fresh chocolate chip treats" referrerpolicy="no-referrer" loading="lazy">
+  </div>
+  <div class="wrap reveal">
+    <p class="eyebrow">let's party</p>
+    <h2>Host Your Next Celebration</h2>
+    <p>Birthdays, get-togethers, team treats — The Soda Station would love to host your next celebration with drinks and treats for the whole crew.</p>
+    <a href="https://thesodastation.com/catering-information/" class="btn btn--primary" target="_blank" rel="noopener">See Party Info</a>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div class="reveal">
+        <span class="kicker">Come Visit</span>
+        <h2>Find Us in Bridger Valley</h2>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+          <div><h4>Location</h4><p>228 N. Main St. · Lyman, WY 82937<br>On the corner of Main &amp; Clark</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 7v5l3 3M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg>
+          <div><h4>Hours</h4><p>Monday – Saturday · 10:00am – 8:00pm<br>Closed Sunday</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>
+          <div><h4>Call Ahead</h4><p><a href="tel:+13077877632" style="color:var(--cherry);font-weight:600">(307) 787-SODA</a> · (307) 787-7632</p></div>
+        </div>
+        <a href="https://thesodastation.com/menu/" class="btn btn--slate" target="_blank" rel="noopener" style="margin-top:24px">Order Online</a>
+      </div>
+      <div class="visit__map reveal">
+        <a href="https://www.google.com/maps?q=41.330711,-110.292485" target="_blank" rel="noopener" aria-label="Open The Soda Station location in Google Maps">
+          <img src="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg" alt="The Soda Station building" referrerpolicy="no-referrer" loading="lazy">
+          <span class="pin"><span>Open in Maps</span></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="https://thesodastation.com/wp-content/uploads/2021/03/Header-Logo-Green.png" alt="The Soda Station" referrerpolicy="no-referrer">
+    <p class="est">fizz, fun &amp; a little nostalgia</p>
+    <p class="faddr">
+      228 N. Main St. · Lyman, WY 82937<br>
+      <a href="tel:+13077877632">(307) 787-SODA</a> · Open Mon–Sat 10am–8pm
+    </p>
+    <div class="fsoc">
+      <a href="https://www.facebook.com/sodastationdrinksandtreats" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/thesodastation/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 5a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg>
+      </a>
+    </div>
+    <p class="fnote">Est. 2021 · The Soda Station · Drinks &amp; Treats · Lyman, Wyoming</p>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+13077877632"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>Call</a>
+  <a class="order" href="https://thesodastation.com/menu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 4h-2l-1 2v2h2l3 8h9l3-6H8M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>Order Online</a>
+</nav>
+
+<script>
+(function(){
+  // sticky nav shadow
+  var nav=document.querySelector('header.nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>20);
+  });
+  // mobile menu
+  var burger=document.getElementById('hamburger'),links=document.getElementById('navLinks');
+  burger.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    burger.classList.toggle('active',open);
+    burger.setAttribute('aria-expanded',open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){links.classList.remove('open');burger.classList.remove('active');burger.setAttribute('aria-expanded',false);});
+  });
+  // scroll reveals
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+  // fizz bubbles in hero
+  var hero=document.querySelector('.hero');
+  for(var i=0;i<14;i++){
+    var b=document.createElement('span');b.className='fizz';
+    var s=4+Math.random()*16;
+    b.style.width=s+'px';b.style.height=s+'px';
+    b.style.left=Math.random()*100+'%';
+    b.style.animationDuration=(7+Math.random()*9)+'s';
+    b.style.animationDelay=(Math.random()*8)+'s';
+    hero.appendChild(b);
+  }
+})();
+</script>
+</body>
+</html>
