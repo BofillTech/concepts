@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Soda Station — Drinks &amp; Treats on the Lincoln Highway | Lyman, WY</title>
+<meta name="description" content="Build-your-own dirty sodas, fresh treats and hot chocolate in a 1920s building on Main Street, Lyman, Wyoming. Drive-thru, outdoor seating, open Mon–Sat.">
+<meta property="og:title" content="The Soda Station — Drinks &amp; Treats">
+<meta property="og:description" content="Fizz up your day. Build-your-own sodas, fresh treats &amp; hot cocoa in the heart of Bridger Valley.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@300;400;500;600;700&family=Shrikhand&family=Yellowtail&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"FoodEstablishment","name":"The Soda Station",
+  "description":"Drinks & Treats — build-your-own sodas, fresh treats and hot chocolate in Lyman, Wyoming.",
+  "image":"https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg",
+  "url":"https://thesodastation.com/","telephone":"+1-307-787-7632",
+  "servesCuisine":["Soda","Desserts","Hot Chocolate"],
+  "address":{"@type":"PostalAddress","streetAddress":"228 N. Main St.","addressLocality":"Lyman","addressRegion":"WY","postalCode":"82937","addressCountry":"US"},
+  "geo":{"@type":"GeoCoordinates","latitude":41.330711,"longitude":-110.292485},
+  "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"10:00","closes":"20:00"}],
+  "sameAs":["https://www.facebook.com/sodastationdrinksandtreats","https://www.instagram.com/thesodastation/"]
+}
+</script>
+<style>
+  :root{
+    --slate:#3c4e57; --slate-deep:#2b383f; --ink:#23302f;
+    --cream:#faf3e3; --cream-2:#f6ecd5; --paper:#fffaf0;
+    --cherry:#e23b32; --cherry-deep:#c22a23;
+    --orange:#ef8a3c; --teal:#2f9e8f; --mint:#9bd4c8; --sunny:#f4c542;
+    --shadow:0 16px 40px -20px rgba(43,56,63,.55);
+    --hard:6px 6px 0 var(--slate-deep);
+    --hard-cherry:6px 6px 0 var(--cherry-deep);
+    --ease:cubic-bezier(.2,.75,.2,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Jost',sans-serif;color:var(--ink);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  /* ben-day halftone dot texture, very subtle */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+    background-image:radial-gradient(var(--slate) 1.1px,transparent 1.2px);background-size:14px 14px}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 26px;position:relative;z-index:1}
+  h1,h2,h3{font-family:'Shrikhand',serif;font-weight:400;line-height:1.02;letter-spacing:.005em}
+  .sign{font-family:'Bebas Neue',sans-serif;letter-spacing:.04em}
+  .script{font-family:'Yellowtail',cursive}
+  .skip{position:absolute;left:-999px;top:0;background:var(--slate);color:var(--cream);padding:10px 16px;z-index:300}
+  .skip:focus{left:8px;top:8px}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:.55em;font-family:'Bebas Neue';letter-spacing:.08em;font-size:1.18rem;
+    padding:.62em 1.4em;cursor:pointer;border:2.5px solid var(--slate-deep);transition:transform .2s var(--ease),box-shadow .2s var(--ease),background .2s;border-radius:40px}
+  .btn--cherry{background:var(--cherry);color:#fff;box-shadow:var(--hard)}
+  .btn--cherry:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--slate-deep)}
+  .btn--cherry:active{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--slate-deep)}
+  .btn--cream{background:var(--cream);color:var(--slate-deep);box-shadow:var(--hard-cherry)}
+  .btn--cream:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--cherry-deep)}
+  .btn--ghost{background:transparent;color:var(--slate-deep);box-shadow:none}
+  .btn--ghost:hover{background:rgba(60,78,87,.08)}
+
+  /* ---------- marquee ticker ---------- */
+  .ticker{background:var(--slate-deep);color:var(--cream);overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--cherry)}
+  .ticker__track{display:inline-flex;gap:0;animation:scroll 26s linear infinite;will-change:transform}
+  .ticker span{font-family:'Bebas Neue';letter-spacing:.18em;font-size:1.05rem;padding:9px 0;display:inline-block}
+  .ticker em{color:var(--sunny);font-style:normal;padding:0 18px}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:120;background:var(--cream);transition:box-shadow .35s,background .35s;border-bottom:2px solid rgba(60,78,87,.14)}
+  header.nav.scrolled{box-shadow:0 10px 30px -18px rgba(43,56,63,.5)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:76px;gap:16px}
+  .nav__logo img{height:44px;width:auto}
+  .nav__links{display:flex;gap:28px;list-style:none}
+  .nav__links a{font-family:'Bebas Neue';letter-spacing:.1em;font-size:1.15rem;color:var(--slate);position:relative;padding:3px 0}
+  .nav__links a::after{content:"";position:absolute;left:0;bottom:-1px;height:3px;width:0;background:var(--cherry);transition:width .3s var(--ease)}
+  .nav__links a:hover::after{width:100%}
+  .nav__cta{display:flex;align-items:center;gap:16px}
+  .nav__phone{display:flex;align-items:center;gap:7px;font-family:'Bebas Neue';letter-spacing:.06em;font-size:1.15rem;color:var(--slate);white-space:nowrap}
+  .nav__phone svg{width:17px;height:17px;fill:var(--cherry)}
+  .nav__social{display:flex;gap:10px}
+  .nav__social a{display:flex}
+  .nav__social svg{width:19px;height:19px;fill:var(--slate);transition:fill .25s,transform .25s}
+  .nav__social a:hover svg{fill:var(--cherry);transform:translateY(-2px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .hamburger span{width:26px;height:2.5px;background:var(--slate);transition:.3s}
+
+  /* ---------- hero (vintage ad) ---------- */
+  .hero{position:relative;background:var(--cream-2);overflow:hidden;padding:64px 0 80px}
+  .hero::before{content:"";position:absolute;top:-30%;right:-12%;width:90vh;height:90vh;z-index:0;
+    background:repeating-conic-gradient(from 0deg at 50% 50%,rgba(244,197,66,.34) 0deg 7deg,transparent 7deg 14deg);
+    border-radius:50%;animation:spin 90s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+  .hero__copy{position:relative;z-index:2}
+  .hero__badge{display:inline-flex;align-items:center;gap:8px;background:var(--slate-deep);color:var(--cream);font-family:'Bebas Neue';letter-spacing:.14em;font-size:.95rem;padding:7px 16px;border-radius:30px;margin-bottom:18px}
+  .hero__badge i{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(155,212,200,.4)}
+  .hero h1{font-size:clamp(3.1rem,8vw,6rem);color:var(--slate-deep)}
+  .hero h1 .pop{color:var(--cherry);display:inline-block;transform:rotate(-3deg)}
+  .hero__script{font-family:'Yellowtail';color:var(--orange);font-size:clamp(1.8rem,4vw,2.7rem);display:block;margin:-2px 0 6px;transform:rotate(-2deg)}
+  .hero__sub{font-size:1.15rem;font-weight:300;max-width:430px;margin:18px 0 4px;color:#46514f}
+  .hero__loc{font-family:'Bebas Neue';letter-spacing:.12em;color:var(--teal);font-size:1.05rem;margin-top:10px}
+  .hero__btns{display:flex;flex-wrap:wrap;gap:16px;margin-top:30px}
+
+  /* hero glass stage */
+  .hero__stage{position:relative;z-index:2;display:flex;justify-content:center}
+  .glass-art{width:min(360px,80vw);filter:drop-shadow(0 24px 30px rgba(43,56,63,.28))}
+  .starburst{position:absolute;font-family:'Bebas Neue';letter-spacing:.06em;color:#fff;background:var(--cherry);
+    width:92px;height:92px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:.95;font-size:1.05rem;
+    box-shadow:var(--hard);border:2.5px solid var(--slate-deep)}
+  .starburst::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:repeating-conic-gradient(var(--cherry) 0deg 12deg,transparent 12deg 24deg);z-index:-1}
+  .starburst--1{top:6%;right:2%;transform:rotate(10deg);background:var(--sunny);color:var(--slate-deep)}
+  .starburst--1::before{background:repeating-conic-gradient(var(--sunny) 0deg 12deg,transparent 12deg 24deg)}
+  .starburst--2{bottom:8%;left:0;transform:rotate(-8deg);background:var(--teal)}
+  .starburst--2::before{background:repeating-conic-gradient(var(--teal) 0deg 12deg,transparent 12deg 24deg)}
+
+  /* zigzag divider */
+  .zig{height:22px;background:var(--slate-deep);
+    -webkit-mask:linear-gradient(135deg,#000 25%,transparent 0) -14px 0/28px 28px,linear-gradient(-135deg,#000 25%,transparent 0) -14px 0/28px 28px;
+    mask:linear-gradient(135deg,#000 25%,transparent 0) -14px 0/28px 28px,linear-gradient(-135deg,#000 25%,transparent 0) -14px 0/28px 28px}
+
+  /* section heads */
+  section{padding:90px 0;position:relative}
+  .head{text-align:center;max-width:720px;margin:0 auto 50px}
+  .head .eyebrow{font-family:'Yellowtail';color:var(--cherry);font-size:1.7rem;display:block;margin-bottom:2px}
+  .head h2{font-size:clamp(2.3rem,5.5vw,3.6rem);color:var(--slate-deep)}
+  .head h2 em{font-style:normal;color:var(--cherry)}
+  .head p{margin-top:16px;color:#5a6663;font-weight:300;font-size:1.05rem}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- BUILDER ---------- */
+  .builder{background:var(--slate-deep);color:var(--cream)}
+  .builder .head h2{color:var(--cream)} .builder .head h2 em{color:var(--sunny)} .builder .head p{color:rgba(250,243,227,.8)}
+  .builder .head .eyebrow{color:var(--mint)}
+  .build-grid{display:grid;grid-template-columns:340px 1fr;gap:46px;align-items:start}
+  .build-glass{position:sticky;top:96px;background:var(--cream);border-radius:20px;padding:24px 18px 18px;box-shadow:var(--shadow);border:3px solid var(--slate-deep);text-align:center}
+  .build-glass svg{width:100%;max-width:240px;margin:0 auto}
+  .recipe{margin-top:6px;min-height:54px}
+  .recipe__label{font-family:'Bebas Neue';letter-spacing:.12em;color:var(--cherry);font-size:1rem}
+  .recipe__text{color:var(--ink);font-weight:500;font-size:1rem;line-height:1.35}
+  .build-glass .btn{margin-top:14px;width:100%;justify-content:center}
+  .build-glass small{display:block;margin-top:10px;color:#7a8482;font-size:.74rem;font-weight:300}
+
+  .build-steps{display:grid;gap:26px}
+  .step__title{font-family:'Bebas Neue';letter-spacing:.1em;font-size:1.5rem;color:var(--cream);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .step__num{background:var(--cherry);color:#fff;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex:none;border:2px solid var(--cream)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{display:inline-flex;align-items:center;gap:9px;background:rgba(250,243,227,.07);color:var(--cream);border:2px solid rgba(250,243,227,.25);
+    padding:9px 15px;border-radius:30px;cursor:pointer;font-family:'Jost';font-weight:500;font-size:.95rem;transition:all .2s var(--ease)}
+  .chip .dot{width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(0,0,0,.15);flex:none}
+  .chip:hover{border-color:var(--cream);transform:translateY(-2px)}
+  .chip[aria-pressed="true"]{background:var(--cream);color:var(--slate-deep);border-color:var(--cream);box-shadow:0 6px 16px -8px rgba(0,0,0,.6)}
+  .chip[aria-pressed="true"] .check{display:inline}
+  .chip .check{display:none;color:var(--cherry);font-weight:700}
+
+  /* ---------- MENU BOARD ---------- */
+  .menu{background:var(--cream)}
+  .board{background:var(--slate);border:6px solid var(--slate-deep);border-radius:14px;padding:40px clamp(24px,5vw,64px);box-shadow:var(--shadow);position:relative}
+  .board::after{content:"";position:absolute;inset:10px;border:1.5px dashed rgba(250,243,227,.3);border-radius:8px;pointer-events:none}
+  .board__title{text-align:center;font-family:'Shrikhand';color:var(--sunny);font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:6px}
+  .board__sub{text-align:center;color:var(--mint);font-family:'Yellowtail';font-size:1.4rem;margin-bottom:30px}
+  .board__row{display:flex;align-items:baseline;gap:12px;padding:16px 0;border-bottom:1.5px dotted rgba(250,243,227,.3)}
+  .board__row:last-child{border-bottom:none}
+  .board__name{font-family:'Bebas Neue';letter-spacing:.06em;font-size:1.7rem;color:var(--cream);white-space:nowrap}
+  .board__lead{flex:1;border-bottom:2px dotted rgba(250,243,227,.35);transform:translateY(-4px)}
+  .board__desc{color:rgba(250,243,227,.78);font-weight:300;font-size:.95rem;max-width:320px;text-align:right}
+  .board__cta{display:flex;justify-content:center;margin-top:34px}
+
+  /* ---------- STORY (scrapbook) ---------- */
+  .story{background:var(--cream-2)}
+  .story .wrap{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+  .story h2{font-size:clamp(2rem,4.6vw,3rem);color:var(--slate-deep);margin:6px 0 16px}
+  .story p{color:#54605d;font-weight:300;margin-bottom:14px;font-size:1.05rem}
+  .scrap{position:relative;min-height:380px}
+  .tape-photo{position:absolute;background:#fff;padding:10px 10px 36px;box-shadow:var(--shadow);border:1px solid #e7ddc6}
+  .tape-photo img{width:100%;height:100%;object-fit:cover;filter:sepia(.22) saturate(.92)}
+  .tape-photo figcaption{position:absolute;bottom:9px;left:0;right:0;text-align:center;font-family:'Yellowtail';color:var(--slate);font-size:1rem}
+  .tape-photo::before{content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-3deg);width:78px;height:24px;background:rgba(244,197,66,.55);box-shadow:0 2px 4px rgba(0,0,0,.12)}
+  .tp1{width:62%;aspect-ratio:16/10;top:0;left:0;transform:rotate(-4deg);z-index:3}
+  .tp2{width:46%;aspect-ratio:1/1;top:34%;right:0;transform:rotate(5deg);z-index:2}
+  .tp3{width:50%;aspect-ratio:16/9;bottom:0;left:8%;transform:rotate(2deg);z-index:1}
+
+  /* ---------- BOTTLE-CAP badges ---------- */
+  .why{background:var(--cherry);color:#fff}
+  .why .head h2{color:#fff} .why .head .eyebrow{color:var(--sunny)}
+  .caps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+  .cap{text-align:center}
+  .cap__disc{width:128px;height:128px;margin:0 auto 16px;border-radius:50%;background:var(--cream);
+    display:flex;align-items:center;justify-content:center;position:relative;box-shadow:var(--hard)}
+  .cap__disc::before{content:"";position:absolute;inset:0;border-radius:50%;
+    background:repeating-conic-gradient(var(--slate-deep) 0deg 9deg,transparent 9deg 18deg);
+    -webkit-mask:radial-gradient(transparent 58%,#000 59%);mask:radial-gradient(transparent 58%,#000 59%)}
+  .cap__disc svg{width:52px;height:52px;stroke:var(--cherry);fill:none;stroke-width:1.6;position:relative}
+  .cap h3{font-family:'Bebas Neue';letter-spacing:.08em;font-size:1.45rem;color:#fff;margin-bottom:4px}
+  .cap p{font-weight:300;font-size:.9rem;color:rgba(255,255,255,.9)}
+
+  /* ---------- REVIEW ---------- */
+  .review{background:var(--cream);text-align:center}
+  .review__card{max-width:760px;margin:0 auto;background:var(--paper);border:3px solid var(--slate-deep);border-radius:16px;padding:48px 40px;box-shadow:var(--hard-cherry);position:relative}
+  .review__stamp{position:absolute;top:-26px;right:-18px;background:var(--teal);color:#fff;font-family:'Bebas Neue';letter-spacing:.06em;
+    width:96px;height:96px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;line-height:.95;font-size:1rem;
+    transform:rotate(12deg);border:2.5px solid var(--slate-deep);box-shadow:var(--hard)}
+  .review__stars{color:var(--sunny);font-size:1.5rem;letter-spacing:.25em;margin-bottom:18px}
+  .review blockquote{font-family:'Shrikhand';font-size:clamp(1.5rem,3.6vw,2.3rem);color:var(--slate-deep);line-height:1.18}
+  .review cite{display:block;margin-top:22px;font-family:'Bebas Neue';letter-spacing:.16em;font-size:.95rem;color:#7a8482;font-style:normal}
+
+  /* ---------- PARTY ---------- */
+  .party{background:var(--slate-deep);color:var(--cream);text-align:center;overflow:hidden}
+  .party::before{content:"";position:absolute;inset:0;opacity:.12;background-image:radial-gradient(var(--sunny) 1.6px,transparent 1.7px);background-size:20px 20px}
+  .party .eyebrow{color:var(--sunny)}
+  .party h2{font-size:clamp(2.2rem,5.5vw,3.6rem);color:var(--cream);margin-bottom:14px}
+  .party h2 em{font-style:normal;color:var(--cherry);background:var(--cream);padding:0 .15em;border-radius:6px;display:inline-block;transform:rotate(-2deg)}
+  .party p{font-weight:300;max-width:520px;margin:0 auto 28px;color:rgba(250,243,227,.85)}
+
+  /* ---------- VISIT ---------- */
+  .visit{background:var(--cream-2)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+  .visit h2{font-size:clamp(2rem,4.6vw,3rem);color:var(--slate-deep);margin-bottom:22px}
+  .vrow{display:flex;gap:15px;align-items:flex-start;padding:16px 0;border-bottom:2px dotted rgba(60,78,87,.25)}
+  .vrow:last-of-type{border-bottom:none}
+  .vrow svg{width:24px;height:24px;fill:var(--cherry);flex:none;margin-top:3px}
+  .vrow h4{font-family:'Bebas Neue';letter-spacing:.08em;font-size:1.15rem;color:var(--slate-deep);margin-bottom:2px}
+  .vrow p{color:#54605d;font-weight:300}
+  .vrow a{color:var(--cherry);font-weight:600}
+  .visit__map{position:relative;display:block;border:3px solid var(--slate-deep);border-radius:14px;overflow:hidden;box-shadow:var(--hard-cherry)}
+  .visit__map img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .visit__map .pin{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+  .visit__map .pin span{background:var(--cherry);color:#fff;font-family:'Bebas Neue';letter-spacing:.1em;font-size:1.05rem;padding:.5em 1.1em;border-radius:30px;border:2px solid var(--slate-deep);box-shadow:var(--hard)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--slate-deep);color:var(--cream);padding:58px 0 28px;text-align:center;border-top:4px solid var(--cherry)}
+  footer .flogo{height:50px;margin:0 auto 18px;filter:brightness(0) invert(1);opacity:.95}
+  footer .fscript{font-family:'Yellowtail';color:var(--sunny);font-size:1.5rem;margin-bottom:10px}
+  footer .faddr{font-weight:300;opacity:.85;line-height:1.9;font-size:.95rem}
+  footer .faddr a{color:var(--mint)}
+  footer .fsoc{display:flex;gap:16px;justify-content:center;margin:22px 0}
+  footer .fsoc a{width:44px;height:44px;border:2px solid rgba(250,243,227,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s}
+  footer .fsoc a:hover{background:var(--cherry);border-color:var(--cherry);transform:translateY(-3px)}
+  footer .fsoc svg{width:19px;height:19px;fill:var(--cream)}
+  footer .fnote{margin-top:22px;padding-top:20px;border-top:1px solid rgba(250,243,227,.15);font-family:'Bebas Neue';letter-spacing:.14em;font-size:.85rem;opacity:.6}
+
+  /* ---------- mobile bottom bar ---------- */
+  .mbar{position:fixed;bottom:0;left:0;right:0;z-index:130;display:none;background:var(--slate-deep);border-top:3px solid var(--cherry)}
+  .mbar a{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 8px;font-family:'Bebas Neue';letter-spacing:.08em;font-size:1.05rem;color:var(--cream)}
+  .mbar a.order{background:var(--cherry)}
+  .mbar svg{width:17px;height:17px;fill:currentColor}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;gap:36px}
+    .hero__stage{order:-1}
+    .build-grid{grid-template-columns:1fr;gap:30px}
+    .build-glass{position:static;max-width:320px;margin:0 auto}
+    .story .wrap,.visit .wrap{grid-template-columns:1fr;gap:34px}
+    .caps{grid-template-columns:repeat(2,1fr);gap:30px}
+    .scrap{min-height:340px}
+  }
+  @media(max-width:760px){
+    .nav__links{position:fixed;inset:0 0 0 auto;width:78%;max-width:320px;height:100vh;background:var(--cream);flex-direction:column;justify-content:center;align-items:center;gap:26px;transform:translateX(100%);transition:transform .4s var(--ease);box-shadow:var(--shadow);z-index:115}
+    .nav__links.open{transform:none}
+    .nav__phone,.nav__social{display:none}
+    .hamburger{display:flex;z-index:130}
+    .hamburger.active span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+    .hamburger.active span:nth-child(2){opacity:0}
+    .hamburger.active span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+    section{padding:64px 0}
+    body{padding-bottom:52px}
+    .mbar{display:flex}
+    .board__row{flex-direction:column;align-items:flex-start;gap:4px}
+    .board__lead{display:none}
+    .board__desc{text-align:left}
+  }
+</style>
+</head>
+<body>
+<a href="#builder" class="skip">Skip to content</a>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span>DIRTY SODAS<em>✦</em>FRESH-BAKED TREATS<em>✦</em>HOT COCOA<em>✦</em>DRIVE-THRU<em>✦</em>EST. 2021<em>✦</em>ON THE LINCOLN HIGHWAY<em>✦</em>DIRTY SODAS<em>✦</em>FRESH-BAKED TREATS<em>✦</em>HOT COCOA<em>✦</em>DRIVE-THRU<em>✦</em>EST. 2021<em>✦</em>ON THE LINCOLN HIGHWAY<em>✦</em></span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="nav" id="top">
+  <div class="wrap">
+    <a href="#top" class="nav__logo" aria-label="The Soda Station home">
+      <img src="https://thesodastation.com/wp-content/uploads/2021/03/Header-Logo-Green.png" alt="The Soda Station — Drinks &amp; Treats" referrerpolicy="no-referrer">
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#builder">Build a Soda</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#visit">Visit</a></li>
+    </ul>
+    <div class="nav__cta">
+      <div class="nav__social">
+        <a href="https://www.facebook.com/sodastationdrinksandtreats" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="https://www.instagram.com/thesodastation/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 5a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></a>
+      </div>
+      <a href="tel:+13077877632" class="nav__phone"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>787-SODA</a>
+      <a href="https://thesodastation.com/menu/" class="btn btn--cherry" target="_blank" rel="noopener">Order Online</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero__copy reveal">
+      <span class="hero__badge"><i></i>EST. 2021 · LYMAN, WYOMING</span>
+      <span class="hero__script">Fizz up</span>
+      <h1>your <span class="pop">day.</span></h1>
+      <p class="hero__sub">Build-your-own dirty sodas, fresh-baked treats and cozy hot cocoa — poured from a 1920s landmark on the original Lincoln Highway.</p>
+      <p class="hero__loc">★ MIX IT · SIP IT · LOVE IT ★</p>
+      <div class="hero__btns">
+        <a href="#builder" class="btn btn--cherry">Build Your Soda</a>
+        <a href="#menu" class="btn btn--ghost">See the Menu</a>
+      </div>
+    </div>
+    <div class="hero__stage reveal">
+      <span class="starburst starburst--1">ICE<br>COLD</span>
+      <span class="starburst starburst--2">DRIVE<br>THRU</span>
+      <!-- decorative hero glass -->
+      <svg class="glass-art" viewBox="0 0 260 340" role="img" aria-label="A tall soda with ice, a straw and rising bubbles">
+        <defs>
+          <clipPath id="heroLiquid"><path d="M64 120 h132 l-12 168 a8 8 0 0 1-8 7 H84 a8 8 0 0 1-8-7 Z"/></clipPath>
+        </defs>
+        <!-- straw -->
+        <rect x="150" y="48" width="13" height="250" rx="6" fill="#e23b32" transform="rotate(10 156 170)"/>
+        <rect x="150" y="48" width="13" height="250" rx="6" fill="#fff" opacity=".5" transform="rotate(10 156 170)" style="clip-path:inset(0 6.5px 0 0)"/>
+        <!-- glass body -->
+        <path d="M58 110 h144 l-14 184 a12 12 0 0 1-12 11 H84 a12 12 0 0 1-12-11 Z" fill="#ffffff" opacity=".55" stroke="#2b383f" stroke-width="4"/>
+        <!-- liquid -->
+        <g clip-path="url(#heroLiquid)">
+          <rect x="50" y="150" width="160" height="160" fill="#e0833a"/>
+          <rect x="50" y="150" width="160" height="60" fill="#e23b32" opacity=".55"/>
+          <rect x="50" y="150" width="160" height="22" fill="#fbf4e6"/>
+          <ellipse cx="130" cy="152" rx="66" ry="11" fill="#fff"/>
+          <!-- ice -->
+          <rect x="92" y="168" width="34" height="34" rx="7" fill="#fff" opacity=".55" transform="rotate(-12 109 185)"/>
+          <rect x="132" y="184" width="30" height="30" rx="7" fill="#fff" opacity=".5" transform="rotate(16 147 199)"/>
+          <!-- bubbles -->
+          <circle class="bub" cx="92" cy="290" r="5" fill="#fff" opacity=".7"/>
+          <circle class="bub" cx="120" cy="290" r="3" fill="#fff" opacity=".7"/>
+          <circle class="bub" cx="150" cy="290" r="6" fill="#fff" opacity=".6"/>
+          <circle class="bub" cx="108" cy="290" r="4" fill="#fff" opacity=".7"/>
+          <circle class="bub" cx="166" cy="290" r="3" fill="#fff" opacity=".7"/>
+        </g>
+        <!-- rim -->
+        <ellipse cx="130" cy="110" rx="72" ry="12" fill="none" stroke="#2b383f" stroke-width="4"/>
+        <!-- cherry on top -->
+        <circle cx="178" cy="96" r="11" fill="#e23b32" stroke="#2b383f" stroke-width="2.5"/>
+        <path d="M178 86 q10-16 22-10" fill="none" stroke="#3c4e57" stroke-width="2.5"/>
+      </svg>
+    </div>
+  </div>
+</section>
+<div class="zig"></div>
+
+<!-- BUILDER (the signature interactive) -->
+<section class="builder" id="builder">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">the fun part</span>
+      <h2>Build Your <em>Perfect</em> Soda</h2>
+      <p>Start with a fizz, splash in syrups, drop in real fruit, top it with coconut cream. Tap to mix — watch it pour.</p>
+    </div>
+    <div class="build-grid">
+      <!-- live glass -->
+      <div class="build-glass reveal">
+        <svg viewBox="0 0 240 320" role="img" aria-label="Your custom soda preview">
+          <defs><clipPath id="bLiquid"><path d="M58 110 h124 l-12 158 a10 10 0 0 1-10 9 H80 a10 10 0 0 1-10-9 Z"/></clipPath></defs>
+          <rect x="138" y="44" width="12" height="236" rx="6" fill="#2f9e8f" transform="rotate(10 144 160)"/>
+          <path d="M52 102 h136 l-13 172 a12 12 0 0 1-12 11 H77 a12 12 0 0 1-12-11 Z" fill="#fff" opacity=".5" stroke="#2b383f" stroke-width="4"/>
+          <g clip-path="url(#bLiquid)">
+            <rect id="baseFill" x="46" y="120" width="148" height="170" fill="#3a241a"/>
+            <g id="syrupBands"></g>
+            <g id="creamBand"></g>
+            <rect x="86" y="128" width="30" height="30" rx="7" fill="#fff" opacity=".5" transform="rotate(-12 101 143)"/>
+            <rect x="122" y="142" width="26" height="26" rx="7" fill="#fff" opacity=".45" transform="rotate(15 135 155)"/>
+            <circle class="bub" cx="84" cy="276" r="5" fill="#fff" opacity=".7"/>
+            <circle class="bub" cx="112" cy="276" r="3" fill="#fff" opacity=".7"/>
+            <circle class="bub" cx="140" cy="276" r="6" fill="#fff" opacity=".6"/>
+            <circle class="bub" cx="98" cy="276" r="4" fill="#fff" opacity=".7"/>
+            <circle class="bub" cx="156" cy="276" r="3" fill="#fff" opacity=".7"/>
+          </g>
+          <ellipse cx="120" cy="102" rx="68" ry="11" fill="none" stroke="#2b383f" stroke-width="4"/>
+          <g id="garnish"></g>
+        </svg>
+        <div class="recipe">
+          <span class="recipe__label">Your concoction</span>
+          <p class="recipe__text" id="recipeText">A cola, neat. Start tapping →</p>
+        </div>
+        <a href="https://thesodastation.com/menu/" class="btn btn--cherry" target="_blank" rel="noopener">Order at the Window</a>
+        <small>A taste of the mix-and-match — the full flavor wall lives in store.</small>
+      </div>
+
+      <!-- steps -->
+      <div class="build-steps">
+        <div class="step reveal">
+          <div class="step__title"><span class="step__num">1</span>Pick your fizz</div>
+          <div class="chips" id="baseChips" role="group" aria-label="Pick your fizz"></div>
+        </div>
+        <div class="step reveal">
+          <div class="step__title"><span class="step__num">2</span>Splash of syrup</div>
+          <div class="chips" id="syrupChips" role="group" aria-label="Add syrups"></div>
+        </div>
+        <div class="step reveal">
+          <div class="step__title"><span class="step__num">3</span>Drop in real fruit</div>
+          <div class="chips" id="fruitChips" role="group" aria-label="Add fruit"></div>
+        </div>
+        <div class="step reveal">
+          <div class="step__title"><span class="step__num">4</span>Top it off</div>
+          <div class="chips" id="creamChips" role="group" aria-label="Coconut cream"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU BOARD -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">on the board</span>
+      <h2>Drinks &amp; <em>Treats</em></h2>
+    </div>
+    <div class="board reveal">
+      <div class="board__title">The Menu</div>
+      <div class="board__sub">three little corners of happy</div>
+      <a class="board__row" href="https://thesodastation.com/soda-mixes/" target="_blank" rel="noopener">
+        <span class="board__name">Soda Mixes</span><span class="board__lead"></span>
+        <span class="board__desc">Custom fountain sodas with flavored syrups, real fruit &amp; coconut cream.</span>
+      </a>
+      <a class="board__row" href="https://thesodastation.com/cookies/" target="_blank" rel="noopener">
+        <span class="board__name">Fresh Treats</span><span class="board__lead"></span>
+        <span class="board__desc">Frosted sugar cookies, warm chocolate chip &amp; more, made to pair with your drink.</span>
+      </a>
+      <a class="board__row" href="https://thesodastation.com/menu/hot-chocolate/" target="_blank" rel="noopener">
+        <span class="board__name">Hot Chocolate</span><span class="board__lead"></span>
+        <span class="board__desc">Rich, comforting &amp; topped just right — perfect for a Wyoming afternoon.</span>
+      </a>
+      <div class="board__cta"><a href="https://thesodastation.com/menu/" class="btn btn--cream" target="_blank" rel="noopener">See the Full Menu</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY (scrapbook) -->
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="head" style="display:block;text-align:left;margin:0"><span class="eyebrow" style="text-align:left">since the 1920s</span></span>
+      <h2>The Corner of Main &amp; Clark</h2>
+      <p>The white building on the corner of Main and Clark is under new ownership — and we're thrilled to bring a little energy back to the Bridger Valley.</p>
+      <p>Sitting right on the original Lincoln Highway and surrounded by decades of history, The Soda Station pours delicious caffeinated concoctions alongside a building that's served this town since the 1920s.</p>
+      <a href="#visit" class="btn btn--cherry" style="margin-top:8px">Come Find Us</a>
+    </div>
+    <div class="scrap reveal">
+      <figure class="tape-photo tp1"><img src="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg" alt="The Soda Station building today" referrerpolicy="no-referrer" loading="lazy"><figcaption>the station today</figcaption></figure>
+      <figure class="tape-photo tp2"><img src="https://thesodastation.com/wp-content/uploads/2021/05/Sinclair-1-1024x585.jpg" alt="The building in its Sinclair days" referrerpolicy="no-referrer" loading="lazy"><figcaption>the Sinclair days</figcaption></figure>
+      <figure class="tape-photo tp3"><img src="https://thesodastation.com/wp-content/uploads/2021/05/LymanMotorPark-copy-1024x512.jpg" alt="Historic Lyman Motor Park" referrerpolicy="no-referrer" loading="lazy"><figcaption>Lyman Motor Park</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- WHY (bottle caps) -->
+<section class="why">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">why stop in</span><h2>Easy to Love</h2></div>
+    <div class="caps">
+      <div class="cap reveal"><div class="cap__disc"><svg viewBox="0 0 24 24"><path d="M3 13l2-5h10l2 5M5 13h14v4H5zM7 17a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm10 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></svg></div><h3>Drive-Thru</h3><p>Grab it without leaving the car.</p></div>
+      <div class="cap reveal"><div class="cap__disc"><svg viewBox="0 0 24 24"><path d="M4 11h16M6 11V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M5 11l1 9h12l1-9"/></svg></div><h3>Patio Seating</h3><p>Sip &amp; stay a while outside.</p></div>
+      <div class="cap reveal"><div class="cap__disc"><svg viewBox="0 0 24 24"><path d="M2 7h20v10H2zM2 11h20M6 15h4"/></svg></div><h3>Cards Welcome</h3><p>Tap, swipe or insert.</p></div>
+      <div class="cap reveal"><div class="cap__disc"><svg viewBox="0 0 24 24"><circle cx="9" cy="5" r="2"/><path d="M9 8v5l-3 6M9 11h5a3 3 0 0 1 3 3v5"/></svg></div><h3>Accessible</h3><p>Wheelchair-friendly &amp; welcoming.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEW -->
+<section class="review">
+  <div class="wrap reveal">
+    <div class="review__card">
+      <span class="review__stamp">100%<br>REFRESH</span>
+      <div class="review__stars">★ ★ ★ ★ ★</div>
+      <blockquote>“A nice treat during a long drive — lots of syrup options and very clean inside.”</blockquote>
+      <cite>— Guest review via HappyCow</cite>
+    </div>
+  </div>
+</section>
+
+<!-- PARTY -->
+<section class="party">
+  <div class="wrap reveal">
+    <span class="eyebrow">let's celebrate</span>
+    <h2>Host Your Next <em>Party</em></h2>
+    <p>Birthdays, get-togethers, team treats — The Soda Station would love to host your next celebration with drinks &amp; treats for the whole crew.</p>
+    <a href="https://thesodastation.com/catering-information/" class="btn btn--cherry" target="_blank" rel="noopener">See Party Info</a>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="reveal">
+      <span class="head" style="display:block;text-align:left;margin:0 0 6px"><span class="eyebrow" style="text-align:left">come visit</span></span>
+      <h2>Find Us in Bridger Valley</h2>
+      <div class="vrow"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg><div><h4>Location</h4><p>228 N. Main St. · Lyman, WY 82937<br>On the corner of Main &amp; Clark</p></div></div>
+      <div class="vrow"><svg viewBox="0 0 24 24"><path d="M12 7v5l3 3M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/></svg><div><h4>Hours</h4><p>Monday – Saturday · 10am – 8pm<br>Closed Sunday</p></div></div>
+      <div class="vrow"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg><div><h4>Call Ahead</h4><p><a href="tel:+13077877632">(307) 787-SODA</a> · (307) 787-7632</p></div></div>
+      <a href="https://thesodastation.com/menu/" class="btn btn--cherry" target="_blank" rel="noopener" style="margin-top:18px">Order Online</a>
+    </div>
+    <a class="visit__map reveal" href="https://www.google.com/maps?q=41.330711,-110.292485" target="_blank" rel="noopener" aria-label="Open in Google Maps">
+      <img src="https://thesodastation.com/wp-content/uploads/2022/02/ssbuilding-scaled.jpg" alt="The Soda Station building" referrerpolicy="no-referrer" loading="lazy">
+      <span class="pin"><span>Open in Maps</span></span>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <img class="flogo" src="https://thesodastation.com/wp-content/uploads/2021/03/Header-Logo-Green.png" alt="The Soda Station" referrerpolicy="no-referrer">
+    <p class="fscript">fizz, fun &amp; a little nostalgia</p>
+    <p class="faddr">228 N. Main St. · Lyman, WY 82937<br><a href="tel:+13077877632">(307) 787-SODA</a> · Open Mon–Sat 10am–8pm</p>
+    <div class="fsoc">
+      <a href="https://www.facebook.com/sodastationdrinksandtreats" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg></a>
+      <a href="https://www.instagram.com/thesodastation/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 5a4.8 4.8 0 1 0 0 9.6 4.8 4.8 0 0 0 0-9.6zm0 7.9a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2zm6.1-8.1a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0z"/></svg></a>
+    </div>
+    <p class="fnote">EST. 2021 · THE SODA STATION · DRINKS &amp; TREATS · LYMAN, WYOMING</p>
+  </div>
+</footer>
+
+<!-- MOBILE BAR -->
+<nav class="mbar" aria-label="Quick actions">
+  <a href="tel:+13077877632"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2z"/></svg>Call</a>
+  <a class="order" href="https://thesodastation.com/menu/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M7 4h-2l-1 2v2h2l3 8h9l3-6H8M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>Order Online</a>
+</nav>
+
+<style>
+  .bub{animation:fizz linear infinite}
+  @keyframes fizz{0%{transform:translateY(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-150px);opacity:0}}
+  @media(prefers-reduced-motion:reduce){.bub,.hero::before,.ticker__track{animation:none}}
+</style>
+
+<script>
+(function(){
+  // sticky nav
+  var nav=document.querySelector('header.nav');
+  addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>20)});
+  // mobile menu
+  var b=document.getElementById('hamburger'),l=document.getElementById('navLinks');
+  b.addEventListener('click',function(){var o=l.classList.toggle('open');b.classList.toggle('active',o);b.setAttribute('aria-expanded',o)});
+  l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){l.classList.remove('open');b.classList.remove('active');b.setAttribute('aria-expanded',false)})});
+  // reveals
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  // random bubble timing
+  document.querySelectorAll('.bub').forEach(function(c){c.style.animationDuration=(2.4+Math.random()*2.6)+'s';c.style.animationDelay=(Math.random()*3)+'s'});
+
+  /* ---------- SODA BUILDER ---------- */
+  var BASES=[['Cola','#3a241a'],['Lemon-Lime','#cfe08a'],['Dr Pepper','#5e2018'],['Root Beer','#3f2517'],['Orange','#e8842c']];
+  var SYRUPS=[['Coconut','#f2ead7'],['Vanilla','#eed7a0'],['Raspberry','#c12f63'],['Lime','#74bd45'],['Strawberry','#df3f63'],['Peach','#f0a258']];
+  var FRUIT=[['Lime','#74bd45'],['Strawberry','#df3f63'],['Coconut','#f3ead9']];
+  var state={base:BASES[0],syrups:[],fruit:[],cream:false};
+
+  function chip(label,color,pressed){
+    var btn=document.createElement('button');
+    btn.className='chip';btn.type='button';btn.setAttribute('aria-pressed',!!pressed);
+    btn.innerHTML='<span class="dot" style="background:'+color+'"></span>'+label+' <span class="check">✓</span>';
+    return btn;
+  }
+  function build(container,items,handler,isPressed){
+    items.forEach(function(it){
+      var c=chip(it[0],it[1],isPressed(it));
+      c.addEventListener('click',function(){handler(it,c)});
+      container.appendChild(c);
+    });
+  }
+  build(document.getElementById('baseChips'),BASES,function(it,c){
+    state.base=it;
+    document.querySelectorAll('#baseChips .chip').forEach(function(x){x.setAttribute('aria-pressed','false')});
+    c.setAttribute('aria-pressed','true');redraw();
+  },function(it){return it[0]===state.base[0]});
+  build(document.getElementById('syrupChips'),SYRUPS,function(it,c){toggle(state.syrups,it,c)},function(){return false});
+  build(document.getElementById('fruitChips'),FRUIT,function(it,c){toggle(state.fruit,it,c)},function(){return false});
+  // cream toggle
+  (function(){
+    var cc=document.getElementById('creamChips');
+    var c=chip('Coconut Cream','#fbf4e6',false);
+    c.addEventListener('click',function(){state.cream=!state.cream;c.setAttribute('aria-pressed',state.cream);redraw()});
+    cc.appendChild(c);
+  })();
+  function toggle(arr,it,c){
+    var i=arr.findIndex(function(x){return x[0]===it[0]});
+    if(i>=0){arr.splice(i,1);c.setAttribute('aria-pressed','false')}
+    else{arr.push(it);c.setAttribute('aria-pressed','true')}
+    redraw();
+  }
+
+  var NS='http://www.w3.org/2000/svg';
+  var baseFill=document.getElementById('baseFill');
+  var bands=document.getElementById('syrupBands');
+  var creamG=document.getElementById('creamBand');
+  var garnish=document.getElementById('garnish');
+  var recipe=document.getElementById('recipeText');
+  // liquid geometry
+  var TOP=120,BOTTOM=290,X=46,W=148;
+
+  function rect(x,y,w,h,fill,op){var r=document.createElementNS(NS,'rect');r.setAttribute('x',x);r.setAttribute('y',y);r.setAttribute('width',w);r.setAttribute('height',h);r.setAttribute('fill',fill);if(op!=null)r.setAttribute('opacity',op);return r}
+
+  function redraw(){
+    baseFill.setAttribute('fill',state.base[1]);
+    bands.innerHTML='';creamG.innerHTML='';garnish.innerHTML='';
+    var shown=state.syrups.slice(0,4),bh=30;
+    shown.forEach(function(s,i){
+      var y=BOTTOM-(i+1)*bh;
+      bands.appendChild(rect(X,y,W,bh,s[1],.6));
+    });
+    if(state.cream){
+      creamG.appendChild(rect(X,TOP,W,22,'#fbf4e6'));
+      var e=document.createElementNS(NS,'ellipse');
+      e.setAttribute('cx',120);e.setAttribute('cy',TOP+2);e.setAttribute('rx',60);e.setAttribute('ry',10);e.setAttribute('fill','#fff');
+      creamG.appendChild(e);
+    }
+    // garnish on rim
+    state.fruit.slice(0,3).forEach(function(f,i){
+      var cx=70+i*40,cy=100;
+      var w=document.createElementNS(NS,'circle');
+      w.setAttribute('cx',cx);w.setAttribute('cy',cy);w.setAttribute('r',11);
+      w.setAttribute('fill',f[1]);w.setAttribute('stroke','#2b383f');w.setAttribute('stroke-width','2');
+      garnish.appendChild(w);
+    });
+    // recipe text
+    var parts=[];
+    var t=state.base[0]+' soda';
+    if(state.syrups.length){t+=' with '+list(state.syrups.map(function(s){return s[0].toLowerCase()}))+' syrup';}
+    if(state.fruit.length){parts.push('fresh '+list(state.fruit.map(function(f){return f[0].toLowerCase()})));}
+    if(state.cream){parts.push('a swirl of coconut cream');}
+    if(parts.length){t+=', '+parts.join(' + ');}
+    t+='.';
+    recipe.textContent=t;
+  }
+  function list(a){if(a.length===1)return a[0];if(a.length===2)return a[0]+' & '+a[1];return a.slice(0,-1).join(', ')+' & '+a[a.length-1];}
+  redraw();
+})();
+</script>
+</body>
+</html>
