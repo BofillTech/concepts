@@ -11,8 +11,10 @@
   --navy-700: #1c3252;
   --navy-600: #294870;
   --crystal:  #2fa6c0;
+  --crystal-ink: #0f6d82;  /* darker teal — AA contrast for crystal-colored text/icons on light grounds */
   --crystal-300: #7fd0de;
   --crystal-050: #e6f4f7;
+  --error:    #b5302a;
   --sand:     #efe7d8;
   --paper:    #f6f7f9;
   --paper-2:  #eef1f4;
@@ -102,12 +104,14 @@ button { font-family: inherit; cursor: pointer; }
   font-style: italic;
   font-size: 1.05rem;
   letter-spacing: .01em;
-  color: var(--crystal);
+  color: var(--crystal-ink);
   margin: 0 0 .65rem;
 }
 .eyebrow--light { color: var(--crystal-300); }
 
 .section { padding-block: var(--sp-7); }
+/* keep the fixed header from overlapping in-page anchor targets (#locations, #inquiry) */
+[id] { scroll-margin-top: calc(var(--nav-h) + 16px); }
 .section__head { max-width: 640px; margin-bottom: var(--sp-5); }
 .section__title {
   font-family: var(--font-display);
@@ -322,7 +326,7 @@ button { font-family: inherit; cursor: pointer; }
   display: grid; place-items: center;
   border-radius: 50%;
   background: var(--crystal-050);
-  color: var(--crystal);
+  color: var(--crystal-ink);
   margin-bottom: 1.3rem;
 }
 .feature__badge svg { width: 30px; height: 30px; }
@@ -414,7 +418,10 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--navy-700);
   margin-bottom: .45rem;
 }
-.field .req { color: var(--crystal); }
+.field .req { color: var(--crystal-ink); }
+.field input.is-invalid,
+.field select.is-invalid,
+.field textarea.is-invalid { border-color: var(--error); background: #fffafa; }
 .field input,
 .field select,
 .field textarea {
@@ -449,6 +456,7 @@ button { font-family: inherit; cursor: pointer; }
   display: none;
 }
 .form__status.is-visible { display: block; }
+.form__status--error { background: #fbe2df; color: var(--error); }
 
 /* --------------------------------------------------------------------------
    Footer

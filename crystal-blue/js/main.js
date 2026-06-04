@@ -77,32 +77,49 @@
   var status = document.querySelector(".form__status");
 
   if (form && status) {
+    var required = form.querySelectorAll("[required]");
+
+    // Clear the invalid state as soon as the user starts correcting a field.
+    required.forEach(function (field) {
+      field.addEventListener("input", function () {
+        field.classList.remove("is-invalid");
+        field.removeAttribute("aria-invalid");
+      });
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var required = form.querySelectorAll("[required]");
       var ok = true;
+      var firstInvalid = null;
       required.forEach(function (field) {
-        if (!field.value.trim()) {
+        var empty = !field.value.trim();
+        field.classList.toggle("is-invalid", empty);
+        if (empty) {
+          field.setAttribute("aria-invalid", "true");
+          if (!firstInvalid) firstInvalid = field;
           ok = false;
-          field.style.borderColor = "#c2392f";
         } else {
-          field.style.borderColor = "";
+          field.removeAttribute("aria-invalid");
         }
       });
+
       if (!ok) {
         status.textContent = "Please complete the required fields.";
-        status.style.background = "#fbe2df";
-        status.style.color = "#c2392f";
-        status.classList.add("is-visible");
+        status.classList.add("form__status--error", "is-visible");
+        if (firstInvalid) firstInvalid.focus();
         return;
       }
+
       var name = (form.querySelector("#name") || {}).value || "there";
-      status.style.background = "";
-      status.style.color = "";
+      status.classList.remove("form__status--error");
       status.textContent = "Thanks, " + name.split(" ")[0] +
         "! Your parking inquiry has been received \u2014 our leasing team will be in touch shortly.";
       status.classList.add("is-visible");
       form.reset();
+      required.forEach(function (field) {
+        field.classList.remove("is-invalid");
+        field.removeAttribute("aria-invalid");
+      });
       status.scrollIntoView({ behavior: prefersReduced ? "auto" : "smooth", block: "center" });
     });
   }
