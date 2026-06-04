@@ -254,4 +254,23 @@
   showDefaultPanel();
   showSiteMap();
 
+  // Apply filter from URL param e.g. rooms.html?filter=Loft+Suite
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const f = params.get('filter');
+    if (f) {
+      activeFilter = f;
+      // Activate matching legend btn
+      document.querySelectorAll('.map-legend__btn').forEach((btn) => {
+        btn.classList.toggle('map-legend__btn--active', btn.dataset.filter === f || (f.includes('Stateroom') && btn.dataset.filter === 'Stateroom'));
+      });
+      // Activate matching type card
+      document.querySelectorAll('.room-type-card').forEach((card) => {
+        card.classList.toggle('room-type-card--active', card.dataset.filter === f);
+      });
+      showFloorPlans();
+      applyFilter(f);
+    }
+  }());
+
 }());
