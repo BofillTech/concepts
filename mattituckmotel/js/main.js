@@ -178,4 +178,56 @@
     });
   }
 
+  /* ----- 6. GALLERY SUB-NAV SCROLL-SPY (gallery.html) ----- */
+  const galleryNavLinks = document.querySelectorAll('[data-gallery-link]');
+  const gallerySections = document.querySelectorAll('[data-gallery-section]');
+
+  if (galleryNavLinks.length && gallerySections.length && 'IntersectionObserver' in window) {
+    const linkByKey = {};
+    galleryNavLinks.forEach((link) => {
+      linkByKey[link.dataset.galleryLink] = link;
+    });
+
+    const setActive = (key) => {
+      galleryNavLinks.forEach((l) => l.classList.remove('is-active'));
+      if (linkByKey[key]) linkByKey[key].classList.add('is-active');
+    };
+
+    // Observer with a rootMargin tuned so the "active" section is the one
+    // currently in the upper portion of the viewport (under the sticky nav).
+    const spy = new IntersectionObserver(
+      (entries) => {
+        // Find the entry closest to the top edge that is intersecting
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length) {
+          setActive(visible[0].target.dataset.gallerySection);
+        }
+      },
+      {
+        rootMargin: '-25% 0px -55% 0px',
+        threshold: 0
+      }
+    );
+    gallerySections.forEach((s) => spy.observe(s));
+
+    // Click handler: smooth scroll with proper offset for sticky stack
+    galleryNavLinks.forEach((link) => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href').slice(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        e.preventDefault();
+        const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 70;
+        const subNavH = document.querySelector('.gallery-nav')?.offsetHeight || 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - headerH - subNavH - 8;
+        window.scrollTo({ top, behavior: 'smooth' });
+        setActive(link.dataset.galleryLink);
+        // Update URL hash without jumping
+        history.pushState(null, '', '#' + targetId);
+      });
+    });
+  }
+
 })();
