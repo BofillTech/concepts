@@ -113,8 +113,30 @@ h1, h2, h3, h4 {
   border-bottom-color: var(--bone);
 }
 
+.hero-corner-tl, .hero-corner-tr {
+  position: fixed;
+  z-index: 60;
+  transition: color 0.35s ease, background 0.35s ease;
+}
 .hero-corner-tl { top: 0; left: 0; }
 .hero-corner-tr { top: 0; right: 0; }
+
+.hero-corner-tl.is-stuck,
+.hero-corner-tr.is-stuck {
+  background: rgba(244, 236, 219, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--ink);
+}
+.hero-corner-tl.is-stuck .menu-trigger,
+.hero-corner-tr.is-stuck a {
+  color: var(--ink);
+}
+.hero-corner-tl.is-stuck .menu-trigger-icon span {
+  background: var(--ink);
+}
+.hero-corner-tl.is-stuck .menu-trigger:hover { border-bottom-color: var(--ink); }
+.hero-corner-tr.is-stuck a:hover { border-bottom-color: var(--ink); }
 .hero-corner-bl {
   bottom: 0;
   left: 0;
@@ -825,6 +847,18 @@ h1, h2, h3, h4 {
 </aside>
 
 <!-- HERO -->
+<div class="hero-corner hero-corner-tl" id="heroCornerTL">
+    <button class="menu-trigger" id="menuTrigger">
+      <span class="menu-trigger-icon" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      Menu
+    </button>
+  </div>
+<div class="hero-corner hero-corner-tr" id="heroCornerTR">
+    <a href="https://us2.cloudbeds.com/reservation/63LWee">Book with us</a>
+  </div>
+
 <section class="hero">
   <div class="hero-image"></div>
   <div class="hero-overlay"></div>
@@ -835,18 +869,6 @@ h1, h2, h3, h4 {
   </a>
 
   <!-- 4 corners -->
-  <div class="hero-corner hero-corner-tl">
-    <button class="menu-trigger" id="menuTrigger">
-      <span class="menu-trigger-icon" aria-hidden="true">
-        <span></span><span></span>
-      </span>
-      Menu
-    </button>
-  </div>
-
-  <div class="hero-corner hero-corner-tr">
-    <a href="https://us2.cloudbeds.com/reservation/63LWee">Book with us</a>
-  </div>
 
   <div class="hero-corner hero-corner-bl">
     A boutique hotel<br>
@@ -1051,6 +1073,20 @@ h1, h2, h3, h4 {
   flyout?.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => setTimeout(closeFlyout, 100));
   });
+
+  // Sticky-state on TL/TR corners after scrolling past hero
+  const heroEl = document.querySelector('.hero');
+  const tl = document.getElementById('heroCornerTL');
+  const tr = document.getElementById('heroCornerTR');
+  function onScroll() {
+    const threshold = heroEl ? heroEl.offsetHeight - 80 : 600;
+    const past = window.scrollY > threshold;
+    tl?.classList.toggle('is-stuck', past);
+    tr?.classList.toggle('is-stuck', past);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onScroll();
 </script>
 </body>
 </html>
