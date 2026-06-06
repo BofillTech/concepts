@@ -143,4 +143,39 @@
     });
   }
 
+  /* ----- 5. CONTACT FORM (contact.html) ----- */
+  const inquiryForm = document.getElementById('inquiryForm');
+  const formFeedback = document.getElementById('formFeedback');
+
+  if (inquiryForm && formFeedback) {
+    // Set sensible date defaults if arrival/departure inputs exist
+    const arrivalInput = document.getElementById('arrival');
+    const departureInput = document.getElementById('departure');
+    if (arrivalInput && departureInput) {
+      const today2 = new Date();
+      const tomorrow2 = new Date();
+      tomorrow2.setDate(today2.getDate() + 1);
+      arrivalInput.min = toISODate(today2);
+      departureInput.min = toISODate(tomorrow2);
+      arrivalInput.addEventListener('change', () => {
+        if (!arrivalInput.value) return;
+        const ci = new Date(arrivalInput.value);
+        const nextDay = new Date(ci);
+        nextDay.setDate(ci.getDate() + 1);
+        departureInput.min = toISODate(nextDay);
+        if (departureInput.value && new Date(departureInput.value) <= ci) {
+          departureInput.value = toISODate(nextDay);
+        }
+      });
+    }
+
+    inquiryForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      // Static concept — no backend yet. Show confirmation.
+      // Future enhancement: POST form data to /api/inquiry or open mailto: with prefilled body.
+      formFeedback.classList.add('is-visible');
+      formFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
 })();
