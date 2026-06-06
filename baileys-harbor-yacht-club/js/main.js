@@ -118,7 +118,7 @@
       const checkout = checkoutEl ? checkoutEl.value : '';
       if (checkin && checkout) {
         e.preventDefault();
-        window.open(`https://bhycr.lodgicalcrs.com/28?checkin=${checkin}&checkout=${checkout}`, '_blank', 'noopener noreferrer');
+        window.open(`https://reservations.verticalbooking.com/premium/index.html?id_albergo=22708&dc=4444&lingua_int=usa&id_stile=22148?checkin=${checkin}&checkout=${checkout}`, '_blank', 'noopener noreferrer');
       }
     });
   }
