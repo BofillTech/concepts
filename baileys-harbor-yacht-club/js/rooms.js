@@ -68,6 +68,68 @@
     408:{num:408,building:'Adriana',floor:2,type:'Two Bedroom Suite',beds:'2 Kings + Sleeper Sofa',view:'Wood View',title:'Two King, Two Bedrooms Suite (2nd Floor)',stairs:true,color:'#B07D3C',desc:"This is a 2nd floor room - REQUIRES STAIRS. Two Bedroom Suite with 1 King bed in each bedroom and 2 full baths. Suite includes a full kitchen and livingroom with a gas fireplace and full size sofa sleeper."},
   };
 
+  const ROOM_PHOTOS = {
+    102: 'https://lh3.googleusercontent.com/d/1jZNhFhNxaUDI9bL-hi33kYxJs-0y3BZ5',
+    103: 'https://lh3.googleusercontent.com/d/1M_peHCgsUBonKnbI13-Hq6GajcCcw-_3',
+    104: 'https://lh3.googleusercontent.com/d/1Mp-TuvV_6zidDBdWiD6OLzIGsjT_-PnD',
+    105: 'https://lh3.googleusercontent.com/d/1a5eaeOTN56mrHWLUpOvMR8cVbzYRAv5Z',
+    106: 'https://lh3.googleusercontent.com/d/1X_8EUUpG5NE7wVykVTkd2rzux1AFxpJh',
+    107: 'https://lh3.googleusercontent.com/d/1gCBIskdDVb-sY6-wgxpVcdoojAzX-d4z',
+    108: 'https://lh3.googleusercontent.com/d/1_DadjPvQAtkSWvjFVGCHTHV4KvopF9gx',
+    109: 'https://lh3.googleusercontent.com/d/1VtKNjRf5YYtqxvNgk9-hHa4zZNi_EWcv',
+    110: 'https://lh3.googleusercontent.com/d/16SjMgfMZ7gqnMFqQgz4jKRFQkJ-eVuFj',
+    111: 'https://lh3.googleusercontent.com/d/1bxnmj8JTV-hr6d-RRjuOqV0ghcGku-DW',
+    112: 'https://lh3.googleusercontent.com/d/1ieM-oRfGk7TkTgeEOk7J1VRscfunUgVX',
+    114: 'https://lh3.googleusercontent.com/d/16nPVR-zlngO9gPa5xBcXbO7os7qzMWJO',
+    115: 'https://lh3.googleusercontent.com/d/1gF5jq9QnxXn8LT-MvvnqGHWFQAIMDhis',
+    116: 'https://lh3.googleusercontent.com/d/1vjjDofB2e2ETTZTA6iG1ErNZfncD-0Gw',
+    117: 'https://lh3.googleusercontent.com/d/1ny87hITJX2RFrxa397KiAHMO2nUOZX5v',
+    118: 'https://lh3.googleusercontent.com/d/1phPj4j74SSqObbBgwmmSUqba0LUdk_Mg',
+    119: 'https://lh3.googleusercontent.com/d/19DLFkbMOkCMmAFAQ17hFTnREmLQmdiWi',
+    120: 'https://lh3.googleusercontent.com/d/1cr8Ku30qqTS_3dBZxvJXyhb04AiEW0fV',
+    201: 'https://lh3.googleusercontent.com/d/1sHmsHOjWCImxXdP7o0lW-Khiqx-OVNBY',
+    202: 'https://lh3.googleusercontent.com/d/1GOaK53T6sEFWn4GBoHZxpyb3Lz8mp6rB',
+    203: 'https://lh3.googleusercontent.com/d/182BO6DUhFzEdPiT4546_uMUNQScGUd_Z',
+    204: 'https://lh3.googleusercontent.com/d/1sUMJqFut8JU01ljHfeK1dQWYw_fijGEa',
+    205: 'https://lh3.googleusercontent.com/d/10qXrimNpyD_mVfjD6-Q8t85daCZJwBjE',
+    206: 'https://lh3.googleusercontent.com/d/1X0Q9K3Iyag2JzUELkD0fCR8nJgTUU7Zx',
+    208: 'https://lh3.googleusercontent.com/d/1K6ymZKfzvDmK89Fb8HV3ZutG4OjBXE1s',
+    210: 'https://lh3.googleusercontent.com/d/1OOhhJpIyOmcCiVC-iDGLlbLgWwjP-5B8',
+    211: 'https://lh3.googleusercontent.com/d/1znnlp2c6Ae2ohvAdOEVF51NO50KD9uMd',
+    212: 'https://lh3.googleusercontent.com/d/1d4zt2B-ebORPYzaZroiaU2HOc4eC1GZ0',
+    214: 'https://lh3.googleusercontent.com/d/1J5Kg6GilNgHBX80xl4l78-S3jOr_n1kI',
+    215: 'https://lh3.googleusercontent.com/d/1yW5G2V7Yr4SPDKhXrsnkee9ILVIohXCa',
+    216: 'https://lh3.googleusercontent.com/d/1Zt0fWo2NXecIMbYYpeXfyt0GTkrV_40R',
+    217: 'https://lh3.googleusercontent.com/d/1spioSa7QjtE6wcvC50wrrrZBtf2HEmLW',
+    218: 'https://lh3.googleusercontent.com/d/1TSVVK6F6t9WKiStHZWJo40ACGIPoZjUX',
+    219: 'https://lh3.googleusercontent.com/d/1NRhRaa09snPzDwY4R871lfU_Boc5k-u5',
+    220: 'https://lh3.googleusercontent.com/d/1lvtBax-kpz4Bgz41bKCh6WMZhOTJCnut',
+    221: 'https://lh3.googleusercontent.com/d/1T942DrbO0vWyKg6FQTxObxz7UUDpLojc',
+    222: 'https://lh3.googleusercontent.com/d/18wD-whF5UA4wnz2CC54nlt1y1aiu4EaA',
+    223: 'https://lh3.googleusercontent.com/d/1V9w9b8VLetsd0KkCbfJE2IMufSAYwPG1',
+    302: 'https://lh3.googleusercontent.com/d/1eiv6NCtGUY-3eO90p_ncyzOYUNUoQfJB',
+    303: 'https://lh3.googleusercontent.com/d/1xOMdO6mXyB94CW4Gd0RrKNoE6uSYivXV',
+    304: 'https://lh3.googleusercontent.com/d/1bsEsRgFzs4C1akqrt45TlHlu8YXWFX7-',
+    305: 'https://lh3.googleusercontent.com/d/1_XBaY2OfF5pudzIsNW61l9B5AvE52EP8',
+    307: 'https://lh3.googleusercontent.com/d/1lc5IsfKlPH_S-4dVGdyhGlmy9NkUaAN4',
+    308: 'https://lh3.googleusercontent.com/d/1ZtCTlXqReX2x6M1O61VYkRgSXMjcub0L',
+    309: 'https://lh3.googleusercontent.com/d/1fsS5YOrfNaMX_neOi8RuKeyIaFqoppG8',
+    310: 'https://lh3.googleusercontent.com/d/1RuNM0qvqP7NSO5UIUWVmuf5yWrduRYdG',
+    312: 'https://lh3.googleusercontent.com/d/1jNEh3qa28IuT7_dBTYRt5391uZ9vw1Qr',
+    314: 'https://lh3.googleusercontent.com/d/1MebLT-iUww50v4lOAKORBLxlLm0-BK_s',
+    315: 'https://lh3.googleusercontent.com/d/14-KSExi3Kk6FzlOOR-mzK77Hi1RlxgH7',
+    316: 'https://lh3.googleusercontent.com/d/1P4W4bFXgSoyEXsmNpr5n5OR2FmGSrddt',
+    317: 'https://lh3.googleusercontent.com/d/1TC5A61ud8XplTOcl_vvX3mLRXRvTf6A2',
+    318: 'https://lh3.googleusercontent.com/d/1zOJok_F-Mq0tuaAOe3otIxnhGQxYPP62',
+    401: 'https://lh3.googleusercontent.com/d/1eNEAji10_IJchCys7cJmGF42UJBlA6Ar',
+    402: 'https://lh3.googleusercontent.com/d/1RN6VUWKbGcYntsqts4KNz-qPeA6OHg0m',
+    403: 'https://lh3.googleusercontent.com/d/1GRNkkH3wy_aiw_ovaGKVSOMgRLFpNZLo',
+    405: 'https://lh3.googleusercontent.com/d/12lMhZtSs5FMIeZtH6qHlXHkamh5XvU71',
+    406: 'https://lh3.googleusercontent.com/d/1gWyP9tei9TXHH8wALLVwsvGmKr-q5wNS',
+    407: 'https://lh3.googleusercontent.com/d/1p5ujA-PeHyBv3G-CCPyYvoF3uIc-HFDo',
+    408: 'https://lh3.googleusercontent.com/d/1j4NHNglUoQZMcQSsv8ySZpjePFCF8pbd',
+  };
+
   const TYPE_COLORS = {
     'Stateroom':'#7BA7C2','Deluxe Stateroom':'#4E86A8','Premier Stateroom':'#2E6A9E',
     'Junior Suite':'#8AB5A0','Premier Suite':'#5A9E80','Loft Suite':'#9E8AB5',
@@ -232,8 +294,12 @@
     panelType.style.background = color;
     panelStairsWarn.style.display = room.stairs ? '' : 'none';
     // Photo slot
-    const photoPath = `img/rooms/room-${roomNum}-1.jpg`;
-    panelPhoto.innerHTML = `<img src="${photoPath}" alt="Room ${roomNum}" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block" onerror="this.parentElement.innerHTML='<div style=\\'width:100%;aspect-ratio:16/10;background:var(--color-warm-white);display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,31,58,.25)\\'>Photo Coming Soon</div>'">`;
+    const driveUrl = ROOM_PHOTOS[roomNum];
+    if (driveUrl) {
+      panelPhoto.innerHTML = `<img src="${driveUrl}" alt="Room ${roomNum}" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block">`;
+    } else {
+      panelPhoto.innerHTML = '<div style="width:100%;aspect-ratio:16/10;background:var(--color-warm-white);display:flex;align-items:center;justify-content:center;font-family:var(--font-ui);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(11,31,58,.25)">Photo Coming Soon</div>';
+    }
     panelSpecs.innerHTML = [
       room.beds   ? `<li><strong>Beds:</strong> ${room.beds}</li>` : '',
       room.view   ? `<li><strong>View:</strong> ${room.view}</li>` : '',
