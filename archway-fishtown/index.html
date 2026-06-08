@@ -101,7 +101,7 @@
   .nav.scrolled .btn:hover{background:var(--rust);color:var(--paper);}
 
   /* ---------- HERO ---------- */
-  .hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;}
+  .hero{position:relative;height:100vh;height:100svh;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding-bottom:248px;}
   .hero__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform:scale(1.06);animation:slowzoom 14s ease-out forwards;}
   @keyframes slowzoom{to{transform:scale(1);}}
   .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 64% 56% at 50% 50%,rgba(16,11,7,.6) 0%,rgba(16,11,7,.12) 62%,rgba(16,11,7,0) 78%),linear-gradient(180deg,rgba(16,11,7,.52) 0%,rgba(16,11,7,.3) 40%,rgba(16,11,7,.62) 100%);}
@@ -117,8 +117,8 @@
   .scrollhint::after{content:"";display:block;width:1px;height:42px;background:rgba(255,255,255,.6);margin:14px auto 0;animation:pulse 2.4s ease-in-out infinite;transform-origin:top;}
   @keyframes pulse{0%,100%{transform:scaleY(.4);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
 
-  /* ---------- BOOKING BAR ---------- */
-  .booking{background:var(--paper);border-bottom:1px solid var(--line);position:relative;z-index:10;}
+  /* ---------- BOOKING BAR (overlays hero bottom, above the fold) ---------- */
+  .booking{background:var(--paper);position:absolute;left:0;right:0;bottom:0;z-index:6;box-shadow:0 -16px 44px rgba(16,11,7,.26);}
   .booking__grid{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0;}
   .bk-field{flex:1 1 50%;min-width:50%;padding:20px 22px;border-bottom:1px solid var(--line);}
   .bk-field:not(:last-child){border-right:1px solid var(--line);}
@@ -220,7 +220,8 @@
   .foot__bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px;padding-top:28px;font-size:.74rem;letter-spacing:.06em;color:rgba(244,238,227,.5);}
 
   /* mobile sticky book */
-  .mbook{position:fixed;bottom:0;left:0;width:100%;z-index:90;display:flex;background:var(--rust);box-shadow:0 -2px 18px var(--shadow);}
+  .mbook{position:fixed;bottom:0;left:0;width:100%;z-index:90;display:flex;background:var(--rust);box-shadow:0 -2px 18px var(--shadow);transform:translateY(100%);transition:transform .4s ease;}
+  .mbook.show{transform:none;}
   .mbook a{flex:1;text-align:center;padding:16px;color:var(--paper);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;}
   .mbook a:first-child{flex:0 0 46%;background:var(--ink);}
 
@@ -231,6 +232,7 @@
     .bk-submit a{min-height:100%;padding:0 44px;}
     .booking__grid{flex-wrap:nowrap;}
     .count__l{font-size:.7rem;}
+    .hero{padding-bottom:120px;}
   }
   @media(min-width:860px){
     .nav__links{display:flex;}
@@ -247,6 +249,9 @@
   @media(max-width:859px){
     .nav__logo-img{height:28px;}
     .nav.scrolled .nav__logo-img{height:24px;}
+    .bk-field{padding:15px 18px;}
+    .bk-field input,.bk-field select{font-size:1.06rem;}
+    .bk-submit a{min-height:54px;}
     .svc-grid .svc:last-child{border-bottom:none;}
     body{padding-bottom:54px;}
   }
@@ -285,13 +290,11 @@
     <p class="hero__sub">A boutique hotel in the heart of Fishtown</p>
     <div class="hero__cta"><a class="btn" href="https://archway.guestybookings.com/en/">Book Your Stay</a></div>
   </div>
-  <span class="scrollhint">Scroll</span>
-</header>
 
-<!-- BOOKING BAR -->
-<section class="booking" aria-label="Check availability">
-  <div class="wrap">
-    <div class="booking__grid">
+  <!-- BOOKING BAR (overlays hero bottom, above the fold) -->
+  <section class="booking" aria-label="Check availability">
+    <div class="wrap">
+      <div class="booking__grid">
       <div class="bk-field">
         <label for="arr">Arriving</label>
         <input type="date" id="arr">
@@ -315,6 +318,7 @@
     </div>
   </div>
 </section>
+</header>
 
 <!-- INTRO -->
 <section class="pad intro">
@@ -520,7 +524,11 @@
 <script>
   // sticky nav
   var nav=document.getElementById('nav');
-  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>60);}
+  var mbook=document.querySelector('.mbook');
+  function onScroll(){
+    nav.classList.toggle('scrolled',window.scrollY>60);
+    if(mbook){mbook.classList.toggle('show',window.scrollY > window.innerHeight*0.72);}
+  }
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();
 
   // scroll reveals
