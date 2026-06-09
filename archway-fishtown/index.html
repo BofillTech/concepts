@@ -118,7 +118,7 @@
   @keyframes pulse{0%,100%{transform:scaleY(.4);opacity:.4;}50%{transform:scaleY(1);opacity:1;}}
 
   /* ---------- BOOKING BAR (overlays hero bottom, above the fold) ---------- */
-  .booking{background:var(--paper);position:absolute;left:0;right:0;bottom:0;z-index:6;box-shadow:0 -16px 44px rgba(16,11,7,.26);}
+  .booking{background:var(--paper);position:absolute;left:0;right:0;bottom:0;z-index:70;box-shadow:0 -16px 44px rgba(16,11,7,.26);}
   .booking__grid{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0;}
   .bk-field{flex:1 1 50%;min-width:50%;padding:20px 22px;border-bottom:1px solid var(--line);}
   .bk-field:not(:last-child){border-right:1px solid var(--line);}
@@ -143,8 +143,14 @@
   .reveal.in{opacity:1;transform:none;}
 
   /* intro */
-  .intro{text-align:center;background:var(--bone);}
-  .intro .wrap{max-width:820px;}
+  .intro{text-align:center;background:var(--bone);position:relative;overflow:hidden;}
+  .intro .wrap{max-width:820px;position:relative;z-index:2;}
+  .intro__flank{display:none;}
+  @media(min-width:1180px){
+    .intro__flank{display:block;position:absolute;top:50%;transform:translateY(-50%);width:clamp(170px,14vw,236px);height:58%;max-height:500px;object-fit:cover;z-index:1;filter:saturate(.96);}
+    .intro__flank--l{left:clamp(28px,4.5vw,86px);}
+    .intro__flank--r{right:clamp(28px,4.5vw,86px);}
+  }
   .intro h2{font-size:clamp(2.1rem,5vw,3.5rem);margin:.4em 0 .55em;}
   .intro p{color:var(--ink-soft);font-size:1.12rem;}
   .intro .divider{width:54px;height:1px;background:var(--rust);margin:42px auto 0;}
@@ -240,7 +246,8 @@
     .nav__links{display:flex;}
     .nav__phone{display:block;}
     .mbook{display:none;}
-    body{font-size:17px;}
+    body{font-size:17px;padding-bottom:96px;}
+    .booking{position:fixed;}
     .suite{grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,72px);}
     .suite:nth-child(even) .suite__media{order:2;}
     .svc-grid{grid-template-columns:1fr 1fr;column-gap:54px;}
@@ -324,6 +331,8 @@
 
 <!-- INTRO -->
 <section class="pad intro">
+  <img class="intro__flank intro__flank--l" src="https://archwayfishtown.com/wp-content/uploads/2024/10/UNIT-205_KITCHEN-COFFEE-BAR-DETAIL_291-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Coffee bar detail in an Archway suite" referrerpolicy="no-referrer" loading="lazy">
+  <img class="intro__flank intro__flank--r" src="https://archwayfishtown.com/wp-content/uploads/2024/03/UNIT-205_BEDROOM_324-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Bedroom in an Archway suite" referrerpolicy="no-referrer" loading="lazy">
   <div class="wrap reveal">
     <p class="eyebrow">The Hotel</p>
     <h2>A self check-in hotel,<br><span class="serif-italic">with the comfort of home.</span></h2>
@@ -471,7 +480,7 @@
 
 <!-- FINAL CTA -->
 <section class="final">
-  <img class="final__img" src="https://archwayfishtown.com/wp-content/uploads/2024/03/UNIT-205_LIVING-ROOM_265-FINAL-Credit-Jason-Varney-copy-2-2-scaled-2.jpg" alt="Living room at Archway Hotel" referrerpolicy="no-referrer" loading="lazy">
+  <img class="final__img" src="https://archwayfishtown.com/wp-content/uploads/2024/10/UNIT-205_DECK_336-FINAL-Credit-Jason-Varney-copy-2-scaled.jpg" alt="Private terrace with Fishtown views at Archway Hotel" referrerpolicy="no-referrer" loading="lazy">
   <div class="final__inner reveal">
     <p class="eyebrow" style="color:var(--bone);">Your Stay Awaits</p>
     <h2>Book your stay in Fishtown</h2>
