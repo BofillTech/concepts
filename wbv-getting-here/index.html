@@ -1761,6 +1761,50 @@
     line-height: 1.5;
   }
 
+  /* Suspended option-row state — for operators temporarily out of service.
+     Revert: remove this entire .option-row.suspended block (and the markup
+     classes that reference it) when service resumes. */
+  .option-row.suspended {
+    position: relative;
+    opacity: 0.55;
+    filter: saturate(0.4);
+    border: 1px solid #c8c2bb;
+  }
+  .option-row.suspended .option-image {
+    position: relative;
+  }
+  .option-row.suspended .option-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(50,50,50,0.35);
+    z-index: 1;
+  }
+  .option-row.suspended .suspended-banner {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    background: #8a3520;
+    color: white;
+    padding: 8px 16px 8px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  }
+  .option-row.suspended h4 {
+    text-decoration: line-through;
+    text-decoration-thickness: 1.5px;
+    text-decoration-color: #c64a2b;
+  }
+  .option-row.suspended .opt-tag,
+  .option-row.suspended .price-tier {
+    filter: grayscale(1) opacity(0.7);
+  }
+
   /* Route option cards */
   .options-grid {
     display: grid;
@@ -2356,13 +2400,13 @@
   <!-- ===== STT TAB ===== -->
   <div class="tab-panel" id="tab-stt" role="tabpanel">
 
-    <!-- Aquatic Tue/Wed warning (May 1 onward) -->
+    <!-- AQUATIC FULLY SUSPENDED — revert this notice block when service resumes (was: Tue/Wed-only suspension) -->
     <div class="tab-notice">
       <div class="icon">!</div>
       <div class="body">
-        <strong>Summer schedule — Aquatic Ferry doesn't run Tuesdays or Wednesdays</strong>
-        <p>Starting <strong>May 1st</strong> through the summer months, Aquatic Ferry has suspended Red Hook → West End service on Tue/Wed. Daily runs continue Mon / Thu / Fri / Sat / Sun at <strong>9:15 AM, 2:30 PM, and 5:00 PM.</strong></p>
-        <p style="margin-top:10px;"><strong>Arriving on a Tuesday or Wednesday?</strong> Your two options are Road Town Fast Ferry (with an Allure water-taxi connection — see Ferries below) or a fully private water taxi (Allure or Dolphin — see below).</p>
+        <strong>Aquatic Ferry — temporarily closed</strong>
+        <p>As of <strong>today</strong>, Aquatic Ferry has suspended <em>all</em> Red Hook → West End service until further notice. They're expected to reopen but the return date isn't yet set.</p>
+        <p style="margin-top:10px;"><strong>Until Aquatic returns</strong>, your two STT → JVD options are <strong>Road Town Fast Ferry + Allure water-taxi bridge</strong> (see Ferries below — most affordable) or a <strong>fully private water taxi</strong> from Allure or Dolphin (see Water Taxis). Both work every day. We'll update this page the moment service resumes.</p>
       </div>
     </div>
 
@@ -2375,55 +2419,64 @@
         <span class="blurb">The most common route. Two ferries with a customs clearance in the middle.</span>
       </div>
 
-      <!-- STT Ferry: Aquatic Ferry + New Horizon -->
-      <div id="option-stt-aquatic" class="option-row">
+      <!-- STT Ferry: Aquatic Ferry + New Horizon
+           AQUATIC CURRENTLY SUSPENDED — to revert when service resumes:
+           1. Remove the 'suspended' class from the .option-row
+           2. Delete the <span class="suspended-banner"> element
+           3. Restore the original opt-tag 'Mon · Thu · Fri · Sat · Sun'
+              and price-tier '$' (saved here for easy restore) -->
+      <div id="option-stt-aquatic" class="option-row suspended">
         <div class="option-image">
-          <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola" loading="lazy" />
+          <span class="suspended-banner">Temporarily closed</span>
+          <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola (currently suspended)" loading="lazy" />
         </div>
         <div class="option-body">
           <div class="option-head">
             <h4 class="serif">Aquatic Ferry + New Horizon Ferry</h4>
             <div class="option-tags">
-              <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
+              <span class="opt-tag" style="background:#c64a2b; color:white;">Currently suspended</span>
               <span class="price-tier">$</span>
             </div>
           </div>
-          <p class="option-vibe">The standard route · two ferries with a customs stop · ~2h 30m total</p>
-          <p class="desc">Land taxi from STT airport to Red Hook (~30 min). Aquatic Ferry to West End Tortola, where you clear BVI customs. Walk back to the same dock for the New Horizon Ferry to Great Harbour, JVD. We strongly recommend buying tickets online ahead of time. <strong>Land by 3 PM</strong> to comfortably make the last 5 PM Aquatic.</p>
-          <div class="option-meta" style="background: var(--sand-light); border:1px solid var(--gold); border-radius: 2px; padding: 12px 14px; margin: 10px 0;">
-            <span style="color:var(--ink);"><strong style="color:var(--gold); letter-spacing:0.08em; text-transform:uppercase; font-size:11px;">💡 Insider tip</strong> &nbsp; Be the <strong>first off the Aquatic Ferry</strong> at West End. The customs line builds fast, and the New Horizon Ferry won't wait long for stragglers.</span>
-          </div>
+          <p class="option-vibe">The standard route when running · two ferries with a customs stop · ~2h 30m total</p>
+          <p class="desc"><strong style="color:#8a3520;">Aquatic Ferry has temporarily suspended all service.</strong> A reopen date hasn't been announced. When service resumes: land taxi from STT airport to Red Hook (~30 min), Aquatic Ferry to West End Tortola (clearing BVI customs), then walk back to the same dock for the New Horizon Ferry to Great Harbour, JVD. We'll update this page the moment service returns.</p>
           <div class="option-meta">
-            <span><strong>Time:</strong> ~2h 30m total</span>
-            <span><strong>Aquatic:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
-            <span><strong>New Horizon:</strong> <a href="https://www.newhorizonferry.com" target="_blank" rel="noopener">newhorizonferry.com →</a></span>
+            <span><strong>Status:</strong> Suspended until further notice</span>
+            <span><strong>Check for updates:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
           </div>
-          <p class="best-for"><strong>Best for:</strong> Standard arrivals · daytime flights · independent travelers</p>
+          <p class="best-for"><strong>While suspended:</strong> Use Road Town Fast Ferry + Allure (below), or a private water taxi.</p>
         </div>
       </div>
 
-      <!-- STT Ferry: Road Town Fast Ferry (Tue/Wed substitute, with Allure water-taxi bridge) -->
+      <!-- STT Ferry: Road Town Fast Ferry + Allure water-taxi bridge
+           PROMOTED to primary public-ferry path while Aquatic is suspended.
+           When Aquatic resumes, revert this card's tag to 'Tue / Wed substitute'
+           and restore the 'Tue/Wed STT arrivals' framing in the copy. -->
       <div id="option-stt-roadtown" class="option-row">
         <div class="option-image">
           <img src="https://bofilltech.com/wp-content/uploads/2026/05/why_travel2.1.jpg" alt="Road Town Fast Ferry — Charlotte Amalie to Road Town Tortola" loading="lazy" />
         </div>
+      <!-- STT Ferry: Road Town Fast Ferry + Allure water-taxi bridge
+           PROMOTED to primary public-ferry path while Aquatic is suspended.
+           When Aquatic resumes, revert this card's tag to 'Tue / Wed substitute'
+           and restore the 'Tue/Wed STT arrivals' framing in the copy. -->
         <div class="option-body">
           <div class="option-head">
             <h4 class="serif">Road Town Fast Ferry + Allure Water Taxi</h4>
             <div class="option-tags">
-              <span class="opt-tag alt">Tue / Wed substitute</span>
+              <span class="opt-tag alt">Primary public option</span>
               <span class="price-tier">$$</span>
             </div>
           </div>
-          <p class="option-vibe">Tue/Wed alternative · ferry + private water taxi bridge · ~3 hours total</p>
-          <p class="desc"><strong>You must call ahead to confirm — they won't wait for you otherwise.</strong> Road Town Fast Ferry runs Charlotte Amalie (St. Thomas) directly to Road Town (Tortola), arriving around <strong>5:45 PM — too late for the 6 PM New Horizon to JVD.</strong></p>
-          <p class="desc" style="margin-top:8px;"><strong>To bridge the gap</strong>, Allure Charters offers a <strong>$50 per person water taxi</strong> from Tortola directly to JVD for guests on this route. It's a special summer-only offering set up to solve exactly this missed-connection problem. Coordinate this through your villa concierge when you book.</p>
+          <p class="option-vibe">Public ferry + private water-taxi bridge · ~3 hours total · runs daily</p>
+          <p class="desc"><strong>While Aquatic Ferry is closed, this is the public-ferry path to JVD.</strong> Road Town Fast Ferry runs Charlotte Amalie (St. Thomas) directly to Road Town (Tortola). <strong>You must call ahead to confirm — they won't wait for you otherwise.</strong> The ferry arrives Tortola around <strong>5:45 PM — too late for the 6 PM New Horizon to JVD.</strong></p>
+          <p class="desc" style="margin-top:8px;"><strong>To bridge the gap</strong>, Allure Charters runs a <strong>$50 per person water taxi</strong> from Tortola directly to JVD for guests on this route. Coordinate through your villa concierge when you book.</p>
           <div class="option-meta">
             <span><strong>Call to confirm:</strong> <a href="tel:+12844964444">+1 284-496-4444 (BVI)</a> · <a href="tel:+13407153800">+1 340-715-3800 (STT)</a></span>
             <span><strong>Road Town:</strong> <a href="https://www.roadtownfastferry.com/" target="_blank" rel="noopener">roadtownfastferry.com →</a></span>
             <span><strong>Allure bridge:</strong> <a href="https://allurechartersbvi.com/" target="_blank" rel="noopener">allurechartersbvi.com →</a></span>
           </div>
-          <p class="best-for"><strong>Best for:</strong> Tue/Wed STT arrivals wanting the public-ferry price · willing to confirm by phone</p>
+          <p class="best-for"><strong>Best for:</strong> STT arrivals wanting the public-ferry price while Aquatic is suspended · willing to confirm by phone</p>
         </div>
       </div>
 
@@ -2720,11 +2773,12 @@
       <!-- ===== Return via STT ===== -->
       <div class="tab-panel" id="tab-back-stt" role="tabpanel">
 
+        <!-- AQUATIC FULLY SUSPENDED — revert this notice when service resumes (was: Tue/Wed-only suspension) -->
         <div class="tab-notice">
           <div class="icon">!</div>
           <div class="body">
-            <strong>Aquatic still suspended Tuesdays & Wednesdays</strong>
-            <p>Same as outbound. If your departure day is a Tuesday or Wednesday, you'll need an alternative: <strong>Road Town Fast Ferry</strong> (must call ahead — <a href="tel:+12844964444" style="color:#8a3520;font-weight:700;border-bottom:1px solid currentColor;text-decoration:none;">+1 284-496-4444</a>), a <strong>private water taxi</strong> from White Bay (Allure or Dolphin), or shift your departure date if your itinerary has flex.</p>
+            <strong>Aquatic Ferry — temporarily closed</strong>
+            <p>As of today, Aquatic Ferry has suspended <em>all</em> West End → Red Hook service until further notice. For STT departures, use <strong>Road Town Fast Ferry</strong> (call ahead — <a href="tel:+12844964444" style="color:#8a3520;font-weight:700;border-bottom:1px solid currentColor;text-decoration:none;">+1 284-496-4444</a>) or a <strong>private water taxi from White Bay</strong> (Allure or Dolphin). Allow extra time on the day of departure.</p>
           </div>
         </div>
 
@@ -2734,31 +2788,35 @@
           <div class="options-section-header">
             <span class="num">01</span>
             <h3>Ferries</h3>
-            <span class="blurb">Two ferries with US customs clearance in St. John en route. Plan generously.</span>
+            <span class="blurb">Public-ferry options. The Aquatic return route is currently suspended; Road Town Fast Ferry is the path.</span>
           </div>
 
-          <div class="option-row">
+          <!-- AQUATIC RETURN CARD — currently suspended.
+               When service resumes: remove 'suspended' class + suspended-banner span,
+               restore opt-tag 'Mon · Thu · Fri · Sat · Sun' (saved here). -->
+          <div class="option-row suspended">
             <div class="option-image">
-              <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — Red Hook to West End Tortola" loading="lazy" />
+              <span class="suspended-banner">Temporarily closed</span>
+              <img src="https://bofilltech.com/wp-content/uploads/2026/05/99572b_0147c2059abb4429a373bca084982c56mv2.png" alt="Aquatic Rentals Ferry — currently suspended" loading="lazy" />
             </div>
             <div class="option-body">
               <div class="option-head">
                 <h4 class="serif">New Horizon + Aquatic Ferry to STT</h4>
                 <div class="option-tags">
-                  <span class="opt-tag daily">Mon · Thu · Fri · Sat · Sun</span>
+                  <span class="opt-tag" style="background:#c64a2b; color:white;">Currently suspended</span>
                   <span class="price-tier">$</span>
                 </div>
               </div>
-              <p class="option-vibe">Two ferries · customs at St. John · ~3 hours total</p>
-              <p class="desc">New Horizon Ferry from Great Harbour to West End Tortola, then Aquatic from West End back to Red Hook (clearing US customs in St. John en route). Land taxi from Red Hook to STT airport adds ~30 minutes. <strong>Plan generously</strong> — the second customs at the airport always takes longer than expected.</p>
+              <p class="option-vibe">Two ferries when running · customs at St. John · ~3 hours total</p>
+              <p class="desc"><strong style="color:#8a3520;">Aquatic Ferry has temporarily suspended all service.</strong> When it returns: New Horizon Ferry from Great Harbour to West End Tortola, then Aquatic from West End back to Red Hook (clearing US customs in St. John en route), then a land taxi from Red Hook to STT airport. We'll update this page the moment service resumes.</p>
               <div class="option-meta">
-                <span><strong>Time:</strong> ~3 hours from JVD to STT</span>
-                <span><strong>Aquatic from W. End:</strong> 8:15 AM, 11 AM, 3:30 PM</span>
-                <span><strong>Schedule:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
+                <span><strong>Status:</strong> Suspended until further notice</span>
+                <span><strong>Check for updates:</strong> <a href="https://www.aquaticrentalsvi.com" target="_blank" rel="noopener">aquaticrentalsvi.com →</a></span>
               </div>
             </div>
           </div>
 
+          <!-- ROAD TOWN RETURN CARD — promoted to primary while Aquatic is suspended -->
           <div class="option-row">
             <div class="option-image">
               <img src="https://bofilltech.com/wp-content/uploads/2026/05/why_travel2.1.jpg" alt="Road Town Fast Ferry — Charlotte Amalie to Road Town Tortola" loading="lazy" />
@@ -2767,16 +2825,15 @@
               <div class="option-head">
                 <h4 class="serif">New Horizon + Road Town Fast Ferry</h4>
                 <div class="option-tags">
-                  <span class="opt-tag alt">Tue / Wed substitute</span>
+                  <span class="opt-tag alt">Primary public option</span>
                   <span class="price-tier">$</span>
                 </div>
               </div>
-              <p class="option-vibe">Tue/Wed alternative when Aquatic isn't running</p>
-              <p class="desc">Use this combo when departing on a Tuesday or Wednesday. New Horizon to West End, land taxi to Road Town, then Road Town Fast Ferry direct to Charlotte Amalie. <strong>You must call ahead to confirm — they won't wait for you otherwise.</strong></p>
+              <p class="option-vibe">Public-ferry return path while Aquatic is suspended · runs daily</p>
+              <p class="desc"><strong>While Aquatic is closed, this is the public-ferry path back to STT.</strong> New Horizon from Great Harbour to West End, land taxi to Road Town, then Road Town Fast Ferry direct to Charlotte Amalie. <strong>You must call ahead to confirm — they won't wait for you otherwise.</strong></p>
               <div class="option-meta">
                 <span><strong>Call to confirm:</strong> <a href="tel:+12844964444">+1 284-496-4444 (BVI)</a></span>
                 <span><strong>Web:</strong> <a href="https://www.roadtownfastferry.com/" target="_blank" rel="noopener">roadtownfastferry.com →</a></span>
-                <span><strong>Use only when:</strong> Departing on Tuesday or Wednesday</span>
               </div>
             </div>
           </div>
@@ -3022,35 +3079,40 @@
 
     // ===== STT =====
     {
+      // AQUATIC SUSPENDED — when service resumes, restore the original check() function.
+      // Original logic (saved here for restore):
+      //   if (day === 'Tue' || day === 'Wed') {
+      //     return { status: 'no-aquatic', reason: 'Aquatic Ferry doesn\'t run from STT on Tue/Wed through the summer months — see the Road Town option instead.' };
+      //   }
+      //   if (hourMin > 1500) return { status: 'too-late', reason: '...' };
+      //   if (hourMin >= 1430) return { status: 'works', whyRecommend: '...' };
+      //   return { status: 'works', whyRecommend: '...' };
+      // Also: restore score: 100 (currently 0 so it never ranks)
       id: 'option-stt-aquatic',
       airport: 'STT',
       name: 'Aquatic Ferry + New Horizon Ferry',
       priceTier: '$',
-      blurb: 'Public ferry combo · ~2h 30m total · most popular',
-      check: ({ day, hourMin }) => {
-        if (day === 'Tue' || day === 'Wed') {
-          return { status: 'no-aquatic', reason: 'Aquatic Ferry doesn\'t run from STT on Tuesdays or Wednesdays through the summer months — see the Road Town option instead.' };
-        }
-        if (hourMin > 1500) return { status: 'too-late', reason: 'The last Aquatic Ferry from Red Hook is 5 PM. With a 30-min land taxi from STT to Red Hook, landing after 3 PM is too tight to make it.' };
-        if (hourMin >= 1430) return { status: 'works', whyRecommend: 'You\'re landing close to the 3 PM rule. Should make the 5 PM Aquatic if you taxi straight to Red Hook — no dawdling. Have Allure on standby.' };
-        return { status: 'works', whyRecommend: 'You\'re landing in plenty of time. This is the standard route — cheapest, runs five days a week, well-trodden.' };
+      blurb: 'Currently suspended · normally the most popular public-ferry combo',
+      check: () => {
+        return { status: 'no-aquatic', reason: 'Aquatic Ferry has temporarily suspended all service. A reopen date hasn\'t been announced. Use Road Town Fast Ferry or a private water taxi instead.' };
       },
-      score: 100
+      score: 0
     },
     {
+      // ROAD TOWN PROMOTED — primary public-ferry path while Aquatic is suspended.
+      // When Aquatic resumes, revert this check() to the Tue/Wed-only logic:
+      //   if (day !== 'Tue' && day !== 'Wed') return { status: 'not-applicable', reason: 'Road Town Fast Ferry is the Tue/Wed substitute...' };
+      //   (rest of logic unchanged)
       id: 'option-stt-roadtown',
       airport: 'STT',
       name: 'Road Town Fast Ferry + Allure Water Taxi',
       priceTier: '$$',
-      blurb: 'Tue/Wed alternative · ferry + private bridge · ~3h total',
-      check: ({ day, hourMin }) => {
-        if (day !== 'Tue' && day !== 'Wed') {
-          return { status: 'not-applicable', reason: 'Road Town Fast Ferry is the Tue/Wed substitute for Aquatic Ferry. The standard Aquatic route is better on other days.' };
-        }
+      blurb: 'Public ferry + private water-taxi bridge · ~3h total · runs daily',
+      check: ({ hourMin }) => {
         if (hourMin > 1500) return { status: 'too-late', reason: 'You need to make the late-afternoon Road Town Fast Ferry departure from Charlotte Amalie. Landing after 3 PM is too tight for the land transfer.' };
-        return { status: 'works', whyRecommend: 'Since Aquatic isn\'t running on your travel day, this is the only public-ferry path. Road Town Fast Ferry arrives at 5:45 PM (too late for the 6 PM New Horizon to JVD), so Allure runs a special $50/person water taxi from Tortola to JVD to bridge the gap. Call ahead.' };
+        return { status: 'works', whyRecommend: 'While Aquatic Ferry is closed, this is the public-ferry path to JVD. Road Town Fast Ferry runs Charlotte Amalie to Tortola, arriving 5:45 PM (too late for the 6 PM New Horizon), so Allure runs a $50/person water taxi from Tortola to JVD to bridge the gap. Call ahead to confirm — they won\'t wait.' };
       },
-      score: 95   // higher than Allure private because it's cheaper and explicitly built for this scenario
+      score: 95
     },
     {
       id: 'option-stt-interisland',
