@@ -473,10 +473,45 @@ section { padding: 110px 28px; position: relative; }
 .suites-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
 .suite-card {
   background: var(--paper); position: relative;
-  padding: 36px 32px 32px; border: 1px solid var(--line);
+  border: 1px solid var(--line);
   display: flex; flex-direction: column;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
   overflow: hidden;
+}
+.suite-card-img {
+  position: relative; aspect-ratio: 4/3;
+  background-size: cover; background-position: center;
+  overflow: hidden;
+}
+.suite-card-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15, 61, 44, 0.05) 0%, rgba(15, 61, 44, 0.40) 100%);
+  transition: opacity 0.4s ease;
+}
+.suite-card:hover .suite-card-img::after { opacity: 0.5; }
+.suite-card-num-badge {
+  position: absolute; top: 18px; left: 18px; z-index: 2;
+  background: var(--cream); padding: 10px 16px;
+  font-family: var(--serif); font-size: 32px; font-weight: 500;
+  color: var(--palm-deep); line-height: 0.95; letter-spacing: -0.02em;
+  box-shadow: 0 6px 18px rgba(15, 61, 44, 0.25);
+}
+.suite-card-num-badge span {
+  display: block; font-size: 10px; font-family: var(--sans);
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--bop-orange); font-weight: 700; margin-bottom: 2px;
+}
+.suite-card-tag-pill {
+  position: absolute; top: 18px; right: 18px; z-index: 2;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-weight: 700; padding: 6px 12px;
+  background: rgba(250, 243, 225, 0.95); color: var(--palm-deep);
+}
+.suite-card.two-bed .suite-card-tag-pill {
+  background: var(--palm); color: var(--cream);
+}
+.suite-card-body {
+  padding: 26px 28px 28px; display: flex; flex-direction: column; flex: 1;
 }
 .suite-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
@@ -487,24 +522,7 @@ section { padding: 110px 28px; position: relative; }
 .suite-card.two-bed::before { background: var(--palm); }
 .suite-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .suite-card:hover::before { transform: scaleX(1); }
-.suite-card-head {
-  display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px;
-}
-.suite-card-num {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 56px; line-height: 0.9; color: var(--palm-deep); letter-spacing: -0.02em;
-}
-.suite-card-num span {
-  display: block; font-size: 11px; font-family: var(--sans);
-  font-weight: 700; color: var(--bop-orange);
-  letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 4px;
-}
-.suite-card-tag {
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  font-weight: 700; padding: 5px 11px;
-  background: var(--cream-warm); color: var(--palm-deep); align-self: flex-start;
-}
-.suite-card.two-bed .suite-card-tag { background: var(--palm); color: var(--cream); }
+
 .suite-card h3 {
   font-family: var(--serif); font-weight: 500; font-size: 22px;
   color: var(--palm-deep); line-height: 1.3; margin-bottom: 14px;
@@ -727,6 +745,454 @@ section { padding: 110px 28px; position: relative; }
   .closing-actions { flex-direction: column; align-items: stretch; }
 }
 </style>
+<link rel="canonical" href="https://paradisevacationsuites.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Paradise Vacation Suites">
+<meta property="og:title" content="Paradise Vacation Suites — Wilton Manors, Fort Lauderdale Apartment Suites">
+<meta property="og:description" content="Nine designer-appointed apartment suites in Wilton Manors. Tropical heated pool, walking distance to Wilton Drive, 18 minutes to Fort Lauderdale Beach. From $99/night.">
+<meta property="og:url" content="https://paradisevacationsuites.com/">
+<meta property="og:image" content="https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Paradise Vacation Suites — Wilton Manors, Fort Lauderdale Apartment Suites">
+<meta name="twitter:description" content="Nine designer-appointed apartment suites in Wilton Manors. Tropical heated pool, walking distance to Wilton Drive, 18 minutes to Fort Lauderdale Beach. From $99/night.">
+<meta name="twitter:image" content="https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Paradise Vacation Suites">
+<meta name="geo.region" content="US-FL">
+<meta name="geo.placename" content="Wilton Manors">
+<meta name="geo.position" content="26.1531;-80.1373">
+<meta name="ICBM" content="26.1531, -80.1373">
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": "https://paradisevacationsuites.com/#business",
+  "name": "Paradise Vacation Suites",
+  "alternateName": "Paradise Vacation Suites Wilton Manors",
+  "description": "An exclusive collection of nine luxury apartment suites in the Island City of Wilton Manors \u2014 tropical pool, walking distance to Wilton Drive, minutes to Fort Lauderdale Beach.",
+  "url": "https://paradisevacationsuites.com/",
+  "logo": "https://paradisevacationsuites.com/wp-content/uploads/image001-1.png",
+  "image": [
+    "https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg",
+    "https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg",
+    "https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg",
+    "https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg"
+  ],
+  "telephone": "+1-954-868-5671",
+  "email": "welcome@paradisevacationsuites.com",
+  "priceRange": "$99-$300",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2120 NE 26th Street",
+    "addressLocality": "Wilton Manors",
+    "addressRegion": "FL",
+    "postalCode": "33305",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 26.1531,
+    "longitude": -80.1373
+  },
+  "starRating": {
+    "@type": "Rating",
+    "ratingValue": "5"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "200",
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "numberOfRooms": 9,
+  "petsAllowed": false,
+  "smokingAllowed": false,
+  "checkinTime": "16:00",
+  "checkoutTime": "11:00",
+  "amenityFeature": [
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Heated Outdoor Pool",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Hot Tub",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Free Parking",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Wi-Fi",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Fully Equipped Kitchen",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "In-Suite Laundry",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Tropical Gardens",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Adults-Only",
+      "value": true
+    },
+    {
+      "@type": "LocationFeatureSpecification",
+      "name": "Pergolas & Outdoor Dining",
+      "value": true
+    }
+  ],
+  "sameAs": [
+    "https://paradisevacationsuites.lodgify.com/en/all-properties",
+    "https://www.airbnb.com/users/show/paradisevacationsuites",
+    "https://www.tripadvisor.com/Hotel_Review-Paradise_Vacation_Suites-Wilton_Manors.html"
+  ],
+  "containsPlace": [
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 01 \u2014 Garden View Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-01",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 02 \u2014 Pool View Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-02",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 03 \u2014 Pergola Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-03",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 04 \u2014 Palm Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-04",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 05 \u2014 Hibiscus Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-05",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Apt. 06 \u2014 Bougainvillea Suite",
+      "url": "https://paradisevacationsuites.com/suites/#apt-06",
+      "numberOfBedrooms": 1,
+      "numberOfBathroomsTotal": 1,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 2
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 800,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Suite 2112 \u2014 Two-Bedroom Garden Villa",
+      "url": "https://paradisevacationsuites.com/suites/#apt-2112",
+      "numberOfBedrooms": 2,
+      "numberOfBathroomsTotal": 2,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 1150,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Suite 2120 \u2014 Two-Bedroom Poolside Villa",
+      "url": "https://paradisevacationsuites.com/suites/#apt-2120",
+      "numberOfBedrooms": 2,
+      "numberOfBathroomsTotal": 2,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 1150,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    },
+    {
+      "@type": "Accommodation",
+      "name": "Suite 2124 \u2014 Two-Bedroom Premier Villa",
+      "url": "https://paradisevacationsuites.com/suites/#apt-2124",
+      "numberOfBedrooms": 2,
+      "numberOfBathroomsTotal": 2,
+      "occupancy": {
+        "@type": "QuantitativeValue",
+        "maxValue": 6
+      },
+      "floorSize": {
+        "@type": "QuantitativeValue",
+        "value": 1150,
+        "unitCode": "FTK"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Full Kitchen",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "In-Suite Washer/Dryer",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Pool Access",
+          "value": true
+        }
+      ]
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://paradisevacationsuites.com/#organization",
+  "name": "Paradise Vacation Suites",
+  "url": "https://paradisevacationsuites.com/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://paradisevacationsuites.com/wp-content/uploads/image001-1.png"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-954-868-5671",
+    "contactType": "reservations",
+    "areaServed": "US",
+    "availableLanguage": "English"
+  }
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://paradisevacationsuites.com/#website",
+  "url": "https://paradisevacationsuites.com/",
+  "name": "Paradise Vacation Suites",
+  "publisher": {
+    "@id": "https://paradisevacationsuites.com/#organization"
+  },
+  "inLanguage": "en-US"
+}</script>
 </head>
 <body>
 <div class="promo-banner" id="promoBanner">
@@ -853,201 +1319,219 @@ section { padding: 110px 28px; position: relative; }
     </div>
     <div class="suites-grid">
       <article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>01</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>01</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Garden View Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Garden View Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>02</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+      <article class="suite-card">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>02</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Pool View Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Pool View Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>03</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+      <article class="suite-card">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>03</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Pergola Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Pergola Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>04</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+      <article class="suite-card">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>04</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Palm Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Palm Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>05</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+      <article class="suite-card">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>05</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Hibiscus Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Hibiscus Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Apt.</span>06</div>
-    <div class="suite-card-tag">One-Bedroom</div>
+      <article class="suite-card">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Apt.</span>06</div>
+    <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
-  <h3>Bougainvillea Suite</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 2</strong></li>
-    <li><strong>1 Bath</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>~800 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$99<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Bougainvillea Suite</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 2</strong></li>
+      <li><strong>1 Bath</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>~800 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$99<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card two-bed">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Suite</span>2112</div>
-    <div class="suite-card-tag">Two-Bedroom</div>
+      <article class="suite-card two-bed">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Suite</span>2112</div>
+    <div class="suite-card-tag-pill">Two-Bedroom</div>
   </div>
-  <h3>Two-Bedroom Garden Villa</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 4</strong></li>
-    <li><strong>2 Baths</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>1,150 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$170<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Two-Bedroom Garden Villa</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 4</strong></li>
+      <li><strong>2 Baths</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>1,150 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$170<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card two-bed">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Suite</span>2120</div>
-    <div class="suite-card-tag">Two-Bedroom</div>
+      <article class="suite-card two-bed">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Suite</span>2120</div>
+    <div class="suite-card-tag-pill">Two-Bedroom</div>
   </div>
-  <h3>Two-Bedroom Poolside Villa</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 4</strong></li>
-    <li><strong>2 Baths</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>1,150 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$170<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Two-Bedroom Poolside Villa</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 4</strong></li>
+      <li><strong>2 Baths</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>1,150 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$170<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
-<article class="suite-card two-bed">
-  <div class="suite-card-head">
-    <div class="suite-card-num"><span>Suite</span>2124</div>
-    <div class="suite-card-tag">Two-Bedroom</div>
+      <article class="suite-card two-bed">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+    <div class="suite-card-num-badge"><span>Suite</span>2124</div>
+    <div class="suite-card-tag-pill">Two-Bedroom</div>
   </div>
-  <h3>Two-Bedroom Premier Villa</h3>
-  <ul class="suite-card-specs">
-    <li><strong>Sleeps 4</strong></li>
-    <li><strong>2 Baths</strong></li>
-    <li><strong>Full Kitchen</strong></li>
-    <li><strong>1,150 sq ft</strong></li>
-    <li>Washer / Dryer</li>
-    <li>Pool Access</li>
-  </ul>
-  <div class="suite-card-rate">
-    <div>
-      <div class="suite-card-rate-num">$170<span> /night</span></div>
-      <span class="suite-card-rate-label">Starting Rate</span>
+  <div class="suite-card-body">
+    <h3>Two-Bedroom Premier Villa</h3>
+    <ul class="suite-card-specs">
+      <li><strong>Sleeps 4</strong></li>
+      <li><strong>2 Baths</strong></li>
+      <li><strong>Full Kitchen</strong></li>
+      <li><strong>1,150 sq ft</strong></li>
+      <li>Washer / Dryer</li>
+      <li>Pool Access</li>
+    </ul>
+    <div class="suite-card-rate">
+      <div>
+        <div class="suite-card-rate-num">$170<span> /night</span></div>
+        <span class="suite-card-rate-label">Starting Rate</span>
+      </div>
+      <a href="./suites/" class="suite-card-cta">Details</a>
     </div>
-    <a href="./suites/" class="suite-card-cta">Details</a>
   </div>
 </article>
     </div>
