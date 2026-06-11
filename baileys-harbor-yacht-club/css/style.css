@@ -791,3 +791,113 @@ nav.scrolled .site-header__logo img {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   BEST-PRACTICES REFACTOR — extracted from inline styles
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── History page ── */
+.history-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-md);
+}
+.history-section {
+  margin-bottom: var(--space-2xl);
+}
+.history-heading--lg {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 300;
+  color: var(--color-navy);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+.history-heading--md {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+.history-body-text {
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--color-text-mid);
+  margin-bottom: 1.5em;
+}
+.history-photo { width: 100%; display: block; margin-bottom: 12px; }
+.history-caption {
+  font-size: 12px;
+  font-family: var(--font-ui);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-mid);
+}
+.history-cta {
+  text-align: center;
+  padding: var(--space-xl) 0;
+  border-top: 1px solid rgba(11,31,58,.08);
+}
+.history-cta__heading {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 300;
+  color: var(--color-navy);
+  margin-bottom: var(--space-md);
+}
+.history-cta__actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Newsletter opt-in (contact page) ── */
+.newsletter-optin {
+  margin-top: var(--space-lg);
+  padding: var(--space-md);
+  background: var(--color-warm-white);
+  border: 1px solid rgba(11,31,58,.08);
+  text-align: center;
+}
+.newsletter-optin__eyebrow {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 8px;
+}
+.newsletter-optin__body {
+  font-size: 13px;
+  color: var(--color-text-mid);
+  line-height: 1.7;
+  margin-bottom: var(--space-sm);
+}
+.newsletter-optin .btn { display: inline-block; width: auto; }
+
+/* ── Our Resort: directions block ── */
+.contact-directions-note { margin-top: var(--space-md); }
+
+/* ── Rooms page: section heading override ── */
+.room-section__heading {
+  font-size: clamp(24px, 3vw, 36px);
+  margin-top: 8px;
+}
+
+/* ── Room type card swatches via data-type ── */
+.room-type-card__swatch[data-type="Stateroom"]          { background: #7BA7C2; }
+.room-type-card__swatch[data-type="Junior Suite"]       { background: #8AB5A0; }
+.room-type-card__swatch[data-type="One Bedroom Suite"]  { background: #C8A84B; }
+.room-type-card__swatch[data-type="Two Bedroom Suite"]  { background: #B07D3C; }
+.room-type-card__swatch[data-type="Loft Suite"]         { background: #9E8AB5; }
+
+/* ── Specials: inline style cleanup ── */
+.specials-note {
+  font-size: 13px;
+  color: var(--color-text-mid);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  line-height: 1.6;
+}
