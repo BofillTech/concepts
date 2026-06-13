@@ -10,55 +10,134 @@
 <meta name="description" content="Read what our guests are saying about Paradise Vacation Suites in Wilton Manors. Verified reviews from Airbnb, TripAdvisor, Booking.com and more.">
 <style>
 :root {
-  /* Sunset cream backgrounds */
+  /* Neutrals only */
   --cream: #fef6e8;
-  --cream-warm: #fce4b6;
-  --ivory: #fefaf0;
+  --cream-warm: #fdecc6;
+  --ivory: #fffaef;
   --paper: #ffffff;
+  --charcoal: #1a3340;
+  --charcoal-soft: #4a6470;
+  --line: rgba(26, 51, 64, 0.14);
 
-  /* Sunset orange / yellow (primary warm accent) */
-  --sunset: #f5a623;
-  --sunset-bright: #ff9d3d;
-  --sunset-soft: #fbcb6e;
-  --sunset-deep: #d88a14;
+  /* THREE BRAND COLORS — that's it */
 
-  /* Teal blue (primary cool / structure) */
-  --teal: #0e7c8c;
-  --teal-deep: #073846;
-  --teal-darker: #04242e;
-  --teal-light: #4ba3b0;
+  /* Sunset yellow/orange */
+  --sunset: #f5b942;
+  --sunset-bright: #ffc857;
+  --sunset-soft: #fdd87a;
+  --sunset-deep: #d99422;
 
-  /* Pink (small accent) */
-  --pink: #e98aa6;
-  --pink-bright: #ec5f87;
-  --pink-soft: #f5b5c8;
+  /* Teal (LIGHTER — clearly teal everywhere) */
+  --teal: #3aafc9;
+  --teal-bright: #5cc4d4;
+  --teal-soft: #a8e0e8;
+  --teal-deep: #2a8da3;
+  --teal-darker: #1d6f7e;
 
-  /* Legacy mappings — keep old token names working everywhere */
+  /* Hot pink */
+  --pink: #ec4899;
+  --pink-bright: #ff5fa8;
+  --pink-soft: #f7b3d4;
+  --pink-deep: #c8327a;
+
+  /* Legacy token aliases (preserve all old refs without changing them) */
   --gold: var(--sunset);
   --gold-deep: var(--sunset-deep);
   --gold-soft: var(--sunset-soft);
   --palm: var(--teal);
   --palm-deep: var(--teal-deep);
   --palm-darker: var(--teal-darker);
-  --palm-light: var(--teal-light);
+  --palm-light: var(--teal-bright);
   --bop-orange: var(--sunset);
   --bop-orange-bright: var(--sunset-bright);
   --bop-orange-soft: var(--sunset-soft);
   --bop-blue: var(--pink);
   --coral: var(--pink);
+  --line-warm: rgba(236, 72, 153, 0.25);
 
-  --charcoal: #2a2520;
-  --charcoal-soft: #5a4f44;
-  --line: rgba(42, 37, 32, 0.12);
-  --line-warm: rgba(245, 166, 35, 0.25);
-
-  --shadow-sm: 0 4px 16px rgba(7, 56, 70, 0.08);
-  --shadow-md: 0 12px 40px rgba(7, 56, 70, 0.14);
-  --shadow-lg: 0 24px 60px rgba(7, 56, 70, 0.20);
+  --shadow-sm: 0 4px 16px rgba(26, 51, 64, 0.08);
+  --shadow-md: 0 12px 40px rgba(26, 51, 64, 0.14);
+  --shadow-lg: 0 24px 60px rgba(26, 51, 64, 0.20);
 
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
 }
+
+/* === BRAND COLOR DEPLOYMENT — make the three colors actually visible === */
+
+/* PROMO BANNER → HOT PINK (was orange) */
+.promo-banner {
+  background: linear-gradient(90deg, var(--pink) 0%, var(--pink-bright) 100%) !important;
+}
+
+/* TOPBAR → lighter teal (was black-teal) */
+.topbar {
+  background: var(--teal-darker) !important;
+}
+
+/* AMENITIES dark section → clearly teal (was almost black) */
+.amenities {
+  background: var(--teal-darker) !important;
+}
+
+/* PARALLAX CLOSING sections — switch dark overlay to teal-darker */
+.closing,
+.contact-banner,
+.parking,
+.divider {
+  background-color: var(--teal-darker) !important;
+}
+
+/* OVERVIEW diff section */
+.diff {
+  background: var(--teal-darker) !important;
+}
+
+/* PAGE HEROES → teal overlay instead of generic dark */
+.page-hero {
+  background-color: var(--teal-darker) !important;
+}
+
+/* FOOTER → medium teal (was navy) */
+.footer {
+  background: var(--teal-darker) !important;
+}
+
+/* Two-bedroom card accents → hot pink (clear differentiation from sunset) */
+.suite-card.two-bed::before { background: var(--pink) !important; }
+.suite-card.two-bed .suite-card-tag-pill,
+.suite-card.two-bed .suite-card-tag {
+  background: var(--pink) !important;
+  color: #fff !important;
+}
+.suite-card.two-bed .suite-card-specs li::before { background: var(--pink) !important; }
+.suite-detail.two-bed .suite-detail-photo { border-top-color: var(--pink) !important; }
+.suite-detail.two-bed .suite-detail-tag { color: var(--pink) !important; }
+
+/* Hover states on primary CTAs → switch to TEAL for the second color story */
+.btn-book:hover,
+.btn-primary:hover,
+.btn-light:hover {
+  background: var(--teal) !important;
+  border-color: var(--teal) !important;
+}
+
+/* Section eyebrow underlines and dashes — make a few teal */
+.area-teaser-content .eyebrow,
+.diff-header .eyebrow,
+.contact-block:nth-child(2) .eyebrow {
+  color: var(--teal-deep) !important;
+}
+.area-teaser-content .eyebrow::before,
+.area-teaser-content .eyebrow::after,
+.diff-header .eyebrow::before,
+.diff-header .eyebrow::after {
+  background: var(--teal-deep) !important;
+}
+
+/* Reviews page sources list — pink emphasis on ratings */
+.rating-sources-list em { color: var(--pink) !important; }
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -141,7 +220,7 @@ a:hover { color: var(--bop-orange); }
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.3s ease;
 }
-.nav.scrolled { box-shadow: 0 4px 20px rgba(7, 56, 70, 0.08); }
+.nav.scrolled { box-shadow: 0 4px 20px rgba(29, 111, 126, 0.08); }
 .nav-inner {
   max-width: 1340px; margin: 0 auto; padding: 18px 28px;
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -351,7 +430,7 @@ section { padding: 110px 28px; position: relative; }
   padding: 140px 28px 100px;
   text-align: center;
   background:
-    linear-gradient(rgba(7, 56, 70, 0.65), rgba(7, 56, 70, 0.85)),
+    linear-gradient(rgba(29, 111, 126, 0.65), rgba(29, 111, 126, 0.85)),
     url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg') center/cover no-repeat;
   color: var(--cream);
 }
@@ -491,7 +570,7 @@ section { padding: 110px 28px; position: relative; }
 }
 .closing {
   background:
-    linear-gradient(rgba(7, 56, 70, 0.6), rgba(7, 56, 70, 0.85)),
+    linear-gradient(rgba(29, 111, 126, 0.6), rgba(29, 111, 126, 0.85)),
     url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
   color: var(--cream); padding: 130px 28px; text-align: center;
 }
