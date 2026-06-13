@@ -10,43 +10,51 @@
 <meta name="description" content="Nine designer-appointed apartment suites in the Island City of Wilton Manors. Tropical pool, walking distance to Wilton Drive, minutes to Fort Lauderdale Beach.">
 <style>
 :root {
-  /* Tropical sand & cream */
-  --cream: #faf3e1;
-  --cream-warm: #f4e8c8;
-  --ivory: #fef9eb;
+  /* Sunset cream backgrounds */
+  --cream: #fef6e8;
+  --cream-warm: #fce4b6;
+  --ivory: #fefaf0;
   --paper: #ffffff;
 
-  /* Tropical greens */
-  --palm: #2a8262;
-  --palm-deep: #1a5a40;
-  --palm-darker: #0f3d2c;
-  --palm-light: #65b290;
+  /* Sunset orange / yellow (primary warm accent) */
+  --sunset: #f5a623;
+  --sunset-bright: #ff9d3d;
+  --sunset-soft: #fbcb6e;
+  --sunset-deep: #d88a14;
 
-  /* Bird of Paradise palette */
-  --bop-orange: #e07b32;
-  --bop-orange-bright: #f08a3e;
-  --bop-orange-soft: #f5b88c;
-  --bop-blue: #3a4d8a;
+  /* Teal blue (primary cool / structure) */
+  --teal: #0e7c8c;
+  --teal-deep: #073846;
+  --teal-darker: #04242e;
+  --teal-light: #4ba3b0;
 
-  /* Tropical accents */
-  --coral: #d6557a;
-  --sun: #f0bc3e;
-  --aqua: #4fa8b0;
+  /* Pink (small accent) */
+  --pink: #e98aa6;
+  --pink-bright: #ec5f87;
+  --pink-soft: #f5b5c8;
 
-  /* Legacy gold tokens (mapped for compatibility) */
-  --gold: var(--bop-orange);
-  --gold-deep: #b8662a;
-  --gold-soft: var(--bop-orange-soft);
+  /* Legacy mappings — keep old token names working everywhere */
+  --gold: var(--sunset);
+  --gold-deep: var(--sunset-deep);
+  --gold-soft: var(--sunset-soft);
+  --palm: var(--teal);
+  --palm-deep: var(--teal-deep);
+  --palm-darker: var(--teal-darker);
+  --palm-light: var(--teal-light);
+  --bop-orange: var(--sunset);
+  --bop-orange-bright: var(--sunset-bright);
+  --bop-orange-soft: var(--sunset-soft);
+  --bop-blue: var(--pink);
+  --coral: var(--pink);
 
   --charcoal: #2a2520;
   --charcoal-soft: #5a4f44;
   --line: rgba(42, 37, 32, 0.12);
-  --line-warm: rgba(224, 123, 50, 0.25);
+  --line-warm: rgba(245, 166, 35, 0.25);
 
-  --shadow-sm: 0 4px 16px rgba(26, 90, 64, 0.08);
-  --shadow-md: 0 12px 40px rgba(26, 90, 64, 0.14);
-  --shadow-lg: 0 24px 60px rgba(26, 90, 64, 0.20);
-  --shadow-orange: 0 12px 40px rgba(224, 123, 50, 0.18);
+  --shadow-sm: 0 4px 16px rgba(7, 56, 70, 0.08);
+  --shadow-md: 0 12px 40px rgba(7, 56, 70, 0.14);
+  --shadow-lg: 0 24px 60px rgba(7, 56, 70, 0.20);
 
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Source Sans 3', -apple-system, system-ui, sans-serif;
@@ -133,7 +141,7 @@ a:hover { color: var(--bop-orange); }
   border-bottom: 1px solid var(--line);
   transition: box-shadow 0.3s ease;
 }
-.nav.scrolled { box-shadow: 0 4px 20px rgba(26, 90, 64, 0.08); }
+.nav.scrolled { box-shadow: 0 4px 20px rgba(7, 56, 70, 0.08); }
 .nav-inner {
   max-width: 1340px; margin: 0 auto; padding: 18px 28px;
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
@@ -347,7 +355,7 @@ section { padding: 110px 28px; position: relative; }
 .hero::before {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(to bottom, rgba(15, 61, 44, 0.20) 0%, rgba(15, 61, 44, 0.4) 60%, rgba(15, 61, 44, 0.85) 100%),
+    linear-gradient(to bottom, rgba(7, 56, 70, 0.20) 0%, rgba(7, 56, 70, 0.4) 60%, rgba(7, 56, 70, 0.85) 100%),
     url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg') center/cover no-repeat;
   z-index: 0;
 }
@@ -376,7 +384,7 @@ section { padding: 110px 28px; position: relative; }
 .hero-actions { display: flex; gap: 18px; flex-wrap: wrap; }
 .hero-card {
   background: rgba(250, 243, 225, 0.97); color: var(--charcoal);
-  padding: 36px 32px; box-shadow: 0 30px 80px rgba(15, 61, 44, 0.4);
+  padding: 36px 32px; box-shadow: 0 30px 80px rgba(7, 56, 70, 0.4);
   border-top: 4px solid var(--bop-orange);
 }
 .hero-card-eyebrow {
@@ -446,7 +454,7 @@ section { padding: 110px 28px; position: relative; }
 }
 .sanctuary-grid > div::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(15, 61, 44, 0.6) 100%);
+  background: linear-gradient(180deg, transparent 60%, rgba(7, 56, 70, 0.6) 100%);
   opacity: 0; transition: opacity 0.4s ease;
 }
 .sanctuary-grid > div:hover::after { opacity: 1; }
@@ -485,7 +493,7 @@ section { padding: 110px 28px; position: relative; }
 }
 .suite-card-img::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(15, 61, 44, 0.05) 0%, rgba(15, 61, 44, 0.40) 100%);
+  background: linear-gradient(180deg, rgba(7, 56, 70, 0.05) 0%, rgba(7, 56, 70, 0.40) 100%);
   transition: opacity 0.4s ease;
 }
 .suite-card:hover .suite-card-img::after { opacity: 0.5; }
@@ -494,7 +502,7 @@ section { padding: 110px 28px; position: relative; }
   background: var(--cream); padding: 10px 16px;
   font-family: var(--serif); font-size: 32px; font-weight: 500;
   color: var(--palm-deep); line-height: 0.95; letter-spacing: -0.02em;
-  box-shadow: 0 6px 18px rgba(15, 61, 44, 0.25);
+  box-shadow: 0 6px 18px rgba(7, 56, 70, 0.25);
 }
 .suite-card-num-badge span {
   display: block; font-size: 10px; font-family: var(--sans);
@@ -576,7 +584,7 @@ section { padding: 110px 28px; position: relative; }
   border-right: 1px solid rgba(250, 243, 225, 0.2);
   text-align: center; transition: background 0.3s ease;
 }
-.amenity:hover { background: rgba(224, 123, 50, 0.12); }
+.amenity:hover { background: rgba(245, 166, 35, 0.12); }
 .amenity-icon { display: flex; justify-content: center; margin-bottom: 14px; }
 .amenity-icon svg { width: 30px; height: 36px; }
 .amenity-label {
@@ -594,14 +602,14 @@ section { padding: 110px 28px; position: relative; }
 .area-teaser-visual::before {
   content: ''; position: absolute; inset: 0;
   background:
-    linear-gradient(135deg, rgba(15, 61, 44, 0.25) 0%, rgba(15, 61, 44, 0.5) 100%),
+    linear-gradient(135deg, rgba(7, 56, 70, 0.25) 0%, rgba(7, 56, 70, 0.5) 100%),
     url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg') center/cover no-repeat;
 }
 .area-teaser-overlay {
   position: absolute; bottom: 50px; right: -1px; width: 55%; aspect-ratio: 4/3;
   background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg');
   background-size: cover; background-position: center;
-  box-shadow: -30px -30px 70px rgba(15, 61, 44, 0.5), 0 0 0 1px rgba(224, 123, 50, 0.3);
+  box-shadow: -30px -30px 70px rgba(7, 56, 70, 0.5), 0 0 0 1px rgba(245, 166, 35, 0.3);
   border-top: 4px solid var(--bop-orange);
   border-left: 4px solid var(--bop-orange); z-index: 2;
 }
@@ -618,7 +626,7 @@ section { padding: 110px 28px; position: relative; }
 .area-teaser-quote p {
   font-family: var(--serif); font-style: italic; font-size: 22px;
   line-height: 1.4; color: var(--cream);
-  text-shadow: 0 2px 16px rgba(15, 61, 44, 0.7); margin: 0;
+  text-shadow: 0 2px 16px rgba(7, 56, 70, 0.7); margin: 0;
 }
 .area-teaser-content {
   background: var(--cream); padding: 100px 80px 100px 90px;
@@ -684,7 +692,7 @@ section { padding: 110px 28px; position: relative; }
 
 .closing {
   background:
-    linear-gradient(rgba(15, 61, 44, 0.6), rgba(15, 61, 44, 0.85)),
+    linear-gradient(rgba(7, 56, 70, 0.6), rgba(7, 56, 70, 0.85)),
     url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
   color: var(--cream); padding: 140px 28px; text-align: center;
 }
@@ -1265,12 +1273,12 @@ section { padding: 110px 28px; position: relative; }
 <section class="welcome">
   <div class="welcome-inner fade-up">
     <div class="welcome-bop"><svg class="bop bop-lg" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div>
     <div class="eyebrow center">A Welcome From Paradise</div>
     <h2>Lavish Apartment Suites,<br>Priced Like a <em>Hotel Room.</em></h2>
@@ -1547,68 +1555,68 @@ section { padding: 110px 28px; position: relative; }
     </div>
     <div class="amenities-grid fade-up">
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Heated Tropical Pool</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Hot Tub &amp; Cabanas</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Lush Gardens &amp; Pergolas</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Fully Equipped Kitchens</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">In-Suite Washer/Dryer</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Free Private Parking</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Walk to Wilton Drive</div></div>
       <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#e07b32"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#e07b32"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#e07b32"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#3a4d8a"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#1a5a40"/>
-<rect x="23" y="38" width="2" height="20" fill="#1a5a40"/>
+<path d="M24 36 L12 8 L18 14 Z" fill="#f5a623"/>
+<path d="M24 36 L24 4 L26 12 Z" fill="#f5a623"/>
+<path d="M24 36 L36 8 L30 14 Z" fill="#f5a623"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#e98aa6"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#073846"/>
+<rect x="23" y="38" width="2" height="20" fill="#073846"/>
 </svg></div><div class="amenity-label">Adults-Only Sanctuary</div></div>
     </div>
   </div>
