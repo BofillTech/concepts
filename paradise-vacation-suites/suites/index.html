@@ -574,6 +574,77 @@ section { padding: 110px 28px; position: relative; }
   .closing { padding: 80px 22px; background-attachment: scroll; }
   .closing-actions { flex-direction: column; align-items: stretch; }
 }
+
+.suite-comparison {
+  background: var(--cream); padding: 90px 28px 60px;
+  border-bottom: 1px solid var(--line);
+}
+.suite-comparison-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+.suite-comparison-header h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(34px, 5vw, 54px); line-height: 1.05;
+  color: var(--teal-darker); margin-bottom: 16px;
+}
+.suite-comparison-header h2 em { color: var(--sunset); font-style: italic; }
+.suite-comparison-sub { font-size: 16px; color: var(--charcoal-soft); }
+.suite-comparison-table-wrap {
+  max-width: 1180px; margin: 0 auto;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow-md); background: var(--paper);
+}
+.suite-comparison-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--paper);
+}
+.suite-comparison-table thead th {
+  padding: 22px 18px;
+  text-align: left;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--cream);
+  background: var(--teal-darker);
+  border-bottom: 3px solid var(--sunset);
+}
+.suite-comparison-table thead th:first-child { background: var(--charcoal); }
+.suite-comparison-table tbody td {
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px; color: var(--charcoal-soft);
+  vertical-align: middle;
+}
+.suite-comparison-table tbody tr:hover td { background: rgba(245, 185, 66, 0.06); }
+.suite-comparison-table tbody tr:last-child td { border-bottom: none; }
+.suite-comparison-table .suite-num {
+  font-family: var(--serif); font-weight: 500;
+  font-size: 22px; color: var(--teal-darker);
+}
+.suite-comparison-table .suite-num span {
+  display: block; font-family: var(--sans); font-size: 9px;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--sunset-deep); font-weight: 700; margin-bottom: 2px;
+}
+.suite-comparison-table .suite-num.two span { color: var(--pink-deep); }
+.suite-comparison-table .rate {
+  font-family: var(--serif); font-size: 18px;
+  color: var(--sunset-deep); font-weight: 500;
+}
+.suite-comparison-table .rate.two { color: var(--pink-deep); }
+.suite-comparison-table .two-bed-row { background: rgba(236, 72, 153, 0.04); }
+.suite-comparison-table a {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-weight: 700; color: var(--sunset-deep);
+}
+.suite-comparison-table .two-bed-row a { color: var(--pink-deep); }
+.suite-comparison-footnote {
+  max-width: 920px; margin: 30px auto 0;
+  text-align: center; font-size: 14px; color: var(--charcoal-soft); font-style: italic;
+}
+@media (max-width: 768px) {
+  .suite-comparison { padding: 60px 12px 40px; }
+  .suite-comparison-table thead th { font-size: 10px; padding: 14px 10px; letter-spacing: 0.08em; }
+  .suite-comparison-table tbody td { padding: 12px 10px; font-size: 13px; }
+  .suite-comparison-table .suite-num { font-size: 18px; }
+  .suite-comparison-table .rate { font-size: 15px; }
+}
 </style>
 <link rel="canonical" href="https://paradisevacationsuites.com/suites/">
 <meta property="og:type" content="website">
@@ -1045,13 +1116,51 @@ section { padding: 110px 28px; position: relative; }
   <div class="page-hero-inner">
     <div class="eyebrow center light">Our Nine Suites</div>
     <h1>Pick Your<br><em>Suite by Number.</em></h1>
-    <p>Six one-bedroom apartments and three two-bedroom villas. Every one fully equipped, designer-appointed, and ten minutes on foot from the heart of Wilton Drive.</p>
+    <p>Six one-bedroom apartments and three two-bedroom villas. Every one fully equipped, designer-appointed, and 10 minutes on foot (0.5 miles) from the heart of Wilton Drive.</p>
   </div>
 </section>
 
 <section class="intro">
   <div class="intro-inner fade-up">
     <p>"Our suites are full apartments — kitchen, washer/dryer, real living room, the comfort of home. Then you step outside and the whole property is yours: pool, gardens, hot tub, the pergolas. It's the size of a boutique hotel with the privacy of a vacation rental. <em>That's what makes Paradise different.</em>"</p>
+  </div>
+</section>
+
+<section class="suite-comparison">
+  <div class="container">
+    <div class="suite-comparison-header fade-up">
+      <div class="eyebrow center">At a Glance</div>
+      <h2>All Nine Suites,<br><em>Side by Side.</em></h2>
+      <p class="suite-comparison-sub">A quick reference to help you narrow the choice. Detailed descriptions of each suite follow below.</p>
+    </div>
+    <div class="suite-comparison-table-wrap fade-up">
+      <table class="suite-comparison-table">
+        <thead>
+          <tr>
+            <th>Suite</th>
+            <th>Type</th>
+            <th>Sleeps</th>
+            <th>Bedrooms</th>
+            <th>Baths</th>
+            <th>Size</th>
+            <th>Starting Rate</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="suite-num"><span>Apt.</span> 01</td><td>Garden View</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-01">View →</a></td></tr>
+          <tr><td class="suite-num"><span>Apt.</span> 02</td><td>Pool View</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-02">View →</a></td></tr>
+          <tr><td class="suite-num"><span>Apt.</span> 03</td><td>Pergola</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-03">View →</a></td></tr>
+          <tr><td class="suite-num"><span>Apt.</span> 04</td><td>Palm</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-04">View →</a></td></tr>
+          <tr><td class="suite-num"><span>Apt.</span> 05</td><td>Hibiscus</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-05">View →</a></td></tr>
+          <tr><td class="suite-num"><span>Apt.</span> 06</td><td>Bougainvillea</td><td>2</td><td>1</td><td>1</td><td>~800 sq ft</td><td class="rate">$99 /night</td><td><a href="#apt-06">View →</a></td></tr>
+          <tr class="two-bed-row"><td class="suite-num two"><span>Suite</span> 2112</td><td>Garden Villa</td><td>4–6</td><td>2</td><td>2</td><td>1,150 sq ft</td><td class="rate two">$170 /night</td><td><a href="#apt-2112">View →</a></td></tr>
+          <tr class="two-bed-row"><td class="suite-num two"><span>Suite</span> 2120</td><td>Poolside Villa</td><td>4–6</td><td>2</td><td>2</td><td>1,150 sq ft</td><td class="rate two">$170 /night</td><td><a href="#apt-2120">View →</a></td></tr>
+          <tr class="two-bed-row"><td class="suite-num two"><span>Suite</span> 2124</td><td>Premier Villa</td><td>4–6</td><td>2</td><td>2</td><td>1,150 sq ft</td><td class="rate two">$170 /night</td><td><a href="#apt-2124">View →</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="suite-comparison-footnote">Every suite includes a full kitchen, in-suite washer/dryer, premium linens, dedicated workspace, business-class wifi, pool access, and assigned on-site parking.</p>
   </div>
 </section>
 
@@ -1337,34 +1446,25 @@ section { padding: 110px 28px; position: relative; }
       <p>An exclusive collection of nine apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
       <p><a href="tel:954-868-5671">954-868-5671</a></p>
     </div>
-    <div>
-      <h4>Stay With Us</h4>
-      <ul>
-        <li><a href=".././suites/">All Nine Suites</a></li>
-        <li><a href=".././overview/">Property Overview</a></li>
-        <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
-        <li><a href=".././reviews/">Reviews</a></li>
-        <li><a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book Now</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>The Neighborhood</h4>
-      <ul>
-        <li><a href=".././area/">Wilton Drive Area</a></li>
-        <li><a href=".././area/#walking">Walking Map</a></li>
-        <li><a href=".././area/#driving">Greater Fort Lauderdale</a></li>
-        <li><a href=".././contact/">Directions &amp; Parking</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Helpful</h4>
-      <ul>
-        <li><a href=".././contact/">Contact</a></li>
-        <li><a href=".././faq/">FAQ</a></li>
-        <li><a href="https://paradisevacationsuites.com/terms-conditions/">Terms &amp; Conditions</a></li>
-        <li><a href="https://paradisevacationsuites.com/privacy-policy/">Privacy Policy</a></li>
-      </ul>
-    </div>
+    <div><h4>Stay With Us</h4><ul>
+      <li><a href=".././suites/">All Nine Suites</a></li>
+      <li><a href=".././overview/">Property Overview</a></li>
+      <li><a href=".././why-paradise/">Why Paradise</a></li>
+      <li><a href=".././long-term-stays/">Long-Term Stays</a></li>
+      <li><a href=".././reviews/">Reviews</a></li>
+    </ul></div>
+    <div><h4>The Neighborhood</h4><ul>
+      <li><a href=".././area/">Wilton Drive Area</a></li>
+      <li><a href=".././wilton-manors-guide/">Wilton Manors Guide</a></li>
+      <li><a href=".././lgbtq-fort-lauderdale/">LGBTQ+ Fort Lauderdale</a></li>
+      <li><a href=".././contact/">Directions &amp; Parking</a></li>
+    </ul></div>
+    <div><h4>Helpful</h4><ul>
+      <li><a href=".././contact/">Contact</a></li>
+      <li><a href=".././faq/">FAQ</a></li>
+      <li><a href="https://paradisevacationsuites.com/terms-conditions/">Terms &amp; Conditions</a></li>
+      <li><a href="https://paradisevacationsuites.com/privacy-policy/">Privacy Policy</a></li>
+    </ul></div>
   </div>
   <div class="footer-bottom">
     <span>© 2026 Paradise Vacation Suites. All rights reserved.</span>
