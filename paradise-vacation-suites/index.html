@@ -35,10 +35,10 @@
   --teal-darker: #0c6770;
 
   /* Hot pink */
-  --pink: #ec4899;
-  --pink-bright: #ff5fa8;
-  --pink-soft: #f7b3d4;
-  --pink-deep: #c8327a;
+  --pink: #e88aa6;
+  --pink-bright: #f06292;
+  --pink-soft: #f5c0d4;
+  --pink-deep: #c44872;
 
   /* Legacy token aliases (preserve all old refs without changing them) */
   --gold: var(--sunset);
@@ -831,6 +831,75 @@ section { padding: 110px 28px; position: relative; }
   .closing { padding: 90px 22px; background-attachment: scroll; }
   .closing-actions { flex-direction: column; align-items: stretch; }
 }
+
+.amenities { background: var(--teal-darker); color: var(--cream); padding: 110px 28px; }
+.amenities h2 { color: var(--cream); }
+.amenities-header { text-align: center; max-width: 760px; margin: 0 auto 60px; }
+.amenities-header p { color: rgba(254, 246, 232, 0.85); }
+.amenities-gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px; max-width: 1240px; margin: 0 auto;
+}
+.amenity-tile {
+  aspect-ratio: 4/3;
+  background-size: cover; background-position: center;
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.amenity-tile.placeholder {
+  background: linear-gradient(135deg, var(--teal-deep) 0%, var(--teal-darker) 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.amenity-tile.placeholder svg { width: 60px; height: 75px; opacity: 0.5; }
+.amenity-tile::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7, 56, 70, 0) 35%, rgba(7, 56, 70, 0.88) 100%);
+  pointer-events: none;
+}
+.amenity-tile:hover { transform: scale(1.015); }
+.amenity-tile-overlay {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 24px 26px; z-index: 2;
+  color: var(--cream);
+}
+.amenity-tile-title {
+  font-family: var(--serif); font-weight: 500; font-size: 22px;
+  margin-bottom: 4px; line-height: 1.25;
+}
+.amenity-tile-meta {
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--sunset-bright); font-weight: 700;
+}
+.amenities-also {
+  max-width: 880px; margin: 50px auto 0;
+  padding-top: 40px; border-top: 1px solid rgba(254, 246, 232, 0.2);
+  text-align: center;
+}
+.amenities-also-label {
+  font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+  color: var(--sunset-bright); font-weight: 700; margin-bottom: 16px;
+}
+.amenities-also-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; gap: 8px 0;
+  justify-content: center; font-size: 15px;
+  color: rgba(254, 246, 232, 0.92);
+}
+.amenities-also-list li {
+  padding: 0 18px; position: relative;
+}
+.amenities-also-list li:not(:last-child)::after {
+  content: ''; position: absolute; right: -2px; top: 50%;
+  transform: translateY(-50%); width: 3px; height: 3px; border-radius: 50%;
+  background: var(--sunset);
+}
+
+@media (max-width: 768px) {
+  .amenities-gallery { grid-template-columns: 1fr; gap: 14px; }
+  .amenity-tile-overlay { padding: 18px 20px; }
+  .amenities-also-list { flex-direction: column; }
+  .amenities-also-list li::after { display: none; }
+}
 </style>
 <link rel="canonical" href="https://paradisevacationsuites.com/">
 <meta property="og:type" content="website">
@@ -907,11 +976,6 @@ section { padding: 110px 28px; position: relative; }
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "Hot Tub",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
       "name": "Free Parking",
       "value": true
     },
@@ -927,17 +991,12 @@ section { padding: 110px 28px; position: relative; }
     },
     {
       "@type": "LocationFeatureSpecification",
-      "name": "In-Suite Laundry",
+      "name": "Laundry Access (in-suite 2BR, complex-wide 1BR)",
       "value": true
     },
     {
       "@type": "LocationFeatureSpecification",
       "name": "Tropical Gardens",
-      "value": true
-    },
-    {
-      "@type": "LocationFeatureSpecification",
-      "name": "Adults-Only",
       "value": true
     },
     {
@@ -975,7 +1034,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1008,7 +1067,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1041,7 +1100,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1074,7 +1133,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1107,7 +1166,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1140,7 +1199,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1173,7 +1232,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1206,7 +1265,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1239,7 +1298,7 @@ section { padding: 110px 28px; position: relative; }
         },
         {
           "@type": "LocationFeatureSpecification",
-          "name": "In-Suite Washer/Dryer",
+          "name": "Laundry Access",
           "value": true
         },
         {
@@ -1291,7 +1350,7 @@ section { padding: 110px 28px; position: relative; }
       "@type": "HowToStep",
       "position": 1,
       "name": "Choose your suite",
-      "text": "Browse the nine suites at paradisevacationsuites.com/suites/ \u2014 six one-bedroom apartments from $99/night and three two-bedroom villas from $170/night. Each suite is fully equipped with kitchen, in-suite laundry, and pool access."
+      "text": "Browse the suites at paradisevacationsuites.com/suites/ \u2014 six one-bedroom apartments from $99/night and three two-bedroom villas from $170/night. Each suite is fully equipped with kitchen, laundry access, and pool access."
     },
     {
       "@type": "HowToStep",
@@ -1370,8 +1429,8 @@ section { padding: 110px 28px; position: relative; }
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow">Wilton Manors · Fort Lauderdale</div>
-      <h1>Your private<br>place on <em>The Drive.</em></h1>
-      <p class="hero-sub">Nine designer-appointed apartment suites tucked around a tropical pool. Five-star comfort with the privacy of your own place — and the whole of Wilton Drive, 10 minutes on foot (0.5 miles).</p>
+      <h1>An apartment in <em>paradise.</em></h1>
+      <p class="hero-sub">Designer-appointed apartment suites tucked around a tropical pool in the Island City of Wilton Manors. Five-star comfort with the privacy of your own place — and the whole neighborhood a short walk away.</p>
       <div class="hero-actions">
         <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-light">Check Availability</a>
         <a href="./suites/" class="btn-light-outline">Explore the Suites</a>
@@ -1394,17 +1453,17 @@ section { padding: 110px 28px; position: relative; }
 <path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
 <path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
 <path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
+<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
 <ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
 <rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
 </svg></div>
     <div class="eyebrow center">A Welcome From Paradise</div>
     <h2>Lavish Apartment Suites,<br>Priced Like a <em>Hotel Room.</em></h2>
-    <p class="lead">Nine apartment suites in the Island City of Wilton Manors — South Florida's only true Island City, ringed by the New River.</p>
-    <p>Each suite is an actual apartment: full kitchen, in-suite washer/dryer, premium linens, dedicated workspace, and the famously comfortable beds our guests email us about. Outside your door, a tropical pool surrounded by pergolas, hot tub, and lush gardens. Beyond the gate, the buzzing bars and restaurants of Wilton Drive — a flat 10-minute walk (0.5 miles via NE 26th Street to NE 5th Avenue).</p>
+    <p class="lead">An exclusive collection of apartment suites in the Island City of Wilton Manors — South Florida's only true Island City, ringed by the New River.</p>
+    <p>Each suite is an actual apartment: full kitchen, premium linens, dedicated workspace, and the famously comfortable beds our guests email us about. Outside your door, a tropical pool surrounded by pergolas and lush gardens. Beyond the gate, the buzzing bars and restaurants of Wilton Drive — a flat 10-minute walk (0.5 miles via NE 26th Street to NE 5th Avenue).</p>
     <div class="welcome-stats">
       <div><span class="stat-num"><em>4.9</em></span><span class="stat-label">Average<br>Guest Rating</span></div>
-      <div><span class="stat-num"><em>9</em></span><span class="stat-label">Apartment<br>Suites</span></div>
+      <div><span class="stat-num"><em>200+</em></span><span class="stat-label">Verified<br>Reviews</span></div>
       <div><span class="stat-num"><em>10</em></span><span class="stat-label">Minutes Walk to<br>Wilton Drive</span></div>
       <div><span class="stat-num"><em>18</em></span><span class="stat-label">Minute Drive<br>To The Beach</span></div>
     </div>
@@ -1419,7 +1478,7 @@ section { padding: 110px 28px; position: relative; }
         <h2>The Pool. The Palms.<br><em>The Place You Stay.</em></h2>
       </div>
       <div>
-        <p>Pergolas, palms, fountains, the heated pool, the ten-person hot tub, the night lighting that turns the gardens into something out of a postcard. Just nine suites tucked around all of it — no resort buffet, no crowds, no parade of strangers wandering past your door.</p>
+        <p>Pergolas, palms, fountains, the heated pool, the night lighting that turns the gardens into something out of a postcard. Tucked around all of it — no resort buffet, no crowds, no parade of strangers wandering past your door.</p>
         <p style="margin-top: 14px;"><a href="./overview/" style="font-weight:600; letter-spacing:0.08em; text-transform:uppercase; font-size:13px; color: var(--bop-orange);">More about the property →</a></p>
       </div>
     </div>
@@ -1435,11 +1494,11 @@ section { padding: 110px 28px; position: relative; }
   <div class="container">
     <div class="suites-header fade-up">
       <div>
-        <div class="eyebrow">Our Nine Suites</div>
+        <div class="eyebrow">The Suites</div>
         <h2>Choose Your<br><em>Suite by Number.</em></h2>
       </div>
       <div>
-        <p>Six one-bedroom apartments and three two-bedroom villas, each designer-appointed with a fully equipped kitchen, in-suite laundry, and our signature pillow-top beds. Pick yours by number — they all open onto the same tropical pool, but each has its own personality.</p>
+        <p>One-bedroom apartments and two-bedroom villas, each designer-appointed with a fully equipped kitchen, laundry access, and our signature pillow-top beds. Pick yours by number — they all open onto the same tropical pool, but each has its own personality.</p>
         <p style="margin-top: 14px;"><a href="./suites/" style="font-weight:600; letter-spacing:0.08em; text-transform:uppercase; font-size:13px; color: var(--bop-orange);">Full suite details →</a></p>
       </div>
     </div>
@@ -1456,7 +1515,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1480,7 +1539,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1504,7 +1563,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1528,7 +1587,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1552,7 +1611,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1576,7 +1635,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>1 Bath</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>~800 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>Laundry Access</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1600,7 +1659,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>2 Baths</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>1,150 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>In-Suite Laundry</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1624,7 +1683,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>2 Baths</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>1,150 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>In-Suite Laundry</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1648,7 +1707,7 @@ section { padding: 110px 28px; position: relative; }
       <li><strong>2 Baths</strong></li>
       <li><strong>Full Kitchen</strong></li>
       <li><strong>1,150 sq ft</strong></li>
-      <li>Washer / Dryer</li>
+      <li>In-Suite Laundry</li>
       <li>Pool Access</li>
     </ul>
     <div class="suite-card-rate">
@@ -1668,74 +1727,72 @@ section { padding: 110px 28px; position: relative; }
   <div class="container">
     <div class="amenities-header fade-up">
       <div class="eyebrow center light">The Property</div>
-      <h2>Everything You'd Find at a Resort,<br><em>Except the Crowd.</em></h2>
-      <p>Just nine suites tucked around a tropical pool — the amenities of a much larger property and the privacy of a much smaller one.</p>
+      <h2>A Tropical Resort,<br><em>at Boutique Scale.</em></h2>
+      <p>Built around a tropical pool — the amenities of a much larger property and the privacy of a much smaller one.</p>
     </div>
-    <div class="amenities-grid fade-up">
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <div class="amenities-gallery fade-up">
+      <div class="amenity-tile" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Heated Tropical Pool</div>
+          <div class="amenity-tile-meta">84°F · Year-Round</div>
+        </div>
+      </div>
+      <div class="amenity-tile" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Lush Tropical Gardens</div>
+          <div class="amenity-tile-meta">Palms · Fountains · Bougainvillea</div>
+        </div>
+      </div>
+      <div class="amenity-tile" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Pergola Dining</div>
+          <div class="amenity-tile-meta">Outdoor · Shaded · Cabanas</div>
+        </div>
+      </div>
+      <div class="amenity-tile" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Magical Night Lighting</div>
+          <div class="amenity-tile-meta">Gardens After Dark</div>
+        </div>
+      </div>
+      <div class="amenity-tile placeholder">
+        <svg viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
 <path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
 <path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Heated Pool (84°F Year-Round)</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#19b6c5"/>
+<rect x="23" y="38" width="2" height="20" fill="#19b6c5"/>
+</svg>
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Fully Equipped Kitchens</div>
+          <div class="amenity-tile-meta">Real Cookware · Stocked Pantry</div>
+        </div>
+      </div>
+      <div class="amenity-tile placeholder">
+        <svg viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
 <path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
 <path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
 <path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Hot Tub &amp; Cabanas</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Lush Gardens &amp; Pergolas</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Fully Equipped Kitchens</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">In-Suite Washer/Dryer</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Free Private Parking</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Walk to Wilton Drive</div></div>
-      <div class="amenity"><div class="amenity-icon"><svg class="bop" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#ec4899"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#0c6770"/>
-<rect x="23" y="38" width="2" height="20" fill="#0c6770"/>
-</svg></div><div class="amenity-label">Adults-Only Sanctuary</div></div>
+<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
+<ellipse cx="24" cy="38" rx="10" ry="3" fill="#19b6c5"/>
+<rect x="23" y="38" width="2" height="20" fill="#19b6c5"/>
+</svg>
+        <div class="amenity-tile-overlay">
+          <div class="amenity-tile-title">Free On-Site Parking</div>
+          <div class="amenity-tile-meta">Gated · Assigned · Included</div>
+        </div>
+      </div>
+    </div>
+    <div class="amenities-also fade-up">
+      <div class="amenities-also-label">Also Included</div>
+      <ul class="amenities-also-list">
+        <li>Premium Linens</li>
+        <li>Business-Class Wi-Fi</li>
+        <li>Dedicated Workspace</li>
+        <li>Complimentary Toiletries</li>
+        <li>Laundry Access</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -1790,7 +1847,7 @@ section { padding: 110px 28px; position: relative; }
       </article>
       <article class="review-card">
         <div class="review-card-stars">★★★★★</div>
-        <p class="review-card-quote">Beautifully maintained property, a great quiet place to relax. The suite was like staying in a condo — full kitchen, in-suite laundry. Less expensive than every other option in the neighborhood.</p>
+        <p class="review-card-quote">Beautifully maintained property, a great quiet place to relax. The suite was like staying in a condo — full kitchen, laundry access. Less expensive than every other option in the neighborhood.</p>
         <div class="review-card-author">
           <div class="review-card-author-name">Susan T.</div>
           <div class="review-card-author-meta">Apt. 04 · Winter '26</div>
@@ -1829,11 +1886,11 @@ section { padding: 110px 28px; position: relative; }
   <div class="footer-inner">
     <div class="footer-brand">
       <div class="footer-brand-logo">Paradise Vacation Suites</div>
-      <p>An exclusive collection of nine apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
+      <p>An exclusive collection of boutique apartment suites in the Island City of Wilton Manors, in the heart of Fort Lauderdale.</p>
       <p><a href="tel:954-868-5671">954-868-5671</a></p>
     </div>
     <div><h4>Stay With Us</h4><ul>
-      <li><a href="./suites/">All Nine Suites</a></li>
+      <li><a href="./suites/">Every Suite</a></li>
       <li><a href="./overview/">Property Overview</a></li>
       <li><a href="./why-paradise/">Why Paradise</a></li>
       <li><a href="./long-term-stays/">Long-Term Stays</a></li>
