@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Horizons Beach Resort — North Truro, Cape Cod</title>
+<meta name="description" content="A beachfront resort on Cape Cod Bay in North Truro — 500 feet of beach, a bayside pool, private sun decks, and the only sunsets over the Atlantic on the East Coast.">
+<link rel="canonical" href="https://www.horizonsbeach.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Horizons Beach Resort — North Truro, Cape Cod">
+<meta property="og:description" content="Tranquil beachfront lodging on Cape Cod Bay, where the sun sets over the sea.">
+<meta name="geo.region" content="US-MA">
+<meta name="geo.placename" content="North Truro, Massachusetts">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --shell:#faf6ef;        /* warm shell paper */
+    --shell-2:#f1eadf;       /* sand tint band */
+    --ink:#2b2723;           /* warm near-black */
+    --ink-soft:#6f6759;      /* muted taupe */
+    --line:#ded5c6;          /* hairline */
+    --night:#23272a;         /* driftwood-dusk dark band */
+    --accent:#c16a4e;        /* sunset clay — the single accent */
+    --accent-deep:#a4543b;
+    --maxw:1200px;
+    --ease:cubic-bezier(.4,0,.1,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Montserrat',system-ui,sans-serif;
+    color:var(--ink);background:var(--shell);
+    font-weight:400;line-height:1.7;font-size:16px;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:.01em}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+    font-weight:500;color:var(--accent);
+  }
+  .skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200}
+  .skip:focus{left:8px;top:8px}
+
+  /* ---------- NAV ---------- */
+  .nav{
+    position:fixed;top:0;left:0;width:100%;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 28px;transition:background .4s var(--ease),padding .4s var(--ease),box-shadow .4s var(--ease);
+  }
+  .nav__brand{display:flex;flex-direction:column;line-height:1;color:#fff;transition:color .4s var(--ease)}
+  .nav__name{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;letter-spacing:.02em}
+  .nav__sub{font-size:.56rem;letter-spacing:.34em;text-transform:uppercase;margin-top:4px;font-weight:500;opacity:.85}
+  .nav__links{display:flex;gap:30px;align-items:center}
+  .nav__links a{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:#fff;transition:color .3s,opacity .3s;opacity:.92}
+  .nav__links a:hover{opacity:1;color:var(--accent)}
+  .nav__actions{display:flex;align-items:center;gap:18px}
+  .nav__phone{display:flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.08em;color:#fff;font-weight:500;white-space:nowrap}
+  .nav__phone svg{width:15px;height:15px;fill:var(--accent)}
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;
+    font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+    padding:13px 26px;border:1px solid var(--accent);border-radius:2px;cursor:pointer;
+    transition:background .3s,color .3s,transform .3s;white-space:nowrap;
+  }
+  .btn:hover{background:var(--accent-deep);border-color:var(--accent-deep);transform:translateY(-1px)}
+  .btn--ghost{background:transparent;border-color:rgba(255,255,255,.6);color:#fff}
+  .btn--ghost:hover{background:#fff;border-color:#fff;color:var(--ink);transform:translateY(-1px)}
+  .nav__toggle{display:none;background:none;border:0;cursor:pointer;width:30px;height:22px;position:relative}
+  .nav__toggle span{position:absolute;left:0;width:100%;height:2px;background:#fff;transition:.3s;transform-origin:center}
+  .nav__toggle span:nth-child(1){top:0}
+  .nav__toggle span:nth-child(2){top:10px}
+  .nav__toggle span:nth-child(3){top:20px}
+
+  /* scrolled state */
+  .nav.scrolled{background:var(--shell);padding:14px 28px;box-shadow:0 1px 0 var(--line)}
+  .nav.scrolled .nav__brand{color:var(--ink)}
+  .nav.scrolled .nav__links a{color:var(--ink)}
+  .nav.scrolled .nav__phone{color:var(--ink)}
+  .nav.scrolled .nav__toggle span{background:var(--ink)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:100vh;min-height:600px;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .hero__bg{position:absolute;inset:0;background:url('img/hero.jpg') center 60%/cover no-repeat;animation:zoom 26s var(--ease) forwards}
+  @keyframes zoom{from{transform:scale(1.0)}to{transform:scale(1.12)}}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.42) 0%,rgba(20,20,20,.12) 38%,rgba(20,20,20,.30) 100%)}
+  .hero__inner{position:relative;z-index:2;text-align:center;color:#fff;padding:0 24px;max-width:980px}
+  .hero__eyebrow{color:#fff;opacity:.95;margin-bottom:26px;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+  .hero h1{font-size:clamp(2.9rem,7vw,6rem);font-weight:500;text-shadow:0 2px 30px rgba(0,0,0,.4)}
+  .hero h1 em{font-style:italic;font-weight:400}
+  .hero__cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2}
+  .hero__cue span{display:block;width:1px;height:46px;background:rgba(255,255,255,.7);margin:0 auto;animation:cue 2.2s var(--ease) infinite}
+  @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{position:relative}
+  .pad{padding:clamp(80px,12vw,150px) 0}
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- WELCOME ---------- */
+  .welcome .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,7vw,96px);align-items:center}
+  .welcome__copy .eyebrow{margin-bottom:22px}
+  .welcome__copy h2{font-size:clamp(2.1rem,4vw,3.2rem);margin-bottom:26px}
+  .welcome__copy p{color:var(--ink-soft);max-width:46ch;margin-bottom:18px;font-weight:300}
+  .welcome__fig{position:relative}
+  .welcome__fig img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px}
+  .welcome__fig figcaption{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:14px;text-align:right}
+  .stats{display:flex;gap:48px;margin-top:38px;flex-wrap:wrap}
+  .stat__n{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--accent);line-height:1}
+  .stat__l{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+
+  /* ---------- FULL-BLEED SIGNATURE / INTERLUDE ---------- */
+  .cine{position:relative;height:78vh;min-height:480px;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;overflow:hidden}
+  .cine__bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.03)}
+  .cine::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(25,22,20,.34),rgba(25,22,20,.5))}
+  .cine__inner{position:relative;z-index:2;max-width:840px;padding:0 28px}
+  .cine__inner .eyebrow{color:#fff;opacity:.9}
+  .cine__inner h2{font-size:clamp(2rem,4.6vw,3.6rem);margin:20px 0 0;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+  .cine__inner h2 em{font-style:italic;font-weight:400}
+  .cine__inner p{font-weight:300;margin-top:22px;color:rgba(255,255,255,.92);max-width:62ch;margin-left:auto;margin-right:auto}
+
+  /* ---------- STAYS (alternating bands, NO card grid) ---------- */
+  .stays{background:var(--shell)}
+  .stays__head{text-align:center;max-width:660px;margin:0 auto clamp(48px,7vw,84px)}
+  .stays__head h2{font-size:clamp(2.2rem,4.4vw,3.4rem);margin:18px 0 16px}
+  .stays__head p{color:var(--ink-soft);font-weight:300}
+  .stay{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,5vw,80px);align-items:center;margin-bottom:clamp(60px,9vw,120px)}
+  .stay:last-child{margin-bottom:0}
+  .stay--rev .stay__media{order:2}
+  .stay__media img{width:100%;aspect-ratio:5/4;object-fit:cover;border-radius:2px}
+  .stay__body .stay__no{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--accent)}
+  .stay__body h3{font-size:clamp(1.9rem,3.4vw,2.7rem);margin:6px 0 18px}
+  .stay__body p{color:var(--ink-soft);font-weight:300;max-width:48ch;margin-bottom:22px}
+  .stay__feat{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+  .stay__feat span{display:flex;align-items:center;gap:8px}
+  .stay__feat span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  /* ---------- AMENITIES (minimal list, no cards) ---------- */
+  .amen{background:var(--shell-2)}
+  .amen__head{text-align:center;margin-bottom:clamp(40px,6vw,64px)}
+  .amen__head h2{font-size:clamp(2.1rem,4vw,3.1rem);margin-top:16px}
+  .amen__list{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(40px,7vw,90px);max-width:860px;margin:0 auto}
+  .amen__row{display:flex;align-items:center;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .amen__row svg{width:26px;height:26px;stroke:var(--accent);fill:none;stroke-width:1.4;flex:none}
+  .amen__row b{font-weight:500;font-size:.96rem;letter-spacing:.01em}
+  .amen__row small{display:block;color:var(--ink-soft);font-size:.78rem;font-weight:300;letter-spacing:.01em;text-transform:none}
+
+  /* ---------- GALLERY (asymmetric editorial) ---------- */
+  .gallery{background:var(--shell)}
+  .gallery__head{text-align:center;margin-bottom:clamp(36px,5vw,56px)}
+  .gallery__head h2{font-size:clamp(2.1rem,4vw,3.1rem);margin-top:14px}
+  .mosaic{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+  .mosaic img{width:100%;height:100%;object-fit:cover;border-radius:2px;transition:transform .8s var(--ease)}
+  .mosaic figure{overflow:hidden;border-radius:2px}
+  .mosaic figure:hover img{transform:scale(1.05)}
+  .m-wide{grid-column:span 2}
+  .m-tall{grid-row:span 2}
+
+  /* ---------- LOCATION ---------- */
+  .loc{background:var(--night);color:#fff}
+  .loc .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+  .loc h2{font-size:clamp(2.1rem,4vw,3.1rem);margin:16px 0 22px;color:#fff}
+  .loc p{color:rgba(255,255,255,.74);font-weight:300;margin-bottom:18px;max-width:46ch}
+  .loc__tags{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0 30px}
+  .loc__tags span{border:1px solid rgba(255,255,255,.24);border-radius:40px;padding:8px 16px;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82)}
+  .loc__addr{font-style:normal;color:rgba(255,255,255,.86);font-weight:300;line-height:1.9;margin-bottom:8px}
+  .loc__map{width:100%;aspect-ratio:4/3;border:0;border-radius:2px;filter:grayscale(.3) contrast(.95)}
+
+  /* ---------- FINAL CTA ---------- */
+  .final{position:relative;text-align:center;color:#fff;overflow:hidden;padding:clamp(100px,16vw,190px) 0}
+  .final__bg{position:absolute;inset:0;background:url('img/boardwalk.jpg') center/cover no-repeat}
+  .final::after{content:"";position:absolute;inset:0;background:rgba(25,22,20,.5)}
+  .final__inner{position:relative;z-index:2}
+  .final h2{font-size:clamp(2.3rem,5vw,4rem);margin-bottom:14px}
+  .final h2 em{font-style:italic;font-weight:400}
+  .final p{font-weight:300;color:rgba(255,255,255,.9);margin-bottom:34px}
+  .final__actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .final .nav__phone{justify-content:center;margin-top:24px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#1b1f21;color:rgba(255,255,255,.7);padding:64px 0 30px}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot__name{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#fff;font-weight:600;letter-spacing:.02em}
+  .foot__sub{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-top:6px;margin-bottom:18px}
+  .foot p{font-weight:300;font-size:.9rem;line-height:1.9}
+  .foot h4{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:16px;font-family:'Montserrat',sans-serif;font-weight:600}
+  .foot a{display:block;font-size:.88rem;font-weight:300;margin-bottom:10px;color:rgba(255,255,255,.7);transition:color .3s}
+  .foot a:hover{color:var(--accent)}
+  .foot__bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:24px;flex-wrap:wrap;font-size:.74rem;font-weight:300}
+  .foot__credit{display:flex;align-items:center;gap:10px;opacity:.85}
+  .foot__credit img{height:22px;width:auto}
+
+  /* ---------- BOTTOM BOOKING BAR ---------- */
+  .bar{
+    position:fixed;left:50%;bottom:18px;transform:translate(-50%,140%);
+    z-index:90;display:flex;align-items:center;gap:6px;
+    background:var(--shell);border:1px solid var(--line);
+    border-radius:48px;padding:8px 8px 8px 22px;
+    box-shadow:0 14px 40px rgba(30,25,20,.18);
+    transition:transform .5s var(--ease);max-width:94vw;
+  }
+  .bar.show{transform:translate(-50%,0)}
+  .bar__field{display:flex;flex-direction:column;padding:0 16px;border-right:1px solid var(--line)}
+  .bar__field label{font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:2px}
+  .bar__field input{border:0;background:transparent;font-family:'Montserrat',sans-serif;font-size:.82rem;color:var(--ink);font-weight:500;cursor:pointer;width:118px}
+  .bar__field input::-webkit-calendar-picker-indicator{opacity:.5;cursor:pointer}
+  .bar .btn{margin-left:8px;border-radius:40px}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .nav__links{
+      position:fixed;top:0;right:0;height:100vh;width:78%;max-width:340px;
+      background:var(--night);flex-direction:column;justify-content:center;gap:34px;
+      transform:translateX(100%);transition:transform .45s var(--ease);padding:40px;
+    }
+    .nav__links.open{transform:translateX(0)}
+    .nav__links a{color:#fff;font-size:1rem}
+    .nav__toggle{display:block;z-index:101}
+    .nav__phone .nav__phone-text{display:none}
+    .nav.scrolled .nav__links a{color:#fff}
+    .welcome .wrap,.stay,.loc .wrap{grid-template-columns:1fr}
+    .stay--rev .stay__media{order:0}
+    .welcome__fig{order:-1}
+    .mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px}
+    .amen__list{grid-template-columns:1fr}
+    .mosaic{grid-template-columns:1fr;grid-auto-rows:200px}
+    .m-wide,.m-tall{grid-column:auto;grid-row:auto}
+    .foot{grid-template-columns:1fr}
+    .bar{left:10px;right:10px;transform:translateY(140%);max-width:none;width:auto;border-radius:14px;padding:9px 10px;gap:2px}
+    .bar.show{transform:translateY(0)}
+    .bar__field{flex:1;min-width:0;padding:0 8px}
+    .bar__field input{width:100%}
+    .bar .btn{margin-left:6px;padding:13px 16px;flex:none}
+    .nav__actions .nav__phone-text{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .hero__bg{animation:none}.hero__cue span{animation:none}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#welcome">Skip to content</a>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a class="nav__brand" href="#top" aria-label="Horizons Beach Resort home">
+    <span class="nav__name">Horizons</span>
+    <span class="nav__sub">Beach Resort · Cape Cod</span>
+  </a>
+  <div class="nav__links" id="navLinks">
+    <a href="#welcome">The Resort</a>
+    <a href="#stays">Accommodations</a>
+    <a href="#amenities">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+  </div>
+  <div class="nav__actions">
+    <a class="nav__phone" href="tel:+15084870042" aria-label="Call 508 487 0042">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1L6.6 10.8z"/></svg>
+      <span class="nav__phone-text">508 487-0042</span>
+    </a>
+    <a class="btn" href="#book" data-book>Book Now</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="hero__inner">
+    <p class="eyebrow hero__eyebrow">North Truro · Cape Cod, Massachusetts</p>
+    <h1>Where the sun sets <em>over the sea.</em></h1>
+  </div>
+  <div class="hero__cue" aria-hidden="true"><span></span></div>
+</header>
+
+<!-- WELCOME -->
+<section class="welcome pad" id="welcome">
+  <div class="wrap reveal">
+    <div class="welcome__copy">
+      <p class="eyebrow">Welcome to Horizons</p>
+      <h2>Enjoyment and tranquility, right on the bay.</h2>
+      <p>Tucked along the quiet northern shore of Cape Cod, Horizons offers newly remodeled efficiencies on the beach, ocean-view units at the Terrace Dunes, and multi-room poolside suites — every one with a private sun deck overlooking Cape Cod Bay and its spectacular water views.</p>
+      <p>With three quarters of North Truro held as conservation land and National Seashore, this is a stretch of coast whose beauty and stillness can't be found anywhere else on the Cape.</p>
+      <div class="stats">
+        <div class="stat"><div class="stat__n">500</div><div class="stat__l">Feet of Beach</div></div>
+        <div class="stat"><div class="stat__n">∞</div><div class="stat__l">Bay Sunsets</div></div>
+        <div class="stat"><div class="stat__n">3</div><div class="stat__l">Ways to Stay</div></div>
+      </div>
+    </div>
+    <figure class="welcome__fig">
+      <img src="img/aerial.jpg" alt="Aerial view of Horizons Beach Resort set between the wooded dunes and the beach on Cape Cod Bay" width="1400" height="903">
+      <figcaption>On the shore of Cape Cod Bay</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- SIGNATURE SUNSET BAND -->
+<section class="cine" aria-label="Sunsets over the Atlantic">
+  <div class="cine__bg" style="background-image:url('img/sunset.jpg')"></div>
+  <div class="cine__inner reveal">
+    <p class="eyebrow">The Horizons difference</p>
+    <h2>The only place on the East Coast to watch the sun set <em>over the Atlantic.</em></h2>
+    <p>As the day ends, the ocean breezes settle and the sky turns colour over the water toward Provincetown — a west-facing sunset on the Atlantic found nowhere else along the entire coast.</p>
+  </div>
+</section>
+
+<!-- ACCOMMODATIONS -->
+<section class="stays pad" id="stays">
+  <div class="wrap">
+    <div class="stays__head reveal">
+      <p class="eyebrow">Accommodations</p>
+      <h2>Three ways to settle into the Cape.</h2>
+      <p>Every unit features a full kitchen, air conditioning, a flat-screen cable television, and its own sun deck above the bay.</p>
+    </div>
+
+    <article class="stay reveal">
+      <div class="stay__media"><img src="img/cottage.jpg" alt="Beachfront cottage with a deck, picnic tables and beach roses overlooking Cape Cod Bay" width="1600" height="1200"></div>
+      <div class="stay__body">
+        <span class="stay__no">i.</span>
+        <h3>On the Beach</h3>
+        <p>Newly remodeled efficiency units set right at the sand, with the water and the open horizon just beyond your private deck.</p>
+        <div class="stay__feat"><span>Full Kitchen</span><span>Private Sun Deck</span><span>Steps to the Sand</span></div>
+      </div>
+    </article>
+
+    <article class="stay stay--rev reveal">
+      <div class="stay__media"><img src="img/building.jpg" alt="Ocean-view units at the Terrace Dunes rising above the dune grass" width="1200" height="841"></div>
+      <div class="stay__body">
+        <span class="stay__no">ii.</span>
+        <h3>Terrace Dunes</h3>
+        <p>Ocean-view units perched along the dune, framing a panoramic view of Cape Cod Bay and the lights of Provincetown across the water.</p>
+        <div class="stay__feat"><span>Ocean Views</span><span>Air Conditioned</span><span>Flat-Screen Cable TV</span></div>
+      </div>
+    </article>
+
+    <article class="stay reveal">
+      <div class="stay__media"><img src="img/pool.jpg" alt="Bayside outdoor pool with lounge chairs and a clear view of the water" width="1400" height="970"></div>
+      <div class="stay__body">
+        <span class="stay__no">iii.</span>
+        <h3>Poolside Suites</h3>
+        <p>Spacious multi-room units beside the bayside pool — room to spread out for the whole family, with the beach a short walk away.</p>
+        <div class="stay__feat"><span>Multi-Room</span><span>By the Pool</span><span>Family Friendly</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amen pad" id="amenities">
+  <div class="wrap">
+    <div class="amen__head reveal">
+      <p class="eyebrow">On Property</p>
+      <h2>Everything a Cape day needs.</h2>
+    </div>
+    <div class="amen__list reveal">
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 18s2-1 4-1 3 1 5 1 3-1 5-1 4 1 4 1M2 22s2-1 4-1 3 1 5 1 3-1 5-1 4 1 4 1"/><path d="M12 13a5 5 0 0 0-5-5"/><circle cx="12" cy="6" r="2"/></svg><div><b>500 Feet of Beach</b><small>A private stretch along Cape Cod Bay</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 16c1.5 0 1.5-1.5 3-1.5S6.5 16 8 16s1.5-1.5 3-1.5S12.5 16 14 16s1.5-1.5 3-1.5S18.5 16 20 16M2 20c1.5 0 1.5-1.5 3-1.5S6.5 20 8 20s1.5-1.5 3-1.5S12.5 20 14 20s1.5-1.5 3-1.5S18.5 20 20 20"/><path d="M8 14V5a2 2 0 0 1 4 0M8 8h4"/></svg><div><b>Bayside Outdoor Pool</b><small>Swim with the water in full view</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/></svg><div><b>Private Sun Decks</b><small>Every unit, overlooking the bay</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M8 3v6M8 13h2M14 13h2"/></svg><div><b>Full Kitchens</b><small>Cook in, every day of your stay</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-2M12 7v5"/></svg><div><b>Air Conditioning</b><small>Comfortable through the season</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="13" rx="1"/><path d="M8 21h8M12 18v3"/></svg><div><b>Flat-Screen Cable TV</b><small>In every room</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><div><b>West-Facing Sunsets</b><small>The Atlantic, at the end of the day</small></div></div>
+      <div class="amen__row"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18M5 20V9l7-5 7 5v11"/><path d="M9 20v-5h6v5"/><path d="M3 11l9-6 9 6"/></svg><div><b>Provincetown Views</b><small>Across the bay, minutes away</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery pad" id="gallery">
+  <div class="wrap">
+    <div class="gallery__head reveal">
+      <p class="eyebrow">A Look Around</p>
+      <h2>Moments at Horizons.</h2>
+    </div>
+    <div class="mosaic reveal">
+      <figure class="m-wide m-tall"><img src="img/boardwalk.jpg" alt="A boardwalk through the dune grass leading to the beach and the bay" loading="lazy"></figure>
+      <figure><img src="img/pool-roses.jpg" alt="The pool beyond a dune fence lined with beach roses" loading="lazy"></figure>
+      <figure><img src="img/cottage.jpg" alt="A beachfront cottage with picnic tables above the bay" loading="lazy"></figure>
+      <figure class="m-wide"><img src="img/kitchen.jpg" alt="A full in-unit kitchen opening to a deck and the water" loading="lazy"></figure>
+      <figure><img src="img/room.jpg" alt="An ocean-view unit with sliding doors to a private balcony over the beach" loading="lazy"></figure>
+      <figure><img src="img/sunset.jpg" alt="A pink and gold sunset over the water at North Truro" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="loc pad" id="location">
+  <div class="wrap">
+    <div class="loc__copy reveal">
+      <p class="eyebrow">Find Us</p>
+      <h2>North Truro, at the tip of the Cape.</h2>
+      <p>Three quarters of North Truro is conservation land and National Seashore — endless dunes, bike trails, and the Highland Links golf course. Historic Provincetown, with its dining, shopping, whale watching and galleries, is just minutes away.</p>
+      <div class="loc__tags">
+        <span>Cape Cod National Seashore</span>
+        <span>Highland Links Golf</span>
+        <span>Dune Tours</span>
+        <span>Provincetown</span>
+        <span>Whale Watching</span>
+      </div>
+      <address class="loc__addr">
+        Horizons Beach Resort<br>
+        North Truro, MA 02652<br>
+        <a href="tel:+15084870042" style="color:var(--accent)">508 487-0042</a> · <a href="mailto:info@horizonsbeach.com" style="color:var(--accent)">info@horizonsbeach.com</a>
+      </address>
+    </div>
+    <div class="reveal">
+      <iframe class="loc__map" title="Map of North Truro, Cape Cod" loading="lazy" src="https://www.google.com/maps?q=North+Truro,+MA+02652&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="book">
+  <div class="final__bg"></div>
+  <div class="final__inner wrap reveal">
+    <h2>Your stay on the bay <em>awaits.</em></h2>
+    <p>Reserve newly remodeled beachfront, ocean-view, or poolside accommodations.</p>
+    <div class="final__actions">
+      <a class="btn" href="#" data-book>Book Now</a>
+      <a class="btn btn--ghost" href="tel:+15084870042">Call to Reserve</a>
+    </div>
+    <a class="nav__phone" href="tel:+15084870042" style="color:#fff">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1L6.6 10.8z"/></svg>
+      508 487-0042
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="foot__name">Horizons</div>
+        <div class="foot__sub">Beach Resort · North Truro</div>
+        <p>A beachfront resort on Cape Cod Bay offering enjoyment and tranquility — and the only sunsets over the Atlantic on the East Coast.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <a href="#welcome">The Resort</a>
+        <a href="#stays">Accommodations</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <a href="#location">North Truro, MA 02652</a>
+        <a href="tel:+15084870042">508 487-0042</a>
+        <a href="mailto:info@horizonsbeach.com">info@horizonsbeach.com</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <span>© <span id="yr"></span> Horizons Beach Resort · All Rights Reserved</span>
+      <span class="foot__credit"><img src="img/bofill-logo.webp" alt="Bofill Technologies">Concept by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+<!-- BOOKING BAR -->
+<div class="bar" id="bar" role="form" aria-label="Check availability">
+  <div class="bar__field">
+    <label for="ci">Check In</label>
+    <input type="date" id="ci">
+  </div>
+  <div class="bar__field">
+    <label for="co">Check Out</label>
+    <input type="date" id="co">
+  </div>
+  <a class="btn" id="barBook" href="#">Book Now</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var nav=document.getElementById('nav');
+  var bar=document.getElementById('bar');
+  var hero=document.getElementById('top');
+  var toggle=document.getElementById('navToggle');
+  var links=document.getElementById('navLinks');
+
+  // sticky nav
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>60); }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // mobile menu
+  toggle.addEventListener('click',function(){
+    var open=links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // reveal on scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // booking bar reveal once hero scrolls out
+  var heroIO=new IntersectionObserver(function(entries){
+    bar.classList.toggle('show', !entries[0].isIntersecting);
+  },{threshold:.05});
+  heroIO.observe(hero);
+
+  // date defaults: tomorrow / day-after
+  function fmt(d){ return d.toISOString().split('T')[0]; }
+  var t=new Date(); t.setDate(t.getDate()+1);
+  var t2=new Date(); t2.setDate(t2.getDate()+2);
+  var ci=document.getElementById('ci'), co=document.getElementById('co');
+  ci.value=fmt(t); ci.min=fmt(new Date());
+  co.value=fmt(t2); co.min=fmt(t);
+  ci.addEventListener('change',function(){
+    var next=new Date(ci.value); next.setDate(next.getDate()+1);
+    co.min=fmt(next);
+    if(co.value<=ci.value) co.value=fmt(next);
+  });
+
+  // Book → reservation request email carrying the chosen dates.
+  // NOTE: the live site has no online booking engine; swap this hook for a real
+  // engine URL (e.g. Cloudbeds / ThinkReservations) once provisioned.
+  function book(e){
+    if(e) e.preventDefault();
+    var subj=encodeURIComponent('Reservation Request — Horizons Beach Resort');
+    var body=encodeURIComponent('Hello,\n\nI would like to request a reservation.\n\nCheck in: '+ci.value+'\nCheck out: '+co.value+'\n\nName:\nGuests:\nUnit preference (Beachfront / Terrace Dunes / Poolside):\n\nThank you.');
+    window.location.href='mailto:info@horizonsbeach.com?subject='+subj+'&body='+body;
+  }
+  document.getElementById('barBook').addEventListener('click',book);
+  document.querySelectorAll('[data-book]').forEach(function(b){ b.addEventListener('click',book); });
+
+  // year
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
