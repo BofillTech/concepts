@@ -85,9 +85,18 @@
 
   /* ---------- HERO ---------- */
   .hero{position:relative;height:100vh;min-height:600px;width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center}
-  .hero__bg{position:absolute;inset:0;background:url('img/hero.jpg') center 60%/cover no-repeat;animation:zoom 26s var(--ease) forwards}
-  @keyframes zoom{from{transform:scale(1.0)}to{transform:scale(1.12)}}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,20,.42) 0%,rgba(20,20,20,.12) 38%,rgba(20,20,20,.30) 100%)}
+  .hero__slides{position:absolute;inset:0;z-index:0}
+  .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center 58%;opacity:0;transition:opacity 1.6s var(--ease)}
+  .hero__slide.is-active{opacity:1;animation:zoom 7s var(--ease) forwards}
+  .hero__slide--1{background-image:url('img/aerial.jpg')}
+  .hero__slide--2{background-image:url('img/cottage.jpg')}
+  .hero__slide--3{background-image:url('img/sunset.jpg')}
+  @keyframes zoom{from{transform:scale(1.0)}to{transform:scale(1.09)}}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(20,20,20,.42) 0%,rgba(20,20,20,.12) 38%,rgba(20,20,20,.34) 100%)}
+  .hero__dots{position:absolute;bottom:88px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:3}
+  .hero__dot{width:9px;height:9px;border-radius:50%;border:1px solid rgba(255,255,255,.85);background:transparent;cursor:pointer;padding:0;transition:background .3s,transform .3s}
+  .hero__dot.is-active{background:#fff;transform:scale(1.15)}
+  .hero__dot:focus-visible{outline:2px solid #fff;outline-offset:3px}
   .hero__inner{position:relative;z-index:2;text-align:center;color:#fff;padding:0 24px;max-width:980px}
   .hero__eyebrow{color:#fff;opacity:.95;margin-bottom:26px;text-shadow:0 1px 14px rgba(0,0,0,.4)}
   .hero h1{font-size:clamp(2.9rem,7vw,6rem);font-weight:500;text-shadow:0 2px 30px rgba(0,0,0,.4)}
@@ -243,7 +252,7 @@
     .nav__actions .nav__phone-text{display:none}
   }
   @media(prefers-reduced-motion:reduce){
-    .hero__bg{animation:none}.hero__cue span{animation:none}
+    .hero__slide.is-active{animation:none}.hero__cue span{animation:none}
     .reveal{opacity:1;transform:none;transition:none}
   }
 </style>
@@ -276,10 +285,19 @@
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="hero__bg"></div>
+  <div class="hero__slides" id="heroSlides" aria-hidden="true">
+    <div class="hero__slide hero__slide--1 is-active"></div>
+    <div class="hero__slide hero__slide--2"></div>
+    <div class="hero__slide hero__slide--3"></div>
+  </div>
   <div class="hero__inner">
     <p class="eyebrow hero__eyebrow">North Truro · Cape Cod, Massachusetts</p>
     <h1>Where the sun sets <em>over the sea.</em></h1>
+  </div>
+  <div class="hero__dots" id="heroDots" role="tablist" aria-label="Hero images">
+    <button class="hero__dot is-active" type="button" role="tab" aria-label="View 1"></button>
+    <button class="hero__dot" type="button" role="tab" aria-label="View 2"></button>
+    <button class="hero__dot" type="button" role="tab" aria-label="View 3"></button>
   </div>
   <div class="hero__cue" aria-hidden="true"><span></span></div>
 </header>
@@ -299,8 +317,8 @@
       </div>
     </div>
     <figure class="welcome__fig">
-      <img src="img/aerial.jpg" alt="Aerial view of Horizons Beach Resort set between the wooded dunes and the beach on Cape Cod Bay" width="1400" height="903">
-      <figcaption>On the shore of Cape Cod Bay</figcaption>
+      <img src="img/boardwalk.jpg" alt="A weathered boardwalk leading through the dune grass to the beach and the sparkling waters of Cape Cod Bay" width="1400" height="1050">
+      <figcaption>Down the boardwalk to the bay</figcaption>
     </figure>
   </div>
 </section>
@@ -386,10 +404,10 @@
     <div class="mosaic reveal">
       <figure class="m-wide m-tall"><img src="img/boardwalk.jpg" alt="A boardwalk through the dune grass leading to the beach and the bay" loading="lazy"></figure>
       <figure><img src="img/pool-roses.jpg" alt="The pool beyond a dune fence lined with beach roses" loading="lazy"></figure>
-      <figure><img src="img/cottage.jpg" alt="A beachfront cottage with picnic tables above the bay" loading="lazy"></figure>
+      <figure><img src="img/pool.jpg" alt="The bayside pool with lounge chairs and an open view of the water" loading="lazy"></figure>
       <figure class="m-wide"><img src="img/kitchen.jpg" alt="A full in-unit kitchen opening to a deck and the water" loading="lazy"></figure>
       <figure><img src="img/room.jpg" alt="An ocean-view unit with sliding doors to a private balcony over the beach" loading="lazy"></figure>
-      <figure><img src="img/sunset.jpg" alt="A pink and gold sunset over the water at North Truro" loading="lazy"></figure>
+      <figure><img src="img/aerial.jpg" alt="Aerial view of the resort between the wooded dunes and Cape Cod Bay" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -492,6 +510,20 @@
   // sticky nav
   function onScroll(){ nav.classList.toggle('scrolled', window.scrollY>60); }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+  // hero slider (3 images, crossfade + Ken Burns on the active slide)
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.hero__slide'));
+  var dots=Array.prototype.slice.call(document.querySelectorAll('.hero__dot'));
+  var si=0,stimer=null;
+  function goSlide(n){
+    slides[si].classList.remove('is-active'); if(dots[si]) dots[si].classList.remove('is-active');
+    si=(n+slides.length)%slides.length;
+    slides[si].classList.add('is-active'); if(dots[si]) dots[si].classList.add('is-active');
+  }
+  function startSlides(){ stopSlides(); stimer=setInterval(function(){goSlide(si+1);},6000); }
+  function stopSlides(){ if(stimer){clearInterval(stimer);stimer=null;} }
+  dots.forEach(function(d,i){ d.addEventListener('click',function(){ goSlide(i); startSlides(); }); });
+  if(slides.length>1 && !window.matchMedia('(prefers-reduced-motion:reduce)').matches){ startSlides(); }
 
   // mobile menu
   toggle.addEventListener('click',function(){
