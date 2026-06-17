@@ -297,6 +297,11 @@ h1, h2, h3, h4 {
 }
 .section-body p { margin-bottom: 1.1em; }
 .section-body p:last-child { margin-bottom: 0; }
+.section--lead {
+  padding-top: clamp(52px, 6.5vw, 88px);
+  padding-bottom: clamp(36px, 4.5vw, 56px);
+}
+.section--lead .section-headline { margin-bottom: 22px; }
 
 .cta-outline {
   display: inline-block;
@@ -627,38 +632,55 @@ h1, h2, h3, h4 {
 }
 .room-card-link:hover { color: var(--rose); border-color: var(--rose); }
 
+.rooms-filterbar {
+  position: sticky;
+  top: clamp(78px, 9.5vw, 132px);
+  z-index: 50;
+  background: rgba(250, 245, 234, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(15, 29, 46, 0.10);
+  border-bottom: 1px solid rgba(15, 29, 46, 0.10);
+  margin-bottom: clamp(34px, 4vw, 48px);
+  transition: box-shadow 0.3s ease;
+}
+.rooms-filterbar.is-stuck {
+  box-shadow: 0 10px 30px rgba(10, 22, 35, 0.12);
+  border-bottom-color: rgba(15, 29, 46, 0.16);
+}
 .rooms-filter {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 var(--pad) clamp(34px, 4vw, 48px);
+  padding: 16px var(--pad);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .rooms-filter-label {
   font-family: var(--sans);
-  font-size: 10.5px;
+  font-size: 11px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--brass);
-  margin-right: 6px;
+  margin-right: 8px;
 }
 .rooms-filter-btn {
   font-family: var(--sans);
-  font-size: 11px;
-  letter-spacing: 0.16em;
+  font-size: 12px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
   color: var(--ink);
-  background: transparent;
-  border: 1px solid rgba(15, 29, 46, 0.25);
-  padding: 9px 18px;
+  background: #fff;
+  border: 1.5px solid rgba(15, 29, 46, 0.22);
+  border-radius: 999px;
+  padding: 11px 22px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s, border-color 0.3s;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.15s;
 }
-.rooms-filter-btn:hover { border-color: var(--ink); }
+.rooms-filter-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
 .rooms-filter-btn.is-active {
   background: var(--ink);
   color: var(--bone);
@@ -667,8 +689,9 @@ h1, h2, h3, h4 {
 .rooms-count {
   font-family: var(--sans);
   font-size: 11px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  font-weight: 600;
   color: var(--brass);
   margin-left: auto;
 }
@@ -819,7 +842,7 @@ h1, h2, h3, h4 {
   </div>
 </section>
 
-<section class="section">
+<section class="section section--lead">
   <div class="section-narrow">
     <span class="section-tag">Stay</span>
     <h1 class="section-headline">Twenty-three rooms blending Victorian charm with <em>modern luxury.</em></h1>
@@ -830,13 +853,15 @@ h1, h2, h3, h4 {
 </section>
 
 <section>
-  <div class="rooms-filter">
-    <span class="rooms-filter-label">Filter</span>
-    <button type="button" class="rooms-filter-btn is-active" data-cat="all">All</button>
-    <button type="button" class="rooms-filter-btn" data-cat="2">Sleeps 2</button>
-    <button type="button" class="rooms-filter-btn" data-cat="3-5">Sleeps 3&ndash;5</button>
-    <button type="button" class="rooms-filter-btn" data-cat="6">Sleeps 6+</button>
-    <span class="rooms-count" id="roomsCount"></span>
+  <div class="rooms-filterbar" id="roomsFilterbar">
+    <div class="rooms-filter">
+      <span class="rooms-filter-label">Filter</span>
+      <button type="button" class="rooms-filter-btn is-active" data-cat="all">All</button>
+      <button type="button" class="rooms-filter-btn" data-cat="2">Sleeps 2</button>
+      <button type="button" class="rooms-filter-btn" data-cat="3-5">Sleeps 3&ndash;5</button>
+      <button type="button" class="rooms-filter-btn" data-cat="6">Sleeps 6+</button>
+      <span class="rooms-count" id="roomsCount"></span>
+    </div>
   </div>
   <div class="rooms-grid">
     <article class="room-card" data-cat="2">
@@ -1072,6 +1097,18 @@ h1, h2, h3, h4 {
     });
   });
   applyFilter('all');
+
+  // Sticky filter bar shadow when pinned
+  const filterbar = document.getElementById('roomsFilterbar');
+  if (filterbar) {
+    const stickyTop = parseFloat(getComputedStyle(filterbar).top) || 0;
+    const onBarScroll = () => {
+      filterbar.classList.toggle('is-stuck', filterbar.getBoundingClientRect().top <= stickyTop + 1);
+    };
+    window.addEventListener('scroll', onBarScroll, { passive: true });
+    window.addEventListener('resize', onBarScroll);
+    onBarScroll();
+  }
 </script>
 </body>
 </html>
