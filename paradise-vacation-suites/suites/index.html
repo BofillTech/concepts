@@ -645,6 +645,52 @@ section { padding: 110px 28px; position: relative; }
   .suite-comparison-table .suite-num { font-size: 18px; }
   .suite-comparison-table .rate { font-size: 15px; }
 }
+
+.nav-phone {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--teal-deep); font-weight: 600;
+  font-size: 14px; letter-spacing: 0.01em;
+  text-decoration: none; padding: 10px 16px 10px 12px;
+  border-right: 1px solid var(--line); margin-right: 8px;
+  transition: color 0.2s ease;
+  white-space: nowrap; flex-shrink: 0;
+}
+.nav-phone span { white-space: nowrap; }
+.nav-menu { flex-shrink: 1; }
+.nav-actions { flex-shrink: 0; }
+.nav-phone svg { color: var(--sunset-deep); flex-shrink: 0; }
+.nav-phone:hover { color: var(--sunset-deep); }
+.nav-phone:hover svg { color: var(--pink); }
+@media (max-width: 900px) {
+  .nav-phone span { display: none; }
+  .nav-phone { padding: 10px; margin-right: 4px; }
+}
+@media (max-width: 560px) {
+  .nav-phone { padding: 8px; }
+  .nav-phone svg { width: 16px; height: 16px; }
+}
+
+.suite-detail-photo-wrap { display: flex; flex-direction: column; gap: 12px; }
+.suite-detail.reverse .suite-detail-photo-wrap { order: 2; }
+.suite-detail-thumbs {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+}
+.suite-thumb {
+  aspect-ratio: 4/3;
+  background-size: cover; background-position: center;
+  cursor: pointer; position: relative; overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+  box-shadow: 0 4px 12px rgba(7, 56, 70, 0.10);
+}
+.suite-thumb:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(7, 56, 70, 0.18); }
+.suite-thumb::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7,56,70,0) 50%, rgba(7,56,70,0.20) 100%);
+  pointer-events: none;
+}
+@media (max-width: 768px) {
+  .suite-detail-thumbs { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+}
 </style>
 <link rel="canonical" href="https://paradisevacationsuites.com/suites/">
 <meta property="og:type" content="website">
@@ -1066,14 +1112,6 @@ section { padding: 110px 28px; position: relative; }
   <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
 </div>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-left">
-      <span><span class="topbar-pip"></span>Wilton Manors, Fort Lauderdale</span>
-    </div>
-    <div><a href="tel:954-868-5671">Call · 954-868-5671</a></div>
-  </div>
-</div>
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href=".././" class="nav-logo">
@@ -1089,10 +1127,14 @@ section { padding: 110px 28px; position: relative; }
       <li><a href=".././overview/">Overview</a></li>
       <li><a href=".././area/">Area</a></li>
       <li><a href=".././reviews/">Reviews</a></li>
-      <li><a href="https://paradisevacationsuites.com/gallery/">Gallery</a></li>
+      <li><a href="../gallery/">Gallery</a></li>
       <li><a href=".././contact/">Contact</a></li>
     </ul>
     <div class="nav-actions">
+      <a href="tel:954-868-5671" class="nav-phone" aria-label="Call us at 954-868-5671">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span>954-868-5671</span>
+      </a>
       <a href="https://paradisevacationsuites.lodgify.com/en/all-properties" class="btn-book">Book Now</a>
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -1156,9 +1198,9 @@ section { padding: 110px 28px; position: relative; }
 
 <section class="suite-section" id="apt-01">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>01</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-01 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 01</div>
       <h2>Garden View Suite</h2>
@@ -1184,9 +1226,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-02">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>02</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');" role="img" aria-label="apt-02 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 02 · Most Popular</div>
       <h2>Pool View Suite</h2>
@@ -1212,9 +1254,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-03">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>03</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-03 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 03</div>
       <h2>Pergola Suite</h2>
@@ -1240,9 +1282,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-04">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>04</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-04 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 04</div>
       <h2>Palm Suite</h2>
@@ -1268,9 +1310,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-05">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>05</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-05 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 05</div>
       <h2>Hibiscus Suite</h2>
@@ -1296,9 +1338,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-06">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
       <div class="suite-detail-num"><span>Apt.</span>06</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-06 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 06</div>
       <h2>Bougainvillea Suite</h2>
@@ -1333,9 +1375,9 @@ section { padding: 110px 28px; position: relative; }
 
 <section class="suite-section" id="apt-2112">
   <div class="suite-detail two-bed fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Suite</span>2112</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-2112 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2112</div>
       <h2>Two-Bedroom Garden Villa</h2>
@@ -1361,9 +1403,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-2120">
   <div class="suite-detail two-bed reverse fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');">
       <div class="suite-detail-num"><span>Suite</span>2120</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');" role="img" aria-label="apt-2120 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2120</div>
       <h2>Two-Bedroom Poolside Villa</h2>
@@ -1389,9 +1431,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-2124">
   <div class="suite-detail two-bed fade-up">
-    <div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');">
       <div class="suite-detail-num"><span>Suite</span>2124</div>
-    </div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Garden-Fountain-Palms-1-scaled.jpg');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/STS_2729-Edit-Edit-Edit-1-scaled.jpg');" role="img" aria-label="apt-2124 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2124 · Premier</div>
       <h2>Two-Bedroom Premier Villa</h2>
