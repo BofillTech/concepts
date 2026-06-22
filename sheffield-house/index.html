@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Sheffield House — Victorian Bed &amp; Breakfast on Block Island, RI</title>
+<meta name="description" content="A charming 1888 Queen Anne Victorian bed &amp; breakfast on Block Island, Rhode Island. Six garden rooms a short walk from Old Harbor, town, and the beaches. Open May–October.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ── Palette: sampled directly from the live sheffieldhousebi.com homepage.
+          Only colors present on the current site are used. ── */
+    --brand:        #244a6b;   /* slate blue — the "Make a Reservation" band */
+    --brand-deep:   #1b3546;   /* deep navy — the newsletter button / footer */
+    --gold:         #244a6b;   /* primary accent = the site's slate-blue CTA  */
+    --gold-soft:    #89acdc;   /* periwinkle — the translucent nav / sky blue */
+    --cream:        #eef2f8;   /* pale periwinkle tint — light section ground */
+    --paper:        #ffffff;   /* white card surface (site trim white)        */
+    --ink:          #1b3546;   /* primary text = deep navy                    */
+    --sage:         #566c7e;   /* steel blue — muted secondary                */
+
+    --maxw: 1240px;
+    --gut: clamp(20px, 5vw, 64px);
+    --r: 3px;
+    --ease: cubic-bezier(.2,.7,.2,1);
+
+    --fs-display: clamp(2.9rem, 7vw, 5.6rem);
+    --fs-h2:      clamp(2rem, 4.4vw, 3.4rem);
+    --fs-h3:      clamp(1.4rem, 2.4vw, 1.85rem);
+    --fs-eyebrow: .78rem;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Karla",system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.65;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:.005em}
+
+  .wrap{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gut)}
+
+  .eyebrow{
+    font-family:"Karla",sans-serif;
+    font-size:var(--fs-eyebrow);
+    font-weight:600;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:inline-flex;align-items:center;gap:.7em;
+  }
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-soft);display:inline-block}
+  .eyebrow--center::after{content:"";width:34px;height:1px;background:var(--gold-soft);display:inline-block}
+
+  /* botanical sprig divider */
+  .sprig{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);opacity:.85}
+  .sprig::before,.sprig::after{content:"";height:1px;width:min(80px,16vw);background:linear-gradient(90deg,transparent,var(--gold-soft))}
+  .sprig::after{transform:scaleX(-1)}
+
+  /* ── Buttons ── */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+    font-family:"Karla",sans-serif;font-weight:700;font-size:.82rem;
+    letter-spacing:.16em;text-transform:uppercase;
+    padding:1.05em 2.1em;border-radius:var(--r);cursor:pointer;border:1px solid transparent;
+    transition:all .4s var(--ease);white-space:nowrap;
+  }
+  .btn--gold{background:var(--gold);color:var(--paper);box-shadow:0 1px 0 var(--gold-soft)}
+  .btn--gold:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+  .btn--ghost{background:transparent;color:var(--cream);border-color:rgba(255,255,255,.55)}
+  .btn--ghost:hover{background:var(--cream);color:var(--brand-deep);border-color:var(--cream)}
+  .btn--line{background:transparent;color:var(--brand);border-color:var(--brand)}
+  .btn--line:hover{background:var(--brand);color:var(--cream)}
+
+  /* ── Nav ── */
+  .nav{position:fixed;inset:0 0 auto 0;z-index:60;transition:all .45s var(--ease)}
+  .nav__inner{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px var(--gut);transition:padding .45s var(--ease)}
+  .nav__brand{display:flex;align-items:center;gap:12px}
+  .nav__brand img{height:52px;width:auto;filter:brightness(0) invert(1);transition:filter .45s var(--ease)}
+  .nav__links{display:none;gap:30px;align-items:center}
+  .nav__links a{font-size:.82rem;letter-spacing:.13em;text-transform:uppercase;font-weight:600;color:var(--cream);position:relative;padding:4px 0;transition:color .3s}
+  .nav__links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--gold);transition:right .35s var(--ease)}
+  .nav__links a:hover::after{right:0}
+  .nav__right{display:flex;align-items:center;gap:18px}
+  .nav__tel{display:none;font-weight:700;letter-spacing:.04em;color:var(--cream);font-size:.92rem}
+  .nav__tel:hover{color:var(--gold-soft)}
+
+  .nav.scrolled{background:rgba(27,53,70,.97);backdrop-filter:blur(6px);box-shadow:0 16px 40px -28px rgba(15,28,38,.7)}
+  .nav.scrolled .nav__inner{padding-top:11px;padding-bottom:11px}
+  .nav.scrolled .nav__brand img{height:46px}
+
+  .burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+  .burger span{width:26px;height:2px;background:var(--cream);transition:.3s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  .drawer{position:fixed;inset:0;z-index:55;background:var(--brand-deep);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:24px;transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .drawer.open{transform:translateY(0)}
+  .drawer a{font-family:"Cormorant Garamond",serif;font-size:2rem;color:var(--cream)}
+  .drawer a:hover{color:var(--gold-soft)}
+  .drawer .btn{margin-top:10px}
+
+  /* ── Hero ── */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:var(--cream);isolation:isolate}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:var(--brand-deep) url("https://sheffieldhousebi.com/wp-content/uploads/2018/11/slider-1.jpg") center 38%/cover no-repeat}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(27,53,70,.45) 0%,rgba(27,53,70,.12) 38%,rgba(27,53,70,.18) 60%,rgba(15,28,38,.82) 100%)}
+  .hero__inner{padding-bottom:clamp(56px,9vh,120px);padding-top:160px;max-width:920px}
+  .hero h1{font-size:var(--fs-display);font-weight:500;margin:.28em 0 .4em;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+  .hero h1 em{font-style:italic;color:var(--gold-soft)}
+  .hero p{font-size:clamp(1.05rem,1.7vw,1.3rem);max-width:46ch;color:rgba(255,255,255,.92);margin-bottom:2.1em}
+  .hero__cta{display:flex;flex-wrap:wrap;gap:14px}
+  .hero .eyebrow{color:var(--gold-soft)}
+  .hero .eyebrow::before{background:var(--gold-soft)}
+
+  .scrollcue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:1;color:rgba(255,255,255,.7);font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scrollcue span{width:1px;height:42px;background:linear-gradient(var(--gold-soft),transparent);animation:cue 2.2s var(--ease) infinite}
+  @keyframes cue{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+  /* ── Section scaffold ── */
+  .section{padding-block:clamp(70px,11vw,140px)}
+  .section--cream{background:var(--cream)}
+  .section--paper{background:var(--paper)}
+
+  /* ── Welcome ── */
+  .welcome{display:grid;gap:clamp(34px,5vw,72px);align-items:center}
+  .welcome__media{position:relative}
+  .welcome__media img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+  .welcome__media::after{content:"";position:absolute;inset:14px;border:1px solid rgba(137,172,220,.5);border-radius:var(--r);pointer-events:none;mix-blend-mode:multiply}
+  .welcome__tag{position:absolute;left:0;bottom:24px;transform:translateX(-22%);background:var(--brand);color:var(--cream);padding:18px 26px;border-radius:var(--r);box-shadow:0 22px 50px -24px rgba(27,53,70,.7)}
+  .welcome__tag .n{font-family:"Cormorant Garamond",serif;font-size:2.4rem;line-height:1;color:var(--gold-soft)}
+  .welcome__tag .l{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;margin-top:4px}
+  .welcome h2{font-size:var(--fs-h2);margin:.32em 0 .6em}
+  .welcome p{margin-bottom:1.1em;max-width:54ch;color:#3c4a57}
+  .welcome p.lede{font-family:"Cormorant Garamond",serif;font-size:clamp(1.4rem,2.2vw,1.7rem);font-style:italic;line-height:1.4;color:var(--brand)}
+  .welcome__meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:1.4em;font-size:.84rem;letter-spacing:.04em;color:var(--brand)}
+  .welcome__meta b{font-weight:700}
+
+  /* ── Rooms ── */
+  .head{text-align:center;max-width:720px;margin:0 auto clamp(40px,6vw,72px)}
+  .head h2{font-size:var(--fs-h2);margin:.3em 0 .5em}
+  .head p{color:#3c4a57;max-width:52ch;margin:0 auto}
+  .rooms{display:grid;gap:clamp(22px,3vw,34px);grid-template-columns:1fr}
+  .room{background:var(--paper);border:1px solid rgba(27,53,70,.08);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .room:hover{transform:translateY(-6px);box-shadow:0 30px 60px -34px rgba(27,53,70,.55)}
+  .room__media{position:relative;overflow:hidden;aspect-ratio:3/2}
+  .room__media img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+  .room:hover .room__media img{transform:scale(1.06)}
+  .room__bloom{position:absolute;top:12px;left:12px;background:rgba(27,53,70,.78);color:var(--cream);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:6px 12px;border-radius:100px;backdrop-filter:blur(3px)}
+  .room__body{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+  .room__body h3{font-size:var(--fs-h3);margin-bottom:.35em}
+  .room__body p{font-size:.95rem;color:#41505d;flex:1;margin-bottom:1.1em}
+  .room__foot{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid rgba(27,53,70,.1);padding-top:16px}
+  .room__price{font-family:"Cormorant Garamond",serif;font-size:1.35rem;color:var(--brand)}
+  .room__price small{font-family:"Karla",sans-serif;font-size:.7rem;letter-spacing:.08em;color:#6b7c8a;display:block;text-transform:uppercase;margin-bottom:-2px}
+  .room__link{font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);display:inline-flex;align-items:center;gap:.5em;transition:gap .3s}
+  .room__link:hover{gap:.9em;color:var(--ink)}
+
+  /* ── Amenities ── */
+  .amen{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(27,53,70,.1);border:1px solid rgba(27,53,70,.1);border-radius:var(--r);overflow:hidden}
+  .amen__item{background:var(--cream);padding:30px 24px;display:flex;flex-direction:column;gap:12px}
+  .amen__item svg{width:30px;height:30px;color:var(--gold);stroke:var(--gold)}
+  .amen__item h3{font-size:1.15rem}
+  .amen__item p{font-size:.86rem;color:#41505d}
+
+  /* ── Gallery ── */
+  .gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .gallery a{display:block;overflow:hidden;border-radius:var(--r)}
+  .gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:1;transition:transform .8s var(--ease),filter .5s}
+  .gallery a:hover img{transform:scale(1.07)}
+  .gallery a:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .gallery a:nth-child(1) img{aspect-ratio:auto;height:100%}
+
+  /* ── Innkeepers ── */
+  .keepers{background:var(--brand-deep);color:var(--cream)}
+  .keepers__grid{display:grid;gap:clamp(32px,5vw,64px);align-items:center}
+  .keepers__media{position:relative}
+  .keepers__media img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r)}
+  .keepers__media::after{content:"";position:absolute;inset:-14px;border:1px solid rgba(137,172,220,.4);border-radius:var(--r);pointer-events:none}
+  .keepers h2{font-size:var(--fs-h2);color:var(--cream);margin:.3em 0 .55em}
+  .keepers .eyebrow{color:var(--gold-soft)}
+  .keepers .eyebrow::before{background:var(--gold-soft)}
+  .keepers p{color:rgba(255,255,255,.85);margin-bottom:1.1em;max-width:54ch}
+  .keepers p.sig{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.5rem;color:var(--gold-soft)}
+
+  /* ── Location ── */
+  .loc{display:grid;gap:clamp(30px,5vw,64px);align-items:center}
+  .loc__map{border-radius:var(--r);overflow:hidden;border:1px solid rgba(27,53,70,.12);box-shadow:0 30px 60px -40px rgba(27,53,70,.6)}
+  .loc__map img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+  .loc h2{font-size:var(--fs-h2);margin:.3em 0 .5em}
+  .loc address{font-style:normal;font-size:1.05rem;line-height:1.9;color:#3c4a57;margin-bottom:1.4em}
+  .loc address b{font-weight:700;color:var(--ink)}
+  .loc__phone{font-family:"Cormorant Garamond",serif;font-size:1.7rem;color:var(--brand);display:inline-block;margin-bottom:.5em}
+  .loc__phone:hover{color:var(--gold)}
+
+  /* ── Final CTA ── */
+  .cta{position:relative;color:var(--cream);text-align:center;isolation:isolate}
+  .cta__bg{position:absolute;inset:0;z-index:-2;background:var(--brand-deep) url("https://sheffieldhousebi.com/wp-content/uploads/small-2.jpg") center 60%/cover no-repeat}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(27,53,70,.78),rgba(15,28,38,.86))}
+  .cta__inner{padding-block:clamp(80px,14vw,160px)}
+  .cta h2{font-size:clamp(2.2rem,5.2vw,4.2rem);margin:.3em auto .5em;max-width:16ch}
+  .cta h2 em{font-style:italic;color:var(--gold-soft)}
+  .cta p{color:rgba(255,255,255,.85);max-width:46ch;margin:0 auto 2em}
+  .cta .eyebrow{color:var(--gold-soft);justify-content:center}
+  .cta .eyebrow::before{background:var(--gold-soft)}
+  .cta__cta{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+
+  /* ── Footer ── */
+  .foot{background:var(--ink);color:rgba(255,255,255,.7);padding-block:clamp(48px,7vw,80px) 28px}
+  .foot__grid{display:grid;gap:36px;grid-template-columns:1fr}
+  .foot__brand img{height:62px;filter:brightness(0) invert(1);opacity:.92;margin-bottom:18px}
+  .foot__brand p{max-width:34ch;font-size:.92rem}
+  .foot h4{font-family:"Karla",sans-serif;color:var(--gold-soft);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;font-weight:700}
+  .foot ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+  .foot ul a{font-size:.94rem;transition:color .3s}
+  .foot ul a:hover{color:var(--gold-soft)}
+  .foot__social{display:flex;gap:14px;margin-top:6px}
+  .foot__social a{width:38px;height:38px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.3s}
+  .foot__social a:hover{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+  .foot__social svg{width:16px;height:16px}
+  .foot__bar{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;font-size:.8rem;letter-spacing:.03em}
+  .foot__bar a{color:var(--gold-soft)}
+
+  /* ── Mobile sticky book bar ── */
+  .bookbar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--brand-deep);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;transform:translateY(110%);transition:transform .4s var(--ease);box-shadow:0 -10px 30px -18px rgba(0,0,0,.6)}
+  .bookbar.show{transform:translateY(0)}
+  .bookbar a.tel{color:var(--cream);font-weight:700;font-size:.95rem;display:flex;align-items:center;gap:8px}
+  .bookbar .btn{padding:.85em 1.5em;flex:1;max-width:200px}
+
+  /* ── Reveal animation ── */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}
+
+  /* ── Focus ── */
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+  /* ── Responsive ── */
+  @media(min-width:600px){
+    .amen{grid-template-columns:repeat(2,1fr)}
+    .gallery{grid-template-columns:repeat(4,1fr)}
+  }
+  @media(min-width:768px){
+    .nav__tel{display:block}
+    .rooms{grid-template-columns:repeat(2,1fr)}
+    .welcome{grid-template-columns:1fr 1.1fr}
+    .keepers__grid{grid-template-columns:.9fr 1.1fr}
+    .loc{grid-template-columns:1.1fr .9fr}
+    .foot__grid{grid-template-columns:1.6fr 1fr 1fr}
+    .amen{grid-template-columns:repeat(4,1fr)}
+    .bookbar{display:none}
+  }
+  @media(min-width:1024px){
+    .nav__links{display:flex}
+    .burger{display:none}
+    .rooms{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="nav" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="#top" aria-label="The Sheffield House, home">
+      <img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/logo.png" alt="The Sheffield House">
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#rooms">Rooms</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#location">Location</a>
+      <a href="https://sheffieldhousebi.com/rates/">Rates</a>
+    </nav>
+    <div class="nav__right">
+      <a class="nav__tel" href="tel:8448474824">(844) 847-4824</a>
+      <a class="btn btn--ghost" href="https://sheffieldhousebi.com/reservation/">Reserve</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#rooms">Rooms</a>
+  <a href="#about">About</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#location">Location</a>
+  <a href="https://sheffieldhousebi.com/rates/">Rates &amp; Policies</a>
+  <a class="btn btn--gold" href="https://sheffieldhousebi.com/reservation/">Make a Reservation</a>
+  <a class="nav__tel" style="display:block;color:var(--gold-soft)" href="tel:8448474824">(844) 847-4824</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="hero__bg" role="img" aria-label="The Sheffield House, a Queen Anne Victorian on Block Island"></div>
+  <div class="wrap hero__inner">
+    <span class="eyebrow">Block Island, Rhode Island · Est. 1888</span>
+    <h1>A relaxing retreat,<br>warmed with <em>Victorian charm</em></h1>
+    <p>Six garden rooms in a Queen Anne home — a short walk from Old Harbor, town, and the beaches.</p>
+    <div class="hero__cta">
+      <a class="btn btn--gold" href="https://sheffieldhousebi.com/reservation/">Reserve Your Stay</a>
+      <a class="btn btn--ghost" href="#rooms">Explore the Rooms</a>
+    </div>
+  </div>
+  <div class="scrollcue" aria-hidden="true">Scroll<span></span></div>
+</section>
+
+<!-- ── WELCOME / VICTORIAN CHARM ── -->
+<section class="section section--cream">
+  <div class="wrap welcome">
+    <div class="welcome__media reveal">
+      <img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/small-2.jpg" alt="The wrap-around porch and gardens of The Sheffield House" loading="lazy">
+      <div class="welcome__tag"><div class="n">1888</div><div class="l">Queen Anne Victorian</div></div>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">Victorian Charm</span>
+      <h2>A house with a story,<br>on the island we love</h2>
+      <p class="lede">“The wrap-around front porch is the perfect spot to relax with a glass of wine with friends.”</p>
+      <p>The Sheffield House is a charming Queen Anne style Victorian home built in 1888 for Dr. J.E. Bennett. Enjoy the unique floral varieties found in our gardens, and the gracious hospitality that brings our guests back season after season.</p>
+      <p>Located just a short walk from Old Harbor — up High Street in the Historic District — within walking distance of the ferry, restaurants, shopping, and beaches.</p>
+      <div class="welcome__meta">
+        <span><b>Open</b> May – October</span>
+        <span><b>Walk</b> to ferry &amp; town</span>
+        <span><b>Six</b> garden rooms</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ROOMS ── -->
+<section class="section section--paper" id="rooms">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow eyebrow--center">The Garden Rooms</span>
+      <h2>Each room named for a bloom in the garden</h2>
+      <p>Comfortable guest rooms with queen beds and flat-screen TVs — most with a private bath. Choose your flower.</p>
+    </div>
+    <div class="rooms">
+
+      <article class="room reveal">
+        <div class="room__media">
+          <span class="room__bloom">Private Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/room-type-1-950x591.jpg" alt="Room 1, The Heather" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>The Heather</h3>
+          <p>A large first-floor room closest to the front door and wrap-around porch, where early morning sunshine casts a beautiful glow. Air-conditioned and spacious.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal d1">
+        <div class="room__media">
+          <span class="room__bloom">Private Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/921A6DB6-B8E6-4EEF-AB25-8305A6017FA9-950x640.jpeg" alt="Room 5, Rose Mallow" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>Rose Mallow</h3>
+          <p>A large room at the rear of the house with a newly renovated private bath. Its many windows let in the sweet smell of privet and honeysuckle.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal d2">
+        <div class="room__media">
+          <span class="room__bloom">Private Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/FF675F19-BA34-4663-9A61-7C8ADD972B7A-950x640.jpeg" alt="Room 6, The Thistle" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>The Thistle</h3>
+          <p>A lovely second-floor room on the north side of the house, with a newly renovated (2025) private bath and an easy, beachy vibe.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal">
+        <div class="room__media">
+          <span class="room__bloom">Private Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/971EF5C5-6964-425E-9201-1774BEFACB7B-950x640.jpeg" alt="Room 3, Daffodil" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>Daffodil</h3>
+          <p>A cozy first-floor room with a queen bed, flat-screen TV, and private bath — a warm, easy base for island days.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal d1">
+        <div class="room__media">
+          <span class="room__bloom">Shared Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/14743495-9F0D-417E-9033-14A399A108CF-950x640.jpeg" alt="Room 7, Morning Glory" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>Morning Glory</h3>
+          <p>Rise and shine — this large, sun-filled east-facing room has a bay window with distant ocean views, and shares a beautiful, spacious bathroom.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="room reveal d2">
+        <div class="room__media">
+          <span class="room__bloom">Shared Bath</span>
+          <img src="https://sheffieldhousebi.com/wp-content/uploads/3A813146-98E6-4B02-8B04-7429CBFAD5FF-950x640.jpeg" alt="Room 4, The Wildflower" loading="lazy">
+        </div>
+        <div class="room__body">
+          <h3>The Wildflower</h3>
+          <p>A newly updated cozy room at the top of the stairs, beside the spacious shared bath for easy access. Plenty of afternoon sun and cool evening breezes.</p>
+          <div class="room__foot">
+            <div class="room__price"><small>From</small>$210 <small style="display:inline;font-size:.6rem">/ night</small></div>
+            <a class="room__link" href="https://sheffieldhousebi.com/reservation/">Reserve →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <div style="text-align:center;margin-top:clamp(36px,5vw,56px)" class="reveal">
+      <a class="btn btn--line" href="https://sheffieldhousebi.com/rooms/">View All Rooms &amp; Rates</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── AMENITIES ── -->
+<section class="section section--cream">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow eyebrow--center">Comforts</span>
+      <h2>Small house, gracious details</h2>
+    </div>
+    <div class="amen reveal d1">
+      <div class="amen__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6"/><path d="M3 18h18"/><path d="M6 10V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>
+        <h3>Queen Beds</h3>
+        <p>Every room has a comfortable queen bed.</p>
+      </div>
+      <div class="amen__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg>
+        <h3>Flat-Screen &amp; Satellite TV</h3>
+        <p>Stay connected after a day on the island.</p>
+      </div>
+      <div class="amen__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c2 3 2 5 0 7s-2 4 0 7"/><path d="M5 7c1.5 2 1.5 3 0 5"/><path d="M19 7c-1.5 2-1.5 3 0 5"/></svg>
+        <h3>Private &amp; Shared Baths</h3>
+        <p>Most rooms with private bath; two newly renovated in 2025.</p>
+      </div>
+      <div class="amen__item">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M3 13h18"/><path d="M9 21v-5h6v5"/></svg>
+        <h3>Wrap-Around Porch</h3>
+        <p>The perfect spot for a glass of wine with friends.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GALLERY ── -->
+<section class="section section--paper" id="gallery">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow eyebrow--center">Gallery</span>
+      <h2>Around the house &amp; gardens</h2>
+    </div>
+    <div class="gallery reveal d1">
+      <a href="https://sheffieldhousebi.com/wp-content/uploads/2018/11/slider-1.jpg" target="_blank" rel="noopener"><img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/slider-1.jpg" alt="The Sheffield House exterior" loading="lazy"></a>
+      <a href="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-1.jpg" target="_blank" rel="noopener"><img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-1.jpg" alt="Sheffield House detail" loading="lazy"></a>
+      <a href="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-2.jpg" target="_blank" rel="noopener"><img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-2.jpg" alt="Sheffield House detail" loading="lazy"></a>
+      <a href="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-3.jpg" target="_blank" rel="noopener"><img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-3.jpg" alt="Sheffield House detail" loading="lazy"></a>
+      <a href="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-4.jpg" target="_blank" rel="noopener"><img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/gall-4.jpg" alt="Sheffield House detail" loading="lazy"></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── INNKEEPERS ── -->
+<section class="section keepers" id="about">
+  <div class="wrap keepers__grid">
+    <div class="keepers__media reveal">
+      <img src="https://sheffieldhousebi.com/wp-content/uploads/ed-and-diane-300x224.jpeg" alt="Innkeepers Ed and Diane Hayde with resident dog Nala" loading="lazy">
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">Your Innkeepers</span>
+      <h2>Ed &amp; Diane Hayde<br>— and Nala</h2>
+      <p>We have been vacationing on Block Island since the early 1980s, waiting each year for those few precious weeks in heaven. In June 2005 we were fortunate enough to purchase the Sheffield House.</p>
+      <p>Our love for innkeeping and this beautiful island is the driving force that inspires us to give every guest their own little slice of heaven. Ask to meet Nala — she loves making new friends and belly rubs.</p>
+      <p class="sig">We look forward to seeing you on the Block.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── LOCATION ── -->
+<section class="section section--cream" id="location">
+  <div class="wrap loc">
+    <div class="loc__map reveal">
+      <a href="https://www.google.com/maps?ll=41.16989,-71.558977&z=14&t=m&hl=en-US&gl=US&mapclient=embed&cid=8949060649227375679" target="_blank" rel="noopener" aria-label="Open The Sheffield House location in Google Maps">
+        <img src="https://sheffieldhousebi.com/wp-content/uploads/map.png" alt="Map of The Sheffield House on Block Island" loading="lazy">
+      </a>
+    </div>
+    <div class="reveal d1">
+      <span class="eyebrow">Find Us</span>
+      <h2>In the heart of the Historic District</h2>
+      <address>
+        <b>The Sheffield House</b><br>
+        Up High Street, Historic District<br>
+        P.O. Box 338, Block Island, Rhode Island 02807
+      </address>
+      <a class="loc__phone" href="tel:8448474824">(844) VISIT-BI &nbsp;·&nbsp; (844) 847-4824</a>
+      <div>
+        <a class="btn btn--gold" href="https://sheffieldhousebi.com/reservation/">Check Availability</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FINAL CTA ── -->
+<section class="cta">
+  <div class="cta__bg" role="img" aria-label="The Sheffield House at golden hour"></div>
+  <div class="wrap cta__inner">
+    <span class="eyebrow">May – October</span>
+    <h2>Your own little <em>slice of heaven</em></h2>
+    <p>Reserve a garden room and discover the beauty and tranquility of Block Island.</p>
+    <div class="cta__cta">
+      <a class="btn btn--gold" href="https://sheffieldhousebi.com/reservation/">Make a Reservation</a>
+      <a class="btn btn--ghost" href="tel:8448474824">Call (844) 847-4824</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="foot">
+  <div class="wrap foot__grid">
+    <div class="foot__brand">
+      <img src="https://sheffieldhousebi.com/wp-content/uploads/2018/11/logo.png" alt="The Sheffield House">
+      <p>A Queen Anne Victorian bed &amp; breakfast on Block Island, Rhode Island. Open May through October.</p>
+      <div class="foot__social">
+        <a href="https://www.facebook.com/sheffieldhousebi/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-1.7 0-3 1.3-3 3v2H8v3h3v7h3v-7h2.5l.5-3H14V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="https://twitter.com/sheffbiri" target="_blank" rel="noopener" aria-label="Twitter"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 5.9c-.7.3-1.5.5-2.3.6.8-.5 1.4-1.3 1.7-2.2-.8.5-1.6.8-2.5 1a3.9 3.9 0 0 0-6.7 3.6A11 11 0 0 1 4 4.9a3.9 3.9 0 0 0 1.2 5.2c-.6 0-1.2-.2-1.7-.5v.1c0 1.9 1.3 3.5 3.1 3.8-.6.2-1.2.2-1.8.1.5 1.6 2 2.7 3.7 2.7A7.8 7.8 0 0 1 2 18.6 11 11 0 0 0 8 20c7 0 11-6 11-11v-.5c.8-.6 1.4-1.3 2-2.1z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li><a href="#rooms">Rooms &amp; Rates</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="https://sheffieldhousebi.com/testimonials/">Testimonials</a></li>
+        <li><a href="https://sheffieldhousebi.com/reservation/">Reservations</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:8448474824">(844) 847-4824</a></li>
+        <li><a href="https://sheffieldhousebi.com/contact/">Send a Message</a></li>
+        <li>P.O. Box 338</li>
+        <li>Block Island, RI 02807</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot__bar">
+    <span>© 2026 The Sheffield House. All rights reserved.</span>
+    <span>Site design by <a href="http://bofilltech.com/" target="_blank" rel="noopener">Bofill Technologies</a></span>
+  </div>
+</footer>
+
+<!-- ── Mobile sticky book bar ── -->
+<div class="bookbar" id="bookbar">
+  <a class="tel" href="tel:8448474824" aria-label="Call The Sheffield House">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1z"/></svg>
+    Call
+  </a>
+  <a class="btn btn--gold" href="https://sheffieldhousebi.com/reservation/">Reserve</a>
+</div>
+
+<script>
+  (function(){
+    var nav=document.getElementById('nav');
+    var bookbar=document.getElementById('bookbar');
+    var burger=document.getElementById('burger');
+    var drawer=document.getElementById('drawer');
+
+    function onScroll(){
+      var y=window.scrollY;
+      nav.classList.toggle('scrolled', y>60);
+      bookbar.classList.toggle('show', y>520);
+    }
+    window.addEventListener('scroll',onScroll,{passive:true});
+    onScroll();
+
+    burger.addEventListener('click',function(){
+      var open=drawer.classList.toggle('open');
+      burger.classList.toggle('open',open);
+      burger.setAttribute('aria-expanded',open);
+      document.body.style.overflow=open?'hidden':'';
+    });
+    drawer.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click',function(){
+        drawer.classList.remove('open');
+        burger.classList.remove('open');
+        burger.setAttribute('aria-expanded',false);
+        document.body.style.overflow='';
+      });
+    });
+
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el)});
+  })();
+</script>
+</body>
+</html>
