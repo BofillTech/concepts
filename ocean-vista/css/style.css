@@ -1759,3 +1759,31 @@
 @media (max-width: 480px){
   .amenities-bullets{ grid-template-columns: 1fr; }
 }
+
+/* ---------- Brand logo (image-based) ---------- */
+.brand-img{
+  display: block;
+  width: auto;
+  user-select: none;
+}
+.brand-img--nav{
+  height: 56px;
+}
+.brand-img--drawer{
+  height: 80px;
+}
+.brand-img--footer{
+  height: 96px;
+  /* Logo is dark gray — invert + brighten on dark navy footer to read as light */
+  filter: brightness(0) invert(1) opacity(0.92);
+}
+@media (max-width: 700px){
+  .brand-img--nav{ height: 44px; }
+  .brand-img--drawer{ height: 64px; }
+  .brand-img--footer{ height: 80px; }
+}
+
+/* Tighten the footer brand block now that the logo is image-based */
+.footer-brand .brand-img--footer{
+  margin-bottom: 20px;
+}
