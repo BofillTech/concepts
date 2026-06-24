@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>White Bay Villas — Website Performance</title>
+<style>
+  :root{
+    --ink:#1f2733; --ink-soft:#5a6472; --line:#e6e8ec; --bg:#f5f6f8;
+    --gold:#BA7517; --gold-soft:#f4a91f; --blue:#378ADD; --teal:#1D9E75;
+    --purple:#7F77DD; --card:#ffffff; --good:#0f6e56; --good-bg:#e1f5ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
+  header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:40px;height:40px;border-radius:9px;background:var(--ink);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .brand h1{font-size:18px;margin:0;font-weight:600}
+  .brand p{margin:2px 0 0;font-size:13px;color:var(--ink-soft)}
+  .range{text-align:right;font-size:13px;color:var(--ink-soft)}
+  h2{font-size:15px;font-weight:600;margin:34px 0 12px;color:var(--ink)}
+  .grid{display:grid;gap:14px}
+  .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .kpi .lbl{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
+  .kpi .val{font-size:26px;font-weight:700;margin-top:4px}
+  .kpi.rev .val{color:var(--good)}
+  .kpi.rev{background:var(--good-bg);border-color:#cdeee2}
+  .two{grid-template-columns:1fr 1fr}
+  @media(max-width:760px){.two{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+  .card h3{font-size:14px;font-weight:600;margin:0 0 4px}
+  .card .sub{font-size:12px;color:var(--ink-soft);margin:0 0 12px}
+  .flag{font-size:12px;color:#854f0b;background:#faeeda;border-radius:8px;padding:8px 10px;margin:0 0 10px}
+  .cwrap{position:relative;width:100%}
+  footer{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  .gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50}
+  .gate .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;max-width:340px;width:90%;text-align:center}
+  .gate input{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;margin:14px 0;font-size:15px}
+  .gate button{width:100%;padding:10px;border:0;border-radius:8px;background:var(--ink);color:#fff;font-size:15px;cursor:pointer}
+  .gate .mark{width:48px;height:48px;border-radius:11px;background:var(--ink);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin:0 auto}
+</style>
+</head>
+<body>
+<div class="gate" id="gate">
+  <div class="box">
+    <div class="mark">B</div>
+    <h3 style="margin:14px 0 0;font-size:16px">White Bay Villas Dashboard</h3>
+    <p style="font-size:13px;color:#5a6472;margin:6px 0 0">Enter access code to view</p>
+    <input type="password" id="pw" placeholder="Access code" autocomplete="off" />
+    <button onclick="checkPw()">View dashboard</button>
+  </div>
+</div>
+
+<div class="wrap" id="app" style="display:none">
+  <header>
+    <div class="brand">
+      <div class="mark">B</div>
+      <div>
+        <h1>White Bay Villas — Website Performance</h1>
+        <p>jostvandyke.com · prepared by Bofill Technologies</p>
+      </div>
+    </div>
+    <div class="range">
+      <div><strong>Last 30 days</strong></div>
+      <div>May 25 – Jun 23, 2026</div>
+    </div>
+  </header>
+
+  <div class="grid kpis">
+    <div class="kpi"><div class="lbl">Sessions</div><div class="val">8,376</div></div>
+    <div class="kpi"><div class="lbl">Active users</div><div class="val">7,156</div></div>
+    <div class="kpi"><div class="lbl">Engagement</div><div class="val">81%</div></div>
+    <div class="kpi"><div class="lbl">Inquiries</div><div class="val">228</div></div>
+    <div class="kpi"><div class="lbl">Bookings</div><div class="val">11</div></div>
+    <div class="kpi rev"><div class="lbl">Revenue</div><div class="val">$28,714</div></div>
+  </div>
+
+  <h2>Traffic & conversions over time</h2>
+  <div class="card">
+    <div class="sub">Daily sessions (gold) and key events — inquiries + bookings (green dashed)</div>
+    <div class="cwrap" style="height:280px"><canvas id="trend"></canvas></div>
+  </div>
+
+  <h2>Bookings & revenue</h2>
+  <div class="grid two">
+    <div class="card">
+      <h3>Revenue by villa</h3>
+      <p class="sub">From Cloudbeds booking engine · USD</p>
+      <div class="cwrap" style="height:240px"><canvas id="rev"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Booking funnel</h3>
+      <p class="sub">Cloudbeds engine steps (page views → completed)</p>
+      <div class="cwrap" style="height:240px"><canvas id="funnel"></canvas></div>
+    </div>
+  </div>
+
+  <h2>How visitors arrive</h2>
+  <div class="grid two">
+    <div class="card">
+      <h3>Traffic by channel</h3>
+      <p class="sub">Sessions</p>
+      <div class="cwrap" style="height:250px"><canvas id="chan"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Device split</h3>
+      <p class="sub">Mobile 61% · Desktop 37% · Tablet 2%</p>
+      <div class="cwrap" style="height:230px"><canvas id="dev"></canvas></div>
+    </div>
+  </div>
+
+  <h2>Most-visited pages</h2>
+  <div class="card">
+    <p class="sub">URL path with page name · by views</p>
+    <div class="cwrap" style="height:440px"><canvas id="pages"></canvas></div>
+  </div>
+
+  <h2>Where visitors are</h2>
+  <div class="grid two">
+    <div class="card">
+      <h3>Top countries</h3>
+      <p class="sub">Sessions</p>
+      <div class="cwrap" style="height:300px"><canvas id="country"></canvas></div>
+    </div>
+    <div class="card">
+      <h3>Top 20 US cities</h3>
+      <div class="flag">Amber bars (Ashburn, Moses Lake, Glencoe) are data-center hubs — likely automated traffic, not guests.</div>
+      <div class="cwrap" style="height:760px"><canvas id="city"></canvas></div>
+    </div>
+  </div>
+
+  <footer>
+    <span>Source: Google Analytics 4 via Windsor.ai · Snapshot generated Jun 24, 2026</span>
+    <span>Bofill Technologies · steve@bofilltech.com</span>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+function checkPw(){
+  var v=document.getElementById('pw').value.trim().toLowerCase();
+  if(v==='whitebay'){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';setTimeout(draw,30);}
+  else{document.getElementById('pw').value='';document.getElementById('pw').placeholder='Try again';}
+}
+document.getElementById('pw').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
+
+var GOLD='#BA7517',BLUE='#378ADD',TEAL='#1D9E75',PURPLE='#7F77DD',INK='#5a6472',GRID='#e6e8ec';
+function draw(){
+  Chart.defaults.color=INK; Chart.defaults.font.family='inherit';
+  var L=['5/25','','5/27','','5/29','','5/31','','6/2','','6/4','','6/6','','6/8','','6/10','','6/12','','6/14','','6/16','','6/18','','6/20','','6/22',''];
+  new Chart(trend,{data:{labels:L,datasets:[
+    {type:'line',label:'Sessions',yAxisID:'y',data:[340,283,242,307,487,579,369,330,225,232,211,447,214,268,309,215,233,200,316,218,218,229,202,208,232,410,199,248,194,211],borderColor:GOLD,backgroundColor:'rgba(186,117,23,.12)',borderWidth:2,fill:true,tension:.3,pointRadius:0},
+    {type:'line',label:'Key events',yAxisID:'y1',data:[2,9,57,63,23,6,5,4,0,0,2,3,3,6,4,4,11,0,4,3,2,3,1,0,2,8,0,5,6,3],borderColor:TEAL,borderWidth:2,borderDash:[5,4],fill:false,tension:.3,pointRadius:0}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,labels:{boxWidth:12}}},scales:{y:{beginAtZero:true,grid:{color:GRID}},y1:{beginAtZero:true,position:'right',grid:{display:false}},x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false}}}}});
+
+  new Chart(rev,{type:'bar',data:{labels:['Hillside Villas','Paradise Villas','Seaside Cottages','Sunset Villa West'],datasets:[{data:[11980,8379,1197,1197],backgroundColor:TEAL,borderRadius:4,barThickness:24}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '$'+c.parsed.x.toLocaleString();}}}},scales:{x:{beginAtZero:true,grid:{color:GRID},ticks:{callback:function(v){return '$'+(v/1000)+'k';}}},y:{grid:{display:false}}}}});
+
+  new Chart(funnel,{type:'bar',data:{labels:['Reservation','Guest details','Payment','Confirmation','Completed'],datasets:[{data:[6029,104,36,14,11],backgroundColor:[BLUE,BLUE,BLUE,BLUE,GOLD],borderRadius:4,barThickness:24}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
+
+  new Chart(chan,{type:'bar',data:{labels:['Organic Search','Direct','Referral','Unassigned','Organic Social','Other'],datasets:[{data:[2658,2369,1810,991,520,57],backgroundColor:BLUE,borderRadius:4,barThickness:20}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
+
+  new Chart(dev,{type:'doughnut',data:{labels:['Mobile','Desktop','Tablet'],datasets:[{data:[5137,3059,161],backgroundColor:[GOLD,BLUE,TEAL],borderWidth:0}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'bottom',labels:{boxWidth:12}}}}});
+
+  new Chart(pages,{type:'bar',data:{labels:[['/','Homepage'],['/en/reservation/hj40Sd/','Booking engine (Cloudbeds)'],['/properties-overview','Properties overview'],['/alices-restaurant',"Alice's Restaurant"],['/seaside-cottages','Seaside Cottages'],['/palm-villa','Palm Villa'],['/sunset-villa-west','Sunset Villa West'],['/paradise-villas','Paradise Villas'],['/sunset-villa-east','Sunset Villa East'],['/island-activities','Island Activities']],datasets:[{data:[8692,5733,1903,1579,1005,718,704,676,571,507],backgroundColor:PURPLE,borderRadius:4,barThickness:24}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.x.toLocaleString()+' views';}}}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
+
+  new Chart(country,{type:'bar',data:{labels:['United States','British Virgin Is.','Canada','US Virgin Is.','Singapore','Puerto Rico','United Kingdom','Philippines'],datasets:[{data:[7112,214,157,141,139,100,91,87],backgroundColor:TEAL,borderRadius:4,barThickness:18}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
+
+  var cityCols=['#378ADD','#BA7517','#378ADD','#378ADD','#BA7517','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#BA7517','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD'];
+  new Chart(city,{type:'bar',data:{labels:['New York, NY','Ashburn, VA','Chicago, IL','Houston, TX','Moses Lake, WA','Dallas, TX','Denver, CO','Los Angeles, CA','Atlanta, GA','Miami, FL','Boston, MA','Austin, TX','Washington, DC','Charlotte, NC','Glencoe, FL','Raleigh, NC','Bridgeport, CT','Minneapolis, MN','Fort Worth, TX','Birmingham, AL'],datasets:[{data:[233,207,89,83,79,77,74,69,63,49,48,45,43,40,40,40,35,31,29,28],backgroundColor:cityCols,borderRadius:4,barThickness:24}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
+}
+</script>
+</body>
+</html>
