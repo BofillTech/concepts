@@ -727,13 +727,23 @@ section { padding: 110px 28px; position: relative; }
 .gallery-note strong { color: var(--sunset-deep); }
 @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
 @media (max-width: 600px) { .gallery-grid { grid-template-columns: 1fr; } .gallery-filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; } .gal-filter { padding: 12px 18px; font-size: 11px; flex-shrink: 0; } }
+
+.nav-logo { display: inline-flex; align-items: center; }
+.nav-logo img {
+  max-height: 76px !important;
+  width: auto; display: block;
+  transition: max-height 0.2s ease;
+}
+@media (max-width: 768px) {
+  .nav-logo img { max-height: 56px !important; }
+}
 </style>
 </head>
 <body>
 <div class="promo-banner" id="promoBanner">
   <div class="promo-banner-inner">
-    <span class="promo-banner-flag">Spring Special</span>
-    <span>Save 10% on stays of 5 nights or more, now through May 31.</span>
+    <span class="promo-banner-flag">Summer Special</span>
+    <span>Through August 31st, 2026.</span>
     <a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book direct →</a>
   </div>
   <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
@@ -742,12 +752,7 @@ section { padding: 110px 28px; position: relative; }
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="../" class="nav-logo">
-      <img src="https://paradisevacationsuites.com/wp-content/uploads/image001-1.png" alt="Paradise Vacation Suites">
-      <div class="nav-logo-text">
-        Paradise Vacation Suites
-        <span>Wilton Manors</span>
-      </div>
-    </a>
+      <img src="https://paradisevacationsuites.com/wp-content/uploads/image001-1.png" alt="Paradise Vacation Suites"></a>
     <ul class="nav-menu" id="navMenu">
       <li><a href="../">Home</a></li>
       <li><a href="../suites/">Suites</a></li>
@@ -780,7 +785,6 @@ section { padding: 110px 28px; position: relative; }
   <div class="gallery-inner">
     <div class="gallery-filters fade-up" role="tablist">
       <button class="gal-filter active" data-filter="all" role="tab" aria-selected="true">All</button>
-      <button class="gal-filter" data-filter="rooms" role="tab" aria-selected="false">Rooms</button>
       <button class="gal-filter" data-filter="grounds" role="tab" aria-selected="false">Grounds</button>
       <button class="gal-filter" data-filter="area" role="tab" aria-selected="false">Area</button>
     </div>
@@ -791,60 +795,18 @@ section { padding: 110px 28px; position: relative; }
         <div class="gal-tile" data-cat="grounds" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Pergola Dining</div><div class="gal-tile-meta">Outdoor Cabanas</div></div></div>
         <div class="gal-tile" data-cat="grounds" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Night Lighting</div><div class="gal-tile-meta">After Dark</div></div></div>
         <div class="gal-tile" data-cat="grounds" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Fountains-Shaded-Pergolas-scaled.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Pool House Pergola</div><div class="gal-tile-meta">Shaded Lounge</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Apartment Interior</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Master Bedroom</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Full Kitchen</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Living Area</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Private Patio</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
-        <div class="gal-tile gal-tile-placeholder" data-cat="rooms"><div class="gal-tile-bop"><svg width="64" height="80" viewBox="0 0 48 60" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-<path d="M24 36 L12 8 L18 14 Z" fill="#f5b942"/>
-<path d="M24 36 L24 4 L26 12 Z" fill="#f5b942"/>
-<path d="M24 36 L36 8 L30 14 Z" fill="#f5b942"/>
-<path d="M24 38 L42 32 L38 40 Z" fill="#f06292"/>
-<ellipse cx="24" cy="38" rx="10" ry="3" fill="#128d99"/>
-<rect x="23" y="38" width="2" height="20" fill="#128d99"/>
-</svg></div><div class="gal-tile-overlay"><div class="gal-tile-title">Two-Bedroom Villa</div><div class="gal-tile-meta">Photo Coming Soon</div></div></div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
         <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Wilton Drive</div><div class="gal-tile-meta">10-min walk</div></div></div>
         <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/2023/07/content-1.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Fort Lauderdale Beach</div><div class="gal-tile-meta">18-min drive</div></div></div>
         <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/2023/07/content-2.png');"><div class="gal-tile-overlay"><div class="gal-tile-title">Events & Sightseeing</div><div class="gal-tile-meta">Year-Round</div></div></div>
     </div>
     <div class="gallery-note fade-up">
-      <strong>Concept note for Thomas:</strong> The Grounds and Area tabs use your existing property and Wilton Drive photography. The Rooms tab currently shows placeholders — once you send us interior photos of any suite (bedroom, living area, kitchen, patio), we'll swap them in here and across the Suites page thumbnails.
+      <strong>Concept note:</strong> Gallery shows grounds and surrounding-area photos. Suite interior photography lives on the individual suite pages — see the Suites page for unit-by-unit photo galleries.
     </div>
   </div>
 </section>
