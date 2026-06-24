@@ -171,7 +171,7 @@ function bar(id,labels,data,colors,horiz,money){
   if(charts[id])charts[id].destroy();
   charts[id]=new Chart(document.getElementById(id),{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:colors,borderRadius:4,barThickness:horiz?20:24}]},
     options:{indexAxis:horiz?'y':'x',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){var v=horiz?c.parsed.x:c.parsed.y;return (money?'$':'')+v.toLocaleString()+(money?'':'');}}}},
-    scales:{x:{beginAtZero:true,grid:{color:GRID},ticks:{callback:function(v){return money?'$'+(v>=1000?(v/1000)+'k':v):v;}}},y:{grid:{display:false},ticks:{font:{size:11}}}}});
+    scales:{x:{beginAtZero:true,grid:{color:GRID},ticks:{callback:function(v){return money?'$'+(v>=1000?(v/1000)+'k':v):v;}}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
 }
 function render(r){
   var x=D[r];
