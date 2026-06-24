@@ -6,28 +6,27 @@
 <meta name="robots" content="noindex, nofollow" />
 <title>White Bay Villas — Website Performance</title>
 <style>
-  :root{
-    --ink:#1f2733; --ink-soft:#5a6472; --line:#e6e8ec; --bg:#f5f6f8;
-    --gold:#BA7517; --gold-soft:#f4a91f; --blue:#378ADD; --teal:#1D9E75;
-    --purple:#7F77DD; --card:#ffffff; --good:#0f6e56; --good-bg:#e1f5ee;
-  }
+  :root{--ink:#1f2733;--ink-soft:#5a6472;--line:#e6e8ec;--bg:#f5f6f8;--gold:#BA7517;--blue:#378ADD;--teal:#1D9E75;--purple:#7F77DD;--card:#fff;--good:#0f6e56;--good-bg:#e1f5ee}
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
   .wrap{max-width:1080px;margin:0 auto;padding:24px 20px 60px}
-  header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:24px}
+  header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:18px}
   .brand{display:flex;align-items:center;gap:12px}
-  .brand .mark{width:40px;height:40px;border-radius:9px;background:var(--ink);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .brand .mark{width:40px;height:40px;border-radius:9px;background:var(--ink);color:#f4a91f;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
   .brand h1{font-size:18px;margin:0;font-weight:600}
   .brand p{margin:2px 0 0;font-size:13px;color:var(--ink-soft)}
-  .range{text-align:right;font-size:13px;color:var(--ink-soft)}
-  h2{font-size:15px;font-weight:600;margin:34px 0 12px;color:var(--ink)}
+  .ctrl{display:flex;align-items:center;gap:10px}
+  .ctrl label{font-size:13px;color:var(--ink-soft)}
+  .ctrl select{padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;background:#fff;color:var(--ink);cursor:pointer}
+  .note{font-size:12px;color:var(--ink-soft);margin:0 0 20px}
+  h2{font-size:15px;font-weight:600;margin:30px 0 12px}
   .grid{display:grid;gap:14px}
   .kpis{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
   .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
   .kpi .lbl{font-size:12px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.04em}
   .kpi .val{font-size:26px;font-weight:700;margin-top:4px}
-  .kpi.rev .val{color:var(--good)}
   .kpi.rev{background:var(--good-bg);border-color:#cdeee2}
+  .kpi.rev .val{color:var(--good)}
   .two{grid-template-columns:1fr 1fr}
   @media(max-width:760px){.two{grid-template-columns:1fr}}
   .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
@@ -35,148 +34,174 @@
   .card .sub{font-size:12px;color:var(--ink-soft);margin:0 0 12px}
   .flag{font-size:12px;color:#854f0b;background:#faeeda;border-radius:8px;padding:8px 10px;margin:0 0 10px}
   .cwrap{position:relative;width:100%}
+  #map svg{width:100%;height:auto;display:block}
+  .maptip{position:absolute;pointer-events:none;background:#1f2733;color:#fff;font-size:12px;padding:4px 8px;border-radius:6px;opacity:0;transform:translate(-50%,-130%);white-space:nowrap}
+  .legend{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink-soft);margin-top:8px}
+  .legend i{width:22px;height:10px;display:inline-block;border-radius:2px}
   footer{margin-top:40px;border-top:1px solid var(--line);padding-top:16px;font-size:12px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
   .gate{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:50}
   .gate .box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;max-width:340px;width:90%;text-align:center}
   .gate input{width:100%;padding:10px;border:1px solid var(--line);border-radius:8px;margin:14px 0;font-size:15px}
   .gate button{width:100%;padding:10px;border:0;border-radius:8px;background:var(--ink);color:#fff;font-size:15px;cursor:pointer}
-  .gate .mark{width:48px;height:48px;border-radius:11px;background:var(--ink);color:var(--gold-soft);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin:0 auto}
+  .gate .mark{width:48px;height:48px;border-radius:11px;background:var(--ink);color:#f4a91f;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:22px;margin:0 auto}
 </style>
 </head>
 <body>
-<div class="gate" id="gate">
-  <div class="box">
-    <div class="mark">B</div>
-    <h3 style="margin:14px 0 0;font-size:16px">White Bay Villas Dashboard</h3>
-    <p style="font-size:13px;color:#5a6472;margin:6px 0 0">Enter access code to view</p>
-    <input type="password" id="pw" placeholder="Access code" autocomplete="off" />
-    <button onclick="checkPw()">View dashboard</button>
-  </div>
-</div>
+<div class="gate" id="gate"><div class="box"><div class="mark">B</div>
+  <h3 style="margin:14px 0 0;font-size:16px">White Bay Villas Dashboard</h3>
+  <p style="font-size:13px;color:#5a6472;margin:6px 0 0">Enter access code to view</p>
+  <input type="password" id="pw" placeholder="Access code" autocomplete="off" />
+  <button onclick="checkPw()">View dashboard</button></div></div>
 
 <div class="wrap" id="app" style="display:none">
   <header>
-    <div class="brand">
-      <div class="mark">B</div>
-      <div>
-        <h1>White Bay Villas — Website Performance</h1>
-        <p>jostvandyke.com · prepared by Bofill Technologies</p>
-      </div>
-    </div>
-    <div class="range">
-      <div><strong>Last 30 days</strong></div>
-      <div>May 25 – Jun 23, 2026</div>
-    </div>
+    <div class="brand"><div class="mark">B</div><div>
+      <h1>White Bay Villas — Website Performance</h1>
+      <p>jostvandyke.com · prepared by Bofill Technologies</p></div></div>
+    <div class="ctrl"><label for="range">Date range</label>
+      <select id="range" onchange="render(this.value)">
+        <option value="30">Last 30 days</option>
+        <option value="90">Last 90 days</option>
+      </select></div>
   </header>
+  <p class="note" id="rangeNote"></p>
 
-  <div class="grid kpis">
-    <div class="kpi"><div class="lbl">Sessions</div><div class="val">8,376</div></div>
-    <div class="kpi"><div class="lbl">Active users</div><div class="val">7,156</div></div>
-    <div class="kpi"><div class="lbl">Engagement</div><div class="val">81%</div></div>
-    <div class="kpi"><div class="lbl">Inquiries</div><div class="val">228</div></div>
-    <div class="kpi"><div class="lbl">Bookings</div><div class="val">11</div></div>
-    <div class="kpi rev"><div class="lbl">Revenue</div><div class="val">$28,714</div></div>
-  </div>
+  <div class="grid kpis" id="kpis"></div>
 
   <h2>Traffic & conversions over time</h2>
-  <div class="card">
-    <div class="sub">Daily sessions (gold) and key events — inquiries + bookings (green dashed)</div>
-    <div class="cwrap" style="height:280px"><canvas id="trend"></canvas></div>
-  </div>
+  <div class="card"><div class="sub">Daily sessions (gold) and key events — inquiries + bookings (green dashed)</div>
+    <div class="cwrap" style="height:280px"><canvas id="trend"></canvas></div></div>
 
   <h2>Bookings & revenue</h2>
   <div class="grid two">
-    <div class="card">
-      <h3>Revenue by villa</h3>
-      <p class="sub">From Cloudbeds booking engine · USD</p>
-      <div class="cwrap" style="height:240px"><canvas id="rev"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Booking funnel</h3>
-      <p class="sub">Cloudbeds engine steps (page views → completed)</p>
-      <div class="cwrap" style="height:240px"><canvas id="funnel"></canvas></div>
-    </div>
+    <div class="card"><h3>Revenue by villa</h3><p class="sub">Cloudbeds booking engine · USD</p>
+      <div class="cwrap" style="height:240px"><canvas id="rev"></canvas></div></div>
+    <div class="card"><h3>Booking funnel</h3><p class="sub" id="funnelSub">Cloudbeds engine steps</p>
+      <div class="cwrap" style="height:240px"><canvas id="funnel"></canvas></div></div>
   </div>
 
   <h2>How visitors arrive</h2>
   <div class="grid two">
-    <div class="card">
-      <h3>Traffic by channel</h3>
-      <p class="sub">Sessions</p>
-      <div class="cwrap" style="height:250px"><canvas id="chan"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Device split</h3>
-      <p class="sub">Mobile 61% · Desktop 37% · Tablet 2%</p>
-      <div class="cwrap" style="height:230px"><canvas id="dev"></canvas></div>
-    </div>
+    <div class="card"><h3>Traffic by channel</h3><p class="sub">Sessions</p>
+      <div class="cwrap" style="height:260px"><canvas id="chan"></canvas></div></div>
+    <div class="card"><h3>Device split</h3><p class="sub" id="devSub"></p>
+      <div class="cwrap" style="height:240px"><canvas id="dev"></canvas></div></div>
   </div>
 
   <h2>Most-visited pages</h2>
-  <div class="card">
-    <p class="sub">URL path with page name · by views</p>
-    <div class="cwrap" style="height:440px"><canvas id="pages"></canvas></div>
-  </div>
+  <div class="card"><p class="sub">URL path with page name · by views</p>
+    <div class="cwrap" style="height:440px"><canvas id="pages"></canvas></div></div>
 
   <h2>Where visitors are</h2>
-  <div class="grid two">
-    <div class="card">
-      <h3>Top countries</h3>
-      <p class="sub">Sessions</p>
-      <div class="cwrap" style="height:300px"><canvas id="country"></canvas></div>
-    </div>
-    <div class="card">
-      <h3>Top 20 US cities</h3>
-      <div class="flag">Amber bars (Ashburn, Moses Lake, Glencoe) are data-center hubs — likely automated traffic, not guests.</div>
-      <div class="cwrap" style="height:760px"><canvas id="city"></canvas></div>
-    </div>
+  <div class="card"><h3>US sessions by state</h3><p class="sub">Darker = more sessions</p>
+    <div id="map" style="position:relative"></div>
+    <div class="maptip" id="maptip"></div>
+    <div class="legend"><span>Fewer</span><i style="background:#e1f5ee"></i><i style="background:#9FE1CB"></i><i style="background:#5DCAA5"></i><i style="background:#1D9E75"></i><i style="background:#0F6E56"></i><span>More</span></div>
+  </div>
+  <div class="grid two" style="margin-top:14px">
+    <div class="card"><h3>Top countries</h3><p class="sub">Sessions</p>
+      <div class="cwrap" style="height:300px"><canvas id="country"></canvas></div></div>
+    <div class="card"><h3>Top US cities</h3>
+      <div class="flag">Amber bars are data-center hubs (Ashburn, Moses Lake) — likely automated traffic, not guests.</div>
+      <div class="cwrap" style="height:620px"><canvas id="city"></canvas></div></div>
   </div>
 
-  <footer>
-    <span>Source: Google Analytics 4 via Windsor.ai · Snapshot generated Jun 24, 2026</span>
-    <span>Bofill Technologies · steve@bofilltech.com</span>
-  </footer>
+  <footer><span>Source: Google Analytics 4 via Windsor.ai · Snapshot Jun 24, 2026</span>
+    <span>Bofill Technologies · steve@bofilltech.com</span></footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
 <script>
-function checkPw(){
-  var v=document.getElementById('pw').value.trim().toLowerCase();
-  if(v==='whitebay'){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';setTimeout(draw,30);}
-  else{document.getElementById('pw').value='';document.getElementById('pw').placeholder='Try again';}
-}
+var GOLD='#BA7517',BLUE='#378ADD',TEAL='#1D9E75',PURPLE='#7F77DD',INK='#5a6472',GRID='#e6e8ec';
+function checkPw(){var v=document.getElementById('pw').value.trim().toLowerCase();
+  if(v==='whitebay'){document.getElementById('gate').style.display='none';document.getElementById('app').style.display='block';setTimeout(function(){loadMap();render('30');},30);}
+  else{document.getElementById('pw').value='';document.getElementById('pw').placeholder='Try again';}}
 document.getElementById('pw').addEventListener('keydown',function(e){if(e.key==='Enter')checkPw();});
 
-var GOLD='#BA7517',BLUE='#378ADD',TEAL='#1D9E75',PURPLE='#7F77DD',INK='#5a6472',GRID='#e6e8ec';
-function draw(){
-  Chart.defaults.color=INK; Chart.defaults.font.family='inherit';
-  var L=['5/25','','5/27','','5/29','','5/31','','6/2','','6/4','','6/6','','6/8','','6/10','','6/12','','6/14','','6/16','','6/18','','6/20','','6/22',''];
-  new Chart(trend,{data:{labels:L,datasets:[
-    {type:'line',label:'Sessions',yAxisID:'y',data:[340,283,242,307,487,579,369,330,225,232,211,447,214,268,309,215,233,200,316,218,218,229,202,208,232,410,199,248,194,211],borderColor:GOLD,backgroundColor:'rgba(186,117,23,.12)',borderWidth:2,fill:true,tension:.3,pointRadius:0},
-    {type:'line',label:'Key events',yAxisID:'y1',data:[2,9,57,63,23,6,5,4,0,0,2,3,3,6,4,4,11,0,4,3,2,3,1,0,2,8,0,5,6,3],borderColor:TEAL,borderWidth:2,borderDash:[5,4],fill:false,tension:.3,pointRadius:0}]},
-    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,labels:{boxWidth:12}}},scales:{y:{beginAtZero:true,grid:{color:GRID}},y1:{beginAtZero:true,position:'right',grid:{display:false}},x:{grid:{display:false},ticks:{maxRotation:0,autoSkip:false}}}}});
+function lbls(startISO,n){var out=[],d=new Date(startISO+'T00:00:00');for(var i=0;i<n;i++){out.push((d.getMonth()+1)+'/'+d.getDate());d.setDate(d.getDate()+1);}return out;}
 
-  new Chart(rev,{type:'bar',data:{labels:['Hillside Villas','Paradise Villas','Seaside Cottages','Sunset Villa West'],datasets:[{data:[11980,8379,1197,1197],backgroundColor:TEAL,borderRadius:4,barThickness:24}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '$'+c.parsed.x.toLocaleString();}}}},scales:{x:{beginAtZero:true,grid:{color:GRID},ticks:{callback:function(v){return '$'+(v/1000)+'k';}}},y:{grid:{display:false}}}}});
+var D={
+ '30':{note:'May 25 – Jun 23, 2026',
+  kpi:{Sessions:'8,376','Active users':'7,156',Engagement:'81%',Inquiries:'228',Bookings:'11'},rev:'$28,714',
+  start:'2026-05-25',
+  ds:[340,283,242,307,487,579,369,330,225,232,211,447,214,268,309,215,233,200,316,218,218,229,202,208,232,410,199,248,194,211],
+  ke:[2,9,57,63,23,6,5,4,0,0,2,3,3,6,4,4,11,0,4,3,2,3,1,0,2,8,0,5,6,3],
+  villa:{l:['Hillside Villas','Paradise Villas','Seaside Cottages','Sunset Villa West'],d:[11980,8379,1197,1197]},
+  funnel:[6029,104,36,14,11],funnelSub:'Cloudbeds engine steps · last 30d',
+  chan:{l:['Organic Search','Direct','Referral','Unassigned','Organic Social','Other'],d:[2658,2369,1810,991,520,57]},
+  dev:[5137,3059,161],devSub:'Mobile 61% · Desktop 37% · Tablet 2%',
+  pages:{l:[['/','Homepage'],['/en/reservation/hj40Sd/','Booking engine (Cloudbeds)'],['/properties-overview','Properties overview'],['/alices-restaurant',"Alice's Restaurant"],['/seaside-cottages','Seaside Cottages'],['/palm-villa','Palm Villa'],['/sunset-villa-west','Sunset Villa West'],['/paradise-villas','Paradise Villas'],['/sunset-villa-east','Sunset Villa East'],['/island-activities','Island Activities']],d:[8692,5733,1903,1579,1005,718,704,676,571,507]},
+  country:{l:['United States','British Virgin Is.','Canada','US Virgin Is.','Singapore','Puerto Rico','United Kingdom','Philippines'],d:[7112,214,157,141,139,100,91,87]},
+  cities:{l:['New York, NY','Ashburn, VA','Chicago, IL','Houston, TX','Moses Lake, WA','Dallas, TX','Denver, CO','Los Angeles, CA','Atlanta, GA','Miami, FL','Boston, MA','Austin, TX','Washington, DC','Charlotte, NC','Glencoe, FL','Raleigh, NC'],d:[233,207,89,83,79,77,74,69,63,49,48,45,43,40,40,40],bot:[0,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0]},
+  states:{Texas:590,Florida:589,Virginia:485,'New York':453,'North Carolina':370,California:355,Georgia:329,Ohio:303,Michigan:256,Pennsylvania:237,Illinois:223,Indiana:210,'South Carolina':197,Tennessee:188,Colorado:184,Massachusetts:183,'New Jersey':180,Louisiana:159,Alabama:142,Washington:140,Connecticut:139,Kentucky:133,Missouri:132,Minnesota:118,Iowa:113,Maryland:87,Kansas:85,Wisconsin:85,Oklahoma:83,Maine:79,Nebraska:77,Mississippi:71,Arkansas:69,'New Hampshire':63,Oregon:61,Arizona:54,'West Virginia':46,'District of Columbia':43,Nevada:33,Delaware:26,'Rhode Island':24,Idaho:21,Montana:21,Utah:21,'New Mexico':20,'North Dakota':18,Vermont:18,'South Dakota':16,Wyoming:16,Hawaii:3,Alaska:1}},
+ '90':{note:'Mar 26 – Jun 23, 2026',
+  kpi:{Sessions:'60,024','Active users':'52,192',Engagement:'68%',Inquiries:'617',Bookings:'39'},rev:'$83,975',
+  start:'2026-03-26',
+  ds:[1653,1579,1520,1689,1479,594,831,850,719,671,723,789,542,500,406,482,651,659,568,588,697,1117,808,740,1211,2037,2127,2109,1854,1837,1653,1996,1809,1831,1930,861,476,378,614,471,482,443,708,660,736,814,666,573,426,411,411,252,273,302,243,211,208,359,273,386,340,283,242,307,487,579,369,330,225,232,211,447,214,268,309,215,233,200,316,218,218,229,202,208,232,410,199,248,194,214],
+  ke:[8,14,6,5,4,6,6,12,4,16,4,15,4,0,8,8,2,2,8,15,8,8,8,3,5,8,21,0,0,19,4,1,12,5,18,8,16,0,2,5,2,10,0,8,2,2,2,7,13,10,8,3,2,10,9,13,2,2,6,8,2,9,57,63,23,6,5,4,0,0,2,3,3,6,4,4,11,0,4,3,2,3,1,0,2,8,0,5,6,3],
+  villa:{l:['Paradise Villas','Hillside Villas','Seaside Cottages','Sunset Villa West','Sunset Villa East'],d:[34089,18659,11414,8750,5103]},
+  funnel:[6029,104,36,14,39],funnelSub:'Cloudbeds steps · funnel views ~last 30d, bookings 90d',
+  chan:{l:['Organic Social','Paid Social','Direct','Organic Search','Referral','Unassigned','Paid Search','Other'],d:[15808,15157,13439,8658,4027,2114,1237,278]},
+  dev:[49696,10112,793],devSub:'Mobile 82% · Desktop 17% · Tablet 1%',
+  pages:{l:[['/','Homepage'],['/irmng/','Campaign landing'],['/properties-overview','Properties overview'],['/alices-restaurant',"Alice's Restaurant"],['/en/reservation/hj40Sd/','Booking engine (Cloudbeds)'],['/seaside-cottages','Seaside Cottages'],['/island-activities','Island Activities'],['/getting-here','Getting Here'],['/palm-villa','Palm Villa'],['/deals','Deals']],d:[61901,22958,6746,6303,5735,3127,2288,2267,2220,2150]},
+  country:{l:['United States','Puerto Rico','British Virgin Is.','US Virgin Is.','Canada','Singapore','United Kingdom'],d:[50346,4188,1451,908,619,352,329]},
+  cities:{l:['New York, NY','Ashburn, VA','Houston, TX','Chicago, IL','Miami, FL','Los Angeles, CA','Boston, MA','Dallas, TX','Atlanta, GA','Orlando, FL','Charlotte, NC','Philadelphia, PA','Denver, CO','Austin, TX','Raleigh, NC','Moses Lake, WA','Tampa, FL'],d:[2270,655,650,649,640,534,487,460,447,402,382,358,352,327,300,283,255],bot:[0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]},
+  states:{Florida:6269,'New York':4095,Texas:4046,California:2593,'North Carolina':2459,Virginia:2379,Georgia:2243,'New Jersey':2185,Pennsylvania:1909,Massachusetts:1828,Ohio:1693,Michigan:1569,Illinois:1547,Indiana:1058,Connecticut:1051,'South Carolina':1048,Tennessee:1043,Colorado:997,Maryland:928,Alabama:800,Missouri:718,Minnesota:717,Washington:717,Kentucky:672,Louisiana:671,Wisconsin:591,Arizona:536,Iowa:526,Oklahoma:457,Oregon:449,Kansas:425,'New Hampshire':399,Mississippi:386,Maine:365,Arkansas:345,Nebraska:328,'West Virginia':263,Nevada:251,'Rhode Island':236,Utah:230,'District of Columbia':218,Delaware:168,Idaho:140,Vermont:114,'New Mexico':103,'South Dakota':100,Montana:94,Wyoming:82,'North Dakota':81,Hawaii:67,Alaska:31}}
+};
 
-  new Chart(funnel,{type:'bar',data:{labels:['Reservation','Guest details','Payment','Confirmation','Completed'],datasets:[{data:[6029,104,36,14,11],backgroundColor:[BLUE,BLUE,BLUE,BLUE,GOLD],borderRadius:4,barThickness:24}]},
+var charts={},usTopo=null,mapState=null;
+function loadMap(){d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(function(us){usTopo=us;if(mapState)drawMap(mapState);});}
+function drawMap(states){
+  mapState=states;if(!usTopo)return;
+  var host=d3.select('#map');host.select('svg').remove();
+  var vals=Object.values(states),max=Math.max.apply(null,vals);
+  var color=d3.scaleQuantize([0,max],['#e1f5ee','#9FE1CB','#5DCAA5','#1D9E75','#0F6E56']);
+  var svg=host.append('svg').attr('viewBox','0 0 960 520');
+  var path=d3.geoPath(d3.geoAlbersUsa().scale(1180).translate([480,255]));
+  var tip=document.getElementById('maptip'),box=document.getElementById('map').getBoundingClientRect();
+  svg.selectAll('path').data(topojson.feature(usTopo,usTopo.objects.states).features).join('path')
+    .attr('d',path).attr('stroke','#fff').attr('stroke-width',0.6)
+    .attr('fill',function(d){var v=states[d.properties.name];return v?color(v):'#f1f0ea';})
+    .on('mousemove',function(e,d){var v=states[d.properties.name]||0;tip.style.opacity=1;tip.textContent=d.properties.name+': '+v.toLocaleString()+' sessions';var r=document.getElementById('map').getBoundingClientRect();tip.style.left=(e.clientX-r.left)+'px';tip.style.top=(e.clientY-r.top)+'px';})
+    .on('mouseleave',function(){tip.style.opacity=0;});
+}
+function bar(id,labels,data,colors,horiz,money){
+  if(charts[id])charts[id].destroy();
+  charts[id]=new Chart(document.getElementById(id),{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:colors,borderRadius:4,barThickness:horiz?20:24}]},
+    options:{indexAxis:horiz?'y':'x',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){var v=horiz?c.parsed.x:c.parsed.y;return (money?'$':'')+v.toLocaleString()+(money?'':'');}}}},
+    scales:{x:{beginAtZero:true,grid:{color:GRID},ticks:{callback:function(v){return money?'$'+(v>=1000?(v/1000)+'k':v):v;}}},y:{grid:{display:false},ticks:{font:{size:11}}}}});
+}
+function render(r){
+  var x=D[r];
+  document.getElementById('rangeNote').textContent=x.note;
+  var k=document.getElementById('kpis');k.innerHTML='';
+  Object.keys(x.kpi).forEach(function(key){k.innerHTML+='<div class="kpi"><div class="lbl">'+key+'</div><div class="val">'+x.kpi[key]+'</div></div>';});
+  k.innerHTML+='<div class="kpi rev"><div class="lbl">Revenue</div><div class="val">'+x.rev+'</div></div>';
+  document.getElementById('devSub').textContent=x.devSub;
+  document.getElementById('funnelSub').textContent=x.funnelSub;
+
+  if(charts.trend)charts.trend.destroy();
+  charts.trend=new Chart(document.getElementById('trend'),{data:{labels:lbls(x.start,x.ds.length),datasets:[
+    {type:'line',label:'Sessions',yAxisID:'y',data:x.ds,borderColor:GOLD,backgroundColor:'rgba(186,117,23,.12)',borderWidth:2,fill:true,tension:.3,pointRadius:0},
+    {type:'line',label:'Key events',yAxisID:'y1',data:x.ke,borderColor:TEAL,borderWidth:2,borderDash:[5,4],fill:false,tension:.3,pointRadius:0}]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:true,labels:{boxWidth:12}}},
+      scales:{y:{beginAtZero:true,grid:{color:GRID}},y1:{beginAtZero:true,position:'right',grid:{display:false}},x:{grid:{display:false},ticks:{autoSkip:true,maxTicksLimit:14,maxRotation:0}}}}});
+
+  bar('rev',x.villa.l,x.villa.d,TEAL,true,true);
+  if(charts.funnel)charts.funnel.destroy();
+  charts.funnel=new Chart(document.getElementById('funnel'),{type:'bar',data:{labels:['Reservation','Guest details','Payment','Confirmation','Completed'],datasets:[{data:x.funnel,backgroundColor:[BLUE,BLUE,BLUE,BLUE,GOLD],borderRadius:4,barThickness:24}]},
     options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
-
-  new Chart(chan,{type:'bar',data:{labels:['Organic Search','Direct','Referral','Unassigned','Organic Social','Other'],datasets:[{data:[2658,2369,1810,991,520,57],backgroundColor:BLUE,borderRadius:4,barThickness:20}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
-
-  new Chart(dev,{type:'doughnut',data:{labels:['Mobile','Desktop','Tablet'],datasets:[{data:[5137,3059,161],backgroundColor:[GOLD,BLUE,TEAL],borderWidth:0}]},
+  bar('chan',x.chan.l,x.chan.d,BLUE,true,false);
+  if(charts.dev)charts.dev.destroy();
+  charts.dev=new Chart(document.getElementById('dev'),{type:'doughnut',data:{labels:['Mobile','Desktop','Tablet'],datasets:[{data:x.dev,backgroundColor:[GOLD,BLUE,TEAL],borderWidth:0}]},
     options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'bottom',labels:{boxWidth:12}}}}});
-
-  new Chart(pages,{type:'bar',data:{labels:[['/','Homepage'],['/en/reservation/hj40Sd/','Booking engine (Cloudbeds)'],['/properties-overview','Properties overview'],['/alices-restaurant',"Alice's Restaurant"],['/seaside-cottages','Seaside Cottages'],['/palm-villa','Palm Villa'],['/sunset-villa-west','Sunset Villa West'],['/paradise-villas','Paradise Villas'],['/sunset-villa-east','Sunset Villa East'],['/island-activities','Island Activities']],datasets:[{data:[8692,5733,1903,1579,1005,718,704,676,571,507],backgroundColor:PURPLE,borderRadius:4,barThickness:24}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.x.toLocaleString()+' views';}}}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false},ticks:{font:{size:11}}}}}});
-
-  new Chart(country,{type:'bar',data:{labels:['United States','British Virgin Is.','Canada','US Virgin Is.','Singapore','Puerto Rico','United Kingdom','Philippines'],datasets:[{data:[7112,214,157,141,139,100,91,87],backgroundColor:TEAL,borderRadius:4,barThickness:18}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
-
-  var cityCols=['#378ADD','#BA7517','#378ADD','#378ADD','#BA7517','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD','#BA7517','#378ADD','#378ADD','#378ADD','#378ADD','#378ADD'];
-  new Chart(city,{type:'bar',data:{labels:['New York, NY','Ashburn, VA','Chicago, IL','Houston, TX','Moses Lake, WA','Dallas, TX','Denver, CO','Los Angeles, CA','Atlanta, GA','Miami, FL','Boston, MA','Austin, TX','Washington, DC','Charlotte, NC','Glencoe, FL','Raleigh, NC','Bridgeport, CT','Minneapolis, MN','Fort Worth, TX','Birmingham, AL'],datasets:[{data:[233,207,89,83,79,77,74,69,63,49,48,45,43,40,40,40,35,31,29,28],backgroundColor:cityCols,borderRadius:4,barThickness:24}]},
-    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:GRID}},y:{grid:{display:false}}}}});
+  bar('pages',x.pages.l,x.pages.d,PURPLE,true,false);
+  bar('country',x.country.l,x.country.d,TEAL,true,false);
+  bar('city',x.cities.l,x.cities.d,x.cities.bot.map(function(b){return b?GOLD:BLUE;}),true,false);
+  document.querySelector('#city').parentNode.style.height=(x.cities.l.length*34+40)+'px';
+  drawMap(x.states);
 }
 </script>
 </body>
