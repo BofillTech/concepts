@@ -1,0 +1,201 @@
+/* ==========================================================================
+   York Harbor Inn — AEO content styles (Amenities + FAQ)
+   Scoped under .yhi-aeo. Uses the live theme's real design tokens so the
+   content reads as a native YHI page (maroon #621f21, cream #fbf6e6,
+   gold #dca759, body text #5f3f05, Inter body / adobe-caslon-pro headings).
+   ========================================================================== */
+.yhi-aeo{
+  --yhi-maroon:#621f21;
+  --yhi-maroon-2:#883c3a;
+  --yhi-cream:#fbf6e6;
+  --yhi-gold:#dca759;
+  --yhi-tint:rgba(236,214,136,.1);
+  --yhi-text:#5f3f05;
+  --yhi-rule:rgba(98,31,33,.16);
+  font-family:Inter,sans-serif;
+  color:var(--yhi-text);
+}
+.yhi-aeo .yhi-wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 20px}
+@media (min-width:1340px){.yhi-aeo .yhi-wrap{max-width:1240px}}
+
+/* ----- Page hero ----- */
+.yhi-aeo__hero{
+  background:var(--yhi-maroon);
+  color:var(--yhi-cream);
+  text-align:center;
+  padding:64px 20px 56px;
+  position:relative;
+}
+.yhi-aeo__eyebrow{
+  font-family:semplicitapro,Inter,sans-serif;
+  text-transform:uppercase;
+  letter-spacing:3.2px;
+  font-size:12px;
+  font-weight:400;
+  color:var(--yhi-gold);
+  display:block;
+  margin-bottom:14px;
+}
+.yhi-aeo__hero h1{
+  font-family:adobe-caslon-pro,serif;
+  color:var(--yhi-cream);
+  font-weight:400;
+  line-height:1.05;
+  margin:0 auto 16px;
+  font-size:40px;
+  max-width:18ch;
+}
+@media (min-width:768px){.yhi-aeo__hero h1{font-size:54px}}
+.yhi-aeo__hero p{
+  font-size:18px;
+  line-height:1.7;
+  color:var(--yhi-cream);
+  max-width:60ch;
+  margin:0 auto;
+  font-weight:300;
+}
+
+/* ----- Section rhythm ----- */
+.yhi-aeo__section{padding:56px 0}
+.yhi-aeo__section--tint{background:var(--yhi-tint)}
+.yhi-aeo__section-head{text-align:center;max-width:62ch;margin:0 auto 40px}
+.yhi-aeo__section-head h2{
+  font-family:adobe-caslon-pro,serif;
+  color:var(--yhi-maroon);
+  font-weight:400;
+  font-size:32px;
+  line-height:1.1;
+  margin:0 0 14px;
+}
+@media (min-width:768px){.yhi-aeo__section-head h2{font-size:40px}}
+.yhi-aeo__section-head p{font-size:17px;line-height:1.7;margin:0}
+
+/* ----- Amenity grid ----- */
+.yhi-aeo__grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:22px;
+}
+@media (min-width:600px){.yhi-aeo__grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1024px){.yhi-aeo__grid{grid-template-columns:repeat(3,1fr)}}
+.yhi-aeo__card{
+  background:#fff;
+  border:1px solid var(--yhi-rule);
+  border-top:3px solid var(--yhi-gold);
+  padding:28px 26px;
+  box-shadow:0 4px 30px rgba(0,0,0,.05);
+}
+.yhi-aeo__card h3{
+  font-family:adobe-caslon-pro,serif;
+  color:var(--yhi-maroon);
+  font-weight:400;
+  font-size:23px;
+  line-height:1.15;
+  margin:0 0 12px;
+}
+.yhi-aeo__card ul{margin:0;padding:0;list-style:none}
+.yhi-aeo__card li{
+  position:relative;
+  padding:0 0 0 22px;
+  margin:0 0 9px;
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--yhi-text);
+}
+.yhi-aeo__card li:last-child{margin-bottom:0}
+.yhi-aeo__card li::before{
+  content:"";
+  position:absolute;
+  left:2px;top:9px;
+  width:7px;height:7px;
+  border-radius:50%;
+  background:var(--yhi-gold);
+}
+
+/* ----- Inline call-to-action band ----- */
+.yhi-aeo__cta{
+  text-align:center;
+  background:var(--yhi-maroon);
+  color:var(--yhi-cream);
+  padding:48px 20px;
+}
+.yhi-aeo__cta h2{font-family:adobe-caslon-pro,serif;color:var(--yhi-cream);font-weight:400;font-size:30px;margin:0 0 12px}
+.yhi-aeo__cta p{color:var(--yhi-cream);font-size:17px;margin:0 0 26px;font-weight:300}
+.yhi-aeo__btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:54px;padding:8px 34px;
+  background:var(--yhi-gold);
+  color:var(--yhi-maroon);
+  font-family:Inter,sans-serif;font-weight:700;font-size:15px;
+  text-transform:capitalize;letter-spacing:.3px;
+  border:1px solid var(--yhi-gold);
+  text-decoration:none;
+  transition:all .3s ease;
+}
+.yhi-aeo__btn:hover{background:transparent;color:var(--yhi-cream);border-color:var(--yhi-cream);text-decoration:none}
+.yhi-aeo__btn + .yhi-aeo__btn{margin-left:12px}
+.yhi-aeo__btn--ghost{background:transparent;color:var(--yhi-cream);border-color:var(--yhi-cream)}
+.yhi-aeo__btn--ghost:hover{background:var(--yhi-gold);color:var(--yhi-maroon);border-color:var(--yhi-gold)}
+
+/* ----- FAQ accordion ----- */
+.yhi-aeo__faq{max-width:860px;margin:0 auto}
+.yhi-aeo__faq-group{margin:0 0 40px}
+.yhi-aeo__faq-group:last-child{margin-bottom:0}
+.yhi-aeo__faq-group > h2{
+  font-family:adobe-caslon-pro,serif;
+  color:var(--yhi-maroon);
+  font-weight:400;font-size:28px;line-height:1.1;
+  margin:0 0 18px;padding-bottom:12px;
+  border-bottom:2px solid var(--yhi-gold);
+}
+.yhi-aeo__item{border-bottom:1px solid var(--yhi-rule)}
+.yhi-aeo__q{
+  width:100%;
+  background:none;border:0;
+  text-align:left;
+  cursor:pointer;
+  padding:20px 44px 20px 0;
+  position:relative;
+  font-family:adobe-caslon-pro,serif;
+  font-size:19px;line-height:1.35;
+  color:var(--yhi-maroon);
+  font-weight:600;
+}
+.yhi-aeo__q:hover{color:var(--yhi-maroon-2)}
+.yhi-aeo__q:focus-visible{outline:2px solid var(--yhi-gold);outline-offset:3px}
+.yhi-aeo__q::after{
+  content:"+";
+  position:absolute;right:6px;top:50%;
+  transform:translateY(-50%);
+  font-family:Inter,sans-serif;
+  font-size:26px;font-weight:300;line-height:1;
+  color:var(--yhi-gold);
+  transition:transform .25s ease;
+}
+.yhi-aeo__q[aria-expanded="true"]::after{content:"\2013";transform:translateY(-50%)}
+.yhi-aeo__a{
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .3s ease;
+}
+.yhi-aeo__a-inner{padding:0 0 22px}
+.yhi-aeo__a p{font-size:16px;line-height:1.7;margin:0 0 14px;color:var(--yhi-text)}
+.yhi-aeo__a p:last-child{margin-bottom:0}
+.yhi-aeo__a ul{margin:0 0 14px;padding-left:20px}
+.yhi-aeo__a li{font-size:16px;line-height:1.6;margin-bottom:7px;color:var(--yhi-text)}
+.yhi-aeo__a a{color:var(--yhi-maroon);font-weight:700;text-decoration:underline}
+.yhi-aeo__a a:hover{color:var(--yhi-maroon-2)}
+
+/* Open state (JS toggles .is-open; CSS-only fallback via :target not needed) */
+.yhi-aeo__item.is-open .yhi-aeo__a{max-height:1200px}
+
+/* Spacing so fixed bottom booking bar never covers content */
+.yhi-aeo__tail{height:70px}
+
+/* ----- Footer newsletter (class-based; replaces theme FluentForm) ----- */
+.yhi-news__row{display:flex;border-bottom:1px solid #fff;max-width:550px;margin:0 auto;align-items:center}
+.yhi-news__input{background:transparent;border:none;color:#fff;padding:10px 15px;flex:1}
+.yhi-news__input::placeholder{color:rgba(255,255,255,.7)}
+.yhi-news__input:focus{outline:0;background:rgba(0,0,0,.08)}
+.yhi-news__btn{background:transparent;border:none;color:#fff;font-weight:700;padding:5px 15px;cursor:pointer;font-family:Inter,sans-serif}
+.yhi-news__btn:hover{color:#883c3a}
