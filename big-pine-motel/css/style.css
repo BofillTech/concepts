@@ -1033,7 +1033,107 @@ body.is-locked { overflow: hidden; }
   margin-top: 4px;
 }
 
-/* ============ AMENITY DETAIL ============ */
+/* ============ AMENITY BOX GRID (dedicated amenities page) ============ */
+.amenity-box-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+}
+@media (max-width: 1024px) { .amenity-box-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 760px) { .amenity-box-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+@media (max-width: 460px) { .amenity-box-grid { grid-template-columns: 1fr; } }
+
+.amenity-box {
+  background: var(--bone);
+  border: 1px solid var(--line);
+  padding: 36px 28px 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.amenity-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 60px -30px rgba(1,62,72,0.25);
+  border-color: var(--aqua);
+}
+
+.amenity-box--feature {
+  grid-column: span 2;
+  background: var(--aqua-darkest);
+  color: var(--bone);
+  border-color: var(--aqua-darkest);
+}
+.amenity-box--feature:hover {
+  border-color: var(--coral);
+}
+@media (max-width: 760px) { .amenity-box--feature { grid-column: span 2; } }
+@media (max-width: 460px) { .amenity-box--feature { grid-column: span 1; } }
+
+.amenity-box__num {
+  font-family: 'Fraunces', serif;
+  font-style: italic;
+  font-variation-settings: "SOFT" 100;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--aqua);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.amenity-box--feature .amenity-box__num { color: var(--coral-soft); }
+
+.amenity-box__icon {
+  color: var(--aqua-deep);
+  margin-bottom: 16px;
+}
+.amenity-box--feature .amenity-box__icon { color: var(--coral-soft); }
+
+.amenity-box__title {
+  font-family: 'Fraunces', serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+  color: var(--ink);
+}
+.amenity-box--feature .amenity-box__title { color: var(--bone); font-size: 28px; }
+.amenity-box__title em {
+  font-style: italic;
+  font-variation-settings: "SOFT" 100;
+  color: var(--aqua-deep);
+}
+.amenity-box--feature .amenity-box__title em { color: var(--coral-soft); }
+
+.amenity-box__desc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+  flex: 1;
+}
+.amenity-box--feature .amenity-box__desc { color: rgba(251,247,236,0.82); font-size: 15px; }
+
+.amenity-box__tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--aqua-deep);
+  font-weight: 700;
+  padding: 5px 11px;
+  border: 1px solid var(--aqua-deep);
+  border-radius: 999px;
+  margin-top: auto;
+}
+.amenity-box--feature .amenity-box__tag {
+  color: var(--coral-soft);
+  border-color: var(--coral-soft);
+}
+
+/* ============ AMENITY DETAIL (kept for fallback / other uses) ============ */
 .amenity-detail {
   display: grid;
   grid-template-columns: auto 1fr auto;
