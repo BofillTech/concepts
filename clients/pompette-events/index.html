@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Private Events &amp; Buyouts | Pompette</title>
+  <meta name="description" content="Host your celebration at Pompette. Three private spaces — the bar, the sun-lit mezzanine, or a full bistro buyout — for cocktail receptions, seated dinners, and parties.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:title" content="Private Events &amp; Buyouts | Pompette">
+  <meta property="og:description" content="Three private spaces for cocktail receptions, seated dinners, and full bistro buyouts.">
+  <meta property="og:url" content="https://pompette.com/events/">
+  <meta property="og:site_name" content="Pompette">
+  <meta property="og:image" content="https://pompette.com/img/events-og.jpg"><!-- TODO: real OG image -->
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Private Events &amp; Buyouts | Pompette">
+  <meta name="twitter:description" content="Three private spaces for cocktail receptions, seated dinners, and full bistro buyouts.">
+  <meta name="twitter:image" content="https://pompette.com/img/events-og.jpg">
+
+  <!-- Geo (TODO: confirm exact coordinates / address for Pompette) -->
+  <meta name="geo.placename" content="Pompette">
+  <meta name="geo.region" content="US">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Page-specific styles layer on top of the site's global /css/style.css -->
+  <link rel="stylesheet" href="css/events.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Pompette",
+    "servesCuisine": "French",
+    "url": "https://pompette.com/",
+    "image": "https://pompette.com/img/events-og.jpg",
+    "amenityFeature": [
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Petite à Petite — private bar area",
+        "value": "Cocktail receptions up to 30 guests"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "La Mezz — private mezzanine",
+        "value": "Seated 30, standing 40"
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "Full Bistro Buyout",
+        "value": "Seated 110, standing 200+"
+      }
+    ],
+    "potentialAction": {
+      "@type": "ReserveAction",
+      "name": "Inquire about private events",
+      "target": "https://pompette.com/events/#inquire"
+    }
+  }
+  </script>
+</head>
+<body class="page page--events">
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- =========================================================
+       HEADER — replace this block with the site's real header
+       partial on integration. WordPress-canonical classes kept
+       so styling/behaviour matches the live theme.
+       ========================================================= -->
+  <header class="site-header" data-header>
+    <div class="site-header__inner">
+      <a class="site-header__brand" href="/" aria-label="Pompette home">Pompette</a>
+      <nav class="nav-primary" aria-label="Primary">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-menu" data-nav-toggle>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__label">Menu</span>
+        </button>
+        <ul id="primary-menu" class="menu genesis-nav-menu menu-primary" data-nav-menu>
+          <li class="menu-item"><a href="/">Home</a></li>
+          <li class="menu-item"><a href="/menu/">Menu</a></li>
+          <li class="menu-item"><a href="/reservations/">Reservations</a></li>
+          <li class="menu-item current-menu-item" aria-current="page"><a href="/events/">Private Events</a></li>
+          <li class="menu-item"><a href="/contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <p class="eyebrow eyebrow--light">Private Events &amp; Buyouts</p>
+        <h1 class="hero__title" id="hero-title">A room to raise a glass in</h1>
+        <p class="hero__lede">Pompette opens its doors for the occasions worth gathering for — an intimate cocktail hour at the bar, a sun-lit dinner on the mezzanine, or the whole bistro, yours for the night.</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#finder">Find your space</a>
+          <a class="btn btn--ghost" href="#inquire">Start an inquiry</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== FINDER ============================== -->
+    <!-- Signature: guest-count + style selector that live-filters the spaces,
+         echoing the Fox RC group-dining funnel. -->
+    <section class="finder" id="finder" aria-labelledby="finder-title">
+      <div class="finder__inner">
+        <div class="finder__head">
+          <p class="eyebrow">Tell us about your party</p>
+          <h2 class="finder__title" id="finder-title">Find your space</h2>
+          <p class="finder__sub">Set your headcount and the style of your evening — we'll show the rooms that fit.</p>
+        </div>
+
+        <div class="finder__controls">
+          <div class="field field--guests">
+            <label class="field__label" for="guest-count">Guests</label>
+            <div class="stepper" data-stepper>
+              <button class="stepper__btn" type="button" data-step="-5" aria-label="Fewer guests">&minus;</button>
+              <input class="stepper__input" id="guest-count" type="number" inputmode="numeric"
+                     min="2" max="200" step="1" value="30" data-guest-input
+                     aria-describedby="guest-hint">
+              <button class="stepper__btn" type="button" data-step="5" aria-label="More guests">&plus;</button>
+            </div>
+            <p class="field__hint" id="guest-hint">2&ndash;200+ guests</p>
+          </div>
+
+          <div class="field field--style">
+            <span class="field__label" id="style-label">Style of event</span>
+            <div class="chips" role="group" aria-labelledby="style-label" data-style-group>
+              <button class="chip is-active" type="button" data-style="cocktail" aria-pressed="true">Cocktail reception</button>
+              <button class="chip" type="button" data-style="seated" aria-pressed="false">Seated dinner</button>
+              <button class="chip" type="button" data-style="buyout" aria-pressed="false">Full buyout</button>
+            </div>
+          </div>
+        </div>
+
+        <p class="finder__result" data-finder-result aria-live="polite" role="status"></p>
+      </div>
+    </section>
+
+    <!-- ============================== SPACES ============================== -->
+    <section class="spaces" aria-labelledby="spaces-title">
+      <div class="spaces__inner">
+        <div class="spaces__head">
+          <p class="eyebrow">Three rooms, one bistro</p>
+          <h2 class="spaces__title" id="spaces-title">The spaces</h2>
+        </div>
+
+        <ul class="space-list" data-space-list>
+
+          <!-- Petite à Petite -->
+          <li class="space space--petite is-match" data-space
+              data-cap-seated="" data-cap-standing="30" data-buyout="false">
+            <div class="space__media" aria-hidden="true">
+              <span class="space__media-label">Petite à Petite</span>
+            </div>
+            <div class="space__body">
+              <div class="space__heading">
+                <p class="space__loc">Pompette &middot; Bar area</p>
+                <h3 class="space__name">Petite à Petite</h3>
+              </div>
+              <p class="space__desc">An intimate corner of the bar for cocktails and conversation — the easy, low-lit kind of evening that Pompette was made for.</p>
+              <dl class="space__caps">
+                <div class="cap">
+                  <dt class="cap__term">Best for</dt>
+                  <dd class="cap__val">Cocktail receptions</dd>
+                </div>
+                <div class="cap">
+                  <dt class="cap__term">Standing</dt>
+                  <dd class="cap__val">Up to 30</dd>
+                </div>
+              </dl>
+              <div class="space__rates">
+                <p class="space__rates-label">Hire rate</p>
+                <ul class="rate">
+                  <li class="rate__row"><span class="rate__day">Weekday</span><span class="rate__price">$2,250</span></li>
+                  <li class="rate__row"><span class="rate__day">Weekend</span><span class="rate__price">$3,500</span></li>
+                </ul>
+              </div>
+              <button class="btn btn--solid space__cta" type="button" data-inquire="Petite à Petite">Inquire about this space</button>
+            </div>
+          </li>
+
+          <!-- La Mezz -->
+          <li class="space space--mezz is-match" data-space
+              data-cap-seated="30" data-cap-standing="40" data-buyout="false">
+            <div class="space__media" aria-hidden="true">
+              <span class="space__media-label">La Mezz</span>
+            </div>
+            <div class="space__body">
+              <div class="space__heading">
+                <p class="space__loc">Pompette &middot; Mezzanine</p>
+                <h3 class="space__name">La Mezz</h3>
+              </div>
+              <p class="space__desc">A light-filled perch above the room with a conservatory feel — daylight by afternoon, candlelight by night. The sweet spot for a seated dinner with friends.</p>
+              <dl class="space__caps">
+                <div class="cap">
+                  <dt class="cap__term">Seated</dt>
+                  <dd class="cap__val">30</dd>
+                </div>
+                <div class="cap">
+                  <dt class="cap__term">Standing</dt>
+                  <dd class="cap__val">40</dd>
+                </div>
+              </dl>
+              <div class="space__rates">
+                <p class="space__rates-label">Hire rate</p>
+                <ul class="rate">
+                  <li class="rate__row"><span class="rate__day">Weekday</span><span class="rate__price">$4,500</span></li>
+                  <li class="rate__row"><span class="rate__day">Weekend</span><span class="rate__price">$6,000</span></li>
+                </ul>
+              </div>
+              <button class="btn btn--solid space__cta" type="button" data-inquire="La Mezz">Inquire about this space</button>
+            </div>
+          </li>
+
+          <!-- Full Buyout -->
+          <li class="space space--buyout is-match" data-space
+              data-cap-seated="110" data-cap-standing="200" data-buyout="true">
+            <div class="space__media" aria-hidden="true">
+              <span class="space__media-label">Full Buyout</span>
+            </div>
+            <div class="space__body">
+              <div class="space__heading">
+                <p class="space__loc">Pompette &middot; Whole bistro</p>
+                <h3 class="space__name">Full Bistro Buyout</h3>
+              </div>
+              <p class="space__desc">The entire bistro, exclusively yours — bar, mezzanine, dining room and all. For the big nights: launches, weddings, the parties people talk about afterward.</p>
+              <dl class="space__caps">
+                <div class="cap">
+                  <dt class="cap__term">Seated</dt>
+                  <dd class="cap__val">110</dd>
+                </div>
+                <div class="cap">
+                  <dt class="cap__term">Standing</dt>
+                  <dd class="cap__val">200+</dd>
+                </div>
+              </dl>
+              <div class="space__rates">
+                <p class="space__rates-label">Hire rate by night</p>
+                <ul class="rate rate--grid">
+                  <li class="rate__row"><span class="rate__day">Mon&ndash;Wed</span><span class="rate__price">$14,000</span></li>
+                  <li class="rate__row"><span class="rate__day">Thu &amp; Sun</span><span class="rate__price">$16,000</span></li>
+                  <li class="rate__row"><span class="rate__day">Friday</span><span class="rate__price">$18,000</span></li>
+                  <li class="rate__row"><span class="rate__day">Saturday</span><span class="rate__price">$19,000</span></li>
+                </ul>
+              </div>
+              <button class="btn btn--solid space__cta" type="button" data-inquire="Full Bistro Buyout">Inquire about this space</button>
+            </div>
+          </li>
+
+        </ul>
+
+        <p class="spaces__note">Rates are room-hire minimums and exclude food, beverage, tax and service. Final capacities and floor plans confirmed on inquiry.</p>
+      </div>
+    </section>
+
+    <!-- ============================== INQUIRY ============================== -->
+    <section class="inquire" id="inquire" aria-labelledby="inquire-title">
+      <div class="inquire__inner">
+        <div class="inquire__intro">
+          <p class="eyebrow">Let's plan it</p>
+          <h2 class="inquire__title" id="inquire-title">Start an inquiry</h2>
+          <p class="inquire__lede">Tell us a little about your event and our team will be in touch with availability and a tailored proposal.</p>
+          <ul class="inquire__points">
+            <li>Dedicated events lead from first note to last toast</li>
+            <li>Custom menus &amp; beverage pairings from the Pompette kitchen</li>
+            <li>Flexible floor plans across all three spaces</li>
+          </ul>
+        </div>
+
+        <form class="inquire-form" data-inquiry-form novalidate>
+          <div class="inquire-form__row">
+            <div class="field">
+              <label class="field__label" for="f-name">Name</label>
+              <input class="input" id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label class="field__label" for="f-email">Email</label>
+              <input class="input" id="f-email" name="email" type="email" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="inquire-form__row">
+            <div class="field">
+              <label class="field__label" for="f-phone">Phone</label>
+              <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label class="field__label" for="f-date">Preferred date</label>
+              <input class="input" id="f-date" name="date" type="date">
+            </div>
+          </div>
+
+          <div class="inquire-form__row">
+            <div class="field">
+              <label class="field__label" for="f-guests">Guests</label>
+              <input class="input" id="f-guests" name="guests" type="number" inputmode="numeric" min="2" max="300" value="30">
+            </div>
+            <div class="field">
+              <label class="field__label" for="f-space">Space</label>
+              <select class="input" id="f-space" name="space" data-inquiry-space>
+                <option value="No preference">No preference yet</option>
+                <option value="Petite à Petite">Petite à Petite — bar</option>
+                <option value="La Mezz">La Mezz — mezzanine</option>
+                <option value="Full Bistro Buyout">Full Bistro Buyout</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="f-message">Tell us about your event</label>
+            <textarea class="input input--area" id="f-message" name="message" rows="4" placeholder="Occasion, timing, anything you'd like us to know…"></textarea>
+          </div>
+
+          <div class="inquire-form__footer">
+            <button class="btn btn--solid btn--lg" type="submit">Send inquiry</button>
+            <p class="inquire-form__status" data-form-status aria-live="polite" role="status"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       FOOTER — replace with the site's real footer partial.
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__brand">Pompette</p>
+      <p class="site-footer__line">Private events &amp; buyouts &middot; <a href="#inquire">Start an inquiry</a></p>
+    </div>
+  </footer>
+
+  <script src="js/events.js"></script>
+</body>
+</html>
