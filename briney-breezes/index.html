@@ -113,6 +113,20 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 .band--center .band__inner{text-align:center}
 .band--center .band__line{margin:.8rem auto 0}
 
+/* WAVE DIVIDER — the brand motif, animated */
+.wave-rule{display:flex;justify-content:center;padding:clamp(2.4rem,5vw,3.6rem) 0;background:var(--paper)}
+.wave-rule svg{width:clamp(170px,26vw,260px);height:auto;overflow:visible}
+.wave-rule path{fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linecap:round}
+.wave-rule .wave-rule__b{stroke:var(--navy);opacity:.5}
+.wave-rule circle{fill:var(--accent)}
+.wave-rule path{stroke-dasharray:320;stroke-dashoffset:320}
+.wave-rule.in path{animation:wave-draw 1.5s ease forwards}
+.wave-rule.in .wave-rule__sway{animation:wave-draw 1.5s ease forwards,wave-breeze 7s ease-in-out 1.5s infinite}
+.wave-rule.in circle{animation:wave-dot .5s ease 1.3s forwards;opacity:0}
+@keyframes wave-draw{to{stroke-dashoffset:0}}
+@keyframes wave-dot{to{opacity:1}}
+@keyframes wave-breeze{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+
 /* WELCOME */
 .welcome{padding:clamp(4.5rem,9vw,7.5rem) 0;background:var(--paper)}
 .welcome__grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4.6rem);align-items:center}
@@ -263,7 +277,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 .drawer .btn{margin-top:1.2rem}
 [data-reveal]{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
 [data-reveal].in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}.band__bg,.final__bg{transform:none}}
+@media (prefers-reduced-motion:reduce){[data-reveal]{opacity:1;transform:none}.band__bg,.final__bg{transform:none}.wave-rule path{stroke-dashoffset:0;animation:none}.wave-rule circle{opacity:1;animation:none}.hero__slide{transition:none}}
 </style>
 </head>
 <body>
@@ -321,7 +335,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
     <div class="hero__intro" data-reveal>
       <span class="eyebrow"><svg class="wv" viewBox="0 0 38 15" width="2.05em" height="0.8em" aria-hidden="true" focusable="false" style="vertical-align:-0.04em;margin-right:.55rem"><path d="M1 6.2 Q5.5 1 10 6.2 T19 6.2 T28 6.2 T37 6.2" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/><path d="M5 11 Q9 6.6 13 11 T21 11 T29 11" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></svg> Montauk, New York &middot; On the Ocean</span>
       <h1 class="hero__h1">Your place above Montauk's <em>famed beaches.</em></h1>
-      <p class="hero__lede">A vacation home overlooking miles of white sand &mdash; where you relax, unwind, and enjoy the pleasures of life.</p>
+      <p class="hero__lede">A family-run beach resort overlooking miles of white sand &mdash; where you relax, unwind, and enjoy the pleasures of life.</p>
       <div class="hero__cta">
         <a class="btn btn--accent" href="#book" data-book>Check Availability</a>
         <a class="btn btn--ghost" href="#rooms">View the Rooms</a>
@@ -341,18 +355,26 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
   </div>
 </section>
 
+<!-- WAVE DIVIDER -->
+<div class="wave-rule" data-reveal aria-hidden="true">
+  <svg viewBox="0 0 280 46" xmlns="http://www.w3.org/2000/svg">
+    <path class="wave-rule__sway" d="M12 26 Q45 8 78 26 T144 26 T210 26 T268 26"/>
+    <path class="wave-rule__b" d="M58 35 Q84 23 110 35 T162 35 T214 35"/>
+    <circle cx="140" cy="22" r="3"/>
+  </svg>
+</div>
 <!-- WELCOME -->
 <section class="welcome">
   <div class="wrap welcome__grid">
     <div data-reveal>
       <span class="eyebrow"><svg class="wv" viewBox="0 0 38 15" width="2.05em" height="0.8em" aria-hidden="true" focusable="false" style="vertical-align:-0.04em;margin-right:.55rem"><path d="M1 6.2 Q5.5 1 10 6.2 T19 6.2 T28 6.2 T37 6.2" fill="none" stroke="#2E5BD0" stroke-width="1.5" stroke-linecap="round"/><path d="M5 11 Q9 6.6 13 11 T21 11 T29 11" fill="none" stroke="#2E5BD0" stroke-width="1.5" stroke-linecap="round" opacity=".7"/></svg> Welcome</span>
       <h2>Relax, unwind, and enjoy <em>the good life.</em></h2>
-      <p>Welcome to Hartman's Briney Breezes &mdash; your vacation home on Old Montauk Highway, looking out over the Atlantic and the famed beaches that make this corner of Long Island unforgettable.</p>
+      <p>Welcome to Hartman's Briney Breezes &mdash; a family-run beach resort on Old Montauk Highway, looking out over the Atlantic and the famed beaches that make this corner of Long Island unforgettable.</p>
       <p>Sun-washed studios and suites, an outdoor pool, picnic and barbecue areas on the lawn, and warm, personal service from owners who treat every guest like family. It's the kind of place people come back to, summer after summer.</p>
       <div class="stats">
-        <div class="stat"><b>4.9</b><span>Guest rating</span></div>
-        <div class="stat"><b>20+</b><span>Steps to the sand</span></div>
-        <div class="stat"><b>5&nbsp;min</b><span>Walk to town</span></div>
+        <div class="stat"><b data-count="4.9" data-dec="1">4.9</b><span>Guest rating</span></div>
+        <div class="stat"><b data-count="20" data-suffix="+">20+</b><span>Steps to the sand</span></div>
+        <div class="stat"><b data-count="5" data-suffix="&nbsp;min">5&nbsp;min</b><span>Walk to town</span></div>
       </div>
     </div>
     <div class="welcome__media" data-reveal>
@@ -389,6 +411,14 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
   </div>
 </section>
 
+<!-- WAVE DIVIDER -->
+<div class="wave-rule" data-reveal aria-hidden="true">
+  <svg viewBox="0 0 280 46" xmlns="http://www.w3.org/2000/svg">
+    <path class="wave-rule__sway" d="M12 26 Q45 8 78 26 T144 26 T210 26 T268 26"/>
+    <path class="wave-rule__b" d="M58 35 Q84 23 110 35 T162 35 T214 35"/>
+    <circle cx="140" cy="22" r="3"/>
+  </svg>
+</div>
 <!-- AMENITIES -->
 <section class="amen">
   <div class="wrap">
@@ -551,6 +581,23 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
     function restart(){ clearInterval(htimer); htimer=setInterval(function(){go(hi+1);},5500); }
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
   }
+  // count-up stats
+  var reduceM=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el){
+    var target=parseFloat(el.getAttribute('data-count')), dec=parseInt(el.getAttribute('data-dec')||'0',10), suf=el.getAttribute('data-suffix')||'';
+    if(reduceM){ el.innerHTML=target.toFixed(dec)+suf; return; }
+    var start=performance.now(), dur=1100;
+    function step(now){
+      var p=Math.min((now-start)/dur,1), e=1-Math.pow(1-p,3);
+      el.innerHTML=(target*e).toFixed(dec)+suf;
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window){
+    var co2=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){countUp(en.target);co2.unobserve(en.target);}});},{threshold:.6});
+    document.querySelectorAll('[data-count]').forEach(function(el){co2.observe(el);});
+  } else { document.querySelectorAll('[data-count]').forEach(function(el){el.innerHTML=el.getAttribute('data-count')+(el.getAttribute('data-suffix')||'');}); }
   var drawer=document.getElementById('drawer'), burger=document.getElementById('burger');
   function openD(){drawer.classList.add('is-open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
   function closeD(){drawer.classList.remove('is-open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
