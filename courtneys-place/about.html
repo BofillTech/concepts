@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Courtney's Place Key West</title>
+<meta name="description" content="Linda &amp; Chuck Krumel built Courtney's Place as a legacy to their daughter Courtney. Forty years of family in Old Key West — Capt. Tony's Saloon, Jimmy Buffett, Shel Silverstein, and a Conch lane that used to be called Cat Alley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* Story page sections */
+  .story-section { padding: 96px 24px; }
+  .story-section.cream { background: var(--cream); }
+  .story-section.cream-warm { background: var(--cream-warm); }
+  .story-section.dark { background: var(--palm-shadow); color: var(--cream); }
+  .story-section.dark .section-title { color: var(--cream); }
+  .story-section.dark .section-title em { color: var(--conch-pink); }
+  .story-section.dark .section-eyebrow { color: var(--conch-pink); }
+  .story-section .section-inner { max-width: 1180px; margin: 0 auto; }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .story-grid.reverse > div:first-child { order: 2; }
+  .story-grid.reverse > div:nth-child(2) { order: 1; }
+  .story-grid p {
+    font-size: 17px; line-height: 1.8;
+    color: var(--driftwood);
+    margin: 0 0 22px;
+  }
+  .story-section.dark .story-grid p { color: rgba(248,241,224,0.85); }
+  .story-grid p strong { color: var(--ink); font-weight: 500; }
+  .story-section.dark .story-grid p strong { color: var(--cream); }
+  .story-grid p em { font-family: var(--display); font-style: italic; }
+
+  .story-lede {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 28px;
+    font-weight: 400;
+  }
+  .story-section.dark .story-lede { color: var(--cream); }
+
+  .story-img {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--driftwood);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-img.wide { aspect-ratio: 16/10; }
+  .story-img-stamp {
+    position: absolute;
+    bottom: 20px; left: 20px;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 12px 16px;
+    border-radius: 2px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    max-width: 240px;
+  }
+  .story-img-stamp strong {
+    display: block;
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--conch-coral);
+    margin-bottom: 2px;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .story-section.dark .pull-quote {
+    border-color: rgba(248,241,224,0.2);
+  }
+  .pull-quote p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.4;
+    color: var(--conch-coral);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Cast of characters */
+  .cast {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 32px 0;
+  }
+  .cast-name {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 400;
+  }
+  .cast-name em { font-style: italic; color: var(--conch-pink); }
+  .cast-role {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lime-wash);
+    margin: 4px 0 0;
+  }
+  .cast-row {
+    padding: 16px 0;
+    border-top: 1px solid rgba(248,241,224,0.15);
+  }
+
+  /* Timeline */
+  .timeline { background: var(--cream-warm); padding: 96px 24px; }
+  .timeline-inner { max-width: 1280px; margin: 0 auto; }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .timeline-item {
+    padding-top: 24px;
+    border-top: 2px solid var(--conch-coral);
+  }
+  .timeline-era {
+    font-family: var(--display);
+    font-size: 42px;
+    line-height: 1;
+    color: var(--conch-coral);
+    margin: 0 0 12px;
+    font-style: italic;
+  }
+  .timeline-title {
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .timeline-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--driftwood);
+    margin: 0;
+  }
+
+  @media (min-width: 700px) {
+    .story-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .timeline-grid { grid-template-columns: repeat(4, 1fr); }
+    .cast { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .story-section { padding: 140px 40px; }
+    .timeline { padding: 140px 40px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav is-light" id="nav">
+  <a href="index.html" class="nav-brand"><span class="brand-mark">Courtney's <em>Place</em></span></a>
+  <div class="nav-links">
+    <a href="rooms.html">Rooms</a>
+    <a href="amenities.html">Amenities</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html" class="current">Our Story</a>
+    <a href="area-guide.html">The Island</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="nav-cta-group">
+    <a href="tel:+18008694639" class="nav-phone">800.UNWIND.9</a>
+    <a href="https://www.booking.com/hotel/us/courtney-s-place-historic-cottages-inns.html?aid=330843;lang=en-us" class="nav-cta" target="_blank" rel="noopener"><span class="nav-cta-full">Book a Cottage</span><span class="nav-cta-short">Book</span></a>
+    <button class="menu-toggle" aria-label="Menu" id="menuToggle"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="rooms.html">The <em>Rooms</em></a>
+  <a href="amenities.html">Amenities</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">Our <em>Story</em></a>
+  <a href="area-guide.html">The Island</a>
+  <a href="contact.html">Contact</a>
+  <a href="https://www.booking.com/hotel/us/courtney-s-place-historic-cottages-inns.html?aid=330843;lang=en-us" target="_blank" rel="noopener" style="color:var(--conch-coral);"><em>Book a Cottage</em></a>
+  <a href="tel:+18008694639" class="mob-phone">800 . UNWIND . 9</a>
+</div>
+
+<header class="page-head">
+  <div class="page-head-inner">
+    <p class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span>Our Story</p>
+    <p class="page-head-eyebrow">forty years on whitmarsh lane —</p>
+    <h1 class="page-head-title">A <em>family</em>,<br>a <em>lane</em>, a <em>life</em>.</h1>
+    <p class="page-head-sub">Linda &amp; Chuck Krumel built Courtney's Place as a legacy to their daughter Courtney. This is how a New York art major and a Virginia singer-songwriter wound up on the highest point in Key West.</p>
+  </div>
+</header>
+
+<!-- ========== ACT 1 — WHITMARSH LANE ========== -->
+<section class="story-section cream">
+  <div class="section-inner">
+    <div class="story-grid">
+      <div>
+        <p class="section-eyebrow">The lane</p>
+        <h2 class="section-title">Once it was called <em>Cat Alley</em>.</h2>
+        <p class="story-lede">In the early 1950s it was renamed Whitmarsh Lane — after Mary Whitmarsh, one of Hemingway's best friends. She owned one of our cottages.</p>
+        <p>Our guest quarters were created out of Key West cottages and homes well over a hundred years old. We happen to sit on the highest point on the Island — <em>eighteen feet above sea level</em>. Our neighbourhood is one of authenticity and has seen little change over the last fifty years. It's still made up of some of the original descendants of the Island — Conchs, Bahamians, dogs, cats, birds.</p>
+        <p>Legend has it that years ago during Key West's heyday as a shipwrecking town, pirates would come up to this area and bury their gold and treasures stolen from the cargo ships that lay wrecked on the Atlantic coral reefs.</p>
+        <p>Several years back, one of our neighbours, while digging a swimming pool, <em>found $10,000 in gold coins</em>.</p>
+        <p style="color:var(--conch-coral); font-family: var(--display); font-style: italic; font-size:20px; line-height:1.4; margin-top: 8px;">(No shovels, please.)</p>
+      </div>
+      <div>
+        <div class="story-img" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/06/img_6920_s_cc.jpg');">
+          <div class="story-img-stamp">
+            <strong>Whitmarsh Lane</strong>
+            720 · Old Town, Key West
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACT 2 — THE KRUMELS ========== -->
+<section class="story-section cream-warm">
+  <div class="section-inner">
+    <div class="story-grid reverse">
+      <div>
+        <p class="section-eyebrow">Linda &amp; Chuck</p>
+        <h2 class="section-title">An art major and a <em>singer-songwriter</em>.</h2>
+        <p class="story-lede">Linda came to Key West on vacation from the cold north. Chuck came from Virginia by way of music. They fell in love with this island first, and then with each other in the early '70s.</p>
+        <p>The '70s were the heyday of our era in Key West. The island hadn't been discovered by the world yet. It was a haven for artists, writers, smugglers, shrimpers, hippies, gays, and corruption — houses were selling for a few thousand dollars apiece. We got our master's degrees in renovating conch houses, and working at <strong>Capt. Tony's Saloon</strong>.</p>
+        <p>Linda ran the saloon. Chuck was a singer/songwriter. We partied with the best.</p>
+
+        <div class="pull-quote">
+          <p>We got our master's degrees<br>renovating Conch houses.</p>
+        </div>
+
+        <p>Along came the '80s, and Courtney was born. Career change — there was nowhere to buy clothes for her, so we opened a children's department store, <em>A World for Children</em>, on Duval Street.</p>
+        <p>During the late '80s, Key West was making big changes from a fishing village to a tourist destination. A close friend from the '70s, <strong>Shel Silverstein</strong>, suggested we open a guesthouse with a restaurant — he loved Linda's cooking. <em>Courtney's Place was born.</em></p>
+      </div>
+      <div>
+        <div class="story-img" style="background-image:url('https://bofilltech.com/wp-content/uploads/2026/06/courtneyanddanni.jpg');">
+          <div class="story-img-stamp">
+            <strong>Courtney</strong>
+            with Danni · the owner
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ACT 3 — CAST OF CHARACTERS ========== -->
+<section class="story-section dark">
+  <div class="section-inner">
+    <p class="section-eyebrow">A cast of characters</p>
+    <h2 class="section-title">The <em>company</em> we kept.</h2>
+    <p style="font-family:var(--display); font-style:italic; font-size: clamp(20px, 2.2vw, 26px); color: rgba(248,241,224,0.85); max-width: 720px; margin: 0 0 56px; line-height: 1.4;">Some of the people who passed through Capt. Tony's, Linda's kitchen, the lane, and the long Key West evening — just a few of the names.</p>
+
+    <div class="cast">
+      <div class="cast-row"><p class="cast-name">Tennessee <em>Williams</em></p><p class="cast-role">Playwright · neighbour</p></div>
+      <div class="cast-row"><p class="cast-name">Jimmy <em>Buffett</em></p><p class="cast-role">Margaritaville · Capt. Tony's regular</p></div>
+      <div class="cast-row"><p class="cast-name">Shel <em>Silverstein</em></p><p class="cast-role">Poet · suggested we open this place</p></div>
+      <div class="cast-row"><p class="cast-name">Capt. <em>Tony</em></p><p class="cast-role">Of the Saloon · Key West royalty</p></div>
+      <div class="cast-row"><p class="cast-name">Tom <em>McGuane</em></p><p class="cast-role">Novelist · The Bushwhacked Piano</p></div>
+      <div class="cast-row"><p class="cast-name">Chris <em>Gantry</em></p><p class="cast-role">Songwriter · Dreams of the Everyday Housewife</p></div>
+      <div class="cast-row"><p class="cast-name">Susan <em>Nadler</em></p><p class="cast-role">Writer · Cajun music producer</p></div>
+      <div class="cast-row"><p class="cast-name">Margaret <em>Foresman</em></p><p class="cast-role">Citizen editor · island historian</p></div>
+    </div>
+
+    <p style="font-family:var(--display); font-style: italic; font-size:20px; line-height:1.45; color: rgba(248,241,224,0.7); margin-top: 64px; max-width: 720px;">— and a great many others, dogs included.</p>
+  </div>
+</section>
+
+<!-- ========== TIMELINE ========== -->
+<section class="timeline">
+  <div class="timeline-inner">
+    <p class="section-eyebrow">A few markers in the sand</p>
+    <h2 class="section-title">The <em>milestones</em>.</h2>
+
+    <div class="timeline-grid">
+      <div class="timeline-item">
+        <p class="timeline-era">1950s</p>
+        <p class="timeline-title">Cat Alley becomes Whitmarsh Lane</p>
+        <p class="timeline-body">The lane is renamed for Mary Whitmarsh, Hemingway's friend. She owns one of the cottages that's now part of Courtney's Place.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-era">1970s</p>
+        <p class="timeline-title">Linda &amp; Chuck arrive — separately</p>
+        <p class="timeline-body">Linda from New York, Chuck from Virginia. They meet, fall in love, and Linda runs Capt. Tony's Saloon while Chuck plays music.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-era">1980s</p>
+        <p class="timeline-title">Courtney is born</p>
+        <p class="timeline-body">They open <em>A World for Children</em> on Duval Street — the island's first dedicated children's clothing store.</p>
+      </div>
+      <div class="timeline-item">
+        <p class="timeline-era">Today</p>
+        <p class="timeline-title">Courtney runs the place</p>
+        <p class="timeline-body">Courtney owns and operates Courtney's Place with the help of family. Staff is family. The cast of regulars hasn't changed all that much.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL ========== -->
+<section class="story-section cream">
+  <div class="section-inner">
+    <div style="max-width: 760px; margin: 0 auto; text-align: center;">
+      <p class="section-eyebrow">An invitation</p>
+      <h2 class="section-title">Become one of Key West's <em>famous characters</em>.</h2>
+      <p style="font-family: var(--display); font-style: italic; font-size: clamp(22px, 2.6vw, 30px); color: var(--driftwood); line-height: 1.4; margin: 40px 0;">Please. Come stay with us at Courtney's Place.</p>
+      <div style="display:flex; gap: 12px; justify-content:center; flex-wrap: wrap;">
+        <a href="https://www.booking.com/hotel/us/courtney-s-place-historic-cottages-inns.html?aid=330843;lang=en-us" target="_blank" rel="noopener" class="btn btn-primary">Check Availability</a>
+        <a href="rooms.html" class="btn btn-outline">See the Cottages</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <p class="footer-brand">Courtney's <em>Place</em></p>
+      <p class="footer-tag">historic cottages &amp; inns</p>
+      <p style="margin-top: 16px; line-height: 1.7;">A quiet, family-run Old Town hideaway since the beginning. Eighteen rooms, an enclosed pool, and the soul of the Conch Republic.</p>
+    </div>
+    <div class="footer-col"><h4>Stay</h4><p><a href="rooms.html">Rooms &amp; Cottages</a></p><p><a href="amenities.html">Amenities</a></p><p><a href="gallery.html">Photo Gallery</a></p></div>
+    <div class="footer-col"><h4>Explore</h4><p><a href="about.html">Our Story</a></p><p><a href="area-guide.html">The Island</a></p><p><a href="contact.html">Contact</a></p></div>
+    <div class="footer-col"><h4>Reach Us</h4><p>720 Whitmarsh Lane</p><p>Key West, FL 33040</p><p style="margin-top:12px;"><a href="tel:+18008694639">800.869.4639</a></p><p><a href="mailto:cplacekw@keysdigital.com">cplacekw@keysdigital.com</a></p></div>
+  </div>
+  <div class="footer-bottom">
+    <p>© <span id="yr"></span> Courtney's Place Historic Cottages &amp; Inns · All rights reserved</p>
+    <p class="footer-credit">Concept by <em>Bofill Technologies</em></p>
+  </div>
+</footer>
+
+<div class="booking-bar">
+  <div class="booking-bar-text"><small>From $249 / night</small><span>An Old Town cottage</span></div>
+  <a href="https://www.booking.com/hotel/us/courtney-s-place-historic-cottages-inns.html?aid=330843;lang=en-us" target="_blank" rel="noopener" class="btn btn-primary">Book Now</a>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
