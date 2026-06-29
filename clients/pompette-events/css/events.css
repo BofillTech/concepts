@@ -293,6 +293,27 @@
   text-shadow: 0 1px 8px rgba(0,0,0,.4);
 }
 
+/* Coming-soon placeholder (interim, until room photography is in) */
+.space__media--soon { align-items: flex-end; }
+.space__media--soon::after { background: linear-gradient(to top, rgba(33, 22, 26, .55), rgba(33, 22, 26, .15)); }
+.space__media-soon {
+  position: absolute; z-index: 2; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-family: var(--pe-body); font-size: .74rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .22em;
+  color: rgba(250, 245, 236, .85);
+}
+.space__media-soon::before {
+  content: ""; position: absolute; width: 64px; height: 64px;
+  border: 1px solid rgba(250, 245, 236, .35); border-radius: 50%;
+  transform: translateY(-30px);
+}
+.space__media-soon::after {
+  content: "\2026"; position: absolute; transform: translateY(-30px);
+  color: rgba(250, 245, 236, .7); font-size: 1.3rem; letter-spacing: .1em;
+}
+
 .space__body { padding: clamp(1.5rem, 3vw, 2.4rem); }
 .space__loc {
   font-size: .74rem; text-transform: uppercase; letter-spacing: .16em;
