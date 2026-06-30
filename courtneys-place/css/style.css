@@ -227,19 +227,41 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
 }
 
-/* ---------- INNER PAGE HEADER ---------- */
+/* ---------- INNER PAGE HEADER (photo hero) ---------- */
 .page-head {
-  padding: 140px 24px 60px;
-  background: var(--cream);
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  padding: 180px 24px 80px;
+  min-height: 56vh;
+  background-color: var(--palm-shadow-deep);
+  background-size: cover;
+  background-position: center;
+  color: var(--cream);
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
 }
-.page-head-inner { max-width: 1280px; margin: 0 auto; }
+.page-head::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(26,46,38,0.45) 0%, rgba(26,46,38,0.05) 35%, rgba(26,46,38,0.15) 70%, rgba(26,46,38,0.65) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.page-head-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
 .page-head-eyebrow {
   font-family: var(--hand);
   font-size: 32px;
-  color: var(--conch-coral);
+  color: var(--cream);
   line-height: 1;
   margin: 0 0 12px;
+  opacity: 0.95;
 }
 .page-head-title {
   font-family: var(--display);
@@ -248,25 +270,29 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: -0.025em;
   margin: 0 0 20px;
   font-weight: 400;
+  color: var(--cream);
 }
-.page-head-title em { font-style: italic; color: var(--conch-coral); font-weight: 400; }
+.page-head-title em { font-style: italic; color: var(--conch-pink); font-weight: 400; }
 .page-head-sub {
   font-family: var(--display);
   font-size: clamp(18px, 2vw, 24px);
   font-style: italic;
-  color: var(--driftwood);
+  color: var(--cream);
+  opacity: 0.92;
   max-width: 720px;
   margin: 0;
   line-height: 1.4;
 }
 .breadcrumb {
-  font-size: 12px;
-  letter-spacing: 0.18em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--driftwood);
+  color: var(--cream);
+  opacity: 0.78;
   margin-bottom: 24px;
 }
-.breadcrumb a:hover { color: var(--conch-coral); }
+.breadcrumb a { color: var(--cream); }
+.breadcrumb a:hover { color: var(--conch-pink); opacity: 1; }
 .breadcrumb-sep { margin: 0 8px; opacity: 0.5; }
 
 /* ---------- DIVIDER ---------- */
@@ -384,6 +410,6 @@ a { color: inherit; text-decoration: none; }
   .nav-links { display: flex; }
   .menu-toggle { display: none; }
   .section { padding: 140px 40px; }
-  .page-head { padding: 200px 40px 90px; }
+  .page-head { padding: 220px 40px 100px; min-height: 62vh; }
   .footer { padding: 120px 40px 40px; }
 }
