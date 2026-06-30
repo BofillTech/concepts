@@ -730,21 +730,34 @@ section { padding: 110px 28px; position: relative; }
 
 .nav-logo { display: inline-flex; align-items: center; padding: 6px 0; }
 .nav-logo img {
-  max-height: 140px !important;
+  max-height: 170px !important;
   width: auto; display: block;
   transition: max-height 0.2s ease;
 }
 .nav { padding: 2px 0 !important; }
-.nav-inner { min-height: 158px; }
+.nav-inner { min-height: 186px; }
+.nav-menu { font-size: 13.5px; gap: 22px; }
+@media (max-width: 1280px) {
+  .nav-logo img { max-height: 140px !important; }
+  .nav-inner { min-height: 158px; }
+  .nav-menu { font-size: 13px; gap: 18px; }
+}
 @media (max-width: 1100px) {
   .nav-logo img { max-height: 110px !important; }
   .nav-inner { min-height: 128px; }
 }
 @media (max-width: 768px) {
-  .nav-logo img { max-height: 72px !important; }
-  .nav-inner { min-height: 92px; }
+  .nav-logo img { max-height: 80px !important; }
+  .nav-inner { min-height: 100px; }
 }
-</style>
+
+.gal-tile-cropped { position: relative; overflow: hidden; }
+.gal-tile-cropped::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 16%;
+  background: linear-gradient(to top, rgba(254, 246, 232, 1) 0%, rgba(254, 246, 232, 1) 55%, rgba(254, 246, 232, 0) 100%);
+  pointer-events: none; z-index: 1;
+}
+.gal-tile-cropped .gal-tile-overlay { z-index: 2; }</style>
 </head>
 <body>
 <div class="promo-banner" id="promoBanner">
@@ -808,7 +821,7 @@ section { padding: 110px 28px; position: relative; }
         </div>
         </div>
         </div>
-        <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg'); background-size: 110% auto; background-position: center 15%;"><div class="gal-tile-overlay"><div class="gal-tile-title">Wilton Drive</div><div class="gal-tile-meta">10-min walk</div></div></div>
+        <div class="gal-tile gal-tile-cropped" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg'); background-size: 130% auto; background-position: center top;"><div class="gal-tile-overlay"><div class="gal-tile-title">Wilton Drive</div><div class="gal-tile-meta">10-min walk</div></div></div>
         <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/2023/07/content-1.jpg');"><div class="gal-tile-overlay"><div class="gal-tile-title">Fort Lauderdale Beach</div><div class="gal-tile-meta">18-min drive</div></div></div>
         <div class="gal-tile" data-cat="area" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/2023/07/content-2.png');"><div class="gal-tile-overlay"><div class="gal-tile-title">Events & Sightseeing</div><div class="gal-tile-meta">Year-Round</div></div></div>
     </div>

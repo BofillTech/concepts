@@ -687,10 +687,17 @@ section { padding: 110px 28px; position: relative; }
 .area-teaser-overlay {
   position: absolute; bottom: 50px; right: -1px; width: 55%; aspect-ratio: 4/3;
   background-image: url('https://paradisevacationsuites.com/wp-content/uploads/Wilton-Drive-Shops.jpg');
-  background-size: 105% auto; background-position: center 18%;
+  background-size: 130% auto; background-position: center top;
+  overflow: hidden;
   box-shadow: -30px -30px 70px rgba(12, 103, 112, 0.5), 0 0 0 1px rgba(245, 185, 66, 0.3);
   border-top: 4px solid var(--bop-orange);
   border-left: 4px solid var(--bop-orange); z-index: 2;
+}
+
+.area-teaser-overlay::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 18%;
+  background: linear-gradient(to top, var(--cream-warm, #fef6e8) 0%, var(--cream-warm, #fef6e8) 60%, transparent 100%);
+  pointer-events: none;
 }
 .area-teaser-tag {
   position: absolute; top: 60px; left: 60px;
@@ -823,7 +830,13 @@ section { padding: 110px 28px; position: relative; }
   .area-teaser-content { padding: 60px 24px; }
   .area-teaser-visual { min-height: 380px; }
   .area-teaser-overlay { width: 75%; bottom: 30px; }
-  .area-teaser-tag { top: 30px; left: 30px; padding: 10px 16px; font-size: 10px; }
+  
+.area-teaser-overlay::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 18%;
+  background: linear-gradient(to top, var(--cream-warm, #fef6e8) 0%, var(--cream-warm, #fef6e8) 60%, transparent 100%);
+  pointer-events: none;
+}
+.area-teaser-tag { top: 30px; left: 30px; padding: 10px 16px; font-size: 10px; }
   .area-teaser-quote { left: 30px; max-width: calc(100% - 60px); }
   .area-teaser-quote p { font-size: 17px; }
   .reviews-preview { padding: 80px 22px; }
@@ -927,19 +940,25 @@ section { padding: 110px 28px; position: relative; }
 
 .nav-logo { display: inline-flex; align-items: center; padding: 6px 0; }
 .nav-logo img {
-  max-height: 140px !important;
+  max-height: 170px !important;
   width: auto; display: block;
   transition: max-height 0.2s ease;
 }
 .nav { padding: 2px 0 !important; }
-.nav-inner { min-height: 158px; }
+.nav-inner { min-height: 186px; }
+.nav-menu { font-size: 13.5px; gap: 22px; }
+@media (max-width: 1280px) {
+  .nav-logo img { max-height: 140px !important; }
+  .nav-inner { min-height: 158px; }
+  .nav-menu { font-size: 13px; gap: 18px; }
+}
 @media (max-width: 1100px) {
   .nav-logo img { max-height: 110px !important; }
   .nav-inner { min-height: 128px; }
 }
 @media (max-width: 768px) {
-  .nav-logo img { max-height: 72px !important; }
-  .nav-inner { min-height: 92px; }
+  .nav-logo img { max-height: 80px !important; }
+  .nav-inner { min-height: 100px; }
 }
 </style>
 <link rel="canonical" href="https://paradisevacationsuites.com/">
@@ -982,10 +1001,10 @@ section { padding: 110px 28px; position: relative; }
   "priceRange": "$99-$300",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "2120 NE 26th Street",
+    "streetAddress": "2100 NW 2nd Ave",
     "addressLocality": "Wilton Manors",
     "addressRegion": "FL",
-    "postalCode": "33305",
+    "postalCode": "33311",
     "addressCountry": "US"
   },
   "geo": {
@@ -1608,7 +1627,7 @@ section { padding: 110px 28px; position: relative; }
   </div>
 </article>
       <article class="suite-card">
-  <div class="suite-card-img" style="background-image: url('https://l.icdbcdn.com/oh/9d45986f-da04-4de4-8577-1985d28addfa.jpg?w=1040');">
+  <div class="suite-card-img" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/002b4e94-695f-47fb-8683-8950395bcc8f.png');">
     <div class="suite-card-num-badge"><span>Apt.</span>04</div>
     <div class="suite-card-tag-pill">One-Bedroom</div>
   </div>
