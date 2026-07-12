@@ -275,6 +275,74 @@
   }
 
   /* ---------- STAT BAND ---------- */
+  /* ---------- PHOTO MOSAIC (post-invitation) ---------- */
+  .mosaic {
+    background: var(--cream);
+    padding: 0 20px 80px;
+    text-align: center;
+  }
+  .mosaic-grid {
+    max-width: 1360px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 12px;
+    aspect-ratio: 1 / 1;
+  }
+  .mosaic-item {
+    position: relative;
+    background-color: var(--driftwood);
+    background-size: cover;
+    background-position: center;
+    border-radius: 2px;
+    overflow: hidden;
+    display: block;
+    transition: transform .5s ease;
+    min-height: 200px;
+  }
+  .mosaic-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+    opacity: 0.65;
+    transition: opacity .35s ease;
+  }
+  .mosaic-item:hover { transform: scale(1.008); }
+  .mosaic-item:hover::after { opacity: 0.85; }
+  .mosaic-caption {
+    position: absolute;
+    left: 16px; bottom: 14px;
+    z-index: 2;
+    font-family: var(--hand);
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+  }
+  .mosaic-footer {
+    margin: 40px 0 0;
+  }
+
+  @media (min-width: 700px) {
+    .mosaic { padding: 0 32px 100px; }
+    .mosaic-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, minmax(180px, 1fr));
+      aspect-ratio: auto;
+      gap: 14px;
+    }
+    .mosaic-lg   { grid-column: span 2; grid-row: span 2; }
+    .mosaic-tall { grid-column: span 1; grid-row: span 2; }
+    .mosaic-wide { grid-column: span 2; grid-row: span 1; }
+  }
+  @media (min-width: 1024px) {
+    .mosaic { padding: 0 40px 140px; }
+    .mosaic-grid { gap: 16px; grid-template-rows: repeat(3, minmax(220px, 1fr)); }
+    .mosaic-caption { font-size: 26px; left: 20px; bottom: 18px; }
+  }
+
+  /* ---------- STAT BAND ---------- */
   .stat-band {
     background: var(--cream-warm);
     padding: 64px 24px;
@@ -851,9 +919,7 @@
 
 <!-- ========== NAV ========== -->
 <nav class="nav is-hero" id="nav">
-  <a href="index.html" class="nav-brand" aria-label="Courtney's Place — home">
-    <span class="brand-mark">Courtney's <em>Place</em></span>
-  </a>
+  <a href="index.html" class="nav-brand" aria-label="Courtney's Place — home"><img src="img/logo.png" alt="Courtney's Place — Historic Cottages &amp; Inns" class="brand-logo"></a>
   <div class="nav-links">
     <a href="rooms.html">Rooms</a>
     <a href="amenities.html">Amenities</a>
@@ -939,6 +1005,19 @@
   </div>
 
   <p style="margin-top: 48px;"><a href="about.html" class="btn btn-outline">Read the Full Story</a></p>
+</section>
+
+<!-- ========== PHOTO MOSAIC (post-invitation) ========== -->
+<section class="mosaic" aria-label="A wander through the lane">
+  <div class="mosaic-grid">
+    <a href="gallery.html" class="mosaic-item mosaic-lg" style="background-image:url('img/front-pool/image0.jpg');" aria-label="The courtyard pool"><span class="mosaic-caption">the courtyard pool</span></a>
+    <a href="gallery.html" class="mosaic-item" style="background-image:url('img/property/mint-cottage.jpg');" aria-label="A Conch cottage"><span class="mosaic-caption">a Conch cottage</span></a>
+    <a href="gallery.html" class="mosaic-item mosaic-tall" style="background-image:url('img/front-pool/image2.jpg');" aria-label="Through the palm"><span class="mosaic-caption">through the palm</span></a>
+    <a href="gallery.html" class="mosaic-item" style="background-image:url('img/property/patio-umbrella.jpg');" aria-label="The courtyard"><span class="mosaic-caption">the courtyard</span></a>
+    <a href="gallery.html" class="mosaic-item mosaic-wide" style="background-image:url('img/property/pool-night.jpg');" aria-label="Pool by night"><span class="mosaic-caption">pool by night</span></a>
+    <a href="gallery.html" class="mosaic-item" style="background-image:url('img/property/porch-cottage5.jpg');" aria-label="A porch of your own"><span class="mosaic-caption">a porch of your own</span></a>
+  </div>
+  <p class="mosaic-footer"><a href="gallery.html" class="btn btn-outline">See the Full Gallery</a></p>
 </section>
 
 <!-- ========== STAT BAND ========== -->
