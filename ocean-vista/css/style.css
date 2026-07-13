@@ -279,16 +279,30 @@
     overflow: hidden;
     background: var(--ink);
   }
-  .hero-img{
+  .hero-video{
     position: absolute;
     inset: 0;
-    background-image: url('../img/aerial-hero-ocean-bay.jpg');
-    background-size: cover;
-    background-position: center center;
-    transform: scale(1.06);
-    transition: transform 6s cubic-bezier(.2,.7,.2,1);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    /* Poster shows instantly, video fades in when ready */
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+    background: url('../img/hero-poster.jpg') center center / cover no-repeat;
+    /* Subtle Ken-Burns-esque scale settle after load */
+    transform: scale(1.03);
+    transition: opacity 1.2s ease-out, transform 8s cubic-bezier(.2,.7,.2,1);
   }
-  .hero.loaded .hero-img{ transform: scale(1); }
+  .hero.loaded .hero-video{
+    opacity: 1;
+    transform: scale(1);
+  }
+  /* Fallback: also show poster image as background on the hero itself,
+     so even with the video element hidden or blocked, the section is never blank */
+  .hero{
+    background: url('../img/hero-poster.jpg') center center / cover no-repeat, var(--ink);
+  }
   .hero-veil{
     position: absolute;
     inset: 0;

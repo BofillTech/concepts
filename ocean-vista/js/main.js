@@ -1,10 +1,16 @@
 (function() {
   "use strict";
 
-// Hero load animation
-  window.addEventListener('load', () => {
-    document.querySelector('.hero')?.classList.add('loaded');
-  });
+// Hero load animation — reveal as soon as the video is ready to play,
+// with a fallback trigger on window load in case the video is blocked / slow.
+  const hero = document.querySelector('.hero');
+  const heroVideo = hero?.querySelector('.hero-video');
+  const revealHero = () => hero?.classList.add('loaded');
+  if (heroVideo) {
+    heroVideo.addEventListener('canplay', revealHero, { once: true });
+    heroVideo.addEventListener('loadeddata', revealHero, { once: true });
+  }
+  window.addEventListener('load', revealHero);
 
   // Sticky nav state
   const nav = document.getElementById('nav');
