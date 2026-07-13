@@ -1,0 +1,34 @@
+// Page behavior
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 12) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+const navToggle = document.getElementById('navToggle');
+const navMenu = document.getElementById('navMenu');
+navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navMenu.classList.remove('open'));
+});
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+
+document.querySelectorAll('.filter-pill').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.filter-pill').forEach(x => x.classList.remove('active'));
+    b.classList.add('active');
+    const f = b.dataset.filter;
+    document.querySelectorAll('.review-tile').forEach(t => {
+      const src = (t.querySelector('.review-tile-source')?.textContent || '').toLowerCase();
+      t.style.display = (f === 'all' || src.includes(f)) ? '' : 'none';
+    });
+  });
+});

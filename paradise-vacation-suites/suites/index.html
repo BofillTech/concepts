@@ -8,713 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <title>The Suites · Paradise Vacation Suites · Wilton Manors</title>
 <meta name="description" content="One-bedroom apartments and two-bedroom villas in the Island City of Wilton Manors. Each fully equipped with kitchen, laundry access, premium linens, and pool access.">
-<style>
-:root {
-  /* Neutrals only */
-  --cream: #fef6e8;
-  --cream-warm: #fdecc6;
-  --ivory: #fffaef;
-  --paper: #ffffff;
-  --charcoal: #1a3340;
-  --charcoal-soft: #4a6470;
-  --line: rgba(26, 51, 64, 0.14);
-
-  /* THREE BRAND COLORS — that's it */
-
-  /* Sunset yellow/orange */
-  --sunset: #f5b942;
-  --sunset-bright: #ffc857;
-  --sunset-soft: #fdd87a;
-  --sunset-deep: #d99422;
-
-  /* Teal (LIGHTER — clearly teal everywhere) */
-  --teal: #19b6c5;
-  --teal-bright: #3dc6d3;
-  --teal-soft: #a5e2e8;
-  --teal-deep: #128d99;
-  --teal-darker: #0c6770;
-
-  /* Hot pink */
-  --pink: #e88aa6;
-  --pink-bright: #f06292;
-  --pink-soft: #f5c0d4;
-  --pink-deep: #c44872;
-
-  /* Legacy token aliases (preserve all old refs without changing them) */
-  --gold: var(--sunset);
-  --gold-deep: var(--sunset-deep);
-  --gold-soft: var(--sunset-soft);
-  --palm: var(--teal);
-  --palm-deep: var(--teal-deep);
-  --palm-darker: var(--teal-darker);
-  --palm-light: var(--teal-bright);
-  --bop-orange: var(--sunset);
-  --bop-orange-bright: var(--sunset-bright);
-  --bop-orange-soft: var(--sunset-soft);
-  --bop-blue: var(--pink);
-  --coral: var(--pink);
-  --line-warm: rgba(236, 72, 153, 0.25);
-
-  --shadow-sm: 0 4px 16px rgba(26, 51, 64, 0.08);
-  --shadow-md: 0 12px 40px rgba(26, 51, 64, 0.14);
-  --shadow-lg: 0 24px 60px rgba(26, 51, 64, 0.20);
-
-  --serif: 'Playfair Display', Georgia, serif;
-  --sans: 'Montserrat', -apple-system, system-ui, sans-serif;
-}
-
-/* === BRAND COLOR DEPLOYMENT — make the three colors actually visible === */
-
-/* PROMO BANNER → HOT PINK (was orange) */
-.promo-banner {
-  background: linear-gradient(90deg, var(--pink) 0%, var(--pink-bright) 100%) !important;
-}
-
-/* TOPBAR → lighter teal (was black-teal) */
-.topbar {
-  background: var(--teal-darker) !important;
-}
-
-/* AMENITIES dark section → clearly teal (was almost black) */
-.amenities {
-  background: var(--teal-darker) !important;
-}
-
-/* PARALLAX CLOSING sections — switch dark overlay to teal-darker */
-.closing,
-.contact-banner,
-.parking,
-.divider {
-  background-color: var(--teal-darker) !important;
-}
-
-/* OVERVIEW diff section */
-.diff {
-  background: var(--teal-darker) !important;
-}
-
-/* PAGE HEROES → teal overlay instead of generic dark */
-.page-hero {
-  background-color: var(--teal-darker) !important;
-}
-
-/* FOOTER → medium teal (was navy) */
-.footer {
-  background: var(--teal-darker) !important;
-}
-
-/* Two-bedroom card accents → hot pink (clear differentiation from sunset) */
-.suite-card.two-bed::before { background: var(--pink) !important; }
-.suite-card.two-bed .suite-card-tag-pill,
-.suite-card.two-bed .suite-card-tag {
-  background: var(--pink) !important;
-  color: #fff !important;
-}
-.suite-card.two-bed .suite-card-specs li::before { background: var(--pink) !important; }
-.suite-detail.two-bed .suite-detail-photo { border-top-color: var(--pink) !important; }
-.suite-detail.two-bed .suite-detail-tag { color: var(--pink) !important; }
-
-/* Hover states on primary CTAs → switch to TEAL for the second color story */
-.btn-book:hover,
-.btn-primary:hover,
-.btn-light:hover {
-  background: var(--teal) !important;
-  border-color: var(--teal) !important;
-}
-
-/* Section eyebrow underlines and dashes — make a few teal */
-.area-teaser-content .eyebrow,
-.diff-header .eyebrow,
-.contact-block:nth-child(2) .eyebrow {
-  color: var(--teal-deep) !important;
-}
-.area-teaser-content .eyebrow::before,
-.area-teaser-content .eyebrow::after,
-.diff-header .eyebrow::before,
-.diff-header .eyebrow::after {
-  background: var(--teal-deep) !important;
-}
-
-/* Reviews page sources list — pink emphasis on ratings */
-.rating-sources-list em { color: var(--pink) !important; }
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 1.7;
-  color: var(--charcoal);
-  background: var(--cream);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-}
-img { max-width: 100%; height: auto; display: block; }
-a { color: var(--palm); text-decoration: none; transition: color 0.25s ease; }
-a:hover { color: var(--bop-orange); }
-
-/* ===== PROMO BANNER (NEW) ===== */
-.promo-banner {
-  background: linear-gradient(90deg, var(--bop-orange) 0%, var(--bop-orange-bright) 100%);
-  color: #fff;
-  padding: 11px 28px;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  text-align: center;
-  position: relative;
-}
-.promo-banner-inner {
-  max-width: 1340px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: center; gap: 16px;
-  flex-wrap: wrap;
-}
-.promo-banner-flag {
-  background: rgba(255,255,255,0.25);
-  padding: 3px 10px; border-radius: 2px;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase;
-}
-.promo-banner a {
-  color: #fff; text-decoration: underline;
-  font-weight: 600; margin-left: 8px;
-}
-.promo-banner a:hover { color: var(--cream); }
-.promo-banner-close {
-  position: absolute; top: 50%; right: 18px;
-  transform: translateY(-50%);
-  background: transparent; border: none; color: #fff;
-  cursor: pointer; font-size: 20px; line-height: 1; padding: 4px 8px;
-  opacity: 0.7;
-}
-.promo-banner-close:hover { opacity: 1; }
-.promo-banner.dismissed { display: none; }
-
-/* ===== TOP BAR / NAV ===== */
-.topbar {
-  background: var(--palm-darker);
-  color: var(--cream);
-  padding: 8px 0;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-}
-.topbar-inner {
-  max-width: 1340px; margin: 0 auto; padding: 0 28px;
-  display: flex; justify-content: space-between; align-items: center; gap: 24px;
-}
-.topbar a { color: var(--cream); }
-.topbar a:hover { color: var(--bop-orange-soft); }
-.topbar-left { display: flex; gap: 18px; align-items: center; opacity: 0.95; }
-.topbar-pip {
-  display: inline-block; width: 6px; height: 6px;
-  background: var(--bop-orange); border-radius: 50%; vertical-align: middle; margin-right: 8px;
-}
-
-.nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(250, 243, 225, 0.96);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-  transition: box-shadow 0.3s ease;
-}
-.nav.scrolled { box-shadow: 0 4px 20px rgba(12, 103, 112, 0.08); }
-.nav-inner {
-  max-width: 1340px; margin: 0 auto; padding: 18px 28px;
-  display: flex; align-items: center; justify-content: space-between; gap: 24px;
-}
-.nav-logo { display: flex; align-items: center; gap: 14px; }
-.nav-logo img { height: 56px; width: auto; }
-.nav-logo-text {
-  font-family: var(--serif); font-weight: 500; font-size: 18px;
-  color: var(--palm-deep); line-height: 1.1; letter-spacing: 0.02em;
-}
-.nav-logo-text span {
-  display: block; font-size: 11px; letter-spacing: 0.25em;
-  color: var(--bop-orange); text-transform: uppercase;
-  font-family: var(--sans); font-weight: 600; margin-top: 4px;
-}
-.nav-menu {
-  display: flex; gap: 36px; list-style: none; align-items: center;
-}
-.nav-menu a {
-  color: var(--charcoal); font-size: 14px; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  position: relative; padding: 6px 0;
-}
-.nav-menu a::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: 0;
-  height: 2px; background: var(--bop-orange);
-  transform: scaleX(0); transition: transform 0.3s ease; transform-origin: right;
-}
-.nav-menu a:hover::after, .nav-menu a.active::after {
-  transform: scaleX(1); transform-origin: left;
-}
-.nav-menu a.active { color: var(--palm-deep); }
-.btn-book {
-  background: var(--bop-orange); color: #fff !important;
-  padding: 13px 28px; font-size: 13px; font-weight: 600;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  border: 1px solid var(--bop-orange); border-radius: 0;
-  transition: all 0.3s ease; white-space: nowrap; display: inline-block;
-}
-.btn-book:hover {
-  background: var(--palm); color: #fff !important; border-color: var(--palm);
-}
-.btn-book::after { display: none; }
-.nav-actions { display: flex; align-items: center; gap: 14px; }
-.nav-toggle {
-  display: none; background: transparent; border: none; cursor: pointer; padding: 8px;
-}
-.nav-toggle span {
-  display: block; width: 26px; height: 2px;
-  background: var(--palm-deep); margin: 5px 0; transition: all 0.3s ease;
-}
-
-/* ===== BIRD OF PARADISE MARKERS ===== */
-.bop {
-  display: inline-block; vertical-align: middle;
-  width: 18px; height: 22px;
-  flex-shrink: 0;
-}
-.bop-lg { width: 36px; height: 44px; }
-.bop-xl { width: 52px; height: 64px; }
-
-/* ===== TYPOGRAPHY HELPERS ===== */
-.eyebrow {
-  font-family: var(--sans); font-weight: 600; font-size: 12px;
-  letter-spacing: 0.35em; text-transform: uppercase;
-  color: var(--bop-orange); margin-bottom: 18px;
-  display: flex; align-items: center; gap: 14px;
-}
-.eyebrow::before {
-  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
-}
-.eyebrow.center { justify-content: center; }
-.eyebrow.center::after {
-  content: ''; display: inline-block; width: 28px; height: 1px; background: var(--bop-orange);
-}
-.eyebrow.light { color: var(--bop-orange-soft); }
-.eyebrow.light::before, .eyebrow.light::after { background: var(--bop-orange-soft); }
-
-h1, h2, h3, h4 { color: var(--palm-deep); }
-h1 em, h2 em, h3 em { font-style: italic; color: var(--bop-orange); font-weight: 400; }
-section h2 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
-  letter-spacing: -0.01em; margin-bottom: 24px;
-}
-p { margin-bottom: 18px; color: var(--charcoal-soft); font-size: 17px; line-height: 1.75; }
-p:last-child { margin-bottom: 0; }
-.lead {
-  font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 400;
-  color: var(--palm-deep); line-height: 1.5;
-}
-
-/* ===== SECTION BASE ===== */
-section { padding: 110px 28px; position: relative; }
-.container { max-width: 1340px; margin: 0 auto; }
-
-/* ===== BUTTONS ===== */
-.btn-primary {
-  display: inline-block; padding: 18px 44px; font-size: 13px;
-  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: var(--bop-orange); color: #fff !important;
-  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
-}
-.btn-primary:hover {
-  background: var(--palm); color: #fff !important; border-color: var(--palm);
-}
-.btn-outline {
-  display: inline-block; padding: 18px 44px; font-size: 13px;
-  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: transparent; color: var(--palm-deep) !important;
-  border: 1px solid var(--palm-deep); transition: all 0.3s ease;
-}
-.btn-outline:hover {
-  background: var(--palm-deep); color: var(--cream) !important;
-}
-.btn-light {
-  display: inline-block; padding: 18px 44px; font-size: 13px;
-  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: var(--bop-orange); color: #fff !important;
-  border: 1px solid var(--bop-orange); transition: all 0.3s ease;
-}
-.btn-light:hover {
-  background: var(--cream); border-color: var(--cream); color: var(--palm-deep) !important;
-}
-.btn-light-outline {
-  display: inline-block; padding: 18px 44px; font-size: 13px;
-  font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
-  background: transparent; color: var(--cream) !important;
-  border: 1px solid var(--cream); transition: all 0.3s ease;
-}
-.btn-light-outline:hover {
-  background: var(--cream); color: var(--palm-deep) !important;
-}
-
-/* ===== FOOTER ===== */
-.footer {
-  background: var(--palm-darker);
-  color: rgba(250, 243, 225, 0.8);
-  padding: 70px 28px 32px;
-  font-size: 14px;
-}
-.footer-inner {
-  max-width: 1340px; margin: 0 auto;
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px;
-}
-.footer h4 {
-  font-family: var(--serif); font-size: 18px; font-weight: 500;
-  color: var(--cream); margin-bottom: 20px; letter-spacing: 0.02em;
-}
-.footer ul { list-style: none; }
-.footer li { margin-bottom: 10px; }
-.footer a { color: rgba(250, 243, 225, 0.8); }
-.footer a:hover { color: var(--bop-orange-soft); }
-.footer-brand p {
-  color: rgba(250, 243, 225, 0.75); font-size: 14px; line-height: 1.7; margin-bottom: 20px;
-}
-.footer-brand-logo {
-  font-family: var(--serif); font-size: 24px; font-weight: 500;
-  color: var(--cream); margin-bottom: 18px; letter-spacing: 0.02em;
-}
-.footer-bottom {
-  max-width: 1340px; margin: 0 auto;
-  padding-top: 28px; border-top: 1px solid rgba(250, 243, 225, 0.15);
-  display: flex; justify-content: space-between; align-items: center;
-  flex-wrap: wrap; gap: 14px; font-size: 12px; letter-spacing: 0.06em;
-}
-
-/* ===== SCROLL REVEAL ===== */
-.fade-up {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-/* ===== RESPONSIVE - SHARED ===== */
-@media (max-width: 1024px) {
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 768px) {
-  body { font-size: 16px; }
-  .topbar { display: none; }
-  .promo-banner { font-size: 13px; padding: 10px 50px 10px 18px; }
-  .promo-banner-flag { font-size: 10px; }
-  .nav-menu {
-    position: fixed; top: 78px; left: 0; right: 0;
-    background: var(--cream); flex-direction: column;
-    padding: 30px 28px; gap: 22px;
-    border-bottom: 1px solid var(--line);
-    opacity: 0; visibility: hidden; transform: translateY(-12px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-    box-shadow: var(--shadow-md);
-  }
-  .nav-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
-  .nav-toggle { display: block; }
-  .nav-logo img { height: 44px; }
-  .nav-logo-text { font-size: 14px; }
-  .nav-logo-text span { display: none; }
-  .nav-inner { padding: 14px 20px; }
-  .btn-book { padding: 11px 20px; font-size: 12px; }
-  section { padding: 70px 22px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 36px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-}
-
-.page-hero {
-  position: relative; padding: 140px 28px 100px; text-align: center;
-  background:
-    linear-gradient(rgba(12, 103, 112, 0.7), rgba(12, 103, 112, 0.85)),
-    url('https://paradisevacationsuites.com/wp-content/uploads/Dining-Table-under-Pergola-1-scaled.jpg') center/cover no-repeat;
-  color: var(--cream);
-}
-.page-hero-inner { max-width: 880px; margin: 0 auto; }
-.page-hero h1 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(46px, 7vw, 84px); line-height: 1.05;
-  color: var(--cream); margin-bottom: 20px; letter-spacing: -0.01em;
-}
-.page-hero h1 em { font-style: italic; color: var(--bop-orange-bright); font-weight: 400; }
-.page-hero p {
-  font-size: 19px; color: rgba(250, 243, 225, 0.95);
-  max-width: 620px; margin: 0 auto;
-}
-.intro {
-  background: var(--ivory); padding: 90px 28px;
-  text-align: center; border-bottom: 1px solid var(--line);
-}
-.intro-inner { max-width: 760px; margin: 0 auto; }
-.intro p {
-  font-family: var(--serif); font-style: italic; font-size: 22px;
-  color: var(--palm-deep); line-height: 1.55; margin: 0;
-}
-.intro p em { color: var(--bop-orange); }
-
-.suite-section { padding: 90px 28px; }
-.suite-section:nth-child(odd) { background: var(--cream); }
-.suite-section:nth-child(even) { background: var(--ivory); }
-.suite-detail {
-  max-width: 1340px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center;
-}
-.suite-detail.reverse .suite-detail-photo { order: 2; }
-.suite-detail-photo {
-  position: relative; aspect-ratio: 4/3;
-  background-size: cover; background-position: center;
-  border-top: 4px solid var(--bop-orange);
-}
-.suite-detail.two-bed .suite-detail-photo { border-top-color: var(--palm); }
-.suite-detail-num {
-  position: absolute; top: 24px; left: 24px;
-  background: var(--cream); padding: 14px 22px;
-  font-family: var(--serif); font-size: 36px; font-weight: 500;
-  color: var(--palm-deep); line-height: 1; letter-spacing: -0.02em;
-  box-shadow: var(--shadow-sm);
-}
-.suite-detail-num span {
-  display: block; font-size: 10px; font-family: var(--sans);
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--bop-orange); font-weight: 700; margin-bottom: 4px;
-}
-.suite-detail-content h2 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(36px, 4.5vw, 52px); line-height: 1.05;
-  margin-bottom: 14px; color: var(--palm-deep);
-}
-.suite-detail-content h2 em { color: var(--bop-orange); }
-.suite-detail-tag {
-  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-  font-weight: 700; color: var(--bop-orange); margin-bottom: 22px;
-  display: inline-flex; align-items: center; gap: 10px;
-}
-.suite-detail.two-bed .suite-detail-tag { color: var(--palm); }
-.suite-detail-tag::before {
-  content: ''; width: 24px; height: 1px; background: currentColor;
-}
-.suite-detail-content p {
-  font-size: 17px; line-height: 1.7; color: var(--charcoal-soft); margin-bottom: 18px;
-}
-.suite-detail-specs {
-  list-style: none; padding: 26px 0; margin: 26px 0;
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-  display: grid; grid-template-columns: 1fr 1fr 1fr;
-  gap: 18px;
-}
-.suite-detail-specs li {
-  font-size: 13px; color: var(--charcoal-soft);
-}
-.suite-detail-specs li strong {
-  display: block; font-family: var(--serif); font-size: 22px;
-  color: var(--palm-deep); font-weight: 500; line-height: 1.2;
-}
-.suite-detail-specs li span {
-  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--bop-orange); font-weight: 600; display: block; margin-top: 4px;
-}
-.suite-detail-rate {
-  display: flex; align-items: center; gap: 30px; margin-bottom: 28px;
-  flex-wrap: wrap;
-}
-.suite-detail-rate-num {
-  font-family: var(--serif); font-size: 42px; font-weight: 500;
-  color: var(--palm-deep); line-height: 1;
-}
-.suite-detail-rate-num span { font-size: 16px; color: var(--charcoal-soft); font-weight: 400; }
-.suite-detail-rate-label {
-  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--charcoal-soft); font-weight: 700; line-height: 1.5;
-}
-.suite-detail-actions { display: flex; gap: 16px; flex-wrap: wrap; }
-
-.divider {
-  background: var(--palm-darker);
-  color: var(--cream);
-  padding: 90px 28px; text-align: center;
-}
-.divider-inner { max-width: 720px; margin: 0 auto; }
-.divider h3 {
-  color: var(--cream); font-family: var(--serif); font-weight: 400;
-  font-size: clamp(28px, 4vw, 42px); line-height: 1.15; margin-bottom: 18px;
-}
-.divider h3 em { color: var(--bop-orange-bright); }
-.divider p { color: rgba(250, 243, 225, 0.85); font-size: 17px; margin-bottom: 0; }
-
-.closing {
-  background:
-    linear-gradient(rgba(12, 103, 112, 0.65), rgba(12, 103, 112, 0.85)),
-    url('https://paradisevacationsuites.com/wp-content/uploads/Night-Lighting-around-Pool-1-scaled.jpg') center/cover no-repeat fixed;
-  color: var(--cream); padding: 130px 28px; text-align: center;
-}
-.closing-inner { max-width: 760px; margin: 0 auto; }
-.closing h2 {
-  color: var(--cream); font-family: var(--serif); font-weight: 400;
-  font-size: clamp(38px, 5vw, 60px); line-height: 1.1; margin-bottom: 28px;
-}
-.closing h2 em { color: var(--bop-orange-bright); }
-.closing p { color: rgba(250, 243, 225, 0.92); font-size: 18px; margin-bottom: 40px; }
-.closing-actions { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
-
-@media (max-width: 1024px) {
-  .suite-detail { grid-template-columns: 1fr; gap: 40px; }
-  .suite-detail.reverse .suite-detail-photo { order: 0; }
-}
-@media (max-width: 768px) {
-  .page-hero { padding: 90px 22px 70px; }
-  .intro { padding: 60px 22px; }
-  .intro p { font-size: 19px; }
-  .suite-section { padding: 60px 22px; }
-  .suite-detail-num { padding: 10px 16px; font-size: 28px; top: 16px; left: 16px; }
-  .suite-detail-specs { grid-template-columns: 1fr 1fr; gap: 14px; }
-  .suite-detail-specs li strong { font-size: 18px; }
-  .suite-detail-actions { flex-direction: column; align-items: stretch; }
-  .closing { padding: 80px 22px; background-attachment: scroll; }
-  .closing-actions { flex-direction: column; align-items: stretch; }
-}
-
-.suite-comparison {
-  background: var(--cream); padding: 90px 28px 60px;
-  border-bottom: 1px solid var(--line);
-}
-.suite-comparison-header { text-align: center; max-width: 700px; margin: 0 auto 50px; }
-.suite-comparison-header h2 {
-  font-family: var(--serif); font-weight: 400;
-  font-size: clamp(34px, 5vw, 54px); line-height: 1.05;
-  color: var(--teal-darker); margin-bottom: 16px;
-}
-.suite-comparison-header h2 em { color: var(--sunset); font-style: italic; }
-.suite-comparison-sub { font-size: 16px; color: var(--charcoal-soft); }
-.suite-comparison-table-wrap {
-  max-width: 1180px; margin: 0 auto;
-  overflow-x: auto; -webkit-overflow-scrolling: touch;
-  box-shadow: var(--shadow-md); background: var(--paper);
-}
-.suite-comparison-table {
-  width: 100%; border-collapse: collapse;
-  background: var(--paper);
-}
-.suite-comparison-table thead th {
-  padding: 22px 18px;
-  text-align: left;
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  font-weight: 700; color: var(--cream);
-  background: var(--teal-darker);
-  border-bottom: 3px solid var(--sunset);
-}
-.suite-comparison-table thead th:first-child { background: var(--charcoal); }
-.suite-comparison-table tbody td {
-  padding: 18px;
-  border-bottom: 1px solid var(--line);
-  font-size: 15px; color: var(--charcoal-soft);
-  vertical-align: middle;
-}
-.suite-comparison-table tbody tr:hover td { background: rgba(245, 185, 66, 0.06); }
-.suite-comparison-table tbody tr:last-child td { border-bottom: none; }
-.suite-comparison-table .suite-num {
-  font-family: var(--serif); font-weight: 500;
-  font-size: 22px; color: var(--teal-darker);
-}
-.suite-comparison-table .suite-num span {
-  display: block; font-family: var(--sans); font-size: 9px;
-  letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--sunset-deep); font-weight: 700; margin-bottom: 2px;
-}
-.suite-comparison-table .suite-num.two span { color: var(--pink-deep); }
-.suite-comparison-table .rate {
-  font-family: var(--serif); font-size: 18px;
-  color: var(--sunset-deep); font-weight: 500;
-}
-.suite-comparison-table .rate.two { color: var(--pink-deep); }
-.suite-comparison-table .two-bed-row { background: rgba(236, 72, 153, 0.04); }
-.suite-comparison-table a {
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  font-weight: 700; color: var(--sunset-deep);
-}
-.suite-comparison-table .two-bed-row a { color: var(--pink-deep); }
-.suite-comparison-footnote {
-  max-width: 920px; margin: 30px auto 0;
-  text-align: center; font-size: 14px; color: var(--charcoal-soft); font-style: italic;
-}
-@media (max-width: 768px) {
-  .suite-comparison { padding: 60px 12px 40px; }
-  .suite-comparison-table thead th { font-size: 10px; padding: 14px 10px; letter-spacing: 0.08em; }
-  .suite-comparison-table tbody td { padding: 12px 10px; font-size: 13px; }
-  .suite-comparison-table .suite-num { font-size: 18px; }
-  .suite-comparison-table .rate { font-size: 15px; }
-}
-
-.nav-phone {
-  display: inline-flex; align-items: center; gap: 8px;
-  color: var(--teal-deep); font-weight: 600;
-  font-size: 14px; letter-spacing: 0.01em;
-  text-decoration: none; padding: 10px 16px 10px 12px;
-  border-right: 1px solid var(--line); margin-right: 8px;
-  transition: color 0.2s ease;
-  white-space: nowrap; flex-shrink: 0;
-}
-.nav-phone span { white-space: nowrap; }
-.nav-menu { flex-shrink: 1; }
-.nav-actions { flex-shrink: 0; }
-.nav-phone svg { color: var(--sunset-deep); flex-shrink: 0; }
-.nav-phone:hover { color: var(--sunset-deep); }
-.nav-phone:hover svg { color: var(--pink); }
-@media (max-width: 900px) {
-  .nav-phone span { display: none; }
-  .nav-phone { padding: 10px; margin-right: 4px; }
-}
-@media (max-width: 560px) {
-  .nav-phone { padding: 8px; }
-  .nav-phone svg { width: 16px; height: 16px; }
-}
-
-.suite-detail-photo-wrap { display: flex; flex-direction: column; gap: 12px; }
-.suite-detail.reverse .suite-detail-photo-wrap { order: 2; }
-.suite-detail-thumbs {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-}
-.suite-thumb {
-  aspect-ratio: 4/3;
-  background-size: cover; background-position: center;
-  cursor: pointer; position: relative; overflow: hidden;
-  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
-  box-shadow: 0 4px 12px rgba(7, 56, 70, 0.10);
-}
-.suite-thumb:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(7, 56, 70, 0.18); }
-.suite-thumb::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(7,56,70,0) 50%, rgba(7,56,70,0.20) 100%);
-  pointer-events: none;
-}
-@media (max-width: 768px) {
-  .suite-detail-thumbs { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-}
-
-.nav-logo { display: inline-flex; align-items: center; padding: 2px 0; }
-.nav-logo img {
-  max-height: 96px !important;
-  width: auto; display: block;
-  transition: max-height 0.2s ease;
-}
-.nav { padding: 0 !important; }
-.nav-inner { min-height: 124px; padding-top: 10px; padding-bottom: 10px; }
-.nav-menu { font-size: 13.5px; gap: 22px; }
-@media (max-width: 1280px) {
-  .nav-logo img { max-height: 84px !important; }
-  .nav-inner { min-height: 110px; }
-  .nav-menu { font-size: 13px; gap: 18px; }
-}
-@media (max-width: 1100px) {
-  .nav-logo img { max-height: 72px !important; }
-  .nav-inner { min-height: 96px; }
-}
-@media (max-width: 768px) {
-  .nav-logo img { max-height: 60px !important; }
-  .nav-inner { min-height: 82px; }
-}
-</style>
+<link rel="stylesheet" href="../css/core.css">
+<link rel="stylesheet" href="../css/suites.css">
+<link rel="stylesheet" href="../css/nav.css">
+<link rel="stylesheet" href="../css/util.css">
 <link rel="canonical" href="https://paradisevacationsuites.com/suites/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Paradise Vacation Suites">
@@ -1132,7 +429,7 @@ section { padding: 110px 28px; position: relative; }
     <span>Through August 31st, 2026.</span>
     <a href="https://paradisevacationsuites.lodgify.com/en/all-properties">Book direct →</a>
   </div>
-  <button class="promo-banner-close" aria-label="Dismiss" onclick="document.getElementById('promoBanner').classList.add('dismissed')">×</button>
+  <button class="promo-banner-close" aria-label="Dismiss">×</button>
 </div>
 
 <nav class="nav" id="nav">
@@ -1216,9 +513,9 @@ section { padding: 110px 28px; position: relative; }
 
 <section class="suite-section" id="apt-01">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/0e29e52f-961e-4420-be4a-69896e1c249d.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/0e29e52f-961e-4420-be4a-69896e1c249d.jpg?w=2080">
       <div class="suite-detail-num"><span>Apt.</span>01</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/2e863415-dbb4-4b40-bd92-348afd7005fb.jpg?w=640');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/87ce0412-cfb8-451e-ab3a-04624ed203aa.jpg?w=640');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/ba3ef917-a413-4e37-a21c-8942fd260f49.jpg?w=640');" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/e9cf0d52-cd6a-4645-ba60-faa8b57dbedb.jpg?w=640');" role="img" aria-label="apt-01 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/2e863415-dbb4-4b40-bd92-348afd7005fb.jpg?w=640" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/87ce0412-cfb8-451e-ab3a-04624ed203aa.jpg?w=640" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/ba3ef917-a413-4e37-a21c-8942fd260f49.jpg?w=640" role="img" aria-label="apt-01 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/e9cf0d52-cd6a-4645-ba60-faa8b57dbedb.jpg?w=640" role="img" aria-label="apt-01 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 01</div>
       <h2>Queen Bedroom Suite</h2>
@@ -1240,9 +537,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-02">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/e6e4ea5f-286a-46ed-874f-81730544af6a.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/e6e4ea5f-286a-46ed-874f-81730544af6a.jpg?w=2080">
       <div class="suite-detail-num"><span>Apt.</span>02</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/48e85c7f-09ec-4ac2-9b81-c4044fe27a72.jpg?w=640');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/83ec7de6-4aa0-48d5-ad94-37bcaa09e3ae.jpg?w=640');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/fd32c20b-708a-4849-b721-704286a72b99.jpg?w=640');" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/9f59680c-9646-4b3f-b24e-cf16b3c94e6f.jpg?w=640');" role="img" aria-label="apt-02 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/48e85c7f-09ec-4ac2-9b81-c4044fe27a72.jpg?w=640" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/83ec7de6-4aa0-48d5-ad94-37bcaa09e3ae.jpg?w=640" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/fd32c20b-708a-4849-b721-704286a72b99.jpg?w=640" role="img" aria-label="apt-02 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/9f59680c-9646-4b3f-b24e-cf16b3c94e6f.jpg?w=640" role="img" aria-label="apt-02 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 02</div>
       <h2>Queen Bedroom Suite</h2>
@@ -1264,9 +561,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-03">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/2c67353e-b138-4eb7-bb75-769ab16b404f.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/2c67353e-b138-4eb7-bb75-769ab16b404f.jpg?w=2080">
       <div class="suite-detail-num"><span>Apt.</span>03</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/4358184b-0fc2-4619-b924-208a80c1ce99.jpg?w=640');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/04b8473e-3df2-47a1-b9d2-99bfaa34a709.jpg?w=640');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/db981578-1140-448a-8a75-3df350c8e15e.jpg?w=640');" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/eb2ae23f-8676-4210-a584-45ecf95442ef.jpg?w=640');" role="img" aria-label="apt-03 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/4358184b-0fc2-4619-b924-208a80c1ce99.jpg?w=640" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/04b8473e-3df2-47a1-b9d2-99bfaa34a709.jpg?w=640" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/db981578-1140-448a-8a75-3df350c8e15e.jpg?w=640" role="img" aria-label="apt-03 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/eb2ae23f-8676-4210-a584-45ecf95442ef.jpg?w=640" role="img" aria-label="apt-03 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 03</div>
       <h2>Queen Bedroom Suite</h2>
@@ -1288,9 +585,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-04">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/002b4e94-695f-47fb-8683-8950395bcc8f.png');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://paradisevacationsuites.com/wp-content/uploads/002b4e94-695f-47fb-8683-8950395bcc8f.png">
       <div class="suite-detail-num"><span>Apt.</span>04</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/c78069ff-d1fa-4953-b27e-69d6523aa4c8.png');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/9ab5cc8b-9400-4fd2-8fd0-e406ab76fbe8.png');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/99a8e951-3cbb-4d9e-a68d-54ded8dd9990.png');" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" style="background-image: url('https://paradisevacationsuites.com/wp-content/uploads/b05820b6-abd2-423a-8c7b-486b46c58172.png');" role="img" aria-label="apt-04 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://paradisevacationsuites.com/wp-content/uploads/c78069ff-d1fa-4953-b27e-69d6523aa4c8.png" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" data-bg="https://paradisevacationsuites.com/wp-content/uploads/9ab5cc8b-9400-4fd2-8fd0-e406ab76fbe8.png" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" data-bg="https://paradisevacationsuites.com/wp-content/uploads/99a8e951-3cbb-4d9e-a68d-54ded8dd9990.png" role="img" aria-label="apt-04 photo"></div><div class="suite-thumb" data-bg="https://paradisevacationsuites.com/wp-content/uploads/b05820b6-abd2-423a-8c7b-486b46c58172.png" role="img" aria-label="apt-04 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 04</div>
       <h2>King Bedroom Suite</h2>
@@ -1312,9 +609,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-05">
   <div class="suite-detail fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/9d45986f-da04-4de4-8577-1985d28addfa.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/9d45986f-da04-4de4-8577-1985d28addfa.jpg?w=2080">
       <div class="suite-detail-num"><span>Apt.</span>05</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/21ee0986-a7f8-4bd7-8471-fc4f100c5ad0.jpg?w=640');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/df6e5370-f352-48f4-aac0-01c17d07bf9d.jpg?w=640');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/9d9bc56a-de3e-4be6-a70c-595dd6f730a8.jpg?w=640');" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/418955fd-64d5-4d03-8ad7-3d9069081db2.jpg?w=640');" role="img" aria-label="apt-05 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/21ee0986-a7f8-4bd7-8471-fc4f100c5ad0.jpg?w=640" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/df6e5370-f352-48f4-aac0-01c17d07bf9d.jpg?w=640" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/9d9bc56a-de3e-4be6-a70c-595dd6f730a8.jpg?w=640" role="img" aria-label="apt-05 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/418955fd-64d5-4d03-8ad7-3d9069081db2.jpg?w=640" role="img" aria-label="apt-05 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 05</div>
       <h2>King Bedroom Suite</h2>
@@ -1336,9 +633,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-06">
   <div class="suite-detail reverse fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/c452e13a-af77-40a9-a864-2e31bfd15432.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/c452e13a-af77-40a9-a864-2e31bfd15432.jpg?w=2080">
       <div class="suite-detail-num"><span>Apt.</span>06</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/a372b493-83b1-44b6-bacc-03edc693ec5f.jpg?w=640');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/0de8967c-c821-49f9-bb58-487ac161de19.jpg?w=640');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/e7835cea-9a3b-4e02-b0f4-9866fc999e62.jpg?w=640');" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/552e1ed8-4c5f-484d-a304-8a77bda9328d.jpg?w=640');" role="img" aria-label="apt-06 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/a372b493-83b1-44b6-bacc-03edc693ec5f.jpg?w=640" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/0de8967c-c821-49f9-bb58-487ac161de19.jpg?w=640" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/e7835cea-9a3b-4e02-b0f4-9866fc999e62.jpg?w=640" role="img" aria-label="apt-06 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/552e1ed8-4c5f-484d-a304-8a77bda9328d.jpg?w=640" role="img" aria-label="apt-06 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">One-Bedroom · Apt. 06</div>
       <h2>King Bedroom Suite</h2>
@@ -1369,9 +666,9 @@ section { padding: 110px 28px; position: relative; }
 
 <section class="suite-section" id="apt-2112">
   <div class="suite-detail two-bed fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/6e818f43-5812-4c86-8cb8-c02cd003917c.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/6e818f43-5812-4c86-8cb8-c02cd003917c.jpg?w=2080">
       <div class="suite-detail-num"><span>Suite</span>2112</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/7ac917a3-0d0e-4e9f-a7bb-97629142f80c.jpg?w=640');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/1989d2d5-a295-43a9-85f7-9e8cf3345541.jpg?w=640');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/63272968-9cc8-4989-b835-86d40df4d2a5.jpg?w=640');" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/918be761-e7c2-4583-8604-a69360a3dc97.jpg?w=640');" role="img" aria-label="apt-2112 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/7ac917a3-0d0e-4e9f-a7bb-97629142f80c.jpg?w=640" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/1989d2d5-a295-43a9-85f7-9e8cf3345541.jpg?w=640" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/63272968-9cc8-4989-b835-86d40df4d2a5.jpg?w=640" role="img" aria-label="apt-2112 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/918be761-e7c2-4583-8604-a69360a3dc97.jpg?w=640" role="img" aria-label="apt-2112 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2112</div>
       <h2>Two-Bedroom Two King Bedroom Suite</h2>
@@ -1393,9 +690,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-2120">
   <div class="suite-detail two-bed reverse fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/6e818f43-5812-4c86-8cb8-c02cd003917c.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/6e818f43-5812-4c86-8cb8-c02cd003917c.jpg?w=2080">
       <div class="suite-detail-num"><span>Suite</span>2120</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/7ac917a3-0d0e-4e9f-a7bb-97629142f80c.jpg?w=640');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/1989d2d5-a295-43a9-85f7-9e8cf3345541.jpg?w=640');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/63272968-9cc8-4989-b835-86d40df4d2a5.jpg?w=640');" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/918be761-e7c2-4583-8604-a69360a3dc97.jpg?w=640');" role="img" aria-label="apt-2120 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/7ac917a3-0d0e-4e9f-a7bb-97629142f80c.jpg?w=640" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/1989d2d5-a295-43a9-85f7-9e8cf3345541.jpg?w=640" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/63272968-9cc8-4989-b835-86d40df4d2a5.jpg?w=640" role="img" aria-label="apt-2120 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/918be761-e7c2-4583-8604-a69360a3dc97.jpg?w=640" role="img" aria-label="apt-2120 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2120</div>
       <h2>Two-Bedroom Two King Bedroom Suite</h2>
@@ -1417,9 +714,9 @@ section { padding: 110px 28px; position: relative; }
 </section>
 <section class="suite-section" id="apt-2124">
   <div class="suite-detail two-bed fade-up">
-    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" style="background-image: url('https://l.icdbcdn.com/oh/f9522918-a04d-4ce2-93a4-3f79d05e45c0.jpg?w=2080');">
+    <div class="suite-detail-photo-wrap"><div class="suite-detail-photo" data-bg="https://l.icdbcdn.com/oh/f9522918-a04d-4ce2-93a4-3f79d05e45c0.jpg?w=2080">
       <div class="suite-detail-num"><span>Suite</span>2124</div>
-    </div><div class="suite-detail-thumbs"><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/30d2fe28-7493-45a1-a812-48307d631ddc.jpg?w=640');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/73cabe8f-c688-4de2-a8ea-349b4b05eaab.jpg?w=640');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/c1ff13a8-ff76-4ad3-b3e7-eac190904e95.jpg?w=640');" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" style="background-image: url('https://l.icdbcdn.com/oh/5c16364b-3df8-4dab-80f5-b91eabc9e5e3.jpg?w=640');" role="img" aria-label="apt-2124 photo"></div></div></div>
+    </div><div class="suite-detail-thumbs"><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/30d2fe28-7493-45a1-a812-48307d631ddc.jpg?w=640" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/73cabe8f-c688-4de2-a8ea-349b4b05eaab.jpg?w=640" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/c1ff13a8-ff76-4ad3-b3e7-eac190904e95.jpg?w=640" role="img" aria-label="apt-2124 photo"></div><div class="suite-thumb" data-bg="https://l.icdbcdn.com/oh/5c16364b-3df8-4dab-80f5-b91eabc9e5e3.jpg?w=640" role="img" aria-label="apt-2124 photo"></div></div></div>
     <div class="suite-detail-content">
       <div class="suite-detail-tag">Two-Bedroom · Suite 2124 · Premier</div>
       <h2>Two-Bedroom Two King Bedroom Suite</h2>
@@ -1482,33 +779,14 @@ section { padding: 110px 28px; position: relative; }
   </div>
   <div class="footer-bottom">
     <span>© 2026 Paradise Vacation Suites. All rights reserved.</span>
-    <span>Site by <a href="https://www.bofilltech.com/" style="color: var(--bop-orange-soft);">Bofill Technologies</a></span>
+    <span>Site by <a class="u-bf3496" href="https://www.bofilltech.com/">Bofill Technologies</a></span>
   </div>
 </footer>
 
 
-<script>
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 12) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
-const navToggle = document.getElementById('navToggle');
-const navMenu = document.getElementById('navMenu');
-navToggle.addEventListener('click', () => navMenu.classList.toggle('open'));
-navMenu.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navMenu.classList.remove('open'));
-});
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      io.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-</script>
 
+
+<script src="../js/common.js" defer></script>
+<script src="../js/main.js" defer></script>
 </body>
 </html>
