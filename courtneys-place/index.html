@@ -566,29 +566,29 @@
     color: var(--driftwood);
   }
 
-  /* ---------- AMENITIES (different from before — minimal list) ---------- */
+  /* ---------- AMENITIES (compact photo + grid) ---------- */
   .amenities {
     background: var(--cream-warm);
-    padding: 120px 24px;
+    padding: 90px 24px;
   }
   .amenities-inner { max-width: 1280px; margin: 0 auto; }
   .amenities-header {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
     align-items: end;
-    margin-bottom: 80px;
+    margin-bottom: 48px;
   }
   .amenities-eyebrow {
     font-family: var(--hand);
-    font-size: 30px;
+    font-size: 28px;
     color: var(--conch-coral);
     line-height: 1;
-    margin: 0 0 12px;
+    margin: 0 0 10px;
   }
   .amenities-title {
     font-family: var(--display);
-    font-size: clamp(36px, 5vw, 64px);
+    font-size: clamp(32px, 4.4vw, 52px);
     line-height: 1;
     letter-spacing: -0.015em;
     margin: 0;
@@ -598,50 +598,76 @@
   .amenities-lead {
     font-family: var(--display);
     font-style: italic;
-    font-size: clamp(18px, 2vw, 22px);
+    font-size: clamp(17px, 1.8vw, 20px);
     line-height: 1.45;
     color: var(--driftwood);
-    max-width: 480px;
+    max-width: 460px;
     margin: 0;
   }
-  .amen-list {
+  .amenities-body {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 32px;
+    align-items: start;
   }
-  .amen-row {
+  .amenities-photos {
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 24px;
-    padding: 28px 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 8px;
+    aspect-ratio: 1 / 1;
+  }
+  .amen-photo {
+    background-size: cover;
+    background-position: center;
+    background-color: var(--driftwood);
+    border-radius: 2px;
+    min-height: 130px;
+  }
+  .amen-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    row-gap: 14px;
+    column-gap: 32px;
+  }
+  .amen-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    padding: 12px 0 0;
     border-top: 1px solid var(--line);
     align-items: baseline;
   }
-  .amen-row:last-child { border-bottom: 1px solid var(--line); }
   .amen-num {
     font-family: var(--display);
     font-style: italic;
-    font-size: 16px;
+    font-size: 13px;
     color: var(--conch-coral);
-    letter-spacing: 0.05em;
     line-height: 1;
-    min-width: 40px;
+    margin: 0;
   }
   .amen-name {
     font-family: var(--display);
-    font-size: clamp(22px, 2.5vw, 28px);
-    line-height: 1.2;
-    margin: 0 0 6px;
+    font-size: clamp(18px, 1.9vw, 22px);
+    line-height: 1.15;
+    margin: 0 0 4px;
     font-weight: 400;
     color: var(--ink);
   }
   .amen-name em { font-style: italic; color: var(--conch-coral); }
   .amen-desc {
-    font-size: 14px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.55;
     color: var(--driftwood);
     margin: 0;
-    max-width: 640px;
+  }
+  .amenities-cta {
+    text-align: center;
+    margin-top: 40px;
   }
 
   /* ---------- LOCATION ---------- */
@@ -904,13 +930,16 @@
     .cottage-card.reverse > div:first-child { order: 2; }
     .cottage-card.reverse > div:nth-child(2) { order: 1; }
     .amenities-header { grid-template-columns: 1.4fr 1fr; }
+    .amenities-body { grid-template-columns: 1fr 1.15fr; gap: 48px; }
+    .amen-grid { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, min-content); grid-auto-flow: column; row-gap: 18px; }
     .location-inner { grid-template-columns: 1fr 1fr; gap: 100px; }
     .reviews-grid { grid-template-columns: repeat(3, 1fr); }
     .invitation-body { columns: 2; }
     .invitation-body p:first-of-type { column-span: all; }
   }
   @media (min-width: 1024px) {
-    .invitation, .cottages, .island-moment, .amenities, .location, .reviews { padding: 160px 40px; }
+    .invitation, .cottages, .island-moment, .location, .reviews { padding: 160px 40px; }
+    .amenities { padding: 110px 40px; }
     .final-cta { padding: 180px 40px; }
   }
 </style>
@@ -1125,69 +1154,78 @@
         <p class="amenities-eyebrow">what's included</p>
         <h2 class="amenities-title">Small island. <em>Big</em> hospitality.</h2>
       </div>
-      <p class="amenities-lead">No room service, no concierge desk, no glass-walled lobby. What you get instead: a key, a porch, a pool, a bicycle, breakfast, and the run of Old Key West.</p>
+      <p class="amenities-lead">No room service, no concierge desk, no glass-walled lobby. Just a key, a porch, a pool, a bicycle, and the run of Old Key West.</p>
     </div>
 
-    <div class="amen-list">
-      <div class="amen-row">
-        <p class="amen-num">i.</p>
-        <div>
-          <h3 class="amen-name">The Plunge <em>Pool</em></h3>
-          <p class="amen-desc">Small on purpose — the kind you actually use, in a gated tropical courtyard surrounded by frangipani and palm shade.</p>
-        </div>
+    <div class="amenities-body">
+      <div class="amenities-photos" aria-hidden="true">
+        <div class="amen-photo" style="background-image:url('img/front-pool/image0.jpg');"></div>
+        <div class="amen-photo" style="background-image:url('img/property/patio-umbrella.jpg');"></div>
+        <div class="amen-photo" style="background-image:url('img/c14/image1.jpg');"></div>
+        <div class="amen-photo" style="background-image:url('img/property/porch-cottage5.jpg');"></div>
       </div>
-      <div class="amen-row">
-        <p class="amen-num">ii.</p>
-        <div>
-          <h3 class="amen-name">Bikes On <em>Premise</em></h3>
-          <p class="amen-desc">Rent a beach cruiser at the office. Pedal to Mallory Square, the Hemingway House, or just to dinner.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">iii.</p>
-        <div>
-          <h3 class="amen-name">Continental <em>Breakfast</em></h3>
-          <p class="amen-desc">Set out each morning. Take it back to your porch and wait for the rooster to introduce himself.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">iv.</p>
-        <div>
-          <h3 class="amen-name">Free <em>Parking</em></h3>
-          <p class="amen-desc">Off-street, on premise, gated. A small luxury in this part of the island.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">v.</p>
-        <div>
-          <h3 class="amen-name">Tropical <em>Courtyard</em></h3>
-          <p class="amen-desc">Bougainvillea, frangipani, palm shade. A BBQ area when you'd rather grill in than dine out.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">vi.</p>
-        <div>
-          <h3 class="amen-name">Pet <em>Friendly</em></h3>
-          <p class="amen-desc">Bring the dog. We've put a few of our guests' four-legged friends on the website.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">vii.</p>
-        <div>
-          <h3 class="amen-name">Cottages <em>Equipped</em></h3>
-          <p class="amen-desc">Full kitchens in cottages, kitchenettes in efficiencies. Stay in for the night, or stay in for the week.</p>
-        </div>
-      </div>
-      <div class="amen-row">
-        <p class="amen-num">viii.</p>
-        <div>
-          <h3 class="amen-name">A/C, Wi-Fi, Cable, <em>Daily</em> Housekeeping</h3>
-          <p class="amen-desc">The basics, handled. Plus free local calls, irons and hair dryers at the office.</p>
-        </div>
-      </div>
+
+      <ul class="amen-grid">
+        <li class="amen-item">
+          <p class="amen-num">i.</p>
+          <div>
+            <h3 class="amen-name">Plunge <em>Pool</em></h3>
+            <p class="amen-desc">Small on purpose. In a gated tropical courtyard.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">ii.</p>
+          <div>
+            <h3 class="amen-name">Bikes On <em>Premise</em></h3>
+            <p class="amen-desc">Beach cruisers at the office. Pedal anywhere.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">iii.</p>
+          <div>
+            <h3 class="amen-name">Continental <em>Breakfast</em></h3>
+            <p class="amen-desc">Set out each morning. Take it to your porch.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">iv.</p>
+          <div>
+            <h3 class="amen-name">Free <em>Parking</em></h3>
+            <p class="amen-desc">Off-street, on premise, gated.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">v.</p>
+          <div>
+            <h3 class="amen-name">Tropical <em>Courtyard</em></h3>
+            <p class="amen-desc">Bougainvillea, palm shade, and a BBQ.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">vi.</p>
+          <div>
+            <h3 class="amen-name">Pet <em>Friendly</em></h3>
+            <p class="amen-desc">Bring the dog. Really.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">vii.</p>
+          <div>
+            <h3 class="amen-name">Cottages <em>Equipped</em></h3>
+            <p class="amen-desc">Full kitchens; kitchenettes in efficiencies.</p>
+          </div>
+        </li>
+        <li class="amen-item">
+          <p class="amen-num">viii.</p>
+          <div>
+            <h3 class="amen-name">The <em>Basics</em>, Handled</h3>
+            <p class="amen-desc">A/C · Wi-Fi · cable · daily housekeeping.</p>
+          </div>
+        </li>
+      </ul>
     </div>
 
-    <div style="margin-top: 56px; text-align: center;">
+    <div class="amenities-cta">
       <a href="amenities.html" class="btn btn-outline">All Amenities &amp; Policies</a>
     </div>
   </div>
