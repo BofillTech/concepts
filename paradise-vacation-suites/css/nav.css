@@ -57,3 +57,10 @@
   .nav-logo img { height: 46px !important; }
   .nav-inner { min-height: 74px; }
 }
+
+/* <header> wraps the nav, so sticky must live on the header:
+   a sticky element can't escape its containing block, and .site-header's
+   box is exactly the nav's — leaving sticky on .nav would kill it.
+   .nav stays positioned so the mobile dropdown (top:100%) still anchors to it. */
+.site-header { position: sticky; top: 0; z-index: 100; }
+.nav { position: relative !important; top: auto !important; }

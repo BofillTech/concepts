@@ -1,0 +1,27 @@
+/* Accessibility — loaded last so focus indicators can't be suppressed.
+   WCAG 2.1: 2.4.1 Bypass Blocks (skip link) + 2.4.7 Focus Visible. */
+main { display: block; }
+
+.skip-link {
+  position: fixed; top: -100px; left: 12px; z-index: 200;
+  background: var(--teal-deep); color: var(--cream);
+  font-family: var(--sans); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 14px 22px; text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 12px; }
+
+/* Dual ring: teal reads on the cream sections, the cream halo reads on the
+   dark teal ones, so the indicator survives every background on the site. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--teal-deep);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 8px var(--cream);
+}
