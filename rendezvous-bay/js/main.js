@@ -75,6 +75,50 @@
     start();
   }
 
+  /* ---- bottom booking bar: dates ---- */
+  var bbIn = document.getElementById("bbIn");
+  var bbOut = document.getElementById("bbOut");
+  var bbGo = document.getElementById("bbGo");
+  if (bbIn && bbOut) {
+    var DAY = 86400000;
+    function fmt(d) {
+      var m = ("0" + (d.getMonth() + 1)).slice(-2);
+      var day = ("0" + d.getDate()).slice(-2);
+      return d.getFullYear() + "-" + m + "-" + day;
+    }
+    function parse(v) {
+      var p = v.split("-");
+      return new Date(+p[0], +p[1] - 1, +p[2]);
+    }
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var tomorrow = new Date(today.getTime() + DAY);
+
+    bbIn.min = fmt(today);
+    bbOut.min = fmt(tomorrow);
+    if (!bbIn.value) bbIn.value = fmt(today);
+    if (!bbOut.value) bbOut.value = fmt(tomorrow);
+
+    function syncGo() {
+      if (!bbGo) return;
+      var base = bbGo.getAttribute("data-base");
+      bbGo.href = base + "?checkin=" + encodeURIComponent(bbIn.value) +
+                  "&checkout=" + encodeURIComponent(bbOut.value);
+    }
+    // check-out must always follow check-in
+    bbIn.addEventListener("change", function () {
+      if (!bbIn.value) return;
+      var nextDay = new Date(parse(bbIn.value).getTime() + DAY);
+      bbOut.min = fmt(nextDay);
+      if (!bbOut.value || parse(bbOut.value) <= parse(bbIn.value)) {
+        bbOut.value = fmt(nextDay);
+      }
+      syncGo();
+    });
+    bbOut.addEventListener("change", syncGo);
+    syncGo();
+  }
+
   /* ---- dynamic year ---- */
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
