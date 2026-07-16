@@ -19,6 +19,7 @@
   --gap:clamp(72px,9vw,140px);
   --radius:2px;
   --bookbar-h:64px;
+  --bookbar-gap:16px;
   --horizon:linear-gradient(90deg,var(--sea) 0%,var(--sun) 55%,var(--coral) 100%);
 }
 
@@ -131,7 +132,7 @@ a{color:inherit;text-decoration:none}
 .hero__scrim{position:absolute;inset:0;z-index:1;
   background:linear-gradient(180deg,rgba(12,58,56,.28) 0%,rgba(12,58,56,0) 34%,rgba(12,58,56,.12) 60%,rgba(12,58,56,.78) 100%);}
 .hero__inner{position:relative;z-index:2;width:100%;max-width:var(--wrap);margin:0 auto;
-  padding:0 24px calc(clamp(44px,6vh,86px) + var(--bookbar-h))}
+  padding:0 24px calc(clamp(44px,6vh,86px) + var(--bookbar-h) + var(--bookbar-gap))}
 .hero__eyebrow{color:#fff;letter-spacing:.3em;text-shadow:0 1px 10px rgba(0,0,0,.4)}
 .hero h1{
   color:#fff;font-size:clamp(2.9rem,8vw,6.4rem);max-width:16ch;margin:.32em 0 .1em;
@@ -140,7 +141,7 @@ a{color:inherit;text-decoration:none}
 .hero__sub{color:rgba(255,255,255,.92);font-size:clamp(1rem,1.5vw,1.22rem);max-width:46ch;
   margin-bottom:32px;text-shadow:0 1px 14px rgba(0,0,0,.4)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.hero__scroll{position:absolute;left:50%;bottom:calc(var(--bookbar-h) + 14px);transform:translateX(-50%);z-index:2;
+.hero__scroll{position:absolute;left:50%;bottom:calc(var(--bookbar-h) + var(--bookbar-gap) + 14px);transform:translateX(-50%);z-index:2;
   color:rgba(255,255,255,.85);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;
   display:flex;flex-direction:column;align-items:center;gap:8px}
 .hero__scroll i{display:block;width:1px;height:34px;background:linear-gradient(180deg,#fff,transparent);animation:scrolldrop 2s ease-in-out infinite}
@@ -269,7 +270,7 @@ a{color:inherit;text-decoration:none}
 
 /* ---- FOOTER ---- */
 .foot{background:var(--ink);color:rgba(255,255,255,.75);
-  padding:72px 0 calc(48px + var(--bookbar-h))}
+  padding:72px 0 calc(48px + var(--bookbar-h) + var(--bookbar-gap))}
 .foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
 .foot__logo{background:var(--shell);display:inline-block;padding:14px 18px;border-radius:var(--radius);margin-bottom:20px}
 .foot__logo img{height:40px}
@@ -287,59 +288,49 @@ a{color:inherit;text-decoration:none}
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem}
 .foot__credit{color:rgba(255,255,255,.5)}
 
-/* ---- bottom booking bar (all breakpoints) ---- */
-.bookbar{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;
-  min-height:var(--bookbar-h);
-  padding:0 20px calc(0px + env(safe-area-inset-bottom));
+/* ---- bottom booking bar: compact floating pill, width of its contents ---- */
+.bookbar{position:fixed;left:50%;transform:translateX(-50%);
+  bottom:calc(var(--bookbar-gap) + env(safe-area-inset-bottom));z-index:50;
+  display:flex;align-items:flex-end;gap:12px;
+  width:max-content;max-width:calc(100vw - 20px);
+  padding:9px 9px 9px 20px;
   background:rgba(248,243,235,.97);backdrop-filter:blur(10px);
-  box-shadow:0 -1px 0 var(--sand-line),0 -12px 34px -24px rgba(12,58,56,.55)}
-.bookbar__inner{width:100%;max-width:var(--wrap);margin:0 auto;padding:9px 0;
-  display:flex;align-items:center;justify-content:space-between;gap:20px}
-.bookbar__brand{display:flex;flex-direction:column;line-height:1.28;min-width:0}
-.bookbar__name{font-family:var(--font-display);font-size:1rem;color:var(--ink);white-space:nowrap}
-.bookbar__phone{display:flex;align-items:center;gap:6px;font-size:.79rem;font-weight:600;
-  color:var(--ink-soft);white-space:nowrap;transition:color .2s ease}
-.bookbar__phone:hover{color:var(--coral)}
-.bookbar__phone svg{width:13px;height:13px;color:var(--coral);flex:none}
-.bookbar__form{display:flex;align-items:flex-end;gap:10px}
+  border:1px solid var(--sand-line);border-radius:100px;
+  box-shadow:0 22px 48px -20px rgba(12,58,56,.55)}
 .bookbar__field{display:flex;flex-direction:column;gap:3px;min-width:0}
 .bookbar__field label{font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--ink-soft)}
+  color:var(--ink-soft);padding-left:2px}
 .bookbar__field input{font-family:var(--font-body);font-size:.85rem;color:var(--ink);background:var(--white);
-  border:1px solid var(--sand-line);border-radius:var(--radius);padding:7px 10px;min-width:138px;
+  border:1px solid var(--sand-line);border-radius:100px;padding:7px 12px;min-width:134px;
   transition:border-color .2s ease}
 .bookbar__field input:focus{outline:none;border-color:var(--sea)}
-.bookbar .btn--book{padding:12px 26px;font-size:.76rem;white-space:nowrap}
-.bookbar__callico{display:none;align-items:center;justify-content:center;width:42px;height:42px;flex:none;
+.bookbar .btn--book{padding:12px 24px;font-size:.76rem;white-space:nowrap}
+.bookbar__callico{display:none;align-items:center;justify-content:center;width:40px;height:40px;flex:none;
   border:1px solid var(--sand-line);border-radius:50%;background:var(--white);transition:border-color .2s ease}
 .bookbar__callico:hover{border-color:var(--coral)}
 .bookbar__callico svg{width:17px;height:17px;color:var(--coral)}
 
 @media (max-width:900px){
-  .bookbar__brand{display:none}
+  /* phone stays reachable on mobile without widening the pill much */
   .bookbar__callico{display:flex}
-  .bookbar__form{flex:1;gap:9px}
-  .bookbar__field{flex:1}
-  .bookbar__field input{min-width:0;width:100%}
+  .bookbar{padding:9px 9px 9px 12px;gap:8px}
 }
 @media (max-width:600px){
-  .bookbar{padding:0 12px calc(0px + env(safe-area-inset-bottom))}
-  .bookbar__inner{gap:9px;padding:8px 0}
-  .bookbar__form{gap:7px}
+  .bookbar{gap:7px;padding:8px 8px 8px 10px}
+  .bookbar__field{flex:1}
+  .bookbar__field input{min-width:0;width:100%}
   .bookbar__callico{width:38px;height:38px}
   .bookbar__field label{font-size:.5rem;letter-spacing:.08em}
-  .bookbar__field input{font-size:.76rem;padding:6px 5px}
-  .bookbar .btn--book{padding:11px 13px;font-size:.68rem;letter-spacing:.06em}
+  .bookbar__field input{font-size:.76rem;padding:6px 8px}
+  .bookbar .btn--book{padding:11px 15px;font-size:.68rem;letter-spacing:.06em}
 }
 @media (max-width:440px){
-  .bookbar{padding:0 10px calc(0px + env(safe-area-inset-bottom))}
-  .bookbar__inner{gap:6px}
-  .bookbar__form{gap:5px}
+  .bookbar{gap:5px;padding:7px 7px 7px 8px}
   .bookbar__callico{width:34px;height:34px}
   .bookbar__callico svg{width:15px;height:15px}
   .bookbar__field label{font-size:.46rem;letter-spacing:.03em}
-  .bookbar__field input{font-size:.7rem;padding:5px 3px}
-  .bookbar .btn--book{padding:10px 11px;font-size:.63rem;letter-spacing:.03em}
+  .bookbar__field input{font-size:.7rem;padding:5px 6px}
+  .bookbar .btn--book{padding:10px 12px;font-size:.63rem;letter-spacing:.03em}
 }
 
 /* ---- reveal ---- */
@@ -401,7 +392,7 @@ a{color:inherit;text-decoration:none}
 .hero__slide img{width:100%;height:100%;object-fit:cover;object-position:center 58%}
 .hero__slide.is-active img{animation:kenburns 8s ease-out forwards}
 @keyframes kenburns{from{transform:scale(1.03)}to{transform:scale(1.11)}}
-.hero__dots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:calc(var(--bookbar-h) + 16px);
+.hero__dots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:calc(var(--bookbar-h) + var(--bookbar-gap) + 16px);
   display:flex;gap:11px}
 .hero__dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;cursor:pointer;
   background:rgba(255,255,255,.42);transition:background .3s ease,transform .3s ease}
