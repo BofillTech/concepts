@@ -1,0 +1,170 @@
+/* =========================================================
+   Courtney's Place Key West — Our Story page styles
+   Extracted from inline <style> per SOP.
+   ========================================================= */
+
+  /* Story page sections */
+  .story-section { padding: 96px 24px; }
+  .story-section.cream { background: var(--cream); }
+  .story-section.cream-warm { background: var(--cream-warm); }
+  .story-section.dark { background: var(--palm-shadow); color: var(--cream); }
+  .story-section.dark .section-title { color: var(--cream); }
+  .story-section.dark .section-title em { color: var(--conch-pink); }
+  .story-section.dark .section-eyebrow { color: var(--conch-pink); }
+  .story-section .section-inner { max-width: 1180px; margin: 0 auto; }
+
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .story-grid.reverse > div:first-child { order: 2; }
+  .story-grid.reverse > div:nth-child(2) { order: 1; }
+  .story-grid p {
+    font-size: 17px; line-height: 1.8;
+    color: var(--driftwood);
+    margin: 0 0 22px;
+  }
+  .story-section.dark .story-grid p { color: rgba(248,241,224,0.85); }
+  .story-grid p strong { color: var(--ink); font-weight: 500; }
+  .story-section.dark .story-grid p strong { color: var(--cream); }
+  .story-grid p em { font-family: var(--display); font-style: italic; }
+
+  .story-lede {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.6vw, 32px);
+    font-style: italic;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0 0 28px;
+    font-weight: 400;
+  }
+  .story-section.dark .story-lede { color: var(--cream); }
+
+  .story-img {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--driftwood);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .story-img.wide { aspect-ratio: 16/10; }
+  .story-img-stamp {
+    position: absolute;
+    bottom: 20px; left: 20px;
+    background: var(--cream);
+    color: var(--ink);
+    padding: 12px 16px;
+    border-radius: 2px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    max-width: 240px;
+  }
+  .story-img-stamp strong {
+    display: block;
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--conch-coral);
+    margin-bottom: 2px;
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1;
+  }
+
+  /* Pull quote */
+  .pull-quote {
+    margin: 48px 0;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .story-section.dark .pull-quote {
+    border-color: rgba(248,241,224,0.2);
+  }
+  .pull-quote p {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.4;
+    color: var(--conch-coral);
+    margin: 0;
+    text-align: center;
+  }
+
+  /* Cast of characters */
+  .cast {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 32px 0;
+  }
+  .cast-name {
+    font-family: var(--display);
+    font-size: 22px;
+    color: var(--cream);
+    line-height: 1.2;
+    margin: 0;
+    font-weight: 400;
+  }
+  .cast-name em { font-style: italic; color: var(--conch-pink); }
+  .cast-role {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--lime-wash);
+    margin: 4px 0 0;
+  }
+  .cast-row {
+    padding: 16px 0;
+    border-top: 1px solid rgba(248,241,224,0.15);
+  }
+
+  /* Timeline */
+  .timeline { background: var(--cream-warm); padding: 96px 24px; }
+  .timeline-inner { max-width: 1280px; margin: 0 auto; }
+  .timeline-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-top: 56px;
+  }
+  .timeline-item {
+    padding-top: 24px;
+    border-top: 2px solid var(--conch-coral);
+  }
+  .timeline-era {
+    font-family: var(--display);
+    font-size: 42px;
+    line-height: 1;
+    color: var(--conch-coral);
+    margin: 0 0 12px;
+    font-style: italic;
+  }
+  .timeline-title {
+    font-family: var(--display);
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+  .timeline-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--driftwood);
+    margin: 0;
+  }
+
+  @media (min-width: 700px) {
+    .story-grid { grid-template-columns: 1fr 1fr; gap: 64px; }
+    .timeline-grid { grid-template-columns: repeat(4, 1fr); }
+    .cast { grid-template-columns: 1fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .story-section { padding: 140px 40px; }
+    .timeline { padding: 140px 40px; }
+  }

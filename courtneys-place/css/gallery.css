@@ -1,0 +1,64 @@
+/* =========================================================
+   Courtney's Place Key West — Gallery page styles
+   Extracted from inline <style> per SOP.
+   ========================================================= */
+
+  /* ---------- GALLERY ---------- */
+  .gal-section { padding: 80px 24px; background: var(--cream); }
+  .gal-section.alt { background: var(--cream-warm); }
+  .gal-section.dark { background: var(--palm-shadow); color: var(--cream); }
+  .gal-section.dark .section-title { color: var(--cream); }
+  .gal-section.dark .section-title em { color: var(--conch-pink); }
+  .gal-section.dark .section-eyebrow { color: var(--conch-pink); }
+  .gal-section .section-inner { max-width: 1280px; margin: 0 auto; }
+  .gal-header {
+    display: grid; grid-template-columns: 1fr; gap: 20px;
+    margin-bottom: 48px; align-items: end;
+  }
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .gal-item {
+    aspect-ratio: 4/5;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--driftwood);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .4s ease;
+    cursor: zoom-in;
+  }
+  .gal-item:hover { transform: scale(1.01); }
+  .gal-item::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%);
+    opacity: 0; transition: opacity .3s;
+  }
+  .gal-item:hover::after { opacity: 1; }
+  .gal-item.tall { aspect-ratio: 3/5; }
+  .gal-item.wide { aspect-ratio: 4/3; grid-column: span 2; }
+  .gal-caption {
+    position: absolute;
+    bottom: 16px; left: 16px;
+    color: var(--cream);
+    font-family: var(--hand);
+    font-size: 22px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
+    line-height: 1;
+    z-index: 2;
+    opacity: 0; transition: opacity .3s;
+  }
+  .gal-item:hover .gal-caption { opacity: 1; }
+
+  @media (min-width: 700px) {
+    .gal-grid { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .gal-header { grid-template-columns: 1.2fr 1fr; }
+  }
+  @media (min-width: 1024px) {
+    .gal-section { padding: 120px 40px; }
+    .gal-grid { grid-template-columns: repeat(4, 1fr); }
+  }

@@ -38,6 +38,48 @@ body {
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
+/* ---------- ACCESSIBILITY UTILITIES ---------- */
+/* Skip link — visually hidden until focused, then reveals as a real button */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 999;
+  background: var(--conch-coral);
+  color: var(--cream);
+  padding: 12px 20px;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-link:focus, .skip-link:focus-visible { top: 16px; outline: 2px solid var(--cream); outline-offset: 2px; }
+
+/* Focus ring — visible for keyboard, hidden for mouse */
+:focus:not(:focus-visible) { outline: none; }
+a:focus-visible, button:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--conch-coral);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Locks body scroll when the mobile menu is open (JS toggles) */
+.no-scroll { overflow: hidden; }
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* ---------- NAV ---------- */
 .nav {
   position: fixed; top: 0; left: 0; right: 0;
@@ -77,12 +119,18 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-weight: 500;
+  /* reset ul defaults */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
 }
+.nav-links .menu-item { margin: 0; padding: 0; }
 .nav.is-hero .nav-links { color: var(--cream); }
 .nav.scrolled .nav-links, .nav.is-light .nav-links { color: var(--ink); }
-.nav-links a { position: relative; padding: 4px 0; transition: opacity .2s, color .2s; }
-.nav-links a:hover, .nav-links a.current { color: var(--conch-coral); }
-.nav-links a.current::after {
+.nav-links a { position: relative; padding: 4px 0; transition: opacity .2s, color .2s; display: inline-block; }
+.nav-links a:hover, .nav-links .current-menu-item > a, .nav-links a.current { color: var(--conch-coral); }
+.nav-links .current-menu-item > a::after, .nav-links a.current::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: -2px;
@@ -422,3 +470,31 @@ a { color: inherit; text-decoration: none; }
   .page-head { padding: 220px 40px 100px; min-height: 62vh; }
   .footer { padding: 120px 40px 40px; }
 }
+
+/* Palm-shadow-deep footer CTA banner used at the end of gallery + area-guide */
+.footer-cta {
+  background: var(--palm-shadow-deep);
+  color: var(--cream);
+  padding: 120px 24px;
+  text-align: center;
+}
+.footer-cta__eyebrow {
+  font-family: var(--hand);
+  font-size: 36px;
+  margin: 0 0 16px;
+  line-height: 1;
+}
+.footer-cta__title {
+  font-family: var(--display);
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0 0 24px;
+  font-weight: 400;
+}
+.footer-cta .btn-primary {
+  background: var(--cream);
+  color: var(--conch-coral-deep);
+  border-color: var(--cream);
+}
+
