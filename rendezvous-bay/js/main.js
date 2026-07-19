@@ -53,7 +53,7 @@
   if (slider) {
     var slides = Array.prototype.slice.call(slider.querySelectorAll(".hero__slide"));
     var dots = Array.prototype.slice.call(document.querySelectorAll(".hero__dot"));
-    var i = 0, timer = null, DELAY = 6000;
+    var i = 0, timer = null, DELAY = 7500;
     function show(n) {
       slides[i].classList.remove("is-active");
       if (dots[i]) dots[i].classList.remove("is-active");
