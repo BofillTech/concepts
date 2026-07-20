@@ -310,9 +310,9 @@ var ROOM_UPDATES = {
           "Rooms 72-76 are on the Ground Level, but all require stairs to enter.",
           "Rooms 77 and 78 are on a Lower Level with no steps."
         ],
-        infoLinks: [
-          {label: "Pool & Hot Tub →", href: "amenities.html#pool"},
-          {label: "Firepits →", href: "amenities.html#firepits"}
+        imageAreas: [
+          {label: "Seasonal Ocean View Heated Pool and Hot Tub", href: "amenities.html#pool", left: 52.27, top: 58.33, width: 20.45, height: 30.98},
+          {label: "Two Ocean View Fire Pits", href: "amenities.html#firepits", left: 77.71, top: 62.05, width: 17.15, height: 23.55}
         ],
         photo: "img/buildings/poolside-exterior.jpg",
         levels: [
@@ -461,15 +461,20 @@ var ROOM_UPDATES = {
       const infoWrap = document.getElementById('sc-rmap-info');
       if(infoWrap){
         var infoBullets = (b.info || []).map(function(text){ return '<li>' + text + '</li>'; }).join('');
-        var infoLinksHtml = '';
-        if(b.infoLinks && b.infoLinks.length){
-          infoLinksHtml = '<div class="sc-rmap-info-links">' +
-            b.infoLinks.map(function(l){ return '<a href="' + l.href + '" class="sc-rmap-info-link">' + l.label + '</a>'; }).join('') +
-            '</div>';
-        }
-        infoWrap.innerHTML =
-          '<ul class="sc-rmap-info-list">' + infoBullets + '</ul>' +
-          infoLinksHtml;
+        infoWrap.innerHTML = '<ul class="sc-rmap-info-list">' + infoBullets + '</ul>';
+      }
+
+      // Render clickable areas over the diagram image (e.g. Poolside's Pool + Firepits)
+      const areasWrap = document.getElementById('sc-rmap-diagram-areas');
+      if(areasWrap){
+        var areasHtml = (b.imageAreas || []).map(function(a){
+          return '<a class="sc-rmap-diagram-area" href="' + a.href + '" ' +
+            'aria-label="' + a.label + '" title="' + a.label + '" ' +
+            'style="left:' + a.left + '%;top:' + a.top + '%;width:' + a.width + '%;height:' + a.height + '%">' +
+            '<span class="sc-rmap-diagram-area-label">' + a.label + '</span>' +
+          '</a>';
+        }).join('');
+        areasWrap.innerHTML = areasHtml;
       }
 
       const wrap = document.getElementById('sc-rmap-chips-container');
