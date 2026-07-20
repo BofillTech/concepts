@@ -237,23 +237,20 @@ var ROOM_UPDATES = {
       oceanside: {
         name: "The Oceanside Building",
         desc: "Our largest building — most rooms face the Atlantic with unobstructed ocean views.",
-        diagram: "img/diagrams/diagram-oceanside.jpg",
+        diagram: "img/diagrams/diagram-oceanside.png",
+        info: [
+          "Rooms 1-18 are on our Main Level, with no stairs.",
+          "Rooms 19-32 are on our Upper Level, one staircase up from our Main Level.",
+          "Rooms 33A-35 are on our Terrace Level, down a ramp from the parking lot, with one step into the room.",
+          "Rooms 36-39 are on our Terrace Level, down a ramp from the parking lot, with no steps into the room.",
+          "Rooms 40A-42 are on our Sea Level, down a ramp and a staircase."
+        ],
         photo: "img/buildings/oceanside-exterior.jpg",
         levels: [
-          { name: "Upper Level", meta: "One staircase up from Ground Level", rooms: [
-            {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false, sqft:""},
-            {n:"23", b:"Queen + Double", v:false},
-            {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
-            {n:"25", b:"Queen + Double", v:true},
-            {n:"26", b:"Queen + Double", v:true},
-            {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
-            {n:"28", b:"Queen + Double", v:true},
-            {n:"29", b:"Queen + Double", v:true},
-            {n:"30", b:"Queen + Double", v:true},
-            {n:"31", b:"Queen + Double", v:true},
-            {n:"32", b:"Queen + Double", v:true}
-          ]},
-          { name: "Ground Level", meta: "No stairs", rooms: [
+          { name: "Main Level", meta: "No stairs", rooms: [
+            {n:"1", b:"Q/D + Queen Sofa", v:false},
+            {n:"2", b:"Q/D + Queen Sofa", v:false},
+            {n:"3", b:"Q/D + Queen Sofa", v:false},
             {n:"4", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
             {n:"5", b:"Queen + Double", v:false},
             {n:"6", b:"King", v:false},
@@ -269,29 +266,37 @@ var ROOM_UPDATES = {
             {n:"17", b:"Queen + Double", v:true},
             {n:"18", b:"Queen + Double", v:true}
           ]},
+          { name: "Upper Level", meta: "One staircase up from Main Level", rooms: [
+            {n:"19", b:"Q/D + Queen Sofa", v:false},
+            {n:"20", b:"Q/D + Queen Sofa", v:false},
+            {n:"21", b:"Q/D + Queen Sofa", v:false},
+            {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
+            {n:"23", b:"Queen + Double", v:false},
+            {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
+            {n:"25", b:"Queen + Double", v:true},
+            {n:"26", b:"Queen + Double", v:true},
+            {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+            {n:"28", b:"Queen + Double", v:true},
+            {n:"29", b:"Queen + Double", v:true},
+            {n:"30", b:"Queen + Double", v:true},
+            {n:"31", b:"Queen + Double", v:true},
+            {n:"32", b:"Queen + Double", v:true}
+          ]},
           { name: "Terrace Level", meta: "Down a ramp from the parking lot", rooms: [
-            {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true},
-            {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true},
-            {n:"34", b:"Queen + Double", v:true},
-            {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large"},
-            {n:"36", b:"King", v:true},
-            {n:"37", b:"King", v:true, special:"Bold ocean view"},
-            {n:"38", b:"Queen + Double", v:true},
-            {n:"39", b:"Queen + Double", v:true}
+            {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"34", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large", access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"36", b:"King", v:true, access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"37", b:"King", v:true, special:"Bold ocean view", access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"38", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"39", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with no steps into the room"}
           ]},
           { name: "Sea Level", meta: "Down a ramp and a staircase — closest to the water", rooms: [
             {n:"40A", b:"King/Twin + Queen Sofa", note:"Two-room suite", v:true},
             {n:"40B", b:"King", v:true},
             {n:"41", b:"King", v:true},
             {n:"42", b:"King", v:true, special:"Bold ocean view, closest to water"}
-          ]},
-          { name: "Annex Wing", meta: "Side rooms with sofa beds — various levels", rooms: [
-            {n:"1", b:"Q/D + Queen Sofa", v:false},
-            {n:"2", b:"Q/D + Queen Sofa", v:false},
-            {n:"3", b:"Q/D + Queen Sofa", v:false},
-            {n:"19", b:"Q/D + Queen Sofa", v:false},
-            {n:"20", b:"Q/D + Queen Sofa", v:false},
-            {n:"21", b:"Q/D + Queen Sofa", v:false}
           ]}
         ]
       },
@@ -299,6 +304,16 @@ var ROOM_UPDATES = {
         name: "The Poolside Building",
         desc: "Home to the Front Desk — steps from the pool, hot tub, and fire pits.",
         diagram: "img/diagrams/diagram-poolside.png",
+        info: [
+          "Our Front Desk may be reached by ramp or by a half staircase.",
+          "Rooms 70 and 71 are on the Top Level, with a full staircase.",
+          "Rooms 72-76 are on the Ground Level, but all require stairs to enter.",
+          "Rooms 77 and 78 are on a Lower Level with no steps."
+        ],
+        infoLinks: [
+          {label: "Pool & Hot Tub →", href: "amenities.html#pool"},
+          {label: "Firepits →", href: "amenities.html#firepits"}
+        ],
         photo: "img/buildings/poolside-exterior.jpg",
         levels: [
           { name: "Top Level", meta: "Full staircase up", rooms: [
@@ -323,6 +338,12 @@ var ROOM_UPDATES = {
         desc: "Charming standalone building across Shore Road — larger suites and apartment-style rooms.",
         diagram: "img/diagrams/diagram-inn.png",
         photo: "img/buildings/inn-exterior.jpg",
+        info: [
+          "Our Guest Utility Room is one full staircase below the First Floor.",
+          "Rooms 501-508 are on the First Floor, with two steps into the building.",
+          "Rooms 522-528 are on the Second Floor, up one full staircase.",
+          "Room 530 is the entire Third Floor, up two full staircases."
+        ],
         levels: [
           { name: "First Floor", meta: "Two steps into the building", rooms: [
             {n:"501", b:"King + Double Sofa Bed", note:"Kitchen + patio", v:false, special:"Apartment-style with full kitchen"},
@@ -435,6 +456,21 @@ var ROOM_UPDATES = {
       document.getElementById('sc-rmap-banner-img').alt = b.name + ' exterior';
       document.getElementById('sc-rmap-bldg-name').textContent = b.name;
       document.getElementById('sc-rmap-bldg-desc').textContent = b.desc;
+
+      // Populate the level-info panel that lives under the diagram
+      const infoWrap = document.getElementById('sc-rmap-info');
+      if(infoWrap){
+        var infoBullets = (b.info || []).map(function(text){ return '<li>' + text + '</li>'; }).join('');
+        var infoLinksHtml = '';
+        if(b.infoLinks && b.infoLinks.length){
+          infoLinksHtml = '<div class="sc-rmap-info-links">' +
+            b.infoLinks.map(function(l){ return '<a href="' + l.href + '" class="sc-rmap-info-link">' + l.label + '</a>'; }).join('') +
+            '</div>';
+        }
+        infoWrap.innerHTML =
+          '<ul class="sc-rmap-info-list">' + infoBullets + '</ul>' +
+          infoLinksHtml;
+      }
 
       const wrap = document.getElementById('sc-rmap-chips-container');
       wrap.innerHTML = '';
@@ -602,20 +638,10 @@ var ROOM_UPDATES = {
       oceanside: {
         name: "The Oceanside Building",
         levels: [
-          { name: "Upper Level", meta: "One staircase up from Ground Level", rooms: [
-            {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
-            {n:"23", b:"Queen + Double", v:false},
-            {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
-            {n:"25", b:"Queen + Double", v:true},
-            {n:"26", b:"Queen + Double", v:true},
-            {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
-            {n:"28", b:"Queen + Double", v:true},
-            {n:"29", b:"Queen + Double", v:true},
-            {n:"30", b:"Queen + Double", v:true},
-            {n:"31", b:"Queen + Double", v:true},
-            {n:"32", b:"Queen + Double", v:true}
-          ]},
-          { name: "Ground Level", meta: "No stairs", rooms: [
+          { name: "Main Level", meta: "No stairs", rooms: [
+            {n:"1", b:"Q/D + Queen Sofa", v:false},
+            {n:"2", b:"Q/D + Queen Sofa", v:false},
+            {n:"3", b:"Q/D + Queen Sofa", v:false},
             {n:"4", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
             {n:"5", b:"Queen + Double", v:false},
             {n:"6", b:"King", v:false},
@@ -631,29 +657,37 @@ var ROOM_UPDATES = {
             {n:"17", b:"Queen + Double", v:true},
             {n:"18", b:"Queen + Double", v:true}
           ]},
+          { name: "Upper Level", meta: "One staircase up from Main Level", rooms: [
+            {n:"19", b:"Q/D + Queen Sofa", v:false},
+            {n:"20", b:"Q/D + Queen Sofa", v:false},
+            {n:"21", b:"Q/D + Queen Sofa", v:false},
+            {n:"22", b:"Q/Q + Trundle", note:"Two-room suite", v:false},
+            {n:"23", b:"Queen + Double", v:false},
+            {n:"24", b:"King + Twin Sofa Bed", v:true, special:"Love seat"},
+            {n:"25", b:"Queen + Double", v:true},
+            {n:"26", b:"Queen + Double", v:true},
+            {n:"27", b:"Q/D + Trundle", note:"Two-room suite", v:true},
+            {n:"28", b:"Queen + Double", v:true},
+            {n:"29", b:"Queen + Double", v:true},
+            {n:"30", b:"Queen + Double", v:true},
+            {n:"31", b:"Queen + Double", v:true},
+            {n:"32", b:"Queen + Double", v:true}
+          ]},
           { name: "Terrace Level", meta: "Down a ramp from the parking lot", rooms: [
-            {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true},
-            {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true},
-            {n:"34", b:"Queen + Double", v:true},
-            {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large"},
-            {n:"36", b:"King", v:true},
-            {n:"37", b:"King", v:true, special:"Bold ocean view"},
-            {n:"38", b:"Queen + Double", v:true},
-            {n:"39", b:"Queen + Double", v:true}
+            {n:"33A", b:"Two Queens", note:"Adjoining option with 33B", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"33B", b:"Two Queens", note:"Adjoining option with 33A", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"34", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"35", b:"Two Queens", v:true, sqft:"~377 sq ft", special:"Extra large", access:"Down a ramp from the parking lot, with one step into the room"},
+            {n:"36", b:"King", v:true, access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"37", b:"King", v:true, special:"Bold ocean view", access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"38", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with no steps into the room"},
+            {n:"39", b:"Queen + Double", v:true, access:"Down a ramp from the parking lot, with no steps into the room"}
           ]},
           { name: "Sea Level", meta: "Down a ramp and a staircase — closest to the water", rooms: [
             {n:"40A", b:"King/Twin + Queen Sofa", note:"Two-room suite", v:true},
             {n:"40B", b:"King", v:true},
             {n:"41", b:"King", v:true},
             {n:"42", b:"King", v:true, special:"Bold ocean view, closest to water"}
-          ]},
-          { name: "Annex Wing", meta: "Side rooms with sofa beds", rooms: [
-            {n:"1", b:"Q/D + Queen Sofa", v:false},
-            {n:"2", b:"Q/D + Queen Sofa", v:false},
-            {n:"3", b:"Q/D + Queen Sofa", v:false},
-            {n:"19", b:"Q/D + Queen Sofa", v:false},
-            {n:"20", b:"Q/D + Queen Sofa", v:false},
-            {n:"21", b:"Q/D + Queen Sofa", v:false}
           ]}
         ]
       },
@@ -905,7 +939,7 @@ var ROOM_UPDATES = {
               </div>
               <div class="sc-rd-meta-item">
                 <div class="sc-rd-meta-label">Access</div>
-                <div class="sc-rd-meta-value">${level.meta}</div>
+                <div class="sc-rd-meta-value">${room.access || level.meta}</div>
               </div>
               ${room.sqft ? `<div class="sc-rd-meta-item"><div class="sc-rd-meta-label">Room Size</div><div class="sc-rd-meta-value">${room.sqft} square feet</div></div>` : ''}
             </div>
