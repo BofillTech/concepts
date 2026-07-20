@@ -13,6 +13,8 @@
   --bone:        #FBF7EC;
   --coral:       #FF6F4A;   /* Papaya — primary warm accent, CTAs on light grounds */
   --coral-soft:  #F5A742;   /* Sunset Gold — softer warm accent, dark grounds & feature boxes */
+  --coral-deep:  #E85535;   /* Deeper Papaya — hover/pressed state for primary buttons */
+  --coral-glow:  rgba(255,111,74,0.35);  /* Papaya-tinted shadow for hover lift */
   --ink:         #122026;
   --ink-soft:    #3D5159;
   --line:        rgba(18,32,38,0.12);
@@ -125,7 +127,8 @@ button { font: inherit; }
   text-transform: uppercase;
   cursor: pointer;
   border: 1.5px solid transparent;
-  transition: all .25s ease;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease,
+              transform .2s ease, box-shadow .25s ease;
   text-align: center;
 }
 .btn--book {
@@ -133,8 +136,13 @@ button { font: inherit; }
   color: var(--bone);
   border-color: var(--coral);
 }
-.btn--book:hover { background: transparent; color: var(--coral); }
-.nav-primary.is-scrolled .btn--book:hover { color: var(--coral); }
+.btn--book:hover {
+  background: var(--coral-deep);
+  border-color: var(--coral-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px var(--coral-glow);
+}
+.btn--book:active { transform: translateY(0); box-shadow: 0 3px 8px var(--coral-glow); }
 
 .btn--primary {
   background: var(--coral);
@@ -144,9 +152,16 @@ button { font: inherit; }
   font-size: 14px;
   letter-spacing: 0.05em;
 }
-.btn--primary:hover { background: transparent; color: var(--bone); border-color: var(--bone); }
+.btn--primary:hover {
+  background: var(--coral-deep);
+  border-color: var(--coral-deep);
+  color: var(--bone);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px var(--coral-glow);
+}
+.btn--primary:active { transform: translateY(0); box-shadow: 0 4px 10px var(--coral-glow); }
 .btn--primary svg { transition: transform .3s; }
-.btn--primary:hover svg { transform: translateX(3px); }
+.btn--primary:hover svg { transform: translateX(4px); }
 
 .btn--ghost {
   color: var(--bone);
@@ -157,7 +172,13 @@ button { font: inherit; }
   letter-spacing: 0.05em;
   background: transparent;
 }
-.btn--ghost:hover { background: rgba(251,247,236,0.1); border-color: var(--bone); }
+.btn--ghost:hover {
+  background: rgba(251,247,236,0.12);
+  border-color: var(--bone);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+.btn--ghost:active { transform: translateY(0); box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
 
 .menu-toggle {
   display: none; background: none; border: none; cursor: pointer;
@@ -513,9 +534,13 @@ button { font: inherit; }
   padding: 4px 0;
   min-height: 24px;    /* WCAG 2.2 target-size minimum */
   border-bottom: 1.5px solid var(--aqua-deep);
-  transition: gap .3s;
+  transition: gap .3s ease, color .25s ease, border-color .25s ease;
 }
-.btn-text:hover { gap: 12px; }
+.btn-text:hover {
+  gap: 14px;
+  color: var(--coral);
+  border-color: var(--coral);
+}
 
 /* ============ AMENITIES ============ */
 .amenities { background: var(--aqua-darkest); color: var(--bone); }
@@ -799,11 +824,16 @@ button { font: inherit; }
   font-weight: 600; font-size: 13px;
   letter-spacing: 0.08em; text-transform: uppercase;
   cursor: pointer;
-  transition: all .25s;
+  transition: background-color .25s ease, transform .2s ease, box-shadow .25s ease;
   margin-left: 14px;
   display: inline-flex; align-items: center; gap: 8px;
 }
-.booking-bar__btn:hover { background: var(--aqua-deep); transform: translateY(-1px); }
+.booking-bar__btn:hover {
+  background: var(--coral-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px var(--coral-glow);
+}
+.booking-bar__btn:active { transform: translateY(0); box-shadow: 0 3px 8px var(--coral-glow); }
 @media (max-width: 720px) {
   .booking-bar__btn {
     grid-column: 1 / -1; width: 100%;
