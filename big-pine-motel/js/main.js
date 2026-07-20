@@ -81,6 +81,26 @@
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  // ---------- YouTube facade → iframe swap (modern facade pattern) ----------
+  // Progressive enhancement: no click, no YouTube network hit. Saves ~1MB + 15+ requests on load.
+  var videoFacades = document.querySelectorAll('.video-facade[data-video-id]');
+  videoFacades.forEach(function (facade) {
+    facade.addEventListener('click', function () {
+      if (facade.classList.contains('is-playing')) return;
+      var vid = facade.getAttribute('data-video-id');
+      var iframe = document.createElement('iframe');
+      iframe.className = 'video-facade__iframe';
+      iframe.src = 'https://www.youtube.com/embed/' + encodeURIComponent(vid) +
+                   '?autoplay=1&rel=0&showinfo=0&modestbranding=1&controls=1';
+      iframe.title = facade.getAttribute('data-video-title') || 'Video';
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+      iframe.setAttribute('allowfullscreen', '');
+      facade.appendChild(iframe);
+      facade.classList.add('is-playing');
+    });
+  });
+
   // ---------- IntersectionObserver reveals (optional) ----------
   // Soft fade-up for story rows + room cards as they enter view.
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
