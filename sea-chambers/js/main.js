@@ -163,75 +163,75 @@
   // ============================================
   function initBuildingMap(){
     // ROOM DATA — bed config, level, ocean view, optional notes
-  var ROOM_UPDATES = {
-      "1":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "2":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "3":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "4":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,special:"Two-room suite."},
-      "5":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "6":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,special:null},
-      "7":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "8":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "9":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,special:"Two-room suite."},
-      "10":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,special:null},
-      "11":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "12":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "14":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "15":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "16":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "17":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "18":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,special:"Private ocean view balcony."},
-      "19":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "20":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "21":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "22":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,special:"Two-room suite."},
-      "23":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "24":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Ocean View",sqft:340,special:null},
-      "25":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "26":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "27":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,special:"Two-room suite."},
-      "28":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:320,special:null},
-      "29":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "30":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "31":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "32":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "34":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,special:null},
-      "35":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,special:null},
-      "36":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "37":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "38":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "39":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,special:"Private ocean view balcony."},
-      "41":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "42":{b:"King Bed",f:"a king bed, and a spectacular seating area",v:"Bold Ocean View",sqft:340,special:null},
-      "70":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed, and a private balcony",v:"Ocean View",sqft:414,special:"Private ocean view balcony."},
-      "71":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:255,special:"Street view balcony."},
-      "72":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Non-Ocean View",sqft:264,special:null},
-      "73":{b:"King Bed",f:"a king bed. This room connects with Room 74",v:"Non-Ocean View",sqft:252,special:null},
-      "74":{b:"King & Trundle Beds",f:"a king and a trundle bed. This room connects with Room 73",v:"Ocean View",sqft:330,special:"Two-room suite."},
-      "75":{b:"King + Queen Sofa Bed",f:"a king bed plus a queen sofa bed",v:"Ocean View",sqft:396,special:null},
-      "76":{b:"King & Trundle Beds",f:"a king and a trundle bed",v:"Ocean View",sqft:306,special:"Two-room suite."},
-      "77":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Non-Ocean View",sqft:240,special:null},
-      "78":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:180,special:null},
-      "33A":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33B",v:"Partial Ocean View",sqft:377,special:null},
-      "33B":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33A",v:"Partial Ocean View",sqft:377,special:null},
-      "40A":{b:"King, Trundle + Queen Sofa Bed",f:"a king and a trundle bed, plus a queen sofa bed",v:"Ocean View",sqft:396,special:null},
-      "40B":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "501":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed, full kitchen and a patio.",v:"Non-Ocean View",sqft:391,special:"Full kitchen and patio seating."},
-      "502":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "503":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,special:"Patio seating."},
-      "504":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "506":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "507":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,special:"Patio seating."},
-      "508":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "522":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Street view balcony."},
-      "523":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed",v:"Non-Ocean View",sqft:332,special:"Two-room suite, balcony with distant ocean view."},
-      "524":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Street view balcony."},
-      "525":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Balcony with distant ocean view."},
-      "526":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "527":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Balcony with distant ocean view."},
-      "528":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "530":{b:"King + 2 Twin Beds",f:"two bedrooms, a full kitchen, dining and living room areas",v:"Distant Ocean View",sqft:972,special:"Penthouse apartment."},
-    };
+var ROOM_UPDATES = {
+    "1":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "2":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "3":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "4":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,connecting:null,special:"Two-room suite."},
+    "5":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "6":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "7":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "8":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "9":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,connecting:null,special:"Two-room suite."},
+    "10":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "11":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "12":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "14":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "15":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "16":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "17":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "18":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,connecting:null,special:"Private ocean view balcony."},
+    "19":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "20":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "21":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "22":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,connecting:null,special:"Two-room suite."},
+    "23":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "24":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "25":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "26":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "27":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,connecting:null,special:"Two-room suite."},
+    "28":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:320,connecting:null,special:null},
+    "29":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "30":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "31":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "32":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "34":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,connecting:null,special:null},
+    "35":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,connecting:null,special:null},
+    "36":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "37":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "38":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "39":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,connecting:null,special:"Private ocean view balcony."},
+    "41":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "42":{b:"King Bed",f:"a king bed, and a spectacular seating area",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "70":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed, and a private balcony",v:"Ocean View",sqft:414,connecting:null,special:"Private ocean view balcony."},
+    "71":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:255,connecting:null,special:"Street view balcony."},
+    "72":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Non-Ocean View",sqft:264,connecting:null,special:null},
+    "73":{b:"King Bed",f:"a king bed. This room connects with Room 74",v:"Non-Ocean View",sqft:252,connecting:"Connecting option with 74",special:null},
+    "74":{b:"King & Trundle Beds",f:"a king and a trundle bed. This room connects with Room 73",v:"Ocean View",sqft:330,connecting:"Connecting option with 73",special:"Two-room suite."},
+    "75":{b:"King + Queen Sofa Bed",f:"a king bed plus a queen sofa bed",v:"Ocean View",sqft:396,connecting:null,special:null},
+    "76":{b:"King & Trundle Beds",f:"a king and a trundle bed",v:"Ocean View",sqft:306,connecting:null,special:"Two-room suite."},
+    "77":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Non-Ocean View",sqft:240,connecting:null,special:null},
+    "78":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:180,connecting:null,special:null},
+    "33A":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33B",v:"Partial Ocean View",sqft:377,connecting:"Connecting option with 33B",special:null},
+    "33B":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33A",v:"Partial Ocean View",sqft:377,connecting:"Connecting option with 33A",special:null},
+    "40A":{b:"King, Trundle + Queen Sofa Bed",f:"a king and a trundle bed, plus a queen sofa bed",v:"Ocean View",sqft:396,connecting:null,special:null},
+    "40B":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "501":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed, full kitchen and a patio.",v:"Non-Ocean View",sqft:391,connecting:null,special:"Full kitchen and patio seating."},
+    "502":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "503":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,connecting:null,special:"Patio seating."},
+    "504":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "506":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "507":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,connecting:null,special:"Patio seating."},
+    "508":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "522":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Street view balcony."},
+    "523":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed",v:"Non-Ocean View",sqft:332,connecting:null,special:"Two-room suite, balcony with distant ocean view."},
+    "524":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:"Balcony",special:"Street view balcony."},
+    "525":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Balcony with distant ocean view."},
+    "526":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "527":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Balcony with distant ocean view."},
+    "528":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "530":{b:"King + 2 Twin Beds",f:"two bedrooms, a full kitchen, dining and living room areas",v:"Distant Ocean View",sqft:972,connecting:null,special:"Penthouse apartment."},
+  };
 
     const BLDG = {
       oceanside: {
@@ -359,8 +359,9 @@
             if(u.f) room.f = u.f;
             if(u.v) room.v = u.v;
             if(u.sqft) room.sqft = u.sqft;
-            // special always overwrites — null clears prior
+            // special + connecting always overwrite — null clears prior
             room.special = u.special;
+            room.connecting = u.connecting;
             // Auto-append period if missing so template reads cleanly
             if(room.special && !/[.!?]$/.test(room.special)) room.special += '.';
           }
@@ -479,26 +480,15 @@
       var isOcean = viewLabel.toLowerCase().indexOf("non-ocean") === -1 && viewLabel !== "";
       tags.push(`<span class="sc-rmap-detail-tag${isOcean ? " ocean" : ""}">${viewLabel}</span>`);
       tags.push(`<span class="sc-rmap-detail-tag">${room._level}</span>`);
-      if(room.note) tags.push(`<span class="sc-rmap-detail-tag">${room.note}</span>`);
+      if(room.connecting) tags.push(`<span class="sc-rmap-detail-tag">${room.connecting}</span>`);
+      else if(room.special) tags.push(`<span class="sc-rmap-detail-tag">${room.special.replace(/\.$/,'')}</span>`);
 
-      // Description body uses room.f (features text) — falls back to room.b if features unavailable
-      var featuresText = room.f || room.b;
-      // Strip trailing period from features so we control punctuation
-      var featuresClean = featuresText.replace(/\.$/, '');
-      var featuresEndsWithSentence = /[.!?]/.test(featuresText);
-      var sqftClause = '';
-      var featuresJoin = '';
-      if(room.sqft){
-        if(featuresEndsWithSentence){
-          // Features has multiple sentences — put sqft as its own sentence
-          featuresJoin = '.';
-          sqftClause = ` The room is ~${room.sqft} sq ft`;
-        } else {
-          sqftClause = ` and is ~${room.sqft} sq ft`;
-        }
-      }
+      // New description template per client PDFs (April 30 round):
+      //   [Special] This [view lowercased] room features [features text]. All reservations include...
+      var featuresText = (room.f || room.b || '').replace(/\.$/, '');
+      var viewLabelLower = (room.v || 'non-ocean view').toLowerCase();
       var specialPrefix = room.special ? `<strong>${room.special}</strong> ` : '';
-      const desc = `${specialPrefix}Located in the ${bldg.name.replace('The ','')}, this room features ${featuresClean}${featuresJoin}${sqftClause}. Continental breakfast, in-room mini-fridge & microwave, flat-screen TV, and full use of the heated oceanfront pool, hot tub, and fire pits are included.`;
+      const desc = `${specialPrefix}This ${viewLabelLower} room features <strong>${featuresText}</strong>. All reservations include continental breakfast, one parking space, our firepits and ocean view seating areas, plus seasonal heated pool and hot tub.`;
 
       document.getElementById('sc-rmap-panel').innerHTML = `
         <div class="sc-rmap-detail">
@@ -538,75 +528,75 @@
   // ============================================
   function initRoomDetail(){
     // Mirror BLDG data from rooms.html (single source — small enough to inline)
-  var ROOM_UPDATES = {
-      "1":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "2":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "3":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "4":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,special:"Two-room suite."},
-      "5":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "6":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,special:null},
-      "7":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "8":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "9":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,special:"Two-room suite."},
-      "10":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,special:null},
-      "11":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "12":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "14":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "15":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "16":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "17":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "18":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,special:"Private ocean view balcony."},
-      "19":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "20":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "21":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,special:null},
-      "22":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,special:"Two-room suite."},
-      "23":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "24":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Ocean View",sqft:340,special:null},
-      "25":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "26":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,special:null},
-      "27":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,special:"Two-room suite."},
-      "28":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:320,special:null},
-      "29":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "30":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "31":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "32":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "34":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,special:null},
-      "35":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,special:null},
-      "36":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "37":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "38":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,special:null},
-      "39":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,special:"Private ocean view balcony."},
-      "41":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "42":{b:"King Bed",f:"a king bed, and a spectacular seating area",v:"Bold Ocean View",sqft:340,special:null},
-      "70":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed, and a private balcony",v:"Ocean View",sqft:414,special:"Private ocean view balcony."},
-      "71":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:255,special:"Street view balcony."},
-      "72":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Non-Ocean View",sqft:264,special:null},
-      "73":{b:"King Bed",f:"a king bed. This room connects with Room 74",v:"Non-Ocean View",sqft:252,special:null},
-      "74":{b:"King & Trundle Beds",f:"a king and a trundle bed. This room connects with Room 73",v:"Ocean View",sqft:330,special:"Two-room suite."},
-      "75":{b:"King + Queen Sofa Bed",f:"a king bed plus a queen sofa bed",v:"Ocean View",sqft:396,special:null},
-      "76":{b:"King & Trundle Beds",f:"a king and a trundle bed",v:"Ocean View",sqft:306,special:"Two-room suite."},
-      "77":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Non-Ocean View",sqft:240,special:null},
-      "78":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:180,special:null},
-      "33A":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33B",v:"Partial Ocean View",sqft:377,special:null},
-      "33B":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33A",v:"Partial Ocean View",sqft:377,special:null},
-      "40A":{b:"King, Trundle + Queen Sofa Bed",f:"a king and a trundle bed, plus a queen sofa bed",v:"Ocean View",sqft:396,special:null},
-      "40B":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,special:null},
-      "501":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed, full kitchen and a patio.",v:"Non-Ocean View",sqft:391,special:"Full kitchen and patio seating."},
-      "502":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "503":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,special:"Patio seating."},
-      "504":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "506":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "507":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,special:"Patio seating."},
-      "508":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "522":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Street view balcony."},
-      "523":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed",v:"Non-Ocean View",sqft:332,special:"Two-room suite, balcony with distant ocean view."},
-      "524":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Street view balcony."},
-      "525":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Balcony with distant ocean view."},
-      "526":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "527":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:"Balcony with distant ocean view."},
-      "528":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,special:null},
-      "530":{b:"King + 2 Twin Beds",f:"two bedrooms, a full kitchen, dining and living room areas",v:"Distant Ocean View",sqft:972,special:"Penthouse apartment."},
-    };
+var ROOM_UPDATES = {
+    "1":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "2":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "3":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "4":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,connecting:null,special:"Two-room suite."},
+    "5":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "6":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "7":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "8":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "9":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,connecting:null,special:"Two-room suite."},
+    "10":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "11":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "12":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "14":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "15":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "16":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "17":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "18":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,connecting:null,special:"Private ocean view balcony."},
+    "19":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "20":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "21":{b:"Queen, Double + Queen Sofa Bed",f:"a queen, a double plus a queen sofa bed",v:"Ocean View",sqft:375,connecting:null,special:null},
+    "22":{b:"Two Queens + Trundle Bed",f:"a first room with two queen beds, plus a second room with a trundle bed",v:"Non-Ocean View",sqft:345,connecting:null,special:"Two-room suite."},
+    "23":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "24":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "25":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "26":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Ocean View",sqft:340,connecting:null,special:null},
+    "27":{b:"Queen, Double & Trundle Beds",f:"a queen, a double and a trundle bed",v:"Ocean View",sqft:400,connecting:null,special:"Two-room suite."},
+    "28":{b:"King Bed",f:"a king bed",v:"Ocean View",sqft:320,connecting:null,special:null},
+    "29":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "30":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "31":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "32":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "34":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,connecting:null,special:null},
+    "35":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Ocean View",sqft:377,connecting:null,special:null},
+    "36":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "37":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "38":{b:"Queen & Double Beds",f:"a queen and a double bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "39":{b:"Queen & Double Beds",f:"a queen and a double bed, and a wrap-around private balcony",v:"Bold Ocean View",sqft:340,connecting:null,special:"Private ocean view balcony."},
+    "41":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "42":{b:"King Bed",f:"a king bed, and a spectacular seating area",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "70":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed, and a private balcony",v:"Ocean View",sqft:414,connecting:null,special:"Private ocean view balcony."},
+    "71":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:255,connecting:null,special:"Street view balcony."},
+    "72":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out",v:"Non-Ocean View",sqft:264,connecting:null,special:null},
+    "73":{b:"King Bed",f:"a king bed. This room connects with Room 74",v:"Non-Ocean View",sqft:252,connecting:"Connecting option with 74",special:null},
+    "74":{b:"King & Trundle Beds",f:"a king and a trundle bed. This room connects with Room 73",v:"Ocean View",sqft:330,connecting:"Connecting option with 73",special:"Two-room suite."},
+    "75":{b:"King + Queen Sofa Bed",f:"a king bed plus a queen sofa bed",v:"Ocean View",sqft:396,connecting:null,special:null},
+    "76":{b:"King & Trundle Beds",f:"a king and a trundle bed",v:"Ocean View",sqft:306,connecting:null,special:"Two-room suite."},
+    "77":{b:"King + Twin Sofa Bed",f:"a king bed plus a twin sofa bed",v:"Non-Ocean View",sqft:240,connecting:null,special:null},
+    "78":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:180,connecting:null,special:null},
+    "33A":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33B",v:"Partial Ocean View",sqft:377,connecting:"Connecting option with 33B",special:null},
+    "33B":{b:"Two Queen Beds",f:"two queen beds plus a table inside and out. This room connects with Room 33A",v:"Partial Ocean View",sqft:377,connecting:"Connecting option with 33A",special:null},
+    "40A":{b:"King, Trundle + Queen Sofa Bed",f:"a king and a trundle bed, plus a queen sofa bed",v:"Ocean View",sqft:396,connecting:null,special:null},
+    "40B":{b:"King Bed",f:"a king bed",v:"Bold Ocean View",sqft:340,connecting:null,special:null},
+    "501":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed, full kitchen and a patio.",v:"Non-Ocean View",sqft:391,connecting:null,special:"Full kitchen and patio seating."},
+    "502":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "503":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,connecting:null,special:"Patio seating."},
+    "504":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "506":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "507":{b:"King Bed",f:"a king bed and a patio.",v:"Non-Ocean View",sqft:144,connecting:null,special:"Patio seating."},
+    "508":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "522":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Street view balcony."},
+    "523":{b:"King + Double Sofa Bed",f:"a king bed plus a double sofa bed",v:"Non-Ocean View",sqft:332,connecting:null,special:"Two-room suite, balcony with distant ocean view."},
+    "524":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:"Balcony",special:"Street view balcony."},
+    "525":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Balcony with distant ocean view."},
+    "526":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "527":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:"Balcony with distant ocean view."},
+    "528":{b:"King Bed",f:"a king bed",v:"Non-Ocean View",sqft:144,connecting:null,special:null},
+    "530":{b:"King + 2 Twin Beds",f:"two bedrooms, a full kitchen, dining and living room areas",v:"Distant Ocean View",sqft:972,connecting:null,special:"Penthouse apartment."},
+  };
 
     const BLDG = {
       oceanside: {
@@ -725,8 +715,9 @@
             if(u.f) room.f = u.f;
             if(u.v) room.v = u.v;
             if(u.sqft) room.sqft = u.sqft;
-            // special always overwrites — null clears prior
+            // special + connecting always overwrite — null clears prior
             room.special = u.special;
+            room.connecting = u.connecting;
             // Auto-append period if missing so template reads cleanly
             if(room.special && !/[.!?]$/.test(room.special)) room.special += '.';
           }
@@ -797,29 +788,33 @@
       return pool.slice(0,12).map((src, i) => ({src, caption: captions[i] || ""}));
     }
 
+    // Per-client Individual_room_page.pdf spec: use bullet points modeled on the
+    // current seachambers.com — bed configuration + universal base + special items.
+    // Sqft moves to the metadata box (not a bullet).
     const BASE_AMENITIES = [
-      "Continental breakfast included",
-      "Heated oceanfront pool",
-      "Hot tub & ocean-view fire pits",
-      "Free WiFi throughout property",
-      "Mini-fridge & microwave",
-      "Flat-screen cable TV",
-      "Coffee maker & in-room amenities",
-      "Free on-site parking",
-      "Iron & ironing board on request",
-      "Daily housekeeping",
-      "24-hour front desk",
-      "Direct beach access"
+      "microwave and refrigerator",
+      "four-cup drip coffee maker, toaster, dishes and silverware",
+      "flat screen TV",
+      "iron and board, drying rack and luggage rack"
     ];
 
     function getAmenities(room){
-      const list = [...BASE_AMENITIES];
-      if(room.v && room.v.toLowerCase().indexOf("non-ocean") === -1) list.unshift(room.v.toLowerCase() === "ocean view" ? "Ocean view" : room.v);
-      if((room.note||"").toLowerCase().includes("balcony") || (room.special||"").toLowerCase().includes("balcony")) list.unshift("Private balcony");
-      if((room.note||"").toLowerCase().includes("patio") || (room.special||"").toLowerCase().includes("patio")) list.unshift("Private patio");
-      if((room.note||"").toLowerCase().includes("two-room") || (room.note||"").toLowerCase().includes("2rms")) list.unshift("Two-room layout");
-      if((room.b||"").toLowerCase().includes("sofa bed")) list.push("Sleeper sofa");
-      if((room.note||"").toLowerCase().includes("kitchen") || (room.special||"").toLowerCase().includes("kitchen")) list.push("Full kitchen");
+      const list = [];
+      // 1. Bed configuration bullets from features_text. Split on ". " (period+space)
+      //    so notes like "This room connects with Room 33B" become their own bullet.
+      const features = (room.f || room.b || '').trim();
+      if(features){
+        features.split(/\.\s+/).forEach(function(s){
+          const t = s.replace(/\.$/,'').trim();
+          if(t) list.push(t);
+        });
+      }
+      // 2. Universal base amenities (confirmed across scraped samples)
+      list.push(...BASE_AMENITIES);
+      // 3. Special features not implied by view (kitchen, patio, balcony, penthouse)
+      const sp = (room.special || '').toLowerCase();
+      if(sp.includes('kitchen') && !features.toLowerCase().includes('kitchen')) list.push('full kitchen');
+      if(sp.includes('penthouse')) list.push('two-bedroom penthouse apartment');
       return list;
     }
 
@@ -857,27 +852,15 @@
       bcRoom.textContent = `Room ${room.n}`;
       const photos = getPhotos(room);
       const amenities = getAmenities(room);
+      // Tags row: View · Level · Connecting (from Column I) OR Special (if no connecting)
+      const viewLabel = room.v || "Non-Ocean View";
+      const isOceanView = viewLabel.toLowerCase().indexOf("non-ocean") === -1 && viewLabel !== "";
+      const thirdTag = room.connecting || (room.special ? room.special.replace(/\.$/,'') : '');
       const tags = [
-        (function(){var vl=room.v||"Non-Ocean View";var isO=vl.toLowerCase().indexOf("non-ocean")===-1&&vl!=="";return `<span class="sc-rd-tag${isO?" ocean":""}">${vl}</span>`;})(),
+        `<span class="sc-rd-tag${isOceanView?' ocean':''}">${viewLabel}</span>`,
         `<span class="sc-rd-tag">${level.name}</span>`,
-        room.note ? `<span class="sc-rd-tag">${room.note}</span>` : ''
+        thirdTag ? `<span class="sc-rd-tag">${thirdTag}</span>` : ''
       ].filter(Boolean).join('');
-
-      var featuresText = room.f || room.b;
-      var featuresClean = featuresText.replace(/\.$/, '');
-      var featuresEndsWithSentence = /[.!?]/.test(featuresText);
-      var sqftClause = '';
-      var featuresJoin = '';
-      if(room.sqft){
-        if(featuresEndsWithSentence){
-          featuresJoin = '.';
-          sqftClause = ` The room is ~${room.sqft} sq ft`;
-        } else {
-          sqftClause = ` and is ~${room.sqft} sq ft`;
-        }
-      }
-      var specialPrefix = room.special ? `<strong>${room.special}</strong> ` : '';
-      const desc = `${specialPrefix}Located in the ${bldg.name.replace('The ','')}, this room features ${featuresClean}${featuresJoin}${sqftClause}. All Sea Chambers stays include a continental breakfast, full use of our heated oceanfront pool, hot tub, and fire pits, plus direct beach access from the property.`;
 
       main.innerHTML = `
         <section class="sc-room-page">
@@ -894,6 +877,7 @@
                   <div class="sc-rd-card-caption">${p.caption}</div>
                 </div>`).join('')}
             </div>
+            <p class="sc-rd-photo-note">Please note: the photos above are representative of the room. Actual rooms may vary slightly from what is shown.</p>
           </div>
 
           <aside class="sc-rd-details">
@@ -919,19 +903,21 @@
                 <div class="sc-rd-meta-label">View</div>
                 <div class="sc-rd-meta-value">${room.v || 'Non-Ocean View'}</div>
               </div>
-              ${room.sqft ? `<div class="sc-rd-meta-item"><div class="sc-rd-meta-label">Size</div><div class="sc-rd-meta-value">~${room.sqft} sq ft</div></div>` : ''}
               <div class="sc-rd-meta-item">
                 <div class="sc-rd-meta-label">Access</div>
                 <div class="sc-rd-meta-value">${level.meta}</div>
               </div>
+              ${room.sqft ? `<div class="sc-rd-meta-item"><div class="sc-rd-meta-label">Room Size</div><div class="sc-rd-meta-value">${room.sqft} square feet</div></div>` : ''}
             </div>
 
-            <p class="sc-rd-description">${desc}</p>
-
-            <p class="sc-rd-amen-title">Room Amenities</p>
+            <p class="sc-rd-amen-title">Room ${room.n}'s Amenities</p>
             <ul class="sc-rd-amen">
               ${amenities.map(a => `<li>${a}</li>`).join('')}
             </ul>
+
+            <p class="sc-rd-included">All reservations include continental breakfast, one parking space, our firepits and ocean view seating areas, plus seasonal heated pool and hot tub.</p>
+
+            <p class="sc-rd-availability"><a href="https://reservations.seachambers.com">Click here to check Room ${room.n}'s availability for the entire season.</a></p>
 
             <div class="sc-rd-actions">
               <a href="https://reservations.seachambers.com" class="sc-rd-btn sc-rd-btn-primary">Book Now</a>
