@@ -996,10 +996,10 @@ var ROOM_UPDATES = {
 
             <p class="sc-rd-included">All reservations include continental breakfast, one parking space, our firepits and ocean view seating areas, plus seasonal heated pool and hot tub.</p>
 
-            <p class="sc-rd-availability"><a href="https://reservations.seachambers.com">Click here to check Room ${room.n}'s availability for the entire season.</a></p>
+            <p class="sc-rd-availability"><a href="https://s006085.officialbookings.com/room/${room.n}">Click here to check Room ${room.n}'s availability for the entire season.</a></p>
 
             <div class="sc-rd-actions">
-              <a href="https://reservations.seachambers.com" class="sc-rd-btn sc-rd-btn-primary">Book Now</a>
+              <a href="https://s006085.officialbookings.com/room/${room.n}" class="sc-rd-btn sc-rd-btn-primary">Book Now</a>
               <a href="rooms.html" class="sc-rd-btn sc-rd-btn-secondary">All Rooms</a>
             </div>
           </aside>
