@@ -245,6 +245,7 @@ var ROOM_UPDATES = {
           "Rooms 36-39 are on our Terrace Level, down a ramp from the parking lot, with no steps into the room.",
           "Rooms 40A-42 are on our Sea Level, down a ramp and a staircase."
         ],
+        roomAreas: {"22":{left:6.71,top:1.82,width:4.54,height:11.99},"23":{left:12.66,top:1.82,width:4.54,height:11.99},"24":{left:18.55,top:1.82,width:4.54,height:11.99},"25":{left:24.5,top:1.82,width:4.54,height:11.99},"26":{left:30.45,top:1.82,width:4.54,height:11.99},"27":{left:36.45,top:1.82,width:4.54,height:11.99},"28":{left:44.78,top:1.82,width:4.54,height:11.99},"29":{left:50.68,top:1.82,width:4.54,height:11.99},"30":{left:56.79,top:1.82,width:4.54,height:11.99},"31":{left:62.9,top:1.82,width:4.54,height:11.99},"32":{left:68.69,top:1.82,width:4.54,height:11.99},"4":{left:7.3,top:14.53,width:4.54,height:11.99},"5":{left:13.3,top:14.53,width:4.54,height:11.99},"6":{left:19.25,top:14.53,width:4.54,height:11.99},"7":{left:25.2,top:14.53,width:4.54,height:11.99},"8":{left:31.26,top:14.53,width:4.54,height:11.99},"9":{left:37.1,top:14.53,width:4.54,height:11.99},"10":{left:50.95,top:14.53,width:4.54,height:11.99},"11":{left:57.06,top:14.53,width:4.54,height:11.99},"12":{left:62.84,top:14.53,width:4.54,height:11.99},"14":{left:68.79,top:14.53,width:4.54,height:11.99},"15":{left:74.74,top:14.53,width:4.54,height:11.99},"16":{left:80.69,top:14.53,width:4.54,height:11.99},"17":{left:86.7,top:14.53,width:4.54,height:11.99},"18":{left:92.64,top:14.53,width:4.54,height:11.99},"33A":{left:51.16,top:27.47,width:4.54,height:11.99},"33B":{left:57.11,top:27.47,width:4.54,height:11.99},"34":{left:63.06,top:27.47,width:4.54,height:11.99},"35":{left:69.01,top:27.47,width:4.54,height:11.99},"36":{left:74.96,top:27.47,width:4.54,height:11.99},"37":{left:80.91,top:27.47,width:4.54,height:11.99},"38":{left:86.86,top:27.47,width:4.54,height:11.99},"39":{left:92.81,top:27.47,width:4.54,height:11.99},"40A":{left:51.97,top:40.84,width:4.54,height:11.99},"40B":{left:57.92,top:40.84,width:4.54,height:11.99},"41":{left:63.87,top:40.84,width:4.54,height:11.99},"42":{left:69.82,top:40.84,width:4.54,height:11.99},"21":{left:1.14,top:27.47,width:5.41,height:11.99},"20":{left:1.14,top:40.84,width:5.41,height:11.99},"19":{left:1.14,top:54.22,width:5.41,height:11.99},"3":{left:7.08,top:27.47,width:5.41,height:11.99},"2":{left:7.08,top:40.84,width:5.41,height:11.99},"1":{left:7.08,top:54.22,width:5.41,height:11.99}},
         photo: "img/buildings/oceanside-exterior.jpg",
         levels: [
           { name: "Main Level", meta: "No stairs", rooms: [
@@ -310,6 +311,7 @@ var ROOM_UPDATES = {
           "Rooms 72-76 are on the Ground Level, but all require stairs to enter.",
           "Rooms 77 and 78 are on a Lower Level with no steps."
         ],
+        roomAreas: {"78":{left:3.25,top:49.82,width:7.03,height:20.83},"77":{left:10.82,top:49.82,width:7.03,height:20.83},"72":{left:18.18,top:49.82,width:5.95,height:20.83},"73":{left:18.18,top:72.46,width:5.95,height:17.21},"75":{left:24.19,top:49.82,width:5.95,height:20.83},"74":{left:24.19,top:72.46,width:5.95,height:17.21},"71":{left:30.74,top:49.82,width:5.95,height:20.83},"70":{left:36.74,top:49.82,width:5.95,height:20.83},"76":{left:24.19,top:27.17,width:5.95,height:20.83},"_pool":{left:52.27,top:58.33,width:20.45,height:30.98},"_firepits":{left:77.71,top:62.05,width:17.15,height:23.55}},
         imageAreas: [
           {label: "Seasonal Ocean View Heated Pool and Hot Tub", href: "amenities.html#pool", left: 52.27, top: 58.33, width: 20.45, height: 30.98},
           {label: "Two Ocean View Fire Pits", href: "amenities.html#firepits", left: 77.71, top: 62.05, width: 17.15, height: 23.55}
@@ -344,6 +346,7 @@ var ROOM_UPDATES = {
           "Rooms 522-528 are on the Second Floor, up one full staircase.",
           "Room 530 is the entire Third Floor, up two full staircases."
         ],
+        roomAreas: {"507":{left:30.28,top:9.49,width:9.1,height:10.92},"508":{left:39.38,top:9.49,width:9.1,height:10.92},"503":{left:30.28,top:21.2,width:9.1,height:10.92},"506":{left:39.38,top:21.2,width:9.1,height:10.92},"501":{left:30.28,top:32.9,width:9.1,height:10.92},"504":{left:39.38,top:32.9,width:9.1,height:10.92},"502":{left:39.38,top:44.6,width:9.1,height:10.92},"527":{left:51.52,top:9.49,width:9.1,height:10.92},"528":{left:60.67,top:9.49,width:9.1,height:10.92},"525":{left:51.52,top:21.2,width:9.1,height:10.92},"526":{left:60.67,top:21.2,width:9.1,height:10.92},"523":{left:51.52,top:32.9,width:9.1,height:10.92},"524":{left:60.67,top:32.9,width:9.1,height:10.92},"522":{left:60.67,top:44.6,width:9.1,height:10.92},"530":{left:73.13,top:58.52,width:21.67,height:32.51}},
         levels: [
           { name: "First Floor", meta: "Two steps into the building", rooms: [
             {n:"501", b:"King + Double Sofa Bed", note:"Kitchen + patio", v:false, special:"Apartment-style with full kitchen"},
@@ -464,51 +467,71 @@ var ROOM_UPDATES = {
         infoWrap.innerHTML = '<ul class="sc-rmap-info-list">' + infoBullets + '</ul>';
       }
 
-      // Render clickable areas over the diagram image (e.g. Poolside's Pool + Firepits)
+      // Build lookup of room details by number for click handlers
+      const roomByNum = {};
+      b.levels.forEach(function(lvl){
+        lvl.rooms.forEach(function(r){ roomByNum[r.n] = Object.assign({}, r, {_level: lvl.name}); });
+      });
+
+      // Debug mode: append ?debug=1 to URL to see all clickable boxes outlined
+      const debug = new URLSearchParams(window.location.search).get('debug') === '1';
+
+      // Render clickable areas over the diagram image
       const areasWrap = document.getElementById('sc-rmap-diagram-areas');
       if(areasWrap){
-        var areasHtml = (b.imageAreas || []).map(function(a){
-          return '<a class="sc-rmap-diagram-area" href="' + a.href + '" ' +
+        const parts = [];
+        // 1. Non-room imageAreas (Pool, Firepits, etc.) — external links
+        (b.imageAreas || []).forEach(function(a){
+          parts.push(
+            '<a class="sc-rmap-diagram-area sc-rmap-diagram-area--link' + (debug ? ' sc-rmap-diagram-area--debug' : '') + '" ' +
+            'href="' + a.href + '" ' +
             'aria-label="' + a.label + '" title="' + a.label + '" ' +
             'style="left:' + a.left + '%;top:' + a.top + '%;width:' + a.width + '%;height:' + a.height + '%">' +
-            '<span class="sc-rmap-diagram-area-label">' + a.label + '</span>' +
-          '</a>';
-        }).join('');
-        areasWrap.innerHTML = areasHtml;
+              '<span class="sc-rmap-diagram-area-label">' + a.label + '</span>' +
+            '</a>'
+          );
+        });
+        // 2. Per-room clickable boxes from BLDG.roomAreas
+        const roomAreas = b.roomAreas || {};
+        Object.keys(roomAreas).forEach(function(n){
+          // Skip pseudo-rooms (e.g., '_pool' / '_firepits' — those are legacy handled by imageAreas)
+          if(n.charAt(0) === '_') return;
+          if(!roomByNum[n]) return;
+          const a = roomAreas[n];
+          parts.push(
+            '<button type="button" class="sc-rmap-diagram-area sc-rmap-diagram-area--room' + (debug ? ' sc-rmap-diagram-area--debug' : '') + '" ' +
+            'data-bldg="' + key + '" data-room="' + n + '" ' +
+            'aria-label="Room ' + n + '" title="Room ' + n + '" ' +
+            'style="left:' + a.left + '%;top:' + a.top + '%;width:' + a.width + '%;height:' + a.height + '%">' +
+              (debug ? '<span class="sc-rmap-diagram-area-debug-num">' + n + '</span>' : '') +
+            '</button>'
+          );
+        });
+        areasWrap.innerHTML = parts.join('');
       }
 
-      const wrap = document.getElementById('sc-rmap-chips-container');
-      wrap.innerHTML = '';
-      b.levels.forEach(lvl => {
-        const lvlDiv = document.createElement('div');
-        lvlDiv.className = 'sc-rmap-chips-level';
-        const chips = lvl.rooms.map(r => {
-          const cls = 'sc-rmap-chip' + (r.v ? ' ocean' : '');
-          return `<button class="${cls}" data-bldg="${key}" data-room="${r.n}">${r.n}</button>`;
-        }).join('');
-        lvlDiv.innerHTML = `<div class="sc-rmap-chips-level-name">${lvl.name}</div><div class="sc-rmap-chips">${chips}</div>`;
-        wrap.appendChild(lvlDiv);
+      // Wire up per-room click handlers
+      document.querySelectorAll('.sc-rmap-diagram-area--room').forEach(function(el){
+        el.addEventListener('click', function(e){
+          e.preventDefault();
+          const num = el.dataset.room;
+          const room = roomByNum[num];
+          if(!room) return;
+          showRoom(b, key, room, el);
+          if(window.matchMedia('(max-width: 900px)').matches){
+            setTimeout(function(){
+              document.getElementById('sc-rmap-panel').scrollIntoView({behavior:'smooth', block:'start'});
+            }, 30);
+          }
+        });
       });
 
       // Reset panel
       document.getElementById('sc-rmap-panel').innerHTML = `
         <div class="sc-rmap-empty">
           <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 11.25v1.5M15 11.25v1.5M9.75 17.25h4.5M3.75 21h16.5M4.5 3.75v17.25M19.5 3.75v17.25M3 8.25h18M3 13.5h18"/></svg>
-          <p>Select a room number from the list on the left to see photos and details.</p>
+          <p>Tap a room on the diagram to see photos and details.</p>
         </div>`;
-
-      // Bind chip clicks
-      wrap.querySelectorAll('.sc-rmap-chip').forEach(c => c.addEventListener('click', e => {
-        const num = c.dataset.room;
-        const room = b.levels.flatMap(l => l.rooms.map(r => ({...r, _level:l.name}))).find(r => r.n === num);
-        showRoom(b, key, room, c);
-        // On mobile (stacked layout), jump down to the room details panel
-        if(window.matchMedia('(max-width: 900px)').matches){
-          setTimeout(() => {
-            document.getElementById('sc-rmap-panel').scrollIntoView({behavior:'smooth', block:'start'});
-          }, 30);
-        }
-      }));
     }
 
     function showRoom(bldg, bldgKey, room, chipEl){
