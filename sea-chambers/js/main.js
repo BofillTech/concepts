@@ -830,15 +830,18 @@ var ROOM_UPDATES = {
     // Per-client Individual_room_page.pdf spec: use bullet points modeled on the
     // current seachambers.com — bed configuration + universal base + special items.
     // Sqft moves to the metadata box (not a bullet).
-    const BASE_AMENITIES = [
-      "microwave and refrigerator",
-      "four-cup drip coffee maker, toaster, dishes and silverware",
-      "flat screen TV",
-      "iron and board, drying rack and luggage rack"
-    ];
+    //
+    // Building-specific bullet patterns verified from ~15 room samples on seachambers.com
+    // (rooms 5, 9, 12, 18, 20, 22, 31, 32, 37 for Oceanside; 75, 76 for Poolside;
+    //  502, 504, 507, 508, 522, 523, 527, 528 for Inn):
+    //
+    // OCEANSIDE:  microwave and refrigerator → coffee maker → TV & DVD → iron/rack → carpeted → outdoor seating
+    // POOLSIDE:   same as Oceanside but hard surface flooring
+    // INN:        refrigerator and microwave (reversed) → TV & DVD → private bath → carpeted → ceiling fan → balcony/patio → non-ocean note
 
-    function getAmenities(room){
+    function getAmenities(room, bldgKey){
       const list = [];
+
       // 1. Bed configuration bullets from features_text. Split on ". " (period+space)
       //    so notes like "This room connects with Room 33B" become their own bullet.
       const features = (room.f || room.b || '').trim();
@@ -848,12 +851,49 @@ var ROOM_UPDATES = {
           if(t) list.push(t);
         });
       }
-      // 2. Universal base amenities (confirmed across scraped samples)
-      list.push(...BASE_AMENITIES);
-      // 3. Special features not implied by view (kitchen, patio, balcony, penthouse)
-      const sp = (room.special || '').toLowerCase();
-      if(sp.includes('kitchen') && !features.toLowerCase().includes('kitchen')) list.push('full kitchen');
-      if(sp.includes('penthouse')) list.push('two-bedroom penthouse apartment');
+
+      const isTwoRoom = /(two[- ]room|second room|first room)/i.test(features) ||
+                        /two[- ]room/i.test(room.special || '');
+      const view = (room.v || '').toLowerCase();
+      const isOceanView = view && view.indexOf('non-ocean') === -1;
+      const special = (room.special || '').toLowerCase();
+      const hasBalcony = /balcony/.test(special) || /balcony/.test(features.toLowerCase());
+      const hasPatio = /patio/.test(special) || /patio/.test(features.toLowerCase());
+
+      if(bldgKey === 'inn'){
+        // Inn: minimal, room-focused list
+        list.push('refrigerator and microwave');
+        list.push('flat screen TV and DVD player' + (isTwoRoom ? ' in each room' : ''));
+        list.push('private bath with shower, no tub');
+        list.push('carpeted flooring');
+        list.push('ceiling fan' + (isTwoRoom ? 's' : ''));
+        // Balcony/patio line matching seachambers wording
+        if(hasBalcony && isOceanView) list.push('sliding door to private ocean view balcony');
+        else if(hasBalcony) list.push('sliding door to private balcony');
+        else if(hasPatio && isOceanView) list.push('sliding door to designated patio with partial ocean view seating');
+        else if(hasPatio) list.push('sliding door to designated patio');
+        // Non-ocean-view closing line (only for Inn since Inn Building has the ocean-view lounges reference)
+        if(!isOceanView){
+          const seatingClause = (hasBalcony || hasPatio) ? '.' : ' nor designated outdoor seating.';
+          list.push('This room does not have an ocean view' + seatingClause +
+                    ' The Inn Building has two interior ocean view lounges for guest use.');
+        }
+      } else {
+        // Oceanside + Poolside: standard fuller list
+        list.push('microwave and refrigerator');
+        list.push('four-cup drip coffee maker, toaster, dishes and silverware');
+        list.push('flat screen TV and DVD player' + (isTwoRoom ? ' in each bedroom' : ''));
+        list.push('iron and board, drying rack and luggage rack');
+        list.push(bldgKey === 'poolside' ? 'hard surface flooring' : 'carpeted flooring');
+        // Outdoor seating rule
+        if(isOceanView){
+          list.push('indoor seating plus designated outdoor seating');
+        } else if(bldgKey === 'oceanside'){
+          const label = isTwoRoom ? 'This suite' : 'This room';
+          list.push(label + ' does not have an ocean view nor designated outdoor seating');
+        }
+      }
+
       return list;
     }
 
@@ -890,7 +930,7 @@ var ROOM_UPDATES = {
       bcBldg.innerHTML = `<a href="rooms.html">${bldg.name}</a>`;
       bcRoom.textContent = `Room ${room.n}`;
       const photos = getPhotos(room);
-      const amenities = getAmenities(room);
+      const amenities = getAmenities(room, bldgKey);
       // Tags row: View · Level · Connecting (from Column I) OR Special (if no connecting)
       const viewLabel = room.v || "Non-Ocean View";
       const isOceanView = viewLabel.toLowerCase().indexOf("non-ocean") === -1 && viewLabel !== "";
