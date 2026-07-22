@@ -104,16 +104,46 @@
     // 5. GALLERY FILTER & LIGHTBOX
     // ============================================
     if(document.querySelector('.sc-gallery-tabs')){
-      // Filter tabs
-      document.querySelectorAll('.sc-gallery-tab').forEach(function(tab){
-        tab.addEventListener('click', function(){
-          var cat = tab.dataset.cat;
-          document.querySelectorAll('.sc-gallery-tab').forEach(function(t){ t.classList.remove('active'); });
-          tab.classList.add('active');
-          document.querySelectorAll('.sc-gallery-section').forEach(function(section){
-            section.style.display = (cat === 'all' || section.dataset.cat === cat) ? 'block' : 'none';
-          });
+      var galleryTabs = document.querySelectorAll('.sc-gallery-tab');
+      var gallerySections = document.querySelectorAll('.sc-gallery-section');
+
+      function activateGalleryCategory(cat){
+        var found = false;
+        galleryTabs.forEach(function(t){
+          var is = t.dataset.cat === cat;
+          t.classList.toggle('active', is);
+          if(is) found = true;
         });
+        // Fall back to first tab if no match
+        if(!found && galleryTabs[0]){
+          galleryTabs[0].classList.add('active');
+          cat = galleryTabs[0].dataset.cat;
+        }
+        gallerySections.forEach(function(section){
+          section.style.display = (section.dataset.cat === cat) ? 'block' : 'none';
+        });
+      }
+
+      // Initial state — respect URL hash so deep-links (e.g. gallery.html#firepits) work
+      var initialCat = (window.location.hash || '').replace('#','') ||
+                       (galleryTabs[0] ? galleryTabs[0].dataset.cat : '');
+      activateGalleryCategory(initialCat);
+
+      galleryTabs.forEach(function(tab){
+        tab.addEventListener('click', function(e){
+          e.preventDefault();
+          activateGalleryCategory(tab.dataset.cat);
+          // Update the URL hash without scrolling
+          if(history.replaceState){
+            history.replaceState(null, '', '#' + tab.dataset.cat);
+          }
+        });
+      });
+
+      // If the hash changes (e.g., user clicks a nav dropdown item on the same page)
+      window.addEventListener('hashchange', function(){
+        var cat = window.location.hash.replace('#','');
+        if(cat) activateGalleryCategory(cat);
       });
 
       // Delegated lightbox open (replaces inline onclick="openLightbox(this)")
@@ -603,7 +633,7 @@ var ROOM_UPDATES = {
             <p class="sc-rmap-detail-desc">${desc}</p>
           </div>
           <div class="sc-rmap-actions">
-            <a href="https://reservations.seachambers.com" class="sc-rmap-btn sc-rmap-btn-primary">Book Now</a>
+            <a href="https://reservations.seachambers.com" class="sc-rmap-btn sc-rmap-btn-primary" target="_blank" rel="noopener noreferrer">Book Now</a>
             <a href="room.html?id=${room.n}&bldg=${bldgKey}" class="sc-rmap-btn sc-rmap-btn-secondary">More Info</a>
           </div>
         </div>`;
@@ -1052,10 +1082,10 @@ var ROOM_UPDATES = {
 
             <p class="sc-rd-included">All reservations include continental breakfast, one parking space, our firepits and ocean view seating areas, plus seasonal heated pool and hot tub.</p>
 
-            <p class="sc-rd-availability"><a href="https://s006085.officialbookings.com/room/${room.n}">Click here to check Room ${room.n}'s availability for the entire season.</a></p>
+            <p class="sc-rd-availability"><a href="https://s006085.officialbookings.com/room/${room.n}" target="_blank" rel="noopener noreferrer">Click here to check Room ${room.n}'s availability for the entire season.</a></p>
 
             <div class="sc-rd-actions">
-              <a href="https://s006085.officialbookings.com/room/${room.n}" class="sc-rd-btn sc-rd-btn-primary">Book Now</a>
+              <a href="https://s006085.officialbookings.com/room/${room.n}" class="sc-rd-btn sc-rd-btn-primary" target="_blank" rel="noopener noreferrer">Book Now</a>
               <a href="rooms.html" class="sc-rd-btn sc-rd-btn-secondary">All Rooms</a>
             </div>
           </aside>
