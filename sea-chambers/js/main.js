@@ -245,8 +245,8 @@ var ROOM_UPDATES = {
           "Rooms 36-39 are on our Terrace Level, down a ramp from the parking lot, with no steps into the room.",
           "Rooms 40A-42 are on our Sea Level, down a ramp and a staircase."
         ],
-        roomAreas: {"22":{left:6.71,top:1.82,width:4.54,height:11.99},"23":{left:12.66,top:1.82,width:4.54,height:11.99},"24":{left:18.55,top:1.82,width:4.54,height:11.99},"25":{left:24.5,top:1.82,width:4.54,height:11.99},"26":{left:30.45,top:1.82,width:4.54,height:11.99},"27":{left:36.45,top:1.82,width:4.54,height:11.99},"28":{left:44.78,top:1.82,width:4.54,height:11.99},"29":{left:50.68,top:1.82,width:4.54,height:11.99},"30":{left:56.79,top:1.82,width:4.54,height:11.99},"31":{left:62.9,top:1.82,width:4.54,height:11.99},"32":{left:68.69,top:1.82,width:4.54,height:11.99},"4":{left:7.3,top:14.53,width:4.54,height:11.99},"5":{left:13.3,top:14.53,width:4.54,height:11.99},"6":{left:19.25,top:14.53,width:4.54,height:11.99},"7":{left:25.2,top:14.53,width:4.54,height:11.99},"8":{left:31.26,top:14.53,width:4.54,height:11.99},"9":{left:37.1,top:14.53,width:4.54,height:11.99},"10":{left:50.95,top:14.53,width:4.54,height:11.99},"11":{left:57.06,top:14.53,width:4.54,height:11.99},"12":{left:62.84,top:14.53,width:4.54,height:11.99},"14":{left:68.79,top:14.53,width:4.54,height:11.99},"15":{left:74.74,top:14.53,width:4.54,height:11.99},"16":{left:80.69,top:14.53,width:4.54,height:11.99},"17":{left:86.7,top:14.53,width:4.54,height:11.99},"18":{left:92.64,top:14.53,width:4.54,height:11.99},"33A":{left:51.16,top:27.47,width:4.54,height:11.99},"33B":{left:57.11,top:27.47,width:4.54,height:11.99},"34":{left:63.06,top:27.47,width:4.54,height:11.99},"35":{left:69.01,top:27.47,width:4.54,height:11.99},"36":{left:74.96,top:27.47,width:4.54,height:11.99},"37":{left:80.91,top:27.47,width:4.54,height:11.99},"38":{left:86.86,top:27.47,width:4.54,height:11.99},"39":{left:92.81,top:27.47,width:4.54,height:11.99},"40A":{left:51.97,top:40.84,width:4.54,height:11.99},"40B":{left:57.92,top:40.84,width:4.54,height:11.99},"41":{left:63.87,top:40.84,width:4.54,height:11.99},"42":{left:69.82,top:40.84,width:4.54,height:11.99},"21":{left:1.14,top:27.47,width:5.41,height:11.99},"20":{left:1.14,top:40.84,width:5.41,height:11.99},"19":{left:1.14,top:54.22,width:5.41,height:11.99},"3":{left:7.08,top:27.47,width:5.41,height:11.99},"2":{left:7.08,top:40.84,width:5.41,height:11.99},"1":{left:7.08,top:54.22,width:5.41,height:11.99}},
-        photo: "img/buildings/oceanside-exterior.jpg",
+        roomAreas: {"22":{left:6.71,top:2.5,width:4.54,height:16.45},"23":{left:12.66,top:2.5,width:4.54,height:16.45},"24":{left:18.55,top:2.5,width:4.54,height:16.45},"25":{left:24.5,top:2.5,width:4.54,height:16.45},"26":{left:30.45,top:2.5,width:4.54,height:16.45},"27":{left:36.45,top:2.5,width:4.54,height:16.45},"28":{left:44.78,top:2.5,width:4.54,height:16.45},"29":{left:50.68,top:2.5,width:4.54,height:16.45},"30":{left:56.79,top:2.5,width:4.54,height:16.45},"31":{left:62.9,top:2.5,width:4.54,height:16.45},"32":{left:68.69,top:2.5,width:4.54,height:16.45},"4":{left:7.3,top:19.93,width:4.54,height:16.45},"5":{left:13.3,top:19.93,width:4.54,height:16.45},"6":{left:19.25,top:19.93,width:4.54,height:16.45},"7":{left:25.2,top:19.93,width:4.54,height:16.45},"8":{left:31.26,top:19.93,width:4.54,height:16.45},"9":{left:37.1,top:19.93,width:4.54,height:16.45},"10":{left:50.95,top:19.93,width:4.54,height:16.45},"11":{left:57.06,top:19.93,width:4.54,height:16.45},"12":{left:62.84,top:19.93,width:4.54,height:16.45},"14":{left:68.79,top:19.93,width:4.54,height:16.45},"15":{left:74.74,top:19.93,width:4.54,height:16.45},"16":{left:80.69,top:19.93,width:4.54,height:16.45},"17":{left:86.7,top:19.93,width:4.54,height:16.45},"18":{left:92.64,top:19.93,width:4.54,height:16.45},"33A":{left:51.16,top:37.69,width:4.54,height:16.45},"33B":{left:57.11,top:37.69,width:4.54,height:16.45},"34":{left:63.06,top:37.69,width:4.54,height:16.45},"35":{left:69.01,top:37.69,width:4.54,height:16.45},"36":{left:74.96,top:37.69,width:4.54,height:16.45},"37":{left:80.91,top:37.69,width:4.54,height:16.45},"38":{left:86.86,top:37.69,width:4.54,height:16.45},"39":{left:92.81,top:37.69,width:4.54,height:16.45},"40A":{left:51.97,top:56.03,width:4.54,height:16.45},"40B":{left:57.92,top:56.03,width:4.54,height:16.45},"41":{left:63.87,top:56.03,width:4.54,height:16.45},"42":{left:69.82,top:56.03,width:4.54,height:16.45},"21":{left:1.14,top:37.69,width:5.41,height:16.45},"20":{left:1.14,top:56.03,width:5.41,height:16.45},"19":{left:1.14,top:74.38,width:5.41,height:16.45},"3":{left:7.08,top:37.69,width:5.41,height:16.45},"2":{left:7.08,top:56.03,width:5.41,height:16.45},"1":{left:7.08,top:74.38,width:5.41,height:16.45}},
+        photo: "img/buildings/oceanside-photo.jpg",
         levels: [
           { name: "Main Level", meta: "No stairs", rooms: [
             {n:"1", b:"Q/D + Queen Sofa", v:false},
@@ -311,12 +311,12 @@ var ROOM_UPDATES = {
           "Rooms 72-76 are on the Ground Level, but all require stairs to enter.",
           "Rooms 77 and 78 are on a Lower Level with no steps."
         ],
-        roomAreas: {"78":{left:3.25,top:49.82,width:7.03,height:20.83},"77":{left:10.82,top:49.82,width:7.03,height:20.83},"72":{left:18.18,top:49.82,width:5.95,height:20.83},"73":{left:18.18,top:72.46,width:5.95,height:17.21},"75":{left:24.19,top:49.82,width:5.95,height:20.83},"74":{left:24.19,top:72.46,width:5.95,height:17.21},"71":{left:30.74,top:49.82,width:5.95,height:20.83},"70":{left:36.74,top:49.82,width:5.95,height:20.83},"76":{left:24.19,top:27.17,width:5.95,height:20.83},"_pool":{left:52.27,top:58.33,width:20.45,height:30.98},"_firepits":{left:77.71,top:62.05,width:17.15,height:23.55}},
+        roomAreas: {"78":{left:3.25,top:6.42,width:7.03,height:38.85},"77":{left:10.82,top:6.42,width:7.03,height:38.85},"72":{left:18.18,top:6.42,width:5.95,height:38.85},"73":{left:18.18,top:48.64,width:5.95,height:32.09},"75":{left:24.19,top:6.42,width:5.95,height:38.85},"74":{left:24.19,top:48.64,width:5.95,height:32.09},"71":{left:30.74,top:6.42,width:5.95,height:38.85},"70":{left:36.74,top:6.42,width:5.95,height:38.85},"76":{left:24.19,top:-35.82,width:5.95,height:38.85},"_pool":{left:52.27,top:22.29,width:20.45,height:57.77},"_firepits":{left:77.71,top:29.23,width:17.15,height:43.92}},
         imageAreas: [
-          {label: "Seasonal Ocean View Heated Pool and Hot Tub", href: "amenities.html#pool", left: 52.27, top: 58.33, width: 20.45, height: 30.98},
-          {label: "Two Ocean View Fire Pits", href: "amenities.html#firepits", left: 77.71, top: 62.05, width: 17.15, height: 23.55}
+          {label: "Seasonal Ocean View Heated Pool and Hot Tub", href: "amenities.html#pool", left: 52.27, top: 22.29, width: 20.45, height: 57.77},
+          {label: "Two Ocean View Fire Pits", href: "amenities.html#firepits", left: 77.71, top: 29.23, width: 17.15, height: 43.92}
         ],
-        photo: "img/buildings/poolside-exterior.jpg",
+        photo: "img/buildings/poolside-photo.png",
         levels: [
           { name: "Top Level", meta: "Full staircase up", rooms: [
             {n:"70", b:"King + Sofa Bed", v:true, special:"Balcony with ocean view"},
@@ -339,14 +339,14 @@ var ROOM_UPDATES = {
         name: "The Inn Building",
         desc: "Charming standalone building across Shore Road — larger suites and apartment-style rooms.",
         diagram: "img/diagrams/diagram-inn.png",
-        photo: "img/buildings/inn-exterior.jpg",
+        photo: "img/buildings/inn-photo.png",
         info: [
           "Our Guest Utility Room is one full staircase below the First Floor.",
           "Rooms 501-508 are on the First Floor, with two steps into the building.",
           "Rooms 522-528 are on the Second Floor, up one full staircase.",
           "Room 530 is the entire Third Floor, up two full staircases."
         ],
-        roomAreas: {"507":{left:30.28,top:9.49,width:9.1,height:10.92},"508":{left:39.38,top:9.49,width:9.1,height:10.92},"503":{left:30.28,top:21.2,width:9.1,height:10.92},"506":{left:39.38,top:21.2,width:9.1,height:10.92},"501":{left:30.28,top:32.9,width:9.1,height:10.92},"504":{left:39.38,top:32.9,width:9.1,height:10.92},"502":{left:39.38,top:44.6,width:9.1,height:10.92},"527":{left:51.52,top:9.49,width:9.1,height:10.92},"528":{left:60.67,top:9.49,width:9.1,height:10.92},"525":{left:51.52,top:21.2,width:9.1,height:10.92},"526":{left:60.67,top:21.2,width:9.1,height:10.92},"523":{left:51.52,top:32.9,width:9.1,height:10.92},"524":{left:60.67,top:32.9,width:9.1,height:10.92},"522":{left:60.67,top:44.6,width:9.1,height:10.92},"530":{left:73.13,top:58.52,width:21.67,height:32.51}},
+        roomAreas: {"507":{left:30.28,top:17.54,width:9.1,height:20.19},"508":{left:39.38,top:17.54,width:9.1,height:20.19},"503":{left:30.28,top:39.19,width:9.1,height:20.19},"506":{left:39.38,top:39.19,width:9.1,height:20.19},"501":{left:30.28,top:60.82,width:9.1,height:20.19},"504":{left:39.38,top:60.82,width:9.1,height:20.19},"502":{left:39.38,top:82.45,width:9.1,height:20.19},"527":{left:51.52,top:17.54,width:9.1,height:20.19},"528":{left:60.67,top:17.54,width:9.1,height:20.19},"525":{left:51.52,top:39.19,width:9.1,height:20.19},"526":{left:60.67,top:39.19,width:9.1,height:20.19},"523":{left:51.52,top:60.82,width:9.1,height:20.19},"524":{left:60.67,top:60.82,width:9.1,height:20.19},"522":{left:60.67,top:82.45,width:9.1,height:20.19},"530":{left:73.13,top:108.18,width:21.67,height:60.1}},
         levels: [
           { name: "First Floor", meta: "Two steps into the building", rooms: [
             {n:"501", b:"King + Double Sofa Bed", note:"Kitchen + patio", v:false, special:"Apartment-style with full kitchen"},
@@ -455,8 +455,11 @@ var ROOM_UPDATES = {
       const b = BLDG[key];
       document.getElementById('sc-rmap-diagram-img').src = b.diagram;
       document.getElementById('sc-rmap-diagram-img').alt = b.name + ' floor diagram';
-      document.getElementById('sc-rmap-banner-img').src = b.photo;
-      document.getElementById('sc-rmap-banner-img').alt = b.name + ' exterior';
+      var photoEl = document.getElementById('sc-rmap-photo-img');
+      if(photoEl){
+        photoEl.src = b.photo;
+        photoEl.alt = b.name + ' exterior';
+      }
       document.getElementById('sc-rmap-bldg-name').textContent = b.name;
       document.getElementById('sc-rmap-bldg-desc').textContent = b.desc;
 
