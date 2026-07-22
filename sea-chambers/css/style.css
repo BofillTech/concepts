@@ -1362,3 +1362,150 @@ button.sc-rmap-diagram-area{
 @media (max-width:1180px){
   .sc-nav-perks{display:none;}
 }
+
+/* ============================================
+   23. MOBILE NAV — hamburger + phone + book CTA (July 22)
+   Kicks in ≤900px. Desktop nav-links slide in as a drop panel.
+   ============================================ */
+
+/* Mobile controls are hidden by default (desktop) */
+.sc-nav-mobile-controls{display:none;}
+
+/* Hamburger button (mobile only) */
+.sc-nav-hamburger{
+  background:transparent;border:none;padding:8px;margin:0;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:center;
+  width:40px;height:40px;gap:5px;
+}
+.sc-nav-hamburger-line{
+  display:block;height:2px;width:22px;
+  background:var(--white);
+  border-radius:2px;
+  transition:transform .25s, opacity .25s, background .25s;
+}
+.sc-nav.scrolled .sc-nav-hamburger-line{background:var(--dark);}
+
+/* Hamburger open state: X icon */
+.sc-nav-hamburger[aria-expanded="true"] .sc-nav-hamburger-line:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.sc-nav-hamburger[aria-expanded="true"] .sc-nav-hamburger-line:nth-child(2){
+  opacity:0;
+}
+.sc-nav-hamburger[aria-expanded="true"] .sc-nav-hamburger-line:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+/* Phone icon */
+.sc-nav-mobile-phone{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;
+  color:var(--white);
+  border:1px solid rgba(255,255,255,.35);
+  border-radius:50%;
+  transition:all .3s;
+}
+.sc-nav-mobile-phone:hover{background:rgba(255,255,255,.1);}
+.sc-nav.scrolled .sc-nav-mobile-phone{
+  color:var(--ocean);
+  border-color:var(--ocean);
+}
+
+/* Compact Book button */
+.sc-nav-mobile-book{
+  padding:9px 16px;
+  font-family:var(--font-body);font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  background:var(--ocean);color:var(--white) !important;
+  border-radius:3px;
+  transition:background .3s;
+}
+.sc-nav-mobile-book:hover{background:var(--ocean-light);}
+
+/* ---------- Breakpoint: mobile layout ---------- */
+@media (max-width:900px){
+  /* Show mobile controls, hide the desktop nav-cta + phone within nav-links */
+  .sc-nav-mobile-controls{
+    display:flex;align-items:center;gap:10px;
+  }
+
+  /* Desktop nav-links becomes a slide-down full-width panel */
+  .sc-nav-links{
+    position:fixed;
+    top:64px;               /* below the nav bar */
+    left:0;right:0;
+    background:var(--ocean-deep);
+    padding:20px 24px 32px !important;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0 !important;
+    max-height:calc(100vh - 64px);
+    overflow-y:auto;
+    transform:translateY(-100%);
+    opacity:0;
+    visibility:hidden;
+    transition:transform .3s ease, opacity .25s, visibility .25s;
+    box-shadow:0 8px 24px rgba(0,0,0,.2);
+    z-index:99;
+  }
+  .sc-nav.mobile-open .sc-nav-links{
+    transform:translateY(0);
+    opacity:1;
+    visibility:visible;
+  }
+  .sc-nav.scrolled .sc-nav-links{background:rgba(255,255,255,.98);}
+
+  /* Menu items in the slide-down panel — full width rows */
+  .sc-nav-links > a,
+  .sc-nav-links .sc-nav-drop{
+    display:block !important;
+    width:100%;
+    padding:14px 4px !important;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:14px !important;
+    letter-spacing:.14em !important;
+  }
+  .sc-nav.scrolled .sc-nav-links > a,
+  .sc-nav.scrolled .sc-nav-links .sc-nav-drop{
+    border-bottom-color:rgba(0,0,0,.08);
+  }
+  .sc-nav.scrolled .sc-nav-links > a{color:var(--dark);}
+
+  /* Hide the desktop Book Online CTA + phone in the drawer — they're in the header instead */
+  .sc-nav-links > a.sc-nav-cta,
+  .sc-nav-links > .sc-nav-phone{display:none !important;}
+
+  /* Dropdown button/menu in mobile drawer */
+  .sc-nav-drop-btn{
+    width:100%;
+    justify-content:space-between !important;
+    padding:0 !important;
+    font-size:14px !important;
+    letter-spacing:.14em !important;
+  }
+  .sc-nav-drop-menu{
+    position:static !important;transform:none !important;
+    background:transparent !important;border:none !important;box-shadow:none !important;
+    padding:8px 0 0 12px !important;
+    min-width:0 !important;
+    display:none;
+    opacity:1 !important;visibility:visible !important;pointer-events:auto !important;
+  }
+  .sc-nav-drop.is-open .sc-nav-drop-menu{display:block !important;}
+  .sc-nav-drop-menu a{
+    color:rgba(255,255,255,.75) !important;
+    font-size:13px !important;
+    padding:9px 0 !important;
+    letter-spacing:.06em !important;
+    text-transform:none !important;
+  }
+  .sc-nav.scrolled .sc-nav-drop-menu a{color:var(--gray) !important;}
+  .sc-nav-drop-menu a:hover{background:transparent !important;color:var(--white) !important;}
+
+  /* Hide the nav-brand perks pills on mobile (nav is compact) */
+  .sc-nav-perks{display:none;}
+
+  /* Nav shrinks a bit */
+  .sc-nav{padding:12px 16px !important;}
+  .sc-nav-logo img{height:48px !important;}
+}

@@ -60,6 +60,50 @@
     });
 
     // ============================================
+    // 1c. MOBILE NAV HAMBURGER (July 22)
+    // ============================================
+    var hamburger = document.getElementById('sc-nav-hamburger');
+    var navEl = document.getElementById('sc-nav');
+    if(hamburger && navEl){
+      hamburger.addEventListener('click', function(e){
+        e.stopPropagation();
+        var isOpen = navEl.classList.toggle('mobile-open');
+        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+        // When closing, also close any open dropdowns
+        if(!isOpen) closeAllNavDrops();
+      });
+      // Close mobile menu when a link inside it is clicked
+      document.querySelectorAll('.sc-nav-links a').forEach(function(a){
+        a.addEventListener('click', function(){
+          if(navEl.classList.contains('mobile-open')){
+            navEl.classList.remove('mobile-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.setAttribute('aria-label', 'Open menu');
+            closeAllNavDrops();
+          }
+        });
+      });
+      // Close when clicking outside the nav
+      document.addEventListener('click', function(e){
+        if(navEl.classList.contains('mobile-open') && !e.target.closest('#sc-nav')){
+          navEl.classList.remove('mobile-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open menu');
+          closeAllNavDrops();
+        }
+      });
+      // Escape closes it too
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && navEl.classList.contains('mobile-open')){
+          navEl.classList.remove('mobile-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          hamburger.setAttribute('aria-label', 'Open menu');
+        }
+      });
+    }
+
+    // ============================================
     // 2. SCROLL-REVEAL OBSERVER
     // ============================================
     var reveals = document.querySelectorAll('.reveal');
