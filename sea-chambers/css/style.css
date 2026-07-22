@@ -1509,3 +1509,49 @@ button.sc-rmap-diagram-area{
   .sc-nav{padding:12px 16px !important;}
   .sc-nav-logo img{height:48px !important;}
 }
+
+/* ============================================
+   24. MOBILE PERKS STRIP (July 22)
+   Thin band under the nav — shows on narrow viewports where the
+   .sc-nav-perks pills are hidden (≤1180px).
+   ============================================ */
+.sc-perks-strip{
+  display:none;                                    /* hidden on wide desktop */
+  position:sticky;
+  top:78px;                                        /* just below the fixed nav */
+  z-index:80;                                      /* under nav (z:100) & breadcrumb (z:90) */
+  padding:10px 20px;
+  background:var(--ocean);
+  color:var(--white);
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  text-align:center;
+  line-height:1.4;
+}
+.sc-perks-strip-item{white-space:nowrap;}
+.sc-perks-strip-sep{margin:0 12px;opacity:.6;}
+
+/* Show on narrow viewports (also fills the gap on tablet where
+   nav pills are hidden) */
+@media (max-width:1180px){
+  .sc-perks-strip{display:block;}
+}
+
+/* On very small screens, allow to wrap into two lines and shrink */
+@media (max-width:520px){
+  .sc-perks-strip{
+    padding:8px 14px;
+    font-size:10px;
+    letter-spacing:.1em;
+  }
+  .sc-perks-strip-sep{margin:0 8px;}
+}
+
+/* Nav is shorter on mobile (top:64px total nav height), so adjust the
+   sticky offset to sit right beneath it */
+@media (max-width:900px){
+  .sc-perks-strip{top:64px;}
+}
