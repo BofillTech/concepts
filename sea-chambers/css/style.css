@@ -1296,3 +1296,22 @@ button.sc-rmap-diagram-area{
   .sc-gallery-tabs{gap:6px;}
   .sc-gallery-tab{padding:8px 16px;font-size:11.5px;}
 }
+
+/* ============================================
+   21. SCROLLED NAV — visibility fixes (July 22)
+   Dropdown buttons and Book Online CTA need explicit color rules
+   for the light/white scrolled state.
+   ============================================ */
+
+/* Dropdown buttons: white text at top, dark when scrolled */
+.sc-nav.scrolled .sc-nav-drop-btn{color:var(--dark);}
+.sc-nav.scrolled .sc-nav-drop-btn:hover,
+.sc-nav.scrolled .sc-nav-drop.is-open .sc-nav-drop-btn,
+.sc-nav.scrolled .sc-nav-drop.active .sc-nav-drop-btn{color:var(--ocean);}
+
+/* Book Online CTA: the '.sc-nav.scrolled .sc-nav-links a' rule inherits down
+   into the CTA (which IS an <a>), turning its text dark. Override to stay white
+   since the button background stays ocean-blue in both states. */
+.sc-nav.scrolled .sc-nav-links a.sc-nav-cta,
+.sc-nav .sc-nav-links a.sc-nav-cta{color:var(--white) !important;}
+.sc-nav .sc-nav-links a.sc-nav-cta:hover{color:var(--white) !important;}
