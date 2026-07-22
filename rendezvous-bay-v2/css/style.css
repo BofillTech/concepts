@@ -1,14 +1,21 @@
 
 :root{
-  --ink:#001E4B;
-  --ink-soft:#445465;
-  --sea:#3F8F87;
+  --ink:#0F2A50;
+  --ink-soft:#3D5570;
+  --sky:#ADCCDB;
+  --sky-soft:#CFE2EA;
+  --teal:#60BABE;
+  --teal-deep:#2E8A8A;
+  --pine:#1C4948;
+  --sage:#7E9E96;
+  --gold:#D4A355;
+  --sea:#3E9E9E;
   --aqua:#76B0BB;
-  --coral:#D44735;
-  --coral-deep:#B3372A;
-  --sun:#B27F6A;
-  --shell:#EFE9D9;
-  --shell-2:#F6F1E6;
+  --coral:#C1362B;
+  --coral-deep:#9E2A21;
+  --sun:#D4A355;
+  --shell:#EFE7DA;
+  --shell-2:#F7F1E6;
   --sand:#E4DAC5;
   --sand-line:#D8CDB4;
   --white:#FCFAF4;
@@ -24,7 +31,13 @@
   --bookbar-h:64px;
   --bookbar-gap:16px;
   --horizon:var(--ink);
+  --awning:repeating-linear-gradient(90deg,
+    var(--sage) 0 26px, var(--shell) 26px 52px);
 }
+
+/* ---- awning stripe motif (from the Castaways storefront) ---- */
+.awning{height:16px;width:100%;background:var(--awning);border-bottom:3px solid var(--pine)}
+.awning--top{border-bottom:0;border-top:3px solid var(--pine)}
 
 /* ---- v2 brandmark (script wordmark replaces pinwheel logo) ---- */
 .brandmark{display:inline-flex;flex-direction:column;line-height:1;text-decoration:none}
@@ -35,9 +48,9 @@
 .brandmark__est{display:none;font-family:var(--font-label);font-weight:400;font-size:.58rem;
   letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-top:5px;transition:color .3s ease}
 .nav-primary.is-stuck .brandmark__kicker,.nav-primary.is-stuck .brandmark__est{color:var(--shell)}
-.nav-primary.is-stuck .brandmark__word{text-shadow:none}
+.nav-primary.is-stuck .brandmark__word{color:var(--shell);text-shadow:none}
 .foot__logo .brandmark__kicker,.foot__logo .brandmark__est{color:#fff}
-.foot__logo .brandmark__word{color:var(--coral);font-size:2.4rem;text-shadow:none}
+.foot__logo .brandmark__word{color:var(--shell);font-size:2.4rem;text-shadow:none}
 .foot__logo .brandmark__est{display:block}
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -65,7 +78,7 @@ a{color:inherit;text-decoration:none}
   color:var(--ink);
   display:inline-block;
 }
-.eyebrow--light{color:var(--aqua)}
+.eyebrow--light{color:var(--gold)}
 .display{
   font-family:var(--font-display);
   font-weight:400;
@@ -90,8 +103,8 @@ a{color:inherit;text-decoration:none}
   padding:15px 30px;border-radius:100px;cursor:pointer;border:1.5px solid transparent;
   transition:transform .25s ease,background .25s ease,color .25s ease,box-shadow .25s ease;
 }
-.btn--book{background:var(--ink);color:var(--shell);box-shadow:0 10px 30px -14px rgba(0,30,75,.75)}
-.btn--book:hover{background:var(--coral);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(0,30,75,.6)}
+.btn--book{background:var(--teal);color:var(--ink);box-shadow:0 10px 30px -14px rgba(15,42,80,.55)}
+.btn--book:hover{background:var(--teal-deep);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(15,42,80,.5)}
 .btn--ghost{border-color:currentColor;color:var(--ink)}
 .btn--ghost:hover{background:var(--ink);color:var(--shell);border-color:var(--ink)}
 .btn--ghost-light{border-color:rgba(255,255,255,.7);color:#fff}
@@ -197,7 +210,7 @@ a{color:inherit;text-decoration:none}
 .bay h2{color:#fff;max-width:16ch}
 .bay p{color:rgba(255,255,255,.9);max-width:44ch;margin-top:20px;font-size:1.08rem}
 .bay__stats{display:flex;gap:44px;margin-top:38px;flex-wrap:wrap}
-.bay__stat b{font-family:var(--font-label);font-size:2.6rem;font-weight:500;display:block;color:var(--aqua)}
+.bay__stat b{font-family:var(--font-label);font-size:2.6rem;font-weight:500;display:block;color:var(--gold)}
 .bay__stat span{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.8)}
 
 /* ---- ROOMS ---- */
@@ -280,7 +293,7 @@ a{color:inherit;text-decoration:none}
 .loc__map img{width:100%;height:100%;object-fit:cover}
 
 /* ---- homepage location map band ---- */
-.locmap{background:var(--shell-2)}
+.locmap{background:var(--sky-soft)}
 .locmap__grid{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(30px,5vw,64px);align-items:center}
 .locmap__intro p{color:var(--ink-soft);margin-top:2px}
 .locmap__list{list-style:none;margin:22px 0 26px;padding:0;display:grid;gap:14px}
@@ -306,7 +319,7 @@ a{color:inherit;text-decoration:none}
 .final__cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
 
 /* ---- FOOTER ---- */
-.foot{background:var(--ink);color:rgba(255,255,255,.75);
+.foot{background:var(--pine);color:rgba(255,255,255,.75);
   padding:72px 0 calc(48px + var(--bookbar-h) + var(--bookbar-gap))}
 .foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
 .foot__logo{background:var(--shell);display:inline-block;padding:14px 18px;border-radius:var(--radius);margin-bottom:20px}
@@ -520,7 +533,7 @@ a{color:inherit;text-decoration:none}
 .form-note{font-size:.82rem;color:var(--ink-soft);margin-top:4px}
 
 /* section tint helpers */
-.section--shell2{background:var(--shell-2)}
+.section--shell2{background:var(--sky-soft)}
 .section--white{background:var(--white)}
 .divider-band{background:var(--ink);color:var(--shell)}
 .divider-band h2{color:#fff}
