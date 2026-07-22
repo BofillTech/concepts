@@ -1197,3 +1197,78 @@ button.sc-rmap-diagram-area{
   .sc-rmap-photo{ margin: 14px 0 18px; }
   .sc-rmap-photo img{ max-height: 220px; }
 }
+
+/* ============================================
+   19. NAV DROPDOWNS — "More Info" + "Galleries" (July 22)
+   ============================================ */
+.sc-nav-drop{position:relative;display:inline-block;}
+.sc-nav-drop-btn{
+  background:transparent;border:none;padding:0;margin:0;cursor:pointer;
+  font-family:var(--font-body);font-size:12px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--white);
+  display:inline-flex;align-items:center;gap:5px;
+  transition:color .3s;
+}
+.sc-nav-drop-btn:hover,
+.sc-nav-drop:hover .sc-nav-drop-btn,
+.sc-nav-drop.is-open .sc-nav-drop-btn,
+.sc-nav-drop.active .sc-nav-drop-btn{
+  color:var(--ocean-light);
+}
+.sc-nav-drop-caret{
+  font-size:9px;line-height:1;
+  transition:transform .2s;
+  transform:translateY(1px);
+}
+.sc-nav-drop:hover .sc-nav-drop-caret,
+.sc-nav-drop.is-open .sc-nav-drop-caret{
+  transform:translateY(1px) rotate(180deg);
+}
+
+.sc-nav-drop-menu{
+  position:absolute;top:100%;left:50%;
+  transform:translateX(-50%) translateY(4px);
+  min-width:260px;padding:8px 0;
+  background:var(--ocean-deep);
+  border:1px solid rgba(255,255,255,.08);
+  box-shadow:0 10px 30px rgba(0,0,0,.24);
+  border-radius:4px;
+  opacity:0;visibility:hidden;pointer-events:none;
+  transition:opacity .18s, visibility .18s, transform .18s;
+  z-index:110;
+}
+.sc-nav-drop:hover .sc-nav-drop-menu,
+.sc-nav-drop:focus-within .sc-nav-drop-menu,
+.sc-nav-drop.is-open .sc-nav-drop-menu{
+  opacity:1;visibility:visible;pointer-events:auto;
+  transform:translateX(-50%) translateY(0);
+}
+.sc-nav-drop-menu a{
+  display:block;padding:11px 22px;
+  font-family:var(--font-body);font-size:13px;font-weight:500;
+  letter-spacing:.06em;text-transform:none;
+  color:var(--white);
+  transition:background .15s, color .15s;
+  white-space:nowrap;
+}
+.sc-nav-drop-menu a:hover,
+.sc-nav-drop-menu a:focus{
+  background:rgba(255,255,255,.08);color:var(--white);
+}
+
+/* Invisible bridge so cursor can travel between button and menu without closing */
+.sc-nav-drop::before{
+  content:'';position:absolute;top:100%;left:0;right:0;height:12px;
+}
+
+/* Mobile: hide desktop dropdowns; keep top-level links visible via existing mobile CSS */
+@media(max-width:768px){
+  .sc-nav-drop-menu{
+    position:static;transform:none;opacity:1;visibility:visible;pointer-events:auto;
+    min-width:0;background:transparent;border:none;box-shadow:none;padding:0 0 8px 16px;
+    display:none;
+  }
+  .sc-nav-drop.is-open .sc-nav-drop-menu{display:block;}
+  .sc-nav-drop-menu a{padding:8px 0;color:var(--white);}
+  .sc-nav-drop::before{display:none;}
+}

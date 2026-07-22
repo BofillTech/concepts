@@ -30,6 +30,36 @@
     }
 
     // ============================================
+    // 1b. NAV DROPDOWNS — click/tap for mobile + a11y
+    //     (Desktop hover is handled purely by CSS; JS covers touch,
+    //      keyboard, outside-click, and Escape.)
+    // ============================================
+    var navDropBtns = document.querySelectorAll('.sc-nav-drop-btn');
+    function closeAllNavDrops(except){
+      document.querySelectorAll('.sc-nav-drop.is-open').forEach(function(d){
+        if(d === except) return;
+        d.classList.remove('is-open');
+        var btn = d.querySelector('.sc-nav-drop-btn');
+        if(btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    }
+    navDropBtns.forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.stopPropagation();
+        var drop = btn.closest('.sc-nav-drop');
+        var isOpen = drop.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        closeAllNavDrops(drop);
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.sc-nav-drop')) closeAllNavDrops();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeAllNavDrops();
+    });
+
+    // ============================================
     // 2. SCROLL-REVEAL OBSERVER
     // ============================================
     var reveals = document.querySelectorAll('.reveal');
