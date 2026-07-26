@@ -48,6 +48,24 @@
     items.forEach(function (el) { el.classList.add("is-in"); });
   }
 
+  /* ---- hero video (autoplay unless reduced motion; poster is the fallback) ---- */
+  var heroVideo = document.getElementById("heroVideo");
+  if (heroVideo) {
+    if (reduce) {
+      heroVideo.removeAttribute("autoplay");
+      try { heroVideo.pause(); } catch (e) {}
+    } else {
+      var tryPlay = function () {
+        var pr = heroVideo.play();
+        if (pr && typeof pr.catch === "function") { pr.catch(function () {}); }
+      };
+      tryPlay();
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) { heroVideo.pause(); } else { tryPlay(); }
+      });
+    }
+  }
+
   /* ---- hero slider (crossfade + autoplay + dots) ---- */
   var slider = document.getElementById("heroSlider");
   if (slider) {
