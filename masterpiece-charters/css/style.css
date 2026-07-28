@@ -1,0 +1,1168 @@
+/* ===========================================================================
+   Masterpiece Charters — Montauk, NY
+   Concept stylesheet · Bofill Technologies
+   Design system: nautical chart (buff paper + blue-black linework + soundings)
+   ======================================================================== */
+
+/* ---------- 1. Tokens ---------------------------------------------------- */
+:root {
+  /* Colour — sampled from the subject's world: chart paper, deep Atlantic
+     water off Montauk, a striped bass flank, outrigger flags */
+  --ink-deep: #071a26;   /* chart black / deep water — dominant ground */
+  --ink: #0b2331;
+  --hull: #10303f;       /* raised panels on dark */
+  --hull-line: #1c4557;
+  --chart: #ede3ce;      /* chart paper buff — light panels */
+  --paper: #f7f1e4;
+  --paper-line: #d9cdb2;
+  --flag: #e0561f;       /* signal orange — outrigger flag, marker buoy */
+  --flag-deep: #bf4212;
+  --flag-soft: #f08a58;
+  --sound: #4fa3a8;      /* soundings teal — hairlines, depth trace */
+  --sound-dim: #2b6c72;
+  --steel: #97a6a8;      /* bass silver — muted type on dark */
+  --steel-dim: #63757a;
+
+  /* Type */
+  --display: "Big Shoulders Display", "Big Shoulders", "Haettenschweiler", "Arial Narrow", sans-serif;
+  --body: "Sora", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
+
+  /* Metrics */
+  --rail: 0px;
+  --bar-h: 68px;
+  --gut: 22px;
+  --maxw: 1320px;
+  --r: 2px;
+}
+
+@media (min-width: 700px) { :root { --gut: 34px; } }
+@media (min-width: 1080px) { :root { --rail: 108px; --gut: 48px; } }
+
+/* ---------- 2. Base ------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { overflow-x: clip; scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ink-deep);
+  color: var(--chart);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3, h4 { margin: 0; font-weight: 400; }
+
+p { margin: 0 0 1.1em; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+
+button, input, select { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--flag);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 999;
+  background: var(--flag);
+  color: #fff;
+  padding: 12px 18px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+.skip-link:focus { left: 8px; top: 8px; }
+
+.u-hidden { display: none; }
+
+/* ---------- 3. Type primitives ------------------------------------------ */
+.display {
+  font-family: var(--display);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sound);
+  margin: 0 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px;
+  height: 1px;
+  background: var(--sound);
+  flex: none;
+}
+.eyebrow--light { color: var(--sound-dim); }
+.eyebrow--light::before { background: var(--sound-dim); }
+
+.lede {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--steel);
+  max-width: 54ch;
+}
+.lede--dark { color: #4d5b52; }
+
+.meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ---------- 4. Layout wrapper + rail nav -------------------------------- */
+.site-wrap { padding-left: var(--rail); }
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gut);
+}
+
+.block {
+  padding: 72px 0;
+  position: relative;
+}
+@media (min-width: 900px) { .block { padding: 108px 0; } }
+
+.block--chart { background: var(--chart); color: var(--ink-deep); }
+.block--paper { background: var(--paper); color: var(--ink-deep); }
+.block--hull { background: var(--hull); }
+
+/* graticule ticks — the edge of a nautical chart */
+.ticked { border-top: 1px solid var(--hull-line); }
+.ticked::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 9px;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--hull-line) 0 1px,
+    transparent 1px 34px
+  );
+  opacity: 0.85;
+  pointer-events: none;
+}
+.ticked--dark { border-top-color: var(--paper-line); }
+.ticked--dark::before {
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--paper-line) 0 1px,
+    transparent 1px 34px
+  );
+}
+
+/* --- side rail (desktop) / top bar (mobile) --- */
+.site-header {
+  position: fixed;
+  z-index: 60;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--paper-line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 14px;
+}
+
+.site-header__logo { display: block; }
+.site-header__logo img {
+  height: 38px;
+  width: auto;
+  object-fit: contain;
+}
+
+.site-header__spacer { flex: 1 1 auto; }
+
+.nav-primary { display: none; }
+
+.rail__foot { display: contents; }
+
+.icon-btn {
+  width: 42px;
+  height: 42px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--paper-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink-deep);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.icon-btn:hover { background: var(--ink-deep); color: var(--paper); }
+.icon-btn svg { width: 18px; height: 18px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: var(--r);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.btn--flag { background: var(--flag); color: #fff; }
+.btn--flag:hover { background: var(--flag-deep); transform: translateY(-2px); }
+.btn--ghost { border-color: var(--steel-dim); color: var(--chart); }
+.btn--ghost:hover { border-color: var(--sound); color: var(--sound); }
+.btn--ink { border-color: var(--ink-deep); color: var(--ink-deep); }
+.btn--ink:hover { background: var(--ink-deep); color: var(--paper); }
+.btn--sm { padding: 11px 16px; font-size: 11px; }
+
+.site-header .btn--flag { padding: 12px 16px; }
+
+/* mobile drawer */
+.nav-drawer {
+  position: fixed;
+  z-index: 59;
+  inset: 64px 0 auto 0;
+  background: var(--ink-deep);
+  border-bottom: 1px solid var(--hull-line);
+  transform: translateY(-115%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 10px 0 22px;
+}
+.nav-drawer.is-open { transform: translateY(0); }
+.nav-drawer .menu-item a {
+  display: block;
+  padding: 13px var(--gut);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--chart);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.nav-drawer .menu-item a:hover { color: var(--flag-soft); }
+
+body.is-locked { overflow: hidden; }
+
+@media (min-width: 1080px) {
+  .site-header {
+    top: 0;
+    right: auto;
+    bottom: 0;
+    width: var(--rail);
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    padding: 26px 0 calc(var(--bar-h) + 22px);
+    border-bottom: 0;
+    border-right: 1px solid var(--paper-line);
+    gap: 0;
+  }
+  .site-header__logo img { height: auto; width: 74px; }
+  .site-header__spacer { display: none; }
+  .menu-toggle { display: none; }
+  .nav-drawer { display: none; }
+
+  .nav-primary {
+    display: block;
+    margin: 40px 0 auto;
+  }
+  .nav-primary .menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .nav-primary .menu-item a {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink-deep);
+    padding: 2px 0;
+    border-right: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .nav-primary .menu-item a:hover,
+  .nav-primary .menu-item.current-menu-item a {
+    color: var(--flag);
+    border-right-color: var(--flag);
+  }
+
+  .rail__foot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    margin-top: 30px;
+  }
+  .site-header .btn--flag {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    padding: 22px 13px;
+    letter-spacing: 0.2em;
+  }
+  .site-header .btn--flag:hover { transform: rotate(180deg) translateY(2px); }
+}
+
+/* ---------- 5. Hero (split-screen) -------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 64px;
+  background: var(--ink-deep);
+}
+@media (min-width: 1080px) { .hero { margin-top: 0; } }
+
+.hero__media {
+  position: relative;
+  min-height: 46vh;
+  background: var(--hull) url("https://imgcdn.fishingbooker.com/charter/33134/m/6f31d68ebb04aa53c094f66cf93c01dc.jpg") center 45% / cover no-repeat;
+}
+.hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 26, 38, 0.5) 0%, rgba(7, 26, 38, 0.05) 45%, rgba(7, 26, 38, 0.75) 100%);
+}
+
+.hero__stamp {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 18px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--chart);
+  background: rgba(7, 26, 38, 0.62);
+  border: 1px solid rgba(237, 227, 206, 0.28);
+  padding: 7px 12px;
+}
+
+.hero__panel {
+  padding: 46px var(--gut) 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__title {
+  font-size: clamp(58px, 15.5vw, 118px);
+  color: var(--paper);
+  margin: 0 0 22px;
+}
+.hero__title em {
+  font-style: normal;
+  color: var(--flag);
+  display: block;
+}
+
+.hero__lede { margin-bottom: 26px; }
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.hero__specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--hull-line);
+  border: 1px solid var(--hull-line);
+}
+.hero__spec {
+  background: var(--ink-deep);
+  padding: 14px 16px;
+}
+.hero__spec dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel-dim);
+  margin-bottom: 5px;
+}
+.hero__spec dd {
+  margin: 0;
+  font-family: var(--display);
+  font-size: 27px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--chart);
+}
+
+@media (min-width: 1080px) {
+  .hero {
+    grid-template-columns: 1.04fr 1fr;
+    min-height: 100vh;
+    align-items: stretch;
+  }
+  .hero__media { min-height: 100vh; order: 2; }
+  .hero__panel { order: 1; padding: 90px 5vw 90px var(--gut); }
+  .hero__title { font-size: clamp(76px, 6.6vw, 118px); }
+  .hero__specs { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ---------- 6. Species marquee ------------------------------------------ */
+.marquee {
+  background: var(--flag);
+  color: #fff;
+  overflow: hidden;
+  padding: 13px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.marquee__track {
+  display: flex;
+  width: max-content;
+  animation: drift 46s linear infinite;
+}
+.marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  padding-right: 30px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.marquee__group span::after {
+  content: " ✦";
+  opacity: 0.55;
+  margin-left: 26px;
+}
+@keyframes drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+/* ---------- 7. Sounder trace (signature device) ------------------------- */
+.sounder {
+  display: block;
+  width: 100%;
+  height: 46px;
+  overflow: hidden;
+}
+.sounder svg { width: 100%; height: 100%; display: block; }
+.sounder__line {
+  fill: none;
+  stroke: var(--sound);
+  stroke-width: 1.6;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+}
+.sounder.is-in .sounder__line {
+  animation: trace 2.2s ease-out forwards;
+}
+.sounder__ticks { stroke: var(--hull-line); stroke-width: 1; }
+.sounder--dark .sounder__ticks { stroke: var(--paper-line); }
+@keyframes trace { to { stroke-dashoffset: 0; } }
+
+/* ---------- 8. Section heads -------------------------------------------- */
+.head {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+.head__title {
+  font-size: clamp(40px, 9vw, 76px);
+}
+.block--chart .head__title,
+.block--paper .head__title { color: var(--ink-deep); }
+.head__title em { font-style: normal; color: var(--flag); }
+
+@media (min-width: 900px) {
+  .head {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    align-items: end;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+}
+
+/* ---------- 9. Trips ----------------------------------------------------- */
+.trips {
+  display: grid;
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+}
+@media (min-width: 860px) { .trips { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+.trip {
+  background: var(--paper);
+  padding: 30px 26px 26px;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.25s ease;
+}
+.trip:hover { background: #fffbf2; }
+
+.trip__tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sound-dim);
+  margin-bottom: 14px;
+}
+.trip--feature .trip__tag { color: var(--flag); }
+
+.trip__name {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 44px;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--ink-deep);
+  margin-bottom: 16px;
+}
+
+.trip__price {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 38px;
+  line-height: 1;
+  color: var(--flag);
+  margin-bottom: 4px;
+}
+.trip__price-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6a7169;
+  margin-bottom: 20px;
+}
+
+.trip__list { margin-bottom: 22px; }
+.trip__list li {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-top: 1px solid var(--paper-line);
+  font-size: 14px;
+  color: #3d4740;
+}
+.trip__list li span:first-child {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a9089;
+  flex: 0 0 78px;
+  padding-top: 3px;
+}
+.trip__cta { margin-top: auto; align-self: flex-start; }
+
+.note-strip {
+  margin-top: 26px;
+  border: 1px dashed var(--paper-line);
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5c6660;
+}
+.note-strip b { color: var(--flag-deep); font-weight: 500; }
+
+/* ---------- 10. Grounds (distance sequence) ----------------------------- */
+.grounds { display: grid; gap: 26px; }
+@media (min-width: 900px) { .grounds { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px; } }
+
+.ground__figure {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--hull);
+  border: 1px solid var(--hull-line);
+}
+.ground__figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.ground:hover .ground__figure img { transform: scale(1.05); }
+
+.ground__dist {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  background: var(--ink-deep);
+  color: var(--sound);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  padding: 8px 14px;
+  border-top: 1px solid var(--hull-line);
+  border-right: 1px solid var(--hull-line);
+}
+
+.ground__name {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin: 20px 0 10px;
+}
+.ground p { color: var(--steel); font-size: 15px; }
+
+.ground__species {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.ground__species li {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sound);
+  border: 1px solid var(--hull-line);
+  padding: 5px 9px;
+}
+
+/* ---------- 11. Boat instrument panel ----------------------------------- */
+.boat { display: grid; gap: 34px; align-items: center; }
+@media (min-width: 980px) { .boat { grid-template-columns: 1.05fr 1fr; gap: 60px; } }
+
+.boat__figure {
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border: 1px solid var(--paper-line);
+  background: var(--chart);
+}
+.boat__figure img { width: 100%; height: 100%; object-fit: cover; }
+
+.boat__specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--paper-line);
+  border: 1px solid var(--paper-line);
+  margin: 24px 0 26px;
+}
+@media (min-width: 560px) { .boat__specs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.boat__spec { background: var(--chart); padding: 16px 14px; }
+.boat__spec dt {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7d8479;
+  margin-bottom: 4px;
+}
+.boat__spec dd {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--ink-deep);
+}
+
+.kit {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 18px;
+}
+@media (min-width: 560px) { .kit { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.kit li {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  font-size: 14px;
+  color: #3d4740;
+  padding: 6px 0;
+}
+.kit li::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: none;
+  background: var(--flag);
+  transform: translateY(-1px);
+}
+
+/* ---------- 12. Included / policies ------------------------------------- */
+.incl { display: grid; gap: 30px; }
+@media (min-width: 900px) { .incl { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 50px; } }
+
+.incl__title {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--hull-line);
+}
+.incl li {
+  display: flex;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--steel);
+  font-size: 15px;
+}
+.incl li b {
+  color: var(--chart);
+  font-weight: 500;
+}
+.incl__mark {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  color: var(--sound);
+}
+
+/* ---------- 13. Captain -------------------------------------------------- */
+.captain { display: grid; gap: 30px; align-items: center; }
+@media (min-width: 900px) { .captain { grid-template-columns: 0.8fr 1.2fr; gap: 56px; } }
+
+.captain__figure {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--hull);
+  border: 1px solid var(--hull-line);
+}
+.captain__figure img { width: 100%; height: 100%; object-fit: cover; }
+
+.captain__years {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(90px, 20vw, 178px);
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--sound-dim);
+  margin-bottom: 8px;
+}
+.captain__quote {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(28px, 4.6vw, 46px);
+  line-height: 1.02;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin: 0 0 20px;
+}
+.captain__sig {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sound);
+  margin-top: 20px;
+}
+
+/* ---------- 14. Also aboard (cruises) ----------------------------------- */
+.alt {
+  display: grid;
+  gap: 1px;
+  background: var(--hull-line);
+  border: 1px solid var(--hull-line);
+}
+@media (min-width: 760px) { .alt { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .alt { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.alt__item { background: var(--ink-deep); padding: 26px 22px; }
+.alt__item h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 27px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--paper);
+  margin-bottom: 10px;
+}
+.alt__item p { color: var(--steel); font-size: 14px; margin: 0; }
+
+/* ---------- 15. Gallery (bento) ----------------------------------------- */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+@media (min-width: 860px) {
+  .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .bento__cell--wide { grid-column: span 2; }
+  .bento__cell--tall { grid-row: span 2; }
+}
+.bento__cell {
+  position: relative;
+  overflow: hidden;
+  background: var(--hull);
+  border: 1px solid var(--hull-line);
+  aspect-ratio: 1 / 1;
+}
+.bento__cell--wide { aspect-ratio: 2 / 1; }
+.bento__cell--tall { aspect-ratio: 1 / 2; }
+.bento__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+.bento__cell:hover img { transform: scale(1.06); }
+
+@media (max-width: 859px) {
+  .bento__cell,
+  .bento__cell--wide,
+  .bento__cell--tall { aspect-ratio: 1 / 1; }
+}
+
+/* ---------- 16. Reviews -------------------------------------------------- */
+.rating {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+.rating__score {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 76px;
+  line-height: 0.8;
+  color: var(--flag);
+}
+.rating__meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #6a7169;
+}
+
+.quotes { display: grid; gap: 20px; }
+@media (min-width: 860px) { .quotes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; } }
+.quote {
+  border-top: 2px solid var(--ink-deep);
+  padding-top: 18px;
+}
+.quote p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #33403a;
+}
+.quote footer {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7d8479;
+}
+
+/* ---------- 17. Dock / location ----------------------------------------- */
+.dock { display: grid; gap: 30px; }
+@media (min-width: 900px) { .dock { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; } }
+
+.dock__lines { margin: 22px 0 26px; }
+.dock__lines li {
+  display: flex;
+  gap: 16px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--hull-line);
+  align-items: baseline;
+}
+.dock__lines dt, .dock__lines .k {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel-dim);
+  flex: 0 0 84px;
+}
+.dock__lines .v { color: var(--chart); font-size: 15px; }
+.dock__lines .v a { color: var(--sound); text-decoration: none; }
+.dock__lines .v a:hover { color: var(--flag-soft); }
+
+.chartcard {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--hull-line);
+  background:
+    repeating-linear-gradient(to right, rgba(79, 163, 168, 0.13) 0 1px, transparent 1px 42px),
+    repeating-linear-gradient(to bottom, rgba(79, 163, 168, 0.13) 0 1px, transparent 1px 42px),
+    radial-gradient(circle at 32% 62%, #123a4c 0%, #071a26 68%);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.chartcard__pin {
+  position: relative;
+  text-align: center;
+}
+.chartcard__dot {
+  width: 15px;
+  height: 15px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: var(--flag);
+  box-shadow: 0 0 0 0 rgba(224, 86, 31, 0.55);
+  animation: ping 2.4s ease-out infinite;
+}
+@keyframes ping {
+  70% { box-shadow: 0 0 0 26px rgba(224, 86, 31, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(224, 86, 31, 0); }
+}
+.chartcard__label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.chartcard__coords {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--sound);
+  margin-top: 8px;
+}
+
+/* ---------- 18. Final CTA ------------------------------------------------ */
+.finale {
+  position: relative;
+  background: var(--ink-deep) url("https://imgcdn.fishingbooker.com/charter/33134/m/7be3eacfa9fe6a0d5be2b4d14bf1a7af.jpg") center 35% / cover no-repeat;
+  padding: 96px 0;
+  text-align: center;
+}
+.finale::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 26, 38, 0.82), rgba(7, 26, 38, 0.9));
+}
+.finale .container { position: relative; z-index: 2; }
+.finale__title {
+  font-size: clamp(46px, 10vw, 104px);
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.finale__title em { font-style: normal; color: var(--flag); }
+.finale__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 26px;
+}
+.finale .eyebrow { justify-content: center; }
+.finale .lede { margin-inline: auto; }
+
+.head__title--solo { margin-bottom: 40px; }
+
+/* ---------- 19. Footer --------------------------------------------------- */
+.site-footer {
+  background: #04121b;
+  padding: 60px 0 calc(var(--bar-h) + 40px);
+  border-top: 1px solid var(--hull-line);
+}
+.foot {
+  display: grid;
+  gap: 34px;
+}
+@media (min-width: 820px) { .foot { grid-template-columns: 1.4fr 1fr 1fr; gap: 46px; } }
+
+.foot__logo {
+  width: 156px;
+  margin-bottom: 18px;
+  background: var(--paper);
+  padding: 10px 14px;
+  border-radius: var(--r);
+}
+.foot h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sound);
+  margin-bottom: 14px;
+}
+.foot li { padding: 6px 0; }
+.foot a { color: var(--steel); text-decoration: none; font-size: 14px; }
+.foot a:hover { color: var(--flag-soft); }
+.foot p { color: var(--steel-dim); font-size: 14px; }
+
+.social { display: flex; gap: 10px; margin-top: 14px; }
+.social a {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--hull-line);
+  color: var(--steel);
+}
+.social a:hover { border-color: var(--flag); color: var(--flag); }
+.social svg { width: 17px; height: 17px; }
+
+.colophon {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--hull-line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--steel-dim);
+}
+.colophon a { color: var(--sound); text-decoration: none; font-size: 10px; }
+
+/* ---------- 20. Bottom booking bar -------------------------------------- */
+.bookbar {
+  position: fixed;
+  z-index: 70;
+  left: var(--rail);
+  right: 0;
+  bottom: 0;
+  min-height: var(--bar-h);
+  background: rgba(6, 21, 31, 0.94);
+  backdrop-filter: blur(9px);
+  border-top: 1px solid var(--hull-line);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px var(--gut);
+  transform: translateY(105%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bookbar.is-up { transform: translateY(0); }
+
+.bookbar__label {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--paper);
+  flex: none;
+}
+.bookbar__label span { color: var(--flag); }
+
+.bookbar__fields { display: none; }
+
+.bookbar__field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.bookbar__field label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--steel-dim);
+}
+.bookbar__field select,
+.bookbar__field input {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--hull-line);
+  color: var(--chart);
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 4px 2px;
+  min-width: 0;
+}
+.bookbar__field select option { color: #111; }
+
+.bookbar__spacer { flex: 1 1 auto; }
+.bookbar__actions { display: flex; gap: 8px; align-items: center; margin-left: auto; }
+.bookbar .icon-btn { border-color: var(--hull-line); color: var(--chart); }
+.bookbar .icon-btn:hover { background: var(--flag); border-color: var(--flag); color: #fff; }
+
+@media (min-width: 900px) {
+  .bookbar__fields {
+    display: flex;
+    gap: 26px;
+    align-items: center;
+    margin-left: 30px;
+    padding-left: 30px;
+    border-left: 1px solid var(--hull-line);
+  }
+}
+
+/* ---------- 21. Reveals + reduced motion -------------------------------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee__track { animation: none; }
+  .chartcard__dot { animation: none; }
+  .sounder.is-in .sounder__line { animation: none; stroke-dashoffset: 0; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .bookbar { transition: none; }
+  .nav-drawer { transition: none; }
+}
+
+/* ---------- 22. Small corrections --------------------------------------- */
+.btn__ext { display: none; }
+@media (min-width: 1080px) { .btn__ext { display: inline; } }
+
+.boat .head__title { margin-bottom: 18px; }
+.dock .head__title { margin-bottom: 8px; }
