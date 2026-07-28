@@ -102,3 +102,27 @@
     else if(e.key==='ArrowRight') show(idx+1);
   });
 })();
+
+
+/* ---- Room carousels (rooms.html) ---- */
+(function(){
+  "use strict";
+  document.querySelectorAll('[data-carousel]').forEach(function(c){
+    var track=c.querySelector('.carousel__track'),
+        slides=c.querySelectorAll('.carousel__slide'),
+        thumbs=c.querySelectorAll('.carousel__thumb'),
+        count=c.querySelector('.carousel__count'),
+        i=0, n=slides.length;
+    function go(k){
+      i=(k+n)%n;
+      track.style.transform='translateX(-'+(i*100)+'%)';
+      thumbs.forEach(function(t,ti){t.classList.toggle('is-active',ti===i);});
+      if(count) count.textContent=(i+1)+' / '+n;
+    }
+    var prev=c.querySelector('.carousel__btn--prev'), next=c.querySelector('.carousel__btn--next');
+    if(prev) prev.addEventListener('click',function(){go(i-1);});
+    if(next) next.addEventListener('click',function(){go(i+1);});
+    thumbs.forEach(function(t,ti){t.addEventListener('click',function(){go(ti);});});
+    go(0);
+  });
+})();
