@@ -471,7 +471,7 @@ body.is-locked { overflow: hidden; }
   padding-top: calc(var(--nav-h) + 2.5rem);
   padding-bottom: 3rem;
   background:
-    linear-gradient(180deg, var(--mist) 0%, var(--mist) 58%, var(--paper) 58%);
+    linear-gradient(180deg, var(--mist) 0%, var(--mist) 72%, var(--paper) 72%);
   overflow: hidden;
 }
 
@@ -499,14 +499,14 @@ body.is-locked { overflow: hidden; }
 
 .hero__frame {
   position: relative;
-  padding: 0.55rem;
+  padding: 0.6rem;
   background: var(--paper);
   border: var(--line);
   box-shadow: 0 24px 60px -28px rgba(11, 39, 46, 0.45);
 }
 .hero__frame img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   object-position: center 55%;
   background: var(--petrol-soft);
@@ -1258,7 +1258,8 @@ body.is-locked { overflow: hidden; }
   :root { --block: 6rem; }
 
   .hero { padding-top: calc(var(--nav-h) + 3.5rem); }
-  .hero__grid { grid-template-columns: 1fr 1fr; align-items: center; }
+  .hero__grid { grid-template-columns: 1fr 1.4fr; align-items: center; }
+  .hero__frame img { aspect-ratio: auto; height: clamp(400px, 52vw, 600px); }
 
   .panel__grid { grid-template-columns: 1.05fr 1fr; gap: 2.4rem; }
   .split { grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -1290,9 +1291,10 @@ body.is-locked { overflow: hidden; }
   .site-header__actions { flex: 1 1 0; justify-content: flex-end; }
   .site-header__inner { gap: 1.5rem; }
 
-  .hero__grid { grid-template-columns: 1fr 1.12fr; gap: 3.5rem; }
-  .hero__copy { padding-right: 1rem; }
+  .hero__grid { grid-template-columns: 0.82fr 1.6fr; gap: 3rem; }
+  .hero__copy { padding-right: 0.5rem; }
   .hero__frame { transform: translateY(1.6rem); }
+  .hero__frame img { height: clamp(520px, 48vw, 720px); }
 
   .layouts { grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
   .tiles { grid-template-columns: repeat(4, 1fr); }
@@ -1300,7 +1302,8 @@ body.is-locked { overflow: hidden; }
 }
 
 @media (min-width: 1280px) {
-  .hero__frame { margin-right: -2rem; }
+  .hero__frame { margin-right: min(0px, calc(var(--shell) - (100vw - var(--max)) / 2)); }
+  .hero__frame img { height: clamp(600px, 46vw, 780px); }
 }
 
 /* ==========================================================================
