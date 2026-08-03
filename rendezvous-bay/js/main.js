@@ -140,4 +140,25 @@
   /* ---- dynamic year ---- */
   var yr = document.getElementById("yr");
   if (yr) yr.textContent = new Date().getFullYear();
+
+  /* ---- gallery filter sub-menu ---- */
+  var galleryFilter = document.querySelector(".gallery-filter");
+  if (galleryFilter) {
+    var figs = document.querySelectorAll(".gallery-grid figure");
+    galleryFilter.addEventListener("click", function (e) {
+      var btn = e.target.closest(".gallery-filter__btn");
+      if (!btn) return;
+      var f = btn.getAttribute("data-filter");
+      galleryFilter.querySelectorAll(".gallery-filter__btn").forEach(function (b) {
+        var on = b === btn;
+        b.classList.toggle("is-active", on);
+        b.setAttribute("aria-pressed", on ? "true" : "false");
+      });
+      figs.forEach(function (fig) {
+        var show = (f === "all") || fig.getAttribute("data-cat") === f;
+        fig.classList.toggle("is-hidden", !show);
+      });
+    });
+  }
+
 })();
