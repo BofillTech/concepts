@@ -161,4 +161,21 @@
     });
   }
 
+
+  /* ---- room thumbnail swap ---- */
+  document.querySelectorAll(".roomrow__thumbs").forEach(function (strip) {
+    var main = strip.parentElement.querySelector(".roomrow__main");
+    if (!main) return;
+    strip.querySelectorAll(".roomrow__thumb").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var img = btn.querySelector("img");
+        main.src = img.getAttribute("src");
+        main.alt = img.getAttribute("alt");
+        strip.querySelectorAll(".roomrow__thumb").forEach(function (b) {
+          b.classList.toggle("is-active", b === btn);
+        });
+      });
+    });
+  });
+
 })();
