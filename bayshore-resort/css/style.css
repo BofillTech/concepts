@@ -369,10 +369,10 @@ body.is-locked { overflow: hidden; }
 
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 92vh;
   display: flex;
   align-items: flex-end;
-  padding: 8rem 0 4.5rem;
+  padding: 7rem 0 2.6rem;
   background: var(--claret-deep);
   overflow: hidden;
 }
@@ -387,16 +387,17 @@ body.is-locked { overflow: hidden; }
   object-position: center 55%;
   animation: heroDrift 30s ease-out both;
 }
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(54,13,22,.62) 0%, rgba(54,13,22,.12) 34%, rgba(54,13,22,.80) 100%),
-    linear-gradient(90deg, rgba(54,13,22,.55) 0%, rgba(54,13,22,0) 62%);
-}
+/* No scrim anywhere on this build — every photograph runs clean. Copy sits in
+   solid claret panels instead of washing a gradient over the picture. */
 .hero__inner { position: relative; z-index: 2; color: var(--white); }
+.hero__panel {
+  background: var(--claret-deep);
+  padding: 2rem 1.5rem 2.1rem;
+  max-width: 40rem;
+  box-shadow: 0 18px 44px rgba(36,30,32,.28);
+}
 .hero__title {
-  font-size: clamp(2.5rem, 8.2vw, 5.1rem);
+  font-size: clamp(2.2rem, 6.4vw, 3.9rem);
   color: var(--white);
   max-width: 15ch;
   margin-bottom: .35em;
@@ -407,7 +408,7 @@ body.is-locked { overflow: hidden; }
   color: #f0e5e0;
   font-size: 1.06rem;
 }
-.hero__cta { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.7rem 0 2rem; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.5rem 0 1.6rem; }
 .hero__chips {
   list-style: none;
   display: flex;
@@ -416,7 +417,7 @@ body.is-locked { overflow: hidden; }
   margin: 0; padding: 0;
 }
 .hero__chips li {
-  font-size: .68rem;
+  font-size: .66rem;
   font-weight: 600;
   letter-spacing: .13em;
   text-transform: uppercase;
@@ -483,17 +484,20 @@ body.is-locked { overflow: hidden; }
 
 .feature {
   position: relative;
-  padding: 5.5rem 0;
+  padding: 4.5rem 0;
   background: var(--claret-ink);
   overflow: hidden;
 }
 .feature__media { position: absolute; inset: 0; z-index: 0; }
 .feature__media img { width: 100%; height: 100%; object-fit: cover; }
-.feature__scrim {
-  position: absolute; inset: 0;
-  background: linear-gradient(100deg, rgba(54,13,22,.90) 0%, rgba(54,13,22,.62) 55%, rgba(54,13,22,.35) 100%);
+.feature__wrap { position: relative; z-index: 2; }
+.feature__inner {
+  background: var(--claret-deep);
+  color: var(--white);
+  max-width: 40rem;
+  padding: 2.2rem 1.6rem 2.4rem;
+  box-shadow: 0 18px 44px rgba(36,30,32,.28);
 }
-.feature__inner { position: relative; z-index: 2; color: var(--white); max-width: 46rem; }
 .feature__inner h2 { color: var(--white); font-size: clamp(2rem, 5.6vw, 3.4rem); }
 .feature__inner h2 em { font-style: italic; color: var(--sand); }
 .feature__inner p { color: #f0e2dd; }
@@ -727,11 +731,17 @@ body.is-locked { overflow: hidden; }
 
 /* --------------------------------------------------------- final CTA */
 
-.closer { position: relative; padding: 6rem 0; background: var(--claret-ink); overflow: hidden; text-align: center; }
+.closer { position: relative; padding: 5rem 0; background: var(--claret-ink); overflow: hidden; text-align: center; }
 .closer__media { position: absolute; inset: 0; }
 .closer__media img { width: 100%; height: 100%; object-fit: cover; }
-.closer__scrim { position: absolute; inset: 0; background: rgba(54,13,22,.74); }
-.closer__inner { position: relative; z-index: 2; color: var(--white); }
+.closer__wrap { position: relative; z-index: 2; display: flex; justify-content: center; }
+.closer__inner {
+  background: var(--claret-deep);
+  color: var(--white);
+  padding: 2.6rem 1.6rem 2.8rem;
+  max-width: 44rem;
+  box-shadow: 0 18px 44px rgba(36,30,32,.28);
+}
 .closer__inner h2 { color: var(--white); font-size: clamp(2.1rem, 6vw, 3.6rem); margin-inline: auto; max-width: 18ch; }
 .closer__inner h2 em { font-style: italic; color: var(--sand); }
 .closer__inner p { color: #f0e2dd; max-width: 48ch; margin-inline: auto; }
@@ -873,7 +883,10 @@ body.is-locked { overflow: hidden; }
   .gallery__item--wide { grid-column: span 2; grid-row: span 2; }
   .header-phone { width: auto; padding: 0 1rem; height: 42px; }
   .header-phone__num { display: inline; }
-  .feature { padding: 7rem 0; }
+  .feature { padding: 6.5rem 0; }
+  .hero__panel { padding: 2.6rem 2.4rem 2.8rem; }
+  .feature__inner { padding: 2.8rem 2.4rem 3rem; }
+  .closer__inner { padding: 3.2rem 3rem 3.4rem; }
   .bay__copy { grid-column: 1 / span 6; }
   .bay__map  { grid-column: 8 / span 5; margin-top: 0; align-self: center; }
   .visit__col { grid-column: span 6; }
