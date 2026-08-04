@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OKC Hotel — Comfortable Stays in Oklahoma City</title>
+<meta name="description" content="OKC Hotel — a 4-star hotel at 301 S Council Rd, Oklahoma City. Clean, comfortable King and Double Queen rooms, free WiFi, free parking, and a 24-hour front desk minutes from downtown OKC.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="business.business">
+<meta property="og:title" content="OKC Hotel — Comfortable Stays in Oklahoma City">
+<meta property="og:description" content="A 4-star hotel minutes from downtown Oklahoma City. Clean rooms, free WiFi, free parking, 24-hour front desk.">
+<meta property="og:image" content="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-4.jpg">
+<meta property="og:url" content="https://www.okchoteloklahomacity.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hotel",
+  "name": "OKC Hotel",
+  "starRating": {"@type": "Rating", "ratingValue": "4"},
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "301 S Council Rd",
+    "addressLocality": "Oklahoma City",
+    "addressRegion": "OK",
+    "postalCode": "73128",
+    "addressCountry": "US"
+  },
+  "telephone": "+1-405-603-1104",
+  "image": "https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-4.jpg",
+  "checkinTime": "15:00",
+  "checkoutTime": "11:00",
+  "amenityFeature": [
+    {"@type": "LocationFeatureSpecification", "name": "Free WiFi", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "Free Self Parking", "value": true},
+    {"@type": "LocationFeatureSpecification", "name": "24-Hour Front Desk", "value": true}
+  ]
+}
+</script>
+
+<style>
+:root{
+  --sand:#b56a3e;        /* terracotta / sandstone */
+  --sand-deep:#9a5730;
+  --clay:#2c2320;        /* deep charcoal-brown */
+  --clay-soft:#4a3f39;
+  --cream:#f5efe4;       /* warm cream */
+  --cream-2:#efe6d6;
+  --paper:#fbf8f2;
+  --prairie:#6f7a58;     /* sage prairie green */
+  --brass:#c39b4c;       /* warm brass accent */
+  --line:rgba(44,35,32,.14);
+  --shadow:0 24px 60px -28px rgba(44,35,32,.45);
+  --maxw:1240px;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --f-display:"Fraunces",Georgia,serif;
+  --f-body:"Work Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--f-body);
+  color:var(--clay);
+  background:var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  font-weight:600;color:var(--sand-deep);display:flex;align-items:center;gap:.7rem;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--sand)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;line-height:1.04;letter-spacing:-.01em}
+.section-num{font-family:var(--f-display);font-style:italic;color:var(--brass);font-size:1rem;opacity:.9}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-body);
+  font-weight:600;font-size:.9rem;letter-spacing:.02em;padding:.95rem 1.7rem;
+  border-radius:999px;cursor:pointer;border:1px solid transparent;
+  transition:transform .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease),color .3s var(--ease);
+}
+.btn-primary{background:var(--sand);color:#fff;box-shadow:0 12px 26px -12px rgba(181,106,62,.75)}
+.btn-primary:hover{background:var(--sand-deep);transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(181,106,62,.85)}
+.btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-2px)}
+.btn-dark{background:var(--clay);color:var(--cream)}
+.btn-dark:hover{background:var(--clay-soft);transform:translateY(-2px)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 24px;transition:background .4s var(--ease),box-shadow .4s var(--ease),padding .4s var(--ease);
+}
+.nav.scrolled{background:rgba(251,248,242,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 var(--line);padding:12px 24px}
+.nav__logo{display:flex;align-items:center;gap:.7rem}
+.nav__logo img{max-height:52px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
+.nav.scrolled .nav__logo img{filter:none}
+.nav__wordmark{font-family:var(--f-display);font-size:1.15rem;color:#fff;font-weight:600;letter-spacing:.02em}
+.nav.scrolled .nav__wordmark{color:var(--clay)}
+.nav__links{display:none;gap:2rem;font-size:.86rem;font-weight:500;letter-spacing:.04em}
+.nav__links a{color:#fff;opacity:.9;transition:opacity .25s}
+.nav.scrolled .nav__links a{color:var(--clay)}
+.nav__links a:hover{opacity:1}
+.nav__right{display:flex;align-items:center;gap:.9rem}
+.nav__phone{display:inline-flex;font-weight:600;font-size:.9rem;color:#fff;align-items:center;gap:.45rem}
+.nav.scrolled .nav__phone{color:var(--clay)}
+.nav__phone-num{display:none}
+@media(min-width:1024px){
+  .nav__links{display:flex}
+  .nav__phone-num{display:inline}
+}
+
+/* ---------- HERO (split-screen) ---------- */
+.hero{display:grid;grid-template-columns:1fr;min-height:100svh}
+.hero__media{position:relative;min-height:56svh;overflow:hidden;background:var(--clay)}
+.hero__media img{position:absolute;inset:0;width:100%;height:120%;object-fit:cover;object-position:center;will-change:transform}
+.hero__media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,35,32,.45),rgba(44,35,32,.12) 40%,rgba(44,35,32,.35))}
+.hero__panel{
+  position:relative;background:
+    radial-gradient(120% 120% at 100% 0%, rgba(181,106,62,.10), transparent 55%),
+    var(--cream);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:96px 28px 64px;
+}
+.hero__panel h1{font-size:clamp(2.6rem,8vw,4.4rem);margin:1.1rem 0 1.2rem}
+.hero__panel h1 em{font-style:italic;color:var(--sand-deep)}
+.hero__sub{font-size:1.05rem;max-width:34ch;color:var(--clay-soft);margin-bottom:2rem}
+.hero__cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:2.2rem}
+.hero__meta{display:flex;flex-wrap:wrap;gap:1.6rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--clay-soft);border-top:1px solid var(--line);padding-top:1.4rem}
+.hero__meta b{display:block;font-family:var(--f-display);font-size:1.15rem;letter-spacing:0;text-transform:none;color:var(--clay);font-weight:500}
+.scrollcue{position:absolute;left:28px;bottom:22px;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--clay-soft);display:flex;align-items:center;gap:.6rem}
+.scrollcue::after{content:"";width:1px;height:26px;background:var(--sand);animation:cue 1.8s var(--ease) infinite}
+@keyframes cue{0%,100%{transform:scaleY(.4);opacity:.4;transform-origin:top}50%{transform:scaleY(1);opacity:1;transform-origin:top}}
+@media(min-width:900px){
+  .hero{grid-template-columns:1.05fr .95fr}
+  .hero__media{min-height:100svh}
+  .hero__panel{padding:120px 6vw 80px}
+}
+
+/* ---------- generic section ---------- */
+.section{padding:88px 0}
+.section__head{display:flex;flex-direction:column;gap:1rem;margin-bottom:3rem;max-width:60ch}
+.section__head h2{font-size:clamp(2rem,5vw,3.1rem)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}
+
+/* PLACE / welcome — asymmetric editorial */
+.place{background:var(--cream)}
+.place__grid{display:grid;grid-template-columns:1fr;gap:2.5rem;align-items:center}
+.place__copy p{font-size:1.12rem;color:var(--clay-soft);margin-top:1.2rem;max-width:52ch}
+.place__statement{font-family:var(--f-display);font-size:clamp(1.6rem,3.4vw,2.3rem);line-height:1.22;color:var(--clay);margin-top:1.4rem}
+.place__statement span{color:var(--sand-deep);font-style:italic}
+.place__media{position:relative}
+.place__media img{width:100%;height:100%;min-height:320px;object-fit:cover;border-radius:6px;box-shadow:var(--shadow)}
+.place__badge{position:absolute;left:-14px;bottom:-14px;background:var(--clay);color:var(--cream);padding:.9rem 1.2rem;border-radius:6px;font-family:var(--f-display);line-height:1.1;box-shadow:var(--shadow)}
+.place__badge b{font-size:1.7rem;display:block}
+.place__badge small{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}
+@media(min-width:900px){.place__grid{grid-template-columns:1.1fr .9fr;gap:4.5rem}}
+
+/* ROOMS */
+.rooms{background:var(--paper)}
+.rooms__grid{display:grid;grid-template-columns:1fr;gap:1.8rem}
+.room{background:var(--cream);border-radius:8px;overflow:hidden;box-shadow:0 18px 40px -30px rgba(44,35,32,.5);transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.room:hover{transform:translateY(-6px);box-shadow:0 30px 54px -30px rgba(44,35,32,.55)}
+.room__img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.room__img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.room:hover .room__img img{transform:scale(1.06)}
+.room__tag{position:absolute;top:14px;left:14px;background:rgba(251,248,242,.92);color:var(--clay);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:.4rem .8rem;border-radius:999px}
+.room__body{padding:1.5rem 1.5rem 1.7rem}
+.room__body h3{font-size:1.5rem;margin-bottom:.4rem}
+.room__body p{font-size:.95rem;color:var(--clay-soft);margin-bottom:1.1rem}
+.room__link{font-weight:600;font-size:.85rem;letter-spacing:.03em;color:var(--sand-deep);display:inline-flex;align-items:center;gap:.4rem;transition:gap .3s var(--ease)}
+.room__link:hover{gap:.75rem}
+@media(min-width:700px){.rooms__grid{grid-template-columns:repeat(3,1fr)}}
+
+/* AMENITIES / included band */
+.included{background:var(--clay);color:var(--cream)}
+.included .eyebrow{color:var(--brass)}
+.included .eyebrow::before{background:var(--brass)}
+.included h2{color:var(--cream)}
+.included__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.2rem 2rem;margin-top:2.4rem}
+.amen{display:flex;gap:.9rem;align-items:flex-start;padding:1.1rem 0;border-top:1px solid rgba(245,239,228,.14)}
+.amen svg{flex:none;width:26px;height:26px;stroke:var(--brass);fill:none;stroke-width:1.4;margin-top:2px}
+.amen h4{font-family:var(--f-body);font-weight:600;font-size:.98rem;margin-bottom:.15rem}
+.amen p{font-size:.82rem;color:rgba(245,239,228,.72)}
+@media(min-width:768px){.included__grid{grid-template-columns:repeat(3,1fr);column-gap:3rem}}
+
+/* GALLERY */
+.gallery{background:var(--cream)}
+.gallery__scroll{display:grid;grid-auto-flow:column;grid-auto-columns:82%;gap:1rem;overflow-x:auto;padding-bottom:1rem;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.gallery__scroll::-webkit-scrollbar{height:6px}
+.gallery__scroll::-webkit-scrollbar-thumb{background:var(--sand);border-radius:99px}
+.gallery__scroll figure{scroll-snap-align:start;border-radius:6px;overflow:hidden;aspect-ratio:3/2;background:var(--clay)}
+.gallery__scroll img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.gallery__scroll figure:hover img{transform:scale(1.05)}
+@media(min-width:768px){.gallery__scroll{grid-auto-columns:38%}}
+@media(min-width:1100px){.gallery__scroll{grid-auto-columns:30%}}
+
+/* LOCATION */
+.loc{background:var(--paper)}
+.loc__grid{display:grid;grid-template-columns:1fr;gap:2.6rem}
+.loc__address{font-family:var(--f-display);font-size:1.5rem;line-height:1.3;color:var(--clay);margin:1rem 0 1.4rem}
+.loc__near{list-style:none;display:grid;gap:.1rem}
+.loc__near li{display:flex;gap:1rem;padding:.85rem 0;border-top:1px solid var(--line);font-size:.98rem;align-items:center}
+.loc__near li span{color:var(--sand-deep);font-family:var(--f-display);font-style:italic;font-size:.9rem;min-width:1.2rem}
+.loc__map{border-radius:8px;overflow:hidden;box-shadow:var(--shadow);min-height:320px;border:0}
+@media(min-width:900px){.loc__grid{grid-template-columns:.9fr 1.1fr;gap:4rem;align-items:stretch}}
+
+/* FINAL CTA */
+.final{position:relative;color:#fff;text-align:center;padding:110px 0;overflow:hidden}
+.final__bg{position:absolute;inset:0}
+.final__bg img{width:100%;height:100%;object-fit:cover}
+.final__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,35,32,.72),rgba(44,35,32,.82))}
+.final .wrap{position:relative;z-index:2}
+.final h2{font-size:clamp(2.2rem,6vw,3.8rem);margin-bottom:1rem}
+.final h2 em{font-style:italic;color:var(--brass)}
+.final p{max-width:40ch;margin:0 auto 2rem;color:rgba(255,255,255,.85);font-size:1.05rem}
+.final__cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.final__phone{margin-top:1.6rem;font-size:.9rem;letter-spacing:.05em;color:rgba(255,255,255,.8)}
+.final__phone a{color:#fff;font-weight:600}
+
+/* FOOTER */
+.footer{background:var(--clay);color:rgba(245,239,228,.8);padding:64px 0 120px}
+.footer__grid{display:grid;grid-template-columns:1fr;gap:2rem}
+.footer__brand{font-family:var(--f-display);font-size:1.6rem;color:var(--cream);margin-bottom:.6rem}
+.footer h5{font-family:var(--f-body);text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;color:var(--brass);margin-bottom:1rem}
+.footer a:hover{color:var(--cream)}
+.footer__grid p,.footer__grid li{font-size:.92rem;line-height:1.9;list-style:none}
+.footer__legal{border-top:1px solid rgba(245,239,228,.14);margin-top:2.5rem;padding-top:1.5rem;font-size:.78rem;color:rgba(245,239,228,.55);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.6rem}
+@media(min-width:768px){.footer__grid{grid-template-columns:2fr 1fr 1fr}}
+
+/* BOTTOM BOOKING BAR */
+.bookbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;
+  background:rgba(44,35,32,.96);backdrop-filter:blur(8px);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:10px 16px;transform:translateY(120%);transition:transform .5s var(--ease);
+  box-shadow:0 -10px 30px -18px rgba(0,0,0,.7);
+}
+.bookbar.show{transform:translateY(0)}
+.bookbar__info{display:flex;flex-direction:column;line-height:1.15}
+.bookbar__info small{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.bookbar__info b{font-family:var(--f-display);font-size:1rem;font-weight:500}
+.bookbar .btn{padding:.7rem 1.3rem;font-size:.82rem}
+.bookbar__phone{display:none}
+@media(min-width:600px){.bookbar__phone{display:inline-flex;color:#fff;font-weight:600;font-size:.9rem;align-items:center;gap:.4rem}}
+
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px;border-radius:4px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a class="nav__logo" href="#top" aria-label="OKC Hotel home">
+    <img src="https://www.travlu.com/hotel_images/logo/tmpphp96dn8s.png" alt="OKC Hotel logo"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+    <span class="nav__wordmark" style="display:none">OKC Hotel</span>
+  </a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#rooms">Rooms</a>
+    <a href="#included">Amenities</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#location">Location</a>
+  </nav>
+  <div class="nav__right">
+    <a class="nav__phone" href="tel:14056031104" aria-label="Call OKC Hotel">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.9.36 1.78.7 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.27a2 2 0 0 1 2.11-.45c.82.34 1.7.57 2.6.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span class="nav__phone-num">405-603-1104</span>
+    </a>
+    <a class="btn btn-primary" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">Book Now</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero__media">
+    <img id="heroImg" src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-4.jpg" alt="OKC Hotel exterior in Oklahoma City">
+  </div>
+  <div class="hero__panel">
+    <p class="eyebrow">Oklahoma City · 4-Star Hotel</p>
+    <h1>Rest easy in the <em>heart of</em> Oklahoma City.</h1>
+    <p class="hero__sub">Your comfort is our priority. Clean, modern rooms and warm service — minutes from downtown, ready when you are.</p>
+    <div class="hero__cta">
+      <a class="btn btn-primary" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">Check Availability</a>
+      <a class="btn btn-dark" href="#rooms">Explore Rooms</a>
+    </div>
+    <div class="hero__meta">
+      <div><b>3:00 PM</b>Check-in</div>
+      <div><b>11:00 AM</b>Check-out</div>
+      <div><b>Free</b>WiFi &amp; Parking</div>
+    </div>
+    <div class="scrollcue">Scroll</div>
+  </div>
+</section>
+
+<!-- PLACE / WELCOME -->
+<section class="section place">
+  <div class="wrap place__grid">
+    <div class="place__copy reveal">
+      <p class="eyebrow"><span class="section-num">01</span>&nbsp;Welcome</p>
+      <p class="place__statement">A comfortable base for <span>every kind of trip</span> — business, family, or passing through.</p>
+      <p>OKC Hotel sits just off I-40 on South Council Road, putting downtown Oklahoma City, the National Memorial, and the airport corridor all within easy reach. Inside, you'll find spotless non-smoking rooms, a 24-hour front desk, and the kind of straightforward, friendly service that makes a stay feel effortless.</p>
+    </div>
+    <div class="place__media reveal d1">
+      <img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-1.jpg" alt="OKC Hotel building exterior" loading="lazy">
+      <div class="place__badge"><b>4★</b><small>Rated Comfort</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="section rooms" id="rooms">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow"><span class="section-num">02</span>&nbsp;The Rooms</p>
+      <h2>Room to unwind, whatever brings you to town.</h2>
+    </div>
+    <div class="rooms__grid">
+      <article class="room reveal">
+        <div class="room__img"><span class="room__tag">One Large Bed</span>
+          <img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Single-Bedroom-3.jpg" alt="King room with one large bed at OKC Hotel" loading="lazy"></div>
+        <div class="room__body">
+          <h3>King Room</h3>
+          <p>A spacious single-bed room with a flat-screen TV, microwave, and refrigerator — ideal for solo travelers and couples.</p>
+          <a class="room__link" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">View room →</a>
+        </div>
+      </article>
+      <article class="room reveal d1">
+        <div class="room__img"><span class="room__tag">Two Queen Beds</span>
+          <img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Double-Beds-Room-6.jpg" alt="Double queen room at OKC Hotel" loading="lazy"></div>
+        <div class="room__body">
+          <h3>Double Queen Room</h3>
+          <p>Two queen beds with plenty of space — a comfortable choice for families or friends traveling together.</p>
+          <a class="room__link" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">View room →</a>
+        </div>
+      </article>
+      <article class="room reveal d2">
+        <div class="room__img"><span class="room__tag">Family &amp; Accessible</span>
+          <img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Double-Beds-Room-6.jpg" alt="Family and accessible rooms at OKC Hotel" loading="lazy"></div>
+        <div class="room__body">
+          <h3>Family &amp; Accessible Rooms</h3>
+          <p>Extra-roomy family options plus accessible rooms with mobility features — just ask the front desk when you book.</p>
+          <a class="room__link" href="tel:14056031104">Call to reserve →</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDED / AMENITIES -->
+<section class="section included" id="included">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow"><span class="section-num">03</span>&nbsp;What's Included</p>
+      <h2>The essentials, handled — so you don't have to think about them.</h2>
+    </div>
+    <div class="included__grid">
+      <div class="amen reveal"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12" y2="20"/></svg><div><h4>Free WiFi</h4><p>Fast, complimentary internet throughout the hotel.</p></div></div>
+      <div class="amen reveal d1"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="15" height="12" rx="2"/><path d="M16 10h3l3 3v3a1 1 0 0 1-1 1h-2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><div><h4>Free Self Parking</h4><p>On-site parking at no extra charge for every guest.</p></div></div>
+      <div class="amen reveal d2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><div><h4>24-Hour Front Desk</h4><p>Someone's always here — check in late, ask anytime.</p></div></div>
+      <div class="amen reveal"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-5a3 3 0 0 1 6 0v5"/></svg><div><h4>Daily Housekeeping</h4><p>Fresh, tidy rooms cleaned every day of your stay.</p></div></div>
+      <div class="amen reveal d1"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 21v-4h8v4"/><path d="M12 3v4"/></svg><div><h4>In-Room Comforts</h4><p>Flat-screen TV, microwave, refrigerator, and phone.</p></div></div>
+      <div class="amen reveal d2"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><h4>Safe &amp; Secure</h4><p>Key-card access, CCTV in common areas, and smoke alarms.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+  <div class="wrap">
+    <div class="section__head reveal">
+      <p class="eyebrow"><span class="section-num">04</span>&nbsp;A Look Around</p>
+      <h2>See the stay before you arrive.</h2>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="gallery__scroll reveal">
+      <figure><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-4.jpg" alt="OKC Hotel exterior" loading="lazy"></figure>
+      <figure><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Single-Bedroom-3.jpg" alt="King bedroom" loading="lazy"></figure>
+      <figure><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-5.jpg" alt="OKC Hotel grounds" loading="lazy"></figure>
+      <figure><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Double-Beds-Room-6.jpg" alt="Double queen room" loading="lazy"></figure>
+      <figure><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-1.jpg" alt="OKC Hotel building" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="section loc" id="location">
+  <div class="wrap loc__grid">
+    <div class="reveal">
+      <p class="eyebrow"><span class="section-num">05</span>&nbsp;Location</p>
+      <p class="loc__address">301 S Council Rd<br>Oklahoma City, OK 73128</p>
+      <p style="color:var(--clay-soft);max-width:46ch;margin-bottom:1.4rem">Right off I-40 in west Oklahoma City — an easy drive to downtown attractions and the airport.</p>
+      <ul class="loc__near">
+        <li><span>→</span> Oklahoma City National Memorial &amp; Museum</li>
+        <li><span>→</span> Myriad Botanical Gardens</li>
+        <li><span>→</span> Oklahoma City Museum of Art</li>
+        <li><span>→</span> Oklahoma City Zoo</li>
+      </ul>
+      <a class="btn btn-primary" style="margin-top:1.6rem" href="https://www.google.com/maps/search/?api=1&query=OKC+Hotel+301+S+Council+Rd+Oklahoma+City+OK+73128" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <iframe class="loc__map reveal d1" title="Map to OKC Hotel"
+      src="https://www.google.com/maps?q=301+S+Council+Rd,+Oklahoma+City,+OK+73128&output=embed"
+      loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="final__bg"><img src="https://www.travlu.com/hotel_images/hotel_banner/okchotel/OKC-Hotel-Exterior-5.jpg" alt="OKC Hotel at a glance"></div>
+  <div class="wrap">
+    <h2>Ready for an easy stay in <em>Oklahoma City?</em></h2>
+    <p>Comfortable rooms, honest value, and a warm welcome are waiting.</p>
+    <div class="final__cta">
+      <a class="btn btn-primary" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">Book Your Stay</a>
+      <a class="btn btn-ghost" href="tel:14056031104">Call 405-603-1104</a>
+    </div>
+    <p class="final__phone">Questions? Call us anytime at <a href="tel:14056031104">405-603-1104</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer__grid">
+    <div>
+      <div class="footer__brand">OKC Hotel</div>
+      <p>301 S Council Rd<br>Oklahoma City, OK 73128</p>
+      <p><a href="tel:14056031104">405-603-1104</a></p>
+    </div>
+    <div>
+      <h5>Explore</h5>
+      <ul>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#included">Amenities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#location">Location</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Good to Know</h5>
+      <ul>
+        <li>Check-in: 3:00 PM</li>
+        <li>Check-out: 11:00 AM</li>
+        <li>Non-smoking property</li>
+        <li>Free WiFi &amp; parking</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer__legal">
+    <span>© 2026 OKC Hotel. All rights reserved.</span>
+    <span>Concept design by Bofill Technologies</span>
+  </div>
+</footer>
+
+<!-- BOTTOM BOOKING BAR -->
+<div class="bookbar" id="bookbar">
+  <div class="bookbar__info"><small>OKC Hotel</small><b>From comfort to convenience</b></div>
+  <div style="display:flex;align-items:center;gap:1rem">
+    <a class="bookbar__phone" href="tel:14056031104">405-603-1104</a>
+    <a class="btn btn-primary" href="https://www.okchoteloklahomacity.com/" target="_blank" rel="noopener">Book Now</a>
+  </div>
+</div>
+
+<script>
+// Sticky nav
+const nav=document.getElementById('nav');
+const bookbar=document.getElementById('bookbar');
+const onScroll=()=>{
+  const y=window.scrollY;
+  nav.classList.toggle('scrolled',y>40);
+  bookbar.classList.toggle('show',y>640);
+};
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+// Hero parallax (subtle)
+const heroImg=document.getElementById('heroImg');
+if(heroImg && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+  window.addEventListener('scroll',()=>{
+    const y=window.scrollY;
+    if(y<800) heroImg.style.transform='translateY('+(y*0.12)+'px)';
+  },{passive:true});
+}
+
+// Scroll reveals (with graceful fallback if IntersectionObserver is unavailable)
+const revealEls=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.14,rootMargin:'0px 0px -8% 0px'});
+  revealEls.forEach(el=>io.observe(el));
+}else{
+  revealEls.forEach(el=>el.classList.add('in'));
+}
+</script>
+</body>
+</html>
