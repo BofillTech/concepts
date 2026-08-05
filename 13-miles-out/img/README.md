@@ -13,10 +13,11 @@ are Beach House images for which no local file exists.
 
 | File | From | Shows | Used as |
 |---|---|---|---|
-| `macgregor-air-tall.jpg` | `DJI_0153` | The whole MacGregor — porch, Mansard roof, lawn — with the New Harbor mooring field stacked above it. **Cropped 4:5 from the original**, box `(1320, 100, 3400, 2700)` | **Hero collage, tall left plate** |
-| `macgregor-air-harbour.jpg` | `DJI_0156` | The house on its bluff with the marina and the full mooring field beyond | **MacGregor card lead** |
-| `scene-sunset.jpg` | `DJI_0120` | Sunset: the Great Salt Pond, the town, the breakwater and the open ocean | **"The View" parallax band** |
-| `scene-harbour.jpg` | `DJI_0148` | The house, the tent on the lawn and the harbour thick with sailboats | **Final CTA parallax band** |
+| `scene-house.jpg` | `DJI_0153` | The whole MacGregor with the mooring field behind it | **Hero slide 1** |
+| `scene-harbour.jpg` | `DJI_0148` | The house and lawn above a harbour thick with sailboats | **Hero slide 2** |
+| `scene-sunset.jpg` | `DJI_0120` | Sunset over the Salt Pond, the town and the open ocean | **Hero slide 3** + the final CTA band |
+| `macgregor-air-tall.jpg` | `DJI_0153` | 4:5 crop, box `(1320, 100, 3400, 2700)` | *held in reserve since the hero went full-bleed* |
+| `macgregor-air-harbour.jpg` | `DJI_0156` | The house on its bluff with the marina and the full mooring field beyond | **"Graceful porches, commanding views" band** |
 
 All four are unmistakably **The MacGregor House**. None of them shows The Beach
 House — do not caption them as such.
@@ -27,7 +28,7 @@ House — do not caption them as such.
 |---|---|---|
 | `macgregor-porch.jpg` | The MacGregor wrap-around porch looking out to the ocean | Gallery *(moved out of the hero when the drone set arrived)* |
 | `macgregor-sunset.jpg` | The MacGregor alone on its lawn at sunset | Hero collage inset, over the seam |
-| `macgregor-east.jpg` | The MacGregor front elevation, Mansard roof, blue sky | *held in reserve — 400x300, superseded by the drone set* |
+| `macgregor-east.jpg` | The MacGregor front elevation, Mansard roof, blue sky | MacGregor card lead — 400x300, displayed at ~326px |
 | `macgregor-living.jpg` | MacGregor living room, navy sectional, printed map | MacGregor card, second plate |
 | `macgregor-kitchen.jpg` | MacGregor kitchen, double sink, stacked washer/dryer | Gallery |
 | `macgregor-bath.jpg` | MacGregor bath under the eaves | *held in reserve — not currently placed* |
@@ -38,7 +39,7 @@ House — do not caption them as such.
 | `beach-bedroom-pink.jpg` | Bedroom with three windows + painted canvas | Gallery |
 | `beach-shower.jpg` | Tiled walk-in shower, pedestal sink, nautical curtain | Gallery |
 | `beach-bath.jpg` | Bath with marble hex-tile floor | *held in reserve — a third bathroom was one too many* |
-| `aerial-point.jpg` | Aerial: both houses on the point, pond, beach, ocean | *held in reserve — 776px, superseded by the drone set* |
+| `aerial-point.jpg` | Aerial: both houses on the point, pond, beach, ocean | *held in reserve — 776px, too soft for a full-bleed band* |
 | `aerial-crescent.jpg` | Aerial: Crescent Beach curve and Old Harbour | **"Crescent Beach" parallax band** |
 
 ## Still hotlinked from Weebly

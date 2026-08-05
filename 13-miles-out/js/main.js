@@ -104,6 +104,47 @@
   }
 
   /* ---------------------------------------------------------------------
+     3b. Hero photograph slider — crossfade, with a dot picker. Autoplay
+     stops as soon as the visitor picks a frame, and never runs at all
+     under prefers-reduced-motion or when the tab is hidden.
+     --------------------------------------------------------------------- */
+  (function heroSlider() {
+    const stage = document.querySelector('[data-slider]');
+    if (!stage) return;
+    const slides = Array.prototype.slice.call(stage.querySelectorAll('[data-slide]'));
+    const dots = Array.prototype.slice.call(document.querySelectorAll('[data-dot]'));
+    if (slides.length < 2) return;
+
+    let index = 0;
+    let timer = null;
+    const calm = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function show(next) {
+      index = (next + slides.length) % slides.length;
+      slides.forEach(function (s, i) { s.classList.toggle('is-live', i === index); });
+      dots.forEach(function (d, i) { d.setAttribute('aria-selected', i === index ? 'true' : 'false'); });
+    }
+
+    function start() {
+      if (calm.matches || timer) return;
+      timer = window.setInterval(function () { show(index + 1); }, 6500);
+    }
+    function stop() {
+      if (timer) { window.clearInterval(timer); timer = null; }
+    }
+
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { stop(); show(i); });
+    });
+    stage.addEventListener('mouseenter', stop);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else { start(); }
+    });
+
+    start();
+  })();
+
+  /* ---------------------------------------------------------------------
      4. Booking bar
      The property rents Sunday-to-Sunday during high and most of shoulder
      season, so the bar asks for an arriving SUNDAY + a number of weeks
