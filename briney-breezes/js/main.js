@@ -126,3 +126,15 @@
     go(0);
   });
 })();
+
+
+/* ---- Best Rate flyout ---- */
+(function(){
+  "use strict";
+  var br=document.getElementById('bestrate'); if(!br) return;
+  var tab=document.getElementById('bestrateTab'), close=document.getElementById('bestrateClose');
+  function open(){br.classList.add('is-open');tab.setAttribute('aria-expanded','true');}
+  function shut(){br.classList.remove('is-open');tab.setAttribute('aria-expanded','false');}
+  tab.addEventListener('click',function(){br.classList.contains('is-open')?shut():open();});
+  close.addEventListener('click',shut);
+})();

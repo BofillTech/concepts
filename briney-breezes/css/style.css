@@ -190,7 +190,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 .final__cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
 
 /* FOOTER */
-.foot{background:var(--navy-deep);color:#cdd9d5;padding:4rem 0 2rem}
+.foot{background:#2C4E86;color:#e4ecf7;padding:4rem 0 2rem}
 .foot__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.4rem;margin-bottom:2.8rem}
 .foot__logo{height:54px;width:auto;margin-bottom:1.1rem}
 .foot__brand p{font-size:.92rem;line-height:1.7;max-width:30ch;color:#9fb2ad}
@@ -378,3 +378,65 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 .carousel__thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .carousel__thumb.is-active{border-color:var(--accent);opacity:1}
 .carousel__thumb:hover{opacity:1}
+
+
+/* ===== Client meeting revisions ===== */
+/* remove drop-shadow effect from all photos */
+.amen-item__img,.feature__media,.carousel__frame,.room,.welcome__media,.gallery-page__item{box-shadow:none}
+.room{border:1px solid var(--line)}
+/* Book Now buttons: white outline for visibility */
+.nav .btn--accent,.drawer .btn--accent{border:2px solid #fff;box-shadow:0 2px 12px -3px rgba(16,38,52,.35)}
+/* hero scrim keeps the logo + text legible over any photo */
+.hero__scrim{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,17,46,.55) 0%,rgba(0,17,46,.12) 24%,rgba(0,17,46,.10) 60%,rgba(0,17,46,.34) 100%)}
+.hero__slider{z-index:0}
+/* Gift Cards nav highlight */
+.menu-item--gift a{color:var(--accent) !important;font-weight:700}
+.menu-item--gift a:hover{color:var(--accent-deep) !important}
+/* simple tiled property gallery */
+.tiled{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tiled__item{aspect-ratio:4/3;overflow:hidden;border-radius:10px}
+.tiled__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.tiled__item:hover img{transform:scale(1.04)}
+@media(max-width:820px){.tiled{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.tiled{grid-template-columns:1fr}}
+/* rooms teaser */
+.teaser__photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2rem}
+.teaser__photo{aspect-ratio:4/3;overflow:hidden;border-radius:10px}
+.teaser__photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.teaser__photo:hover img{transform:scale(1.04)}
+@media(max-width:700px){.teaser__photos{grid-template-columns:1fr 1fr}.teaser__photo:last-child{display:none}}
+/* email signup section */
+.signup{background:var(--blue-tint);padding:clamp(3.4rem,7vw,5.5rem) 0}
+.signup__box{max-width:640px;margin:0 auto;text-align:center}
+.signup__form{display:flex;gap:.7rem;margin-top:1.6rem}
+.signup__form input{flex:1;padding:.95rem 1.1rem;border:1px solid var(--line);border-radius:40px;font-family:var(--body);font-size:1rem;background:#fff}
+.signup__form input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(46,91,208,.15)}
+.signup__note{font-size:.82rem;color:var(--muted);margin-top:.9rem}
+@media(max-width:540px){.signup__form{flex-direction:column}.signup__form .btn{width:100%}}
+/* Best Rate flyout */
+.bestrate{position:fixed;top:38%;right:0;z-index:115;transform:translateX(calc(100% - 42px));transition:transform .4s cubic-bezier(.2,.7,.3,1)}
+.bestrate.is-open{transform:translateX(0)}
+.bestrate__tab{position:absolute;left:0;top:0;transform:translateX(-100%);height:100%;width:42px;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:10px 0 0 10px;font-family:var(--body);font-weight:700;font-size:.72rem;letter-spacing:.14em;writing-mode:vertical-rl;text-orientation:mixed;display:flex;align-items:center;justify-content:center;gap:.4rem;box-shadow:-6px 6px 20px -8px rgba(16,38,52,.4)}
+.bestrate__panel{width:290px;max-width:86vw;background:#fff;border:1px solid var(--line);border-right:0;border-radius:10px 0 0 10px;box-shadow:-14px 14px 40px -18px rgba(16,38,52,.4);padding:1.4rem 1.5rem}
+.bestrate__panel h3{font-family:var(--display);color:var(--navy);font-size:1.5rem;line-height:1.1;margin-bottom:.5rem}
+.bestrate__panel p{font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.bestrate__promo{display:flex;align-items:center;gap:.5rem;background:var(--blue-tint);border:1px dashed var(--blue-line);border-radius:8px;padding:.6rem .8rem;margin-bottom:1rem}
+.bestrate__promo code{font-weight:700;color:var(--accent-deep);letter-spacing:.05em}
+.bestrate__close{position:absolute;top:8px;right:10px;background:none;border:0;font-size:1.4rem;color:var(--muted);cursor:pointer;line-height:1}
+@media(max-width:600px){.bestrate{top:auto;bottom:78px}}
+/* merch / gift cards / policies */
+.merch-name{font-family:var(--display);color:var(--navy);font-size:1.4rem;margin-bottom:.4rem}
+.gc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:640px;margin:0 auto}
+.gc-amount{aspect-ratio:3/2;border:2px solid var(--blue-line);background:var(--paper-2);border-radius:12px;font-family:var(--display);font-size:1.8rem;color:var(--navy);cursor:pointer;transition:border-color .2s,background .2s,transform .2s}
+.gc-amount:hover,.gc-amount.is-sel{border-color:var(--accent);background:#fff;transform:translateY(-2px)}
+.gc-cta{text-align:center;margin-top:2.4rem}
+.policy{padding:1.4rem 0;border-bottom:1px solid var(--line)}
+.policy:last-of-type{border-bottom:0}
+.policy h2{font-family:var(--display);color:var(--navy);font-size:1.5rem;margin-bottom:.4rem;line-height:1.15}
+.policy p{color:var(--muted);line-height:1.75}
+.policy-note{color:var(--muted);font-size:.85rem;margin-top:1.6rem}
+.narrow{max-width:820px}
+@media(max-width:520px){.gc-grid{grid-template-columns:repeat(2,1fr)}}
+
+.signup__box h2{font-family:var(--display);color:var(--navy);font-size:clamp(2rem,3.8vw,2.9rem);margin:.4rem 0 .3rem}
+.signup__box p{color:var(--muted);line-height:1.7}
