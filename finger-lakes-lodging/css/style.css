@@ -1,0 +1,442 @@
+/* ==========================================================================
+   Finger Lakes Lodging — concept stylesheet
+   Palette sampled from the property's own world: camp spruce, cast-iron
+   stove ember, birch grey. Mobile-first. BEM-flavoured single-hyphen classes.
+   ========================================================================== */
+
+:root{
+  /* colour */
+  --spruce:#24382C;
+  --spruce-deep:#182619;
+  --pine:#3C5A40;
+  --ember:#B5411C;
+  --ember-bright:#D25327;
+  --birch:#EFF1EA;
+  --birch-2:#E3E6DC;
+  --ash:#D2D6C8;
+  --ink:#23231F;
+  --stone:#6E7566;
+  --paper:#FAFBF6;
+
+  /* type */
+  --display:"Zilla Slab",Georgia,serif;
+  --body:"Karla","Helvetica Neue",Arial,sans-serif;
+
+  /* metrics */
+  --pad:clamp(20px,5vw,72px);
+  --maxw:1240px;
+  --sec-y:clamp(56px,9vw,132px);
+  --bar-h:78px;
+}
+
+/* ---------- reset ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--birch);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:var(--bar-h);
+}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.06;letter-spacing:-.01em;margin:0}
+p{margin:0 0 1.05em}
+p:last-child{margin-bottom:0}
+img{display:block;max-width:100%;height:auto}
+img[hidden],[hidden]{display:none}
+figure{margin:0}
+ul{margin:0;padding:0;list-style:none}
+address{font-style:normal}
+a{color:inherit}
+hr{border:0;margin:0}
+iframe{border:0;display:block}
+:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+
+.skip-link{
+  position:absolute;left:-9999px;top:0;z-index:400;
+  background:var(--ember);color:#fff;padding:12px 18px;font-weight:600;
+}
+.skip-link:focus{left:8px;top:8px}
+.is-locked{overflow:hidden}
+
+/* ---------- signature: the ember rule ---------- */
+/* A hairline that runs cold ash at the ends and warms to ember at the centre —
+   every room in this building has a fire in it. Used three times only. */
+.ember-rule{
+  height:2px;margin:clamp(26px,4vw,44px) 0 0;
+  background:linear-gradient(90deg,var(--ash) 0%,var(--ash) 26%,var(--ember) 50%,var(--ash) 74%,var(--ash) 100%);
+}
+.ember-glyph{
+  display:inline-block;width:22px;height:1px;margin-right:10px;vertical-align:middle;
+  background:linear-gradient(90deg,var(--ash),var(--ember));
+}
+.eyebrow-light .ember-glyph{background:linear-gradient(90deg,rgba(255,255,255,.35),var(--ember-bright))}
+
+/* ---------- type helpers ---------- */
+.eyebrow{
+  font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--pine);margin:0 0 18px;
+}
+.eyebrow-light{color:rgba(239,241,234,.72)}
+
+.section{padding:var(--sec-y) 0}
+.section-tint{background:var(--birch-2)}
+.section-dark{background:var(--spruce);color:var(--birch)}
+.section-head{max-width:34rem}
+.section-title{font-size:clamp(2rem,5.2vw,3.5rem)}
+.section-title-light{color:var(--paper)}
+.section-lede{margin-top:18px;font-size:1.06rem;color:var(--stone)}
+.section-dark .section-lede{color:rgba(239,241,234,.76)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:var(--body);font-size:14px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;text-decoration:none;
+  padding:13px 22px;border:2px solid transparent;border-radius:2px;
+  transition:background .22s ease,color .22s ease,border-color .22s ease,transform .22s ease;
+}
+.btn-lg{padding:17px 30px;font-size:15px}
+.btn-ember{background:var(--ember);color:#fff;border-color:var(--ember)}
+.btn-ember:hover{background:var(--ember-bright);border-color:var(--ember-bright);transform:translateY(-2px)}
+.btn-line{background:transparent;color:var(--spruce);border-color:var(--spruce)}
+.btn-line:hover{background:var(--spruce);color:var(--paper)}
+.btn-line-light{color:var(--paper);border-color:rgba(250,251,246,.6)}
+.btn-line-light:hover{background:var(--paper);color:var(--spruce)}
+
+.link-ember{
+  display:inline-block;font-weight:700;font-size:14px;letter-spacing:.04em;
+  text-transform:uppercase;color:var(--ember);text-decoration:none;
+  border-bottom:2px solid rgba(181,65,28,.35);padding-bottom:3px;
+  transition:border-color .22s ease;
+}
+.link-ember:hover{border-bottom-color:var(--ember)}
+
+.call-circle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:42px;height:42px;flex:0 0 42px;border-radius:50%;
+  border:1.5px solid var(--ash);color:var(--spruce);
+  transition:border-color .22s ease,color .22s ease;
+}
+.call-circle svg{width:19px;height:19px;fill:currentColor}
+.call-circle:hover{border-color:var(--ember);color:var(--ember)}
+.call-circle-light{border-color:rgba(239,241,234,.4);color:var(--paper)}
+.call-circle-light:hover{border-color:var(--ember-bright);color:var(--ember-bright)}
+
+/* ==========================================================================
+   NAV — centred split-logo
+   ========================================================================== */
+.site-header{
+  position:sticky;top:0;z-index:200;
+  background:var(--paper);
+  border-bottom:1px solid var(--birch-2);
+  transition:box-shadow .3s ease;
+}
+.site-header.is-scrolled{box-shadow:0 8px 26px -18px rgba(24,38,25,.55)}
+.site-header-inner{
+  max-width:var(--maxw);margin:0 auto;padding:10px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-primary{display:none}
+.nav-primary .menu{display:flex;align-items:center;gap:26px}
+.nav-primary .menu-item a{
+  font-size:13px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  text-decoration:none;color:var(--spruce);position:relative;padding-bottom:4px;
+}
+.nav-primary .menu-item a::after{
+  content:"";position:absolute;left:0;bottom:0;height:2px;width:0;
+  background:var(--ember);transition:width .26s ease;
+}
+.nav-primary .menu-item a:hover::after{width:100%}
+
+.site-brand{display:flex;align-items:center;text-decoration:none;flex:0 1 auto;min-width:0}
+.site-brand-mark{width:auto;height:36px}
+.site-brand-fallback{
+  font-family:var(--display);font-size:15px;font-weight:600;color:var(--spruce);
+  letter-spacing:.01em;line-height:1.12;
+}
+.site-header-actions{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.btn-book{padding:11px 15px;font-size:12px}
+.btn-book-more{display:none}
+
+.burger{
+  display:flex;flex-direction:column;justify-content:center;gap:5px;
+  width:42px;height:42px;padding:0 9px;background:none;border:1.5px solid var(--ash);
+  border-radius:50%;cursor:pointer;
+}
+.burger-bar{display:block;height:2px;width:100%;background:var(--spruce)}
+
+/* ---------- drawer ---------- */
+.drawer{
+  position:fixed;inset:0;z-index:300;background:var(--spruce);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:0 var(--pad);
+}
+.drawer[hidden]{display:none}
+.drawer-close{
+  position:absolute;top:14px;right:var(--pad);
+  background:none;border:0;color:var(--paper);font-size:40px;line-height:1;cursor:pointer;
+}
+.drawer-nav .menu-item a{
+  display:block;padding:14px 0;text-decoration:none;color:var(--paper);
+  font-family:var(--display);font-size:clamp(1.6rem,7vw,2.2rem);
+  border-bottom:1px solid rgba(239,241,234,.14);
+}
+.drawer-foot{margin-top:32px;display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.drawer-phone{
+  font-family:var(--display);font-size:1.3rem;color:var(--ember-bright);text-decoration:none;
+}
+
+/* ==========================================================================
+   HERO — off-centre framed
+   ========================================================================== */
+.hero{padding:clamp(40px,7vw,84px) 0 0;background:var(--birch)}
+.hero-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 var(--pad);
+  display:grid;grid-template-columns:1fr;gap:clamp(28px,5vw,48px);
+}
+.hero-title{font-size:clamp(2.6rem,10vw,5.4rem);letter-spacing:-.025em}
+.hero-title em{font-style:normal;color:var(--ember)}
+.hero-lede{margin-top:22px;font-size:1.1rem;color:var(--stone);max-width:38ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-cta-centre{justify-content:center}
+
+.hero-plate{position:relative;min-width:0}
+.hero-plate img{
+  width:100%;aspect-ratio:5/4;object-fit:cover;
+  border:10px solid var(--paper);
+  box-shadow:0 26px 60px -34px rgba(24,38,25,.7);
+}
+
+.fact-row{
+  max-width:var(--maxw);margin:clamp(40px,6vw,72px) auto 0;padding:0 var(--pad);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:22px 18px;
+}
+.fact{border-top:2px solid var(--ash);padding-top:14px}
+.fact-num{
+  display:block;font-family:var(--display);font-size:clamp(1.7rem,4.4vw,2.4rem);
+  font-weight:600;color:var(--pine);line-height:1;
+}
+.fact-label{display:block;margin-top:8px;font-size:.86rem;color:var(--stone);line-height:1.45}
+
+/* ==========================================================================
+   BAND — full-bleed photograph, copy in a solid panel (no scrim on any photo)
+   ========================================================================== */
+.band{position:relative;margin-top:clamp(56px,9vw,120px)}
+.band-photo img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.band-panel{
+  background:var(--spruce);color:var(--birch);
+  padding:clamp(30px,6vw,54px) var(--pad);
+}
+.band-panel p{color:rgba(239,241,234,.82)}
+.band-title{font-size:clamp(1.9rem,5vw,3.2rem);color:var(--paper);margin-bottom:18px}
+.band-panel-centre{text-align:center}
+.band-panel-centre p{margin-left:auto;margin-right:auto;max-width:46ch}
+.band-cta{margin-top:0}
+
+/* ==========================================================================
+   ROOMS — single-column editorial rows
+   ========================================================================== */
+.room{
+  display:grid;grid-template-columns:1fr;gap:clamp(20px,3vw,40px);
+  align-items:center;padding:clamp(34px,5vw,58px) 0;
+  border-bottom:1px solid var(--ash);
+}
+.room:last-child{border-bottom:0}
+.room-photo{min-width:0}
+.room-photo img{width:100%;aspect-ratio:7/5;object-fit:cover;border:8px solid var(--paper);box-shadow:0 20px 44px -32px rgba(24,38,25,.7)}
+.room-body{min-width:0}
+.room-kicker{
+  font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ember);margin:0 0 10px;
+}
+.room-name{font-size:clamp(1.5rem,3.6vw,2.2rem);margin-bottom:14px}
+.room-body p{color:var(--stone)}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 20px}
+.chip{
+  font-size:12px;font-weight:600;letter-spacing:.05em;
+  border:1px solid var(--ash);border-radius:2px;padding:6px 11px;color:var(--pine);
+}
+
+/* ==========================================================================
+   AMENITIES
+   ========================================================================== */
+.amenity-grid{
+  margin-top:clamp(30px,5vw,52px);
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:rgba(239,241,234,.16);border:1px solid rgba(239,241,234,.16);
+}
+.amenity{
+  background:var(--spruce);padding:clamp(18px,3vw,28px);
+  display:flex;flex-direction:column;gap:12px;min-height:132px;
+}
+.amenity-icon{
+  width:28px;height:28px;fill:none;stroke:var(--ember-bright);
+  stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+}
+.amenity-name{font-size:.92rem;line-height:1.4;color:var(--paper)}
+
+/* ==========================================================================
+   SPLIT (dogs) / GROUPS
+   ========================================================================== */
+.split-inner{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vw,52px);align-items:center}
+.split-photo{min-width:0}
+.split-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border:8px solid var(--paper);box-shadow:0 20px 44px -32px rgba(24,38,25,.7)}
+.split-body p{color:var(--stone)}
+.split-body .section-title{margin-bottom:18px}
+.fineprint{font-size:.9rem;color:var(--stone);border-left:2px solid var(--ember);padding-left:14px;margin-bottom:24px}
+
+.groups-inner{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vw,52px);align-items:center}
+.groups-inner p{color:var(--stone)}
+.groups-photo{min-width:0}
+.groups-photo img{width:100%;aspect-ratio:3/2;object-fit:cover;border:8px solid var(--paper);box-shadow:0 20px 44px -32px rgba(24,38,25,.7)}
+
+/* ==========================================================================
+   VISIT
+   ========================================================================== */
+.visit-grid{
+  margin-top:clamp(30px,5vw,52px);
+  display:grid;grid-template-columns:1fr;gap:clamp(26px,4vw,48px);
+}
+.map-frame{min-width:0;border:8px solid var(--paper);box-shadow:0 20px 44px -32px rgba(24,38,25,.7);background:var(--birch-2)}
+.map-frame iframe{width:100%;height:340px}
+.visit-heading{
+  font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--pine);margin:26px 0 10px;
+}
+.visit-heading:first-child{margin-top:0}
+.visit-address{font-family:var(--display);font-size:1.25rem;line-height:1.4}
+.visit-body p{color:var(--stone)}
+.tick-list li{position:relative;padding-left:22px;margin-bottom:9px;color:var(--stone);font-size:.96rem}
+.tick-list li::before{content:"";position:absolute;left:0;top:.72em;width:11px;height:2px;background:var(--ember)}
+
+/* ==========================================================================
+   GUEST NOTES
+   ========================================================================== */
+.note-grid{
+  margin-top:clamp(28px,4vw,48px);
+  display:grid;grid-template-columns:1fr;gap:20px;
+}
+.note{border-top:2px solid rgba(239,241,234,.22);padding-top:18px}
+.note p{color:rgba(239,241,234,.84);margin:0}
+.disclosure{margin-top:26px;font-size:.8rem;color:rgba(239,241,234,.5)}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer{background:var(--spruce-deep);color:rgba(239,241,234,.8);padding:clamp(48px,7vw,84px) 0 28px}
+.footer-top{display:grid;grid-template-columns:1fr;gap:36px}
+.footer-mark{height:52px;width:auto;background:var(--paper);padding:6px 10px}
+.footer-blurb{margin-top:18px;font-size:.94rem;max-width:34ch}
+.social-row{display:flex;gap:18px;margin-top:18px}
+.social-row a{font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--ember-bright)}
+.footer-heading{
+  font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(239,241,234,.55);margin:0 0 14px;
+}
+.footer-list li{margin-bottom:10px}
+.footer-list a{font-size:.95rem;text-decoration:none;color:rgba(239,241,234,.85)}
+.footer-list a:hover{color:var(--ember-bright)}
+.footer-address{font-size:.95rem;line-height:1.6;margin-bottom:16px}
+.footer-bottom{
+  margin-top:44px;padding-top:22px;border-top:1px solid rgba(239,241,234,.14);
+  display:flex;flex-direction:column;gap:8px;font-size:.8rem;color:rgba(239,241,234,.5);
+}
+.footer-bottom p{margin:0}
+
+/* ==========================================================================
+   BOOKING BAR
+   ========================================================================== */
+.booking-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:180;
+  background:var(--spruce);
+  border-top:2px solid transparent;
+  border-image:linear-gradient(90deg,var(--pine) 0%,var(--ember) 50%,var(--pine) 100%) 1;
+  transform:translateY(110%);transition:transform .4s ease;
+}
+.booking-bar.is-visible{transform:translateY(0)}
+.booking-bar-inner{
+  max-width:var(--maxw);margin:0 auto;padding:10px var(--pad);
+  display:flex;align-items:center;gap:10px;
+}
+.booking-label{display:none}
+.booking-fields{display:flex;gap:8px;flex:1 1 auto;min-width:0}
+.field{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1 1 0}
+.field-guests{display:none}
+.field-label{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(239,241,234,.6)}
+.field input,.field select{
+  font-family:var(--body);font-size:14px;color:var(--paper);
+  background:rgba(255,255,255,.06);border:1px solid rgba(239,241,234,.24);
+  border-radius:2px;padding:8px 9px;width:100%;min-width:0;
+}
+.booking-go{flex:0 0 auto}
+
+/* ==========================================================================
+   MOTION — subtle fade
+   ========================================================================== */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.is-in{opacity:1;transform:none}
+.no-js .reveal{opacity:1;transform:none}
+
+/* ==========================================================================
+   BREAKPOINTS
+   ========================================================================== */
+@media (min-width:560px){
+  .booking-label{
+    display:block;font-family:var(--display);font-size:1rem;color:var(--paper);
+    margin:0;flex:0 0 auto;padding-right:6px;
+  }
+  .field-guests{display:flex;flex:0 0 82px}
+  .note-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (min-width:760px){
+  .amenity-grid{grid-template-columns:repeat(4,1fr)}
+  .fact-row{grid-template-columns:repeat(4,1fr)}
+  .footer-top{grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+  .footer-bottom{flex-direction:row;justify-content:space-between;align-items:center}
+  .note-grid{grid-template-columns:repeat(3,1fr)}
+  .split-inner{grid-template-columns:0.85fr 1.15fr}
+  .groups-inner{grid-template-columns:1fr 1fr}
+  .visit-grid{grid-template-columns:1.1fr .9fr}
+  .map-frame iframe{height:420px}
+  .band-panel{padding-left:max(var(--pad),calc((100vw - var(--maxw))/2 + var(--pad)));padding-right:max(var(--pad),calc((100vw - var(--maxw))/2 + var(--pad)))}
+  .band-panel p{max-width:52ch}
+  .band-panel-centre p{max-width:46ch}
+  .room{grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,56px)}
+  .room-flip .room-photo{order:2}
+}
+
+@media (min-width:1040px){
+  :root{--bar-h:70px}
+  .nav-primary{display:block}
+  .btn-book{padding:13px 22px;font-size:14px}
+  .btn-book-more{display:inline}
+  .burger{display:none}
+  .site-brand-mark{height:56px}
+  .site-brand-fallback{font-size:19px;white-space:nowrap}
+  .hero{padding-top:clamp(52px,6vw,92px)}
+  .hero-inner{grid-template-columns:1fr 1.08fr;align-items:center;gap:clamp(36px,5vw,72px)}
+  .hero-plate{margin-right:calc(var(--pad) * -1)}
+  .hero-plate img{aspect-ratio:4/3}
+  .band-photo img{aspect-ratio:21/9}
+  .band-panel{
+    position:absolute;bottom:0;left:0;
+    width:min(560px,46vw);
+    padding:clamp(34px,3vw,50px);
+  }
+  .band-cta .band-panel{left:50%;transform:translateX(-50%);width:min(680px,60vw);bottom:clamp(30px,5vw,70px)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important;transition:none !important}
+  .reveal{opacity:1;transform:none}
+  .booking-bar{transform:translateY(0)}
+}
