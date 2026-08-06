@@ -113,6 +113,7 @@
         thumbs=c.querySelectorAll('.carousel__thumb'),
         count=c.querySelector('.carousel__count'),
         i=0, n=slides.length;
+    if(!track || n===0) return;
     function go(k){
       i=(k+n)%n;
       track.style.transform='translateX(-'+(i*100)+'%)';
