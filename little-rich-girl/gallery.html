@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Private Events — Little Rich Girl, Flagstaff AZ</title>
-<meta name="description" content="Private events at Little Rich Girl. A velvet semi-private lounge, a private dining room, or a full buyout of the speakeasy — beneath Pompette in downtown Flagstaff.">
+<title>Gallery — Little Rich Girl, Flagstaff AZ</title>
+<meta name="description" content="A mood-board look at Little Rich Girl, the cocktail bar opening beneath Pompette Bistro in downtown Flagstaff.">
 <style>
   /* Self-hosted fonts — inlined for offline reliability and zero font-flicker */
   @font-face {
@@ -1141,7 +1141,7 @@
   body { padding-bottom: 56px; }
 </style>
 <style>
-  /* Events page specific */
+  /* Gallery page specific */
   .page-hero {
     background: var(--oxblood-deep);
     color: var(--pink);
@@ -1152,7 +1152,7 @@
   .page-hero::before {
     content: "";
     position: absolute; inset: 0;
-    background: radial-gradient(circle at 20% 30%, rgba(253,42,61,0.15), transparent 60%);
+    background: radial-gradient(circle at 60% 30%, rgba(253,42,61,0.15), transparent 60%);
     pointer-events: none;
   }
   .page-hero .eyebrow {
@@ -1181,87 +1181,72 @@
   }
   @media (max-width: 720px) { .page-hero { padding: 60px 20px 50px; } }
 
-  /* Space cards */
-  .spaces {
+  /* Masonry gallery */
+  .gallery-wrap {
     background: var(--oxblood);
-    padding: 100px 60px;
+    padding: 80px 40px 100px;
   }
-  .spaces-intro {
-    max-width: 640px; margin: 0 auto 72px; text-align: center;
-    color: var(--pink);
+  .gallery-masonry {
+    column-count: 3;
+    column-gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
   }
-  .spaces-intro .script {
-    font-size: clamp(40px, 5vw, 56px); color: var(--cherry); line-height: 1;
-  }
-  .spaces-intro p { margin-top: 18px; font-size: 16px; line-height: 1.6; opacity: 0.85; }
-  .space-grid { display: grid; gap: 40px; max-width: 1180px; margin: 0 auto; }
-  .space-card {
-    display: grid;
-    grid-template-columns: minmax(280px, 1fr) 2fr;
-    gap: 40px;
-    background: var(--oxblood-deep);
-    border: 1px solid rgba(254,214,214,0.08);
+  .gallery-masonry figure {
+    break-inside: avoid;
+    margin: 0 0 16px;
+    position: relative;
     overflow: hidden;
+    background: var(--oxblood-deep);
+    line-height: 0;
   }
-  .sc-visual {
-    background: linear-gradient(135deg, var(--cherry) 0%, var(--oxblood) 100%);
-    color: var(--cream);
-    padding: 44px 36px;
-    display: flex; flex-direction: column; justify-content: space-between;
-    min-height: 300px; position: relative;
+  .gallery-masonry img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform .6s ease, opacity .3s;
+    opacity: 0.92;
   }
-  .sc-roman {
-    font-family: 'Archivo Black', system-ui, sans-serif;
-    font-size: 72px; line-height: 1; opacity: 0.35;
+  .gallery-masonry figure:hover img {
+    transform: scale(1.03);
+    opacity: 1;
   }
-  .sc-frenchname {
-    font-family: 'Italianno', cursive;
-    font-size: 56px; line-height: 1; letter-spacing: 0;
+  .gallery-masonry figcaption {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 30px 20px 16px;
+    background: linear-gradient(to top, rgba(58,4,7,0.9), transparent);
+    color: var(--pink);
+    font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+    opacity: 0; transition: opacity .3s;
+    pointer-events: none;
+    line-height: 1.4;
   }
-  .sc-body { padding: 40px 44px; color: var(--pink); }
-  .sc-eyebrow {
-    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--cherry); margin-bottom: 14px;
+  .gallery-masonry figure:hover figcaption { opacity: 1; }
+  @media (max-width: 900px) {
+    .gallery-masonry { column-count: 2; }
+    .gallery-wrap { padding: 50px 20px 70px; }
   }
-  .sc-name {
-    font-family: 'Archivo Black', system-ui, sans-serif;
-    font-size: 40px; line-height: 1; color: var(--cream);
-    margin-bottom: 20px; letter-spacing: -0.01em;
-  }
-  .sc-desc { font-size: 16px; line-height: 1.6; margin-bottom: 28px; opacity: 0.9; }
-  .sc-caps { display: flex; gap: 36px; margin-bottom: 28px; }
-  .cap { display: flex; flex-direction: column; gap: 4px; }
-  .cap-label {
-    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
-    color: var(--cherry); opacity: 0.85;
-  }
-  .cap-num {
-    font-family: 'Archivo Black', system-ui, sans-serif;
-    font-size: 36px; color: var(--cream); line-height: 1;
-  }
-  @media (max-width: 800px) {
-    .space-card { grid-template-columns: 1fr; }
-    .sc-visual { min-height: 200px; padding: 30px 26px; }
-    .sc-body { padding: 30px 26px; }
-    .spaces { padding: 60px 20px; }
+  @media (max-width: 520px) {
+    .gallery-masonry { column-count: 1; }
   }
 
-  /* Inquire section */
-  .ev-inquire {
+  /* Bottom CTA */
+  .gallery-outro {
     background: var(--pink);
     color: var(--oxblood);
-    padding: 90px 60px;
     text-align: center;
+    padding: 80px 40px;
   }
-  .ev-inquire .script {
+  .gallery-outro .script {
     font-family: 'Italianno', cursive;
-    font-size: clamp(48px, 6vw, 80px); color: var(--cherry); line-height: 1;
+    font-size: clamp(44px, 5.5vw, 68px);
+    color: var(--cherry); line-height: 1;
+    margin-bottom: 6px;
   }
-  .ev-inquire p {
-    max-width: 560px; margin: 22px auto 32px;
-    font-size: 17px; line-height: 1.55;
+  .gallery-outro p {
+    max-width: 480px; margin: 8px auto 28px;
+    font-size: 16px; line-height: 1.55;
   }
-  @media (max-width: 720px) { .ev-inquire { padding: 60px 20px; } }
 </style>
 </head>
 <body>
@@ -1290,87 +1275,90 @@
   <a href="https://www.opentable.com/r/little-rich-girl-reservations-flagstaff?restref=1536199&lang=en-US&ot_source=Restaurant%20website" target="_blank" rel="noopener" class="nav-cta">Reserve</a>
 </nav>
 
-
 <!-- ═════════ PAGE HERO ═════════ -->
 <header class="page-hero">
-  <div class="eyebrow">Private Events</div>
-  <div class="script">Gather</div>
-  <h1>Downstairs.</h1>
-  <p class="lede">Three ways to take over a room, a floor, or the whole speakeasy. Every event at Little Rich Girl includes the copper bar, the velvet, and a bar team that&rsquo;s made careful cocktails for hundreds of nights before yours.</p>
+  <div class="eyebrow">Gallery</div>
+  <div class="script">The look.</div>
+  <h1>Mood board.</h1>
+  <p class="lede">A collection of what we’re building toward — arched banquettes, brass and velvet, coupes on vintage menus, low warm light. The real room opens in 2026; this is the direction.</p>
 </header>
 
-<!-- ═════════ SPACES ═════════ -->
-<section class="spaces" id="spaces">
-  <div class="spaces-intro">
-    <div class="script">Three rooms.</div>
-    <p>From a velvet-draped alcove for fifteen, to the full private dining room, to the entire space — pick the size and we&rsquo;ll handle the rest.</p>
-  </div>
-
-  <div class="space-grid">
-
-    <!-- L'Alcôve -->
-    <article class="space-card">
-      <div class="sc-visual">
-        <div class="sc-roman">I</div>
-        <div class="sc-frenchname">L&rsquo;Alc&ocirc;ve</div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-eyebrow">LRG · The Lounge</div>
-        <h2 class="sc-name">L&rsquo;Alc&ocirc;ve</h2>
-        <p class="sc-desc">A moody, velvet-draped semi-private lounge tucked into the room — the quiet corner for an intimate gathering, just steps from the copper bar.</p>
-        <div class="sc-caps">
-          <div class="cap"><span class="cap-label">Seated</span><span class="cap-num">15</span></div>
-        </div>
-        <a class="btn btn-primary" href="mailto:hello@littlerichgirlflg.com?subject=L%27Alc%C3%B4ve%20Private%20Lounge%20Inquiry">Inquire</a>
-      </div>
-    </article>
-
-    <!-- Souterrain -->
-    <article class="space-card">
-      <div class="sc-visual">
-        <div class="sc-roman">II</div>
-        <div class="sc-frenchname">Souterrain</div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-eyebrow">LRG · Private Dining Room</div>
-        <h2 class="sc-name">Souterrain</h2>
-        <p class="sc-desc">The large private dining room within Little Rich Girl — velvet, dark wood, and a door that opens to the bar or closes for a room of your own.</p>
-        <div class="sc-caps">
-          <div class="cap"><span class="cap-label">Seated</span><span class="cap-num">40</span></div>
-          <div class="cap"><span class="cap-label">Standing</span><span class="cap-num">50</span></div>
-        </div>
-        <a class="btn btn-primary" href="mailto:hello@littlerichgirlflg.com?subject=Souterrain%20Private%20Dining%20Inquiry">Inquire</a>
-      </div>
-    </article>
-
-    <!-- Full Buyout -->
-    <article class="space-card">
-      <div class="sc-visual">
-        <div class="sc-roman">III</div>
-        <div class="sc-frenchname">La Maison</div>
-      </div>
-      <div class="sc-body">
-        <div class="sc-eyebrow">LRG · Full Buyout</div>
-        <h2 class="sc-name">The Whole Floor</h2>
-        <p class="sc-desc">Exclusive access to the entire Little Rich Girl space — bar, lounge, and private dining together. The copper, the velvet, and the leopard, all yours for the night.</p>
-        <div class="sc-caps">
-          <div class="cap"><span class="cap-label">Seated</span><span class="cap-num">85</span></div>
-          <div class="cap"><span class="cap-label">Standing</span><span class="cap-num">100</span></div>
-        </div>
-        <a class="btn btn-primary" href="mailto:hello@littlerichgirlflg.com?subject=Little%20Rich%20Girl%20Full%20Buyout%20Inquiry">Inquire</a>
-      </div>
-    </article>
-
+<!-- ═════════ MASONRY ═════════ -->
+<section class="gallery-wrap" id="gallery">
+  <div class="gallery-masonry">
+    <figure>
+      <img src="img/gallery/arched-amber-bar-lounge.jpg" alt="Arched amber bar lounge with warm lighting" loading="lazy">
+      <figcaption>Arched amber bar</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/backlit-bar-bartender.jpg" alt="Backlit bar with bartender in silhouette" loading="lazy">
+      <figcaption>Backlit bar</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/brandy-decanters.jpg" alt="Row of vintage brandy decanters" loading="lazy">
+      <figcaption>Brandy decanters</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/negroni-with-flame.jpg" alt="Negroni cocktail with a flame garnish" loading="lazy">
+      <figcaption>Negroni with flame</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/cocktail-shaker-pour.jpg" alt="Cocktail being poured from a shaker" loading="lazy">
+      <figcaption>Cocktail pour</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/coupe-on-vintage-cocktail-menu.jpg" alt="A coupe glass resting on a vintage cocktail menu" loading="lazy">
+      <figcaption>Coupe & menu</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/green-banquette-arched-panels.jpg" alt="Green banquette against arched wooden panels" loading="lazy">
+      <figcaption>Green banquette</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/secret-library-red-banquette.jpg" alt="A red banquette in a private booth" loading="lazy">
+      <figcaption>Red banquette booth</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/orient-express-cabin.jpg" alt="Vintage train-cabin styling with warm wood" loading="lazy">
+      <figcaption>Cabin styling</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/round-game-table.jpg" alt="A round game table with velvet chairs" loading="lazy">
+      <figcaption>Round game table</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/dark-green-fluted-restroom.jpg" alt="Dark green fluted paneling in a restroom" loading="lazy">
+      <figcaption>Fluted panels</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/arched-brass-restroom-vanity.jpg" alt="Arched brass vanity and mirror" loading="lazy">
+      <figcaption>Brass vanity</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/teal-tile-counter-bakery.jpg" alt="Teal glazed tile counter with warm pendants" loading="lazy">
+      <figcaption>Teal tile counter</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/open-kitchen-bakery-cafe.jpg" alt="Open kitchen with warm brass fixtures" loading="lazy">
+      <figcaption>Open kitchen</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/library-bookshelves.jpg" alt="Floor-to-ceiling wooden shelves" loading="lazy">
+      <figcaption>Wooden shelves</figcaption>
+    </figure>
+    <figure>
+      <img src="img/gallery/antique-book-spines.jpg" alt="A row of antique book spines" loading="lazy">
+      <figcaption>Antique bindings</figcaption>
+    </figure>
   </div>
 </section>
 
-<!-- ═════════ INQUIRE ═════════ -->
-<section class="ev-inquire" id="inquire">
-  <div class="script">Plan something below.</div>
-  <p>Tell us the date, the headcount, and which room you have in mind. We&rsquo;ll write back with dates, minimums, and everything else.</p>
-  <a class="btn btn-primary" href="mailto:hello@littlerichgirlflg.com?subject=Little%20Rich%20Girl%20Event%20Inquiry">Start an inquiry</a>
+<!-- ═════════ OUTRO ═════════ -->
+<section class="gallery-outro">
+  <div class="script">See the room in person.</div>
+  <p>The photos are references. The room is being built. Get on the list to hear when the door opens.</p>
+  <a class="btn btn-primary" href="contact.html">Get in touch</a>
 </section>
-
 
 <!-- ═════════ FOOTER ═════════ -->
 <footer class="footer">
@@ -1387,7 +1375,6 @@
   <div class="bb-left">
     <a href="tel:+19284558797" class="bb-phone">(928) 455-8797</a>
     <a href="events.html">Events</a>
-    <a href="index.html#menu">Menu</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
   </div>
