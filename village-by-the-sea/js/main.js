@@ -139,6 +139,37 @@
     bar.classList.add('is-visible');
   }
 
+  /* --------------------------------------------- weddings page inquiry form */
+  var inquireBtn = document.querySelector('[data-inquire]');
+  var inquireNote = document.querySelector('[data-inquire-note]');
+  if (inquireBtn && inquireNote) {
+    inquireBtn.addEventListener('click', function () {
+      var name = document.getElementById('f-name');
+      var email = document.getElementById('f-email');
+      var date = document.getElementById('f-date');
+      var guests = document.getElementById('f-guests');
+      var note = document.getElementById('f-note');
+
+      var lines = [];
+      if (name && name.value) lines.push('Name: ' + name.value);
+      if (date && date.value) lines.push('Date in mind: ' + date.value);
+      if (guests && guests.value) lines.push('Approx. guests: ' + guests.value);
+      if (note && note.value) lines.push('', note.value);
+
+      var subject = 'Wedding inquiry' + (date && date.value ? ' — ' + date.value : '');
+      var href = 'mailto:eventplanner@vbts.com'
+        + '?subject=' + encodeURIComponent(subject)
+        + '&body=' + encodeURIComponent(lines.join('\n'));
+
+      /* Concept behaviour: hand off to the guest's mail client. On the live
+         build this posts to the real form endpoint instead. */
+      window.location.href = href;
+      inquireNote.classList.add('is-sent');
+      inquireNote.textContent = 'Opening your email app — if nothing happens, write to eventplanner@vbts.com or call 207-646-1100.';
+      if (email && email.value) { /* captured for the live endpoint */ }
+    });
+  }
+
   /* ------------------------------------------------------------- dynamic year */
   var yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
