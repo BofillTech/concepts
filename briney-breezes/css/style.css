@@ -413,17 +413,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 .signup__form input:focus{outline:0;border-color:var(--accent);box-shadow:0 0 0 3px rgba(46,91,208,.15)}
 .signup__note{font-size:.82rem;color:var(--muted);margin-top:.9rem}
 @media(max-width:540px){.signup__form{flex-direction:column}.signup__form .btn{width:100%}}
-/* Best Rate flyout */
-.bestrate{position:fixed;top:38%;right:0;z-index:115;transform:translateX(calc(100% - 42px));transition:transform .4s cubic-bezier(.2,.7,.3,1)}
-.bestrate.is-open{transform:translateX(0)}
-.bestrate__tab{position:absolute;left:0;top:0;transform:translateX(-100%);height:100%;width:42px;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:10px 0 0 10px;font-family:var(--body);font-weight:700;font-size:.72rem;letter-spacing:.14em;writing-mode:vertical-rl;text-orientation:mixed;display:flex;align-items:center;justify-content:center;gap:.4rem;box-shadow:-6px 6px 20px -8px rgba(16,38,52,.4)}
-.bestrate__panel{width:290px;max-width:86vw;background:#fff;border:1px solid var(--line);border-right:0;border-radius:10px 0 0 10px;box-shadow:-14px 14px 40px -18px rgba(16,38,52,.4);padding:1.4rem 1.5rem}
-.bestrate__panel h3{font-family:var(--display);color:var(--navy);font-size:1.5rem;line-height:1.1;margin-bottom:.5rem}
-.bestrate__panel p{font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
-.bestrate__promo{display:flex;align-items:center;gap:.5rem;background:var(--blue-tint);border:1px dashed var(--blue-line);border-radius:8px;padding:.6rem .8rem;margin-bottom:1rem}
-.bestrate__promo code{font-weight:700;color:var(--accent-deep);letter-spacing:.05em}
-.bestrate__close{position:absolute;top:8px;right:10px;background:none;border:0;font-size:1.4rem;color:var(--muted);cursor:pointer;line-height:1}
-@media(max-width:600px){.bestrate{top:auto;bottom:78px}}
+
 /* merch / gift cards / policies */
 .merch-name{font-family:var(--display);color:var(--navy);font-size:1.4rem;margin-bottom:.4rem}
 .gc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:640px;margin:0 auto}
@@ -440,3 +430,20 @@ h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.04;letter-spac
 
 .signup__box h2{font-family:var(--display);color:var(--navy);font-size:clamp(2rem,3.8vw,2.9rem);margin:.4rem 0 .3rem}
 .signup__box p{color:var(--muted);line-height:1.7}
+
+
+/* ===== Best Rate flyout (viewport-safe) ===== */
+.bestrate{position:fixed;top:42%;right:0;z-index:115}
+.bestrate__tab{position:relative;z-index:2;width:44px;padding:1.1rem 0;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:10px 0 0 10px;font-family:var(--body);font-weight:700;font-size:.66rem;letter-spacing:.16em;writing-mode:vertical-rl;text-orientation:mixed;box-shadow:-6px 6px 20px -8px rgba(16,38,52,.4);transition:background .2s}
+.bestrate__tab:hover{background:var(--accent-deep)}
+.bestrate__panel{position:absolute;top:0;right:44px;width:280px;max-width:76vw;background:#fff;border:1px solid var(--line);border-radius:12px 0 0 12px;box-shadow:-16px 14px 44px -20px rgba(16,38,52,.45);padding:1.4rem 1.5rem;opacity:0;visibility:hidden;transform:translateX(14px);transition:opacity .3s,transform .3s,visibility .3s;pointer-events:none}
+.bestrate.is-open .bestrate__panel{opacity:1;visibility:visible;transform:translateX(0);pointer-events:auto}
+.bestrate__panel h3{font-family:var(--display);color:var(--navy);font-size:1.5rem;line-height:1.1;margin-bottom:.5rem}
+.bestrate__panel p{font-size:.9rem;color:var(--muted);line-height:1.6;margin-bottom:1rem}
+.bestrate__promo{display:flex;align-items:center;gap:.5rem;background:var(--blue-tint);border:1px dashed var(--blue-line);border-radius:8px;padding:.55rem .8rem;margin-bottom:1rem;font-size:.86rem;color:var(--ink)}
+.bestrate__promo code{font-weight:700;color:var(--accent-deep);letter-spacing:.05em}
+.bestrate__close{position:absolute;top:8px;right:10px;background:none;border:0;font-size:1.4rem;color:var(--muted);cursor:pointer;line-height:1}
+.bestrate .btn{width:100%}
+@media(max-width:600px){.bestrate{top:auto;bottom:88px}.bestrate__panel{width:248px}}
+
+.carousel__thumb-empty{flex:1;aspect-ratio:3/2;border-radius:7px;background:var(--paper-3);border:2px dashed var(--blue-line);opacity:.5}
