@@ -25,7 +25,7 @@
       dotsWrap.appendChild(b); dots.push(b);
     });
     function go(n){ slides[hi].classList.remove('is-active'); dots[hi].classList.remove('is-active'); hi=(n+slides.length)%slides.length; slides[hi].classList.add('is-active'); dots[hi].classList.add('is-active'); }
-    function restart(){ clearInterval(htimer); htimer=setInterval(function(){go(hi+1);},5500); }
+    function restart(){ clearInterval(htimer); htimer=setInterval(function(){go(hi+1);},3800); }
     if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches) restart();
   }
   // count-up stats
