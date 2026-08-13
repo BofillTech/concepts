@@ -56,11 +56,9 @@
   }
 
   /* --------------------------------------------------------- scroll reveals */
-  var revealables = document.querySelectorAll('[data-reveal]');
-  if (reduced || !('IntersectionObserver' in window)) {
-    Array.prototype.forEach.call(revealables, function (el) { el.classList.add('is-in'); });
-  } else {
-    var revealObserver = new IntersectionObserver(function (entries) {
+  var revealObserver = null;
+  if (!reduced && 'IntersectionObserver' in window) {
+    revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-in');
@@ -68,8 +66,20 @@
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-    Array.prototype.forEach.call(revealables, function (el) { revealObserver.observe(el); });
   }
+
+  function bindReveals() {
+    var els = document.querySelectorAll('[data-reveal]:not(.is-in)');
+    if (!revealObserver) {
+      Array.prototype.forEach.call(els, function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    Array.prototype.forEach.call(els, function (el) { revealObserver.observe(el); });
+  }
+  bindReveals();
+
+  /* client-rendered pages (unit.html) announce when their markup lands */
+  document.addEventListener('vbts:rendered', bindReveals);
 
   /* ------------------------------------- reed divider draws itself (signature) */
   var reeds = document.querySelectorAll('[data-reeds]');
