@@ -178,4 +178,52 @@
     });
   });
 
+
+  /* ---- gallery lightbox ---- */
+  var lightbox = document.getElementById("lightbox");
+  if (lightbox) {
+    var lbImg = document.getElementById("lightboxImg");
+    var lbCap = document.getElementById("lightboxCap");
+    var figures = Array.prototype.slice.call(document.querySelectorAll(".gallery-grid figure"));
+    var order = [], pos = -1;
+    function visible() { return figures.filter(function (f) { return !f.classList.contains("is-hidden"); }); }
+    function renderAt(p) {
+      pos = (p + order.length) % order.length;
+      var img = order[pos].querySelector("img");
+      lbImg.setAttribute("src", img.getAttribute("src"));
+      lbImg.setAttribute("alt", img.getAttribute("alt") || "");
+      lbCap.textContent = img.getAttribute("alt") || "";
+    }
+    function open(fig) {
+      order = visible();
+      var idx = order.indexOf(fig);
+      if (idx < 0) return;
+      renderAt(idx);
+      lightbox.hidden = false;
+      document.body.classList.add("is-locked");
+    }
+    function close() {
+      lightbox.hidden = true;
+      document.body.classList.remove("is-locked");
+    }
+    figures.forEach(function (fig) {
+      fig.setAttribute("role", "button");
+      fig.setAttribute("tabindex", "0");
+      fig.addEventListener("click", function () { open(fig); });
+      fig.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(fig); }
+      });
+    });
+    lightbox.querySelector(".lightbox__close").addEventListener("click", close);
+    lightbox.querySelector(".lightbox__nav--prev").addEventListener("click", function () { renderAt(pos - 1); });
+    lightbox.querySelector(".lightbox__nav--next").addEventListener("click", function () { renderAt(pos + 1); });
+    lightbox.addEventListener("click", function (e) { if (e.target === lightbox) close(); });
+    document.addEventListener("keydown", function (e) {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") renderAt(pos - 1);
+      else if (e.key === "ArrowRight") renderAt(pos + 1);
+    });
+  }
+
 })();
