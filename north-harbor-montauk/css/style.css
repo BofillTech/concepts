@@ -4,14 +4,14 @@
    Lake Montauk blue + wide oak plank + linen interiors.
    Type: Marcellus (display) + Manrope (body).
    Structure roll: asymmetric-collage hero / persistent bottom
-   rail nav / symmetric 12-col grid / parallax motion.
+   sticky top nav / symmetric 12-col grid / parallax motion.
    ============================================================ */
 
 :root {
   /* color */
   --lake: #2E6B8A;        /* CTA, links, accents — Lake Montauk mid-water */
   --lake-deep: #1F4F68;   /* hover */
-  --ink: #14333F;         /* dark panels, rail, footer — the lake at dusk */
+  --ink: #14333F;         /* dark panels, footer — the lake at dusk */
   --ink-2: #0E2630;       /* deepest ground */
   --oak: #A97F4F;         /* wide oak plank — eyebrows, hairlines */
   --oak-soft: #C8A87C;    /* oak on dark grounds */
@@ -28,7 +28,7 @@
   /* layout */
   --maxw: 1200px;
   --pad: clamp(20px, 5vw, 64px);
-  --rail-h: 64px;
+  --header-h: 78px;
   --radius: 3px;
 }
 
@@ -48,7 +48,6 @@ body {
   line-height: 1.7;
   color: var(--text);
   background: var(--linen);
-  padding-bottom: var(--rail-h); /* room for the harbor rail */
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
 }
@@ -119,12 +118,51 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--lake); }
   width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius);
 }
 
-/* ---------- brand strip ---------- */
-.brand-strip { background: var(--linen); border-bottom: 1px solid var(--sand); padding: 16px 0; }
-.brand-strip__link { display: flex; justify-content: center; align-items: center; }
-.brand-strip__logo { width: auto; max-height: 54px; height: auto; }
-.brand-strip__wordmark { font-family: var(--display); font-size: 26px; color: var(--ink); letter-spacing: .04em; }
-.brand-strip__wordmark em { font-style: italic; color: var(--lake); }
+/* ---------- header / navigation ---------- */
+.header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--linen);
+  border-bottom: 1px solid var(--sand);
+  transition: box-shadow .3s ease;
+}
+.header.is-scrolled { box-shadow: 0 10px 30px -18px rgba(20, 51, 63, .35); }
+.header__inner {
+  max-width: var(--maxw); margin: 0 auto;
+  padding: 0 clamp(16px, 3vw, 32px);
+  min-height: var(--header-h);
+  display: flex; align-items: center; gap: clamp(14px, 2.5vw, 32px);
+}
+.header__brand { display: flex; align-items: center; flex-shrink: 1; min-width: 0; overflow: hidden; }
+.header__logo { width: auto; height: auto; max-height: 56px; }
+.header__wordmark { font-family: var(--display); font-size: clamp(16px, 4.4vw, 22px); color: var(--ink); letter-spacing: .04em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header__wordmark em { font-style: italic; color: var(--lake); }
+.header__nav { flex: 1; min-width: 0; }
+.header__menu { display: flex; justify-content: center; gap: clamp(16px, 2.4vw, 34px); }
+.header__menu .menu-item a {
+  color: var(--ink); font-size: 14px; font-weight: 600; letter-spacing: .04em;
+  position: relative; padding: 8px 0; white-space: nowrap; transition: color .25s ease;
+}
+.header__menu .menu-item a::after {
+  content: ""; position: absolute; left: 0; bottom: 2px; height: 2px; width: 0;
+  background: var(--oak); transition: width .3s ease;
+}
+.header__menu .menu-item a:hover { color: var(--lake); }
+.header__menu .menu-item a:hover::after { width: 100%; }
+.header__actions { display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+.header__phone {
+  display: flex; align-items: center; gap: 8px;
+  color: var(--ink); font-weight: 700; font-size: 14px; white-space: nowrap;
+  transition: color .25s ease;
+}
+.header__phone svg { width: 18px; height: 18px; color: var(--oak); }
+.header__phone:hover { color: var(--lake); }
+.header__book { padding: 12px 22px; }
+.header__burger {
+  display: none; background: none; border: 1px solid var(--sand); border-radius: var(--radius);
+  padding: 10px 11px; cursor: pointer;
+}
+.header__burger > span { display: flex; flex-direction: column; gap: 4px; }
+.header__burger > span span { display: block; width: 20px; height: 2px; background: var(--ink); }
 
 /* ---------- hero: asymmetric collage ---------- */
 .hero { padding: clamp(40px, 7vw, 88px) 0 clamp(30px, 5vw, 56px); }
@@ -284,58 +322,16 @@ h1 em, h2 em, h3 em { font-style: italic; color: var(--lake); }
 }
 .footer__bottom a { color: #C9D6DB; }
 
-/* ---------- THE HARBOR RAIL: persistent bottom bar ---------- */
-.rail {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 200;
-  background: var(--ink); border-top: 2px solid var(--oak);
-  height: var(--rail-h);
-}
-.rail__inner {
-  max-width: var(--maxw); margin: 0 auto; height: 100%;
-  padding: 0 clamp(14px, 3vw, 32px);
-  display: flex; align-items: center; gap: 16px;
-}
-.rail__brand {
-  font-family: var(--display); font-size: 20px; color: #fff; letter-spacing: .08em;
-  flex-shrink: 0;
-}
-.rail__brand:hover { color: var(--oak-soft); }
-.rail__nav { flex: 1; min-width: 0; }
-.rail__menu { display: flex; gap: clamp(14px, 2.2vw, 30px); justify-content: center; }
-.rail__menu .menu-item a {
-  color: #C9D6DB; font-size: 13.5px; font-weight: 600; letter-spacing: .04em;
-  position: relative; padding: 6px 0; transition: color .25s ease; white-space: nowrap;
-}
-.rail__menu .menu-item a::after {
-  content: ""; position: absolute; left: 0; bottom: 0; height: 1.5px; width: 0;
-  background: var(--oak-soft); transition: width .3s ease;
-}
-.rail__menu .menu-item a:hover { color: #fff; }
-.rail__menu .menu-item a:hover::after { width: 100%; }
-.rail__phone {
-  display: flex; align-items: center; gap: 8px; color: #fff;
-  font-weight: 700; font-size: 14px; flex-shrink: 0; white-space: nowrap;
-}
-.rail__phone svg { width: 18px; height: 18px; color: var(--oak-soft); }
-.rail__phone:hover { color: var(--oak-soft); }
-.rail__book { padding: 11px 20px; flex-shrink: 0; }
-.rail__burger {
-  display: none; background: none; border: 1px solid rgba(255,255,255,.3); border-radius: var(--radius);
-  color: #fff; padding: 8px 12px; cursor: pointer; align-items: center; gap: 8px;
-}
-.rail__burger-lines { display: flex; flex-direction: column; gap: 4px; }
-.rail__burger-lines span { display: block; width: 18px; height: 2px; background: #fff; }
-.rail__burger-label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-
 /* ---------- drawer ---------- */
 .drawer {
   position: fixed; inset: 0; z-index: 250;
   background: var(--ink-2);
-  display: flex; align-items: flex-end;
+  display: flex; align-items: flex-start;
+  overflow-y: auto;
 }
 .drawer[hidden] { display: none; }
 .drawer__inner {
-  width: 100%; padding: 32px var(--pad) calc(var(--rail-h) + 32px);
+  width: 100%; padding: calc(var(--header-h) + 16px) var(--pad) 40px;
   display: flex; flex-direction: column; gap: 6px; position: relative;
 }
 .drawer__close {
@@ -380,20 +376,20 @@ body.drawer-open { overflow: hidden; }
   .footer__grid { grid-template-columns: 2fr 1fr 1fr; }
 }
 
-/* ---------- responsive: the rail ---------- */
-@media (max-width: 899px) {
-  .rail__nav { display: none; }
-  .rail__burger { display: flex; }
-  .rail__inner { justify-content: space-between; }
-  .rail__book { flex: 1; max-width: 220px; }
+/* ---------- responsive: the header ---------- */
+@media (max-width: 1023px) {
+  .header__nav { display: none; }
+  .header__burger { display: block; }
+  .header__inner { justify-content: space-between; }
 }
 @media (max-width: 560px) {
-  .rail__phone-num { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  .rail__phone {
-    border: 1px solid rgba(255,255,255,.3); border-radius: 50%;
-    width: 40px; height: 40px; justify-content: center;
+  .header__phone-num { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .header__phone {
+    border: 1px solid var(--sand); border-radius: 50%;
+    width: 42px; height: 42px; justify-content: center;
   }
-  .rail__brand { display: none; }
+  .header__logo { max-height: 44px; max-width: 150px; object-fit: contain; }
+  .header__book { padding: 11px 16px; }
   .hero__plate--inset { left: -4%; }
 }
 

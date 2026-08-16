@@ -8,7 +8,7 @@ For the production WP build, download each into this folder (or re-host via
 
 | Slot | File |
 |---|---|
-| Brand strip logo | `/wp-content/themes/north-harbor/dist/images/northharbor.png` |
+| Header logo | `/wp-content/themes/north-harbor/dist/images/NHlogo.png` |
 | Hero tall plate | `17_Deck-Lakeview.jpg` |
 | Hero inset | `6_Kitchen.jpg` |
 | Deck parallax band | `20_Outdoor-Living.jpg` |

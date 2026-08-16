@@ -41,8 +41,16 @@
     if (e.key === 'Escape' && drawer && !drawer.hidden) closeDrawer();
   });
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 900 && drawer && !drawer.hidden) closeDrawer();
+    if (window.innerWidth >= 1024 && drawer && !drawer.hidden) closeDrawer();
   });
+
+  /* ----- header shadow on scroll ----- */
+  const header = document.querySelector('[data-header]');
+  if (header) {
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 
   /* ----- scroll reveals (light support to the parallax) ----- */
   const reveals = document.querySelectorAll('[data-reveal]');
