@@ -20,17 +20,23 @@
     drawer.classList.add("is-open");
     drawer.setAttribute("aria-hidden", "false");
     toggle.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
+    toggle.classList.add("is-active");
+    toggle.setAttribute("aria-label", "Close menu");
+    document.body.classList.add("is-locked");
   }
   function closeDrawer() {
     drawer.classList.remove("is-open");
     drawer.setAttribute("aria-hidden", "true");
     toggle.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
+    toggle.classList.remove("is-active");
+    toggle.setAttribute("aria-label", "Open menu");
+    document.body.classList.remove("is-locked");
   }
-  if (toggle && drawer && closeBtn) {
-    toggle.addEventListener("click", openDrawer);
-    closeBtn.addEventListener("click", closeDrawer);
+  if (toggle && drawer) {
+    toggle.addEventListener("click", function () {
+      drawer.classList.contains("is-open") ? closeDrawer() : openDrawer();
+    });
+    if (closeBtn) closeBtn.addEventListener("click", closeDrawer);
     drawer.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeDrawer); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
   }
