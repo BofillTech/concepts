@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring House Hotel — Our Properties on Block Island</title>
+<meta name="description" content="Explore all seven Spring House Hotel properties across Block Island — the historic Main Building, Mott House, the Inn, New Harbor, the Barn Apartments, Seawinds Townhouses, and Seaside Homes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  /* Spring House palette — white Victorian, red mansard roof, lawn, Atlantic */
+  --atlantic:#16384E;
+  --atlantic-deep:#0E2635;
+  --roof-red:#A6392E;
+  --roof-red-dark:#8A2C23;
+  --cream:#F8F4EB;
+  --lawn:#5F7B54;
+  --mist:#D8E2E4;
+  --ink:#22303A;
+  --hair:rgba(22,56,78,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Outfit',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  overflow:hidden;
+}
+.sh-map-app{position:relative;height:100vh;width:100%;min-height:560px}
+#map{position:absolute;inset:0;z-index:1;background:var(--mist)}
+
+/* ---------- Brand panel ---------- */
+.panel{
+  position:absolute;z-index:500;
+  top:22px;left:22px;bottom:22px;
+  width:min(370px, calc(100vw - 44px));
+  display:flex;flex-direction:column;
+  background:var(--cream);
+  border:1px solid var(--hair);
+  border-radius:6px;
+  box-shadow:0 18px 50px -18px rgba(14,38,53,.45);
+  overflow:hidden;
+}
+.panel-head{
+  padding:22px 24px 18px;
+  background:var(--atlantic);
+  color:var(--cream);
+  position:relative;
+}
+.panel-head::after{ /* red roofline rule */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:var(--roof-red);
+}
+.eyebrow{
+  font-size:10.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--mist);opacity:.85;
+}
+.panel-head h1{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:500;font-size:27px;line-height:1.12;
+  margin-top:8px;
+}
+.panel-head h1 em{font-style:italic;color:#E8C9A8}
+.panel-sub{font-size:13px;font-weight:300;color:var(--mist);margin-top:8px;line-height:1.5}
+
+.prop-list{flex:1;overflow-y:auto;padding:10px 10px 12px;scrollbar-width:thin}
+.prop{
+  display:flex;align-items:center;gap:14px;
+  width:100%;text-align:left;
+  padding:13px 14px;border:0;border-radius:5px;
+  background:transparent;cursor:pointer;
+  font-family:inherit;color:inherit;
+  transition:background .22s ease;
+  border-bottom:1px solid var(--hair);
+}
+.prop:last-child{border-bottom:0}
+.prop:hover{background:rgba(22,56,78,.06)}
+.prop.active{background:var(--atlantic);color:var(--cream)}
+.prop.active .prop-sub{color:var(--mist)}
+.prop-pin{
+  flex-shrink:0;width:30px;height:30px;border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  background:var(--roof-red);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 8px rgba(14,38,53,.3);
+}
+.prop-pin span{
+  transform:rotate(45deg);
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:15px;color:var(--cream);
+}
+.prop-name{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17.5px;line-height:1.15}
+.prop-sub{font-size:11.5px;font-weight:400;letter-spacing:.04em;color:#5c6b76;margin-top:2px}
+.panel-foot{
+  padding:13px 24px;border-top:1px solid var(--hair);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:#fff;
+}
+.panel-foot a.book{
+  display:inline-block;background:var(--roof-red);color:var(--cream);
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:11px 18px;border-radius:3px;text-decoration:none;
+  transition:background .25s ease;
+}
+.panel-foot a.book:hover{background:var(--roof-red-dark)}
+.panel-foot .tel{font-size:13px;color:var(--atlantic);text-decoration:none;font-weight:500;white-space:nowrap}
+.panel-foot .tel:hover{text-decoration:underline}
+
+/* ---------- Leaflet skinning ---------- */
+.leaflet-container{font-family:'Outfit',sans-serif}
+.sh-marker{filter:drop-shadow(0 4px 6px rgba(14,38,53,.4))}
+.sh-marker .pin{
+  width:36px;height:36px;border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);transform-origin:center;
+  background:var(--roof-red);border:2px solid var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s ease;
+}
+.sh-marker:hover .pin{transform:rotate(-45deg) scale(1.12)}
+.sh-marker .pin span{
+  transform:rotate(45deg);
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:17px;color:var(--cream);
+}
+.leaflet-popup-content-wrapper{
+  border-radius:6px;padding:0;overflow:hidden;
+  box-shadow:0 16px 40px -14px rgba(14,38,53,.5);
+  background:var(--cream);
+}
+.leaflet-popup-content{margin:0;width:270px !important}
+.leaflet-popup-tip{background:var(--cream)}
+.pop{font-family:'Outfit',sans-serif}
+.pop img{display:block;width:100%;height:150px;object-fit:cover;background:var(--mist)}
+.pop-body{padding:15px 17px 17px}
+.pop-body h3{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--atlantic);line-height:1.1}
+.pop-body .addr{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5c6b76;margin-top:4px}
+.pop-body p{font-size:13px;font-weight:300;line-height:1.55;color:var(--ink);margin-top:9px}
+.pop-body a{
+  display:inline-block;margin-top:12px;
+  background:var(--atlantic);color:var(--cream);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 16px;border-radius:3px;text-decoration:none;
+  transition:background .25s ease;
+}
+.pop-body a:hover{background:var(--atlantic-deep)}
+.leaflet-control-attribution{font-size:9px;background:rgba(248,244,235,.8)}
+.leaflet-control-zoom a{color:var(--atlantic)}
+
+/* ---------- Mobile: panel becomes bottom sheet ---------- */
+@media (max-width:760px){
+  .panel{
+    top:auto;left:0;right:0;bottom:0;width:100%;
+    max-height:46vh;border-radius:14px 14px 0 0;border-bottom:0;
+  }
+  .panel-head{padding:14px 18px 12px}
+  .panel-head h1{font-size:21px}
+  .panel-sub{display:none}
+  .prop{padding:11px 12px}
+  .panel-foot{padding:10px 18px}
+  #map{bottom:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<div class="sh-map-app">
+  <div id="map" aria-label="Map of Spring House Hotel properties on Block Island"></div>
+
+  <aside class="panel" aria-label="Spring House properties">
+    <div class="panel-head">
+      <span class="eyebrow">Spring House Hotel · Est. 1852</span>
+      <h1>Seven Ways to Stay <em>on Block Island</em></h1>
+      <p class="panel-sub">From our historic Victorian main building to townhomes, seaside rentals, and the newest suites in New Harbor.</p>
+    </div>
+    <nav class="prop-list" id="propList"></nav>
+    <div class="panel-foot">
+      <a class="book" href="https://direct-book.com/properties/SpringHouseHotelDIRECT" target="_blank" rel="noopener">Book a Stay</a>
+      <a class="tel" href="tel:401-466-5844">401.466.5844</a>
+    </div>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ============================================================
+     PROPERTY CONFIG — edit coordinates / copy / photos here.
+     Coords for Main, Inn, New Harbor & Seawinds are from Google
+     Places. Mott House, Barn & Seaside Homes are placed relative
+     to the main building — nudge lat/lng to taste.
+     ============================================================ */
+  var BOOK = 'https://direct-book.com/properties/SpringHouseHotelDIRECT';
+  var PROPS = [
+    {
+      name:'Spring House Main Building', sub:'52 Spring St · 32 Guest Rooms',
+      lat:41.16800, lng:-71.55483,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/gal-3-436x322.jpg',
+      blurb:'Block Island\u2019s oldest and largest hotel, built in 1852. Kings, Queens, Studios and Suites with panoramic island or ocean views.',
+      link:BOOK, cta:'Book Now'
+    },
+    {
+      name:'Mott House', sub:'Across from the Main Building · 17 Rooms',
+      lat:41.16862, lng:-71.55440,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/The-Mott-House.jpg',
+      blurb:'A quieter retreat nestled in the Spring House gardens, with a farmer\u2019s porch, rocking chairs, and a breathtaking ocean view.',
+      link:BOOK, cta:'Book Now'
+    },
+    {
+      name:'The Inn at the Spring House', sub:'260 Spring St · Adults 21+',
+      lat:41.16899, lng:-71.55634,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/Inn-At-Spring-House-436x378.png',
+      blurb:'Impeccably furnished rooms with rain-head showers, private balconies, and scenic island views. Unlike any other inn on the island.',
+      link:BOOK, cta:'Book Now'
+    },
+    {
+      name:'The Spring House in New Harbor', sub:'585 Beach Ave · 10 Custom Suites',
+      lat:41.17673, lng:-71.57194,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/Outside-6-436x378.jpg',
+      blurb:'The newest hotel on Block Island \u2014 ten upscale custom suites with the finest furnishings and services.',
+      link:BOOK, cta:'Book Now'
+    },
+    {
+      name:'The Barn Apartments', sub:'On the Spring House Property · Year-Round',
+      lat:41.16745, lng:-71.55560,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/Barn-Apartments.jpg',
+      blurb:'Three luxury apartments above the Barn Restaurant, each with dining areas, central air, and DIRECTV. Open all year.',
+      link:BOOK, cta:'Book Now'
+    },
+    {
+      name:'Seawinds Townhouses', sub:'1800 High St · Sleeps 4\u20136',
+      lat:41.16498, lng:-71.56009,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/Seawinds-front-436x378.jpg',
+      blurb:'Four three-bedroom townhomes with full kitchens, 2.5 baths, and panoramic island views \u2014 a five-minute walk to the hotel.',
+      link:'https://springhouseblockisland.com/seawindsrentals/', cta:'Inquire'
+    },
+    {
+      name:'Seaside Homes', sub:'Chaffee · Bristol · Wickford',
+      lat:41.16720, lng:-71.55415,
+      img:'https://25b625f6.delivery.rocketcdn.me/wp-content/uploads/Seaside-Homes.jpg',
+      blurb:'Three ocean-view rental homes right on the property \u2014 three bedrooms and three baths each. Wickford is pet friendly.',
+      link:'https://springhouseblockisland.com/seasidehomes/', cta:'Inquire'
+    }
+  ];
+
+  var map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
+  map.zoomControl.setPosition('topright');
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var listEl = document.getElementById('propList');
+  var markers = [];
+  var bounds = L.latLngBounds([]);
+
+  PROPS.forEach(function(p, i){
+    var n = i + 1;
+    var icon = L.divIcon({
+      className:'sh-marker',
+      html:'<div class="pin"><span>'+n+'</span></div>',
+      iconSize:[36,36], iconAnchor:[7,34], popupAnchor:[11,-32]
+    });
+    var popup =
+      '<div class="pop">' +
+        '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<div class="pop-body">' +
+          '<h3>'+p.name+'</h3>' +
+          '<div class="addr">'+p.sub+'</div>' +
+          '<p>'+p.blurb+'</p>' +
+          '<a href="'+p.link+'" target="_blank" rel="noopener">'+p.cta+'</a>' +
+        '</div>' +
+      '</div>';
+    var m = L.marker([p.lat, p.lng], { icon:icon, title:p.name })
+      .addTo(map).bindPopup(popup, { maxWidth:290 });
+    m.on('click', function(){ setActive(i); });
+    markers.push(m);
+    bounds.extend([p.lat, p.lng]);
+
+    var btn = document.createElement('button');
+    btn.className = 'prop'; btn.type = 'button';
+    btn.setAttribute('aria-label', 'Show '+p.name+' on the map');
+    btn.innerHTML =
+      '<span class="prop-pin"><span>'+n+'</span></span>' +
+      '<span><span class="prop-name">'+p.name+'</span><br>' +
+      '<span class="prop-sub">'+p.sub+'</span></span>';
+    btn.addEventListener('click', function(){
+      setActive(i);
+      map.flyTo([p.lat, p.lng], 16, { duration:.9 });
+      markers[i].openPopup();
+    });
+    listEl.appendChild(btn);
+  });
+
+  function setActive(i){
+    var items = listEl.children;
+    for (var k = 0; k < items.length; k++) items[k].classList.toggle('active', k === i);
+  }
+
+  map.fitBounds(bounds, { padding:[70,70] });
+})();
+</script>
+</body>
+</html>
