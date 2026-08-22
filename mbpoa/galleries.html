@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; Galleries — Montauk Beach Property Owners Association</title>
+<meta name="description" content="Every MBPOA event becomes a gallery. Beach clean-ups, socials, beach-grass plantings, and milestone parties — two decades of the association on the sand, in one place.">
+<link rel="canonical" href="https://mbpoa.com/galleries/">
+<meta property="og:title" content="MBPOA Events &amp; Galleries">
+<meta property="og:description" content="Every event becomes a gallery — clean-ups, socials, stewardship projects, and milestone parties since 2002.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#14324A;
+  --ink-deep:#0D2333;
+  --ink-soft:#33556C;
+  --orange:#E8611C;
+  --orange-deep:#C74C0F;
+  --dune:#7A8459;
+  --paper:#F9F8F4;
+  --mist:#EFF2F1;
+  --sand:#E2D9C4;
+  --body:#22333F;
+  --meta:#5E7180;
+  --maxw:1280px;
+  --pad:clamp(20px,5vw,72px);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{background:var(--paper);color:var(--body);font-family:'Public Sans',system-ui,sans-serif;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+body.is-locked{overflow:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--ink);text-decoration:none}
+h1,h2,h3{font-family:'Besley',Georgia,serif;line-height:1.06;color:var(--ink);font-weight:700;letter-spacing:-.01em}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
+.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200}
+.skip:focus{left:12px;top:12px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft)}
+.m-glyph{width:20px;height:20px;flex:none;border-radius:3px;background:var(--orange);color:#fff;font-family:'Besley',serif;font-weight:800;font-size:13px;line-height:20px;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:15px 26px;border-radius:3px;border:2px solid var(--orange);transition:background .25s,color .25s,border-color .25s,transform .25s;cursor:pointer}
+.btn--solid{background:var(--orange);color:#fff}
+.btn--solid:hover{background:var(--orange-deep);border-color:var(--orange-deep);transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn--ghost:hover{background:var(--ink);color:#fff}
+.btn--white{background:#fff;color:var(--ink);border-color:#fff}
+.btn--white:hover{background:var(--sand);border-color:var(--sand)}
+
+/* NAV */
+.nav-primary{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--sand);transition:box-shadow .3s}
+.nav-primary.is-scrolled{box-shadow:0 4px 18px rgba(20,50,74,.10)}
+.nav__inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:18px}
+.nav__brand{display:flex;align-items:center;gap:14px;min-width:0}
+.nav__brand img{height:54px;width:auto}
+.nav__brand-name{font-family:'Besley',serif;font-weight:700;font-size:15px;line-height:1.25;color:var(--ink);max-width:24ch}
+.nav__right{display:flex;align-items:center;gap:14px;flex:none}
+.nav__donate{padding:12px 20px;font-size:13px}
+.nav__burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:48px;height:48px;padding:12px;background:transparent;border:2px solid var(--ink);border-radius:3px;cursor:pointer}
+.nav__burger span{display:block;height:2px;background:var(--ink);transition:transform .3s,opacity .3s}
+.nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav__burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav__burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.drawer{position:fixed;inset:0;z-index:99;background:var(--ink-deep);transform:translateY(-102%);transition:transform .45s cubic-bezier(.2,.8,.2,1);overflow-y:auto;padding:110px var(--pad) 48px}
+.drawer.is-open{transform:translateY(0)}
+.menu-primary{list-style:none;max-width:680px;margin:0 auto}
+.menu-primary .menu-item a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font-family:'Besley',serif;font-weight:600;font-size:clamp(1.35rem,3.4vw,2rem);color:var(--paper);padding:16px 4px;border-bottom:1px solid rgba(226,217,196,.18)}
+.menu-primary .menu-item a:hover{color:#F2A879}
+.menu-primary .menu-item small{font-family:'Public Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8FA6B5}
+.drawer__foot{max-width:680px;margin:26px auto 0;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:#8FA6B5;font-size:14px}
+.drawer__foot a{color:#F2A879;font-weight:700}
+
+/* PAGE HEAD — editorial open, same register as the homepage */
+.page-head{padding:clamp(44px,7vw,88px) 0 clamp(28px,4vw,44px)}
+.page-head h1{font-size:clamp(2.2rem,5.4vw,4.4rem);font-weight:800;max-width:18ch;margin:16px 0 18px}
+.page-head h1 em{font-style:italic;color:var(--orange)}
+.page-head p{max-width:62ch;font-size:1.06rem}
+
+/* UPCOMING BAND */
+.upcoming{background:var(--ink);color:#DCE6EC;padding:clamp(36px,5vw,56px) 0}
+.upcoming__grid{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:clamp(18px,3vw,40px);align-items:start}
+.upcoming__label{font-family:'Besley',serif;font-weight:700;color:#fff;font-size:clamp(1.15rem,2vw,1.5rem);max-width:9ch;line-height:1.2}
+.up{border-left:2px solid rgba(232,97,28,.6);padding-left:18px}
+.up__date{font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#F2A879;display:block;margin-bottom:8px}
+.up h3{color:#fff;font-size:1.1rem;margin-bottom:6px}
+.up p{font-size:14px;color:#B9C8D2}
+.up a{color:#F2A879;font-weight:700;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase}
+.up a:hover{color:#fff}
+
+/* FILTER */
+.filter{position:sticky;top:83px;z-index:40;background:var(--paper);border-bottom:1px solid var(--sand);padding:16px 0}
+.filter__row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.chip{font-family:'Public Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:10px 18px;border-radius:999px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s,color .2s}
+.chip:hover{background:var(--mist)}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff}
+.chip--cleanup[aria-pressed="true"]{background:var(--orange);border-color:var(--orange)}
+.chip--social[aria-pressed="true"]{background:var(--ink)}
+.chip--steward[aria-pressed="true"]{background:var(--dune);border-color:var(--dune)}
+.filter__count{margin-left:auto;font-size:14px;color:var(--meta)}
+
+/* ARCHIVE — year blocks, broken-asymmetric */
+.archive{padding:clamp(44px,6vw,72px) 0 clamp(64px,8vw,100px)}
+.year{display:grid;grid-template-columns:minmax(120px,.28fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);padding:clamp(30px,4vw,48px) 0;border-top:2px solid var(--ink)}
+.year:first-child{border-top:0;padding-top:0}
+.year.is-empty{display:none}
+.year__num{font-family:'Besley',serif;font-weight:800;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.95;color:transparent;-webkit-text-stroke:2px var(--orange);position:sticky;top:160px;align-self:start}
+.year__num small{display:block;-webkit-text-stroke:0;color:var(--meta);font-family:'Public Sans',sans-serif;font-weight:600;font-size:12px;letter-spacing:.22em;text-transform:uppercase;margin-top:10px}
+.gal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.gal{background:#fff;border:1px solid var(--sand);padding:clamp(18px,2.4vw,28px);display:flex;flex-direction:column;gap:10px;transition:transform .25s,box-shadow .25s}
+.gal:hover{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(20,50,74,.35)}
+.gal.is-hidden{display:none}
+.gal--wide{grid-column:1/-1;background:var(--mist)}
+.gal__tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;padding:5px 11px;border-radius:3px}
+.gal__tag--cleanup{background:var(--orange)}
+.gal__tag--social{background:var(--ink)}
+.gal__tag--steward{background:var(--dune)}
+.gal__tag--milestone{background:var(--ink-deep);border:1px solid var(--orange)}
+.gal h3{font-size:clamp(1.1rem,1.9vw,1.4rem)}
+.gal__date{font-size:13px;color:var(--meta)}
+.gal p{font-size:14.5px}
+.gal a.more{margin-top:auto;font-weight:700;color:var(--orange);font-size:13.5px;letter-spacing:.06em;text-transform:uppercase}
+.gal a.more:hover{color:var(--orange-deep)}
+
+/* CONTRIBUTE CTA */
+.contribute{background:var(--orange);color:#fff;padding:clamp(48px,6vw,72px) 0}
+.contribute .wrap{display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:wrap}
+.contribute h2{color:#fff;font-size:clamp(1.6rem,3vw,2.4rem);max-width:22ch}
+.contribute p{font-size:15px;max-width:52ch;margin-top:8px}
+
+/* FOOTER */
+footer{background:var(--ink-deep);color:#9FB2BF;padding:clamp(48px,6vw,72px) 0 100px}
+.foot{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(226,217,196,.15)}
+.foot__brand img{height:60px;width:auto;background:#fff;border-radius:6px;padding:6px}
+.foot__brand p{font-size:14px;max-width:36ch;margin-top:16px}
+.foot h4{font-family:'Public Sans',sans-serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#F2A879;margin-bottom:16px}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+.foot a{color:#C9D6DE;font-size:14.5px}
+.foot a:hover{color:#fff}
+.foot__bottom{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:26px;font-size:13px}
+.foot__bottom a{color:#F2A879}
+.action-bar{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;background:rgba(13,35,51,.96);backdrop-filter:blur(10px);border-top:2px solid var(--orange);padding:10px 14px;gap:12px;align-items:center}
+.action-bar__call{display:flex;flex-direction:column;color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.3}
+.action-bar__call strong{font-family:'Besley',serif;font-size:16px;letter-spacing:0;text-transform:none}
+.action-bar .btn{flex:1;padding:13px}
+
+@media (max-width:980px){
+  .upcoming__grid{grid-template-columns:1fr 1fr}
+  .upcoming__label{grid-column:1/-1;max-width:none}
+}
+@media (max-width:760px){
+  .nav__brand-name{display:none}
+  .nav__donate{display:none}
+  .action-bar{display:flex}
+  footer{padding-bottom:130px}
+  .foot{grid-template-columns:1fr}
+  .upcoming__grid{grid-template-columns:1fr}
+  .year{grid-template-columns:1fr}
+  .year__num{position:static;display:flex;align-items:baseline;gap:14px}
+  .year__num small{margin-top:0}
+  .gal-grid{grid-template-columns:1fr}
+  .filter{top:76px}
+}
+@media (max-width:560px){body{font-size:16px}}
+.no-js .drawer{position:static;transform:none;background:var(--ink-deep)}
+.no-js .filter{display:none}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="nav-primary" id="nav">
+  <div class="nav__inner">
+    <a class="nav__brand" href="index.html" aria-label="MBPOA home">
+      <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="120" height="54">
+      <span class="nav__brand-name">Montauk Beach Property Owners Association</span>
+    </a>
+    <div class="nav__right">
+      <a class="btn btn--solid nav__donate" href="https://mbpoa.com/donation/">Make a Donation</a>
+      <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<nav class="drawer" id="drawer" aria-label="Primary">
+  <ul class="menu genesis-nav-menu menu-primary">
+    <li class="menu-item"><a href="index.html">Home</a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/letter-from-your-board/">Welcome <small>Letter from your Board</small></a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/what-we-do/">What We Do</a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/history/">History <small>Since 1942</small></a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/beach-rules-party-guidelines/">Beach Rules &amp; Party Guidelines</a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/resources/">Resources</a></li>
+    <li class="menu-item current-menu-item"><a href="galleries.html">Events &amp; Galleries <small>One section &mdash; every event, every album</small></a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/contact-us/">Contact</a></li>
+    <li class="menu-item"><a href="https://shop.mbpoa.com/">Merch <small>shop.mbpoa.com</small></a></li>
+    <li class="menu-item"><a href="https://mbpoa.com/donation/">Make a Donation</a></li>
+  </ul>
+  <div class="drawer__foot">
+    <span>Beach emergencies: <a href="tel:631-537-7575">631-537-7575</a></span>
+    <span>MBPOA Inc. · PO Box 792, Montauk, NY 11954</span>
+  </div>
+</nav>
+
+<main id="main">
+
+  <!-- PAGE HEAD -->
+  <section class="page-head" aria-label="Introduction">
+    <div class="wrap">
+      <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Events &amp; Galleries · Since 2002</span>
+      <h1>Every event becomes <em>a gallery.</em></h1>
+      <p>Clean-ups, socials, plantings, and milestone parties — the life of the association, on the sand. Events and their photo albums now live together: find the event, and its gallery is right there with it.</p>
+    </div>
+  </section>
+
+  <!-- UPCOMING -->
+  <section class="upcoming" aria-label="Upcoming events">
+    <div class="wrap upcoming__grid">
+      <p class="upcoming__label">Coming up on the beach</p>
+      <div class="up">
+        <span class="up__date">Sunday, September 13</span>
+        <h3>Community Beach Clean-up</h3>
+        <p>Monthly clean-ups keep the beach and bluffs beautiful. Reminders by email; signs posted at the beach.</p>
+        <a href="https://mbpoa.com/event/monthly-community-beach-clean-ups-august-9th/">Details →</a>
+      </div>
+      <div class="up">
+        <span class="up__date">All season</span>
+        <h3>Summer Beach Events</h3>
+        <p>Members gather all summer for sponsored activities and socials.</p>
+        <a href="https://mbpoa.com/event/summer-beach-events/">Lineup →</a>
+      </div>
+      <div class="up">
+        <span class="up__date">Tickets on sale</span>
+        <h3>2026 Annual Cocktail Party</h3>
+        <p>The members' cocktail party returns — purchase tickets online.</p>
+        <a href="https://mbpoa.com/product/mbpoa-2026-annual-cocktail-party/">Buy tickets →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER -->
+  <div class="filter" id="filter">
+    <div class="wrap filter__row" role="group" aria-label="Filter galleries by type">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip chip--cleanup" data-filter="cleanup" aria-pressed="false">Clean-ups</button>
+      <button class="chip chip--social" data-filter="social" aria-pressed="false">Socials &amp; Parties</button>
+      <button class="chip chip--steward" data-filter="steward" aria-pressed="false">Stewardship</button>
+      <button class="chip" data-filter="milestone" aria-pressed="false">Milestones</button>
+      <span class="filter__count" id="filterCount" aria-live="polite">16 galleries</span>
+    </div>
+  </div>
+
+  <!-- ARCHIVE -->
+  <section class="archive" aria-label="Gallery archive">
+    <div class="wrap">
+
+      <div class="year" data-year="2026">
+        <div class="year__num" aria-hidden="true">2026<small>This season</small></div>
+        <div class="gal-grid">
+          <article class="gal gal--wide" data-type="social">
+            <span class="gal__tag gal__tag--social">Social</span>
+            <h3>Dog Social — "Ray-tauk"</h3>
+            <span class="gal__date">July 30, 2026</span>
+            <p>The members' dogs take over the beach for the summer's most popular social.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="social">
+            <span class="gal__tag gal__tag--social">Social</span>
+            <h3>July Social on 14M</h3>
+            <span class="gal__date">July 2026</span>
+            <p>Members and guests gather at the 14M entrance for the July social.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="cleanup">
+            <span class="gal__tag gal__tag--cleanup">Clean-up</span>
+            <h3>July Beach Clean-up</h3>
+            <span class="gal__date">July 12, 2026</span>
+            <p>Board directors and member volunteers on the sand and the highway shoulder.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="cleanup">
+            <span class="gal__tag gal__tag--cleanup">Clean-up</span>
+            <h3>June Beach Clean-up</h3>
+            <span class="gal__date">June 7, 2026</span>
+            <p>The season's first monthly clean-up.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="social">
+            <span class="gal__tag gal__tag--social">Social</span>
+            <h3>Social Committee Update</h3>
+            <span class="gal__date">June 2026</span>
+            <p>The social committee's season kick-off on the beach.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="steward">
+            <span class="gal__tag gal__tag--steward">Stewardship</span>
+            <h3>Property Upgrades</h3>
+            <span class="gal__date">Spring 2026</span>
+            <p>Pathways, steps, signage, and lots — this year's improvements to the property.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="year" data-year="2025">
+        <div class="year__num" aria-hidden="true">2025</div>
+        <div class="gal-grid">
+          <article class="gal" data-type="steward">
+            <span class="gal__tag gal__tag--steward">Stewardship</span>
+            <h3>Beach Grass Planting</h3>
+            <span class="gal__date">2025</span>
+            <p>Members planting beach grass to hold the bluffs — the work the donations fund.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="steward">
+            <span class="gal__tag gal__tag--steward">Stewardship</span>
+            <h3>Property Renovations</h3>
+            <span class="gal__date">2025</span>
+            <p>Renovation work across the association's pathways and property.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="social">
+            <span class="gal__tag gal__tag--social">Social</span>
+            <h3>Holiday Cocktail Party</h3>
+            <span class="gal__date">December 2025</span>
+            <p>The members' holiday party.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="social">
+            <span class="gal__tag gal__tag--social">Social</span>
+            <h3>2025 Social</h3>
+            <span class="gal__date">Summer 2025</span>
+            <p>The summer social on the beach.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="cleanup">
+            <span class="gal__tag gal__tag--cleanup">Clean-up</span>
+            <h3>2025 Beach Clean-up</h3>
+            <span class="gal__date">2025</span>
+            <p>Volunteers across the beach and bluffs.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+          <article class="gal" data-type="cleanup">
+            <span class="gal__tag gal__tag--cleanup">Clean-up</span>
+            <h3>Beach &amp; Highway Clean-up</h3>
+            <span class="gal__date">2025</span>
+            <p>The beach and the Old Montauk Highway shoulder, cleaned in one morning.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="year" data-year="2022">
+        <div class="year__num" aria-hidden="true">2022</div>
+        <div class="gal-grid">
+          <article class="gal gal--wide" data-type="steward">
+            <span class="gal__tag gal__tag--steward">Stewardship</span>
+            <h3>Beach Grass Planting</h3>
+            <span class="gal__date">October 2022</span>
+            <p>The planting program that started it — members putting beach grass into the dunes to protect the bluffs.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="year" data-year="2012-2019">
+        <div class="year__num" aria-hidden="true">2012<small>through 2019</small></div>
+        <div class="gal-grid">
+          <article class="gal gal--wide" data-type="social">
+            <span class="gal__tag gal__tag--social">Socials &amp; Parties</span>
+            <h3>The Beach Party years</h3>
+            <span class="gal__date">2012 · 2013 · 2014 · 2015 · 2016 · 2017 · 2018 · 2019</span>
+            <p>Eight consecutive summers of the annual members' beach party — hundreds of photos across eight albums.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">Browse all eight galleries →</a>
+          </article>
+          <article class="gal" data-type="milestone">
+            <span class="gal__tag gal__tag--milestone">Milestone</span>
+            <h3>70th Anniversary Party</h3>
+            <span class="gal__date">July 2012</span>
+            <p>Seventy years since the deed to the Ocean View Beach — celebrated on the beach it protects.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="year" data-year="2002">
+        <div class="year__num" aria-hidden="true">2002</div>
+        <div class="gal-grid">
+          <article class="gal" data-type="milestone">
+            <span class="gal__tag gal__tag--milestone">Milestone</span>
+            <h3>60th Anniversary Party</h3>
+            <span class="gal__date">September 2002</span>
+            <p>The oldest album in the archive — sixty years of the association.</p>
+            <a class="more" href="https://mbpoa.com/galleries/">View gallery →</a>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTRIBUTE -->
+  <section class="contribute" aria-label="Share your photos">
+    <div class="wrap">
+      <div>
+        <h2>Were you there? Add your photos.</h2>
+        <p>Member photos go into the shared Google Drive folder — the association's single source for every gallery on this page.</p>
+      </div>
+      <a class="btn btn--white" href="mailto:MBPOAINC@gmail.com?subject=Photos%20for%20the%20MBPOA%20gallery">Email the Association</a>
+    </div>
+  </section>
+
+</main>
+
+<footer aria-label="Site footer">
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot__brand">
+        <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="130" height="60" loading="lazy">
+        <p>Montauk Beach Property Owners Association — a 501(c)(7) social organization and steward of the Ocean View Beach since 1942.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="https://mbpoa.com/news/">News</a></li>
+          <li><a href="galleries.html">Events &amp; Galleries</a></li>
+          <li><a href="https://mbpoa.com/resources/">Resources</a></li>
+          <li><a href="https://www.instagram.com/mbpoa.montauk/">Instagram — @mbpoa.montauk</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>The Association</h4>
+        <ul>
+          <li><a href="https://mbpoa.com/letter-from-your-board/">Letter from Your Board</a></li>
+          <li><a href="https://mbpoa.com/beach-rules-party-guidelines/">Beach Rules &amp; Guidelines</a></li>
+          <li><a href="https://mbpoa.com/contact-us/">Contact Us</a></li>
+          <li><a href="https://shop.mbpoa.com/">Merch</a></li>
+          <li><a href="https://mbpoa.com/donation/">Make a Donation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span id="year">2026</span> Montauk Beach Property Owners Association. All rights reserved.</p>
+      <p>Website design by <a href="https://www.bofilltech.com/">Bofill Tech</a></p>
+    </div>
+  </div>
+</footer>
+
+<div class="action-bar">
+  <a class="action-bar__call" href="tel:631-537-7575">Beach emergency<strong>631-537-7575</strong></a>
+  <a class="btn btn--solid" href="https://mbpoa.com/donation/">Donate</a>
+</div>
+
+<script>
+(function(){
+  'use strict';
+  document.documentElement.classList.remove('no-js');
+
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('is-scrolled', window.scrollY > 8); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  var burger = document.getElementById('burger');
+  var drawer = document.getElementById('drawer');
+  function setDrawer(open){
+    drawer.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    document.body.classList.toggle('is-locked', open);
+  }
+  burger.addEventListener('click', function(){ setDrawer(!drawer.classList.contains('is-open')); });
+  drawer.addEventListener('click', function(e){ if (e.target.closest('a')) setDrawer(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setDrawer(false); });
+
+  // Gallery filter
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.chip'));
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.gal'));
+  var years = Array.prototype.slice.call(document.querySelectorAll('.year'));
+  var count = document.getElementById('filterCount');
+  function applyFilter(type){
+    var shown = 0;
+    cards.forEach(function(c){
+      var show = (type === 'all') || (c.getAttribute('data-type') === type);
+      c.classList.toggle('is-hidden', !show);
+      if (show) shown++;
+    });
+    years.forEach(function(y){
+      var visible = y.querySelectorAll('.gal:not(.is-hidden)').length > 0;
+      y.classList.toggle('is-empty', !visible);
+    });
+    if (count) count.textContent = shown + (shown === 1 ? ' gallery' : ' galleries');
+  }
+  chips.forEach(function(chip){
+    chip.addEventListener('click', function(){
+      chips.forEach(function(c){ c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+      applyFilter(chip.getAttribute('data-filter'));
+    });
+  });
+  applyFilter('all');
+
+  var y = document.getElementById('year');
+  if (y) y.textContent = String(new Date().getFullYear());
+})();
+</script>
+</body>
+</html>
