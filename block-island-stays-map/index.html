@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Block Island Stays — Three Places to Stay on Block Island</title>
+<meta name="description" content="Explore the three Block Island Stays properties — Payne's Harbor View Inn, the New Harbor House, and the Figurehead Apartments &amp; Penthouse in Old Harbor. Owned and operated by a 13th-generation Island family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+:root{
+  /* Payne's Harbor View Inn theme — harbor navy + champagne gold + crisp white.
+     NOTE: hexes matched by eye to the Payne's brand register; lock against the
+     live paynesharborviewinn.com stylesheet before client-facing use. */
+  --harbor-navy:#1E3A5C;
+  --navy-deep:#14293F;
+  --champagne:#C2A15B;
+  --champagne-deep:#A5843F;
+  --white:#FFFFFF;
+  --shell:#F7F5F0;
+  --mist:#DCE4EA;
+  --ink:#25313C;
+  --hair:rgba(30,58,92,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Source Sans 3',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--shell);
+  overflow:hidden;
+}
+.bis-app{position:relative;height:100vh;width:100%;min-height:560px}
+#map{position:absolute;inset:0;z-index:1;background:var(--mist)}
+
+/* ---------- Brand panel ---------- */
+.panel{
+  position:absolute;z-index:500;
+  top:22px;left:22px;bottom:22px;
+  width:min(370px, calc(100vw - 44px));
+  display:flex;flex-direction:column;
+  background:var(--white);
+  border:1px solid var(--hair);
+  border-radius:4px;
+  box-shadow:0 18px 50px -18px rgba(20,41,63,.5);
+  overflow:hidden;
+}
+.panel-head{
+  padding:22px 24px 18px;
+  background:var(--harbor-navy);
+  color:var(--white);
+  position:relative;
+}
+.panel-head::after{ /* champagne rule */
+  content:"";position:absolute;left:0;right:0;bottom:0;height:3px;
+  background:var(--champagne);
+}
+.eyebrow{
+  font-size:10.5px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--champagne);
+}
+.panel-head h1{
+  font-family:'Playfair Display',Georgia,serif;
+  font-weight:500;font-size:27px;line-height:1.14;
+  margin-top:9px;color:var(--white);
+}
+.panel-head h1 em{font-style:italic;color:#E4CD9C}
+.panel-sub{font-size:13px;font-weight:300;color:var(--mist);margin-top:8px;line-height:1.55}
+
+.prop-list{flex:1;overflow-y:auto;padding:10px 10px 12px;scrollbar-width:thin}
+.prop{
+  display:flex;align-items:center;gap:14px;
+  width:100%;text-align:left;
+  padding:14px 14px;border:0;border-radius:4px;
+  background:transparent;cursor:pointer;
+  font-family:inherit;color:inherit;
+  transition:background .22s ease;
+  border-bottom:1px solid var(--hair);
+}
+.prop:last-child{border-bottom:0}
+.prop:hover{background:rgba(30,58,92,.06)}
+.prop.active{background:var(--harbor-navy);color:var(--white)}
+.prop.active .prop-sub{color:var(--mist)}
+.prop-pin{
+  flex-shrink:0;width:30px;height:30px;border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  background:var(--champagne);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 3px 8px rgba(20,41,63,.32);
+}
+.prop-pin span{
+  transform:rotate(45deg);
+  font-family:'Playfair Display',serif;font-weight:600;font-size:15px;color:var(--navy-deep);
+}
+.prop-name{font-family:'Playfair Display',serif;font-weight:600;font-size:17px;line-height:1.18}
+.prop-sub{font-size:11.5px;font-weight:400;letter-spacing:.04em;color:#5f6d79;margin-top:3px}
+.panel-foot{
+  padding:13px 24px;border-top:1px solid var(--hair);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--shell);
+}
+.panel-foot a.book{
+  display:inline-block;background:var(--champagne);color:var(--navy-deep);
+  font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:11px 18px;border-radius:2px;text-decoration:none;
+  transition:background .25s ease;
+}
+.panel-foot a.book:hover{background:var(--champagne-deep);color:var(--white)}
+.panel-foot .tel{font-size:13px;color:var(--harbor-navy);text-decoration:none;font-weight:600;white-space:nowrap}
+.panel-foot .tel:hover{text-decoration:underline}
+
+/* ---------- Leaflet skinning ---------- */
+.leaflet-container{font-family:'Source Sans 3',sans-serif}
+.bis-marker{filter:drop-shadow(0 4px 6px rgba(20,41,63,.42))}
+.bis-marker .pin{
+  width:38px;height:38px;border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);transform-origin:center;
+  background:var(--harbor-navy);border:2px solid var(--champagne);
+  display:flex;align-items:center;justify-content:center;
+  transition:transform .2s ease;
+}
+.bis-marker:hover .pin{transform:rotate(-45deg) scale(1.12)}
+.bis-marker .pin span{
+  transform:rotate(45deg);
+  font-family:'Playfair Display',serif;font-weight:600;font-size:17px;color:var(--white);
+}
+.leaflet-popup-content-wrapper{
+  border-radius:4px;padding:0;overflow:hidden;
+  box-shadow:0 16px 40px -14px rgba(20,41,63,.5);
+  background:var(--white);
+}
+.leaflet-popup-content{margin:0;width:272px !important}
+.leaflet-popup-tip{background:var(--white)}
+.pop{font-family:'Source Sans 3',sans-serif}
+.pop img{display:block;width:100%;height:152px;object-fit:cover;background:var(--mist)}
+.pop-body{padding:15px 17px 17px}
+.pop-body h3{font-family:'Playfair Display',serif;font-weight:600;font-size:19px;color:var(--harbor-navy);line-height:1.15}
+.pop-body .addr{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#5f6d79;margin-top:4px}
+.pop-body p{font-size:13px;font-weight:300;line-height:1.55;color:var(--ink);margin-top:9px}
+.pop-body a{
+  display:inline-block;margin-top:12px;
+  background:var(--harbor-navy);color:var(--white);
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:10px 16px;border-radius:2px;text-decoration:none;
+  transition:background .25s ease;
+}
+.pop-body a:hover{background:var(--navy-deep)}
+.pop-body a.gold{background:var(--champagne);color:var(--navy-deep);margin-left:8px}
+.pop-body a.gold:hover{background:var(--champagne-deep);color:var(--white)}
+.leaflet-control-attribution{font-size:9px;background:rgba(247,245,240,.85)}
+.leaflet-control-zoom a{color:var(--harbor-navy)}
+
+/* ---------- Mobile: panel becomes bottom sheet ---------- */
+@media (max-width:760px){
+  .panel{
+    top:auto;left:0;right:0;bottom:0;width:100%;
+    max-height:48vh;border-radius:14px 14px 0 0;border-bottom:0;
+  }
+  .panel-head{padding:14px 18px 12px}
+  .panel-head h1{font-size:21px}
+  .panel-sub{display:none}
+  .prop{padding:12px 12px}
+  .panel-foot{padding:10px 18px}
+  #map{bottom:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+<div class="bis-app">
+  <div id="map" aria-label="Map of Block Island Stays properties"></div>
+
+  <aside class="panel" aria-label="Block Island Stays properties">
+    <div class="panel-head">
+      <span class="eyebrow">Block Island Stays</span>
+      <h1>Your Vacation, <em>Your Way</em></h1>
+      <p class="panel-sub">Three distinct places to stay, from New Harbor to Old Harbor &mdash; owned and operated by a 13th-generation Island family.</p>
+    </div>
+    <nav class="prop-list" id="propList"></nav>
+    <div class="panel-foot">
+      <a class="book" href="https://blockislandstays.com/" target="_blank" rel="noopener">Explore Properties</a>
+      <a class="tel" href="tel:401-466-5758">401.466.5758</a>
+    </div>
+  </aside>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  'use strict';
+
+  /* ============================================================
+     PROPERTY CONFIG — coordinates for the Inn and the Figurehead
+     are the properties' own published Google place coordinates.
+     New Harbor House publishes no address ("heart of New Harbor,
+     across from the farmer's market, next to the park") — nudge
+     its lat/lng to the exact parcel when confirmed.
+     ============================================================ */
+  var PROPS = [
+    {
+      name:'Payne\u2019s Harbor View Inn', sub:'Beach Ave &amp; Ocean Ave \u00b7 New Harbor \u00b7 Ages 12+',
+      lat:41.1774366, lng:-71.5711098,
+      img:'https://blockislandstays.com/wp-content/uploads/2025/09/b6c549897aa21deb219ec333dec52eaa4272c4cd.jpg',
+      blurb:'A modern inn with a historic feel \u2014 ten spacious rooms with water views, private decks, whirlpool baths, and a complimentary champagne breakfast buffet.',
+      link:'https://paynesharborviewinn.client.innroad.com/', cta:'Book Now',
+      more:'https://paynesharborviewinn.com/'
+    },
+    {
+      name:'New Harbor House', sub:'Heart of New Harbor \u00b7 Sleeps up to 12 \u00b7 All Ages',
+      lat:41.17580, lng:-71.56930,
+      img:'https://blockislandstays.com/wp-content/uploads/2025/09/f80f4355a5a2042a8eb1480b985191dba69bdc68.png',
+      blurb:'A cozy home with sunset harbor views and a wood-burning fireplace, split into two units \u2014 the main house sleeps 8, the in-law apartment sleeps 4. Rent them separately or together.',
+      link:'https://newharborhouse.client.innroad.com/', cta:'Book Now',
+      more:'https://paynesharborviewinn.com/new-harbor-house/'
+    },
+    {
+      name:'The Figurehead Apartments &amp; Penthouse', sub:'234 Water St \u00b7 Old Harbor \u00b7 Across from the Ferry',
+      lat:41.1722748, lng:-71.5578375,
+      img:'https://blockislandstays.com/wp-content/uploads/2025/09/012d6b12b279d320da0adb4e766233331a7135e8.png',
+      blurb:'Contemporary living in quaint Old Harbor \u2014 open-concept two- and three-bedroom apartments and a penthouse with full kitchens, A/C, and private balconies with ocean views, right across from the ferry landing.',
+      link:'https://thefigurehead.client.innroad.com/', cta:'Book Now',
+      more:'https://blockislandfigurehead.com/'
+    }
+  ];
+
+  var map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
+  map.zoomControl.setPosition('topright');
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains:'abcd', maxZoom:19
+  }).addTo(map);
+
+  var listEl = document.getElementById('propList');
+  var markers = [];
+  var bounds = L.latLngBounds([]);
+
+  PROPS.forEach(function(p, i){
+    var n = i + 1;
+    var icon = L.divIcon({
+      className:'bis-marker',
+      html:'<div class="pin"><span>'+n+'</span></div>',
+      iconSize:[38,38], iconAnchor:[7,36], popupAnchor:[12,-34]
+    });
+    var popup =
+      '<div class="pop">' +
+        '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'">' +
+        '<div class="pop-body">' +
+          '<h3>'+p.name+'</h3>' +
+          '<div class="addr">'+p.sub+'</div>' +
+          '<p>'+p.blurb+'</p>' +
+          '<a href="'+p.link+'" target="_blank" rel="noopener">'+p.cta+'</a>' +
+          '<a class="gold" href="'+p.more+'" target="_blank" rel="noopener">Details</a>' +
+        '</div>' +
+      '</div>';
+    var m = L.marker([p.lat, p.lng], { icon:icon, title:p.name.replace(/&amp;/g,'&') })
+      .addTo(map).bindPopup(popup, { maxWidth:292 });
+    m.on('click', function(){ setActive(i); });
+    markers.push(m);
+    bounds.extend([p.lat, p.lng]);
+
+    var btn = document.createElement('button');
+    btn.className = 'prop'; btn.type = 'button';
+    btn.setAttribute('aria-label', 'Show '+p.name.replace(/&amp;/g,'&')+' on the map');
+    btn.innerHTML =
+      '<span class="prop-pin"><span>'+n+'</span></span>' +
+      '<span><span class="prop-name">'+p.name+'</span><br>' +
+      '<span class="prop-sub">'+p.sub+'</span></span>';
+    btn.addEventListener('click', function(){
+      setActive(i);
+      map.flyTo([p.lat, p.lng], 17, { duration:.9 });
+      markers[i].openPopup();
+    });
+    listEl.appendChild(btn);
+  });
+
+  function setActive(i){
+    var items = listEl.children;
+    for (var k = 0; k < items.length; k++) items[k].classList.toggle('active', k === i);
+  }
+
+  map.fitBounds(bounds, { padding:[80,80] });
+})();
+</script>
+</body>
+</html>
