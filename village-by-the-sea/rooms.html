@@ -91,13 +91,16 @@
     <div class="container">
       <div class="picker__head" data-reveal>
         <h2 class="minor-title">Choose a building</h2>
-        <p class="picker__note">Eleven buildings across eleven acres. Not every unit is in the rental program &mdash; the ones shown here are.</p>
+        <p class="picker__note">Eleven buildings across eleven acres. Pick a building, then click any unit to see it. Not every unit is in the rental program &mdash; the ones shown here are.</p>
       </div>
 
       <div class="bldg-tabs" id="bldgTabs" role="tablist" aria-label="Buildings"></div>
 
       <div class="picker__body">
-        <div class="unit-grid" id="unitGrid" role="tabpanel" aria-live="polite"></div>
+        <div class="unit-rail">
+          <div class="unit-grid" id="unitGrid" role="tabpanel"></div>
+          <p class="unit-rail__key"><span class="unit-rail__dot" aria-hidden="true"></span> Includes the view from the deck</p>
+        </div>
         <aside class="preview" id="preview" aria-live="polite"></aside>
       </div>
     </div>
@@ -227,6 +230,16 @@
     </a>
     <a class="btn btn--primary bookbar__go" href="https://hotels.cloudbeds.com/reservation/IoseEY">Check availability</a>
   </div>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Unit photograph" hidden>
+  <button class="lightbox__close" type="button" aria-label="Close">&times;</button>
+  <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photograph">&#8249;</button>
+  <div class="lightbox__stage">
+    <img class="lightbox__img" src="" alt="Enlarged photograph of the selected unit">
+    <p class="lightbox__caption"></p>
+  </div>
+  <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photograph">&#8250;</button>
 </div>
 
 <script src="js/units.js" defer></script>

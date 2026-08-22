@@ -38,41 +38,89 @@
     if (!tabsEl || !gridEl || !prevEl) return;
 
     var current = buildings()[0];
+    var selected = null;
+    var displayed = null;
+
+    function alt(u, i, isView) {
+      return isView
+        ? 'The view from the deck of unit ' + u + ' at Village by the Sea'
+        : 'Unit ' + u + ' at Village by the Sea, photograph ' + (i + 1);
+    }
 
     function renderPreview(u) {
+      if (u && u === displayed) return;
+      displayed = u;
       if (!u) {
         prevEl.innerHTML =
           '<div class="preview__empty">' +
           '<p class="preview__empty-title">Pick a unit</p>' +
-          '<p>Choose any unit above to see its photographs. Every set ends with the real view from that unit&rsquo;s deck.</p>' +
+          '<p>Choose any unit on the left to see its photographs. Every set ends with the real view from that unit&rsquo;s deck.</p>' +
           '</div>';
         return;
       }
       var d = UNITS[u];
-      var shots = d.p.slice(0, 4).map(function (src, i) {
-        return '<img src="' + IMG + src + '" alt="Interior of unit ' + u + ' at Village by the Sea" loading="lazy"' +
-               (i === 0 ? '' : ' class="preview__thumb"') + '>';
+      var firstView = d.p.length - d.v;
+
+      var lead = d.p[0];
+      var rest = d.p.slice(1);
+
+      var thumbs = rest.map(function (src, i) {
+        var isView = (i + 1) >= firstView;
+        return '<button class="preview__thumb' + (isView ? ' preview__thumb--view' : '') +
+               '" type="button" data-full="' + src + '" data-i="' + (i + 1) + '" data-u="' + u + '">' +
+               '<img src="' + IMG + src + '" alt="' + alt(u, i + 1, isView) + '" loading="lazy">' +
+               (isView ? '<span class="preview__thumb-tag">View</span>' : '') +
+               '</button>';
       }).join('');
+
       prevEl.innerHTML =
-        '<p class="preview__label">Building ' + d.b + '</p>' +
-        '<h3 class="preview__name">Unit ' + u + '</h3>' +
-        '<p class="preview__meta">' + d.n + ' photographs' +
-        (d.v ? ' &middot; includes the view from the deck' : '') + '</p>' +
-        '<div class="preview__shots">' + shots + '</div>' +
-        '<a class="btn btn--primary btn--block" href="unit.html?u=' + encodeURIComponent(u) + '">See unit ' + u + '</a>';
+        '<div class="preview__head">' +
+          '<div>' +
+            '<p class="preview__label">Building ' + d.b + '</p>' +
+            '<h3 class="preview__name">Unit ' + u + '</h3>' +
+          '</div>' +
+          '<p class="preview__meta">' + d.n + ' photographs' +
+            (d.v ? '<span class="preview__flag">Includes the view from the deck</span>' : '') +
+          '</p>' +
+        '</div>' +
+        '<button class="preview__lead" type="button" data-full="' + lead + '" data-i="0" data-u="' + u + '">' +
+          '<img src="' + IMG + lead + '" alt="' + alt(u, 0, false) + '">' +
+          '<span class="preview__zoom" aria-hidden="true">Click to enlarge</span>' +
+        '</button>' +
+        '<div class="preview__strip">' + thumbs + '</div>' +
+        '<div class="preview__actions">' +
+          '<a class="btn btn--primary" href="unit.html?u=' + encodeURIComponent(u) + '">See the full unit ' + u + ' page</a>' +
+          '<a class="btn btn--ghost btn--dark-ghost" href="tel:+12076461100">Request unit ' + u + '</a>' +
+        '</div>';
     }
 
     function renderGrid() {
       var list = unitsIn(current);
-      gridEl.innerHTML = list.map(function (u) {
+      gridEl.innerHTML = list.map(function (u, i) {
         var d = UNITS[u];
-        return '<a class="unit-btn" href="unit.html?u=' + encodeURIComponent(u) + '" data-unit="' + u + '">' +
+        return '<button class="unit-btn' + (i === 0 ? ' is-selected' : '') + '" type="button" data-unit="' + u + '"' +
+               ' aria-pressed="' + (i === 0 ? 'true' : 'false') + '">' +
                '<span class="unit-btn__id">' + u + '</span>' +
                '<span class="unit-btn__meta">' + d.n + ' photos</span>' +
                (d.v ? '<span class="unit-btn__view" title="Includes the view from the deck" aria-label="Includes the view from the deck"></span>' : '') +
-               '</a>';
+               '</button>';
       }).join('');
-      renderPreview(list[0]);
+      selected = list[0];
+      renderPreview(selected);
+    }
+
+    function select(btn) {
+      Array.prototype.forEach.call(gridEl.querySelectorAll('.unit-btn'), function (b) {
+        var on = b === btn;
+        b.classList.toggle('is-selected', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      selected = btn.getAttribute('data-unit');
+      renderPreview(selected);
+      /* on narrow screens the panel sits below the grid — bring it into view */
+      if (window.matchMedia('(max-width: 759px)').matches) {
+        prevEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     tabsEl.innerHTML = buildings().map(function (b, i) {
@@ -94,14 +142,81 @@
       renderGrid();
     });
 
-    gridEl.addEventListener('mouseover', function (e) {
+    gridEl.addEventListener('click', function (e) {
       var btn = e.target.closest('.unit-btn');
-      if (btn) renderPreview(btn.getAttribute('data-unit'));
+      if (btn) select(btn);
     });
-    gridEl.addEventListener('focusin', function (e) {
-      var btn = e.target.closest('.unit-btn');
-      if (btn) renderPreview(btn.getAttribute('data-unit'));
-    });
+
+    /* hovering still previews on pointer devices, without stealing the selection */
+    if (window.matchMedia('(hover: hover)').matches) {
+      gridEl.addEventListener('mouseover', function (e) {
+        var btn = e.target.closest('.unit-btn');
+        if (btn && !btn.classList.contains('is-selected')) renderPreview(btn.getAttribute('data-unit'));
+      });
+      gridEl.addEventListener('mouseleave', function () {
+        var sel = gridEl.querySelector('.unit-btn.is-selected');
+        if (sel) renderPreview(sel.getAttribute('data-unit'));
+      });
+    }
+
+    /* ------------------------------------------------------------- lightbox */
+    var lb = document.getElementById('lightbox');
+    if (lb) {
+      var lbImg = lb.querySelector('.lightbox__img');
+      var lbCap = lb.querySelector('.lightbox__caption');
+      var lbPrev = lb.querySelector('.lightbox__nav--prev');
+      var lbNext = lb.querySelector('.lightbox__nav--next');
+      var lbUnit = null, lbIdx = 0, lastFocus = null;
+
+      function show(i) {
+        var d = UNITS[lbUnit];
+        if (!d) return;
+        lbIdx = (i + d.p.length) % d.p.length;
+        var isView = lbIdx >= d.p.length - d.v;
+        lbImg.setAttribute('src', IMG + d.p[lbIdx]);
+        lbImg.setAttribute('alt', alt(lbUnit, lbIdx, isView));
+        lbCap.innerHTML = 'Unit ' + lbUnit + ' &middot; ' + (lbIdx + 1) + ' of ' + d.p.length +
+                          (isView ? ' &middot; <strong>the view from this deck</strong>' : '');
+      }
+
+      function openLb(u, i) {
+        lastFocus = document.activeElement;
+        lbUnit = u;
+        show(i);
+        lb.hidden = false;
+        document.documentElement.classList.add('is-locked');
+        document.body.classList.add('is-locked');
+        window.requestAnimationFrame(function () { lb.classList.add('is-open'); });
+        lb.querySelector('.lightbox__close').focus();
+      }
+
+      function closeLb() {
+        lb.classList.remove('is-open');
+        document.documentElement.classList.remove('is-locked');
+        document.body.classList.remove('is-locked');
+        window.setTimeout(function () { lb.hidden = true; }, 260);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      prevEl.addEventListener('click', function (e) {
+        var t = e.target.closest('[data-full]');
+        if (!t) return;
+        openLb(t.getAttribute('data-u'), parseInt(t.getAttribute('data-i'), 10));
+      });
+
+      lbPrev.addEventListener('click', function () { show(lbIdx - 1); });
+      lbNext.addEventListener('click', function () { show(lbIdx + 1); });
+      lb.querySelector('.lightbox__close').addEventListener('click', closeLb);
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb || e.target.classList.contains('lightbox__stage')) closeLb();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (lb.hidden) return;
+        if (e.key === 'Escape') closeLb();
+        if (e.key === 'ArrowLeft') show(lbIdx - 1);
+        if (e.key === 'ArrowRight') show(lbIdx + 1);
+      });
+    }
 
     renderGrid();
   }
