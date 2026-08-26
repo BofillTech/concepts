@@ -12,6 +12,7 @@
 
   var IMG = 'img/units/';
 
+
   function unitKeys() {
     return Object.keys(UNITS).sort(function (a, b) {
       return UNITS[a].b - UNITS[b].b || (UNITS[a].l < UNITS[b].l ? -1 : 1);
@@ -140,6 +141,7 @@
         b.setAttribute('aria-selected', on ? 'true' : 'false');
       });
       renderGrid();
+      markMap(current);
     });
 
     gridEl.addEventListener('click', function (e) {
@@ -216,6 +218,31 @@
         if (e.key === 'ArrowLeft') show(lbIdx - 1);
         if (e.key === 'ArrowRight') show(lbIdx + 1);
       });
+    }
+
+    /* ----------------------------------------------------------------- map */
+    /* Hotspots are static markup in the page; their positions live in
+       style.css as .spot--bN rules. JS only toggles classes. */
+    var mapEl = document.getElementById('siteMap');
+
+    function markMap(b) {
+      if (!mapEl) return;
+      Array.prototype.forEach.call(mapEl.querySelectorAll('.spot[data-b]'), function (el) {
+        el.classList.toggle('is-active', parseInt(el.getAttribute('data-b'), 10) === b);
+      });
+    }
+
+    if (mapEl) {
+      mapEl.addEventListener('click', function (e) {
+        var btn = e.target.closest('.spot');
+        if (!btn || btn.disabled || !btn.hasAttribute('data-b')) return;
+        var b = parseInt(btn.getAttribute('data-b'), 10);
+        var tab = tabsEl.querySelector('.bldg-tab[data-b="' + b + '"]');
+        if (tab) tab.click();
+        var rail = document.querySelector('.unit-rail');
+        if (rail) rail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+      markMap(current);
     }
 
     renderGrid();
