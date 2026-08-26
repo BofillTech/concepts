@@ -232,4 +232,16 @@
     });
   }
 
+
+  /* weddings lead-gen form */
+  var weddingForm = document.getElementById("weddingForm");
+  if (weddingForm) {
+    weddingForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var note = document.getElementById("weddingFormNote");
+      if (note) note.hidden = false;
+      weddingForm.querySelectorAll("input, textarea, button").forEach(function (el) { el.disabled = true; });
+    });
+  }
+
 })();
