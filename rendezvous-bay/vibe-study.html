@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vibe Study — Rendezvous Bay (not the live site)</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prata&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#107A82; --ink-deep:#0A5259; --sea:#1FA6A4; --aqua:#7FD9D2; --aqua-pale:#B9E3DC;
+    --sand:#E9DCC5; --sand-warm:#EFE4D0; --shell:#F8F6F1; --coral:#DB4A12; --coral-deep:#B93B0D;
+    --sun:#F2A23E; --ink-soft:#1F7178; --line:#D6E2DD;
+    --display:'Prata',serif; --body:'Hanken Grotesk',sans-serif; --hand:'Caveat',cursive;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);color:#2B2622;background:var(--shell);line-height:1.6;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--coral-deep)}
+  .eyebrow--light{color:var(--aqua-pale)}
+  .lede{font-size:1.08rem;color:var(--ink-soft);max-width:60ch}
+
+  /* intro / study banner */
+  .study-top{background:var(--ink);color:#fff;padding:48px 0 42px}
+  .study-top h1{color:#fff;font-size:2.3rem;margin:10px 0 12px}
+  .study-top p{max-width:66ch;color:rgba(255,255,255,.9)}
+  .study-top .pill{display:inline-block;margin:14px 8px 0 0;padding:7px 14px;border:1px solid rgba(255,255,255,.35);border-radius:40px;font-size:.82rem;color:#fff}
+  .disclaimer{background:var(--sun);color:#3a2a10;font-size:.85rem;font-weight:600;text-align:center;padding:9px 16px;letter-spacing:.02em}
+
+  .block{padding:70px 0}
+  .block__head{max-width:70ch;margin-bottom:26px}
+  .block__head h2{font-size:2rem;color:var(--ink);margin:8px 0 10px}
+  .tag{display:inline-block;background:var(--coral);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:4px}
+  .label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:#9a9384;margin:0 0 8px}
+  .label--now{color:#B0503A}
+  .label--new{color:var(--sea)}
+
+  /* ---------- 1. WATER-DEPTH GRADIENT BANDS ---------- */
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  @media(max-width:820px){.compare{grid-template-columns:1fr}}
+  .band{border-radius:12px;overflow:hidden;min-height:360px;display:flex;flex-direction:column;justify-content:center;padding:44px 40px;color:#fff;position:relative}
+  .band--flat{background:var(--ink)}
+  .band--depth{background:linear-gradient(180deg,#0A5259 0%,#107A82 24%,#1FA6A4 50%,#5FC7C0 72%,#9FDDD5 86%,#E4D8C0 100%)}
+  .band .eyebrow{color:var(--aqua-pale)}
+  .band--depth .eyebrow{color:#EAF7F4}
+  .band h3{color:#fff;font-size:1.7rem;margin:10px 0 12px}
+  .band p{color:rgba(255,255,255,.92);max-width:34ch;margin:0}
+  .band__stats{display:flex;gap:30px;margin-top:26px}
+  .band__stats b{font-family:var(--display);font-size:2rem;display:block;color:#fff}
+  .band__stats span{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;opacity:.9}
+  .band--depth .band__stats b{color:#08343A;text-shadow:0 1px 0 rgba(255,255,255,.35)}
+  .band--depth p{color:#0A3D42}
+  .band--depth .band__deepcopy{color:#fff}
+
+  /* ---------- 2. WAVE DIVIDERS ---------- */
+  .wave-demo{position:relative}
+  .wave-sec{padding:64px 0;position:relative}
+  .wave-sec--a{background:var(--shell)}
+  .wave-sec--b{background:linear-gradient(180deg,#0A5259 0%,#127C84 55%,#1FA6A4 100%);color:#fff}
+  .wave-sec--b h2,.wave-sec--b .eyebrow{color:#fff}
+  .wave-sec--b p{color:rgba(255,255,255,.9)}
+  .wave-sec--c{background:var(--sand-warm)}
+  .wave-top,.wave-bottom{position:absolute;left:0;width:100%;line-height:0;overflow:hidden}
+  .wave-top{top:-1px}.wave-bottom{bottom:-1px}
+  .wave-top svg,.wave-bottom svg{display:block;width:100%;height:70px}
+  .straight-note{border-top:2px dashed var(--line);margin-top:34px;padding-top:12px;color:#9a9384;font-size:.85rem}
+
+  /* ---------- 3. FULL-BLEED PARALLAX ---------- */
+  .bleed{position:relative;height:78vh;min-height:520px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+  .bleed__img{position:absolute;inset:-12% 0;background-size:cover;background-position:center;will-change:transform;z-index:0}
+  .bleed__scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,60,66,.28),rgba(10,60,66,.10) 40%,rgba(10,60,66,.40));z-index:1}
+  .bleed__inner{position:relative;z-index:2;color:#fff;max-width:760px;padding:0 24px}
+  .bleed__inner .eyebrow{color:#EAF7F4}
+  .bleed__inner h2{color:#fff;font-size:2.6rem;margin:12px 0;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+  .bleed__inner p{color:rgba(255,255,255,.95);font-size:1.15rem;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  .hand{font-family:var(--hand);font-size:1.9rem;color:var(--sun);line-height:1}
+
+  /* combined mini-hero to show it all together */
+  .combo{position:relative;overflow:hidden}
+  .combo .wave-bottom svg{height:80px}
+
+  .foot{background:#0A5259;color:rgba(255,255,255,.85);padding:40px 0;font-size:.9rem;text-align:center}
+  .foot b{color:#fff}
+  .horizon{height:3px;width:120px;border:0;margin:14px 0;background:linear-gradient(90deg,var(--sea),var(--sun),var(--coral))}
+  .horizon--c{margin:14px auto}
+</style>
+</head>
+<body>
+
+<div class="disclaimer">VIBE STUDY — a private comparison page. This is NOT the live site and nothing here is linked from the concept.</div>
+
+<section class="study-top">
+  <div class="wrap">
+    <span class="eyebrow eyebrow--light">Design Exploration</span>
+    <h1>Adding life &amp; the Anguilla water vibe</h1>
+    <p>Three treatments, shown side-by-side against how the site looks today. Elevated barefoot-luxury — sun-warmed and water-colored, never tropical-kitsch. Pick what you like and I'll roll it into the concept.</p>
+    <span class="pill">① Water-depth gradient bands</span>
+    <span class="pill">② Wave section dividers</span>
+    <span class="pill">③ Full-bleed beach + parallax</span>
+  </div>
+</section>
+
+<!-- 1. WATER-DEPTH GRADIENT -->
+<section class="block">
+  <div class="wrap">
+    <div class="block__head">
+      <span class="tag">Treatment ①</span>
+      <h2>Water-depth gradient bands</h2>
+      <hr class="horizon">
+      <p class="lede">Instead of one flat teal, the dark bands fade through the exact colors of Anguilla water — deep offshore blue, into turquoise, into the pale shallows, into sand. It instantly reads "Caribbean water" instead of "a colored box."</p>
+    </div>
+    <div class="compare">
+      <div>
+        <p class="label label--now">Now — flat teal</p>
+        <div class="band band--flat">
+          <span class="eyebrow">Rendezvous Bay</span>
+          <h3>Two and a half miles<br>of powder-white shore</h3>
+          <p>Calm, clear water at your doorstep and sand that feels like cool, powdered sugar underfoot.</p>
+          <div class="band__stats"><div><b>2.5 mi</b><span>Of beach</span></div><div><b>17</b><span>Villa rooms</span></div><div><b>1962</b><span>Since</span></div></div>
+        </div>
+      </div>
+      <div>
+        <p class="label label--new">Proposed — water-depth gradient</p>
+        <div class="band band--depth">
+          <span class="eyebrow">Rendezvous Bay</span>
+          <h3 class="band__deepcopy">Two and a half miles<br>of powder-white shore</h3>
+          <p class="band__deepcopy">Calm, clear water at your doorstep and sand that feels like cool, powdered sugar underfoot.</p>
+          <div class="band__stats"><div><b>2.5 mi</b><span style="color:#0A3D42">Of beach</span></div><div><b>17</b><span style="color:#0A3D42">Villa rooms</span></div><div><b>1962</b><span style="color:#0A3D42">Since</span></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. WAVE DIVIDERS -->
+<section class="block" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="block__head">
+      <span class="tag">Treatment ②</span>
+      <h2>Wave section dividers</h2>
+      <hr class="horizon">
+      <p class="lede">Sections meet on a soft wave instead of a hard horizontal line — a quiet echo of the crescent bay. Below, watch the shell section flow into the water section and back into sand.</p>
+    </div>
+  </div>
+</section>
+<div class="wave-demo">
+  <section class="wave-sec wave-sec--a">
+    <div class="wrap">
+      <span class="eyebrow">Where to Eat</span>
+      <h2 style="font-size:1.7rem;color:var(--ink);margin-top:8px">The Coral Club, just along the sand</h2>
+      <p style="max-width:56ch;color:var(--ink-soft)">A short walk down the beach — open-air, toes in the sand.</p>
+    </div>
+    <div class="wave-bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,30 C240,70 420,5 720,32 C1010,58 1200,8 1440,36 L1440,70 L0,70 Z" fill="#0A5259"></path></svg>
+    </div>
+  </section>
+  <section class="wave-sec wave-sec--b">
+    <div class="wrap">
+      <span class="eyebrow eyebrow--light">Rendezvous Bay</span>
+      <h2 style="font-size:1.9rem;margin-top:8px">God's Bathtub</h2>
+      <p style="max-width:56ch">The calm, warm water locals swear by — like stepping into the sea's own bath.</p>
+    </div>
+    <div class="wave-bottom" aria-hidden="true">
+      <svg viewBox="0 0 1440 70" preserveAspectRatio="none"><path d="M0,38 C260,8 460,60 740,34 C1000,10 1220,58 1440,28 L1440,70 L0,70 Z" fill="#EFE4D0"></path></svg>
+    </div>
+  </section>
+  <section class="wave-sec wave-sec--c">
+    <div class="wrap">
+      <span class="eyebrow">On the Sand</span>
+      <h2 style="font-size:1.7rem;color:var(--ink);margin-top:8px">Loungers waiting, all day yours</h2>
+      <p class="straight-note">For contrast — this dashed line is the kind of hard edge every section uses today.</p>
+    </div>
+  </section>
+</div>
+
+<!-- 3. FULL-BLEED PARALLAX -->
+<section class="block">
+  <div class="wrap">
+    <div class="block__head">
+      <span class="tag">Treatment ③</span>
+      <h2>Full-bleed beach moments</h2>
+      <hr class="horizon">
+      <p class="lede">Every so often, let a photo go edge-to-edge and full-height, with the image drifting gently as you scroll (parallax). It makes the site feel like it's breathing. Scroll through the next one slowly.</p>
+    </div>
+  </div>
+</section>
+<div class="bleed">
+  <div class="bleed__img" data-parallax style="background-image:url('img/new-pano-2.jpg')"></div>
+  <div class="bleed__scrim"></div>
+  <div class="bleed__inner">
+    <span class="eyebrow">Rendezvous Bay, Anguilla</span>
+    <h2>Where heaven meets earth</h2>
+    <p class="hand">"I thought I went to heaven and didn't die."</p>
+  </div>
+</div>
+
+<!-- ALL TOGETHER -->
+<section class="block">
+  <div class="wrap">
+    <div class="block__head">
+      <span class="tag" style="background:var(--ink)">All three together</span>
+      <h2>What it feels like combined</h2>
+      <hr class="horizon">
+      <p class="lede">Full-bleed image → wave into a water-depth gradient band. This is the overall mood: warm, alive, unmistakably Anguilla — still calm and high-end.</p>
+    </div>
+  </div>
+</section>
+<div class="combo">
+  <div class="bleed" style="height:60vh;min-height:420px">
+    <div class="bleed__img" data-parallax style="background-image:url('img/new-villas-b.jpg')"></div>
+    <div class="bleed__scrim"></div>
+    <div class="bleed__inner">
+      <span class="eyebrow">Barefoot luxury</span>
+      <h2>Steps from the sand</h2>
+    </div>
+    <div class="wave-bottom" aria-hidden="true" style="z-index:3">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,40 C260,80 460,10 740,40 C1010,68 1220,12 1440,42 L1440,80 L0,80 Z" fill="#0A5259"></path></svg>
+    </div>
+  </div>
+  <section class="band band--depth" style="border-radius:0;min-height:340px">
+    <div class="wrap" style="width:100%">
+      <span class="eyebrow" style="color:#EAF7F4">Your place in paradise</span>
+      <h3 style="color:#fff;font-size:1.9rem;margin:10px 0 12px">Start your soul-renewing journey</h3>
+      <p style="color:#0A3D42;max-width:44ch">Like Lydia, you have to experience it for yourself.</p>
+    </div>
+  </section>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>Vibe study for <b>Rendezvous Bay Hotel</b> — three optional directions to add life &amp; the Anguilla water feel.</p>
+    <hr class="horizon horizon--c">
+    <p>Tell Steve which of ①②③ you like (any mix) and he'll fold them into the live concept.</p>
+  </div>
+</footer>
+
+<script>
+  // gentle parallax: drift the full-bleed images as they scroll through view
+  (function(){
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+    if(!els.length) return;
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) return;
+    function onScroll(){
+      els.forEach(function(el){
+        var r = el.parentElement.getBoundingClientRect();
+        if(r.bottom < 0 || r.top > window.innerHeight) return;
+        var progress = (window.innerHeight - r.top) / (window.innerHeight + r.height); // 0..1
+        var shift = (progress - 0.5) * 12; // percent
+        el.style.transform = 'translateY(' + shift + '%)';
+      });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', onScroll);
+    onScroll();
+  })();
+</script>
+</body>
+</html>
