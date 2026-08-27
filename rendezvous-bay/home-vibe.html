@@ -63,6 +63,23 @@
   .bay__media img[data-parallax]{height:124%!important;object-fit:cover}
   .final{overflow:hidden}
   .final__media img[data-parallax]{height:124%!important;object-fit:cover}
+
+  /* warm gold eyebrow accents on the water */
+  .bay .eyebrow--light,.dining .eyebrow--light{color:#F4CE86!important}
+  /* palm frond on the footer */
+  .foot{position:relative;overflow:hidden}
+  .foot::before{content:'';position:absolute;top:-16px;right:-16px;width:240px;height:240px;background:url('img/palm-frond.svg') no-repeat;background-size:contain;opacity:.10;pointer-events:none}
+  .foot > *{position:relative;z-index:2}
+  /* living sunset horizon rules */
+  .horizon-rule{background:linear-gradient(90deg,#1FA6A4,#F2A23E,#DB4A12,#F2A23E,#1FA6A4)!important;background-size:200% 100%!important;animation:hr-shift 7s linear infinite}
+  @keyframes hr-shift{0%{background-position:0% 0}100%{background-position:200% 0}}
+  /* hero: warm sunset vignette + sand wave */
+  .hero{position:relative}
+  .hero__glow{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(72% 42% at 50% 112%,rgba(242,162,62,.22),rgba(242,162,62,0) 62%)}
+  .hero__inner,.hero__dots,.hero__scroll{position:relative;z-index:2}
+  .hero__wave{position:absolute;left:0;bottom:-1px;width:100%;line-height:0;z-index:3;pointer-events:none}
+  .hero__wave svg{display:block;width:100%;height:60px}
+  @media(prefers-reduced-motion:reduce){.horizon-rule{animation:none}}
 </style>
 
 <script type="application/ld+json">
@@ -133,6 +150,9 @@
   </div>
   <div class="hero__dots" role="group" aria-label="Hero slides"><button class="hero__dot is-active" type="button" aria-label="Show slide 1"></button><button class="hero__dot" type="button" aria-label="Show slide 2"></button><button class="hero__dot" type="button" aria-label="Show slide 3"></button><button class="hero__dot" type="button" aria-label="Show slide 4"></button><button class="hero__dot" type="button" aria-label="Show slide 5"></button></div>
   <div class="hero__scroll" aria-hidden="true">Scroll<i></i></div>
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__wave" aria-hidden="true"><svg viewBox="0 0 1440 66" preserveAspectRatio="none"><path d="M0,34 C240,66 480,10 720,34 C960,58 1200,8 1440,36 L1440,66 L0,66 Z" fill="#F4EDDF"></path></svg></div>
+  
 </section>
 <section class="section story">
   <div class="wrap">
