@@ -244,4 +244,23 @@
     });
   }
 
+
+  /* gentle parallax drift on tagged images */
+  (function () {
+    var els = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+    if (!els.length) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    function update() {
+      els.forEach(function (el) {
+        var p = el.parentElement.getBoundingClientRect();
+        if (p.bottom < 0 || p.top > window.innerHeight) return;
+        var prog = (window.innerHeight - p.top) / (window.innerHeight + p.height);
+        el.style.transform = "translateY(" + ((prog - 0.5) * 11) + "%)";
+      });
+    }
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    update();
+  })();
+
 })();
