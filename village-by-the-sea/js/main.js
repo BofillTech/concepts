@@ -39,7 +39,7 @@
     toggle.setAttribute('aria-expanded', 'true');
     document.documentElement.classList.add('is-locked');
     document.body.classList.add('is-locked');
-    var first = drawer.querySelector('a');
+    var first = drawer.querySelector('.drawer__close') || drawer.querySelector('a');
     if (first) first.focus();
   }
 
@@ -49,6 +49,7 @@
     });
     drawer.addEventListener('click', function (e) {
       if (e.target.closest('a')) closeDrawer();
+      if (e.target.closest('.drawer__close')) closeDrawer();
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') closeDrawer();
