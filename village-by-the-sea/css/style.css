@@ -1335,6 +1335,104 @@ a.contact-list__v:hover{color:var(--tide);}
   .page-hero__grid{grid-template-columns:1fr 1.15fr;gap:64px;}
 }
 
+
+/* ------------------------------------------------- weddings v2 / new pages */
+.visually-hidden{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.hero__sub{
+  font-family:var(--display);font-size:clamp(18px,2.4vw,23px);
+  color:var(--tide-deep);margin:0 0 18px;max-width:34ch;line-height:1.3;
+}
+.figcap{
+  margin-top:10px;font-size:13.5px;color:var(--heron);line-height:1.5;
+}
+
+/* fact bar */
+.factbar{background:var(--marsh-ink);padding:16px 0;}
+.factbar__list{
+  display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:center;
+  font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  color:rgba(255,255,255,.82);text-align:center;
+}
+.factbar__list li{position:relative;}
+.factbar__list li + li::before{
+  content:"";position:absolute;left:-16px;top:50%;transform:translateY(-50%);
+  width:4px;height:4px;border-radius:50%;background:var(--spartina);
+}
+
+/* comparison table */
+.compare{margin-top:48px;}
+.compare__table{width:100%;border-collapse:collapse;font-size:16px;}
+.compare__table th{
+  text-align:left;padding:12px 14px;
+  font-family:var(--body);font-size:11.5px;letter-spacing:.17em;text-transform:uppercase;font-weight:600;
+  border-bottom:2px solid var(--line);
+}
+.compare__table th:first-child{color:var(--heron);}
+.compare__table th:last-child{color:var(--tide-deep);}
+.compare__table td{padding:13px 14px;border-bottom:1px solid var(--line);color:var(--heron);vertical-align:top;}
+.compare__table td:last-child{color:var(--marsh-ink);font-weight:500;background:var(--mist);}
+
+/* the weekend, day by day */
+.days{display:grid;gap:22px;counter-reset:day;margin-bottom:36px;}
+.day{border-top:2px solid var(--tide);padding-top:16px;}
+.day__k{
+  font-size:11px;letter-spacing:.19em;text-transform:uppercase;font-weight:600;
+  color:var(--spartina);margin:0 0 10px;
+}
+.day__t{font-family:var(--display);font-size:23px;color:var(--marsh-ink);margin:0 0 10px;}
+.day p{font-size:15.5px;color:var(--heron);margin:0;}
+
+/* set-for-you grid */
+.setgrid{padding:var(--pad-y) 0;background:var(--mist);}
+.set-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.set-grid .shot img{aspect-ratio:4/3;}
+.set-grid--tall .shot img{aspect-ratio:1/1;}
+
+/* FAQ */
+.faq{padding:var(--pad-y) 0;background:var(--white);}
+.faq-list{display:grid;gap:2px;border-top:1px solid var(--line);}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-item__q{
+  list-style:none;cursor:pointer;padding:18px 34px 18px 0;position:relative;
+  font-family:var(--display);font-size:clamp(17px,2.2vw,21px);color:var(--marsh-ink);
+}
+.faq-item__q::-webkit-details-marker{display:none;}
+.faq-item__q::after{
+  content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);
+  font-family:var(--body);font-size:22px;color:var(--tide);line-height:1;
+}
+.faq-item[open] .faq-item__q::after{content:"\2212";}
+.faq-item__q:hover{color:var(--tide-deep);}
+.faq-item__a{padding:0 34px 20px 0;}
+.faq-item__a p{color:var(--heron);font-size:16.5px;margin:0;max-width:70ch;}
+.faq-item__a .spec-rows{margin:0;}
+
+/* seasonal hours + misc */
+.hours{margin-top:34px;}
+.hours .faq-item__q{font-size:17px;padding:14px 34px 14px 0;}
+.post__meta{
+  margin:14px 0 0;font-size:11px;letter-spacing:.17em;text-transform:uppercase;
+  font-weight:600;color:var(--heron-soft);
+}
+.site-footer__addr{
+  font-style:normal;font-size:14.5px;color:rgba(255,255,255,.66);
+  line-height:1.6;margin:0 0 18px;
+}
+.site-footer__addr a{color:rgba(255,255,255,.82);}
+
+@media (min-width:560px){
+  .days{grid-template-columns:1fr 1fr;gap:26px;}
+  .set-grid{grid-template-columns:repeat(3,1fr);gap:12px;}
+}
+@media (min-width:760px){
+  .days{grid-template-columns:repeat(4,1fr);gap:24px;}
+  .set-grid{grid-template-columns:repeat(4,1fr);}
+  .compare__table{font-size:16.5px;}
+}
+
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
