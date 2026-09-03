@@ -152,3 +152,6 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 35 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
 
+
+
+**Rev. 17 &mdash; SEO / AEO / standards pass:** removed "family-run" everywhere; upgraded homepage LodgingBusiness/Resort JSON-LD (real 4.6/746 rating, amenities, check-in/out, pets, email, sameAs incl. Tripadvisor); added a visible FAQ section with FAQPage schema on Contact (9 Q&As) for answer engines; added BreadcrumbList schema to all inner pages; completed social meta (og:image/og:url, Twitter cards, robots, theme-color) on every page; added a WCAG skip-link and :focus-visible styles; and added a production sitemap.xml and robots.txt.
