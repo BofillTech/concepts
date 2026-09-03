@@ -123,7 +123,30 @@
     });
   }
 
-  function boot() { initLightbox(); initFilters(); initContact(); }
+  /* ------------------------------------------------- events page inquiry form */
+  function initEvent() {
+    var btn = document.querySelector('[data-event-inquire]');
+    var note = document.querySelector('[data-event-note]');
+    if (!btn || !note) return;
+    btn.addEventListener('click', function () {
+      var g = function (id) { var e = document.getElementById(id); return e ? e.value : ''; };
+      var lines = [];
+      if (g('e-name')) lines.push('Name: ' + g('e-name'));
+      if (g('e-email')) lines.push('Email: ' + g('e-email'));
+      if (g('e-type')) lines.push('Event type: ' + g('e-type'));
+      if (g('e-guests')) lines.push('Approx. guests: ' + g('e-guests'));
+      if (g('e-date')) lines.push('Dates: ' + g('e-date'));
+      if (g('e-note')) lines.push('', g('e-note'));
+      var href = 'mailto:eventplanner@vbts.com'
+        + '?subject=' + encodeURIComponent('Event inquiry' + (g('e-type') ? ' - ' + g('e-type') : ''))
+        + '&body=' + encodeURIComponent(lines.join('\n'));
+      window.location.href = href;
+      note.classList.add('is-sent');
+      note.textContent = 'Opening your email app. If nothing happens, call 207-646-1100.';
+    });
+  }
+
+  function boot() { initLightbox(); initFilters(); initContact(); initEvent(); }
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
