@@ -155,3 +155,5 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 
 **Rev. 17 &mdash; SEO / AEO / standards pass:** removed "family-run" everywhere; upgraded homepage LodgingBusiness/Resort JSON-LD (real 4.6/746 rating, amenities, check-in/out, pets, email, sameAs incl. Tripadvisor); added a visible FAQ section with FAQPage schema on Contact (9 Q&As) for answer engines; added BreadcrumbList schema to all inner pages; completed social meta (og:image/og:url, Twitter cards, robots, theme-color) on every page; added a WCAG skip-link and :focus-visible styles; and added a production sitemap.xml and robots.txt.
+
+**Rev. 19 &mdash; real store products:** replaced the placeholder shop/gift-card products with the actual Briney Breezes store items (The Gift Card, The Oil, The Candle, The Hat) using their real titles, prices, descriptions, and product images (referenced from brineybreezes.com), with View & buy links to the real product pages and real Product/ItemList schema.
