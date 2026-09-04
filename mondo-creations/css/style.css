@@ -274,12 +274,14 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: flex; flex-wrap: wrap; align-items: center;
   gap: 22px 44px; padding-top: 6px;
 }
-.brands__item {
-  font-family: var(--display); font-size: clamp(17px, 2.6vw, 24px);
-  text-transform: uppercase; letter-spacing: .02em; color: var(--on-dark-soft);
-  transition: color .2s var(--ease); white-space: nowrap;
+.brands__item { display: flex; align-items: center; }
+.brands__logo {
+  height: 34px; width: auto; max-width: 150px; object-fit: contain;
+  filter: brightness(0) invert(1); opacity: .62; transition: opacity .2s var(--ease);
 }
-.brands__item:hover { color: #fff; }
+.brands__logo--solid { filter: grayscale(1) brightness(1.5); opacity: .8; }
+.brands__item:hover .brands__logo { opacity: 1; }
+@media (min-width: 900px) { .brands__logo { height: 40px; max-width: 190px; } }
 
 /* ---------- About ---------- */
 .about { background: var(--bone); padding: 90px 0; display: grid; gap: 40px; max-width: var(--maxw); margin: 0 auto; padding-left: var(--gutter); padding-right: var(--gutter); }
