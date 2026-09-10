@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuillStay — Hotel Property Management System &amp; Booking Engine | $10/room/month</title>
+<meta name="description" content="QuillStay is the simple, intuitive property management system and booking engine for independent hotels, motels, and condo-hotel resorts. Drag-and-drop calendar, dynamic pricing, OTA sync, and more direct bookings. Free setup and data migration — just $10 per room per month.">
+<link rel="icon" href="img/quillstay-icon.png">
+<meta property="og:title" content="QuillStay — Simple, intuitive hotel PMS &amp; booking engine">
+<meta property="og:description" content="Designed to get you more direct bookings. Free setup and data migration. $10 per room per month.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quillstay.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002b84;
+  --navy-deep:#001d5c;
+  --blue:#0386f8;
+  --blue-dark:#0267c0;
+  --paper:#f6fbff;
+  --ink:#0e1f4d;
+  --muted:#4d5b7c;
+  --line:#dbe6f5;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Public Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16.5px;
+}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;line-height:1.12;letter-spacing:-0.015em}
+img{max-width:100%;display:block}
+a{color:var(--blue-dark)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* ---------- Nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,251,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:32px;height:74px}
+.nav .logo img{height:38px;width:auto}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15.5px}
+.nav-links a:hover{color:var(--blue-dark)}
+.nav-phone{color:var(--muted);text-decoration:none;font-weight:600;font-size:15.5px;white-space:nowrap}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:600;
+  font-family:'Schibsted Grotesk',sans-serif;
+  padding:13px 26px;border-radius:10px;font-size:16px;
+  transition:background .15s,color .15s;
+}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-solid:hover{background:var(--blue-dark)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark)}
+.btn-ghost{border:1.5px solid var(--navy);color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.nav .btn{padding:10px 20px;font-size:15px}
+
+/* ---------- Hero ---------- */
+.hero{padding:76px 0 40px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.1rem,4vw,3.15rem);font-weight:800;color:var(--navy-deep)}
+.hero h1 .u{color:var(--blue)}
+.hero p.lead{margin:20px 0 8px;font-size:1.16rem;color:var(--muted);max-width:34em}
+.hero .cta-row{display:flex;gap:14px;margin:26px 0 14px;flex-wrap:wrap}
+.hero .terms{font-size:15px;color:var(--muted)}
+.hero .terms strong{color:var(--ink)}
+@media (prefers-reduced-motion:no-preference){
+  .hero-copy{animation:rise .6s ease-out both}
+  .hero .frame{animation:rise .6s .12s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+
+/* Browser frame */
+.frame{
+  background:#fff;border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 24px 60px -24px rgba(0,43,132,.28);
+  overflow:hidden;
+}
+.frame-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;border-bottom:1px solid var(--line);background:#fbfdff;
+}
+.frame-bar i{width:10px;height:10px;border-radius:50%;background:#d9e4f4}
+.frame-bar .url{
+  margin-left:10px;background:var(--paper);border:1px solid var(--line);
+  border-radius:99px;padding:3px 14px;font-size:12.5px;color:var(--muted);
+}
+
+/* ---------- Trust strip ---------- */
+.trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.trust .wrap{display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 24px;text-align:center}
+.trust p{font-size:15.5px;color:var(--muted)}
+.trust p strong{color:var(--navy)}
+
+/* ---------- Sections ---------- */
+section{padding:84px 0}
+.kicker{color:var(--blue-dark);font-weight:600;font-size:15.5px;margin-bottom:10px}
+.sec-head{max-width:44em;margin-bottom:52px}
+.sec-head h2{font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;color:var(--navy-deep)}
+.sec-head p{margin-top:12px;color:var(--muted);font-size:1.08rem}
+
+/* Feature rows */
+.feature-row{display:grid;grid-template-columns:0.85fr 1.15fr;gap:56px;align-items:center;padding:34px 0}
+.feature-row.flip .fr-copy{order:2}
+.feature-row h3{font-size:1.45rem;font-weight:700;color:var(--navy-deep);margin-bottom:12px}
+.feature-row p{color:var(--muted)}
+.feature-row ul{margin:16px 0 0;list-style:none}
+.feature-row li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--ink)}
+.feature-row li::before{
+  content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:4px;
+  background:var(--blue);
+  clip-path:polygon(14% 44%, 0 62%, 40% 100%, 100% 16%, 84% 2%, 40% 68%);
+}
+
+/* Gallery of remaining modules */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.g-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.g-card figcaption{padding:18px 22px 22px}
+.g-card b{font-family:'Schibsted Grotesk',sans-serif;font-size:1.08rem;color:var(--navy-deep)}
+.g-card span{display:block;color:var(--muted);font-size:15.5px;margin-top:4px}
+
+/* ---------- Guests ---------- */
+.guests{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.guest-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px}
+.guest-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:30px 28px}
+.guest-card h3{font-size:1.18rem;color:var(--navy-deep);margin-bottom:10px}
+.guest-card p{color:var(--muted);font-size:15.5px}
+.guest-card .tag{
+  display:inline-block;background:var(--blue);color:#fff;border-radius:99px;
+  font-size:12.5px;font-weight:600;padding:3px 12px;margin-bottom:14px;
+}
+
+/* ---------- Integrations ---------- */
+.ota-pills{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.ota-pills span{
+  background:#fff;border:1px solid var(--line);border-radius:99px;
+  padding:9px 20px;font-weight:600;font-size:15.5px;color:var(--navy);
+}
+
+/* ---------- Pricing ---------- */
+.pricing{background:var(--navy);color:#fff}
+.pricing .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.pricing h2{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:700}
+.price-line{font-family:'Schibsted Grotesk',sans-serif;margin:22px 0 6px}
+.price-line .num{font-size:4.4rem;font-weight:800;letter-spacing:-0.03em}
+.price-line .per{font-size:1.15rem;color:#a9c3f5;margin-left:8px}
+.pricing p{color:#c6d7f7}
+.pricing ul{list-style:none;margin-top:6px}
+.pricing li{padding:13px 0 13px 32px;position:relative;border-bottom:1px solid rgba(255,255,255,.14);font-size:1.05rem}
+.pricing li:last-child{border-bottom:none}
+.pricing li::before{
+  content:"";position:absolute;left:0;top:20px;width:15px;height:15px;border-radius:4px;
+  background:var(--blue);
+  clip-path:polygon(14% 44%, 0 62%, 40% 100%, 100% 16%, 84% 2%, 40% 68%);
+}
+.pricing .btn-blue{margin-top:26px}
+
+/* ---------- Testimonials ---------- */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 30px 26px;display:flex;flex-direction:column}
+.quote h3{font-size:1.05rem;color:var(--navy-deep);margin-bottom:10px}
+.quote p{color:var(--muted);font-size:15.5px;flex:1}
+.quote cite{display:block;margin-top:18px;font-style:normal;font-weight:600;color:var(--navy);font-size:15px}
+
+/* ---------- Demo / final CTA ---------- */
+.demo{background:#fff;border-top:1px solid var(--line)}
+.demo .wrap{text-align:center;max-width:760px}
+.demo h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy-deep);font-weight:700}
+.demo p{color:var(--muted);margin:16px auto 30px;max-width:36em}
+.demo .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.demo .phone-big{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy);text-decoration:none;align-self:center}
+
+/* ---------- Footer ---------- */
+footer{background:var(--navy-deep);color:#b9cbf0;padding:56px 0 40px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer img{height:40px;width:auto;margin-bottom:14px}
+footer a{color:#dbe6fb;text-decoration:none;font-size:15px}
+footer a:hover{text-decoration:underline}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.foot-meta{margin-top:34px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:14px;color:#8ba3d8;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- Responsive ---------- */
+@media (max-width:900px){
+  .hero-grid,.pricing .wrap{grid-template-columns:1fr;gap:40px}
+  .feature-row{grid-template-columns:1fr;gap:26px;padding:26px 0}
+  .feature-row.flip .fr-copy{order:0}
+  .gallery,.quotes{grid-template-columns:1fr}
+  .guest-grid{grid-template-columns:1fr}
+  .nav-links,.nav-phone{display:none}
+}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="QuillStay home"><img src="img/quillstay-logo-light.png" alt="QuillStay"></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#features">Features</a>
+      <a href="#guests">For guests</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#pricing">Pricing</a>
+    </nav>
+    <a class="nav-phone" href="tel:203-457-8550">203-457-8550</a>
+    <a class="btn btn-solid" href="#demo">Book a demo</a>
+  </div>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>The simple, intuitive PMS designed to get you more direct bookings</h1>
+      <p class="lead">QuillStay is an all-in-one property management system and booking engine for independent hotels, motels, and condo-hotel resorts. Easy to learn, easy to run — for your front desk and your guests.</p>
+      <div class="cta-row">
+        <a class="btn btn-blue" href="#demo">Book a demo</a>
+        <a class="btn btn-ghost" href="#features">See it in action</a>
+      </div>
+      <p class="terms"><strong>$10 per room per month.</strong> Free setup and full data migration — we handle everything.</p>
+    </div>
+    <div class="frame">
+      <div class="frame-bar"><i></i><i></i><i></i><span class="url">app.quillstay.com</span></div>
+      <img src="img/calendar.webp" alt="QuillStay reservation calendar with drag-and-drop bookings, color-coded by booking source" width="1600" height="839">
+    </div>
+  </div>
+</div>
+
+<div class="trust">
+  <div class="wrap">
+    <p>Trusted every day at the front desks of <strong>independent hotels, beach motels, and condo-hotel resorts</strong> across the U.S. — from 18-room inns to 140-unit resorts.</p>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Everything your property runs on</p>
+      <h2>Powerful tools behind a simple interface</h2>
+      <p>No clunky menus, no training manuals, no per-feature upsells. Every module below is included, and each one is built to be understood in minutes.</p>
+    </div>
+
+    <div class="feature-row">
+      <div class="fr-copy">
+        <h3>A drag-and-drop calendar your whole team gets instantly</h3>
+        <p>See every room, every booking, and every arrival on one color-coded timeline. Move a reservation to another room or another date by dragging it — QuillStay takes care of the rest.</p>
+        <ul>
+          <li>Color-coded by booking source — direct, OTA, phone, group, owner</li>
+          <li>Payment status and housekeeping state visible at a glance</li>
+          <li>Edit rates right on the calendar view</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Reservation calendar</span></div>
+        <img src="img/calendar.webp" alt="Drag-and-drop reservation calendar" loading="lazy"></div>
+    </div>
+
+    <div class="feature-row flip">
+      <div class="fr-copy">
+        <h3>Rates and dynamic pricing, without the spreadsheet</h3>
+        <p>Update rates and minimum stays for a whole season in a few clicks, straight on the rates chart. Turn on dynamic pricing and QuillStay adjusts rates automatically as your rooms fill up.</p>
+        <ul>
+          <li>Full-year rate chart — click, set, save</li>
+          <li>Weekend and seasonal pricing rules</li>
+          <li>Dynamic pricing driven by real availability</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Rates</span></div>
+        <img src="img/rates.webp" alt="Annual rates chart with dynamic pricing" loading="lazy"></div>
+    </div>
+
+    <div class="feature-row">
+      <div class="fr-copy">
+        <h3>A front desk dashboard that runs your day</h3>
+        <p>Arrivals, departures, in-house guests, rooms ready, and today's revenue — all on one screen the moment your team signs in. Check guests in, take payments, and print registration cards in two clicks.</p>
+        <ul>
+          <li>Today's arrivals and departures, front and center</li>
+          <li>Group arrivals and no-show risk flagged for you</li>
+          <li>Check in, take payments, and print reg cards in two clicks</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Front desk</span></div>
+        <img src="img/front-desk.webp" alt="Front desk overview dashboard" loading="lazy"></div>
+    </div>
+
+    <div class="feature-row flip">
+      <div class="fr-copy">
+        <h3>Every booking, from every channel, in one list</h3>
+        <p>Direct, OTA, phone, walk-in, corporate, agent — every reservation lands in the same searchable list, with balances due flagged in red so nothing slips past checkout.</p>
+        <ul>
+          <li>Filter by source, status, room type, or dates</li>
+          <li>Edit dates, add payments, and resend confirmations in-line</li>
+          <li>Booking source tracked on every reservation</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Bookings</span></div>
+        <img src="img/bookings.webp" alt="Bookings list filtered by source, status, and dates" loading="lazy"></div>
+    </div>
+
+    <div class="feature-row">
+      <div class="fr-copy">
+        <h3>Housekeeping that keeps itself organized</h3>
+        <p>Every room's status — dirty, clean, inspected — updates live as your team works. Print the day's worksheet, track special requests, and never send a guest to a room that isn't ready.</p>
+        <ul>
+          <li>Live clean / dirty / inspected status by floor</li>
+          <li>Out-of-order rooms blocked from booking automatically</li>
+          <li>Guest requests tracked to the room</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Housekeeping</span></div>
+        <img src="img/housekeeping.webp" alt="Housekeeping module with live room status" loading="lazy"></div>
+    </div>
+
+    <div class="feature-row flip">
+      <div class="fr-copy">
+        <h3>Reporting with visual charts — and a guided night audit</h3>
+        <p>Daily flash, net sales, pickup, pace, ledgers, and folio balances, all as clear visual reports you can actually read. The step-by-step night audit walks your team through closing the day, every day.</p>
+        <ul>
+          <li>Performance, front desk, and accounting reports in one place</li>
+          <li>Easy step-by-step night audit with built-in checks</li>
+          <li>Printable, professional documents for owners and accountants</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Reports</span></div>
+        <img src="img/reports.webp" alt="Reports hub with performance, front desk, and accounting reports" loading="lazy"></div>
+    </div>
+
+    <div class="sec-head" style="margin-top:56px">
+      <h2>And it keeps going</h2>
+      <p>Group blocks, a full guest database, back-office accounting, and a guided nightly close — included, not add-ons.</p>
+    </div>
+    <div class="gallery">
+      <figure class="g-card">
+        <img src="img/groups.webp" alt="Group bookings with room blocks, cut-off dates, and pickup tracking" loading="lazy">
+        <figcaption><b>Group bookings</b><span>Block rooms for weddings and events, share a booking link with negotiated rates, and watch pickup in real time.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="img/guests.webp" alt="Guest database with profiles, stay history, and duplicate matching" loading="lazy">
+        <figcaption><b>Guest database</b><span>Every guest's history, contact details, and notes in one place — with duplicate matching to keep it clean.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="img/back-office.webp" alt="Back office journal for maintenance items and expenses" loading="lazy">
+        <figcaption><b>Back-office accounting</b><span>Track maintenance items, fees, refunds, and expenses that never touch the guest ledger — exportable to CSV.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="img/night-audit.webp" alt="Easy step-by-step night audit" loading="lazy">
+        <figcaption><b>Step-by-step night audit</b><span>A guided nightly close that confirms financial accuracy and guest accounts — no accounting degree required.</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="guests" id="guests">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">For your guests</p>
+      <h2>Easy to book — so more guests book direct</h2>
+      <p>Your booking engine lives on your own website, matches your brand, and gives guests more than one way to book. Fewer clicks for them, fewer OTA commissions for you.</p>
+    </div>
+    <div class="guest-grid">
+      <div class="guest-card">
+        <span class="tag">Room view</span>
+        <h3>Browse rooms with photos and live rates</h3>
+        <p>Guests see your rooms with photos, descriptions, and tonight's real price — taxes shown up front, booked in a couple of clicks.</p>
+      </div>
+      <div class="guest-card">
+        <span class="tag">Calendar view</span>
+        <h3>Pick dates straight off an availability calendar</h3>
+        <p>Flexible travelers can scan a whole month of availability and pricing at once, then book the dates that work.</p>
+      </div>
+      <div class="guest-card">
+        <span class="tag">AI assistant</span>
+        <h3>An AI chatbot that answers and books, 24/7</h3>
+        <p>QuillStay's AI answers guest questions on your website — availability, policies, directions — and guides them into a booking, even at 2 a.m.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="integrations">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Connected everywhere</p>
+      <h2>One calendar, synced with every OTA</h2>
+      <p>QuillStay's built-in channel manager keeps rates and availability in sync across the channels that matter — bookings flow in, and your inventory updates everywhere, instantly. No double bookings, no manual re-typing.</p>
+    </div>
+    <div class="ota-pills" role="list">
+      <span role="listitem">Booking.com</span>
+      <span role="listitem">Expedia</span>
+      <span role="listitem">Airbnb</span>
+      <span role="listitem">Vrbo</span>
+      <span role="listitem">Google Hotels</span>
+      <span role="listitem">+ more</span>
+    </div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="wrap">
+    <div>
+      <h2>One flat price. Everything included.</h2>
+      <p class="price-line"><span class="num">$10</span><span class="per">per room, per month</span></p>
+      <p>No setup fees, no per-booking fees, no modules to unlock, no surprises on the invoice. Just simple software at a price an independent property can actually plan around.</p>
+      <a class="btn btn-blue" href="#demo">Book a demo</a>
+    </div>
+    <ul>
+      <li>Free setup — we configure your rooms, rates, taxes, and policies for you</li>
+      <li>Free data migration — we move your reservations and guest history from your old system</li>
+      <li>Free training and white-glove support for your whole team</li>
+      <li>Booking engine, channel manager, and every module included</li>
+      <li>Month to month — no long-term contract</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">From the properties that run on it</p>
+      <h2>What our clients are saying</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote">
+        <h3>Simplified our operations and front desk</h3>
+        <p>"As a property manager, QuillStay has made it much easier to manage online bookings, payments, and refunds. It's also been extremely easy for our front desk employees to use, taking a lot of work off their shoulders."</p>
+        <cite>Richard W. — OAM Property Management</cite>
+      </div>
+      <div class="quote">
+        <h3>Very easy to manage OTAs</h3>
+        <p>"QuillStay really helps manage OTAs, which is important for our business. And we have increased our direct bookings, considering our website is now easy to book on. It also makes it easy to collect deposits and issue refunds."</p>
+        <cite>Hitesh P. — AquaBlue Hotel</cite>
+      </div>
+      <div class="quote">
+        <h3>Easy to manage different room types</h3>
+        <p>"QuillStay makes it very easy for us to take payments. It does most of the work and makes it easy to manage our inventory of different unit types. It's very customizable, which is nice."</p>
+        <cite>Steve K. — North Harbor</cite>
+      </div>
+      <div class="quote">
+        <h3>A great improvement to owner reports</h3>
+        <p>"QuillStay was a great improvement to our business and front desk. It has made owner reporting much easier and more accurate than ever, and greatly improves the guest experience booking directly with us."</p>
+        <cite>Michael K. — Royal Atlantic</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <h2>See QuillStay in action</h2>
+    <p>Book a live demo and we'll walk you through the system on your own property's setup. If you like what you see, we handle the entire switch — setup, data migration, and team training, all free.</p>
+    <div class="cta-row">
+      <a class="btn btn-blue" href="mailto:hello@quillstay.com?subject=Demo%20request%20—%20QuillStay">Request a demo</a>
+      <a class="phone-big" href="tel:203-457-8550">or call 203-457-8550</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="img/quillstay-logo-dark.png" alt="QuillStay">
+        <p style="max-width:30em;font-size:15px">The simple, intuitive property management system and booking engine for independent hotels and condo-hotel resorts.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#features">Features</a>
+        <a href="#guests">For guests</a>
+        <a href="#integrations">Integrations</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#demo">Book a demo</a>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 QuillStay Inc. All rights reserved.</span>
+      <a href="tel:203-457-8550">203-457-8550</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
