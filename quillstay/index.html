@@ -70,7 +70,6 @@ header{
 .hero{padding:76px 0 40px;overflow:hidden}
 .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
 .hero h1{font-size:clamp(2.1rem,4vw,3.15rem);font-weight:800;color:var(--navy-deep)}
-.hero h1 .u{color:var(--blue)}
 .hero p.lead{margin:20px 0 8px;font-size:1.16rem;color:var(--muted);max-width:34em}
 .hero .cta-row{display:flex;gap:14px;margin:26px 0 14px;flex-wrap:wrap}
 .hero .terms{font-size:15px;color:var(--muted)}
@@ -96,7 +95,6 @@ header{
   margin-left:10px;background:var(--paper);border:1px solid var(--line);
   border-radius:99px;padding:3px 14px;font-size:12.5px;color:var(--muted);
 }
-
 
 /* Hero slider */
 .hero-slider .slides{position:relative;aspect-ratio:1600/839;background:#fff}
@@ -183,6 +181,13 @@ section{padding:84px 0}
 .quote p{color:var(--muted);font-size:15.5px;flex:1}
 .quote cite{display:block;font-style:normal;font-weight:600;color:var(--navy);font-size:15px}
 
+/* ---------- Demo / final CTA ---------- */
+.demo{background:#fff;border-top:1px solid var(--line)}
+.demo .wrap{text-align:center;max-width:760px}
+.demo h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy-deep);font-weight:700}
+.demo p{color:var(--muted);margin:16px auto 30px;max-width:36em}
+.demo .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.demo .phone-big{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy);text-decoration:none;align-self:center}
 
 /* Integrations tiles */
 .int-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
@@ -197,14 +202,6 @@ section{padding:84px 0}
 .clogo.wide{width:auto;max-width:130px}
 .clogo.tall{height:56px;width:auto}
 
-/* ---------- Demo / final CTA ---------- */
-.demo{background:#fff;border-top:1px solid var(--line)}
-.demo .wrap{text-align:center;max-width:760px}
-.demo h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy-deep);font-weight:700}
-.demo p{color:var(--muted);margin:16px auto 30px;max-width:36em}
-.demo .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.demo .phone-big{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy);text-decoration:none;align-self:center}
-
 /* ---------- Footer ---------- */
 footer{background:var(--navy-deep);color:#b9cbf0;padding:56px 0 40px}
 .foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
@@ -214,12 +211,37 @@ footer a:hover{text-decoration:underline}
 .foot-links{display:flex;gap:26px;flex-wrap:wrap}
 .foot-meta{margin-top:34px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:14px;color:#8ba3d8;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
+/* Pain points + switching cards */
+.card-grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.mini-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+.mini-card h3{font-size:1.08rem;color:var(--navy-deep);margin-bottom:8px}
+.mini-card p{color:var(--muted);font-size:15px}
+.pain .mini-card{border-top:3px solid #e4ecf8}
+.switch .mini-card{border-top:3px solid var(--blue)}
+.sec-close{margin-top:34px;font-family:'Schibsted Grotesk',sans-serif;font-weight:600;color:var(--navy);font-size:1.1rem}
+/* Generic check list */
+.checks{list-style:none;margin-top:18px}
+.checks li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--ink)}
+.checks li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:4px;background:var(--blue);clip-path:polygon(14% 44%, 0 62%, 40% 100%, 100% 16%, 84% 2%, 40% 68%)}
+/* AI strip */
+.ai-strip{margin-top:44px;background:var(--navy);border-radius:16px;padding:28px 32px;display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:28px;align-items:center}
+.ai-strip .ai-head{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;color:#fff;font-size:1.15rem;max-width:9em}
+.ai-item b{display:block;color:#fff;font-size:15.5px;margin-bottom:3px}
+.ai-item span{color:#a9c3f5;font-size:14.5px}
+/* Demo perks line */
+.demo .perks{margin-top:22px;color:var(--muted);font-size:15px;font-weight:600}
+
 /* ---------- Responsive ---------- */
+@media (max-width:640px){
+  .card-grid4{grid-template-columns:1fr}
+}
 @media (max-width:900px){
   .hero-grid,.pricing .wrap{grid-template-columns:1fr;gap:40px}
   .feature-row{grid-template-columns:1fr;gap:26px;padding:26px 0}
   .feature-row.flip .fr-copy{order:0}
   .gallery,.quotes{grid-template-columns:1fr}
+  .card-grid4{grid-template-columns:1fr 1fr}
+  .ai-strip{grid-template-columns:1fr;gap:18px}
   .int-grid{grid-template-columns:1fr;gap:36px}
   .guest-grid{grid-template-columns:1fr}
   .nav-links,.nav-phone{display:none}
@@ -235,6 +257,7 @@ footer a:hover{text-decoration:underline}
     <nav class="nav-links" aria-label="Main">
       <a href="#features">Features</a>
       <a href="#guests">For guests</a>
+      <a href="#owners">For owners</a>
       <a href="#integrations">Integrations</a>
       <a href="#pricing">Pricing</a>
     </nav>
@@ -249,7 +272,7 @@ footer a:hover{text-decoration:underline}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <h1>The simple, intuitive PMS designed to get you more direct bookings</h1>
-      <p class="lead">QuillStay is an all-in-one property management system and booking engine for independent hotels, motels, and condo-hotel resorts. Easy to learn, easy to run — for your front desk and your guests.</p>
+      <p class="lead">QuillStay is an all-in-one property management system and booking engine for independent hotels, motels, co-op resorts, and condo-hotels. Easy to learn, easy to run — for your front desk and your guests.</p>
       <div class="cta-row">
         <a class="btn btn-blue" href="#demo">Book a demo</a>
         <a class="btn btn-ghost" href="#features">See it in action</a>
@@ -282,6 +305,24 @@ footer a:hover{text-decoration:underline}
   </div>
 </div>
 
+
+<section class="pain">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Bigger isn't always better</p>
+      <h2>Your booking system shouldn't make running a hotel harder</h2>
+      <p>Managing a small hotel or co-op resort is already a challenge. Most PMS software was built for big chains — and it shows.</p>
+    </div>
+    <div class="card-grid4">
+      <div class="mini-card"><h3>Confusing menus</h3><p>Heavy, complex software with endless screens and extensive training just to do the basics.</p></div>
+      <div class="mini-card"><h3>Wasted time &amp; overbookings</h3><p>Simple tasks like updating rates take too long — and overbookings still happen when they shouldn't.</p></div>
+      <div class="mini-card"><h3>Missing reports</h3><p>Owner and revenue reporting that takes spreadsheets and hours to piece together.</p></div>
+      <div class="mini-card"><h3>High OTA fees &amp; poor support</h3><p>Commissions eat into your margin, while slow support leaves you stuck.</p></div>
+    </div>
+    <p class="sec-close">You need a system that works for you — not against you. That's QuillStay.</p>
+  </div>
+</section>
+
 <section id="features">
   <div class="wrap">
     <div class="sec-head">
@@ -306,12 +347,12 @@ footer a:hover{text-decoration:underline}
 
     <div class="feature-row flip">
       <div class="fr-copy">
-        <h3>Rates and dynamic pricing, without the spreadsheet</h3>
-        <p>Update rates and minimum stays for a whole season in a few clicks, straight on the rates chart. Turn on dynamic pricing and QuillStay adjusts rates automatically as your rooms fill up.</p>
+        <h3>Update rates in seconds — or let AI do it</h3>
+        <p>Bulk-edit rates and minimum stays across the whole year in a few clicks, straight on the rates chart — with AI intelligence working in the background.</p>
         <ul>
           <li>Full-year rate chart — click, set, save</li>
           <li>Weekend and seasonal pricing rules</li>
-          <li>Dynamic pricing driven by real availability</li>
+          <li>AI-driven dynamic pricing reacts to demand automatically</li>
         </ul>
       </div>
       <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Rates</span></div>
@@ -374,6 +415,21 @@ footer a:hover{text-decoration:underline}
         <img src="img/reports.webp" alt="Reports hub with performance, front desk, and accounting reports" loading="lazy"></div>
     </div>
 
+    <div class="feature-row" id="owners">
+      <div class="fr-copy">
+        <h3>Built for condo-hotels: owner portals &amp; reporting</h3>
+        <p>QuillStay was designed around co-op resorts and condo-hotels — every owner gets clean, professional statements without a single spreadsheet.</p>
+        <ul>
+          <li>Full owner login — every owner gets their own secure portal</li>
+          <li>Owners see their room's availability calendar in real time</li>
+          <li>Optional per-room financials — monthly statements with revenue by source, fees, taxes, and net payout</li>
+          <li>Run any individual owner report in seconds</li>
+        </ul>
+      </div>
+      <div class="frame"><div class="frame-bar"><i></i><i></i><i></i><span class="url">Owner statement</span></div>
+        <img src="img/owner-statement.webp" alt="Monthly owner statement with revenue by source, fees summary, and net payout" loading="lazy"></div>
+    </div>
+
     <div class="sec-head" style="margin-top:56px">
       <h2>And it keeps going</h2>
       <p>Group blocks, a full guest database, back-office accounting, and a guided nightly close — included, not add-ons.</p>
@@ -423,6 +479,11 @@ footer a:hover{text-decoration:underline}
         <p>QuillStay's AI answers guest questions on your website — availability, policies, directions — and guides them into a booking, even at 2 a.m.</p>
       </div>
     </div>
+    <ul class="checks" style="margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 40px">
+      <li style="margin-bottom:0">Live rates &amp; taxes — no surprises</li>
+      <li style="margin-bottom:0">Promo &amp; group codes built in</li>
+      <li style="margin-bottom:0">Direct bookings skip the OTA commission</li>
+    </ul>
   </div>
 </section>
 
@@ -431,15 +492,45 @@ footer a:hover{text-decoration:underline}
     <div class="sec-head" style="margin-bottom:0">
       <p class="kicker">Connected everywhere</p>
       <h2>One calendar, synced with every OTA</h2>
-      <p>QuillStay's built-in channel manager keeps rates and availability in sync across the channels that matter — bookings flow in, and your inventory updates everywhere, instantly. No double bookings, no manual re-typing.</p>
+      <p>QuillStay's built-in channel manager keeps every channel in sync — bookings flow in, and your inventory updates everywhere, instantly.</p>
+      <ul class="checks">
+        <li>Two-way sync — rates and availability update across every channel automatically</li>
+        <li>You control how many rooms go to each OTA — no need to list your full inventory</li>
+        <li>No double bookings, no manual re-typing</li>
+      </ul>
     </div>
     <div class="ota-tiles" role="list">
-      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#003A9A" d="M24 0H0v24h24ZM8.575 6.563h2.658c2.108 0 3.473 1.15 3.473 2.898 0 1.15-.575 1.82-.91 2.108l-.287.263.335.192c.815.479 1.318 1.389 1.318 2.395 0 1.988-1.51 3.257-3.857 3.257H7.449V7.713c0-.623.503-1.126 1.126-1.15zm1.7 1.868c-.479.024-.694.264-.694.79v1.893h1.676c.958 0 1.294-.743 1.294-1.365 0-.815-.503-1.318-1.318-1.318zm-.096 4.36c-.407.071-.598.31-.598.79v2.251h1.868c.934 0 1.509-.55 1.509-1.533 0-.934-.599-1.509-1.51-1.509zm7.737 2.394c.743 0 1.341.599 1.341 1.342a1.34 1.34 0 0 1-1.341 1.341 1.355 1.355 0 0 1-1.341-1.341c0-.743.598-1.342 1.34-1.342z"/></svg><span>Booking.com</span></div>
-      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#191E3B" d="M19.067 0H4.933A4.94 4.94 0 0 0 0 4.933v14.134A4.932 4.932 0 0 0 4.933 24h14.134A4.932 4.932 0 0 0 24 19.067V4.933C24.01 2.213 21.797 0 19.067 0ZM7.336 19.341c0 .19-.148.337-.337.337h-2.33a.333.333 0 0 1-.337-.337v-2.33c0-.189.148-.336.337-.336H7c.19 0 .337.147.337.337zm12.121-1.486-2.308 2.298c-.169.168-.422.053-.422-.2V9.57l-6.44 6.44a.533.533 0 0 1-.421.17H8.169a.32.32 0 0 1-.338-.338v-1.697c0-.2.053-.316.169-.422l6.44-6.44H4.058c-.253 0-.369-.253-.2-.421l2.297-2.309c.137-.137.285-.232.517-.232H18.15c.854 0 1.539.686 1.539 1.54v11.478c-.01.231-.095.368-.232.516z"/></svg><span>Expedia</span></div>
-      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#FF5A5F" d="M12.001 18.275c-1.353-1.697-2.148-3.184-2.413-4.457-.263-1.027-.16-1.848.291-2.465.477-.71 1.188-1.056 2.121-1.056s1.643.345 2.12 1.063c.446.61.558 1.432.286 2.465-.291 1.298-1.085 2.785-2.412 4.458zm9.601 1.14c-.185 1.246-1.034 2.28-2.2 2.783-2.253.98-4.483-.583-6.392-2.704 3.157-3.951 3.74-7.028 2.385-9.018-.795-1.14-1.933-1.695-3.394-1.695-2.944 0-4.563 2.49-3.927 5.382.37 1.565 1.352 3.343 2.917 5.332-.98 1.085-1.91 1.856-2.732 2.333-.636.344-1.245.558-1.828.609-2.679.399-4.778-2.2-3.825-4.88.132-.345.395-.98.845-1.961l.025-.053c1.464-3.178 3.242-6.79 5.285-10.795l.053-.132.58-1.116c.45-.822.635-1.19 1.351-1.643.346-.21.77-.315 1.246-.315.954 0 1.698.558 2.016 1.007.158.239.345.557.582.953l.558 1.089.08.159c2.041 4.004 3.821 7.608 5.279 10.794l.026.025.533 1.22.318.764c.243.613.294 1.222.213 1.858zm1.22-2.39c-.186-.583-.505-1.271-.9-2.094v-.03c-1.889-4.006-3.642-7.608-5.307-10.844l-.111-.163C15.317 1.461 14.468 0 12.001 0c-2.44 0-3.476 1.695-4.535 3.898l-.081.16c-1.669 3.236-3.421 6.843-5.303 10.847v.053l-.559 1.22c-.21.504-.317.768-.345.847C-.172 20.74 2.611 24 5.98 24c.027 0 .132 0 .265-.027h.372c1.75-.213 3.554-1.325 5.384-3.317 1.829 1.989 3.635 3.104 5.382 3.317h.372c.133.027.239.027.265.027 3.37.003 6.152-3.261 4.802-6.975z"/></svg><span>Airbnb</span></div>
+      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#003A9A" d="M2.603 0C1.165.008.002 1.174 0 2.612v18.774A2.62 2.62 0 0 0 2.612 24h9.712c6.936-.048 6.936-10.32 0-10.416h-.577c3.019-1.732 3.585-5.848 1.13-8.358A5.2 5.2 0 0 0 9.16 3.677H2.612zm4.324 6.451h2.234a1.599 1.599 0 0 1 1.762 1.665 1.594 1.594 0 0 1-1.762 1.676H6.927zm-.005 6.336h2.7c1.246.008 2.056.768 2.056 1.964 0 1.197-.783 1.958-2.056 1.966h-2.7zm14.673 8.898a2.405 2.405 0 1 1 0 .01z"/></svg><span>Booking.com</span></div>
+      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#191E3B" d="M22.658 0H1.342C.601 0 0 .601 0 1.342v21.316C0 23.399.601 24 1.342 24h21.316c.741 0 1.342-.601 1.342-1.342V1.342C24 .601 23.399 0 22.658 0zM8.834 12.628l-3.27 8.522H2.822l4.342-10.735-2.475-6.19h2.736l1.409 3.719 3.312-3.719h3.312l-5.499 6.093 1.99 4.93 8.526-9.72c.219-.244.476-.361.789-.361.313 0 .567.117.786.361.219.243.328.53.328.865 0 .334-.109.622-.328.865l-8.856 10.096 2.216 5.796h-2.736l-1.505-3.977-3.549 3.977H4.309l6.515-7.253-1.99-5.269z"/></svg><span>Expedia</span></div>
+      <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#FF5A5F" d="M12.001 18.275c-1.353-1.697-2.148-3.184-2.413-4.457-.263-1.027-.16-1.848.291-2.465.477-.71 1.188-1.056 2.121-1.056s1.643.345 2.12 1.063c.446.61.558 1.432.286 2.465-.291 1.298-1.085 2.784-2.405 4.45zm9.601 1.14c-.185 1.246-1.034 2.28-2.2 2.783-2.253.98-4.483-.583-6.392-2.704 3.157-3.951 3.74-7.028 2.385-9.018-.795-1.14-1.933-1.695-3.394-1.695-2.944 0-4.563 2.49-3.927 5.382.37 1.565 1.352 3.343 2.917 5.332-.98 1.085-1.91 1.856-2.732 2.333-.636.344-1.245.558-1.828.609-2.679.399-4.778-2.2-3.825-4.88.132-.345.395-.98.845-1.961l.025-.053c1.464-3.178 3.242-6.79 5.285-10.795l.053-.132.58-1.116c.45-.822.635-1.19 1.351-1.643.346-.21.77-.315 1.246-.315.954 0 1.698.558 2.016 1.007.158.239.345.557.582.953l.558 1.089.08.159c2.041 4.004 3.821 7.608 5.279 10.794l.026.025.533 1.22.318.764c.243.613.294 1.222.213 1.858zm1.22-2.39c-.186-.583-.505-1.271-.9-2.094v-.03c-1.889-4.006-3.642-7.608-5.307-10.844l-.111-.163C15.317 1.461 14.468 0 12.001 0c-2.44 0-3.476 1.695-4.535 3.898l-.081.16c-1.669 3.236-3.421 6.843-5.303 10.847v.053l-.559 1.22c-.21.504-.317.768-.345.847-1.35 3.712 1.432 6.975 4.85 6.975.028 0 .132 0 .264-.027h.372c1.75-.213 3.554-1.325 5.337-3.313 1.782 1.988 3.591 3.1 5.337 3.313h.372c.132.026.239.026.265.026 3.42.005 6.203-3.262 4.848-6.973z"/></svg><span>Airbnb</span></div>
       <div class="ota-tile" role="listitem"><span class="vrbo-mark" aria-hidden="true">vrbo</span><span>Vrbo</span></div>
       <div class="ota-tile" role="listitem"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg><span>Google Hotels</span></div>
       <div class="ota-tile more" role="listitem"><span>+ more channels</span></div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ai-strip">
+      <div class="ai-head">AI intelligence inside</div>
+      <div class="ai-item"><b>AI chatbot</b><span>Answers guests and captures bookings 24/7</span></div>
+      <div class="ai-item"><b>AI dynamic pricing</b><span>Rates react to demand automatically</span></div>
+      <div class="ai-item"><b>Smart guest matching</b><span>Keeps your guest database clean</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="switch" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Switching is easy — and risk-free</p>
+      <h2>Worried about switching? We handle everything.</h2>
+      <p>Just set up, sync, and you're ready to go — your team included.</p>
+    </div>
+    <div class="card-grid4">
+      <div class="mini-card"><h3>Free migration</h3><p>100% free onboarding and data migration — our dedicated team does the work for you.</p></div>
+      <div class="mini-card"><h3>No downtime</h3><p>A seamless transition: your calendar and bookings never go dark.</p></div>
+      <div class="mini-card"><h3>No long-term contracts</h3><p>Month to month. If you're not satisfied, you're never locked in.</p></div>
+      <div class="mini-card"><h3>Free training &amp; real support</h3><p>A full library of training videos, plus real humans who answer fast — front desk staff are typically fully trained in under 4 hours.</p></div>
     </div>
   </div>
 </section>
@@ -455,7 +546,7 @@ footer a:hover{text-decoration:underline}
     <ul>
       <li>Free setup — we configure your rooms, rates, taxes, and policies for you</li>
       <li>Free data migration — we move your reservations and guest history from your old system</li>
-      <li>Free training and white-glove support for your whole team</li>
+      <li>Free training and white-glove support — staff fully trained in under 4 hours</li>
       <li>Booking engine, channel manager, and every module included</li>
       <li>Month to month — no long-term contract</li>
     </ul>
@@ -495,12 +586,13 @@ footer a:hover{text-decoration:underline}
 
 <section class="demo" id="demo">
   <div class="wrap">
-    <h2>See QuillStay in action</h2>
-    <p>Book a live demo and we'll walk you through the system on your own property's setup. If you like what you see, we handle the entire switch — setup, data migration, and team training, all free.</p>
+    <h2>Take back control</h2>
+    <p>Get your free demo — we'll walk you through QuillStay on your own property's setup. Like what you see? We handle the entire switch for you.</p>
     <div class="cta-row">
       <a class="btn btn-blue" href="mailto:hello@quillstay.com?subject=Demo%20request%20—%20QuillStay">Request a demo</a>
       <a class="phone-big" href="tel:203-457-8550">or call 203-457-8550</a>
     </div>
+    <p class="perks">Free demo &nbsp;•&nbsp; Free migration &nbsp;•&nbsp; No contracts</p>
   </div>
 </section>
 
@@ -511,7 +603,7 @@ footer a:hover{text-decoration:underline}
     <div class="foot-grid">
       <div>
         <img src="img/quillstay-logo-dark.png" alt="QuillStay">
-        <p style="max-width:30em;font-size:15px">The simple, intuitive property management system and booking engine for independent hotels and condo-hotel resorts.</p>
+        <p style="max-width:30em;font-size:15px">The simple, intuitive property management system and booking engine for independent hotels, co-op resorts, and condo-hotels.</p>
       </div>
       <nav class="foot-links" aria-label="Footer">
         <a href="#features">Features</a>
