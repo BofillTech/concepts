@@ -300,7 +300,7 @@
       '<section class="unit-hero">' +
         '<div class="container unit-hero__grid">' +
           '<div class="unit-hero__copy">' +
-            '<p class="eyebrow"><svg class="heron" viewBox="0 0 40 24" aria-hidden="true" focusable="false"><path d="M2 22h13c4.6 0 8.3-2.6 10.4-6.4l2.6-4.7 4.6-1.4a3 3 0 0 0 2-2.3l.4-2.2-3.6 1.5-1.6-2.6-1.7 3.4-4 1.2-6.5 3.1c-2.4 1.1-5 1.7-7.6 1.7H2z"/></svg> Building ' + d.b + '</p>' +
+            '<p class="eyebrow"><svg class="egret" viewBox="0 0 40 24" aria-hidden="true" focusable="false"><path d="M2 22h13c4.6 0 8.3-2.6 10.4-6.4l2.6-4.7 4.6-1.4a3 3 0 0 0 2-2.3l.4-2.2-3.6 1.5-1.6-2.6-1.7 3.4-4 1.2-6.5 3.1c-2.4 1.1-5 1.7-7.6 1.7H2z"/></svg> Building ' + d.b + '</p>' +
             '<h1 class="unit-hero__title">Unit ' + u + '</h1>' +
             '<p class="unit-hero__lede">Individually owned and individually decorated. These are photographs of this exact unit, not a sample of the category.</p>' +
             '<dl class="spec-rows spec-rows--tight">' +
