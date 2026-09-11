@@ -6,6 +6,7 @@
   "use strict";
 
   var doc = document;
+  doc.documentElement.classList.add("js");
   var body = doc.body;
 
   /* ---------- Dynamic year ---------- */

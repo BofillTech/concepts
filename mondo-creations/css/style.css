@@ -363,8 +363,15 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .quickbar__cta { background: var(--molten); color: #fff; }
 
 /* ---------- Reveal animation ---------- */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal.is-in { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(22px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+.skip-link {
+  position: absolute; left: -9999px; top: 0; z-index: 200;
+  background: var(--molten); color: #fff; padding: 12px 20px;
+  font-family: var(--mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+}
+.skip-link:focus { left: 0; }
 
 /* ============================================================
    RESPONSIVE
@@ -420,6 +427,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   html { scroll-behavior: auto; }
   .hero__bg { animation: none; transform: none; }
   .marquee__track { animation: none; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
