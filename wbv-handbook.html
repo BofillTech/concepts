@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>White Bay Villas — Reservations &amp; Guest Services Handbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#13333c;
+  --ink-soft:#3f5a63;
+  --sea:#0e7c88;
+  --sea-deep:#0a5763;
+  --sea-mist:#e3f1f2;
+  --sand:#faf7f0;
+  --card:#ffffff;
+  --line:#e2ddd2;
+  --coral:#b8472a;
+  --coral-mist:#faeae4;
+  --palm:#3f7050;
+  --palm-mist:#e9f2ea;
+  --gold:#8a6d2f;
+  --gold-mist:#f7f0dd;
+  --radius:10px;
+  --font-display:"Fraunces", Georgia, serif;
+  --font-body:"Public Sans", -apple-system, "Segoe UI", sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{font-family:var(--font-body);background:var(--sand);color:var(--ink);font-size:16px;line-height:1.6}
+img{max-width:100%;display:block}
+a{color:var(--sea-deep)}
+a:hover{color:var(--sea)}
+:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+.skip-link{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:.6rem 1rem;z-index:100}
+.skip-link:focus{left:0}
+
+/* ---------- header ---------- */
+.masthead{background:var(--ink);color:#fff;padding:2.2rem 1.25rem 2rem}
+.masthead__inner{max-width:1160px;margin:0 auto}
+.masthead__kicker{color:#9fc6cb;font-weight:600;font-size:.85rem;letter-spacing:.02em}
+.masthead h1{font-family:var(--font-display);font-weight:600;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.15;margin:.35rem 0 .6rem}
+.masthead__sub{color:#c6d8db;max-width:62ch;font-size:.98rem}
+.masthead__meta{margin-top:1rem;font-size:.85rem;color:#8fb3b8}
+
+/* ---------- sticky nav ---------- */
+.nav{position:sticky;top:0;z-index:50;background:var(--card);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(19,51,60,.04)}
+.nav__list{max-width:1160px;margin:0 auto;display:flex;gap:.25rem;list-style:none;overflow-x:auto;padding:.5rem 1rem;-webkit-overflow-scrolling:touch}
+.nav__link{display:block;white-space:nowrap;padding:.45rem .8rem;border-radius:999px;text-decoration:none;color:var(--ink-soft);font-weight:600;font-size:.88rem}
+.nav__link:hover{background:var(--sea-mist);color:var(--sea-deep)}
+.nav__link.is-active{background:var(--ink);color:#fff}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1160px;margin:0 auto;padding:0 1.25rem 4rem}
+.section{padding-top:2.6rem}
+.section__title{font-family:var(--font-display);font-weight:600;font-size:clamp(1.45rem,3vw,1.9rem);margin-bottom:.35rem}
+.section__lede{color:var(--ink-soft);max-width:70ch;margin-bottom:1.4rem}
+.section__rule{border:0;border-top:1px solid var(--line);margin-top:2.6rem}
+
+/* ---------- alerts & callouts ---------- */
+.alert{border-left:4px solid var(--coral);background:var(--coral-mist);border-radius:0 var(--radius) var(--radius) 0;padding:.85rem 1rem;margin:.9rem 0}
+.alert--tip{border-left-color:var(--palm);background:var(--palm-mist)}
+.alert--gold{border-left-color:var(--gold);background:var(--gold-mist)}
+.alert > strong{display:block;margin-bottom:.15rem}
+.alert p{font-size:.93rem}
+
+/* ---------- quick reference ---------- */
+.quickref{display:grid;grid-template-columns:1fr;gap:1rem;margin-top:1rem}
+@media(min-width:760px){.quickref{grid-template-columns:1fr 1fr}}
+@media(min-width:1080px){.quickref{grid-template-columns:1.2fr 1fr 1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.1rem 1.2rem}
+.panel h3{font-size:1rem;margin-bottom:.6rem}
+.contact{display:flex;justify-content:space-between;align-items:baseline;gap:.75rem;padding:.4rem 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.contact:last-child{border-bottom:0}
+.contact__who{color:var(--ink-soft)}
+.contact__val{font-weight:600;text-align:right;white-space:nowrap}
+.ferrytimes{width:100%;border-collapse:collapse;font-size:.92rem}
+.ferrytimes th{text-align:left;padding:.35rem .4rem;border-bottom:2px solid var(--line);font-size:.85rem}
+.ferrytimes td{padding:.42rem .4rem;border-bottom:1px dashed var(--line);vertical-align:top}
+
+/* ---------- villa matcher ---------- */
+.matcher{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:.94rem}
+.matcher th{background:var(--ink);color:#fff;text-align:left;padding:.65rem .9rem;font-size:.88rem}
+.matcher td{padding:.65rem .9rem;border-bottom:1px solid var(--line);vertical-align:top}
+.matcher tr:last-child td{border-bottom:0}
+.table-scroll{overflow-x:auto;border-radius:var(--radius)}
+
+/* ---------- villa cards ---------- */
+.villa{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;margin:1.4rem 0;display:grid;grid-template-columns:1fr}
+@media(min-width:860px){.villa{grid-template-columns:340px 1fr}}
+.villa__media{position:relative;min-height:210px;background:linear-gradient(160deg,var(--sea-deep) 0%,var(--sea) 55%,#3ea3ad 100%)}
+.villa__media img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.villa--noimg .villa__media img{display:none}
+.villa__media-name{position:absolute;left:1rem;bottom:.9rem;color:#fff;font-family:var(--font-display);font-size:1.25rem;text-shadow:0 1px 8px rgba(10,40,46,.5)}
+.villa--hasimg .villa__media-name{display:none}
+.villa__body{padding:1.15rem 1.3rem 1.3rem}
+.villa__head{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .8rem}
+.villa__name{font-family:var(--font-display);font-weight:600;font-size:1.3rem}
+.villa__tag{font-size:.8rem;font-weight:700;color:var(--sea-deep);background:var(--sea-mist);border-radius:999px;padding:.15rem .65rem}
+.specs{display:flex;flex-wrap:wrap;gap:.4rem .5rem;margin:.7rem 0 .8rem;padding:0;list-style:none}
+.specs li{font-size:.82rem;font-weight:600;color:var(--ink-soft);border:1px solid var(--line);border-radius:6px;padding:.2rem .55rem;background:var(--sand)}
+.villa__body p{font-size:.94rem;margin-bottom:.6rem}
+.villa__facts{list-style:none;margin:.4rem 0 .2rem}
+.villa__facts li{font-size:.92rem;padding:.32rem 0 .32rem 1.2rem;position:relative;border-bottom:1px dashed var(--line)}
+.villa__facts li:last-child{border-bottom:0}
+.villa__facts li::before{content:"";position:absolute;left:0;top:.78em;width:.45em;height:.45em;border-radius:50%;background:var(--sea)}
+.villa__facts li.is-warn::before{background:var(--coral)}
+.villa__facts strong{color:var(--ink)}
+
+/* ---------- routes / steps ---------- */
+.route{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.2rem 1.3rem;margin:1.2rem 0}
+.route__title{font-family:var(--font-display);font-size:1.15rem;font-weight:600;margin-bottom:.2rem}
+.route__when{color:var(--ink-soft);font-size:.9rem;margin-bottom:.8rem}
+.steps{list-style:none;counter-reset:step}
+.steps li{counter-increment:step;position:relative;padding:.45rem 0 .45rem 2.4rem;font-size:.94rem;border-bottom:1px dashed var(--line)}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(step);position:absolute;left:0;top:.5rem;width:1.55rem;height:1.55rem;border-radius:50%;background:var(--sea);color:#fff;font-weight:700;font-size:.82rem;display:flex;align-items:center;justify-content:center}
+
+/* ---------- directory tables ---------- */
+.dir{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:.93rem}
+.dir th{background:var(--sea-mist);color:var(--sea-deep);text-align:left;padding:.55rem .85rem;font-size:.85rem}
+.dir td{padding:.5rem .85rem;border-bottom:1px solid var(--line)}
+.dir tr:last-child td{border-bottom:0}
+.dir td:last-child{font-weight:600;white-space:nowrap}
+
+/* ---------- playbook / checklist ---------- */
+.rules{list-style:none;margin:.6rem 0}
+.rules li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.7rem .9rem .7rem 2.5rem;margin:.5rem 0;font-size:.94rem;position:relative}
+.rules li::before{content:"";position:absolute;left:.85rem;top:.95rem;width:.95rem;height:.95rem;border-radius:4px;border:2px solid var(--sea);background:var(--sea-mist)}
+.script{background:var(--ink);color:#e8f1f2;border-radius:var(--radius);padding:1.1rem 1.3rem;margin:1rem 0;font-size:.92rem}
+.script h4{color:#9fc6cb;font-size:.85rem;margin-bottom:.5rem}
+.script p{margin-bottom:.6rem}
+.script p:last-child{margin-bottom:0}
+
+/* ---------- quiz / faq ---------- */
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;margin:.5rem 0;padding:.75rem 1rem}
+details summary{cursor:pointer;font-weight:600;font-size:.95rem;color:var(--ink)}
+details[open] summary{margin-bottom:.5rem;color:var(--sea-deep)}
+details p{font-size:.92rem}
+.packing{columns:2;column-gap:2rem;list-style:none;max-width:560px}
+@media(max-width:560px){.packing{columns:1}}
+.packing li{padding:.3rem 0 .3rem 1.4rem;position:relative;font-size:.94rem;break-inside:avoid}
+.packing li::before{content:"";position:absolute;left:0;top:.62em;width:.6em;height:.6em;border:2px solid var(--sea);border-radius:3px}
+
+.footer{border-top:1px solid var(--line);margin-top:3rem;padding:1.5rem 1.25rem 2.5rem;color:var(--ink-soft);font-size:.85rem}
+.footer__inner{max-width:1160px;margin:0 auto}
+
+/* ---------- print (Ctrl+P = clean PDF export) ---------- */
+@media print{
+  .nav{display:none}
+  body{background:#fff;font-size:12px}
+  .villa,.route,.panel{break-inside:avoid;box-shadow:none}
+  .masthead{background:#fff;color:#000;padding:0 0 1rem}
+  .masthead__kicker,.masthead__sub,.masthead__meta{color:#444}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#quickref">Skip to quick reference</a>
+
+<header class="masthead">
+  <div class="masthead__inner">
+    <p class="masthead__kicker">White Bay Villas · Jost Van Dyke, British Virgin Islands · Internal team handbook</p>
+    <h1>Reservations &amp; Guest Services Handbook</h1>
+    <p class="masthead__sub">Everything you need to answer guest questions with confidence — the villas, how guests get here, provisioning, and the island itself. If a guest asks it, the answer is on this page.</p>
+    <p class="masthead__meta">Last updated September 8, 2026 · Maintained by Bofill Technologies for the White Bay Villas team · Not for guest distribution</p>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Handbook sections">
+  <ul class="nav__list">
+    <li><a class="nav__link" href="#quickref">Quick Reference</a></li>
+    <li><a class="nav__link" href="#villas">The Villas</a></li>
+    <li><a class="nav__link" href="#gettinghere">Getting Here</a></li>
+    <li><a class="nav__link" href="#island">On the Island</a></li>
+    <li><a class="nav__link" href="#playbook">Playbook</a></li>
+    <li><a class="nav__link" href="#packing">Packing List</a></li>
+    <li><a class="nav__link" href="#quiz">Self-Check</a></li>
+  </ul>
+</nav>
+
+<main class="wrap" id="main">
+
+<!-- ============ QUICK REFERENCE ============ -->
+<section class="section" id="quickref">
+  <h2 class="section__title">Quick Reference</h2>
+  <p class="section__lede">The things you need mid-phone-call. Bookmark this page on your phone.</p>
+
+  <div class="alert">
+    <strong>Do not recommend Aquatic Rentals.</strong>
+    <p>Aquatic Rentals permanently ceased operations on September 1 and should no longer be mentioned to guests. For water taxis, recommend Allure Charters (details in Getting Here).</p>
+  </div>
+
+  <div class="quickref">
+    <div class="panel">
+      <h3>Reservations contacts</h3>
+      <div class="contact"><span class="contact__who">Reservations email</span><span class="contact__val"><a href="mailto:info@jostvandyke.com">info@jostvandyke.com</a></span></div>
+      <div class="contact"><span class="contact__who">Toll-free (US)</span><span class="contact__val"><a href="tel:+18007788066">+1 (800) 778-8066</a></span></div>
+      <div class="contact"><span class="contact__who">BVI line</span><span class="contact__val"><a href="tel:+12845411900">+1 (284) 541-1900</a></span></div>
+      <div class="contact"><span class="contact__who">Lucy (WhatsApp &amp; US)</span><span class="contact__val"><a href="tel:+13402014976">+1 (340) 201-4976</a></span></div>
+      <div class="contact"><span class="contact__who">Amy (WhatsApp &amp; US)</span><span class="contact__val"><a href="tel:+13059650553">+1 (305) 965-0553</a></span></div>
+      <div class="contact"><span class="contact__who">Maria (WhatsApp &amp; US)</span><span class="contact__val"><a href="tel:+14105701974">+1 (410) 570-1974</a></span></div>
+      <div class="contact"><span class="contact__who">Maria email</span><span class="contact__val"><a href="mailto:maria@jostvandyke.com">maria@jostvandyke.com</a></span></div>
+      <div class="contact"><span class="contact__who">Website</span><span class="contact__val"><a href="https://www.jostvandyke.com">jostvandyke.com</a></span></div>
+    </div>
+
+    <div class="panel">
+      <h3>New Horizon Ferry — daily times</h3>
+      <table class="ferrytimes">
+        <tr><th>West End → Jost Van Dyke</th><th>Jost Van Dyke → West End</th></tr>
+        <tr><td>8:00 AM</td><td>7:00 AM</td></tr>
+        <tr><td>10:00 AM</td><td>9:00 AM</td></tr>
+        <tr><td>1:00 PM</td><td>12:00 PM</td></tr>
+        <tr><td>4:00 PM</td><td>2:00 PM</td></tr>
+        <tr><td>6:00 PM</td><td>5:00 PM</td></tr>
+      </table>
+      <p style="font-size:.85rem;margin-top:.6rem;color:var(--ink-soft)">Ride is ~20 minutes. Arrive 30 minutes early — ferry terminals are ports of entry. Times change: always verify at <a href="https://www.newhorizonferry.com">newhorizonferry.com</a>.</p>
+    </div>
+
+    <div class="panel">
+      <h3>Timing rules that save trips</h3>
+      <div class="contact"><span class="contact__who">Arriving via St. Thomas</span><span class="contact__val">Land by 3:00 PM</span></div>
+      <div class="contact"><span class="contact__who">Departing via St. Thomas</span><span class="contact__val">Fly out 1:30 PM or later</span></div>
+      <div class="contact"><span class="contact__who">St. John ferry days</span><span class="contact__val">Tue / Fri / Sun only</span></div>
+      <div class="contact"><span class="contact__who">Alice's last seating</span><span class="contact__val">8:15 PM</span></div>
+      <div class="contact"><span class="contact__who">Grocery delivery ferry</span><span class="contact__val">1:00 PM from Tortola</span></div>
+      <div class="contact"><span class="contact__who">Jeep busy season</span><span class="contact__val">December – April</span></div>
+    </div>
+  </div>
+
+  <div class="alert alert--gold">
+    <strong>Current offers (verify before quoting — promotions change)</strong>
+    <p>26% off all 2026 stays (limited-time, book direct). Online bookings with code <strong>BO50</strong> receive a $50 voucher at Alice's Restaurant. Direct-booking promos may not combine with other offers. Check the Deals page at <a href="https://www.jostvandyke.com">jostvandyke.com</a> for what's live today.</p>
+  </div>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ VILLAS ============ -->
+<section class="section" id="villas">
+  <h2 class="section__title">The Property &amp; The Villas</h2>
+  <p class="section__lede">White Bay Villas is a private 18-acre hillside estate above White Bay on Jost Van Dyke — family owned and operated for 40 years, with 20 standalone buildings hosting anywhere from one to 80 guests. Every villa is private, freestanding, and within walking distance of White Bay Beach, with bedroom air conditioning throughout. The property includes the Main Office, the White Bay Villas Beach Club, and walking trails directly to the beach.</p>
+
+  <h3 style="margin-bottom:.5rem">Match the guest to the villa</h3>
+  <div class="table-scroll">
+  <table class="matcher">
+    <tr><th>Guest says…</th><th>Recommend</th><th>Why</th></tr>
+    <tr><td>"It's just the two of us"</td><td>Paradise Villas, Seaside Cottages, or Sunset Villa West</td><td>The classic couples picks — private, cozy, great views</td></tr>
+    <tr><td>"We're bringing the family"</td><td>Hillside Villas, Sunset Villa East, or Palm Villa</td><td>More bedrooms, more space, sleeper options</td></tr>
+    <tr><td>"We want to be steps from the beach"</td><td>Seaside Cottages or Sunset Villas</td><td>2–3 minute walk — the closest units on property</td></tr>
+    <tr><td>"We need a king bed"</td><td>Paradise Villas or Hillside Villas</td><td>King beds in every bedroom, with strong A/C</td></tr>
+    <tr><td>"Big group / wedding party"</td><td>Palm Villa (up to 10) + surrounding villas</td><td>Largest single villa; the estate hosts up to 80 across all units</td></tr>
+    <tr><td>"Small group that wants seclusion"</td><td>The Hideaway</td><td>Private three-building compound on its own plateau</td></tr>
+  </table>
+  </div>
+
+  <div class="alert alert--tip" style="margin-top:1.2rem">
+    <strong>How to talk about air conditioning</strong>
+    <p>Every bedroom on property has powerful A/C. Some living rooms do not — Paradise Villas, Sunset Villa East, and certain Hillside Villas. Fans are available on request. Set expectations honestly: guests here run the A/C before heading to the beach and while sleeping, which is the island rhythm. This is also why some villas are deliberately advertised below their physical sleeping capacity.</p>
+  </div>
+
+  <!-- Seaside Cottages -->
+  <article class="villa villa--noimg" id="v-seaside">
+    <figure class="villa__media"><img src="img/seaside-cottages.jpg" alt="Seaside Cottages at White Bay Villas"><figcaption class="villa__media-name">Seaside Cottages</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Seaside Cottages — Mango, Papaya &amp; Tamarind</h3><span class="villa__tag">Closest to the beach</span></div>
+      <ul class="specs"><li>3 identical cottages</li><li>Sleeps 3 each</li><li>1 bedroom · 1 bath</li><li>Queen bed</li><li>Beach: 2–3 min walk</li></ul>
+      <p>Nestled, cozy, and surrounded by tropical foliage — the closest accommodations to White Bay Beach and a favorite for romantic getaways.</p>
+      <ul class="villa__facts">
+        <li><strong>Mango</strong> sits at the bottom of the driveway, closest to the beach trail — the most requested cottage. Book it first.</li>
+        <li><strong>Papaya</strong> is the middle cottage of the three.</li>
+        <li><strong>Tamarind</strong> sits at the top of the driveway.</li>
+        <li>All three have queen-size beds — guests who insist on a king should go Paradise or Hillside instead.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Sunset West -->
+  <article class="villa villa--noimg" id="v-sunsetwest">
+    <figure class="villa__media"><img src="img/sunset-west.jpg" alt="Sunset Villa West"><figcaption class="villa__media-name">Sunset Villa West</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Sunset Villa West</h3><span class="villa__tag">Most popular</span></div>
+      <ul class="specs"><li>Studio</li><li>Sleeps 2</li><li>1 bath</li><li>Queen bed</li><li>Beach: 2–3 min walk</li></ul>
+      <p>A studio villa perched for the property's signature sunset views — everything a couple needs, and one of the closest units to the beach.</p>
+      <ul class="villa__facts">
+        <li>Elevated kitchen over the living/bedroom area; full porch with BBQ, café table, and zero-gravity chaise lounges.</li>
+        <li>Perfect answer for a couple who asks for "the best view" — guests consistently say the photos undersell it.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Sunset East -->
+  <article class="villa villa--noimg" id="v-sunseteast">
+    <figure class="villa__media"><img src="img/sunset-east.jpg" alt="Sunset Villa East"><figcaption class="villa__media-name">Sunset Villa East</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Sunset Villa East</h3><span class="villa__tag">Family favorite near the beach</span></div>
+      <ul class="specs"><li>Sleeps 6</li><li>2 bedrooms · 2 baths</li><li>+ Queen sleeper</li><li>Beach: 2–3 min walk</li></ul>
+      <p>An architectural favorite with a raised open-plan kitchen and great room, tile floors, and three patio areas. Unique on property: its primary view faces Tortola, St. John, and St. Thomas.</p>
+      <ul class="villa__facts">
+        <li>Great room includes a queen sleeper for extra guests.</li>
+        <li class="is-warn"><strong>The living room has no A/C.</strong> When multiple adults are booking, confirm the guest composition and sleeping arrangements before arrival so nobody expects to sleep in an un-air-conditioned room unknowingly.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Paradise -->
+  <article class="villa villa--noimg" id="v-paradise">
+    <figure class="villa__media"><img src="img/paradise-villas.jpg" alt="Paradise Villas"><figcaption class="villa__media-name">Paradise Villas</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Paradise Villas</h3><span class="villa__tag">King beds · couples' pick</span></div>
+      <ul class="specs"><li>8 identical villas</li><li>1 bedroom · 1 bath</li><li>King bed + queen sofa bed</li><li>Beach: 5–6 min walk</li></ul>
+      <p>Eight newly built identical villas on the hillside with panoramic views of the beach and visiting yachts — like a private little neighborhood on the peninsula. Quieter location, resilient modern construction, fully equipped kitchens, covered patios with BBQ.</p>
+      <ul class="villa__facts">
+        <li class="is-warn"><strong>Occupancy rule: maximum 3 adults</strong> (or 2 adults + 2 children). The queen sofa bed sits in the living room, which has no A/C — the villas are deliberately advertised conservatively so nobody is surprised. The bedroom A/C is powerful.</li>
+        <li>The go-to recommendation for guests who want a king bed and a quieter spot.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Hillside -->
+  <article class="villa villa--noimg" id="v-hillside">
+    <figure class="villa__media"><img src="img/hillside-villas.jpg" alt="Hillside Villas"><figcaption class="villa__media-name">Hillside Villas</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Hillside Villas — Agave, Banana, Coconut &amp; Dream Away</h3><span class="villa__tag">Space for families</span></div>
+      <ul class="specs"><li>4 villas</li><li>Sleeps up to 5</li><li>King beds in every bedroom</li><li>Beach: 5–6 min walk</li></ul>
+      <p>Spacious villas with large patios, double hammocks, café tables, and tile floors. The upstairs master has a king bed, A/C, and a private sunken shower. Layouts differ — know them:</p>
+      <ul class="villa__facts">
+        <li><strong>Agave (Villa A):</strong> king bedroom plus a day bed.</li>
+        <li><strong>Banana (Villa B):</strong> king bedroom plus a queen sleeper sofa.</li>
+        <li><strong>Coconut (Villa C):</strong> king bedroom plus a queen sleeper sofa.</li>
+        <li><strong>Dream Away (Villa D):</strong> king bedroom plus a day bed.</li>
+        <li>Some Hillside Villas offer a two-bedroom configuration with a floating bed — confirm which unit before promising it.</li>
+        <li class="is-warn">Living rooms have no A/C; fans are provided on request.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Palm -->
+  <article class="villa villa--noimg" id="v-palm">
+    <figure class="villa__media"><img src="img/palm-villa.jpg" alt="Palm Villa"><figcaption class="villa__media-name">Palm Villa</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">Palm Villa <span style="font-weight:400;font-size:.85rem;color:var(--ink-soft)">(formerly Plantation Villa)</span></h3><span class="villa__tag">Largest on property</span></div>
+      <ul class="specs"><li>Sleeps up to 10</li><li>5+ bedrooms · 5 baths</li><li>Beach: walking distance</li></ul>
+      <p>Originally built as the owner's private residence — the signature villa for large families, groups, and wedding parties.</p>
+      <ul class="villa__facts">
+        <li class="is-warn"><strong>Always verify guest counts on OTA bookings.</strong> Reservations imported from Airbnb and other online travel agencies sometimes display the wrong number of guests. Confirm adults, children, and total occupants before arrival — every time.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Hideaway -->
+  <article class="villa villa--noimg" id="v-hideaway">
+    <figure class="villa__media"><img src="img/hideaway.jpg" alt="The Hideaway"><figcaption class="villa__media-name">The Hideaway</figcaption></figure>
+    <div class="villa__body">
+      <div class="villa__head"><h3 class="villa__name">The Hideaway</h3><span class="villa__tag">Secluded compound</span></div>
+      <ul class="specs"><li>Sleeps 6</li><li>3 bedrooms · 2 baths</li><li>3 buildings</li><li>Beach: walking distance</li></ul>
+      <p>A recently renovated private sanctuary on its own plateau in the hillside — three buildings that feel like your own island homestead. The pick for small groups or families who want to "feel one with nature" and never see a neighbor.</p>
+    </div>
+  </article>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ GETTING HERE ============ -->
+<section class="section" id="gettinghere">
+  <h2 class="section__title">Getting Here</h2>
+  <p class="section__lede">Transportation is the most common guest conversation you'll have. Start every one the same way: <strong>which airport are they flying into, and what are their flight details?</strong> Then walk the matching route below.</p>
+
+  <div class="route">
+    <h3 class="route__title">Route 1 — Beef Island Airport, Tortola (EIS)</h3>
+    <p class="route__when">The most direct option. Recommend when flights work.</p>
+    <ol class="steps">
+      <li>Land at Beef Island Airport (EIS) and collect luggage.</li>
+      <li>Taxi to the West End Ferry Terminal — 45–60 minutes depending on traffic. Pre-arranged drivers below.</li>
+      <li>Arrive at least 30 minutes before the ferry — all ferry terminals are ports of entry.</li>
+      <li>Board the New Horizon Ferry to Great Harbour, Jost Van Dyke (~20 minutes). Buy tickets in advance at <a href="https://www.newhorizonferry.com">newhorizonferry.com</a>.</li>
+    </ol>
+  </div>
+
+  <div class="route">
+    <h3 class="route__title">Route 2 — St. Thomas Airport (STT), via public ferry</h3>
+    <p class="route__when">More flight options, but adds a ferry leg. Only works if they land by 3:00 PM.</p>
+    <ol class="steps">
+      <li>Land at Cyril E. King Airport (STT) by 3:00 PM at the latest to make the last public ferry connection.</li>
+      <li>Taxi to the ferry terminal. Shared airport taxis wait to fill and make multiple stops — guests on a ferry deadline should reserve a private taxi in advance (drivers below).</li>
+      <li>Ferry to Road Town, Tortola on Native Son (<a href="https://www.nativesonferry.com">nativesonferry.com</a>) or Smith's Ferry (<a href="https://smithsferry.com">smithsferry.com</a>).</li>
+      <li>Clear BVI Customs in Road Town.</li>
+      <li>Taxi from Road Town to West End Ferry Terminal — 25–30 minutes. Leave buffer between connections.</li>
+      <li>New Horizon Ferry to Great Harbour, Jost Van Dyke.</li>
+    </ol>
+    <div class="alert" style="margin-top:.9rem;margin-bottom:0">
+      <strong>Departure rule for St. Thomas flyers</strong>
+      <p>Return flights out of STT should be no earlier than 1:30 PM — guests need time to leave Jost Van Dyke, clear U.S. Customs, and reach the airport. Earlier flight? Recommend a private water taxi.</p>
+    </div>
+  </div>
+
+  <div class="route">
+    <h3 class="route__title">Route 3 — From St. John</h3>
+    <p class="route__when">Only three days a week.</p>
+    <ol class="steps">
+      <li>Inter Island Ferry runs the only direct public route St. John → Jost Van Dyke: <strong>Tuesdays, Fridays, and Sundays only</strong> (<a href="https://interislandboatservices.com">interislandboatservices.com</a>).</li>
+      <li>Traveling any other day: book a private water taxi instead.</li>
+    </ol>
+  </div>
+
+  <div class="route">
+    <h3 class="route__title">Route 4 — Private water taxi (any airport, any schedule)</h3>
+    <p class="route__when">Recommend for arrivals outside ferry hours, early STT departures, larger groups, lots of luggage, or anyone who values convenience.</p>
+    <ol class="steps">
+      <li>Preferred provider: <strong>Allure Charters &amp; Water Taxi</strong> — Captain Michael Clyne. Two boats; pickups from both St. Thomas and Tortola; private charters too. <a href="https://allurechartersbvi.com">allurechartersbvi.com</a> · <a href="mailto:allurechartersbvi@gmail.com">allurechartersbvi@gmail.com</a> · <a href="tel:+12844410000">+1 (284) 441-0000</a>.</li>
+      <li>Backup: Paradise Water Taxi — <a href="https://www.paradisewatertaxi.com">paradisewatertaxi.com</a>.</li>
+      <li><strong>Always book in advance</strong> — transfers are scheduled around the guest's flight times, so get flight details first.</li>
+    </ol>
+  </div>
+
+  <h3 style="margin:1.6rem 0 .6rem">Pre-arranged taxi drivers</h3>
+  <div class="quickref" style="margin-top:.4rem">
+    <div class="panel">
+      <h3>Tortola (EIS → West End)</h3>
+      <div class="contact"><span class="contact__who">Ronnie Jack</span><span class="contact__val"><a href="tel:+12843423729">+1 (284) 342-3729</a></span></div>
+      <div class="contact"><span class="contact__who">Eric</span><span class="contact__val"><a href="tel:+12844999371">+1 (284) 499-9371</a></span></div>
+      <div class="contact"><span class="contact__who">Stoutt's Taxi &amp; Tour Service</span><span class="contact__val"><a href="tel:+12845434155">+1 (284) 543-4155</a></span></div>
+    </div>
+    <div class="panel">
+      <h3>St. Thomas (airport → ferry)</h3>
+      <div class="contact"><span class="contact__who">Yisreal Peterson</span><span class="contact__val"><a href="tel:+13402448407">(340) 244-8407</a></span></div>
+      <div class="contact"><span class="contact__who">Roy</span><span class="contact__val"><a href="tel:+13407711078">(340) 771-1078</a></span></div>
+      <div class="contact"><span class="contact__who">Abraham</span><span class="contact__val"><a href="tel:+13405143119">(340) 514-3119</a></span></div>
+    </div>
+    <div class="panel">
+      <h3>Charter day trips</h3>
+      <div class="contact"><span class="contact__who">Chillout Charters</span><span class="contact__val"><a href="https://www.chilloutchartersbvi.com">chilloutchartersbvi.com</a></span></div>
+      <div class="contact"><span class="contact__who">Allure Charters (also charters)</span><span class="contact__val"><a href="tel:+12844410000">+1 (284) 441-0000</a></span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ ON THE ISLAND ============ -->
+<section class="section" id="island">
+  <h2 class="section__title">On the Island</h2>
+  <p class="section__lede">Provisioning, getting around, dining, and staying connected — the answers guests ask for once the booking is made.</p>
+
+  <div class="route">
+    <h3 class="route__title">Grocery provisioning — how it works</h3>
+    <p class="route__when">We've worked with Tortola grocery stores for over 20 years so villas are stocked before guests walk in. Pitch this on every booking — it's a signature service.</p>
+    <ol class="steps">
+      <li>Guest places their grocery order with the store several days before arrival.</li>
+      <li>Guest asks the store to send the order on the <strong>1:00 PM New Horizon Ferry</strong> to Jost Van Dyke. Cold and frozen items travel in insulated cooler boxes (the crossing is 15–20 minutes).</li>
+      <li>The White Bay Villas team collects the order at the ferry dock, delivers it to the villa, stocks the refrigerator and kitchen, and clears the packaging — all before the guest arrives.</li>
+      <li>Guest inspects the order on arrival. Anything missing, substituted, or incorrect: contact the store immediately for a replacement or refund.</li>
+    </ol>
+    <div class="alert alert--tip" style="margin-top:.9rem;margin-bottom:0">
+      <strong>Set the expectation</strong>
+      <p>Island grocery availability differs from the mainland. If a guest can't find an item on the store's website, have them contact the store directly — more products are often available than are listed online.</p>
+    </div>
+  </div>
+
+  <div class="route">
+    <h3 class="route__title">Jeep rentals</h3>
+    <p class="route__when">Every villa is walking distance to White Bay Beach, so beach-only guests can skip the jeep. Guests who want to explore the island should rent — taxis charge per person, so a jeep usually wins on cost.</p>
+    <ol class="steps">
+      <li>Recommend <strong>Paradise Jeep Rentals</strong> — the only SUV rentals on Jost Van Dyke. <a href="https://paradisejeeprental.com">paradisejeeprental.com</a> · <a href="tel:+12845471040">+1 (284) 547-1040</a> · <a href="mailto:paradise_rentals@yahoo.com">paradise_rentals@yahoo.com</a>.</li>
+      <li>Reserve as early as possible — vehicles sell out in the busy season, December through April.</li>
+    </ol>
+  </div>
+
+  <h3 style="margin:1.6rem 0 .5rem">Taxis on Jost Van Dyke</h3>
+  <p style="font-size:.94rem;color:var(--ink-soft);max-width:70ch;margin-bottom:.8rem">Typical fares: about $6 per person daytime, about $20 per person in the evening — varies by destination, time, and party size. Early-morning departures: guests should book a driver one to two days ahead.</p>
+  <div class="table-scroll">
+  <table class="dir">
+    <tr><th>Driver</th><th>Phone</th><th>Driver</th><th>Phone</th></tr>
+    <tr><td>Ian</td><td><a href="tel:+12845432863">(284) 543-2863</a></td><td>Frankie</td><td><a href="tel:+12844412431">(284) 441-2431</a></td></tr>
+    <tr><td>Cecil</td><td><a href="tel:+12845478315">(284) 547-8315</a></td><td>Rena</td><td><a href="tel:+12845436293">(284) 543-6293</a></td></tr>
+    <tr><td>Steve</td><td><a href="tel:+12845458859">(284) 545-8859</a></td><td>Greg</td><td><a href="tel:+12845408373">(284) 540-8373</a></td></tr>
+    <tr><td>Mark</td><td><a href="tel:+12843445587">(284) 344-5587</a></td><td>Gerald</td><td><a href="tel:+12844490943">(284) 449-0943</a></td></tr>
+    <tr><td>Uncle</td><td><a href="tel:+12845400681">(284) 540-0681</a></td><td>Capt. KC</td><td><a href="tel:+12844400939">(284) 440-0939</a></td></tr>
+    <tr><td>Eddie</td><td><a href="tel:+12845418772">(284) 541-8772</a></td><td></td><td></td></tr>
+  </table>
+  </div>
+
+  <h3 style="margin:1.6rem 0 .5rem">Dinghy rentals</h3>
+  <div class="quickref" style="margin-top:.4rem">
+    <div class="panel">
+      <h3>Providers (reserve in busy season)</h3>
+      <div class="contact"><span class="contact__who">David Chinnery</span><span class="contact__val"><a href="tel:+12845409614">+1 (284) 540-9614</a></span></div>
+      <div class="contact"><span class="contact__who">Sugar &amp; Spice — Linden</span><span class="contact__val"><a href="tel:+12843414468">+1 (284) 341-4468</a></span></div>
+      <div class="contact"><span class="contact__who">Sugar &amp; Spice — alternate</span><span class="contact__val"><a href="tel:+12845439016">+1 (284) 543-9016</a></span></div>
+    </div>
+    <div class="panel">
+      <h3>Staying connected</h3>
+      <div class="contact"><span class="contact__who">Recommend before travel</span><span class="contact__val"><a href="https://www.whatsapp.com/download">WhatsApp download</a></span></div>
+      <div class="contact"><span class="contact__who">Property Wi-Fi</span><span class="contact__val">Free, property-wide</span></div>
+      <div class="contact"><span class="contact__who">US carriers</span><span class="contact__val">AT&amp;T / Sprint work in line of sight of St. Thomas</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin:1.8rem 0 .5rem">Restaurants &amp; bars</h3>
+  <div class="quickref" style="margin-top:.4rem">
+    <div class="panel">
+      <h3>Alice's Restaurant</h3>
+      <p style="font-size:.92rem;margin-bottom:.5rem">The closest dinner option for Sunset Villas guests — about a 5-minute downhill walk from Sunset Villa West, roughly 7 minutes back up.</p>
+      <div class="contact"><span class="contact__who">Dinner</span><span class="contact__val">5:00 – 9:00 PM</span></div>
+      <div class="contact"><span class="contact__who">Last seating</span><span class="contact__val">8:15 PM</span></div>
+      <div class="contact"><span class="contact__who">Reservations</span><span class="contact__val">Recommended in season &amp; holidays</span></div>
+    </div>
+    <div class="panel">
+      <h3>Soggy Dollar Bar</h3>
+      <p style="font-size:.92rem;margin-bottom:.5rem">Easy walk from the villas and one of the island's biggest draws — home of the famous Painkiller.</p>
+      <div class="contact"><span class="contact__who">Local wisdom</span><span class="contact__val">Walk there, taxi back</span></div>
+    </div>
+    <div class="panel">
+      <h3>Foxy's Restaurant &amp; Bar</h3>
+      <p style="font-size:.92rem;margin-bottom:.5rem">In Great Harbour — about a 10-minute downhill walk from the Sunset Villas. Dinner and live entertainment.</p>
+      <div class="contact"><span class="contact__who">Local wisdom</span><span class="contact__val">Walk down, taxi back</span></div>
+    </div>
+  </div>
+
+  <p style="margin-top:1.4rem;font-size:.94rem;color:var(--ink-soft);max-width:70ch">Beyond dinner: hiking trails, snorkeling, swimming, day charters to neighboring islands, and Great Harbour's local culture. The on-site team happily helps guests plan as much — or as little — as they want.</p>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ PLAYBOOK ============ -->
+<section class="section" id="playbook">
+  <h2 class="section__title">Guest Communication Playbook</h2>
+  <p class="section__lede">The non-negotiables. If you follow these on every guest interaction, you're doing the job right.</p>
+
+  <ul class="rules">
+    <li><strong>Always ask which airport</strong> the guest is arriving at, and request flight details if you don't have them. Every transportation answer depends on it.</li>
+    <li><strong>Recommend the route based on arrival day and time</strong> — not a generic answer. Check the St. John day rule (Tue/Fri/Sun) and the STT timing rules (land by 3:00 PM; depart 1:30 PM or later).</li>
+    <li><strong>Always include the official ferry websites</strong> in guest communications, remind guests that schedules change, and encourage buying ferry tickets in advance.</li>
+    <li><strong>Always include Allure Charters' contact info</strong> whenever a private water taxi comes up — and make clear water taxis must be booked ahead, scheduled to their flights.</li>
+    <li><strong>Never mention Aquatic Rentals</strong> — permanently closed as of September 1.</li>
+    <li><strong>Verify occupancy on Sunset Villa East</strong> when multiple adults book — confirm who's sleeping where before arrival (living-room sleeper has no A/C).</li>
+    <li><strong>Verify guest counts on Palm Villa OTA bookings</strong> — Airbnb imports can show the wrong occupancy. Confirm adults, children, and totals.</li>
+    <li><strong>Pitch grocery provisioning on every booking</strong> — order several days ahead, on the 1:00 PM ferry.</li>
+    <li><strong>Recommend WhatsApp before travel</strong> — it's how the island communicates.</li>
+    <li><strong>Hold the Paradise Villas occupancy line</strong> — 3 adults max (or 2 + 2 kids), and explain the living-room A/C reason honestly.</li>
+  </ul>
+
+  <h3 style="margin:1.6rem 0 .4rem">Ready-to-adapt replies</h3>
+
+  <div class="script">
+    <h4>Transportation inquiry — first reply</h4>
+    <p>"We'd love to help you plan the smoothest trip in! Could you tell us which airport you're flying into — Beef Island/Tortola (EIS) or St. Thomas (STT) — and your flight times? From Tortola it's a taxi to West End and the New Horizon Ferry over to us (schedule at newhorizonferry.com — do book ahead, times can change). From St. Thomas, plan to land by 3:00 PM to make the public ferries, or we can connect you with our preferred water taxi, Allure Charters (+1 284-441-0000, allurechartersbvi.com), who will schedule around your flight."</p>
+  </div>
+
+  <div class="script">
+    <h4>Provisioning pitch — booking confirmation</h4>
+    <p>"One favorite service our guests rave about: we can have your villa fully stocked before you arrive. Place a grocery order with our partner store in Tortola a few days ahead and ask them to send it on the 1:00 PM ferry — our team collects it at the dock, stocks your fridge and kitchen, and clears the packaging so you walk into a ready villa. If you can't find an item on the store's website, call them — they often have more than what's listed."</p>
+  </div>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ PACKING ============ -->
+<section class="section" id="packing">
+  <h2 class="section__title">Guest Packing List</h2>
+  <p class="section__lede">Copy-paste ready for pre-arrival emails.</p>
+  <ul class="packing">
+    <li>Reef-safe sunscreen</li>
+    <li>Sunglasses</li>
+    <li>Swimsuits</li>
+    <li>Water shoes</li>
+    <li>Flip-flops or sandals</li>
+    <li>Lightweight clothing</li>
+    <li>Bug spray</li>
+    <li>Reusable water bottle</li>
+    <li>Phone chargers</li>
+    <li>Prescription medications</li>
+    <li>Passport</li>
+    <li>Travel insurance documents</li>
+  </ul>
+</section>
+
+<hr class="section__rule">
+
+<!-- ============ QUIZ ============ -->
+<section class="section" id="quiz">
+  <h2 class="section__title">New Hire Self-Check</h2>
+  <p class="section__lede">Can you answer these without scrolling up? Click each to reveal the answer.</p>
+
+  <details><summary>A couple wants a king bed and doesn't mind a slightly longer walk. What do you recommend?</summary><p>Paradise Villas — king bed, powerful bedroom A/C, quieter hillside location, 5–6 minutes to the beach. Hillside Villas also have kings if they want more space.</p></details>
+  <details><summary>A guest lands at St. Thomas at 4:30 PM. What's your answer?</summary><p>They've missed the safe window for the public ferry chain (land by 3:00 PM). Recommend a private water taxi — Allure Charters, +1 (284) 441-0000 — booked in advance around their flight.</p></details>
+  <details><summary>Why are Paradise Villas capped at 3 adults when they physically sleep more?</summary><p>The queen sofa bed is in the living room, which has no air conditioning. The cap keeps expectations honest and guests comfortable.</p></details>
+  <details><summary>Which Seaside Cottage do you offer first, and why?</summary><p>Mango — bottom of the driveway, closest to the beach trail, and the most requested of the three.</p></details>
+  <details><summary>A family of five wants to come over from St. John on a Wednesday. Options?</summary><p>The Inter Island Ferry only runs Tuesday, Friday, and Sunday — so it's a private water taxi (Allure Charters) on a Wednesday.</p></details>
+  <details><summary>What's the earliest return flight you'd let a guest book out of St. Thomas?</summary><p>1:30 PM. Anything earlier needs a private water taxi to make U.S. Customs and the airport in time.</p></details>
+  <details><summary>An Airbnb reservation for Palm Villa shows 4 guests. What do you do?</summary><p>Verify it — OTA imports often carry wrong guest counts on Palm Villa. Confirm adults, children, and total occupants directly with the guest before arrival.</p></details>
+  <details><summary>A guest asks about renting a car. What do you tell them?</summary><p>Paradise Jeep Rentals — the only SUV rentals on the island (+1 284-547-1040, paradisejeeprental.com). Book early for December–April. If they're planning a beach-only stay, they can skip it — every villa is walking distance to White Bay Beach.</p></details>
+  <details><summary>Which ferry do grocery orders travel on, and what happens when they land?</summary><p>The 1:00 PM New Horizon Ferry from Tortola. Our team collects the order at the dock, delivers and stocks the villa, and removes the packaging before the guest arrives.</p></details>
+  <details><summary>What service do you never recommend anymore?</summary><p>Aquatic Rentals — permanently ceased operations September 1.</p></details>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <p>White Bay Villas · Jost Van Dyke, British Virgin Islands · <a href="https://www.jostvandyke.com">jostvandyke.com</a> · <a href="mailto:info@jostvandyke.com">info@jostvandyke.com</a> · +1 (800) 778-8066</p>
+    <p style="margin-top:.4rem">Internal training material. Ferry schedules, promotions, and vendor details change — verify time-sensitive information at the source before sending to guests. To print or save as PDF, use your browser's Print function.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  // Photo slots: show the styled fallback until a real image loads
+  document.querySelectorAll(".villa").forEach(function(card){
+    var img = card.querySelector(".villa__media img");
+    if(!img) return;
+    img.addEventListener("load", function(){ card.classList.remove("villa--noimg"); card.classList.add("villa--hasimg"); });
+    img.addEventListener("error", function(){ card.classList.add("villa--noimg"); card.classList.remove("villa--hasimg"); });
+    if(img.complete && img.naturalWidth > 0){ card.classList.remove("villa--noimg"); card.classList.add("villa--hasimg"); }
+  });
+  // Highlight the nav link for the section in view
+  var links = document.querySelectorAll(".nav__link");
+  var map = {};
+  links.forEach(function(l){ map[l.getAttribute("href").slice(1)] = l; });
+  if("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting && map[e.target.id]){
+          links.forEach(function(l){ l.classList.remove("is-active"); });
+          map[e.target.id].classList.add("is-active");
+        }
+      });
+    }, {rootMargin:"-30% 0px -60% 0px"});
+    document.querySelectorAll("main section[id]").forEach(function(s){ obs.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>
