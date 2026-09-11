@@ -1,0 +1,428 @@
+/* ============================================================
+   THE MOORING B&B — Cape May, NJ — Concept #115
+   Palette sampled from the property: antique-gold logo, walnut
+   Victorian interiors, haint-blue porch ceilings, shell ground.
+   Prata (display) + Mulish (body). Zero scrims on photos.
+   ============================================================ */
+
+:root {
+  --ink: #2b2118;
+  --ink-deep: #1f1810;
+  --gold: #b08a3c;
+  --gold-deep: #8f6e2c;
+  --gold-pale: #d9bd85;
+  --haint: #dfeaec;
+  --haint-deep: #c6d8db;
+  --shell: #faf7f0;
+  --paper: #ffffff;
+  --sand: #e6dccb;
+  --meta: #79705f;
+  --font-display: 'Prata', 'Georgia', serif;
+  --font-body: 'Mulish', 'Helvetica Neue', Arial, sans-serif;
+  --gutter: 1.25rem;
+  --max: 1180px;
+}
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink);
+  background: var(--shell);
+}
+h1, h2, h3, p, ul, figure { margin: 0; }
+ul { padding: 0; list-style: none; }
+img { display: block; max-width: 100%; height: auto; min-width: 0; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+iframe { border: 0; }
+em { font-style: italic; }
+
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute; left: -999px; top: 0; z-index: 200;
+  background: var(--ink); color: var(--shell); padding: .6rem 1rem;
+  text-decoration: none;
+}
+.skip-link:focus { left: 0; }
+
+/* ---------- Buttons & links ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .04em;
+  text-decoration: none;
+  padding: .8rem 1.5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease;
+}
+.btn--gold { background: var(--gold); color: #fff; }
+.btn--gold:hover, .btn--gold:focus-visible { background: var(--gold-deep); }
+.btn--line { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn--line:hover, .btn--line:focus-visible { background: var(--ink); color: var(--shell); }
+.btn--lg { padding: 1rem 2.2rem; font-size: .95rem; }
+
+.text-link {
+  color: var(--gold-deep);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: .1rem;
+  transition: color .2s ease, border-color .2s ease;
+}
+.text-link:hover, .text-link:focus-visible { color: var(--ink); border-color: var(--ink); }
+.text-link--haint { color: var(--gold-pale); border-color: var(--gold-pale); }
+.text-link--haint:hover, .text-link--haint:focus-visible { color: #fff; border-color: #fff; }
+
+/* ---------- Eyebrow & section heads ---------- */
+.eyebrow {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--gold-deep);
+  margin-bottom: .9rem;
+}
+.eyebrow--gold { color: var(--gold-pale); }
+.section-head { margin-bottom: 2.2rem; }
+.section-head--center { text-align: center; max-width: 760px; margin-left: auto; margin-right: auto; }
+.section-head__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 4.2vw, 2.6rem);
+  line-height: 1.2;
+}
+.section-head__note { color: var(--meta); margin-top: .8rem; }
+.section-head--onink .section-head__title { color: var(--shell); }
+
+/* ---------- The mooring line (signature device) ---------- */
+.mooring-rule {
+  display: flex; align-items: center; gap: .5rem;
+  margin: 2rem 0 1rem;
+  max-width: 260px;
+}
+.mooring-rule__line {
+  flex: 1 1 auto; height: 0; min-width: 0;
+  border-top: 2px dashed var(--gold);
+}
+.mooring-rule__cleat {
+  flex: none; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold);
+}
+
+/* ---------- Header (centered split-logo) ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--shell);
+  border-bottom: 1px solid var(--sand);
+  transition: box-shadow .25s ease;
+}
+.site-header--scrolled { box-shadow: 0 4px 18px rgba(43, 33, 24, .1); }
+.site-header__inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: .7rem var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 68px;
+}
+.site-header__links { display: none; }
+.site-header__brand {
+  display: flex; align-items: center; text-decoration: none;
+  min-width: 0;
+}
+.site-header__logo { max-height: 48px; width: auto; }
+.site-header__wordmark {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
+  color: var(--gold-deep);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.site-header__actions { display: flex; align-items: center; gap: .7rem; }
+.site-header__phone {
+  display: inline-flex; align-items: center; gap: .45rem;
+  color: var(--ink); text-decoration: none; font-weight: 700; font-size: .85rem;
+}
+.site-header__phone-num { display: none; }
+.site-header__book { padding: .65rem 1.1rem; }
+.site-header__burger {
+  display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+  width: 42px; height: 42px; padding: 0 9px;
+  background: transparent; border: 1px solid var(--sand); cursor: pointer;
+}
+.site-header__burger-line { display: block; height: 2px; background: var(--ink); }
+
+.nav-drawer {
+  position: fixed; inset: 68px 0 0 0; z-index: 99;
+  background: var(--ink-deep);
+  padding: 2rem var(--gutter);
+  overflow-y: auto;
+}
+.nav-drawer__list a {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--shell);
+  text-decoration: none;
+  padding: .8rem 0;
+  border-bottom: 1px solid rgba(250, 247, 240, .12);
+}
+.nav-drawer__list a:hover, .nav-drawer__list a:focus-visible { color: var(--gold-pale); }
+.nav-drawer__foot { color: var(--gold-pale); margin-top: 1.6rem; font-size: .9rem; }
+.nav-drawer__foot a { color: inherit; }
+
+/* ---------- Hero (split screen) ---------- */
+.hero { display: flex; flex-direction: column; }
+.hero__copy {
+  order: 2;
+  padding: 2.4rem var(--gutter) 2.8rem;
+  max-width: 620px;
+}
+.hero__media { order: 1; }
+.hero__media img { width: 100%; height: 46vh; min-height: 300px; object-fit: cover; }
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.1rem, 6vw, 3.4rem);
+  line-height: 1.12;
+}
+.hero__title em { color: var(--gold-deep); }
+.hero__lede { margin-top: 1.2rem; max-width: 52ch; }
+.hero__cta { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+.hero__meta { color: var(--meta); font-size: .85rem; letter-spacing: .03em; }
+
+/* ---------- Breakfast (haint-blue porch band) ---------- */
+.breakfast { background: var(--haint); border-top: 1px solid var(--haint-deep); border-bottom: 1px solid var(--haint-deep); }
+.breakfast__inner { max-width: var(--max); margin: 0 auto; padding: 3.5rem var(--gutter); }
+.breakfast__grid { display: grid; gap: 1.6rem; }
+.breakfast__photo { border: 8px solid var(--paper); box-shadow: 0 10px 28px rgba(43, 33, 24, .12); }
+.breakfast__photo img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.breakfast__caption { font-size: .85rem; color: var(--meta); padding: .6rem .2rem 0; background: transparent; }
+.breakfast__copy p + p { margin-top: 1rem; }
+
+/* ---------- Rooms (single-column editorial rows) ---------- */
+.rooms { max-width: var(--max); margin: 0 auto; padding: 3.8rem var(--gutter); }
+.room-row {
+  display: grid; gap: 1.4rem;
+  padding: 2.2rem 0;
+  border-top: 1px solid var(--sand);
+}
+.room-row:first-of-type { border-top: 0; }
+.room-row__media img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
+.room-row__title { font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; }
+.room-row__desc { margin-top: .7rem; max-width: 56ch; }
+.room-row__chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 1.2rem; }
+.chip {
+  font-size: .75rem; font-weight: 700; letter-spacing: .03em;
+  color: var(--gold-deep);
+  border: 1px solid var(--gold);
+  padding: .28rem .7rem; border-radius: 99px;
+}
+
+/* ---------- Photo bands (parallax, clean, no scrims) ---------- */
+.photo-band {
+  height: 46vh; min-height: 300px;
+  background-size: cover; background-position: center;
+  background-color: var(--haint-deep);
+}
+.photo-band--parlor { background-image: url("https://www.themooring.com/images/hero-parlor2026.jpg"); }
+.photo-band--entry { background-image: url("https://www.themooring.com/images/hero-parlorb2026.jpg"); }
+
+/* ---------- The House (walnut ink band) ---------- */
+.house { background: var(--ink); color: var(--shell); }
+.house__inner { max-width: var(--max); margin: 0 auto; padding: 3.8rem var(--gutter); }
+.house__cols { display: grid; gap: 1.8rem; }
+.house__lede { font-size: 1.06rem; max-width: 58ch; color: #efe9dd; }
+.house__list { display: grid; gap: .6rem; }
+.house__item {
+  padding-left: 1.3rem; position: relative;
+  color: #e6ddcd; font-size: .95rem;
+}
+.house__item::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 7px; height: 7px; border-radius: 50%; background: var(--gold);
+}
+
+/* ---------- Cape May / location ---------- */
+.capemay { max-width: var(--max); margin: 0 auto; padding: 3.8rem var(--gutter); }
+.capemay__grid { display: grid; gap: 1.8rem; }
+.capemay__map-wrap { border: 8px solid var(--paper); box-shadow: 0 10px 28px rgba(43, 33, 24, .12); }
+.capemay__map { width: 100%; height: 320px; display: block; }
+.capemay__body p { max-width: 56ch; }
+.capemay__list { margin-top: 1.4rem; border-top: 1px solid var(--sand); }
+.capemay__item {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
+  padding: .65rem 0; border-bottom: 1px solid var(--sand);
+}
+.capemay__what { font-weight: 600; }
+.capemay__where {
+  flex: none;
+  font-family: var(--font-display); font-style: italic;
+  color: var(--gold-deep); font-size: .92rem;
+}
+
+/* ---------- Trust ---------- */
+.trust { background: var(--ink-deep); color: var(--shell); }
+.trust__inner { max-width: 820px; margin: 0 auto; padding: 2.4rem var(--gutter); text-align: center; }
+.trust__line { font-size: 1.05rem; line-height: 1.8; }
+
+/* ---------- Final CTA ---------- */
+.final { position: relative; padding-bottom: 3.5rem; background: var(--shell); }
+.final__panel {
+  position: relative;
+  max-width: 640px;
+  margin: -4.5rem auto 0;
+  background: var(--ink);
+  color: var(--shell);
+  text-align: center;
+  padding: 2.6rem 1.6rem;
+  box-shadow: 0 16px 40px rgba(31, 24, 16, .3);
+}
+.final__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 4.5vw, 2.3rem); }
+.final__title em { color: var(--gold-pale); }
+.final__note { margin: 1rem 0 1.5rem; color: #d9d2c2; }
+.final__note a { color: var(--gold-pale); text-decoration: none; }
+.final__note a:hover { text-decoration: underline; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--ink-deep); color: #d9d2c2; padding-bottom: 92px; }
+.site-footer__inner {
+  max-width: var(--max); margin: 0 auto;
+  padding: 3rem var(--gutter) 1.5rem;
+  display: grid; gap: 2rem;
+}
+.site-footer__addr { margin-top: 1rem; font-size: .9rem; line-height: 1.8; }
+.site-footer__head {
+  font-family: var(--font-display); font-weight: 400;
+  color: var(--gold-pale); font-size: 1.05rem; margin-bottom: .8rem;
+}
+.site-footer__list li { padding: .28rem 0; }
+.site-footer__list a { color: #d9d2c2; text-decoration: none; font-size: .92rem; }
+.site-footer__list a:hover, .site-footer__list a:focus-visible { color: var(--gold-pale); }
+.site-footer__legal {
+  max-width: var(--max); margin: 0 auto;
+  padding: 1.2rem var(--gutter) 1.6rem;
+  border-top: 1px solid rgba(250, 247, 240, .12);
+  font-size: .8rem; color: #a99f8c;
+}
+
+/* ---------- Booking bar ---------- */
+.booking-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 110;
+  background: var(--ink);
+  border-top: 2px dashed var(--gold);
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  padding: .55rem var(--gutter);
+  transform: translateY(110%);
+  transition: transform .35s ease;
+}
+.booking-bar--show { transform: translateY(0); }
+.booking-bar__label {
+  display: none;
+  font-family: var(--font-display); color: var(--gold-pale); font-size: 1rem;
+}
+.booking-bar__field { display: flex; flex-direction: column; gap: .1rem; min-width: 0; }
+.booking-bar__field--guests { display: none; }
+.booking-bar__field-label {
+  font-size: .62rem; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--gold-pale);
+}
+.booking-bar__field input, .booking-bar__field select {
+  font-family: var(--font-body); font-size: .85rem;
+  background: var(--shell); color: var(--ink);
+  border: 1px solid var(--sand); padding: .35rem .45rem;
+  max-width: 138px;
+}
+.booking-bar__call {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--gold); color: var(--gold-pale);
+}
+.booking-bar__go { padding: .7rem 1rem; font-size: .8rem; }
+
+/* ---------- State helpers ---------- */
+.body--locked { overflow: hidden; }
+.img--plate { background: var(--haint-deep); min-height: 220px; object-fit: cover; }
+
+/* ---------- Reveals ---------- */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal--in, .no-js .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .booking-bar { transition: none; }
+}
+
+/* ============================================================
+   Tablet — 768px
+   ============================================================ */
+@media (min-width: 768px) {
+  .site-header__phone-num { display: inline; }
+  .breakfast__grid {
+    grid-template-columns: 1.05fr .95fr;
+    align-items: start;
+  }
+  .breakfast__photo--lead { grid-row: 1 / 3; }
+  .room-row { grid-template-columns: 1.1fr 1fr; align-items: center; gap: 2.4rem; }
+  .room-row--flip .room-row__media { order: 2; }
+  .room-row--flip .room-row__body { order: 1; }
+  .house__cols { grid-template-columns: 1.1fr 1fr; align-items: start; }
+  .house__list { grid-template-columns: 1fr 1fr; column-gap: 1.4rem; }
+  .capemay__grid { grid-template-columns: 1fr 1fr; align-items: start; }
+  .capemay__map { height: 420px; }
+  .site-footer__inner { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  .booking-bar { gap: 1rem; }
+  .booking-bar__label { display: block; }
+  .booking-bar__field--guests { display: flex; }
+  .booking-bar__go { padding: .75rem 1.5rem; font-size: .85rem; }
+}
+
+/* ============================================================
+   Desktop — 1024px
+   ============================================================ */
+@media (min-width: 1024px) {
+  .site-header__inner { display: grid; grid-template-columns: 1fr auto 1fr; }
+  .site-header__links--left { display: block; }
+  .site-header__links ul { display: flex; gap: 1.6rem; }
+  .site-header__links a {
+    text-decoration: none; font-weight: 700; font-size: .88rem;
+    letter-spacing: .03em; color: var(--ink);
+    padding-bottom: .2rem; border-bottom: 2px solid transparent;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  .site-header__links a:hover, .site-header__links a:focus-visible { border-color: var(--gold); color: var(--gold-deep); }
+  .site-header__brand { justify-self: center; }
+  .site-header__actions { justify-self: end; }
+  .site-header__burger { display: none; }
+
+  .hero { flex-direction: row; min-height: calc(100vh - 68px); }
+  .hero__copy {
+    order: 1; flex: 0 0 45%;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 3rem 3.5rem;
+    max-width: none;
+  }
+  .hero__media { order: 2; flex: 1 1 55%; min-width: 0; }
+  .hero__media img { height: 100%; min-height: 0; }
+}
+
+/* ============================================================
+   Wide — 1200px+ (parallax engages)
+   ============================================================ */
+@media (min-width: 1200px) {
+  .photo-band { background-attachment: fixed; height: 52vh; }
+  .capemay, .rooms { padding-top: 4.6rem; padding-bottom: 4.6rem; }
+}
+@media (min-width: 1200px) and (prefers-reduced-motion: reduce) {
+  .photo-band { background-attachment: scroll; }
+}
