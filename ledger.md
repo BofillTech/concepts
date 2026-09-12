@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 127 | coastal-hotel-suites | 2026-09-12 | split-screen | hero,ticker,view-promise,rooms-bento,pool-breakfast-story,reviews,map,cta | bento-overlapping | hamburger-only | marquee-ticker | mixed-display-serif | Gabarito | Newsreader | atlantic-ink+surf-teal+sun-gold |
 | 126 | ambassadors-inn | 2026-09-12 | full-bleed | hero,location-board,rooms,pool,free-strip,gallery,cta | single-column-editorial | side-rail | none | giant-display | Bricolage Grotesque | Public Sans | flag-navy+signal-red+sand |
 | 125 | black-hills-luxury-suites | 2026-09-12 | editorial-open | type-open,photo-band,story-amenities,suites-pair,trail-distances,gallery,map,cta | symmetric-12col | centered-split-logo | subtle-fade | poster-slab | Bevan | Public Sans | pine+park-brown+bh-gold |
 | 124 | 16-bay-view | 2026-09-12 | asymmetric-collage | hero,story-badges,street-level,rooms,rooftop,camden-map,cta | broken-asymmetric | top-sticky | staggered-reveal | slab-display | Besley | Albert Sans | harbor-ink+facade-brick+brass |
