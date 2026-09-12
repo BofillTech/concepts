@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 129 | cottage-inn-mackinac | 2026-09-12 | off-center-framed | hero,rhythm-strip,trust-board,story,rooms-12col,treats,map,cta | symmetric-12col | top-sticky | parallax | giant-display | Instrument Serif | Hanken Grotesk | porch-blue+lilac+fudge-ink |
 | 128 | budget-motor-inn | 2026-09-12 | type-only-sign | sign-hero,amenity-strip,value-broken,room-board,photo-wall,distance-board,desk-map,cta | broken-asymmetric | persistent-bottom-bar | staggered-reveal | condensed-signage-caps | Big Shoulders | Libre Franklin | marker-navy+marker-gold+enamel-white |
 | 127 | coastal-hotel-suites | 2026-09-12 | split-screen | hero,ticker,view-promise,rooms-bento,pool-breakfast-story,reviews,map,cta | bento-overlapping | hamburger-only | marquee-ticker | mixed-display-serif | Gabarito | Newsreader | atlantic-ink+surf-teal+sun-gold |
 | 126 | ambassadors-inn | 2026-09-12 | full-bleed | hero,location-board,rooms,pool,free-strip,gallery,cta | single-column-editorial | side-rail | none | giant-display | Bricolage Grotesque | Public Sans | flag-navy+signal-red+sand |
