@@ -1,6 +1,6 @@
 /* Ambassadors Inn & Suites — concept by Bofill Technologies
-   Structure roll #124: full-bleed hero / location-led order / symmetric 12-col /
-   top sticky nav / staggered reveal. Fonts: Bricolage Grotesque + Public Sans.
+   Structure roll #125: full-bleed hero / location-led order / symmetric 12-col /
+   centered split-logo nav / subtle fade. Fonts: Bricolage Grotesque + Public Sans.
    Palette: flag navy + signal red + sand. */
 
 :root {
@@ -77,7 +77,7 @@ h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; margin: 0 0 var(-
 }
 .site-head.is-scrolled { box-shadow: 0 2px 14px rgba(12, 29, 56, 0.12); border-color: var(--c-line); }
 .site-head__row { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); min-height: var(--head-h); }
-.site-head__brand { display: flex; align-items: center; text-decoration: none; }
+.site-head__brand { display: flex; align-items: center; text-decoration: none; order: -1; }
 .site-head__logo { max-height: 48px; width: auto; }
 .site-head__wordmark { font-family: var(--f-display); font-weight: 800; font-size: 1.2rem; color: var(--c-navy); }
 .site-head__wordmark em { font-style: normal; color: var(--c-red); }
@@ -241,10 +241,10 @@ body.drawer-open { overflow: hidden; }
 .book-bar__sep { color: var(--c-line); }
 @media (min-width: 768px) { .book-bar__times { display: inline-flex; } }
 
-/* ---------- Reveal (staggered) ---------- */
-.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.is-in { opacity: 1; transform: none; }
-.no-js .reveal { opacity: 1; transform: none; }
+/* ---------- Reveal (subtle fade) ---------- */
+.reveal { opacity: 0; transition: opacity .5s ease; }
+.reveal.is-in { opacity: 1; }
+.no-js .reveal { opacity: 1; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
@@ -265,7 +265,11 @@ body.drawer-open { overflow: hidden; }
 
 /* ---------- Desktop ≥1024 ---------- */
 @media (min-width: 1024px) {
+  .site-head__row { display: grid; grid-template-columns: 1fr auto 1fr; }
   .site-head__nav { display: block; }
+  .site-head__nav--left { justify-self: start; }
+  .site-head__brand { order: 0; justify-self: center; }
+  .site-head__right { justify-self: end; }
   .site-head__burger { display: none; }
   .hero__panel { padding: var(--sp-5); }
   .gallery__strip { padding-left: max(var(--sp-3), calc((100vw - var(--maxw)) / 2 + var(--sp-3))); }

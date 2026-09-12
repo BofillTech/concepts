@@ -52,21 +52,14 @@
     });
   });
 
-  /* Staggered reveal */
+  /* Subtle fade reveal */
   var reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window && reveals.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          var el = entry.target;
-          var siblings = Array.prototype.filter.call(
-            el.parentNode.children,
-            function (c) { return c.classList && c.classList.contains('reveal'); }
-          );
-          var idx = siblings.indexOf(el);
-          el.style.transitionDelay = (idx > 0 ? Math.min(idx * 90, 360) : 0) + 'ms';
-          el.classList.add('is-in');
-          io.unobserve(el);
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
         }
       });
     }, { threshold: 0.15 });
