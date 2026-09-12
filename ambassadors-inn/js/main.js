@@ -52,22 +52,6 @@
     });
   });
 
-  /* Subtle fade reveal */
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && reveals.length) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    reveals.forEach(function (el) { io.observe(el); });
-  } else {
-    Array.prototype.forEach.call(reveals, function (el) { el.classList.add('is-in'); });
-  }
-
   /* Footer year */
   var year = document.querySelector('[data-year]');
   if (year) year.textContent = String(new Date().getFullYear());

@@ -1,6 +1,6 @@
 /* Ambassadors Inn & Suites — concept by Bofill Technologies
-   Structure roll #125: full-bleed hero / location-led order / symmetric 12-col /
-   centered split-logo nav / subtle fade. Fonts: Bricolage Grotesque + Public Sans.
+   Structure roll #126: full-bleed hero / location-led order / single-column editorial /
+   side-rail nav / no scripted motion. Fonts: Bricolage Grotesque + Public Sans.
    Palette: flag navy + signal red + sand. */
 
 :root {
@@ -22,7 +22,8 @@
   --sp-5: 4rem;
   --sp-6: 6rem;
   --head-h: 72px;
-  --maxw: 1200px;
+  --rail-w: 250px;
+  --maxw: 1080px;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -37,6 +38,7 @@ body {
   padding-bottom: 58px; /* room for book bar */
 }
 img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
 a { color: var(--c-navy); }
 h1, h2, h3 { font-family: var(--f-display); line-height: 1.08; margin: 0 0 var(--sp-2); }
 
@@ -133,11 +135,11 @@ body.drawer-open { overflow: hidden; }
 .board__head { max-width: 640px; }
 .board__title { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--c-navy); }
 .board__sub { color: var(--c-mid); margin: 0 0 var(--sp-4); }
-.board__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--c-line); border: 1px solid var(--c-line); margin-bottom: var(--sp-4); }
-.board__cell { background: var(--c-white); padding: var(--sp-3); }
+.board__grid { border-top: 2px solid var(--c-navy); margin-bottom: var(--sp-4); }
+.board__cell { display: flex; align-items: baseline; justify-content: space-between; gap: var(--sp-3); padding: var(--sp-2) 0; border-bottom: 1px solid var(--c-line); }
 .board__num { font-family: var(--f-display); font-weight: 800; font-size: clamp(2.4rem, 6vw, 4rem); color: var(--c-navy); display: block; line-height: 1; }
 .board__unit { font-size: 0.35em; font-weight: 700; color: var(--c-red); margin-left: 0.35em; letter-spacing: 0.04em; }
-.board__label { margin: var(--sp-1) 0 0; color: var(--c-mid); font-size: 0.95rem; }
+.board__label { margin: 0; color: var(--c-mid); font-size: 1rem; text-align: right; max-width: 55%; }
 .board__map { position: relative; border: 1px solid var(--c-line); background: var(--c-white); }
 .board__map iframe { width: 100%; height: 340px; border: 0; display: block; }
 .board__map-plate {
@@ -241,38 +243,46 @@ body.drawer-open { overflow: hidden; }
 .book-bar__sep { color: var(--c-line); }
 @media (min-width: 768px) { .book-bar__times { display: inline-flex; } }
 
-/* ---------- Reveal (subtle fade) ---------- */
-.reveal { opacity: 0; transition: opacity .5s ease; }
-.reveal.is-in { opacity: 1; }
-.no-js .reveal { opacity: 1; }
+/* ---------- No scripted motion (roll: none) ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
   .room-card__media img { transition: none; }
 }
 
 /* ---------- Tablet ≥768 ---------- */
 @media (min-width: 768px) {
   .site-head__phone { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .rooms__grid { grid-template-columns: repeat(3, 1fr); }
-  .board__grid { grid-template-columns: repeat(4, 1fr); }
-  .banner__row { grid-template-columns: 1.5fr 1fr; align-items: center; }
-  .banner__actions { align-items: flex-end; }
+  .room-card { flex-direction: row; }
+  .room-card__media { width: 44%; aspect-ratio: auto; min-height: 260px; }
+  .room-card:nth-of-type(even) { flex-direction: row-reverse; }
   .site-foot__grid { grid-template-columns: 2fr 1fr 1fr; }
-  .pool { grid-template-columns: 7fr 5fr; }
   .pool__panel { padding: var(--sp-5) var(--sp-4); }
 }
 
-/* ---------- Desktop ≥1024 ---------- */
+/* ---------- Desktop ≥1024: side-rail navigation ---------- */
 @media (min-width: 1024px) {
-  .site-head__row { display: grid; grid-template-columns: 1fr auto 1fr; }
+  body { padding-left: var(--rail-w); }
+  .site-head {
+    position: fixed; top: 0; left: 0; bottom: 0; width: var(--rail-w);
+    border-bottom: 0; border-right: 1px solid var(--c-line);
+    overflow-y: auto;
+  }
+  .site-head.is-scrolled { box-shadow: none; border-color: var(--c-line); }
+  .site-head__row {
+    flex-direction: column; align-items: flex-start; justify-content: flex-start;
+    height: 100%; padding: var(--sp-4) var(--sp-3); gap: var(--sp-4);
+  }
   .site-head__nav { display: block; }
-  .site-head__nav--left { justify-self: start; }
-  .site-head__brand { order: 0; justify-self: center; }
-  .site-head__right { justify-self: end; }
+  .site-head__nav--right { margin-bottom: var(--sp-2); }
+  .menu { flex-direction: column; gap: var(--sp-2); }
+  .menu-item a { font-size: 1.05rem; }
+  .site-head__right { flex-direction: column; align-items: flex-start; margin-top: auto; gap: var(--sp-2); width: 100%; }
+  .site-head__phone { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .site-head__cta { width: 100%; }
   .site-head__burger { display: none; }
+  .book-bar { left: var(--rail-w); }
   .hero__panel { padding: var(--sp-5); }
-  .gallery__strip { padding-left: max(var(--sp-3), calc((100vw - var(--maxw)) / 2 + var(--sp-3))); }
+  .gallery__strip { padding-left: var(--sp-3); }
 }
 
 /* ---------- Wide ≥1400 ---------- */
