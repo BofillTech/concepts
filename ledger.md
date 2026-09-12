@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 124 | 16-bay-view | 2026-09-12 | asymmetric-collage | hero,story-badges,street-level,rooms,rooftop,camden-map,cta | broken-asymmetric | top-sticky | staggered-reveal | slab-display | Besley | Albert Sans | harbor-ink+facade-brick+brass |
 | 123 | imperial-500 | 2026-09-11 | split-screen | hero,pool-bento,rooms-af,story,phone-bar | bento-overlapping | hamburger-only | — | — | Righteous | Nunito Sans | dusk-indigo+aqua+imperial-gold |
 | 122 | tc-smith | 2026-09-11 | off-center-framed | — | single-column-editorial | — | — | serif-editorial | Libre Caslon Display | Old Standard TT | — |
 | 121 | long-hollow-ranch | 2026-09-11 | split-screen | editorial-timeline | — | — | — | — | Hepta Slab | Crimson Pro | — |
