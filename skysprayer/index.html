@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkySprayer — Autonomous Exterior Cleaning Drone</title>
+<meta name="description" content="SkySprayer scans the facade, detects every window, and flies the cleaning path itself. Autonomous soft-wash and window cleaning up to 150 ft — for a fraction of the cost of manual-flight drones.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0F1B2D;
+  --navy-2:#15263F;
+  --paper:#F3F6F9;
+  --white:#FFFFFF;
+  --ink:#16202F;
+  --slate:#46536A;
+  --line:#D8E0EA;
+  --line-dark:#28394F;
+  --amber:#FFB224;
+  --amber-deep:#E89A00;
+  --glass:#7FB2E5;
+  --radius:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Archivo',sans-serif;
+  font-variation-settings:'wdth' 100;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+a{color:inherit}
+img,svg{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-weight:800;line-height:1.08;letter-spacing:-0.015em}
+h2{font-size:clamp(30px,4.2vw,46px);margin-bottom:16px}
+.section-intro{max-width:620px;color:var(--slate);font-size:18px}
+.btn{
+  display:inline-block;font-weight:700;font-size:16px;text-decoration:none;
+  padding:14px 26px;border-radius:var(--radius);border:2px solid transparent;
+  transition:background-color .15s ease,color .15s ease,border-color .15s ease;
+}
+.btn-amber{background:var(--amber);color:var(--navy)}
+.btn-amber:hover{background:var(--amber-deep)}
+.btn-ghost-dark{border-color:var(--line-dark);color:var(--white)}
+.btn-ghost-dark:hover{border-color:var(--amber);color:var(--amber)}
+.btn-ghost-light{border-color:var(--ink);color:var(--ink)}
+.btn-ghost-light:hover{background:var(--ink);color:var(--white)}
+
+/* ============ announcement + nav ============ */
+.announce{
+  background:var(--amber);color:var(--navy);
+  font-weight:700;font-size:14px;text-align:center;padding:9px 16px;
+}
+.announce a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
+header{
+  background:var(--navy);position:sticky;top:0;z-index:50;
+  border-bottom:1px solid var(--line-dark);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white)}
+.logo-mark{width:32px;height:32px}
+.logo-word{font-weight:800;font-size:20px;letter-spacing:-0.02em}
+.logo-word span{color:var(--amber)}
+.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
+.nav-links a{color:#C6D2E2;text-decoration:none;font-size:15px;font-weight:600}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:var(--amber);color:var(--navy)!important;padding:9px 18px;border-radius:var(--radius);font-weight:700!important}
+.nav-cta:hover{background:var(--amber-deep)}
+.nav-toggle{display:none;background:none;border:1px solid var(--line-dark);color:var(--white);border-radius:var(--radius);padding:8px 12px;font-size:15px;font-family:inherit;cursor:pointer}
+
+/* ============ hero ============ */
+.hero{background:var(--navy);color:var(--white);overflow:hidden}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+  padding:84px 0 88px;
+}
+.hero h1{
+  font-size:clamp(40px,5.6vw,66px);
+  font-variation-settings:'wdth' 112;
+}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero-sub{color:#B9C7DA;font-size:19px;max-width:520px;margin:22px 0 32px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-note{margin-top:18px;font-size:13px;color:#7E90A9}
+.hero-note .mono{color:#9FB2CC}
+
+/* facade panel */
+.facade-panel{
+  background:var(--navy-2);border:1px solid var(--line-dark);border-radius:10px;
+  padding:18px 18px 14px;
+}
+.facade-head{
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:12px;color:#8FA2BC;margin-bottom:12px;
+}
+.facade-head .live{color:var(--amber);font-weight:600}
+.facade-svg{width:100%;height:auto}
+.facade-foot{
+  display:flex;gap:18px;margin-top:12px;padding-top:12px;
+  border-top:1px solid var(--line-dark);
+  font-size:12px;color:#8FA2BC;flex-wrap:wrap;
+}
+.facade-foot b{color:var(--white);font-weight:600}
+
+/* scan animation */
+.scan-path{
+  stroke:var(--amber);stroke-width:2.5;fill:none;
+  stroke-dasharray:1400;stroke-dashoffset:1400;
+  animation:draw 7s ease-in-out .6s forwards;
+}
+.win{fill:rgba(127,178,229,.14);stroke:rgba(127,178,229,.45);stroke-width:1}
+.win-hit{animation:hit .5s ease forwards;animation-delay:var(--d)}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes hit{to{stroke:var(--amber);fill:rgba(255,178,36,.16)}}
+@media (prefers-reduced-motion:reduce){
+  .scan-path{animation:none;stroke-dashoffset:0}
+  .win-hit{animation:none;stroke:var(--amber);fill:rgba(255,178,36,.16)}
+}
+
+/* ============ stats strip ============ */
+.stats{background:var(--white);border-bottom:1px solid var(--line)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat{
+  padding:34px 28px;border-left:1px solid var(--line);
+}
+.stat:first-child{border-left:none}
+.stat .num{font-size:34px;font-weight:700;color:var(--ink)}
+.stat .num sup{font-size:16px;color:var(--slate)}
+.stat .lbl{font-size:14px;color:var(--slate);margin-top:4px}
+
+/* ============ sections ============ */
+.section{padding:96px 0}
+.section-dark{background:var(--navy);color:var(--white)}
+.section-dark .section-intro{color:#B9C7DA}
+.section-white{background:var(--white)}
+
+/* how it works */
+.steps{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border:1px solid var(--line);background:var(--white);margin-top:48px;
+}
+.step{padding:36px 32px;border-left:1px solid var(--line)}
+.step:first-child{border-left:none}
+.step .step-n{
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
+  color:var(--amber-deep);margin-bottom:14px;
+}
+.step h3{font-size:22px;margin-bottom:10px}
+.step p{color:var(--slate);font-size:15.5px}
+.step .modes{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+.mode{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  border:1px solid var(--line);border-radius:4px;padding:4px 8px;color:var(--slate);
+}
+
+/* jobsite grid */
+.jobsite{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--white);margin-top:48px}
+.job{padding:36px 32px;border-left:1px solid var(--line);border-top:1px solid var(--line)}
+.job:nth-child(1),.job:nth-child(2){border-top:none}
+.job:nth-child(odd){border-left:none}
+.job h3{font-size:20px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.job h3 svg{width:22px;height:22px;flex:none}
+.job p{color:var(--slate);font-size:15.5px}
+
+/* app section */
+.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.app-copy ul{list-style:none;margin-top:26px}
+.app-copy li{
+  padding:14px 0;border-top:1px solid var(--line-dark);
+  display:flex;gap:12px;font-size:16px;color:#D5DEEB;
+}
+.app-copy li:last-child{border-bottom:1px solid var(--line-dark)}
+.app-copy li b{color:var(--white)}
+.tick{color:var(--amber);font-weight:700;flex:none}
+.app-shot{
+  background:var(--navy-2);border:1px solid var(--line-dark);border-radius:12px;
+  padding:16px;
+}
+.app-shot svg{width:100%;height:auto}
+
+/* academy */
+.acad-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.acad-list{margin-top:26px;border-top:1px solid var(--line)}
+.acad-item{padding:18px 0;border-bottom:1px solid var(--line)}
+.acad-item h3{font-size:17px;margin-bottom:4px}
+.acad-item p{color:var(--slate);font-size:15px}
+.acad-card{
+  background:var(--navy);color:var(--white);border-radius:10px;padding:36px;
+  position:sticky;top:100px;
+}
+.acad-card h3{font-size:22px;margin-bottom:8px}
+.acad-card .cert{color:#B9C7DA;font-size:15px;margin-bottom:22px}
+.acad-facts{list-style:none;margin-bottom:26px}
+.acad-facts li{
+  display:flex;justify-content:space-between;gap:16px;
+  padding:11px 0;border-bottom:1px solid var(--line-dark);font-size:14.5px;
+}
+.acad-facts li span:first-child{color:#8FA2BC}
+.acad-facts li span:last-child{font-weight:600;text-align:right}
+
+/* pricing */
+.price-band{background:var(--navy);color:var(--white)}
+.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.price-num{
+  font-family:'JetBrains Mono',monospace;font-weight:700;
+  font-size:clamp(48px,6vw,74px);color:var(--amber);letter-spacing:-0.03em;
+}
+.price-sub{color:#B9C7DA;font-size:17px;margin:10px 0 30px;max-width:440px}
+.compare{list-style:none;border-top:1px solid var(--line-dark)}
+.compare li{
+  display:flex;justify-content:space-between;gap:20px;
+  padding:15px 0;border-bottom:1px solid var(--line-dark);font-size:15.5px;
+}
+.compare li span:first-child{color:#B9C7DA}
+.compare li span:last-child{font-weight:600}
+.compare .them span:last-child{color:#8FA2BC;font-weight:400}
+.fine{font-size:12.5px;color:#7E90A9;margin-top:16px}
+
+/* footer */
+footer{background:#0A1220;color:#8FA2BC;padding:56px 0 40px;font-size:14px}
+.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
+.foot-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
+.foot-links a{text-decoration:none;color:#C6D2E2}
+.foot-links a:hover{color:var(--white)}
+.foot-base{border-top:1px solid var(--line-dark);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* focus */
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+/* ============ responsive ============ */
+@media (max-width:920px){
+  .hero-grid,.app-grid,.acad-grid,.price-grid{grid-template-columns:1fr;gap:44px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .stat{border-left:none;border-top:1px solid var(--line)}
+  .stat:nth-child(even){border-left:1px solid var(--line)}
+  .stat:nth-child(-n+2){border-top:none}
+  .steps{grid-template-columns:1fr}
+  .step{border-left:none;border-top:1px solid var(--line)}
+  .step:first-child{border-top:none}
+  .jobsite{grid-template-columns:1fr}
+  .job{border-left:none!important}
+  .job:nth-child(2){border-top:1px solid var(--line)}
+  .acad-card{position:static}
+  .nav-links{
+    display:none;position:absolute;top:68px;left:0;right:0;
+    background:var(--navy);flex-direction:column;align-items:flex-start;
+    padding:20px 24px 26px;gap:18px;border-bottom:1px solid var(--line-dark);
+  }
+  .nav-links.open{display:flex}
+  .nav-toggle{display:block}
+  .section{padding:72px 0}
+  .hero-grid{padding:56px 0 64px}
+}
+</style>
+</head>
+<body>
+
+<div class="announce">
+  Live autonomy demo, every month over video. <a href="#demo">Save a seat at the next one</a>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="SkySprayer home">
+      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="2" y="2" width="28" height="28" rx="6" fill="#FFB224"/>
+        <path d="M9 21 L16 8 L23 21" stroke="#0F1B2D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="16" cy="23" r="2.2" fill="#0F1B2D"/>
+      </svg>
+      <span class="logo-word">Sky<span>Sprayer</span></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks" onclick="var n=document.getElementById('navlinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">Menu</button>
+    <ul class="nav-links" id="navlinks">
+      <li><a href="#autonomy">Autonomy</a></li>
+      <li><a href="#drone">The drone</a></li>
+      <li><a href="#app">App</a></li>
+      <li><a href="#academy">Academy</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a class="nav-cta" href="#demo">Get a demo</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Scan the building.<br>Press <em>start</em>.</h1>
+      <p class="hero-sub">SkySprayer maps the facade, finds every window, and flies the cleaning path itself. The first exterior-cleaning drone that doesn't need a pilot on the sticks — soft wash and window cleaning up to 150 feet.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-amber" href="#demo">Get a demo</a>
+        <a class="btn btn-ghost-dark" href="#autonomy">See how it flies itself</a>
+      </div>
+      <p class="hero-note">FAA Part 107 operation with one pilot supervising. <span class="mono">Radar standoff active at all times.</span></p>
+    </div>
+
+    <figure class="facade-panel" aria-label="Illustration of SkySprayer scanning a building facade and planning its cleaning path">
+      <div class="facade-head mono">
+        <span>MISSION 0043 &mdash; EAST FACADE</span>
+        <span class="live">PATH: AUTO</span>
+      </div>
+      <svg class="facade-svg" viewBox="0 0 380 300" role="img" aria-hidden="true">
+        <!-- facade -->
+        <rect x="22" y="30" width="336" height="252" fill="#101E33" stroke="#28394F"/>
+        <!-- window rows -->
+        <g>
+          <!-- row 1 -->
+          <rect class="win win-hit" style="--d:1.0s" x="52" y="48" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:1.3s" x="122" y="48" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:1.6s" x="192" y="48" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:1.9s" x="262" y="48" width="42" height="26"/>
+          <!-- row 2 -->
+          <rect class="win win-hit" style="--d:2.6s" x="52" y="98" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:2.9s" x="122" y="98" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:3.2s" x="192" y="98" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:3.5s" x="262" y="98" width="42" height="26"/>
+          <!-- row 3 -->
+          <rect class="win win-hit" style="--d:4.2s" x="52" y="148" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:4.5s" x="122" y="148" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:4.8s" x="192" y="148" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:5.1s" x="262" y="148" width="42" height="26"/>
+          <!-- row 4 -->
+          <rect class="win win-hit" style="--d:5.8s" x="52" y="198" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:6.1s" x="122" y="198" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:6.4s" x="192" y="198" width="42" height="26"/>
+          <rect class="win win-hit" style="--d:6.7s" x="262" y="198" width="42" height="26"/>
+          <!-- ground row (doors) -->
+          <rect class="win" x="90" y="244" width="34" height="38"/>
+          <rect class="win" x="176" y="238" width="42" height="44"/>
+          <rect class="win" x="262" y="244" width="34" height="38"/>
+        </g>
+        <!-- lawnmower scan path -->
+        <path class="scan-path" d="M40 60 H340 M340 60 V110 H40 M40 110 V160 H340 M340 160 V210 H40" pathLength="1400"/>
+        <!-- standoff ticks -->
+        <g class="mono" fill="#5E7290" font-size="9">
+          <text x="26" y="24">ALT 42.6m</text>
+          <text x="300" y="24">STANDOFF 1.8m</text>
+        </g>
+      </svg>
+      <figcaption class="facade-foot mono">
+        <span>WINDOWS <b>16 / 16</b></span>
+        <span>MODE <b>WINDOW-ONLY</b></span>
+        <span>COVERAGE <b>92%</b></span>
+        <span>FLOW <b>3.4 GPM</b></span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" aria-label="Key specifications">
+  <div class="wrap stats-grid">
+    <div class="stat"><div class="num mono">150<sup>ft</sup></div><div class="lbl">Working height, soft wash and windows</div></div>
+    <div class="stat"><div class="num mono">12<sup>GPM</sup></div><div class="lbl">Soft-wash flow, runs off your pump</div></div>
+    <div class="stat"><div class="num mono">0<sup>min</sup></div><div class="lbl">Downtime between packs — batteries hot-swap</div></div>
+    <div class="stat"><div class="num mono">&lt;$20<sup>K</sup></div><div class="lbl">Complete system — less than half the going rate</div></div>
+  </div>
+</section>
+
+<!-- ================= AUTONOMY ================= -->
+<section class="section" id="autonomy">
+  <div class="wrap">
+    <h2>Other cleaning drones are flown.<br>SkySprayer flies.</h2>
+    <p class="section-intro">Every other drone on the market puts an operator on the sticks for the whole job. SkySprayer turns the job into a mission: it builds a model of the facade, plans the spray path, and executes it — while your pilot supervises with a finger on pause.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">STEP 01</div>
+        <h3>Scan</h3>
+        <p>Stereo vision and mmWave radar sweep the facade and build a working model of the surface — glass, stone, stucco, EIFS. Onboard AI detects every window and panel, even in glare radar-only sensors miss.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">STEP 02</div>
+        <h3>Plan</h3>
+        <p>SkySprayer lays out a coverage path over the model and assigns a spray mode to each surface, so glass and masonry each get the right treatment in a single flight.</p>
+        <div class="modes">
+          <span class="mode">FULL-SURFACE</span>
+          <span class="mode">WINDOW-ONLY</span>
+          <span class="mode">WINDOW-AVOID</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-n">STEP 03</div>
+        <h3>Clean</h3>
+        <p>The drone flies the path on its own, holding a fixed standoff from the wall by radar the entire time. Your pilot supervises and can pause or take over instantly. Every pass is logged.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE DRONE ================= -->
+<section class="section section-white" id="drone">
+  <div class="wrap">
+    <h2>Built for the jobsite, not the showroom.</h2>
+    <p class="section-intro">Heavy-lift hexacopter airframe, corrosion-treated hardware, and the details that decide whether a machine earns its keep on a wash crew.</p>
+
+    <div class="jobsite">
+      <div class="job">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          Batteries that hot-swap
+        </h3>
+        <p>Dual 12S smart packs with ideal-diode power management. Swap one pack while the other carries the load and get back in the air in seconds — no pairing rules, no balance anxiety, no bench time between flights.</p>
+      </div>
+      <div class="job">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 5a7 7 0 0 1 7 7M12 1a11 11 0 0 1 11 11"/></svg>
+          Radar that trusts nothing
+        </h3>
+        <p>mmWave radar holds a fixed standoff from the wall at all times — including against specular glass and mirrored curtain walls where cameras and lidar get fooled. The drone physically cannot drift into the building.</p>
+      </div>
+      <div class="job">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v6a4 4 0 0 0 8 0V3M12 13v8M8 21h8"/></svg>
+          Your chemicals, your pump
+        </h3>
+        <p>Standard downstream injection and cam-and-groove fittings. Run the soaps and sealants you already buy through the soft-wash pump you already own. No proprietary solution, no captive consumables.</p>
+      </div>
+      <div class="job">
+        <h3>
+          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M12 15c-3 0-4 2-4 4v2M12 15c3 0 4 2 4 4v2"/><circle cx="12" cy="3" r="1.6"/></svg>
+          Tether-ready
+        </h3>
+        <p>Add the ground-power tether for effectively unlimited flight time on big commercial jobs — or fly on packs and hot-swap your way through the day. Your call, per job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= APP ================= -->
+<section class="section section-dark" id="app">
+  <div class="wrap app-grid">
+    <div class="app-copy">
+      <h2>Every flight becomes a report.</h2>
+      <p class="section-intro">The SkySprayer app syncs with the drone's flight log, so proof of work writes itself. Quote the job, fly the job, send the report — from one place.</p>
+      <ul>
+        <li><span class="tick">&#10003;</span><span><b>Job tracker</b> — every property, mission, and crew in one timeline</span></li>
+        <li><span class="tick">&#10003;</span><span><b>Coverage maps</b> — the actual flight path over the actual facade, per job</span></li>
+        <li><span class="tick">&#10003;</span><span><b>Client-ready reports</b> — surface area cleaned, chemicals used, before and after, exported to PDF</span></li>
+        <li><span class="tick">&#10003;</span><span><b>Fleet health</b> — battery cycles, pump hours, and maintenance due dates, pulled from telemetry</span></li>
+      </ul>
+    </div>
+    <div class="app-shot" aria-label="Illustration of the SkySprayer app job report screen">
+      <svg viewBox="0 0 420 340" role="img" aria-hidden="true">
+        <rect x="0" y="0" width="420" height="340" rx="8" fill="#0F1B2D"/>
+        <!-- header -->
+        <text x="24" y="38" fill="#FFFFFF" font-family="Archivo,sans-serif" font-weight="700" font-size="17">Harbor Plaza — East Facade</text>
+        <text x="24" y="58" fill="#8FA2BC" font-family="JetBrains Mono,monospace" font-size="10">MISSION 0043 &middot; COMPLETED 09:41</text>
+        <rect x="330" y="24" width="66" height="22" rx="11" fill="rgba(255,178,36,.15)"/>
+        <text x="363" y="39" fill="#FFB224" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">CLEANED</text>
+        <!-- coverage map -->
+        <rect x="24" y="76" width="230" height="150" rx="6" fill="#15263F" stroke="#28394F"/>
+        <g stroke="#FFB224" stroke-width="2" fill="none" opacity=".9">
+          <path d="M40 100 H238 M238 100 V130 H40 M40 130 V160 H238 M238 160 V190 H40"/>
+        </g>
+        <g fill="rgba(127,178,229,.25)">
+          <rect x="52" y="92" width="24" height="14"/><rect x="102" y="92" width="24" height="14"/><rect x="152" y="92" width="24" height="14"/><rect x="202" y="92" width="24" height="14"/>
+          <rect x="52" y="140" width="24" height="14"/><rect x="102" y="140" width="24" height="14"/><rect x="152" y="140" width="24" height="14"/><rect x="202" y="140" width="24" height="14"/>
+        </g>
+        <text x="34" y="216" fill="#5E7290" font-family="JetBrains Mono,monospace" font-size="9">FLIGHT PATH &middot; ACTUAL</text>
+        <!-- side stats -->
+        <g font-family="JetBrains Mono,monospace">
+          <rect x="270" y="76" width="126" height="44" rx="6" fill="#15263F"/>
+          <text x="282" y="95" fill="#8FA2BC" font-size="9">AREA CLEANED</text>
+          <text x="282" y="112" fill="#FFFFFF" font-size="14" font-weight="700">5,820 sqft</text>
+          <rect x="270" y="129" width="126" height="44" rx="6" fill="#15263F"/>
+          <text x="282" y="148" fill="#8FA2BC" font-size="9">FLIGHT TIME</text>
+          <text x="282" y="165" fill="#FFFFFF" font-size="14" font-weight="700">21m 08s</text>
+          <rect x="270" y="182" width="126" height="44" rx="6" fill="#15263F"/>
+          <text x="282" y="201" fill="#8FA2BC" font-size="9">SOLUTION USED</text>
+          <text x="282" y="218" fill="#FFFFFF" font-size="14" font-weight="700">14.2 gal</text>
+        </g>
+        <!-- report row -->
+        <rect x="24" y="244" width="372" height="66" rx="6" fill="#15263F" stroke="#28394F"/>
+        <text x="40" y="272" fill="#FFFFFF" font-family="Archivo,sans-serif" font-size="13" font-weight="600">Job report — Harbor Plaza, May 12</text>
+        <text x="40" y="292" fill="#8FA2BC" font-family="Archivo,sans-serif" font-size="11.5">Coverage map, 14 photos, chemical log</text>
+        <rect x="292" y="260" width="88" height="32" rx="5" fill="#FFB224"/>
+        <text x="336" y="280" fill="#0F1B2D" font-family="Archivo,sans-serif" font-size="12" font-weight="700" text-anchor="middle">Send PDF</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ACADEMY ================= -->
+<section class="section" id="academy">
+  <div class="wrap acad-grid">
+    <div>
+      <h2>SkySprayer Academy</h2>
+      <p class="section-intro">Self-paced online training that takes your team from unboxing to confident supervised-autonomy operations. Because the drone flies the path, your crew learns to run missions — not to be stunt pilots.</p>
+      <div class="acad-list">
+        <div class="acad-item">
+          <h3>Safety and airspace fundamentals</h3>
+          <p>Jobsite safety workflow, exclusion zones, and how to verify airspace authorization for legal, compliant operations.</p>
+        </div>
+        <div class="acad-item">
+          <h3>System and mission basics</h3>
+          <p>Hands-on with the ground station: scanning a facade, reviewing the planned path, choosing spray modes, and launching a mission.</p>
+        </div>
+        <div class="acad-item">
+          <h3>Supervision and takeover</h3>
+          <p>What the pilot watches during an autonomous mission, when to pause, and how to take manual control instantly.</p>
+        </div>
+        <div class="acad-item">
+          <h3>Care and maintenance</h3>
+          <p>Daily flight checklist, battery and pump care, and keeping the drone healthy between jobs.</p>
+        </div>
+      </div>
+    </div>
+    <aside class="acad-card">
+      <h3>Included with every drone</h3>
+      <p class="cert">Finish the course, earn your operator certificate, and add unlimited team seats.</p>
+      <ul class="acad-facts">
+        <li><span>Format</span><span>Self-paced, online</span></li>
+        <li><span>Time to complete</span><span>About 2 hours</span></li>
+        <li><span>Certificate</span><span>Required to operate</span></li>
+        <li><span>Team seats</span><span>Unlimited</span></li>
+        <li><span>Licensing</span><span>FAA Part 107 required for commercial ops</span></li>
+      </ul>
+      <a class="btn btn-amber" href="#demo">Enroll your team</a>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="section price-band" id="pricing">
+  <div class="wrap price-grid">
+    <div>
+      <h2>Half the price.<br>None of the stick time.</h2>
+      <p class="price-sub">Manual-flight cleaning drones run $45,000 and up before you add payloads — and then you still have to fly them. SkySprayer ships complete, with autonomy, the app, and Academy included.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-amber" href="#demo">Get a quote</a>
+        <a class="btn btn-ghost-dark" href="#demo">Reserve a build slot</a>
+      </div>
+      <p class="fine">Introductory pricing for early operators. Financing available.</p>
+    </div>
+    <div>
+      <div class="price-num">$19,995</div>
+      <ul class="compare">
+        <li><span>SkySprayer, complete system</span><span class="mono">$19,995</span></li>
+        <li><span>Autonomy, app, and Academy</span><span>Included</span></li>
+        <li><span>Window-cleaning payload</span><span>Included</span></li>
+        <li class="them"><span>Manual-flight drones, entry price</span><span class="mono">$45,000+</span></li>
+        <li class="them"><span>Manual-flight drones, fully loaded</span><span class="mono">~$75,000</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO CTA ================= -->
+<section class="section section-white" id="demo">
+  <div class="wrap" style="max-width:720px;text-align:left">
+    <h2>See it plan a path over your building.</h2>
+    <p class="section-intro" style="margin-bottom:30px">Book a live demo and we'll scan a facade, show you the mission plan, and walk through the numbers for your operation.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-amber" href="mailto:hello@skysprayer.com?subject=Demo%20request">Book a live demo</a>
+      <a class="btn btn-ghost-light" href="mailto:hello@skysprayer.com?subject=Webinar%20seat">Join the monthly webinar</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <a class="logo" href="#top" aria-label="SkySprayer home">
+        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="2" y="2" width="28" height="28" rx="6" fill="#FFB224"/>
+          <path d="M9 21 L16 8 L23 21" stroke="#0F1B2D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="23" r="2.2" fill="#0F1B2D"/>
+        </svg>
+        <span class="logo-word">Sky<span>Sprayer</span></span>
+      </a>
+      <ul class="foot-links">
+        <li><a href="#autonomy">Autonomy</a></li>
+        <li><a href="#drone">The drone</a></li>
+        <li><a href="#app">App</a></li>
+        <li><a href="#academy">Academy</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="mailto:hello@skysprayer.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="foot-base">
+      <span>&copy; 2026 SkySprayer &middot; Stamford, CT</span>
+      <span>Design concept by Bofill Technologies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
