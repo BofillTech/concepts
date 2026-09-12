@@ -70,12 +70,15 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08}
 .skip-link:focus{left:0}
 :focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 
-/* ---------- Nav (hamburger-only pattern) ---------- */
+/* ---------- Nav (top-sticky pattern) ---------- */
 .nav{position:sticky;top:0;z-index:100;background:var(--spruce-deep);display:flex;align-items:center;justify-content:space-between;padding:.65rem clamp(1rem,4vw,2.5rem);gap:1rem}
 .nav__logo img{width:auto;height:40px;object-fit:contain}
 .nav__right{display:flex;align-items:center;gap:.6rem}
 .nav__phone{display:none;color:var(--mist);text-decoration:none;font-weight:500;letter-spacing:.02em;white-space:nowrap}
 .nav__phone:hover{color:#fff}
+.nav__links{display:none;gap:1.6rem;list-style:none}
+.nav__links a{color:var(--mist);text-decoration:none;font-weight:500;transition:color .25s}
+.nav__links a:hover{color:#fff}
 .nav__cta{background:var(--amber);color:#fff;text-decoration:none;padding:.6rem 1.3rem;font-weight:700;letter-spacing:.03em;white-space:nowrap;transition:background .25s}
 .nav__cta:hover{background:var(--amber-soft)}
 .nav__burger{background:none;border:2px solid rgba(244,241,232,.4);color:var(--birch);width:44px;height:44px;cursor:pointer;display:grid;place-items:center;transition:border-color .25s}
@@ -120,7 +123,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08}
 .story p{margin-bottom:1.15rem;max-width:38rem}
 .story p:last-of-type{margin-bottom:0}
 
-/* ---------- Stay: overlapping bento ---------- */
+/* ---------- Stay: broken-asymmetric grid ---------- */
 .stay{background:var(--spruce);color:var(--birch);padding:var(--pad) clamp(1.25rem,4vw,2.5rem)}
 .stay__inner{max-width:1300px;margin:0 auto}
 .stay__head{max-width:40rem;margin-bottom:3rem}
@@ -211,15 +214,17 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08}
   .locale__copy{grid-column:1/-1;max-width:44rem}
 }
 @media(min-width:1024px){
+  .nav__links{display:flex}
+  .nav__burger{display:none}
   .hero__inner{grid-template-columns:5fr 6fr;gap:0}
   .hero__panel{background:var(--spruce);padding:3rem 3rem 3rem 0;margin-right:-5.5rem}
   .hero__figure{aspect-ratio:5/4}
   .story__inner{grid-template-columns:6fr 5fr}
-  .story__figure{margin-top:-9rem;position:relative;z-index:3}
-  .bento{grid-template-columns:repeat(12,1fr)}
+  .story__figure{position:relative;z-index:3}
+  .bento{grid-template-columns:repeat(12,1fr);row-gap:2.5rem}
   .bento__card--a{grid-column:1/8}
-  .bento__card--b{grid-column:8/13;margin-top:3.5rem}
-  .bento__card--c{grid-column:1/6;margin-top:-2.5rem}
+  .bento__card--b{grid-column:8/13;margin-top:4.5rem}
+  .bento__card--c{grid-column:1/6;margin-top:1.5rem}
   .bento__card--d{grid-column:6/13}
   .bento__card--wide{grid-column:auto}
   .bento__card--a img{aspect-ratio:16/10}
@@ -238,6 +243,12 @@ h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.08}
   <a class="nav__logo" href="#top" aria-label="Bushkill Inn &amp; Conference Center — home">
     <img src="https://static.wixstatic.com/media/b344a6_a93f8ec4397f4de4a004b1214e62329f~mv2.png/v1/fill/w_330,h_70,al_c,q_85/Bushkill-Vertical-Logo-White.png" alt="Bushkill Inn &amp; Conference Center logo" width="330" height="70">
   </a>
+  <ul class="nav__links">
+    <li><a href="#story">The Resort</a></li>
+    <li><a href="#stay">Stays</a></li>
+    <li><a href="#gather">Meetings &amp; Weddings</a></li>
+    <li><a href="#locale">Location</a></li>
+  </ul>
   <div class="nav__right">
     <a class="nav__phone" href="tel:+15706186655">(570) 618-6655</a>
     <a class="nav__cta" href="#reserve">Reserve</a>
