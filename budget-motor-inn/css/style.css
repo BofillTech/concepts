@@ -1,6 +1,6 @@
 /* Budget Motor Inn — Stony Point, NY
-   Concept #127 · Bofill Technologies
-   Signage hero · bento grid · persistent bottom bar · marquee ticker
+   Concept #128 · Bofill Technologies
+   Signage hero · broken-asymmetric grid · persistent bottom bar · staggered reveal
    Palette: NY historic-marker navy + gold, evolved from the property's #181835 */
 
 :root {
@@ -205,41 +205,43 @@ button:focus-visible {
   gap: var(--space-2);
 }
 
-/* ---------- Ticker ---------- */
+/* ---------- Amenity strip (static) ---------- */
 
-.ticker {
+.strip {
   background: var(--gold);
   color: var(--navy-deep);
-  overflow: hidden;
   border-bottom: 1px solid var(--gold-deep);
 }
-.ticker__track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 28s linear infinite;
-}
-.ticker__run {
+.strip__run {
   margin: 0;
-  padding: 0.65rem 0;
-  white-space: nowrap;
+  padding: 0.7rem 0;
+  text-align: center;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.ticker__run span { margin: 0 0.9rem; }
+.strip__run span { margin: 0 0.7rem; }
 
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* ---------- Staggered reveal ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
+.reveal.is-in { opacity: 1; transform: none; }
+.reveal:nth-child(2) { transition-delay: 0.08s; }
+.reveal:nth-child(3) { transition-delay: 0.16s; }
+.reveal:nth-child(4) { transition-delay: 0.24s; }
+.reveal:nth-child(5) { transition-delay: 0.32s; }
+.reveal:nth-child(6) { transition-delay: 0.4s; }
+html.no-js .reveal { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .ticker__track { animation: none; flex-wrap: wrap; width: auto; }
-  .ticker__run { white-space: normal; }
-  .ticker__run[aria-hidden="true"] { display: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
   .btn { transition: none; }
 }
 
@@ -336,6 +338,7 @@ button:focus-visible {
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 150px;
   gap: var(--space-2);
+  padding-bottom: var(--space-3);
 }
 .wall__item {
   margin: 0;
@@ -578,13 +581,25 @@ button:focus-visible {
 
 @media (min-width: 768px) {
   .deal__bento {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-3);
+    padding-bottom: var(--space-4);
   }
-  .deal__cell--wide { grid-column: span 2; }
+  .deal__cell--wide { grid-column: 1; grid-row: 1; }
+  .deal__cell--gold { grid-column: 2; grid-row: 1 / 3; transform: translateY(2.5rem); align-self: start; }
+  .deal__cell:nth-child(3) { grid-column: 1; grid-row: 2; width: 82%; }
+  .deal__cell--navy { grid-column: 2; grid-row: 3; transform: translateY(-1.5rem); width: 90%; justify-self: end; }
   .wall__grid {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 180px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: 120px;
   }
+  .wall__item { grid-column: span 2; }
+  .wall__item--lead { grid-column: span 3; grid-row: span 3; }
+  .wall__item--tall { grid-row: span 2; transform: translateY(1.5rem); }
+  .wall__item--wide { grid-column: span 3; grid-row: span 2; }
+  .wall__item:nth-child(2) { grid-column: span 3; grid-row: span 2; transform: translateY(-1rem); }
+  .wall__item:nth-child(5) { transform: translateY(1rem); }
+  .wall__item:nth-child(8) { transform: translateY(-1.25rem); }
   .rooms__row {
     grid-template-columns: 1.2fr 0.6fr 2fr auto;
   }
@@ -596,5 +611,5 @@ button:focus-visible {
   .deskbar__nav { display: block; }
   .deskbar__menu { display: none; }
   .deskbar { padding: 0 var(--space-4); }
-  .wall__grid { grid-auto-rows: 200px; }
+  .wall__grid { grid-auto-rows: 140px; }
 }
