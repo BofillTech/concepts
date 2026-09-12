@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 125 | black-hills-luxury-suites | 2026-09-12 | editorial-open | type-open,photo-band,story-amenities,suites-pair,trail-distances,gallery,map,cta | symmetric-12col | centered-split-logo | subtle-fade | poster-slab | Bevan | Public Sans | pine+park-brown+bh-gold |
 | 124 | 16-bay-view | 2026-09-12 | asymmetric-collage | hero,story-badges,street-level,rooms,rooftop,camden-map,cta | broken-asymmetric | top-sticky | staggered-reveal | slab-display | Besley | Albert Sans | harbor-ink+facade-brick+brass |
 | 123 | imperial-500 | 2026-09-11 | split-screen | hero,pool-bento,rooms-af,story,phone-bar | bento-overlapping | hamburger-only | — | — | Righteous | Nunito Sans | dusk-indigo+aqua+imperial-gold |
 | 122 | tc-smith | 2026-09-11 | off-center-framed | — | single-column-editorial | — | — | serif-editorial | Libre Caslon Display | Old Standard TT | — |
@@ -32,3 +33,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 ## Backfill note (2026-09-12)
 
 Rows 115–123 were backfilled from commit messages after the fact. The 2026-09-11 batch was built **without** this ledger (it didn't exist yet): all eight commits self-labeled "#115", the Imperial 500 redesign self-labeled "#116", and the history filter was violated — 5 of 9 builds used a split-screen hero and 4 of 9 used the identical off-center-framed + single-column-editorial + centered-split-logo recipe. Numbers above are the corrected sequence and are authoritative over the commit messages. Fields marked `—` were not recoverable from commits; fill them if the concept is revisited.
+
+## Correction note (2026-09-12)
+
+`black-hills-luxury-suites` was first pushed self-labeled "#124" with an asymmetric-collage / broken-asymmetric / top-sticky / staggered-reveal / Besley structure, colliding with the concurrent `16-bay-view` build that claimed #124 first. It was re-rolled and re-pushed as #125 with the structure recorded above; the ledger is authoritative over both commit messages.
