@@ -136,7 +136,7 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
   color: var(--c-parchment-deep); line-height: 1; position: absolute; right: -0.05em; bottom: -0.12em;
   z-index: 1; -webkit-text-stroke: 1px var(--c-brass); pointer-events: none;
 }
-.mast__photo { display: none; }
+.mast__photo { display: block; margin: var(--sp-4) auto 0; max-width: 380px; position: relative; z-index: 2; }
 
 .mast__stagger { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; transition-delay: calc(var(--d) * 0.12s); }
 .mast.is-loaded .mast__stagger { opacity: 1; transform: none; }
@@ -172,7 +172,7 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
 .marina__sub { font-family: var(--f-display); font-size: 1rem; color: var(--c-brass-dark); margin: 0 0 var(--sp-2); }
 .marina__panel p { color: var(--c-mid); max-width: 56ch; margin: 0 0 var(--sp-2); }
 
-/* ---------- Clubhouse (text left / photo right) ---------- */
+/* ---------- Clubhouse (reversed on desktop) ---------- */
 .clubhouse { display: grid; grid-template-columns: 1fr; background: var(--c-ink); color: var(--c-parchment); }
 .clubhouse__panel { padding: var(--sp-5) var(--sp-3); order: 1; }
 .clubhouse__media { padding: var(--sp-3); order: 2; }
@@ -263,7 +263,7 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
 /* ---------- Tablet >=768 ---------- */
 @media (min-width: 768px) {
   .rail__mark-text { display: block; }
-  .mast__photo { display: block; position: absolute; right: 6%; top: 12%; width: 220px; z-index: 2; }
+  .mast__photo { margin: var(--sp-4) 0 0; max-width: 460px; position: relative; }
   .history__grid { grid-template-columns: 1fr 2fr; align-items: start; }
   .marina { grid-template-columns: 1fr 1fr; align-items: stretch; }
   .marina__media { padding: var(--sp-4); }
@@ -302,7 +302,9 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
 
   main, footer.site-foot { padding-top: 0; margin-left: var(--rail-w); }
 
-  .mast { padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-6); min-height: 78vh; display: flex; align-items: center; }
+  .mast { padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-6); min-height: 78vh; display: flex; align-items: center; gap: var(--sp-5); }
+  .mast__grid { flex: 1 1 auto; }
+  .mast__photo { flex: 0 0 40%; max-width: 480px; margin: 0; }
   .history__grid { grid-template-columns: 1fr 2.4fr; gap: var(--sp-6); padding: 0 var(--sp-3); }
   .marina__panel, .clubhouse__panel { padding-left: var(--sp-6); padding-right: var(--sp-6); }
   .marina__media, .clubhouse__media { padding: var(--sp-5); }
