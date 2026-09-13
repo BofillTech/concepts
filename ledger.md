@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 137 | schweitzer-castle | 2026-09-13 | type-only-no-image | hero,legend,crossing,two-castles,great-hall,mountain-amenities,gallery,guest-voices,visit,cta | symmetric-12col | top-sticky | parallax | mixed-illuminated-serif | IM Fell English SC | EB Garamond | stone-ink+parchment+burgundy+antique-gold+pine |
 | 136 | knob-hill-inn | 2026-09-13 | full-bleed | the-inn,rooms,wellness-amenities,dining,location-map,gallery,recognition,cta | bento-overlapping | hamburger-only | none | geometric-deco-editorial | Jost | Literata | spruce-ink+frost-white+aged-brass+oxblood+slate |
 | 135 | pine-ridge-inn | 2026-09-13 | asymmetric-collage | hero,welcome-story,rooms-editorial,three-ways-triptych,book-direct-strip,amenities-narrative,gallery,guest-voices,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | mixed-serif-sans | Domine | Sora | ponderosa-pine+river-slate+ember-rust+parchment-cream+brass |
 | 134 | ponus-yacht-club | 2026-09-13 | editorial-open | mast,portrait-break,history,marina,clubhouse,events,membership,gallery,visit,cta | broken-asymmetric | side-rail | staggered-reveal | mixed-caps-serif | Cinzel | Frank Ruhl Libre | ink-navy+parchment+brass+harbor-teal+burgee-red |
