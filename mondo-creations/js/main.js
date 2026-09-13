@@ -118,6 +118,44 @@
     });
   }
 
+  /* ---------- Project filter (Projects page only) ---------- */
+  var filterGroup = doc.getElementById("filterGroup");
+  if (filterGroup) {
+    var pills = filterGroup.querySelectorAll(".filter__pill");
+    var cards = doc.querySelectorAll(".project-card");
+    var empty = doc.getElementById("projectEmpty");
+
+    function applyFilter(cat) {
+      var shown = 0;
+      cards.forEach(function (card) {
+        var match = cat === "all" || card.getAttribute("data-category") === cat;
+        card.hidden = !match;
+        if (match) { shown++; }
+      });
+      if (empty) { empty.hidden = shown !== 0; }
+      pills.forEach(function (p) {
+        var isMatch = p.getAttribute("data-filter") === cat;
+        p.classList.toggle("is-active", isMatch);
+        p.setAttribute("aria-pressed", isMatch ? "true" : "false");
+      });
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener("click", function () {
+        var cat = pill.getAttribute("data-filter");
+        applyFilter(cat);
+        var url = new URL(window.location.href);
+        if (cat === "all") { url.searchParams.delete("category"); }
+        else { url.searchParams.set("category", cat); }
+        window.history.replaceState(null, "", url);
+      });
+    });
+
+    var initial = new URLSearchParams(window.location.search).get("category") || "all";
+    var validCats = Array.prototype.map.call(pills, function (p) { return p.getAttribute("data-filter"); });
+    applyFilter(validCats.indexOf(initial) > -1 ? initial : "all");
+  }
+
   /* ---------- Listeners ---------- */
   window.addEventListener("scroll", onScrollHeader, { passive: true });
   onScrollHeader();

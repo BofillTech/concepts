@@ -430,3 +430,93 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+
+/* ============================================================
+   INNER PAGES — page hero, breadcrumb, filters, cards, process
+   ============================================================ */
+
+.menu-item a.is-active { color: var(--molten) !important; }
+
+/* ---------- Page hero (inner-page banner) ---------- */
+.page-hero {
+  background: var(--carbon); padding: 64px var(--gutter) 52px;
+  border-bottom: 1px solid var(--line-dark);
+}
+.page-hero__inner { max-width: var(--maxw); margin: 0 auto; }
+.page-hero__title {
+  font-family: var(--display); color: #fff; text-transform: uppercase;
+  letter-spacing: -.01em; font-size: clamp(30px, 6vw, 56px); line-height: 1.05; margin: 10px 0 14px;
+}
+.page-hero__sub { color: var(--on-dark-soft); max-width: 62ch; font-size: 16px; line-height: 1.6; }
+.breadcrumb { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--on-dark-soft); margin-bottom: 14px; }
+.breadcrumb a { color: var(--on-dark-soft); text-decoration: none; }
+.breadcrumb a:hover { color: #fff; }
+.breadcrumb__sep { margin: 0 8px; opacity: .5; }
+.breadcrumb [aria-current="page"] { color: var(--molten); }
+
+/* ---------- Filter bar (Projects page) ---------- */
+.filter-bar { background: var(--carbon); padding: 0 var(--gutter) 28px; border-bottom: 1px solid var(--line-dark); }
+.filter__group { max-width: var(--maxw); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px; }
+.filter__pill {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--on-dark-soft); background: transparent; border: 1px solid var(--line-dark);
+  border-radius: 999px; padding: 9px 16px; cursor: pointer; transition: all .2s var(--ease);
+}
+.filter__pill:hover { color: #fff; border-color: rgba(255,255,255,.4); }
+.filter__pill.is-active { background: var(--molten); border-color: var(--molten); color: #fff; }
+
+.work--page { padding-top: 48px; }
+.work__grid--gallery { grid-template-columns: 1fr; }
+.project-card { display: block; }
+.project-card[hidden] { display: none; }
+.project-grid__empty { text-align: center; color: var(--on-dark-soft); font-family: var(--mono); padding: 40px 0; }
+
+@media (min-width: 640px) { .work__grid--gallery { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .work__grid--gallery { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- CTA band (reused on all inner pages) ---------- */
+.cta-band { background: var(--bone); padding: 72px var(--gutter); text-align: center; }
+.cta-band--dark { background: var(--carbon); }
+.cta-band--dark .cta-band__title { color: #fff; }
+.cta-band--dark .cta-band__sub { color: var(--on-dark-soft); }
+.cta-band__inner { max-width: 640px; margin: 0 auto; }
+.cta-band__title { font-family: var(--display); text-transform: uppercase; font-size: clamp(24px, 4vw, 36px); color: var(--ink); margin-bottom: 12px; }
+.cta-band__sub { color: var(--ink-soft); margin-bottom: 26px; font-size: 16px; line-height: 1.6; }
+.cta-band__meta { margin-top: 18px; font-family: var(--mono); font-size: 13px; color: var(--ink-soft); }
+.cta-band__meta a { color: var(--ink); }
+#contact.cta-band { background: var(--carbon); }
+#contact.cta-band .cta-band__title { color: #fff; }
+#contact.cta-band .cta-band__sub { color: var(--on-dark-soft); }
+#contact.cta-band .cta-band__meta { color: var(--on-dark-soft); }
+#contact.cta-band .cta-band__meta a { color: #fff; }
+
+/* ---------- Capabilities detail cards ---------- */
+.caps-detail { max-width: var(--maxw); margin: 0 auto; padding: 72px var(--gutter); }
+.caps-detail__grid { display: grid; gap: 18px; grid-template-columns: 1fr; list-style: none; }
+.cap-card { background: var(--bone); border: 1px solid var(--line-light); border-radius: var(--radius); padding: 26px 24px; }
+.cap-card__num { font-family: var(--mono); color: var(--molten); font-size: 13px; letter-spacing: .1em; }
+.cap-card__name { font-family: var(--display); text-transform: uppercase; font-size: 19px; margin: 8px 0 10px; color: var(--ink); }
+.cap-card__desc { color: var(--ink-soft); font-size: 15px; line-height: 1.6; }
+@media (min-width: 700px) { .caps-detail__grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .caps-detail__grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- Process steps ---------- */
+.process { background: var(--carbon); padding: 72px var(--gutter); }
+.process__head { max-width: var(--maxw); margin: 0 auto 40px; }
+.process__title { font-family: var(--display); text-transform: uppercase; color: #fff; font-size: clamp(24px, 4vw, 38px); margin-top: 8px; }
+.process__list { max-width: var(--maxw); margin: 0 auto; list-style: none; display: grid; gap: 28px; grid-template-columns: 1fr; }
+.process-step__num { font-family: var(--display); color: var(--molten); font-size: 28px; }
+.process-step__name { font-family: var(--display); text-transform: uppercase; color: #fff; font-size: 17px; margin: 6px 0 8px; }
+.process-step__desc { color: var(--on-dark-soft); font-size: 15px; line-height: 1.6; }
+@media (min-width: 700px) { .process__list { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .process__list { grid-template-columns: repeat(4, 1fr); } }
+.process-step + .process-step { border-top: 1px solid var(--line-dark); padding-top: 24px; }
+@media (min-width: 700px) { .process-step { border-top: none !important; padding-top: 0 !important; border-left: 1px solid var(--line-dark); padding-left: 20px; } .process-step:first-child { border-left: none; padding-left: 0; } }
+
+/* ---------- Contact page extras ---------- */
+.contact--page .contact__inner { padding-top: 64px; }
+.contact__map { margin-top: 28px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line-dark); }
+.contact__map iframe { display: block; filter: grayscale(.25) contrast(1.05); }
+
+/* ---------- About page extras ---------- */
+.about--page { padding-top: 64px; }
