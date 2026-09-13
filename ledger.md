@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 135 | pine-ridge-inn | 2026-09-13 | asymmetric-collage | hero,welcome-story,rooms-editorial,three-ways-triptych,book-direct-strip,amenities-narrative,gallery,guest-voices,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | mixed-serif-sans | Domine | Sora | ponderosa-pine+river-slate+ember-rust+parchment-cream+brass |
 | 134 | ponus-yacht-club | 2026-09-13 | editorial-open | mast,portrait-break,history,marina,clubhouse,events,membership,gallery,visit,cta | broken-asymmetric | side-rail | staggered-reveal | mixed-caps-serif | Cinzel | Frank Ruhl Libre | ink-navy+parchment+brass+harbor-teal+burgee-red |
 | 133 | galena-inn | 2026-09-13 | off-center-framed | hero,history-quote,welcome,rooms-12col,gardens-narrative,gallery,location-map,cta | symmetric-12col | side-rail | parallax | serif-editorial | Cormorant Garamond | Spectral | portrait-ink+parlor-burgundy+boxwood-green+gilt-brass+estate-cream |
 | 132 | garden-inn-suites-lr | 2026-09-13 | split-screen | hero,amenities-proximity-strip,story,rooms-broken,gallery,location-map,guest-voices,cta | broken-asymmetric | hamburger-only | none | mixed-serif-sans | Petrona | Work Sans | moss-ink+garden-sage+dusty-rose+terracotta+ivory |
