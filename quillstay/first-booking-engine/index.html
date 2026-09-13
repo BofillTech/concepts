@@ -138,9 +138,15 @@ footer a:hover{text-decoration:underline}
 .checks{list-style:none;margin-top:18px}
 .checks li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--ink)}
 .checks li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:4px;background:var(--blue);clip-path:polygon(14% 44%, 0 62%, 40% 100%, 100% 16%, 84% 2%, 40% 68%)}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.g-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.g-card figcaption{padding:18px 22px 22px}
+.g-card b{font-family:'Schibsted Grotesk',sans-serif;font-size:1.08rem;color:var(--navy-deep);display:block}
+.g-card span{display:block;color:var(--muted);font-size:15.5px;margin-top:4px}
 
 @media (max-width:640px){
   .card-grid4{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
 }
 @media (max-width:900px){
   .pricing .wrap{grid-template-columns:1fr;gap:40px}
@@ -219,10 +225,10 @@ footer a:hover{text-decoration:underline}
       <p>Taking reservations by phone or email works, until it doesn't: missed calls become missed bookings, and every guest who can't book you online at 11pm books somewhere else instead.</p>
     </div>
     <div class="card-grid4">
-      <div class="mini-card"><h3>Guests can't book you at 2am</h3><p>A phone-only front desk means every after-hours guest either waits until morning or books a competitor instead.</p></div>
-      <div class="mini-card"><h3>Double-bookings happen</h3><p>A paper book or spreadsheet has no way to stop two people from booking the same room on the same night.</p></div>
-      <div class="mini-card"><h3>No presence on OTAs</h3><p>Without a connected system, listing on Booking.com, Expedia, or Airbnb means updating availability by hand, everywhere, every time.</p></div>
-      <div class="mini-card"><h3>Nothing to fall back on</h3><p>No record of who stayed, what they paid, or when they're coming back — every season starts from zero.</p></div>
+      <div class="mini-card"><svg viewBox="0 0 24 24" width="22" height="22" style="margin-bottom:10px"><path fill="none" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg><h3>Guests can't book you at 2am</h3><p>A phone-only front desk means every after-hours guest either waits until morning or books a competitor instead.</p></div>
+      <div class="mini-card"><svg viewBox="0 0 24 24" width="22" height="22" style="margin-bottom:10px"><path fill="none" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 8h11v11H8zM5 5v11M5 5h11"/></svg><h3>Double-bookings happen</h3><p>A paper book or spreadsheet has no way to stop two people from booking the same room on the same night.</p></div>
+      <div class="mini-card"><svg viewBox="0 0 24 24" width="22" height="22" style="margin-bottom:10px"><path fill="none" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 15l6-6M8 4H6a4 4 0 0 0 0 8h2m8-4h2a4 4 0 0 1 0 8h-2"/></svg><h3>No presence on OTAs</h3><p>Without a connected system, listing on Booking.com, Expedia, or Airbnb means updating availability by hand, everywhere, every time.</p></div>
+      <div class="mini-card"><svg viewBox="0 0 24 24" width="22" height="22" style="margin-bottom:10px"><path fill="none" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></svg><h3>Nothing to fall back on</h3><p>No record of who stayed, what they paid, or when they're coming back — every season starts from zero.</p></div>
     </div>
   </div>
 </section>
@@ -281,13 +287,26 @@ footer a:hover{text-decoration:underline}
     <div class="sec-head">
       <p class="kicker">What you get, starting from nothing</p>
       <h2>Everything a first booking engine should include</h2>
+      <p>Not a bare-bones starter plan — the same full system, from your very first booking.</p>
     </div>
-    <ul class="checks" style="display:flex;flex-wrap:wrap;gap:10px 40px">
-      <li style="margin-bottom:0">Guest database, built automatically as bookings come in</li>
-      <li style="margin-bottom:0">Reporting with visual charts from day one</li>
-      <li style="margin-bottom:0">A guided nightly close so accounting stays clean</li>
-      <li style="margin-bottom:0">AI chatbot answering guest questions 24/7</li>
-    </ul>
+    <div class="gallery">
+      <figure class="g-card">
+        <img src="/img/bookings.webp" alt="Bookings list from every channel in one place" loading="lazy">
+        <figcaption><b>Every booking, one list</b><span>Direct, OTA, phone, and walk-in reservations all land in the same searchable list from day one.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="/img/guests.webp" alt="Guest database with profiles and stay history" loading="lazy">
+        <figcaption><b>A guest database that builds itself</b><span>Every reservation automatically adds to your guest history — no separate CRM to set up.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="/img/reports.webp" alt="Reports hub with performance and accounting reports" loading="lazy">
+        <figcaption><b>Visual reports from booking one</b><span>See performance, occupancy, and revenue clearly — no spreadsheets required.</span></figcaption>
+      </figure>
+      <figure class="g-card">
+        <img src="/img/night-audit.webp" alt="Easy step-by-step night audit" loading="lazy">
+        <figcaption><b>A guided nightly close</b><span>The step-by-step night audit walks your team through closing the day correctly, every day.</span></figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
