@@ -71,11 +71,13 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
 .skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:12px 20px;z-index:300}
 .skip-link:focus{left:12px;top:12px}
 :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.is-visible{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none}
+}
+.framed{overflow:hidden}
+.framed img{will-change:transform;transition:transform .1s linear}
+@media (prefers-reduced-motion:reduce){
+  .framed img{transition:none}
 }
 
 /* ---------- divider glyph ---------- */
@@ -132,19 +134,18 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
   .rail__foot{display:none}
 }
 
-/* ---------- Hero (full-bleed) ---------- */
-.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;color:var(--paper);overflow:hidden}
-.hero__bg{position:absolute;inset:0;z-index:0}
-.hero__bg img{width:100%;height:100%;object-fit:cover}
-.hero__bg::after{content:"";position:absolute;inset:0}
-.hero__scrim{position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,14,10,.82) 0%,rgba(20,14,10,.32) 48%,rgba(20,14,10,.1) 100%)}
-.hero__content{position:relative;z-index:1;padding:64px 24px 68px;max-width:760px}
-.hero__eyebrow{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass-light);margin-bottom:18px}
-.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-style:italic;font-weight:500;max-width:14ch}
-.hero__sub{margin-top:22px;font-size:1.15rem;max-width:44ch;color:#ece3d2}
+/* ---------- Hero (off-center framed) ---------- */
+.hero{padding:9vh 24px 8vh;max-width:1180px;margin:0 auto;display:grid;gap:40px}
+.hero__photo{max-width:420px}
+.hero__photo img{aspect-ratio:3/4}
+@media(min-width:900px){
+  .hero{grid-template-columns:7fr 5fr;align-items:start;gap:56px;padding:13vh 24px 10vh}
+  .hero__photo{margin-top:7vh;justify-self:end;transform:rotate(-1.4deg)}
+}
+.hero__eyebrow{font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--burgundy);margin-bottom:18px;font-weight:600}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-style:italic;font-weight:500;max-width:13ch;color:var(--ink)}
+.hero__sub{margin-top:22px;font-size:1.15rem;max-width:44ch;color:var(--ink-soft)}
 .hero__cta{margin-top:34px;display:flex;flex-wrap:wrap;gap:14px}
-.hero__cta .btn--ghost{border-color:var(--paper);color:var(--paper)}
-.hero__cta .btn--ghost:hover{background:var(--paper);color:var(--ink)}
 
 /* ---------- Single-column editorial shell ---------- */
 .section{padding:88px 24px}
@@ -178,21 +179,20 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
 .about__photo{margin-top:44px}
 .about__photo img{aspect-ratio:16/9}
 
-/* ---------- Rooms — single column editorial rows ---------- */
+/* ---------- Rooms — symmetric 12-col card grid ---------- */
 .rooms{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.room-row{display:grid;gap:26px;padding:40px 0;border-bottom:1px solid var(--line)}
-.room-row:last-child{border-bottom:none}
-.room-row__photo img{aspect-ratio:4/3}
-.room-row h3{font-size:1.7rem;font-style:italic}
-.room-row__meta{margin-top:6px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--burgundy)}
-.room-row p{margin-top:14px;color:var(--ink-soft);font-size:.98rem}
-.room-row__link{display:inline-block;margin-top:16px;font-weight:600;font-size:.85rem;letter-spacing:.03em;text-decoration:none;color:var(--burgundy);border-bottom:1px solid var(--burgundy)}
-.room-row__link:hover{color:var(--burgundy-deep);border-color:var(--burgundy-deep)}
+.rooms-grid{margin-top:44px;display:grid;gap:36px}
+.room-card__photo img{aspect-ratio:4/3}
+.room-card h3{margin-top:20px;font-size:1.5rem;font-style:italic}
+.room-card__meta{margin-top:5px;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--burgundy)}
+.room-card p{margin-top:12px;color:var(--ink-soft);font-size:.96rem}
+.room-card__link{display:inline-block;margin-top:14px;font-weight:600;font-size:.85rem;letter-spacing:.03em;text-decoration:none;color:var(--burgundy);border-bottom:1px solid var(--burgundy)}
+.room-card__link:hover{color:var(--burgundy-deep);border-color:var(--burgundy-deep)}
 @media(min-width:760px){
-  .room-row{grid-template-columns:1fr 1fr;align-items:center}
-  .room-row:nth-child(even) .room-row__photo{order:2}
+  .rooms-grid{grid-template-columns:repeat(12,1fr);gap:32px 28px}
+  .room-card{grid-column:span 6}
 }
-.rooms__note{margin-top:36px;font-size:.88rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:20px}
+.rooms__note{margin-top:40px;font-size:.88rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:20px}
 
 /* ---------- Porches & gardens (narrative, amenities woven in) ---------- */
 .gardens{background:var(--ink);color:var(--cream)}
@@ -291,13 +291,9 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
 
 <main id="main">
 
-<!-- Full-bleed hero -->
+<!-- Off-center framed hero -->
 <section class="hero" id="top">
-  <div class="hero__bg">
-    <img src="https://www.galenainn.com/wp-content/uploads/2017/04/VictorianCenterShot-copy.jpg" alt="The Galena Inn — 1856 Italianate Victorian mansion set on two acres in Galena, Illinois" onerror="this.onerror=null;this.src='https://www.galenainn.com/wp-content/uploads/2017/05/Victorian_Mansion_front-1030x735.jpg'">
-    <div class="hero__scrim"></div>
-  </div>
-  <div class="hero__content">
+  <div class="hero__text">
     <p class="hero__eyebrow">Galena, Illinois &middot; Bed &amp; Breakfast</p>
     <h1>It's about time.</h1>
     <p class="hero__sub">A short distance to travel to feel worlds away — an 1856 Victorian estate on two acres, one flight of stairs from Galena's Main Street.</p>
@@ -306,11 +302,15 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
       <a class="btn btn--ghost" href="#rooms">See the Rooms</a>
     </div>
   </div>
+  <figure class="framed hero__photo">
+    <img src="https://www.galenainn.com/wp-content/uploads/2017/04/VictorianCenterShot-copy.jpg" alt="The Galena Inn — 1856 Italianate Victorian mansion set on two acres in Galena, Illinois" onerror="this.onerror=null;this.src='https://www.galenainn.com/wp-content/uploads/2017/05/Victorian_Mansion_front-1030x735.jpg'">
+    <figcaption>The mansion, built 1856</figcaption>
+  </figure>
 </section>
 
 <!-- History moment / pull quote -->
 <section class="section history" id="history">
-  <div class="col reveal">
+  <div class="col">
     <p class="kicker">A Little of Our History</p>
     <blockquote>
       &ldquo;It was from our balcony, during his farewell party hosted by Augustus Estey, that resident Grant's departing speech was delivered to the citizens of Galena.&rdquo;
@@ -338,63 +338,57 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
   </figure>
 </section>
 
-<!-- Rooms — single-column editorial rows -->
+<!-- Rooms — symmetric 12-col card grid -->
 <section class="section rooms" id="rooms">
   <div class="col col--wide">
     <p class="kicker">Rooms &amp; Suites</p>
     <h2>Eight rooms, each its own character.</h2>
     <p class="lede">All rooms include flat-panel TVs, free WiFi, and a private bath. Weekends require a two-night minimum stay, and — for the quiet and relaxation of all our guests — we do not host children under 12.</p>
 
-    <div class="room-row">
-      <figure class="framed room-row__photo">
-        <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-61-of-132-1030x688.jpg" alt="The Estey Suite at The Galena Inn — king sleigh bed and sitting area" loading="lazy">
-        <figcaption>The Estey Suite</figcaption>
-      </figure>
-      <div>
+    <div class="rooms-grid col--wide">
+      <article class="room-card">
+        <figure class="framed room-card__photo">
+          <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-61-of-132-1030x688.jpg" alt="The Estey Suite at The Galena Inn — king sleigh bed and sitting area" loading="lazy">
+          <figcaption>The Estey Suite</figcaption>
+        </figure>
         <h3>The Estey Suite</h3>
-        <p class="room-row__meta">2nd floor &middot; 1&ndash;2 guests</p>
+        <p class="room-card__meta">2nd floor &middot; 1&ndash;2 guests</p>
         <p>A plush king-size upholstered sleigh bed and a sitting area with a couch, plus a separate shower and a large jacuzzi tub.</p>
-        <a class="room-row__link" href="https://www.galenainn.com/the-estey-suite/">Room details</a>
-      </div>
-    </div>
+        <a class="room-card__link" href="https://www.galenainn.com/the-estey-suite/">Room details</a>
+      </article>
 
-    <div class="room-row">
-      <figure class="framed room-row__photo">
-        <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-103-of-132-1030x688.jpg" alt="The Julia Suite at The Galena Inn — king bed with newly remodeled bath" loading="lazy">
-        <figcaption>The Julia Suite</figcaption>
-      </figure>
-      <div>
+      <article class="room-card">
+        <figure class="framed room-card__photo">
+          <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-103-of-132-1030x688.jpg" alt="The Julia Suite at The Galena Inn — king bed with newly remodeled bath" loading="lazy">
+          <figcaption>The Julia Suite</figcaption>
+        </figure>
         <h3>The Julia Suite</h3>
-        <p class="room-row__meta">2nd floor &middot; 1&ndash;2 guests</p>
+        <p class="room-card__meta">2nd floor &middot; 1&ndash;2 guests</p>
         <p>One bedroom with a king-size bed and a private, newly remodeled bath with shower — two flat-screen TVs with cable.</p>
-        <a class="room-row__link" href="https://www.galenainn.com/the-julia-suite/">Room details</a>
-      </div>
-    </div>
+        <a class="room-card__link" href="https://www.galenainn.com/the-julia-suite/">Room details</a>
+      </article>
 
-    <div class="room-row">
-      <figure class="framed room-row__photo">
-        <img src="https://www.galenainn.com/wp-content/uploads/2022/02/IMG_5010-1030x773.jpg" alt="The Lincoln Room at The Galena Inn — king bed and settee" loading="lazy">
-        <figcaption>The Lincoln Room</figcaption>
-      </figure>
-      <div>
+      <article class="room-card">
+        <figure class="framed room-card__photo">
+          <img src="https://www.galenainn.com/wp-content/uploads/2022/02/IMG_5010-1030x773.jpg" alt="The Lincoln Room at The Galena Inn — king bed and settee" loading="lazy">
+          <figcaption>The Lincoln Room</figcaption>
+        </figure>
         <h3>The Lincoln Room</h3>
-        <p class="room-row__meta">2nd floor &middot; 1&ndash;2 guests</p>
+        <p class="room-card__meta">2nd floor &middot; 1&ndash;2 guests</p>
         <p>A king-size bed with a settee for reading or watching the flat-screen TV, and a private bathroom with shower.</p>
-        <a class="room-row__link" href="https://www.galenainn.com/the-lincoln-room/">Room details</a>
-      </div>
-    </div>
+        <a class="room-card__link" href="https://www.galenainn.com/the-lincoln-room/">Room details</a>
+      </article>
 
-    <div class="room-row">
-      <figure class="framed room-row__photo">
-        <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-96-of-132-1030x688.jpg" alt="The Grace Suite at The Galena Inn — two-room suite on the third floor" loading="lazy">
-        <figcaption>The Grace Suite</figcaption>
-      </figure>
-      <div>
+      <article class="room-card">
+        <figure class="framed room-card__photo">
+          <img src="https://www.galenainn.com/wp-content/uploads/2021/10/VICTORIAN-MANSION-210523-96-of-132-1030x688.jpg" alt="The Grace Suite at The Galena Inn — two-room suite on the third floor" loading="lazy">
+          <figcaption>The Grace Suite</figcaption>
+        </figure>
         <h3>The Grace Suite</h3>
-        <p class="room-row__meta">3rd floor &middot; up to 3 guests</p>
+        <p class="room-card__meta">3rd floor &middot; up to 3 guests</p>
         <p>A wonderful two-room suite with a king bed and a queen bed, and a full bathroom with shower.</p>
-        <a class="room-row__link" href="https://www.galenainn.com/the-grace-suite/">Room details</a>
-      </div>
+        <a class="room-card__link" href="https://www.galenainn.com/the-grace-suite/">Room details</a>
+      </article>
     </div>
 
     <p class="rooms__note">Also available: the Jackson Room, Roosevelt Room, Primrose Room, and the General Suite in the historic coach house with its own kitchenette. <a href="https://www.galenainn.com/rooms/" class="room-row__link">See all nine rooms &amp; suites</a></p>
@@ -540,20 +534,25 @@ h1,h2,h3{font-family:var(--ff-display);font-weight:500;line-height:1.08;color:va
   });
 
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var items=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if(reduce || !('IntersectionObserver' in window)){
-    items.forEach(function(el){el.classList.add('is-visible')});
-    return;
-  }
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
+  if(reduce) return;
+  var frames=Array.prototype.slice.call(document.querySelectorAll('.framed img'));
+  var ticking=false;
+  function parallax(){
+    var vh=window.innerHeight;
+    frames.forEach(function(img){
+      var r=img.getBoundingClientRect();
+      if(r.bottom<0||r.top>vh)return;
+      var p=(r.top+r.height/2-vh/2)/vh;
+      img.style.transform='translateY('+(p*-12).toFixed(1)+'px) scale(1.05)';
     });
-  },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
-  items.forEach(function(el){io.observe(el)});
+    ticking=false;
+  }
+  function onScroll(){
+    if(!ticking){window.requestAnimationFrame(parallax);ticking=true;}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',parallax);
+  parallax();
 })();
 </script>
 </body>
