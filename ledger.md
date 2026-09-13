@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 132 | garden-inn-suites-lr | 2026-09-13 | split-screen | hero,amenities-proximity-strip,story,rooms-broken,gallery,location-map,guest-voices,cta | broken-asymmetric | hamburger-only | none | mixed-serif-sans | Petrona | Work Sans | moss-ink+garden-sage+dusty-rose+terracotta+ivory |
 | 131 | periwinkle-inn | 2026-09-13 | asymmetric-collage | hero-collage,story,garden-amenities,rooms-grid,gallery-strip,awards-reviews,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | serif-body-editorial | Cormorant | Vollkorn | periwinkle-violet+garden-green+dusty-coral |
 | 130 | fairbridge-sandpoint | 2026-09-13 | full-bleed | hero,welcome-story,rooms-editorial,inn-gallery-amenities,explore-sandpoint,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | rustic-serif-editorial | Spectral | Karla | pine-forest+lake-teal+log-walnut+dune-cream |
 | 129 | cottage-inn-mackinac | 2026-09-12 | off-center-framed | hero,rhythm-strip,trust-board,story,rooms-12col,treats,map,cta | symmetric-12col | top-sticky | parallax | giant-display | Instrument Serif | Hanken Grotesk | porch-blue+lilac+fudge-ink |
