@@ -156,6 +156,19 @@
     applyFilter(validCats.indexOf(initial) > -1 ? initial : "all");
   }
 
+  /* ---------- FAQ accordion (FAQ page only) ---------- */
+  var faqList = doc.getElementById("faqList");
+  if (faqList) {
+    var faqButtons = faqList.querySelectorAll(".faq-item__q");
+    faqButtons.forEach(function (btn, i) {
+      btn.addEventListener("click", function () {
+        var open = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", open ? "false" : "true");
+      });
+      if (i === 0) { btn.setAttribute("aria-expanded", "true"); }
+    });
+  }
+
   /* ---------- Listeners ---------- */
   window.addEventListener("scroll", onScrollHeader, { passive: true });
   onScrollHeader();
