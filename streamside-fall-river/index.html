@@ -69,33 +69,31 @@
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
-<!-- TOP-STICKY NAV -->
-<header class="topbar" id="topbar">
-  <div class="topbar__row">
-    <a class="topbar__mark" href="#top" aria-label="Streamside on Fall River — home">
-      <span class="topbar__mark-name">Streamside</span>
-      <span class="topbar__mark-sub">on Fall River</span>
-    </a>
+<!-- SIDE-RAIL NAV (desktop) / TOP BAR (mobile) -->
+<header class="rail" id="rail">
+  <a class="rail__mark" href="#top" aria-label="Streamside on Fall River — home">
+    <span class="rail__mark-name">Streamside</span>
+    <span class="rail__mark-sub">on Fall River</span>
+  </a>
 
-    <nav class="topbar__nav" aria-label="Primary">
-      <ul class="menu genesis-nav-menu menu-primary topbar__menu">
-        <li class="menu-item"><a href="#cabins">Cabins</a></li>
-        <li class="menu-item"><a href="#amenities">Amenities</a></li>
-        <li class="menu-item"><a href="#gallery">Gallery</a></li>
-        <li class="menu-item"><a href="#location">Location</a></li>
-      </ul>
-    </nav>
+  <nav class="rail__nav" aria-label="Primary">
+    <ul class="menu genesis-nav-menu menu-primary rail__menu">
+      <li class="menu-item"><a href="#cabins">Cabins</a></li>
+      <li class="menu-item"><a href="#amenities">Amenities</a></li>
+      <li class="menu-item"><a href="#gallery">Gallery</a></li>
+      <li class="menu-item"><a href="#location">Location</a></li>
+    </ul>
+  </nav>
 
-    <div class="topbar__actions">
-      <a class="topbar__phone" href="tel:+19705866464"><span aria-hidden="true">&#9743;</span> (970) 586-6464</a>
-      <a class="btn btn--rust topbar__cta" href="https://reserve5.resnexus.com/resnexus/reservations/lodging/075B770F-961D-4D62-9801-B987FB885347">Check Availability</a>
-    </div>
-
-    <button class="topbar__burger" type="button" aria-expanded="false" aria-controls="drawer" data-drawer-toggle>
-      <span class="topbar__burger-line" aria-hidden="true"></span>
-      <span class="topbar__burger-label">Menu</span>
-    </button>
+  <div class="rail__foot">
+    <a class="rail__phone" href="tel:+19705866464"><span aria-hidden="true">&#9743;</span> (970) 586-6464</a>
+    <a class="btn btn--rust rail__cta" href="https://reserve5.resnexus.com/resnexus/reservations/lodging/075B770F-961D-4D62-9801-B987FB885347">Check Availability</a>
   </div>
+
+  <button class="rail__burger" type="button" aria-expanded="false" aria-controls="drawer" data-drawer-toggle>
+    <span class="rail__burger-line" aria-hidden="true"></span>
+    <span class="rail__burger-label">Menu</span>
+  </button>
 </header>
 
 <div class="drawer" id="drawer" hidden>
@@ -112,17 +110,19 @@
 
 <main id="main">
 
-<!-- HERO — full-bleed, real riverfront cabin photo -->
+<!-- HERO — split-screen, real riverfront cabin photo left / text panel right -->
 <section class="hero" id="top">
-  <img class="hero__bg" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/0e/82/43/riverfront-studio-cabin--v4182946.jpg?w=1600&h=1000&s=1" alt="Riverfront studio cabin at Streamside on Fall River, Estes Park" loading="eager">
-  <div class="hero__grain" aria-hidden="true"></div>
-  <div class="hero__panel reveal-fade">
-    <p class="hero__kicker">Estes Park, Colorado &middot; On Fall River</p>
-    <h1 class="hero__title">Twenty-One Cabins.<br>Twenty-Nine Acres.<br>One River Running Through It.</h1>
-    <p class="hero__lede">A secluded village of cabins and suites tucked into the pine and aspen, shared with elk, mule deer, and wild turkeys — one mile from downtown Estes Park, three miles from Rocky Mountain National Park.</p>
-    <div class="hero__actions">
+  <figure class="hero__media">
+    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/0e/82/43/riverfront-studio-cabin--v4182946.jpg?w=1600&h=1000&s=1" alt="Riverfront studio cabin at Streamside on Fall River, Estes Park" loading="eager">
+  </figure>
+  <div class="hero__panel">
+    <div class="hero__grain" aria-hidden="true"></div>
+    <p class="hero__kicker hero__stagger" style="--d:0">Estes Park, Colorado &middot; On Fall River</p>
+    <h1 class="hero__title hero__stagger" style="--d:1">Twenty-One Cabins. Twenty-Nine Acres. One River Running Through It.</h1>
+    <p class="hero__lede hero__stagger" style="--d:2">A secluded village of cabins and suites tucked into the pine and aspen, shared with elk, mule deer, and wild turkeys — one mile from downtown Estes Park, three miles from Rocky Mountain National Park.</p>
+    <div class="hero__actions hero__stagger" style="--d:3">
       <a class="btn btn--rust btn--lg" href="https://reserve5.resnexus.com/resnexus/reservations/lodging/075B770F-961D-4D62-9801-B987FB885347">Check Availability</a>
-      <a class="btn btn--line-cream btn--lg" href="tel:+19705866464">Call (970) 586-6464</a>
+      <a class="btn btn--line-ink btn--lg" href="tel:+19705866464">Call (970) 586-6464</a>
     </div>
   </div>
 </section>
@@ -145,7 +145,7 @@
   </div>
 </section>
 
-<!-- CABIN STYLES — bento-overlapping grid -->
+<!-- CABIN STYLES — broken-asymmetric grid -->
 <section class="cabins reveal" id="cabins">
   <div class="cabins__head">
     <p class="cabins__kicker">Eight cabin styles, one river view</p>
@@ -153,8 +153,8 @@
     <p>Every unit sits within the same 29 acres of pine and aspen on Fall River, from two-bedroom cabins built for the whole family down to an upper-level motel room for a quick trip into the park.</p>
   </div>
 
-  <div class="cabins__bento">
-    <article class="cabin-card cabin-card--lg">
+  <div class="cabins__broken stagger">
+    <article class="cabin-card cabin-card--wide">
       <figure class="cabin-card__media">
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/f4/ac/ce/caption.jpg?w=1200&h=1200&s=1" alt="Interior of a Two Bedroom Cabin with Hot Tub at Streamside on Fall River" loading="lazy">
       </figure>
@@ -166,7 +166,7 @@
       </div>
     </article>
 
-    <article class="cabin-card">
+    <article class="cabin-card cabin-card--narrow">
       <figure class="cabin-card__media">
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/f4/ac/cf/caption.jpg?w=1200&h=1200&s=1" alt="Private riverfront patio and gas grill at Streamside on Fall River" loading="lazy">
       </figure>
@@ -178,7 +178,7 @@
       </div>
     </article>
 
-    <article class="cabin-card">
+    <article class="cabin-card cabin-card--narrow">
       <figure class="cabin-card__media">
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/32/f4/ac/cd/caption.jpg?w=1200&h=1200&s=1" alt="King bed inside the Studio Cabin on River at Streamside on Fall River" loading="lazy">
       </figure>
@@ -190,7 +190,7 @@
       </div>
     </article>
 
-    <article class="cabin-card">
+    <article class="cabin-card cabin-card--wide">
       <figure class="cabin-card__media">
         <img src="https://streamsideonfallriver.com/wp-content/uploads/2015/05/smsuite11.png" alt="Motel Room on River at Streamside on Fall River" loading="lazy">
       </figure>
@@ -228,7 +228,7 @@
 <!-- GALLERY -->
 <section class="gallery reveal" id="gallery">
   <h2 class="gallery__title">Around Streamside</h2>
-  <div class="gallery__strip">
+  <div class="gallery__strip stagger">
     <figure class="mask mask--strip"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/0e/82/e1/grounds--v4183087.jpg?w=1200&h=900&s=1" alt="Manicured grounds along Fall River" loading="lazy"></figure>
     <figure class="mask mask--strip"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/22/7c/3e/sharing-the-river-with.jpg?w=1200&h=900&s=1" alt="Sharing the riverbank with wildlife at Streamside" loading="lazy"></figure>
     <figure class="mask mask--strip"><img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/33/a8/7c/8a/caption.jpg?w=1200&h=1200&s=1" alt="Elk relaxing on the lawn at Streamside on Fall River" loading="lazy"></figure>

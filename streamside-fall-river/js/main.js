@@ -7,19 +7,6 @@
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
 
-  // Sticky topbar shadow on scroll
-  var topbar = document.getElementById("topbar");
-  function onScroll() {
-    if (!topbar) { return; }
-    if (window.scrollY > 8) {
-      topbar.classList.add("is-scrolled");
-    } else {
-      topbar.classList.remove("is-scrolled");
-    }
-  }
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
   // Mobile drawer toggle
   var burger = document.querySelector("[data-drawer-toggle]");
   var drawer = document.getElementById("drawer");
@@ -47,8 +34,8 @@
     });
   }
 
-  // Scroll reveal for sections
-  var revealEls = document.querySelectorAll(".reveal");
+  // Scroll reveal for sections and staggered card/gallery groups
+  var revealEls = document.querySelectorAll(".reveal, .stagger");
   if ("IntersectionObserver" in window && revealEls.length) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
