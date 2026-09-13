@@ -16,7 +16,7 @@
 <meta name="geo.placename" content="Little Rock">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&amp;family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,600;0,700;1,500&amp;family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,12 +62,12 @@
   --cream:#F6F1E4;
   --paper:#FFFDF8;
   --line:#DED4C2;
-  --ff-display:'Bitter',serif;
-  --ff-body:'Lora',serif;
+  --ff-display:'Petrona',serif;
+  --ff-body:'Work Sans',sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--ff-body);color:var(--ink);background:var(--cream);line-height:1.65;font-size:16.5px;padding-bottom:64px;overflow-x:hidden}
+body{font-family:var(--ff-body);color:var(--ink);background:var(--cream);line-height:1.6;font-size:16.5px;padding-bottom:64px;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:inherit}
 .skip-link{position:absolute;left:-999px;top:0;background:var(--ink);color:var(--paper);padding:10px 18px;z-index:200}
@@ -79,108 +79,98 @@ a{color:inherit}
 .btn--book:hover{background:var(--terracotta-deep)}
 .btn--ghost{border:1.5px solid var(--ink);color:var(--ink);padding:11.5px 24px;font-size:1rem}
 .btn--ghost:hover{background:var(--ink);color:var(--cream)}
+.frame{overflow:hidden;border-radius:4px}
+.frame img{width:100%;height:100%;object-fit:cover}
 
-/* ---------- Reveal-on-scroll (subtle fade) ---------- */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
-.reveal.is-shown{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none}
-}
-
-/* ---------- Header: centered split logo ---------- */
+/* ---------- Header: hamburger-only, logo + phone/book always visible ---------- */
 .site-header{background:var(--paper);border-bottom:1px solid var(--line)}
-.nav{max-width:1160px;margin:0 auto;padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px}
-.nav__side{display:none;list-style:none;gap:26px;font-size:.95rem}
-.nav__side a{text-decoration:none;font-weight:500}
-.nav__side a:hover{color:var(--terracotta-deep)}
-.nav__side--right{justify-content:flex-end;align-items:center}
-.nav__brand{display:flex;flex-direction:column;align-items:center;text-decoration:none;text-align:center}
-.nav__brand img{height:52px;width:auto}
-.nav__phone{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--ink-soft);white-space:nowrap}
+.nav{max-width:1160px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.nav__brand{display:flex;align-items:center;text-decoration:none}
+.nav__brand img{height:48px;width:auto}
+.nav__actions{display:flex;align-items:center;gap:12px}
+.nav__phone{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--ink-soft);white-space:nowrap;display:none}
 .nav__phone:hover{color:var(--terracotta-deep)}
-.nav__toggle{background:none;border:1.5px solid var(--ink);border-radius:3px;width:42px;height:40px;cursor:pointer;display:grid;place-items:center;justify-self:end}
-.nav__toggle span{display:block;width:18px;height:2px;background:var(--ink);margin:2.5px 0;transition:transform .3s ease,opacity .3s ease}
+.nav__toggle{background:none;border:1.5px solid var(--ink);border-radius:3px;width:44px;height:42px;cursor:pointer;display:grid;place-items:center}
+.nav__toggle span{display:block;width:20px;height:2px;background:var(--ink);margin:2.5px 0;transition:transform .3s ease,opacity .3s ease}
 .nav__toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav__toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav__toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav__menu{display:none;background:var(--paper);border-bottom:1px solid var(--line)}
 .nav__menu.is-open{display:block}
-.nav__menu ul{list-style:none;max-width:1160px;margin:0 auto;padding:6px 24px 22px;display:flex;flex-direction:column}
-.nav__menu a{display:block;padding:12px 2px;text-decoration:none;font-family:var(--ff-display);font-size:1.2rem;border-bottom:1px solid var(--line)}
+.nav__menu ul{list-style:none;max-width:1160px;margin:0 auto;padding:6px 24px 24px;display:flex;flex-direction:column}
+.nav__menu a{display:block;padding:13px 2px;text-decoration:none;font-family:var(--ff-display);font-size:1.25rem;border-bottom:1px solid var(--line)}
 .nav__menu a:hover{color:var(--terracotta-deep)}
-@media(min-width:900px){
-  .nav__side{display:flex}
-  .nav__toggle{display:none}
-  .nav__menu{display:none!important}
-}
-@media(max-width:899px){.nav{grid-template-columns:minmax(0,1fr) auto}}
+@media(min-width:640px){.nav__phone{display:inline}}
 
-/* ---------- Shared editorial column shell ---------- */
+/* ---------- Shared column shell ---------- */
 .section{padding:72px 24px}
-.section__inner{max-width:760px;margin:0 auto}
-.section__inner--wide{max-width:1060px}
+.section__inner{max-width:1060px;margin:0 auto}
+.section__inner--narrow{max-width:720px}
 .section h2{font-family:var(--ff-display);font-weight:600;font-size:clamp(1.9rem,4vw,2.8rem);line-height:1.15;max-width:20ch}
 .section p{max-width:64ch}
-.frame{overflow:hidden;border-radius:4px}
-.frame img{width:100%;height:100%;object-fit:cover}
 
-/* ---------- Hero: asymmetric collage ---------- */
-.hero{max-width:1160px;margin:0 auto;padding:34px 24px 60px;position:relative}
-.hero__grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
-.hero__panel{background:var(--paper);border:1px solid var(--line);padding:38px 30px;position:relative;z-index:2}
-.hero__eyebrow{font-size:.95rem;color:var(--sage-deep);font-weight:600;margin-bottom:14px}
-.hero h1{font-family:var(--ff-display);font-weight:600;font-size:clamp(2.1rem,5.5vw,3.5rem);line-height:1.12;color:var(--ink)}
-.hero__sub{margin-top:20px;font-size:1.08rem;color:var(--ink-soft);max-width:48ch}
+/* ---------- Hero: split screen ---------- */
+.hero{display:grid;min-width:0}
+.hero__media{aspect-ratio:4/3}
+.hero__media img{width:100%;height:100%;object-fit:cover;display:block}
+.hero__copy{background:var(--paper);padding:56px 28px;display:flex;flex-direction:column;justify-content:center}
+.hero__eyebrow{font-size:.95rem;color:var(--sage-deep);font-weight:600;margin-bottom:16px}
+.hero h1{font-family:var(--ff-display);font-weight:600;font-size:clamp(2.1rem,5vw,3.1rem);line-height:1.15;color:var(--ink);max-width:16ch}
+.hero__sub{margin-top:20px;font-size:1.06rem;color:var(--ink-soft);max-width:46ch}
 .hero__cta{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
-.hero__collage{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;min-width:0}
-.hero__collage .frame:first-child{grid-column:1/-1;aspect-ratio:16/10}
-.hero__collage .frame:nth-child(2),.hero__collage .frame:nth-child(3){aspect-ratio:4/3}
-@media(min-width:920px){
-  .hero__grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:center}
-  .hero__panel{margin-right:-70px;margin-top:40px}
-  .hero__collage{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
-  .hero__collage .frame:first-child{grid-column:1/2;grid-row:1/3;aspect-ratio:auto;height:100%}
-  .hero__collage .frame:nth-child(2){aspect-ratio:auto;height:100%}
-  .hero__collage .frame:nth-child(3){grid-column:2/3;aspect-ratio:auto;height:100%}
+@media(min-width:860px){
+  .hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+  .hero__media{aspect-ratio:auto;order:2}
+  .hero__copy{order:1;padding:0 60px}
 }
 
-/* ---------- Proximity strip ---------- */
-.proximity{background:var(--sage-deep);color:var(--cream)}
-.proximity__inner{max-width:1060px;margin:0 auto;padding:34px 24px;display:grid;gap:22px;grid-template-columns:repeat(2,minmax(0,1fr))}
-.proximity__item strong{display:block;font-family:var(--ff-display);font-size:1.6rem}
-.proximity__item span{font-size:.92rem;color:#DCE3D4}
-@media(min-width:760px){.proximity__inner{grid-template-columns:repeat(4,minmax(0,1fr))}}
+/* ---------- Proximity + amenities woven strip ---------- */
+.strip{background:var(--sage-deep);color:var(--cream)}
+.strip__grid{display:grid;gap:26px;grid-template-columns:minmax(0,1fr)}
+.strip__dist{display:grid;gap:20px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.strip__dist div strong{display:block;font-family:var(--ff-display);font-size:1.5rem}
+.strip__dist div span{font-size:.9rem;color:#DCE3D4}
+.strip__list{list-style:none;display:grid;gap:8px 22px;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid rgba(246,241,228,.25);padding-top:22px}
+.strip__list li{font-size:.94rem;color:#E7ECDF}
+@media(min-width:760px){
+  .strip__grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);align-items:start}
+  .strip__dist{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 
 /* ---------- Story ---------- */
 .story__lede{margin-top:20px;font-size:1.12rem;color:var(--ink-soft)}
 .story p{margin-top:16px;color:var(--ink-soft)}
-.story__facts{margin-top:34px;display:flex;flex-wrap:wrap;gap:32px}
-.story__facts div{border-top:2px solid var(--ink);padding-top:10px;min-width:130px}
-.story__facts strong{font-family:var(--ff-display);font-size:1.6rem;display:block}
-.story__facts span{font-size:.88rem;color:var(--ink-soft)}
 
-/* ---------- Rooms (single column editorial) ---------- */
+/* ---------- Rooms: broken-asymmetric grid ---------- */
 .rooms{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.room-card{margin-top:52px;display:grid;gap:24px}
-.room-card:first-of-type{margin-top:44px}
-.room-card .frame{aspect-ratio:16/10}
-.room-card__body h3{font-family:var(--ff-display);font-weight:600;font-size:1.55rem}
-.room-card__price{font-family:var(--ff-display);font-size:1.15rem;color:var(--terracotta-deep);margin-top:6px}
-.room-card__body p{margin-top:14px;color:var(--ink-soft)}
+.rooms__grid{margin-top:44px;display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+.room-card{display:grid;gap:0;background:var(--cream);border:1px solid var(--line)}
+.room-card .frame{border-radius:0;aspect-ratio:16/10}
+.room-card__body{padding:26px 24px}
+.room-card__body h3{font-family:var(--ff-display);font-weight:600;font-size:1.5rem}
+.room-card__price{font-family:var(--ff-display);font-size:1.1rem;color:var(--terracotta-deep);margin-top:6px}
+.room-card__body p{margin-top:14px;color:var(--ink-soft);max-width:60ch}
 .room-card__amenities{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;font-size:.9rem;color:var(--ink-soft)}
 .room-card__amenities li::before{content:"·";margin-right:6px;color:var(--sage-deep)}
 .room-link{display:inline-block;margin-top:18px;font-weight:600;text-decoration:none;color:var(--terracotta-deep);border-bottom:1.5px solid var(--terracotta-deep)}
 .room-link:hover{color:var(--terracotta);border-color:var(--terracotta)}
-@media(min-width:760px){.section__inner--wide .room-card{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:center}}
+@media(min-width:760px){
+  .rooms__grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+  .room-card:nth-of-type(1){grid-column:1/4}
+  .room-card:nth-of-type(2){grid-column:4/6}
+  .room-card:nth-of-type(1) .frame{aspect-ratio:16/11}
+  .room-card:nth-of-type(2) .frame{aspect-ratio:4/5}
+  .room-card{grid-template-rows:auto 1fr}
+}
 
-/* ---------- Amenities + gallery woven ---------- */
-.amenities{background:var(--cream)}
-.amenities__grid{margin-top:32px;display:grid;gap:10px 28px;grid-template-columns:minmax(0,1fr);list-style:none}
-.amenities__grid li{padding:10px 0;border-bottom:1px solid var(--line);font-size:1rem;color:var(--ink-soft)}
-@media(min-width:620px){.amenities__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.amenities__gallery{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.amenities__gallery .frame{aspect-ratio:4/3}
+/* ---------- Gallery ---------- */
+.gallery{background:var(--cream)}
+.gallery__grid{margin-top:36px;display:grid;gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.gallery__grid .frame{aspect-ratio:4/3}
+@media(min-width:760px){
+  .gallery__grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .gallery__grid .frame:first-child{grid-column:1/3;grid-row:1/3}
+}
 
 /* ---------- Location ---------- */
 .location{background:var(--paper);border-top:1px solid var(--line)}
@@ -194,7 +184,7 @@ a{color:inherit}
 /* ---------- Guest voices ---------- */
 .voices{background:var(--sage);color:var(--ink)}
 .voices h2{color:var(--ink)}
-.voices__grid{margin-top:34px;display:grid;gap:30px}
+.voices__grid{margin-top:34px;display:grid;gap:30px;grid-template-columns:minmax(0,1fr)}
 .voices__quote{border-left:3px solid var(--terracotta);padding-left:20px}
 .voices__quote p{font-family:var(--ff-display);font-size:1.2rem;font-weight:500;line-height:1.4}
 .voices__quote cite{display:block;margin-top:10px;font-style:normal;font-size:.9rem;color:var(--ink-soft)}
@@ -207,8 +197,6 @@ a{color:inherit}
 .cta__actions{margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;align-items:center}
 .cta__phone{font-family:var(--ff-display);font-size:1.5rem;text-decoration:none;color:var(--cream)}
 .cta__phone:hover{color:var(--rose)}
-.cta .btn--ghost{border-color:var(--cream);color:var(--cream)}
-.cta .btn--ghost:hover{background:var(--cream);color:var(--ink)}
 
 /* ---------- Footer ---------- */
 .footer{background:#1B2216;color:#B7C0AC;padding:52px 24px 40px;font-size:.92rem}
@@ -235,22 +223,16 @@ a{color:inherit}
 
 <header class="site-header">
   <div class="nav">
-    <ul class="nav__side nav__side--left">
-      <li><a href="#rooms">Rooms</a></li>
-      <li><a href="#amenities">Amenities</a></li>
-    </ul>
     <a class="nav__brand" href="#top" aria-label="Garden Inn &amp; Suites Little Rock — home">
       <img src="https://i0.wp.com/gardeninnlr.com/wp-content/uploads/2024/10/logo.jpg?fit=700%2C457&amp;ssl=1" alt="Garden Inn &amp; Suites Little Rock logo">
     </a>
-    <ul class="nav__side nav__side--right">
-      <li><a href="#location">Location</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a class="nav__phone" href="tel:+15014148622">(501) 414-8622</a></li>
-      <li><a class="btn btn--book" href="https://gardeninnlr.com/book-now/">Book Now</a></li>
-    </ul>
-    <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav__actions">
+      <a class="nav__phone" href="tel:+15014148622">(501) 414-8622</a>
+      <a class="btn btn--book" href="https://gardeninnlr.com/book-now/">Book Now</a>
+      <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
   <nav class="nav__menu" id="nav-menu" aria-label="Main navigation">
     <ul>
@@ -266,105 +248,32 @@ a{color:inherit}
 
 <main id="main">
 
-<!-- Hero: asymmetric collage -->
+<!-- Hero: split screen -->
 <section class="hero" id="top">
-  <div class="hero__grid">
-    <div class="hero__panel reveal">
-      <p class="hero__eyebrow">Little Rock, AR — directly across from UAMS</p>
-      <h1>A quiet place to rest, close to the care that brought you here.</h1>
-      <p class="hero__sub">Free on-site parking, in-room microwave &amp; mini-fridge, and a guest laundry facility — with special rates for patients and their families staying near UAMS, Arkansas Children's Hospital, CHI St. Vincent, and Baptist Health.</p>
-      <div class="hero__cta">
-        <a class="btn btn--book" href="https://gardeninnlr.com/book-now/">Check Availability</a>
-        <a class="btn btn--ghost" href="#rooms">See Rooms</a>
-      </div>
-    </div>
-    <div class="hero__collage">
-      <figure class="frame">
-        <img src="https://images.trvl-media.com/lodging/8000000/7800000/7790400/7790382/de6de7d7.jpg?impolicy=fcrop&amp;w=1200&amp;h=1400" alt="Garden Inn & Suites Little Rock exterior with on-site parking" loading="eager">
-      </figure>
-      <figure class="frame">
-        <img src="https://images.trvl-media.com/lodging/8000000/7800000/7790400/7790382/a73a4d08.jpg?impolicy=fcrop&amp;w=900&amp;h=900" alt="Front desk and reception area at Garden Inn & Suites Little Rock" loading="lazy">
-      </figure>
-      <figure class="frame">
-        <img src="https://i0.wp.com/gardeninnlr.com/wp-content/plugins/vikbooking/site/resources/uploads/34f6c98a-d5d1-4cf7-a371-f38f2604f411_1_201_a.jpg?w=900&amp;ssl=1" alt="King Room Standard at Garden Inn & Suites Little Rock" loading="lazy">
-      </figure>
+  <figure class="hero__media">
+    <img src="https://images.trvl-media.com/lodging/8000000/7800000/7790400/7790382/de6de7d7.jpg?impolicy=fcrop&amp;w=1400&amp;h=1600" alt="Garden Inn & Suites Little Rock exterior with on-site parking" loading="eager">
+  </figure>
+  <div class="hero__copy">
+    <p class="hero__eyebrow">Little Rock, AR — directly across from UAMS</p>
+    <h1>A quiet place to rest, close to the care that brought you here.</h1>
+    <p class="hero__sub">Free on-site parking, in-room microwave &amp; mini-fridge, and a guest laundry facility — with special rates for patients and their families staying near UAMS, Arkansas Children's Hospital, CHI St. Vincent, and Baptist Health.</p>
+    <div class="hero__cta">
+      <a class="btn btn--book" href="https://gardeninnlr.com/book-now/">Check Availability</a>
+      <a class="btn btn--ghost" href="#rooms">See Rooms</a>
     </div>
   </div>
 </section>
 
-<!-- Proximity strip -->
-<div class="proximity">
-  <div class="proximity__inner">
-    <div class="proximity__item"><strong>0.4 mi</strong><span>University of Arkansas for Medical Sciences (UAMS)</span></div>
-    <div class="proximity__item"><strong>5 min</strong><span>Arkansas Children's Hospital</span></div>
-    <div class="proximity__item"><strong>5 min</strong><span>CHI St. Vincent Infirmary</span></div>
-    <div class="proximity__item"><strong>5 min</strong><span>Baptist Health</span></div>
-  </div>
-</div>
-
-<!-- Story / welcome -->
-<section class="section story" id="about">
-  <div class="section__inner reveal">
-    <h2>Comfort meets convenience, right where you need it.</h2>
-    <p class="story__lede">Garden Inn &amp; Suites sits directly across the street from UAMS, making it a straightforward choice for patients, families, and hospital staff who need a clean, reliable place to stay close to Little Rock's medical district.</p>
-    <p>Every room comes with a microwave and mini-fridge for the small comforts of home, and our guest laundry facility is available for longer, extended-stay visits. Our front desk is staffed around the clock, and we offer special discounted rates for patients and families traveling for hospital-related stays — just ask when you call.</p>
-    <div class="story__facts">
-      <div><strong>24/7</strong><span>Front desk</span></div>
-      <div><strong>0.4 mi</strong><span>To UAMS</span></div>
-      <div><strong>Free</strong><span>On-site parking</span></div>
+<!-- Proximity + amenities woven strip -->
+<section class="strip" id="amenities">
+  <div class="section__inner strip__grid">
+    <div class="strip__dist">
+      <div><strong>0.4 mi</strong><span>University of Arkansas for Medical Sciences (UAMS)</span></div>
+      <div><strong>5 min</strong><span>Arkansas Children's Hospital</span></div>
+      <div><strong>5 min</strong><span>CHI St. Vincent Infirmary</span></div>
+      <div><strong>5 min</strong><span>Baptist Health</span></div>
     </div>
-  </div>
-</section>
-
-<!-- Rooms -->
-<section class="section rooms" id="rooms">
-  <div class="section__inner section__inner--wide reveal">
-    <h2>Two comfortable ways to stay.</h2>
-    <p>Both room types include free high-speed WiFi, a flat-screen TV, and a dedicated work desk — just minutes from downtown Little Rock, the hospitals, and local attractions.</p>
-
-    <div class="room-card">
-      <figure class="frame">
-        <img src="https://i0.wp.com/gardeninnlr.com/wp-content/plugins/vikbooking/site/resources/uploads/34f6c98a-d5d1-4cf7-a371-f38f2604f411_1_201_a.jpg?w=1200&amp;ssl=1" alt="King Room Standard with king-size bed at Garden Inn & Suites Little Rock" loading="lazy">
-      </figure>
-      <div class="room-card__body">
-        <h3>King Room Standard</h3>
-        <p class="room-card__price">$75.65 per night</p>
-        <p>A plush king-size bed in a spacious room built for comfort — well suited to couples or business travelers, with a dedicated work desk for anyone in town for appointments or a longer visit.</p>
-        <ul class="room-card__amenities">
-          <li>Free high-speed WiFi</li>
-          <li>Flat-screen TV</li>
-          <li>Microwave &amp; mini-fridge</li>
-          <li>Work desk</li>
-        </ul>
-        <a class="room-link" href="https://gardeninnlr.com/double-rooms/?roomid=2">Room details</a>
-      </div>
-    </div>
-
-    <div class="room-card">
-      <figure class="frame">
-        <img src="https://i0.wp.com/gardeninnlr.com/wp-content/plugins/vikbooking/site/resources/uploads/img_4714.jpg?w=1200&amp;ssl=1" alt="Double Room Standard with two queen beds at Garden Inn & Suites Little Rock" loading="lazy">
-      </figure>
-      <div class="room-card__body">
-        <h3>Double Room Standard</h3>
-        <p class="room-card__price">$78.95 per night</p>
-        <p>Two comfortable queen beds make this room a good fit for families or two travelers sharing a stay — with the same everyday conveniences that make a longer visit easier.</p>
-        <ul class="room-card__amenities">
-          <li>Two queen beds</li>
-          <li>Free high-speed WiFi</li>
-          <li>Microwave &amp; mini-fridge</li>
-          <li>Work desk</li>
-        </ul>
-        <a class="room-link" href="https://gardeninnlr.com/double-rooms/">Room details</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Amenities + gallery -->
-<section class="section amenities" id="amenities">
-  <div class="section__inner reveal">
-    <h2>Everything you need for an easy stay.</h2>
-    <ul class="amenities__grid">
+    <ul class="strip__list">
       <li>Free WiFi</li>
       <li>Free parking</li>
       <li>24-hour front desk</li>
@@ -376,7 +285,72 @@ a{color:inherit}
       <li>Guest laundry</li>
       <li>Wake-up calls</li>
     </ul>
-    <div class="amenities__gallery">
+  </div>
+</section>
+
+<!-- Story / welcome -->
+<section class="section story" id="about">
+  <div class="section__inner section__inner--narrow">
+    <h2>Comfort meets convenience, right where you need it.</h2>
+    <p class="story__lede">Garden Inn &amp; Suites sits directly across the street from UAMS, making it a straightforward choice for patients, families, and hospital staff who need a clean, reliable place to stay close to Little Rock's medical district.</p>
+    <p>Every room comes with a microwave and mini-fridge for the small comforts of home, and our guest laundry facility is available for longer, extended-stay visits. Our front desk is staffed around the clock, and we offer special discounted rates for patients and families traveling for hospital-related stays — just ask when you call.</p>
+  </div>
+</section>
+
+<!-- Rooms: broken-asymmetric grid -->
+<section class="section rooms" id="rooms">
+  <div class="section__inner">
+    <h2>Two comfortable ways to stay.</h2>
+    <p>Both room types include free high-speed WiFi, a flat-screen TV, and a dedicated work desk — just minutes from downtown Little Rock, the hospitals, and local attractions.</p>
+
+    <div class="rooms__grid">
+      <div class="room-card">
+        <figure class="frame">
+          <img src="https://i0.wp.com/gardeninnlr.com/wp-content/plugins/vikbooking/site/resources/uploads/34f6c98a-d5d1-4cf7-a371-f38f2604f411_1_201_a.jpg?w=1200&amp;ssl=1" alt="King Room Standard with king-size bed at Garden Inn & Suites Little Rock" loading="lazy">
+        </figure>
+        <div class="room-card__body">
+          <h3>King Room Standard</h3>
+          <p class="room-card__price">$75.65 per night</p>
+          <p>A plush king-size bed in a spacious room built for comfort — well suited to couples or business travelers, with a dedicated work desk for anyone in town for appointments or a longer visit.</p>
+          <ul class="room-card__amenities">
+            <li>Free high-speed WiFi</li>
+            <li>Flat-screen TV</li>
+            <li>Microwave &amp; mini-fridge</li>
+            <li>Work desk</li>
+          </ul>
+          <a class="room-link" href="https://gardeninnlr.com/double-rooms/?roomid=2">Room details</a>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <figure class="frame">
+          <img src="https://i0.wp.com/gardeninnlr.com/wp-content/plugins/vikbooking/site/resources/uploads/img_4714.jpg?w=1200&amp;ssl=1" alt="Double Room Standard with two queen beds at Garden Inn & Suites Little Rock" loading="lazy">
+        </figure>
+        <div class="room-card__body">
+          <h3>Double Room Standard</h3>
+          <p class="room-card__price">$78.95 per night</p>
+          <p>Two comfortable queen beds make this room a good fit for families or two travelers sharing a stay.</p>
+          <ul class="room-card__amenities">
+            <li>Two queen beds</li>
+            <li>Free high-speed WiFi</li>
+            <li>Microwave &amp; mini-fridge</li>
+            <li>Work desk</li>
+          </ul>
+          <a class="room-link" href="https://gardeninnlr.com/double-rooms/">Room details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="section gallery">
+  <div class="section__inner">
+    <h2>Around the property.</h2>
+    <div class="gallery__grid">
+      <figure class="frame">
+        <img src="https://images.trvl-media.com/lodging/8000000/7800000/7790400/7790382/a73a4d08.jpg?impolicy=fcrop&amp;w=1200&amp;h=1200" alt="Front desk and reception area at Garden Inn & Suites Little Rock" loading="lazy">
+      </figure>
       <figure class="frame">
         <img src="https://i0.wp.com/gardeninnlr.com/wp-content/uploads/2024/10/IMG_1842.jpg?w=900&amp;ssl=1" alt="Garden Inn & Suites Little Rock property view" loading="lazy">
       </figure>
@@ -389,7 +363,7 @@ a{color:inherit}
 
 <!-- Location -->
 <section class="section location" id="location">
-  <div class="section__inner reveal">
+  <div class="section__inner section__inner--narrow">
     <h2>Easy to find, close to everything.</h2>
     <p class="location__addr">3801 W 8th Street<br>Little Rock, AR 72204</p>
     <div class="location__map">
@@ -410,7 +384,7 @@ a{color:inherit}
 
 <!-- Guest voices -->
 <section class="section voices" id="reviews">
-  <div class="section__inner reveal">
+  <div class="section__inner">
     <h2>What our guests are saying.</h2>
     <div class="voices__grid">
       <blockquote class="voices__quote">
@@ -431,7 +405,7 @@ a{color:inherit}
 
 <!-- Final CTA -->
 <section class="section cta">
-  <div class="section__inner reveal">
+  <div class="section__inner">
     <h2>Ready to book your stay near UAMS?</h2>
     <p>Call directly for hospital-stay rates, or check availability online for your dates.</p>
     <div class="cta__actions">
@@ -480,7 +454,7 @@ a{color:inherit}
 <div class="book-bar" role="complementary" aria-label="Quick booking">
   <p class="book-bar__label">Special rates for hospital-related stays<span> — call to ask</span></p>
   <div class="book-bar__actions">
-    <a class="nav__phone" href="tel:+15014148622">(501) 414-8622</a>
+    <a class="nav__phone" style="display:inline" href="tel:+15014148622">(501) 414-8622</a>
     <a class="btn btn--book" href="https://gardeninnlr.com/book-now/">Book Now</a>
   </div>
 </div>
@@ -497,22 +471,6 @@ a{color:inherit}
   menu.addEventListener('click',function(e){
     if(e.target.tagName==='A'){menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');}
   });
-
-  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var items=Array.prototype.slice.call(document.querySelectorAll('.reveal'));
-  if(reduce||!('IntersectionObserver' in window)){
-    items.forEach(function(el){el.classList.add('is-shown');});
-  } else {
-    var io=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-shown');
-          io.unobserve(entry.target);
-        }
-      });
-    },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
-    items.forEach(function(el){io.observe(el);});
-  }
 })();
 </script>
 </body>
