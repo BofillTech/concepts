@@ -55,15 +55,6 @@
     revealEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  // Gentle hero parallax (transform only, no layout thrash)
-  var heroImg = document.querySelector('.hero__collage .plate--a img');
-  if(heroImg && !reduceMotion){
-    document.addEventListener('scroll', function(){
-      var y = Math.min(window.scrollY, 500);
-      heroImg.style.transform = 'translateY(' + (y * 0.06) + 'px) scale(1.04)';
-    }, { passive:true });
-  }
-
   // Mobile booking bar visibility (hide once footer CTA is in view)
   var bookbar = document.getElementById('bookbar');
   var ctaBand = document.querySelector('.cta-band');
