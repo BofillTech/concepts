@@ -60,24 +60,52 @@
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<header class="site-head" id="siteHead">
-  <div class="site-head__inner">
-    <a class="brand" href="#top" aria-label="Belvedere Inn — home">
-      <span class="brand__name">Belvedere Inn</span>
-      <span class="brand__sub">Schenectady, New York</span>
-    </a>
-    <a class="site-head__phone" href="tel:+15186304020" aria-label="Call 518-630-4020">
+<!-- SIDE-RAIL NAV (desktop) / TOP BAR (mobile) -->
+<header class="rail" id="rail">
+  <a class="rail__mark" href="#top" aria-label="Belvedere Inn — home">
+    <span class="rail__mark-name">Belvedere Inn</span>
+    <span class="rail__mark-sub">Schenectady, NY</span>
+  </a>
+
+  <nav class="rail__nav" aria-label="Primary">
+    <ul>
+      <li><a href="#top">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#rooms">Rooms</a></li>
+      <li><a href="#neighborhood">Nearby</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="rail__actions">
+    <a class="rail__phone" href="tel:+15186304020" aria-label="Call 518-630-4020">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" fill="currentColor"/></svg>
       518.630.4020
     </a>
+    <a class="btn btn--book btn--sm" href="https://belvedereinnny.client.innroad.com/" target="_blank" rel="noopener">Book Now</a>
+    <button class="rail__burger" type="button" aria-expanded="false" aria-controls="drawer" data-drawer-toggle>Menu</button>
   </div>
 </header>
+
+<div class="drawer" id="drawer" hidden>
+  <nav class="drawer__menu" aria-label="Primary mobile">
+    <a href="#top" data-drawer-link>Home</a>
+    <a href="#about" data-drawer-link>About</a>
+    <a href="#rooms" data-drawer-link>Rooms</a>
+    <a href="#neighborhood" data-drawer-link>Nearby</a>
+    <a href="#contact" data-drawer-link>Contact</a>
+  </nav>
+  <p class="drawer__foot">
+    1926 Curry Rd, Schenectady, NY 12303
+    <a href="tel:+15186304020">518.630.4020</a>
+  </p>
+</div>
 
 <main id="main">
 
 <!-- HERO — type-only, no image (rolled) -->
 <section class="hero" id="top">
-  <div class="hero__inner">
+  <div class="col hero__inner">
     <p class="hero__eyebrow">1926 Curry Rd &middot; Schenectady, NY</p>
     <h1 class="hero__title">Belvedere Inn<span>Schenectady's Independent Boutique Inn</span></h1>
     <p class="hero__lede">Comfortable rooms, a free continental breakfast, and free parking, three miles from downtown Schenectady, Proctors Theatre, and Union College — with the whole Capital Region a short drive away.</p>
@@ -105,7 +133,7 @@
       <p class="welcome__quote">&ldquo;A hidden gem &mdash; friendly staff, spacious rooms, comfy beds.&rdquo;</p>
     </div>
     <div class="span-4">
-      <figure class="frame">
+      <figure class="frame welcome__frame">
         <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/3a/cb/c0/mallozzi-s-belvedere.jpg?w=900&h=675&s=1" alt="Exterior of the Belvedere Inn in Schenectady, New York" loading="lazy">
         <figcaption>Belvedere Inn, 1926 Curry Rd</figcaption>
       </figure>
@@ -116,7 +144,7 @@
 <!-- AMENITY BOARD -->
 <section class="board">
   <div class="wrap">
-    <div class="board-grid reveal-group">
+    <div class="board-list reveal-group">
       <div class="board-item reveal">
         <span class="board-item__mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M5.6 18.4l2.1-2.1M12 18v3M18.4 18.4l-2.1-2.1M21 12h-3M18.4 5.6l-2.1 2.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -294,7 +322,7 @@
 
 <!-- FINAL CTA -->
 <section class="section cta">
-  <div class="wrap wrap--narrow">
+  <div class="col">
     <h2>Ready for a comfortable, convenient stay?</h2>
     <p>Check availability at 1926 Curry Rd — or call the front desk directly and we'll help you find your dates.</p>
     <div class="cta__actions">
@@ -340,38 +368,6 @@
     <span>Website concept by Bofill Technologies</span>
   </div>
 </footer>
-
-<!-- Persistent bottom nav bar (primary nav) -->
-<nav class="bottombar" aria-label="Primary">
-  <div class="bottombar__nav">
-    <a class="bottombar__link" href="#top">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 11.5 12 4l8 7.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 10v9.5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V10" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>Home</span>
-    </a>
-    <a class="bottombar__link" href="#about">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 11v5.5M12 7.6v.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <span>About</span>
-    </a>
-    <a class="bottombar__link" href="#rooms">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 19V6.5A1.5 1.5 0 0 1 4.5 5h5A1.5 1.5 0 0 1 11 6.5V13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M11 13h9a1 1 0 0 1 1 1v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3 19h18M3 13h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <span>Rooms</span>
-    </a>
-    <a class="bottombar__link" href="#neighborhood">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="9.3" r="2.2" stroke="currentColor" stroke-width="1.7"/></svg>
-      <span>Nearby</span>
-    </a>
-    <a class="bottombar__link" href="#contact">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5" stroke="currentColor" stroke-width="1.7"/><path d="M8 3v3M16 3v3M4 10h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
-      <span>Contact</span>
-    </a>
-  </div>
-  <div class="bottombar__book">
-    <a class="bottombar__call" href="tel:+15186304020" aria-label="Call 518-630-4020">
-      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6.6 10.8c1.5 2.9 3.7 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" fill="currentColor"/></svg>
-    </a>
-    <a class="btn btn--book" href="https://belvedereinnny.client.innroad.com/" target="_blank" rel="noopener">Book Now</a>
-  </div>
-</nav>
 
 <script src="js/main.js" defer></script>
 </body>
