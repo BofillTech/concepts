@@ -1800,6 +1800,25 @@ a.contact-list__v:hover{color:var(--tide);}
   .prose__rail .prose__figure img{aspect-ratio:5/4;}
 }
 
+
+/* ---------------------------------------------------- homepage amenity photos */
+.amenity-media{
+  display:grid;gap:14px;margin:32px 0 40px;
+}
+.amenity-media__cell{margin:0;position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:var(--shadow);}
+.amenity-media__cell img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .8s var(--ease);}
+.amenity-media__cell--wide img{aspect-ratio:16/9;}
+.amenity-media__cell:hover img{transform:scale(1.03);}
+.amenity-media__cell .figcap{
+  position:absolute;left:0;right:0;bottom:0;margin:0;
+  background:linear-gradient(to top,rgba(24,41,48,.82),rgba(24,41,48,0));
+  color:#fff;padding:30px 16px 12px;font-size:13px;
+}
+
+@media (min-width:760px){
+  .amenity-media{grid-template-columns:1.6fr 1fr;gap:18px;}
+}
+
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
