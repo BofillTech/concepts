@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 142 | flushing-garden | 2026-09-14 | split-screen | hero,story,rooms,good-to-know,amenities,gallery,location,cta | broken-asymmetric | persistent-bottom-bar | parallax | giant-display | Space Grotesk | IBM Plex Sans | ink-pine+garden-green+brick-terracotta+signal-rust+stone-parchment+jade-mist |
 | 141 | grand-harbor-inn | 2026-09-14 | asymmetric-collage | hero,welcome,rooms,breakfast-story,camden-explore,pooch-wellness,gallery,cta | symmetric-12col | top-sticky | none | serif-display-editorial | Italiana | Lora | camden-ink+tuscan-terracotta+aged-brass+limestone-cream+harbor-pine |
 | 140 | smokies-lodge | 2026-09-14 | full-bleed | hero,ticker,welcome,rooms,amenities,perks,gallery,groups,location,cta | bento-overlapping | hamburger-only | marquee-ticker | poster-slab-retro | Alfa Slab One | Manrope | ridge-pine+sunset-rust+waterslide-teal+trail-gold+parchment-cream+stone-ink |
 | 139 | rehoboth-guest-house | 2026-09-13 | off-center-framed | hero,porch-house,room-register,breakfast,visit-map,credential-know,cta | single-column-editorial | centered-split-logo | subtle-fade | serif-editorial | Abril Fatface | Rubik | victorian-plum+marigold+fern+shell |
