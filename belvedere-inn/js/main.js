@@ -1,42 +1,53 @@
 (function(){
   'use strict';
 
-  // Sticky header shadow on scroll
-  var head = document.getElementById('siteHead');
-  if(head){
-    var onScroll = function(){
-      if(window.scrollY > 8){ head.classList.add('is-scrolled'); }
-      else{ head.classList.remove('is-scrolled'); }
+  // Mobile drawer toggle
+  var burger = document.querySelector('[data-drawer-toggle]');
+  var drawer = document.getElementById('drawer');
+  if(burger && drawer){
+    var closeDrawer = function(){
+      drawer.hidden = true;
+      burger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('drawer-open');
     };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    var openDrawer = function(){
+      drawer.hidden = false;
+      burger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('drawer-open');
+    };
+    burger.addEventListener('click', function(){
+      if(drawer.hidden){ openDrawer(); } else { closeDrawer(); }
+    });
+    drawer.querySelectorAll('[data-drawer-link]').forEach(function(link){
+      link.addEventListener('click', closeDrawer);
+    });
+    window.addEventListener('resize', function(){
+      if(window.innerWidth >= 1024){ closeDrawer(); }
+    });
   }
 
   // Footer year
   var yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-  // Highlight the active section in the persistent bottom nav bar
-  var links = Array.prototype.slice.call(document.querySelectorAll('.bottombar__link[href^="#"]'));
+  // Highlight the active section in the side-rail nav
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail__nav a[href^="#"]'));
   var sections = links
     .map(function(link){ return document.getElementById(link.getAttribute('href').slice(1)); })
     .filter(Boolean);
 
   if(sections.length && 'IntersectionObserver' in window){
-    var observer = new IntersectionObserver(function(entries){
+    var navObserver = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
         if(!entry.isIntersecting) return;
         var id = entry.target.id;
         links.forEach(function(link){
-          var match = link.getAttribute('href') === '#' + id;
-          link.classList.toggle('is-active', match);
-          if(match){ link.setAttribute('aria-current', 'true'); }
-          else{ link.removeAttribute('aria-current'); }
+          link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
         });
       });
     }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
 
-    sections.forEach(function(section){ observer.observe(section); });
+    sections.forEach(function(section){ navObserver.observe(section); });
   }
 
   // Staggered reveal on scroll
