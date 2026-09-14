@@ -1,5 +1,5 @@
 /* Ponus Yacht Club — concept by Bofill Technologies
-   Structure roll #132: full-bleed photo hero (updated per client request) / history-led custom order /
+   Structure roll #132: editorial-open hero (no image band) / history-led custom order /
    broken-asymmetric grid / side-rail nav / staggered-reveal. Fonts: Cinzel + Frank Ruhl Libre.
    Palette: ink navy + parchment + brass + harbor teal + burgee red. */
 
@@ -119,33 +119,37 @@ body.drawer-open { overflow: hidden; }
 
 main, footer.site-foot { padding-top: var(--topbar-h); }
 
-/* ---------- Masthead — full-bleed photo hero, solid ink panel for copy ---------- */
+/* ---------- Masthead — editorial-open, no image band ---------- */
 .mast {
   position: relative;
-  background-color: var(--c-ink);
-  background-position: center 70%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: var(--sp-5) var(--sp-3);
-  min-height: 66vh;
-  display: flex;
-  align-items: flex-end;
+  background: var(--c-parchment);
+  padding: var(--sp-6) var(--sp-3) var(--sp-5);
+  overflow: hidden;
 }
-.mast__panel {
-  background: var(--c-ink);
-  color: var(--c-parchment);
-  padding: var(--sp-4) var(--sp-3);
-  max-width: 560px;
-  box-shadow: 0 18px 40px rgba(14, 26, 43, 0.4);
-}
-.mast__kicker { margin: 0 0 var(--sp-2); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--c-brass); font-weight: 600; }
-.mast__title { font-size: clamp(2.4rem, 8vw, 4rem); letter-spacing: 0.02em; margin: 0 0 var(--sp-2); color: var(--c-white); }
-.mast__lede { color: #C9D2DC; font-size: 1.05rem; max-width: 46ch; margin: 0 0 var(--sp-4); }
+.mast__grid { max-width: var(--maxw-edit); position: relative; z-index: 2; }
+.mast__kicker { margin: 0 0 var(--sp-2); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--c-brass-dark); font-weight: 600; }
+.mast__title { font-size: clamp(2.6rem, 9vw, 5.2rem); letter-spacing: 0.02em; margin: 0 0 var(--sp-2); }
+.mast__lede { color: var(--c-mid); font-size: 1.15rem; max-width: 46ch; margin: 0 0 var(--sp-4); }
 .mast__actions { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.mast__numeral {
+  font-family: var(--f-display); font-weight: 700; font-size: clamp(6rem, 26vw, 11rem);
+  color: var(--c-parchment-deep); line-height: 1; position: absolute; right: -0.05em; bottom: -0.12em;
+  z-index: 1; -webkit-text-stroke: 1px var(--c-brass); pointer-events: none;
+}
+.mast__photo { display: block; margin: var(--sp-4) auto 0; max-width: 380px; position: relative; z-index: 2; }
 
-.mast__stagger { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
+.mast__stagger { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; transition-delay: calc(var(--d) * 0.12s); }
 .mast.is-loaded .mast__stagger { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .mast__stagger { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- Harbor portrait break ---------- */
+.portrait { margin: 0; position: relative; }
+.portrait img { width: 100%; height: clamp(240px, 40vw, 460px); object-fit: cover; object-position: center 78%; }
+.portrait__cap {
+  position: absolute; left: 0; bottom: 0; margin: 0;
+  background: var(--c-navy-deep); color: var(--c-parchment);
+  padding: 0.6rem var(--sp-3); font-size: 0.85rem; letter-spacing: 0.02em; max-width: 100%;
+}
 
 /* ---------- History — broken-asymmetric, oversized numeral anchor ---------- */
 .history { padding: var(--sp-6) var(--sp-3); }
@@ -259,6 +263,7 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
 /* ---------- Tablet >=768 ---------- */
 @media (min-width: 768px) {
   .rail__mark-text { display: block; }
+  .mast__photo { margin: var(--sp-4) 0 0; max-width: 460px; position: relative; }
   .history__grid { grid-template-columns: 1fr 2fr; align-items: start; }
   .marina { grid-template-columns: 1fr 1fr; align-items: stretch; }
   .marina__media { padding: var(--sp-4); }
@@ -297,8 +302,9 @@ main, footer.site-foot { padding-top: var(--topbar-h); }
 
   main, footer.site-foot { padding-top: 0; margin-left: var(--rail-w); }
 
-  .mast { min-height: 88vh; padding: var(--sp-6); }
-  .mast__panel { padding: var(--sp-5); max-width: 620px; }
+  .mast { padding: var(--sp-6) var(--sp-6) var(--sp-6) var(--sp-6); min-height: 78vh; display: flex; align-items: center; gap: var(--sp-5); }
+  .mast__grid { flex: 1 1 auto; }
+  .mast__photo { flex: 0 0 40%; max-width: 480px; margin: 0; }
   .history__grid { grid-template-columns: 1fr 2.4fr; gap: var(--sp-6); padding: 0 var(--sp-3); }
   .marina__panel, .clubhouse__panel { padding-left: var(--sp-6); padding-right: var(--sp-6); }
   .marina__media, .clubhouse__media { padding: var(--sp-5); }
