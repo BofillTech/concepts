@@ -1703,6 +1703,45 @@ a.contact-list__v:hover{color:var(--tide);}
   .set-grid{grid-template-columns:repeat(4,1fr);}
 }
 
+
+/* -------------------------------- the difference: copy + photo, compact sizes */
+.space__top{display:grid;gap:32px;align-items:start;margin-bottom:46px;}
+.space__intro{margin-bottom:0;}
+.space__plate{margin:0;}
+.space__plate img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:var(--radius);box-shadow:var(--shadow);display:block;
+}
+
+/* compact square-footage pair, replacing the oversized numerals */
+.sizes{
+  display:grid;gap:22px;margin-top:32px;
+  border-top:1px solid var(--line);padding-top:26px;
+}
+.size__num{
+  font-family:var(--display);font-size:clamp(38px,5vw,52px);line-height:1;
+  color:var(--spartina);margin:0 0 8px;letter-spacing:-.01em;
+}
+.size__num span{
+  font-family:var(--body);font-size:11px;letter-spacing:.19em;text-transform:uppercase;
+  font-weight:600;color:var(--egret-soft);margin-left:9px;vertical-align:middle;
+}
+.size__label{
+  font-family:var(--display);font-size:20px;color:var(--marsh-ink);margin:0 0 6px;
+}
+.size__note{font-size:15px;color:var(--egret);margin:0;max-width:34ch;}
+
+@media (min-width:560px){
+  .sizes{grid-template-columns:1fr 1fr;gap:26px;}
+}
+@media (min-width:900px){
+  .space__top{grid-template-columns:1.02fr .98fr;gap:56px;}
+  .space__plate img{aspect-ratio:3/4;}
+}
+@media (min-width:1280px){
+  .space__top{gap:72px;}
+}
+
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
