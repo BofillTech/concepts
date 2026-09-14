@@ -1612,6 +1612,97 @@ a.contact-list__v:hover{color:var(--tide);}
   color:rgba(255,255,255,.62);
 }
 
+
+/* ==========================================================================
+   FULL-BLEED HERO + WIDER MEDIA
+   Copy still sits on solid ground, never over the photograph.
+   ========================================================================== */
+:root{--wrap-wide:1680px;}
+
+.hero--bleed{padding:0 0 var(--pad-y);background:var(--shell);overflow:visible;}
+.hero--bleed .hero__bleed{
+  margin:0;line-height:0;background:var(--mist);
+  width:100%;
+}
+.hero--bleed .hero__bleed img{
+  width:100%;display:block;object-fit:cover;
+  height:clamp(420px,64vh,760px);
+}
+.hero--bleed .hero__lower{position:relative;}
+.hero--bleed .hero__panel{
+  position:relative;z-index:2;
+  background:var(--shell);
+  margin-top:clamp(-40px,-4vw,-90px);
+  padding:clamp(28px,4vw,52px) clamp(24px,4vw,56px) clamp(24px,3vw,40px) 0;
+  max-width:100%;box-sizing:border-box;
+}
+.hero--bleed .hero__title{margin-bottom:14px;}
+.hero--bleed .hero__sub{margin-bottom:18px;}
+.hero--bleed .hero__lede{max-width:62ch;margin-bottom:28px;}
+.hero--bleed .hero__actions{margin:0;}
+.hero--bleed .chips{margin-top:24px;}
+
+/* wide container for media-led sections */
+.container--wide{width:100%;max-width:var(--wrap-wide);margin:0 auto;padding:0 var(--gutter);}
+
+@media (min-width:760px){
+  .hero--bleed .hero__panel{
+    /* card bleeds left of the container so the copy still aligns to the grid */
+    margin-left:calc(-1 * clamp(24px,4vw,56px));
+    padding-left:clamp(24px,4vw,56px);
+    padding-right:clamp(40px,6vw,90px);
+    box-shadow:0 -18px 50px rgba(24,41,48,.10);
+  }
+}
+@media (min-width:1040px){
+  .hero--bleed .hero__bleed img{height:clamp(520px,72vh,820px);}
+  .hero--bleed .hero__panel{margin-top:-110px;max-width:none;width:min(860px,72%);box-sizing:border-box;}
+}
+@media (min-width:1440px){
+  .hero--bleed .hero__panel{margin-top:-130px;}
+}
+
+
+/* ------------------------------------------- bigger media, less dead space */
+/* Media-led grids get the wide container; prose keeps the 1320 measure. */
+.gallery__grid,
+.gal-grid,
+.set-grid,
+.shot-grid,
+.view-grid,
+.rw-grid,
+.thing-list{
+  max-width:var(--wrap-wide);
+  margin-left:auto;margin-right:auto;
+}
+
+/* homepage gallery: taller cells, more of the frame */
+.gallery__grid{padding:0 var(--gutter);}
+.gallery__cell img{aspect-ratio:4/5;}
+.gallery__cell--wide img{aspect-ratio:16/9;}
+
+/* unit + wedding photo grids run larger */
+.set-grid .shot img{aspect-ratio:3/2;}
+.set-grid--tall .shot img{aspect-ratio:4/5;}
+.shot-grid{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
+.gal-grid{gap:12px;}
+.gal__cell img{aspect-ratio:4/5;}
+.gal__cell--wide img{aspect-ratio:16/9;}
+
+/* suite cards and venue media get more height */
+.suite__media img{aspect-ratio:3/2;}
+.venue__media img{aspect-ratio:4/3;}
+.sitemap{max-width:var(--wrap-wide);margin-left:auto;margin-right:auto;}
+
+@media (min-width:1040px){
+  .gallery__grid{grid-template-columns:repeat(4,1fr);gap:14px;}
+  .gal-grid{grid-template-columns:repeat(5,1fr);}
+}
+@media (min-width:1560px){
+  .gal-grid{grid-template-columns:repeat(6,1fr);}
+  .set-grid{grid-template-columns:repeat(4,1fr);}
+}
+
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
