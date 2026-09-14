@@ -1,5 +1,5 @@
 /* =========================================================
-   Benton Place Inn — concept #141
+   Benton Place Inn — concept #143
    Palette: Victorian heritage (garnet / forest / brass / parchment)
    Display: Italiana · Body: Instrument Sans
    ========================================================= */
@@ -108,7 +108,7 @@ p{ margin:0 0 1em; max-width:60ch; }
 .btn--lg{ padding:17px 34px; font-size:1rem; }
 
 /* =========================================================
-   NAV — top sticky
+   NAV — centered split-logo
    ========================================================= */
 .site-head{
   position:sticky; top:0; z-index:80;
@@ -178,7 +178,7 @@ p{ margin:0 0 1em; max-width:60ch; }
 .drawer-backdrop.is-open{ opacity:1; pointer-events:auto; }
 
 /* =========================================================
-   HERO — asymmetric collage
+   HERO — off-center framed
    ========================================================= */
 .hero{ padding:64px 0 84px; overflow:hidden; }
 .hero__grid{
@@ -193,20 +193,19 @@ p{ margin:0 0 1em; max-width:60ch; }
 .hero__facts strong{ font-family:var(--font-display); font-size:1.7rem; color:var(--garnet); }
 .hero__facts span{ font-size:.82rem; color:var(--stone); max-width:16ch; }
 
-.hero__collage{
-  position:relative; display:grid; grid-template-columns:repeat(6,1fr); grid-template-rows:repeat(6,minmax(0,1fr));
-  gap:14px; height:520px;
+.hero__media{
+  position:relative;
+  margin-left:0;
 }
-.hero__collage .plate{ overflow:hidden; }
-.hero__collage .plate--a{ grid-column:1 / span 6; grid-row:1 / span 4; }
-.hero__collage .plate--b{ grid-column:1 / span 3; grid-row:5 / span 2; }
-.hero__collage .plate--c{ grid-column:4 / span 3; grid-row:5 / span 2; align-self:start; margin-top:-64px; }
-.hero__collage img{ height:100%; width:100%; object-fit:cover; }
-.hero__collage .plate--a img{ transform:scale(1.02); will-change:transform; }
+.hero__media .plate{ overflow:hidden; max-width:560px; }
+.hero__media img{ width:100%; height:520px; object-fit:cover; }
+.hero__media figcaption{ font-family:var(--font-display); font-size:1rem; color:var(--garnet); padding-top:12px; }
 
 @media (min-width:960px){
-  .hero__grid{ grid-template-columns:1fr 1fr; gap:40px; }
+  .hero__grid{ grid-template-columns:.95fr 1.05fr; gap:20px; }
   .hero{ padding:52px 0 110px; }
+  .hero__media{ margin-left:auto; margin-top:64px; }
+  .hero__media .plate{ margin-left:auto; }
 }
 
 /* framed image treatment */
@@ -234,18 +233,19 @@ p{ margin:0 0 1em; max-width:60ch; }
 }
 
 /* =========================================================
-   SUITES — symmetric 12-col grid + oversized numerals
+   SUITES — single-column editorial, alternating + oversized numerals
    ========================================================= */
 .suites{ padding:100px 0; }
 .suites__head{ max-width:640px; margin-bottom:56px; }
-.suites__grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:28px; }
+.suites__grid{ display:flex; flex-direction:column; max-width:var(--wrap-narrow); margin:0 auto; }
 .suite{
-  grid-column:span 12; display:grid; grid-template-columns:1fr; gap:22px;
-  padding-bottom:44px; border-bottom:1px solid var(--parchment-deep);
+  display:flex; flex-direction:column; gap:22px;
+  padding:48px 0; border-bottom:1px solid var(--parchment-deep);
 }
-.suite:last-child{ border-bottom:0; }
+.suite:first-child{ padding-top:0; }
+.suite:last-child{ border-bottom:0; padding-bottom:0; }
 .suite__num{
-  font-family:var(--font-display); font-size:5rem; line-height:1; color:var(--parchment-deep);
+  font-family:var(--font-display); font-size:4.4rem; line-height:1; color:var(--parchment-deep);
   -webkit-text-stroke:1px var(--brass); color:transparent;
 }
 .suite__body h3{ margin-bottom:.3em; }
@@ -254,8 +254,12 @@ p{ margin:0 0 1em; max-width:60ch; }
 .suite__amenities li{ font-size:.85rem; color:var(--stone); position:relative; padding-left:16px; }
 .suite__amenities li::before{ content:''; position:absolute; left:0; top:.55em; width:6px; height:1px; background:var(--brass); }
 
+.suite__row{ display:flex; flex-direction:column; gap:22px; }
 @media (min-width:760px){
-  .suite{ grid-column:span 12; grid-template-columns:120px 1fr 1.1fr; align-items:start; gap:34px; }
+  .suite__row{ flex-direction:row; align-items:flex-start; gap:40px; }
+  .suite--reverse .suite__row{ flex-direction:row-reverse; }
+  .suite figure.plate{ flex:0 0 42%; }
+  .suite__body{ flex:1; }
 }
 
 /* =========================================================
