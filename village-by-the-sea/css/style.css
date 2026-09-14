@@ -1771,6 +1771,35 @@ a.contact-list__v:hover{color:var(--tide);}
   .tiers__intro--after{max-width:none;column-count:2;column-gap:44px;}
 }
 
+
+/* ------------------------------------------------------- about: prose + rail */
+/* Mobile-first: the story runs as one column, with photos inline between
+   sections so the copy never sits beside a blank column. From 1040px up,
+   the inline photos hide and a sticky rail of photos takes the right side
+   instead, so the "empty right side" doesn't come back on wide screens. */
+.prose-media{display:block;}
+.prose__figure{margin:28px 0;}
+.prose__figure img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:var(--radius);box-shadow:var(--shadow);display:block;
+}
+.prose__rail{display:none;}
+
+@media (min-width:1040px){
+  .prose-media{
+    display:grid;grid-template-columns:minmax(0,70ch) 1fr;
+    gap:56px;align-items:start;
+  }
+  .prose{max-width:none;}
+  .prose__figure--mobile{display:none;}
+  .prose__rail{
+    display:grid;gap:22px;
+    position:sticky;top:110px;
+  }
+  .prose__rail .prose__figure{margin:0;}
+  .prose__rail .prose__figure img{aspect-ratio:5/4;}
+}
+
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
