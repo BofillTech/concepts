@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 140 | smokies-lodge | 2026-09-14 | full-bleed | hero,ticker,welcome,rooms,amenities,perks,gallery,groups,location,cta | bento-overlapping | hamburger-only | marquee-ticker | poster-slab-retro | Alfa Slab One | Manrope | ridge-pine+sunset-rust+waterslide-teal+trail-gold+parchment-cream+stone-ink |
 | 139 | rehoboth-guest-house | 2026-09-13 | off-center-framed | hero,porch-house,room-register,breakfast,visit-map,credential-know,cta | single-column-editorial | centered-split-logo | subtle-fade | serif-editorial | Abril Fatface | Rubik | victorian-plum+marigold+fern+shell |
 | 138 | streamside-fall-river | 2026-09-13 | split-screen | hero,wildlife-story,cabin-styles,river-amenities,gallery,park-proximity,guest-voices,cta | broken-asymmetric | side-rail | staggered-reveal | mixed | Fraunces | Chivo | river-slate+pine-shadow+aspen-gold+fireside-rust+birch-cream |
 | 137 | schweitzer-castle | 2026-09-13 | type-only-no-image | hero,legend,crossing,two-castles,great-hall,mountain-amenities,gallery,guest-voices,visit,cta | symmetric-12col | top-sticky | parallax | mixed-illuminated-serif | IM Fell English SC | EB Garamond | stone-ink+parchment+burgundy+antique-gold+pine |
