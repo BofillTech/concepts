@@ -1,0 +1,426 @@
+/* ==========================================================
+   Snowcreek Resort — concept stylesheet
+   Palette: granite-slate / creek-teal / meadow-sage / alpenglow-gold / snow-cream
+   Type: Bitter (display) + Chivo (body)
+   ========================================================== */
+
+:root {
+  --ink: #1f2a24;
+  --granite: #52605c;
+  --creek: #4c8c93;
+  --creek-deep: #2f5c62;
+  --meadow: #7c8b5e;
+  --gold: #c99a44;
+  --gold-deep: #a97e34;
+  --cream: #f3efe6;
+  --white: #ffffff;
+
+  --font-display: 'Bitter', Georgia, serif;
+  --font-body: 'Chivo', Arial, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 7rem;
+
+  --max-width: 1280px;
+  --radius: 2px;
+}
+
+/* ---------- Reset ---------- */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; margin: 0 0 var(--space-sm); font-weight: 600; }
+p { margin: 0 0 var(--space-sm); max-width: 62ch; }
+a { color: var(--creek-deep); text-decoration: none; }
+a:hover { text-decoration: underline; }
+address { font-style: normal; margin: 0 0 var(--space-sm); }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.skip-link {
+  position: absolute; left: -999px; top: 0;
+  background: var(--ink); color: var(--white); padding: 0.6em 1em; z-index: 200;
+}
+.skip-link:focus { left: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.eyebrow-free {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--creek-deep);
+  margin: 0 0 var(--space-xs);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.85em 1.7em;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.btn--primary {
+  background: var(--gold);
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.btn--primary:hover { background: var(--gold-deep); border-color: var(--gold-deep); text-decoration: none; }
+.btn--ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255,255,255,0.65);
+}
+.btn--ghost:hover { border-color: var(--white); text-decoration: none; }
+.btn--large { padding: 1em 2.4em; font-size: 1.05rem; }
+
+/* ==========================================================
+   Header / Nav — centered-split-logo pattern
+   ========================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(31,42,36,0.08);
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.site-header.is-scrolled {
+  box-shadow: 0 6px 18px rgba(31,42,36,0.12);
+}
+.site-header__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.9rem var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  position: relative;
+}
+.site-header__logo img { height: 40px; width: auto; }
+.site-header__group { display: none; align-items: center; gap: var(--space-md); }
+.site-header__group .menu { display: flex; gap: var(--space-md); }
+.menu-item a { color: var(--ink); font-weight: 500; }
+.site-header__phone { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.site-header__cta { padding: 0.6em 1.3em; font-size: 0.92rem; }
+
+.site-header__menu-toggle {
+  background: none;
+  border: none;
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column; justify-content: center; gap: 5px;
+  cursor: pointer;
+}
+.site-header__menu-bar {
+  display: block; width: 24px; height: 2px; background: var(--ink);
+}
+
+.site-header__group.is-open {
+  display: flex;
+  position: absolute;
+  left: 0; right: 0; top: 100%;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(31,42,36,0.08);
+  padding: var(--space-sm);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+.site-header__group.is-open .menu { flex-direction: column; gap: var(--space-sm); }
+
+@media (min-width: 768px) {
+  .site-header__menu-toggle { display: none; }
+  .site-header__group { display: flex; position: static; border-bottom: none; padding: 0; flex-direction: row; }
+  .site-header__group .menu { flex-direction: row; }
+  .site-header__inner { justify-content: center; gap: var(--space-2xl); position: relative; }
+}
+
+/* ==========================================================
+   Hero — split screen
+   ========================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: 78vh;
+}
+.hero__media { position: relative; overflow: hidden; min-height: 42vh; }
+.hero__media img { width: 100%; height: 112%; object-fit: cover; will-change: transform; }
+.hero__panel {
+  background: var(--ink);
+  color: var(--cream);
+  padding: var(--space-lg) var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+.hero__panel .eyebrow-free { color: var(--gold); }
+.hero__headline {
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  color: var(--white);
+  margin-bottom: var(--space-sm);
+}
+.hero__sub { color: rgba(243,239,230,0.86); max-width: 46ch; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-xs); }
+
+@media (min-width: 1024px) {
+  .hero { grid-template-columns: 1.1fr 1fr; min-height: 84vh; }
+  .hero__media { min-height: 100%; }
+  .hero__panel { padding: var(--space-2xl) var(--space-xl); }
+}
+
+/* ==========================================================
+   Savings banner
+   ========================================================== */
+.savings {
+  background: var(--creek-deep);
+  color: var(--cream);
+  text-align: center;
+  padding: 0.75rem var(--space-sm);
+  font-size: 0.95rem;
+}
+.savings a { color: var(--gold); font-weight: 600; }
+
+/* ==========================================================
+   Story
+   ========================================================== */
+.story {
+  display: grid;
+  gap: var(--space-lg);
+  padding: var(--space-2xl) var(--space-sm);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.story__media img { border-radius: var(--radius); }
+.story h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--ink); }
+
+@media (min-width: 1024px) {
+  .story { grid-template-columns: 1fr 1fr; align-items: center; gap: var(--space-2xl); }
+}
+
+/* ==========================================================
+   Phases — oversized numerals decorative system
+   ========================================================== */
+.phases {
+  background: var(--white);
+  padding: var(--space-2xl) var(--space-sm);
+}
+.phases__intro { max-width: var(--max-width); margin: 0 auto var(--space-lg); }
+.phases__intro h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+.phases__grid {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+.phase-card {
+  position: relative;
+  border: 1px solid rgba(31,42,36,0.1);
+  padding: var(--space-md);
+  padding-top: 3.2rem;
+}
+.phase-card__num {
+  position: absolute;
+  top: -0.4rem;
+  left: var(--space-md);
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+  opacity: 0.9;
+}
+.phase-card img { margin-bottom: var(--space-sm); border-radius: var(--radius); aspect-ratio: 4/3; object-fit: cover; }
+.phase-card h3 { font-size: 1.15rem; margin-bottom: 0.35rem; }
+.phase-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+@media (min-width: 768px) {
+  .phases__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .phases__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ==========================================================
+   Rentals
+   ========================================================== */
+.rentals {
+  padding: var(--space-2xl) var(--space-sm);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.rentals h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+.rentals__intro { max-width: 60ch; }
+.rentals__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+.rental-card { border: 1px solid rgba(31,42,36,0.1); background: var(--white); }
+.rental-card img { aspect-ratio: 4/3; object-fit: cover; }
+.rental-card h3, .rental-card__meta, .rental-card__link { padding: 0 var(--space-sm); }
+.rental-card h3 { margin-top: var(--space-sm); font-size: 1.1rem; }
+.rental-card__meta { color: var(--granite); font-size: 0.9rem; margin-bottom: var(--space-xs); }
+.rental-card__link { display: block; font-weight: 600; padding-bottom: var(--space-sm); }
+.rentals__cta { text-align: center; margin-top: var(--space-lg); }
+
+@media (min-width: 768px) {
+  .rentals__grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .rentals__grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ==========================================================
+   Golf / Athletic club — amenity split blocks (framed images)
+   ========================================================== */
+.amenity-split { background: var(--cream); }
+.amenity-block {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--space-2xl) var(--space-sm);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  align-items: center;
+}
+.amenity-block__media img {
+  border: 8px solid var(--white);
+  box-shadow: 0 12px 30px rgba(31,42,36,0.15);
+}
+.amenity-block__text h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+
+@media (min-width: 1024px) {
+  .amenity-block { grid-template-columns: 1fr 1fr; }
+  .amenity-block--reverse .amenity-block__media { order: 2; }
+}
+
+/* ==========================================================
+   Gallery strip
+   ========================================================== */
+.gallery { padding: var(--space-2xl) var(--space-sm); }
+.gallery h2 { max-width: var(--max-width); margin: 0 auto var(--space-lg); font-size: clamp(1.6rem, 3.5vw, 2.4rem); text-align: center; }
+.gallery__strip {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xs);
+}
+.gallery__strip img { aspect-ratio: 1/1; object-fit: cover; }
+
+@media (min-width: 768px) {
+  .gallery__strip { grid-template-columns: repeat(3, 1fr); }
+}
+@media (min-width: 1024px) {
+  .gallery__strip { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* ==========================================================
+   Location
+   ========================================================== */
+.location {
+  background: var(--ink);
+  color: var(--cream);
+  padding: var(--space-2xl) var(--space-sm);
+}
+.location__wrap,
+.location {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.location h2 { color: var(--white); font-size: clamp(1.6rem, 3.5vw, 2.2rem); }
+.location a { color: var(--gold); }
+.location__map iframe { width: 100%; height: 320px; border: 0; border-radius: var(--radius); }
+
+@media (min-width: 1024px) {
+  .location { grid-template-columns: 1fr 1fr; align-items: center; }
+}
+
+/* ==========================================================
+   Final CTA
+   ========================================================== */
+.final-cta {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-sm);
+  background: var(--meadow);
+  color: var(--ink);
+}
+.final-cta h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); margin-bottom: var(--space-xs); }
+.final-cta p { margin: 0 auto var(--space-md); }
+.final-cta__phone { margin-top: var(--space-sm); font-weight: 600; }
+.final-cta__phone a { color: var(--ink); }
+
+/* ==========================================================
+   Footer
+   ========================================================== */
+.site-footer { background: var(--ink); color: var(--cream); padding: var(--space-xl) var(--space-sm) var(--space-lg); }
+.site-footer__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+.site-footer__logo img { height: 36px; width: auto; filter: brightness(0) invert(1); opacity: 0.9; }
+.menu--footer { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-md); }
+.menu--footer a, .site-footer__social a { color: var(--cream); }
+.site-footer__social { display: flex; gap: var(--space-md); }
+.site-footer__copy { font-size: 0.85rem; color: rgba(243,239,230,0.6); max-width: 60ch; }
+
+/* ==========================================================
+   Mobile booking bar
+   ========================================================== */
+.mobile-bar {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  z-index: 150;
+  box-shadow: 0 -6px 16px rgba(0,0,0,0.15);
+}
+.mobile-bar__phone,
+.mobile-bar__cta {
+  flex: 1;
+  text-align: center;
+  padding: 0.85rem 0;
+  font-weight: 600;
+}
+.mobile-bar__phone { background: var(--ink); color: var(--cream); }
+.mobile-bar__cta { background: var(--gold); color: var(--ink); }
+
+@media (min-width: 768px) {
+  .mobile-bar { display: none; }
+}
