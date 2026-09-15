@@ -30,25 +30,17 @@
   var yearEl = document.getElementById('year');
   if(yearEl){ yearEl.textContent = new Date().getFullYear(); }
 
-  // Single orchestrated motion moment: gentle parallax on the hero frame photo
-  var parallaxEl = document.querySelector('[data-parallax] img');
+  // Single orchestrated motion moment: subtle fade-in on the hero frame photo
+  var fadeEl = document.querySelector('[data-fade]');
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if(parallaxEl && !reduceMotion){
-    var ticking = false;
-    var update = function(){
-      var rect = parallaxEl.parentElement.parentElement.getBoundingClientRect();
-      var progress = Math.max(-1, Math.min(1, rect.top / window.innerHeight));
-      var shift = progress * -14;
-      parallaxEl.style.transform = 'translateY(' + shift + 'px) scale(1.06)';
-      ticking = false;
-    };
-    update();
-    window.addEventListener('scroll', function(){
-      if(!ticking){
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
+  if(fadeEl && !reduceMotion){
+    window.requestAnimationFrame(function(){
+      window.requestAnimationFrame(function(){
+        fadeEl.classList.add('is-visible');
+      });
+    });
+  } else if(fadeEl){
+    fadeEl.classList.add('is-visible');
   }
 })();
