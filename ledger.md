@@ -36,3 +36,21 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 | 132 | garden-inn-suites-lr | 2026-09-13 | split-screen | hero,amenities-proximity-strip,story,rooms-broken,gallery,location-map,guest-voices,cta | broken-asymmetric | hamburger-only | none | mixed-serif-sans | Petrona | Work Sans | moss-ink+garden-sage+dusty-rose+terracotta+ivory |
 | 131 | periwinkle-inn | 2026-09-13 | asymmetric-collage | hero-collage,story,garden-amenities,rooms-grid,gallery-strip,awards-reviews,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | serif-body-editorial | Cormorant | Vollkorn | periwinkle-violet+garden-green+dusty-coral |
 | 130 | fairbridge-sandpoint | 2026-09-13 | full-bleed | hero,welcome-story,rooms-editorial,inn-gallery-amenities,explore-sandpoint,location-map,cta | single-column-editorial | centered-split-logo | subtle-fade | rustic-serif-editorial | Spectral | Karla | pine-forest+lake-teal+log-walnut+dune-cream |
+| 129 | cottage-inn-mackinac | 2026-09-12 | off-center-framed | hero,rhythm-strip,trust-board,story,rooms-12col,treats,map,cta | symmetric-12col | top-sticky | parallax | giant-display | Instrument Serif | Hanken Grotesk | porch-blue+lilac+fudge-ink |
+| 128 | budget-motor-inn | 2026-09-12 | type-only-sign | sign-hero,amenity-strip,value-broken,room-board,photo-wall,distance-board,desk-map,cta | broken-asymmetric | persistent-bottom-bar | staggered-reveal | condensed-signage-caps | Big Shoulders | Libre Franklin | marker-navy+marker-gold+enamel-white |
+| 127 | coastal-hotel-suites | 2026-09-12 | split-screen | hero,ticker,view-promise,rooms-bento,pool-breakfast-story,reviews,map,cta | bento-overlapping | hamburger-only | marquee-ticker | mixed-display-serif | Gabarito | Newsreader | atlantic-ink+surf-teal+sun-gold |
+| 126 | ambassadors-inn | 2026-09-12 | full-bleed | hero,location-board,rooms,pool,free-strip,gallery,cta | single-column-editorial | side-rail | none | giant-display | Bricolage Grotesque | Public Sans | flag-navy+signal-red+sand |
+| 125 | black-hills-luxury-suites | 2026-09-12 | editorial-open | type-open,photo-band,story-amenities,suites-pair,trail-distances,gallery,map,cta | symmetric-12col | centered-split-logo | subtle-fade | poster-slab | Bevan | Public Sans | pine+park-brown+bh-gold |
+| 124 | 16-bay-view | 2026-09-12 | asymmetric-collage | hero,story-badges,street-level,rooms,rooftop,camden-map,cta | broken-asymmetric | top-sticky | staggered-reveal | slab-display | Besley | Albert Sans | harbor-ink+facade-brick+brass |
+| 123 | imperial-500 | 2026-09-11 | split-screen | hero,pool-bento,rooms-af,story,phone-bar | bento-overlapping | hamburger-only | — | — | Righteous | Nunito Sans | dusk-indigo+aqua+imperial-gold |
+| 122 | tc-smith | 2026-09-11 | off-center-framed | — | single-column-editorial | — | — | serif-editorial | Libre Caslon Display | Old Standard TT | — |
+| 121 | long-hollow-ranch | 2026-09-11 | split-screen | editorial-timeline | — | — | — | — | Hepta Slab | Crimson Pro | — |
+| 120 | farmers-guest-house | 2026-09-11 | split-screen | ledger-register | single-column-editorial | centered-split-logo | parallax | — | Libre Caslon Display | Libre Caslon Text | ink-green+claret+brick |
+| 119 | the-mooring | 2026-09-11 | split-screen | breakfast-led | — | — | — | — | Prata | Mulish | walnut+gold+haint-blue |
+| 118 | escobars-farmhouse-inn | 2026-09-11 | off-center-framed | — | single-column-editorial | centered-split-logo | none | — | Young Serif | Alegreya Sans | hydrangea+door-green |
+| 117 | earthbox-inn | 2026-09-11 | off-center-framed | — | single-column-editorial | — | none | — | Anybody | Atkinson Hyperlegible | sun-mustard+retro-postcard |
+| 116 | coombs-inn-suites | 2026-09-11 | off-center-framed | — | gilt-framed-editorial | — | — | — | — | — | — |
+| 115 | fairbridge-coeur-dalene | 2026-09-11 | split-screen | mileage-board | — | — | — | — | Barlow Condensed | Source Serif 4 | — |
+| 114 | lazy-cloud-lodge | 2026-09-11 | — | — | — | — | — | — | — | — | — |
+| 113 | wanderers-rest | 2026-09-11 | — | — | — | — | — | — | — | — | — |
+| 112 | grand-marais-inn | 2026-09-11 | — | — | — | — | — | — | — | — | — |
