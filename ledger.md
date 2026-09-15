@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 151 | little-sweden | 2026-09-15 | asymmetric-collage | hero,heritage,villas,good-life,gallery,voices,visit,cta | single-column-editorial | centered-split-logo | parallax | geometric-display-rule-lines | Unbounded | Inter Tight | falu-red+door-county-pine+nordic-slate+brass-gold+birch-cream+timber-ink |
 | 150 | vero-inn-suites | 2026-09-15 | full-bleed | hero,proof-strip,welcome,rooms,resort-life-vignettes,rewards,venue,gallery,location,trust,cta | broken-asymmetric | persistent-bottom-bar | staggered-reveal | editorial-display-with-award-badges | DM Serif Display | Figtree | ink-navy+lagoon-teal+citrus-coral+palmetto-green+buttermilk-cream+awning-gold |
 | 149 | kedron-valley-inn | 2026-09-15 | editorial-open | hero,history-timeline,tavern-story,rooms,grounds-pets-narrative,gallery,press,location,cta | symmetric-12col | top-sticky | none | heritage-serif-editorial-oversized-numerals | Vidaloka | Karla | timber-ink+kedron-forest+aged-brick+parchment-cream+antique-brass |
 | 148 | hotel-pigeon-forge | 2026-09-15 | off-center-framed | hero,welcome,rooms,amenity-board,gallery,explore-attractions,guest-voices,location,cta | bento-overlapping | hamburger-only | subtle-fade | mixed-vintage-signage | Ultra | Plus Jakarta Sans | pine-ink+parkway-marquee-orange+brass-gold+parchment-cream+sage-mist |
