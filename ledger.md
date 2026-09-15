@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 147 | snowcreek-resort | 2026-09-15 | split-screen | hero,savings-banner,story,phases-numbered,rentals,golf-club-split,gallery,location,cta | single-column-editorial | centered-split-logo | parallax | mixed-slab-editorial | Bitter | Chivo | granite-slate+creek-teal+meadow-sage+alpenglow-gold+snow-cream |
 | 146 | belvedere-inn | 2026-09-14 | type-only-no-image | hero,welcome,amenity-board,gallery,rooms,neighborhood,guest-voices,location,cta | broken-asymmetric | side-rail | staggered-reveal | all-caps-tracked-signage | Bebas Neue | Archivo | ink-navy+signal-red+mustard-gold+slate-teal+eggshell-cream+charcoal |
 | 145 | rustic-acre | 2026-09-14 | asymmetric-collage | hero,welcome-family-story,featured-cabins,pet-friendly-narrative,gallery,rmnp-location,good-to-know,book-direct,cta | symmetric-12col | top-sticky | none | warm-slab-editorial | Zilla Slab | Nunito Sans | pine-forest+log-timber+granite-stone+parchment-cream+ember-rust |
 | 144 | palm-motel-cottages | 2026-09-14 | full-bleed | hero,ticker,the-sign,rooms,amenities,pool-gardens,courtyard,gallery,visit,trust,cta | bento-overlapping | hamburger-only | marquee-ticker | signage-poster | Bungee | Manrope | sign-coral+pool-turquoise+palm-green+sand-cream+mosaic-gold+ink |
