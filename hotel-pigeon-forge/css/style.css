@@ -1,0 +1,276 @@
+/* Hotel Pigeon Forge — concept stylesheet
+   Structure roll #147: off-center-framed hero / custom section order /
+   single-column-editorial grid / centered-split-logo nav / parallax motion (hero only).
+   Parkway roadside-Americana-meets-mountain-basecamp system: pine ink + neon marquee
+   orange-red + brass gold on warm parchment cream. Rule-line dividers borrow the
+   dashed lane-marker motif from the Parkway itself. Framed "postcard" image treatment.
+   Type: Ultra (vintage signage serif display) / Plus Jakarta Sans (clean body).
+*/
+
+:root{
+  --pine:#1E3A29;
+  --pine-deep:#122019;
+  --marquee:#E2572B;
+  --marquee-deep:#B93F19;
+  --gold:#C98A2E;
+  --mist:#CFDBD1;
+  --cream:#F6F1E4;
+  --paper:#FFFDF7;
+  --charcoal:#241F18;
+  --line:#DCCFA9;
+
+  --ff-display:'Ultra', Georgia, 'Times New Roman', serif;
+  --ff-body:'Plus Jakarta Sans', -apple-system, 'Segoe UI', sans-serif;
+
+  --col:740px;
+  --topbar-h:76px;
+  --bookbar-h:58px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  font-family:var(--ff-body);
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  padding-top:var(--topbar-h);
+  padding-bottom:var(--bookbar-h);
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul{list-style:none;margin:0;padding:0}
+p{margin:0}
+h1,h2,h3,h4{
+  font-family:var(--ff-display);
+  font-weight:400;
+  line-height:1.12;
+  margin:0;
+  color:var(--pine);
+}
+body.drawer-open{overflow:hidden}
+
+/* ---------- Accessibility ---------- */
+.skip-link{
+  position:absolute;left:-999px;top:0;background:var(--pine);color:var(--cream);
+  padding:14px 22px;z-index:400;font-weight:700;letter-spacing:.02em;
+}
+.skip-link:focus{left:12px;top:12px}
+:focus-visible{outline:3px solid var(--marquee);outline-offset:3px}
+
+/* ---------- Layout: single-column-editorial ---------- */
+.col{max-width:var(--col);margin:0 auto;padding:0 24px}
+.section{padding:64px 0}
+.section--tight{padding:44px 0}
+.eyebrow{
+  font-family:var(--ff-body);font-weight:700;font-size:.82rem;letter-spacing:.05em;color:var(--marquee);
+}
+.section-title{margin-top:10px;font-size:clamp(1.7rem,4.4vw,2.5rem)}
+.body-copy{margin-top:16px;color:#4a4434;font-size:1.03rem;max-width:62ch}
+.body-copy + .body-copy{margin-top:14px}
+
+/* ---------- Rule-line divider (Parkway lane-marker motif) ---------- */
+.rule-line{
+  height:0;border-top:3px dashed var(--gold);
+  max-width:220px;margin:0 auto;opacity:.55;
+}
+
+/* ---------- Framed "postcard" image treatment ---------- */
+.frame{background:var(--paper);border:1px solid var(--line);padding:8px 8px 0;box-shadow:0 12px 26px rgba(30,58,41,.14)}
+.frame img{width:100%;object-fit:cover;aspect-ratio:4/3}
+.frame figcaption{padding:9px 3px 11px;font-size:.72rem;letter-spacing:.04em;color:#83795c}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--ff-body);font-weight:700;font-size:.98rem;letter-spacing:.01em;
+  padding:13px 22px;border:2px solid transparent;border-radius:3px;
+  cursor:pointer;transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.btn--book{background:var(--marquee);color:var(--paper)}
+.btn--book:hover{background:var(--marquee-deep)}
+.btn--outline-light{border-color:var(--cream);color:var(--cream)}
+.btn--outline-light:hover{background:var(--cream);color:var(--pine)}
+.btn--lg{padding:16px 28px;font-size:1.08rem}
+.btn--invert{background:var(--cream);color:var(--marquee-deep)}
+.btn--invert:hover{background:#fff}
+.btn--sm{padding:8px 16px;font-size:.86rem}
+.text-link{margin-top:14px;display:inline-flex;font-weight:700;color:var(--marquee)}
+.text-link:hover{color:var(--marquee-deep)}
+
+/* ---------- Top bar: centered-split-logo nav ---------- */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:200;height:var(--topbar-h);
+  background:var(--pine);border-bottom:3px solid var(--gold);
+  display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+  gap:10px;
+}
+.topbar__side{display:none;flex:1;gap:22px}
+.topbar__side--left{justify-content:flex-end}
+.topbar__side--right{justify-content:flex-start}
+.topbar__side a{font-family:var(--ff-body);font-weight:600;font-size:.92rem;color:#dbe6dc}
+.topbar__side a:hover{color:var(--gold)}
+.topbar__mark{text-align:center;flex-shrink:0}
+.topbar__mark-name{
+  font-family:var(--ff-display);font-size:1rem;line-height:1.15;letter-spacing:.01em;color:var(--cream);
+}
+.topbar__actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.topbar__phone{display:none;align-items:center;gap:6px;color:var(--cream);font-weight:700;font-size:.88rem}
+.topbar__phone svg{width:16px;height:16px}
+.topbar__burger{
+  display:inline-flex;align-items:center;gap:8px;background:none;border:2px solid var(--cream);
+  color:var(--cream);border-radius:3px;padding:7px 12px;cursor:pointer;
+  font-family:var(--ff-body);font-weight:700;font-size:.82rem;
+}
+@media(min-width:560px){.topbar__phone{display:inline-flex}}
+@media(min-width:900px){
+  .topbar__side{display:flex}
+  .topbar__burger{display:none}
+  .topbar__mark-name{font-size:1.15rem}
+}
+
+.drawer{
+  position:fixed;top:var(--topbar-h);left:0;right:0;bottom:0;z-index:190;
+  background:var(--pine-deep);color:var(--cream);padding:30px 24px;overflow-y:auto;
+}
+.drawer__menu{display:grid;gap:22px}
+.drawer__menu a{font-family:var(--ff-display);font-size:1.5rem;color:var(--cream)}
+.drawer__menu a:hover{color:var(--gold)}
+.drawer__foot{margin-top:30px;font-size:.9rem;color:#b9c7bb}
+.drawer__foot a{display:block;margin-top:6px;color:var(--gold)}
+
+/* ---------- Hero: off-center-framed ---------- */
+.hero{
+  background:var(--pine);color:var(--cream);position:relative;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.hero__panel{
+  position:relative;z-index:2;padding:56px 24px 40px;max-width:640px;
+}
+.hero__frame-wrap{padding:0 24px 48px;position:relative;z-index:1}
+.hero__frame{margin:0;max-width:560px;margin-left:auto}
+.hero__frame img{aspect-ratio:4/3}
+@media(min-width:900px){
+  .hero{flex-direction:row;align-items:center;min-height:640px}
+  .hero__panel{
+    flex:0 0 44%;padding:0 0 0 56px;background:var(--pine);position:relative;z-index:3;
+    margin-right:-70px;padding-right:70px;
+  }
+  .hero__frame-wrap{flex:1;padding:60px 56px 60px 0;display:flex;justify-content:flex-end}
+  .hero__frame{width:88%;transform:translateY(-6%)}
+}
+.hero__title{margin-top:16px;font-size:clamp(2.1rem,5.6vw,3.4rem);letter-spacing:.01em}
+.hero__title span{display:block;color:var(--gold);font-size:.5em;margin-top:8px}
+.hero__lede{margin:18px 0 0;max-width:46ch;font-size:1.04rem;color:#dbe6dc}
+.hero__cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px}
+.hero__facts{margin:30px 0 0;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(246,241,228,.25)}
+.hero__facts li{font-size:.82rem;padding:14px 16px 0 0;color:#b9c7bb}
+
+/* ---------- Welcome ---------- */
+.welcome__frame{margin-top:34px;max-width:520px}
+
+/* ---------- Rooms: editorial register ---------- */
+.room-register{max-width:900px;margin:40px auto 0;padding:0 24px;display:flex;flex-direction:column;gap:44px}
+.room-entry{display:flex;flex-direction:column;gap:22px;align-items:center}
+.room-entry__frame{flex-shrink:0;width:100%;max-width:340px;margin:0}
+.room-entry__body h3{font-size:1.4rem}
+.room-entry__tag{margin-top:6px;font-weight:700;font-size:.8rem;letter-spacing:.03em;color:var(--gold)}
+.room-entry__body p:not(.room-entry__tag){margin-top:12px;color:#4a4434}
+@media(min-width:700px){
+  .room-entry{flex-direction:row;text-align:left}
+  .room-entry--reverse{flex-direction:row-reverse}
+  .room-entry__frame{width:44%;max-width:none}
+  .room-entry__body{flex:1}
+}
+.room-note{margin-top:38px;font-size:.95rem;color:#4a4434;border-top:1px solid var(--line);padding-top:22px}
+.room-note a{font-weight:700;color:var(--marquee)}
+
+/* ---------- Amenity board ---------- */
+.board{background:var(--paper);border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:44px 0}
+.board-list{display:grid;grid-template-columns:1fr;gap:0;margin-top:8px}
+.board-item{padding:20px 2px;border-top:1px solid var(--line);display:flex;align-items:flex-start;gap:16px}
+.board-list .board-item:first-child{border-top:none}
+.board-item__mark{
+  flex-shrink:0;width:40px;height:40px;border:2px solid var(--pine);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--pine);
+}
+.board-item__mark svg{width:20px;height:20px}
+.board-item h3{font-size:1.02rem;font-family:var(--ff-body);font-weight:800;color:var(--pine)}
+.board-item p{margin-top:4px;font-size:.88rem;color:#4a4434}
+@media(min-width:700px){.board-list{grid-template-columns:repeat(2,1fr);column-gap:36px}}
+
+/* ---------- Gallery strip ---------- */
+.gallery{background:var(--cream)}
+.gallery__row{display:flex;gap:16px;overflow-x:auto;padding:16px 24px 10px;scroll-snap-type:x mandatory;max-width:1040px;margin:0 auto}
+.gallery__row .frame{flex:0 0 240px;scroll-snap-align:start;padding:6px 6px 0}
+.gallery__row .frame img{aspect-ratio:5/4}
+
+/* ---------- Explore / attractions ---------- */
+.attraction-list{margin-top:30px;display:grid;grid-template-columns:1fr;gap:14px}
+.attraction-card{padding:18px 18px;background:var(--paper);border:1px solid var(--line)}
+.attraction-card h3{font-size:1rem;font-family:var(--ff-body);font-weight:800;color:var(--pine)}
+.attraction-card p{margin-top:6px;font-size:.88rem;color:#4a4434}
+@media(min-width:700px){.attraction-list{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Guest voices ---------- */
+.voices{background:var(--pine);color:var(--cream)}
+.voices .eyebrow{color:var(--gold)}
+.voices .section-title{color:var(--cream)}
+.voices-list{margin-top:30px;display:flex;flex-direction:column;gap:20px}
+.voice-card{background:rgba(246,241,228,.07);border:1px solid rgba(246,241,228,.25);padding:22px}
+.voice-card p{font-size:.98rem;color:#e7ede8}
+.voice-card__attr{margin-top:12px;font-weight:800;font-size:.86rem;color:var(--gold)}
+
+/* ---------- Location ---------- */
+.location{background:var(--paper);border-top:2px solid var(--line)}
+.grid-loc{display:flex;flex-direction:column;gap:34px}
+.location__addr{font-family:var(--ff-display);font-size:1.3rem;color:var(--pine);line-height:1.4}
+.location__pts{margin-top:20px}
+.location__pts li{padding:9px 0;border-top:1px solid var(--line);font-size:.92rem;color:#4a4434}
+.location__pts a{font-weight:700;color:var(--marquee)}
+.location__actions{margin-top:24px}
+.location__map{border:1px solid var(--line);background:#fff;padding:7px}
+.location__map iframe{width:100%;height:300px;border:0;display:block}
+@media(min-width:820px){.grid-loc{flex-direction:row;align-items:flex-start}.grid-loc>div:first-child{flex:1}.location__map{flex:1;align-self:stretch}.location__map iframe{height:100%;min-height:320px}}
+
+/* ---------- Final CTA ---------- */
+.cta{background:var(--marquee);color:var(--paper);text-align:center}
+.cta h2{color:var(--paper);font-size:clamp(1.8rem,4.6vw,2.7rem)}
+.cta p{margin:16px auto 0;max-width:44ch;color:#fde3d8;font-size:1.02rem}
+.cta__actions{margin-top:26px;display:flex;gap:18px;justify-content:center;flex-wrap:wrap;align-items:center}
+.cta__link{font-weight:700;color:var(--paper);text-decoration:underline}
+.cta__link:hover{color:var(--cream)}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--pine-deep);color:#b9c7bb;padding:44px 0 26px;font-size:.9rem}
+.footer h3{font-family:var(--ff-display);font-size:.98rem;color:var(--cream)}
+.footer a{color:#cdd9cf}
+.footer a:hover{color:var(--gold)}
+.footer__grid{display:grid;gap:28px}
+@media(min-width:700px){.footer__grid{grid-template-columns:1.3fr 1fr 1fr}}
+.footer ul{margin-top:10px}
+.footer li{padding:3px 0}
+.footer__legal{
+  margin-top:28px;padding-top:18px;border-top:1px solid rgba(246,241,228,.14);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:.78rem;
+}
+
+/* ---------- Persistent bottom booking bar (mandatory, all breakpoints) ---------- */
+.bookbar{
+  position:fixed;bottom:0;left:0;right:0;z-index:200;height:var(--bookbar-h);
+  background:var(--pine);border-top:3px solid var(--gold);display:flex;
+}
+.bookbar__phone{
+  flex:1;display:flex;align-items:center;justify-content:center;color:var(--cream);
+  font-weight:700;font-size:.92rem;border-right:1px solid rgba(246,241,228,.2);
+}
+.bookbar__cta{
+  flex:1;display:flex;align-items:center;justify-content:center;background:var(--marquee);
+  color:var(--paper);font-weight:800;font-size:.94rem;
+}
+.bookbar__cta:hover{background:var(--marquee-deep)}
+@media(min-width:900px){.bookbar{display:none}body{padding-bottom:0}}
