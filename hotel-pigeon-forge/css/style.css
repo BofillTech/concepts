@@ -1,6 +1,6 @@
 /* Hotel Pigeon Forge — concept stylesheet
-   Structure roll #147: off-center-framed hero / custom section order /
-   single-column-editorial grid / centered-split-logo nav / parallax motion (hero only).
+   Structure roll #148: off-center-framed hero / custom section order /
+   bento-overlapping grid / hamburger-only nav / subtle-fade motion (hero only).
    Parkway roadside-Americana-meets-mountain-basecamp system: pine ink + neon marquee
    orange-red + brass gold on warm parchment cream. Rule-line dividers borrow the
    dashed lane-marker motif from the Parkway itself. Framed "postcard" image treatment.
@@ -62,7 +62,7 @@ body.drawer-open{overflow:hidden}
 .skip-link:focus{left:12px;top:12px}
 :focus-visible{outline:3px solid var(--marquee);outline-offset:3px}
 
-/* ---------- Layout: single-column-editorial ---------- */
+/* ---------- Layout ---------- */
 .col{max-width:var(--col);margin:0 auto;padding:0 24px}
 .section{padding:64px 0}
 .section--tight{padding:44px 0}
@@ -102,19 +102,15 @@ body.drawer-open{overflow:hidden}
 .text-link{margin-top:14px;display:inline-flex;font-weight:700;color:var(--marquee)}
 .text-link:hover{color:var(--marquee-deep)}
 
-/* ---------- Top bar: centered-split-logo nav ---------- */
+/* ---------- Top bar: hamburger-only nav (rolled) — burger stays the only
+   nav trigger at every breakpoint, no inline desktop link list ---------- */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:200;height:var(--topbar-h);
   background:var(--pine);border-bottom:3px solid var(--gold);
   display:flex;align-items:center;justify-content:space-between;padding:0 18px;
   gap:10px;
 }
-.topbar__side{display:none;flex:1;gap:22px}
-.topbar__side--left{justify-content:flex-end}
-.topbar__side--right{justify-content:flex-start}
-.topbar__side a{font-family:var(--ff-body);font-weight:600;font-size:.92rem;color:#dbe6dc}
-.topbar__side a:hover{color:var(--gold)}
-.topbar__mark{text-align:center;flex-shrink:0}
+.topbar__mark{flex-shrink:0}
 .topbar__mark-name{
   font-family:var(--ff-display);font-size:1rem;line-height:1.15;letter-spacing:.01em;color:var(--cream);
 }
@@ -127,11 +123,7 @@ body.drawer-open{overflow:hidden}
   font-family:var(--ff-body);font-weight:700;font-size:.82rem;
 }
 @media(min-width:560px){.topbar__phone{display:inline-flex}}
-@media(min-width:900px){
-  .topbar__side{display:flex}
-  .topbar__burger{display:none}
-  .topbar__mark-name{font-size:1.15rem}
-}
+@media(min-width:900px){.topbar__mark-name{font-size:1.15rem}}
 
 .drawer{
   position:fixed;top:var(--topbar-h);left:0;right:0;bottom:0;z-index:190;
@@ -170,30 +162,46 @@ body.drawer-open{overflow:hidden}
 .hero__facts{margin:30px 0 0;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(246,241,228,.25)}
 .hero__facts li{font-size:.82rem;padding:14px 16px 0 0;color:#b9c7bb}
 
+/* Subtle-fade motion (rolled): single orchestrated fade-in on the hero photo */
+[data-fade]{opacity:0;transform:translateY(10px);transition:opacity .9s ease,transform .9s ease}
+[data-fade].is-visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){[data-fade]{transition:none;opacity:1;transform:none}}
+
 /* ---------- Welcome ---------- */
 .welcome__frame{margin-top:34px;max-width:520px}
 
-/* ---------- Rooms: editorial register ---------- */
-.room-register{max-width:900px;margin:40px auto 0;padding:0 24px;display:flex;flex-direction:column;gap:44px}
-.room-entry{display:flex;flex-direction:column;gap:22px;align-items:center}
-.room-entry__frame{flex-shrink:0;width:100%;max-width:340px;margin:0}
-.room-entry__body h3{font-size:1.4rem}
-.room-entry__tag{margin-top:6px;font-weight:700;font-size:.8rem;letter-spacing:.03em;color:var(--gold)}
-.room-entry__body p:not(.room-entry__tag){margin-top:12px;color:#4a4434}
-@media(min-width:700px){
-  .room-entry{flex-direction:row;text-align:left}
-  .room-entry--reverse{flex-direction:row-reverse}
-  .room-entry__frame{width:44%;max-width:none}
-  .room-entry__body{flex:1}
+/* ---------- Bento-overlapping grid system (rolled) ----------
+   Mixed-span tiles on a 4-col track; one tile in each board overlaps
+   its neighbor slightly via negative margin + z-index to break the
+   uniform-card default. */
+.bento{
+  display:grid;grid-template-columns:1fr;gap:16px;
+  max-width:1040px;margin:0 auto;padding:0 24px;
 }
-.room-note{margin-top:38px;font-size:.95rem;color:#4a4434;border-top:1px solid var(--line);padding-top:22px}
-.room-note a{font-weight:700;color:var(--marquee)}
+.bento__tile--wide,.bento__tile--tall{grid-column:span 1}
+@media(min-width:680px){
+  .bento{grid-template-columns:repeat(4,1fr);gap:20px}
+  .bento__tile--wide{grid-column:span 2}
+  .bento__tile--tall{grid-column:span 2;grid-row:span 2}
+}
 
-/* ---------- Amenity board ---------- */
-.board{background:var(--paper);border-top:2px solid var(--line);border-bottom:2px solid var(--line);padding:44px 0}
-.board-list{display:grid;grid-template-columns:1fr;gap:0;margin-top:8px}
-.board-item{padding:20px 2px;border-top:1px solid var(--line);display:flex;align-items:flex-start;gap:16px}
-.board-list .board-item:first-child{border-top:none}
+/* Rooms bento */
+.bento--rooms{margin-top:36px}
+.room-card{background:var(--paper);border:1px solid var(--line);display:flex;flex-direction:column}
+.room-card__frame{margin:0;border:none;box-shadow:none;padding:0}
+.room-card__frame img{aspect-ratio:16/10}
+.bento--rooms .bento__tile--tall .room-card__frame img{aspect-ratio:3/4}
+.room-card__body{padding:22px;flex:1;display:flex;flex-direction:column}
+.room-card__tag{margin-top:6px;font-weight:700;font-size:.8rem;letter-spacing:.03em;color:var(--gold)}
+.room-card__body p:not(.room-card__tag){margin-top:12px;color:#4a4434;flex:1}
+@media(min-width:680px){
+  .bento--rooms .bento__tile--wide{position:relative;z-index:2;margin-right:-24px}
+  .bento--rooms .bento__tile--tall{position:relative;z-index:1;margin-top:34px}
+}
+
+/* Amenity board bento */
+.bento--board{margin-top:8px}
+.board-item{background:var(--paper);border:1px solid var(--line);padding:20px;display:flex;align-items:flex-start;gap:16px}
 .board-item__mark{
   flex-shrink:0;width:40px;height:40px;border:2px solid var(--pine);border-radius:50%;
   display:flex;align-items:center;justify-content:center;color:var(--pine);
@@ -201,20 +209,22 @@ body.drawer-open{overflow:hidden}
 .board-item__mark svg{width:20px;height:20px}
 .board-item h3{font-size:1.02rem;font-family:var(--ff-body);font-weight:800;color:var(--pine)}
 .board-item p{margin-top:4px;font-size:.88rem;color:#4a4434}
-@media(min-width:700px){.board-list{grid-template-columns:repeat(2,1fr);column-gap:36px}}
+.bento--board .bento__tile--tall{flex-direction:column}
 
-/* ---------- Gallery strip ---------- */
-.gallery{background:var(--cream)}
-.gallery__row{display:flex;gap:16px;overflow-x:auto;padding:16px 24px 10px;scroll-snap-type:x mandatory;max-width:1040px;margin:0 auto}
-.gallery__row .frame{flex:0 0 240px;scroll-snap-align:start;padding:6px 6px 0}
-.gallery__row .frame img{aspect-ratio:5/4}
+/* Gallery bento */
+.bento--gallery .frame{padding:6px 6px 0}
+.bento--gallery .frame img{width:100%;height:100%;aspect-ratio:4/3}
+.bento--gallery .bento__tile--tall img{aspect-ratio:3/4}
 
-/* ---------- Explore / attractions ---------- */
-.attraction-list{margin-top:30px;display:grid;grid-template-columns:1fr;gap:14px}
-.attraction-card{padding:18px 18px;background:var(--paper);border:1px solid var(--line)}
+/* Explore / attractions bento */
+.bento--attractions{margin-top:30px}
+.attraction-card{padding:20px 18px;background:var(--paper);border:1px solid var(--line);height:100%}
 .attraction-card h3{font-size:1rem;font-family:var(--ff-body);font-weight:800;color:var(--pine)}
 .attraction-card p{margin-top:6px;font-size:.88rem;color:#4a4434}
-@media(min-width:700px){.attraction-list{grid-template-columns:repeat(2,1fr)}}
+.bento--attractions .bento__tile--wide{background:var(--pine);border-color:var(--pine)}
+.bento--attractions .bento__tile--wide .attraction-card{background:var(--pine)}
+.bento--attractions .bento__tile--wide h3{color:var(--gold)}
+.bento--attractions .bento__tile--wide p{color:#dbe6dc}
 
 /* ---------- Guest voices ---------- */
 .voices{background:var(--pine);color:var(--cream)}
