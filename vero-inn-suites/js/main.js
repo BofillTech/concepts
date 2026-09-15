@@ -25,9 +25,25 @@
     sections.forEach(function(section){ navObserver.observe(section); });
   }
 
-  // Subtle fade reveal on scroll
-  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.gallery__row .frame'));
-  revealEls.forEach(function(el){ el.classList.add('reveal'); });
+  // Staggered reveal on scroll — room rows, vignettes, and the gallery each
+  // stagger in as a group (a short incremental delay per item), rather than
+  // a single flat fade.
+  document.querySelectorAll('.gallery__row .frame').forEach(function(el){ el.classList.add('reveal'); });
+
+  var groups = [
+    document.querySelectorAll('.room-row'),
+    document.querySelectorAll('.vignette'),
+    document.querySelectorAll('.rate-card'),
+    document.querySelectorAll('.gallery__row .frame')
+  ];
+  groups.forEach(function(group){
+    Array.prototype.forEach.call(group, function(el, i){
+      el.classList.add('reveal');
+      el.style.setProperty('--reveal-delay', (i * 0.08) + 's');
+    });
+  });
+
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if(revealEls.length && 'IntersectionObserver' in window && !reduceMotion){
