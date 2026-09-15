@@ -2,7 +2,7 @@
    Vero Beach Inn & Suites — concept
    Palette: ink-navy / lagoon-teal / citrus-coral / palmetto-green / buttermilk-cream / awning-gold
    Type: DM Serif Display (display) + Figtree (body)
-   Structure: off-center-framed hero · single-column-editorial grid · persistent bottom dock nav · subtle-fade motion
+   Structure: full-bleed hero · broken-asymmetric grid · persistent bottom dock nav · staggered-reveal motion
    ========================================================================== */
 
 :root{
@@ -90,20 +90,16 @@ p{ margin: 0 0 1em; }
 .topbar__phone span{ display: none; }
 @media (min-width: 640px){ .topbar__phone span{ display: inline; } }
 
-/* ---------- Hero (off-center framed) ---------- */
-.hero{ padding: 1.6rem 0 2.4rem; }
-.hero__wrap{ max-width: var(--wrap-max); margin: 0 auto; padding: 0 1.25rem; position: relative; }
-.hero__frame{
-  margin: 0; border-radius: var(--radius); overflow: hidden;
-  border: 6px solid var(--white); box-shadow: 0 18px 40px rgba(30,42,53,.18);
-}
-.hero__frame img{ width: 100%; height: 56vw; max-height: 460px; object-fit: cover; }
+/* ---------- Hero (full-bleed, rolled) ---------- */
+.hero{ position: relative; }
+.hero__media{ width: 100%; height: 62vh; min-height: 340px; max-height: 620px; overflow: hidden; }
+.hero__media img{ width: 100%; height: 100%; object-fit: cover; }
 .hero__panel{
   background: var(--ink); color: var(--white);
-  border-radius: var(--radius);
   padding: 1.8rem 1.6rem;
-  margin: -3rem 0 0 0;
   position: relative; z-index: 2;
+  margin: -3rem 1.25rem 0;
+  border-radius: var(--radius);
 }
 .hero__eyebrow{ font-size: .78rem; letter-spacing: .05em; color: var(--gold); font-weight: 700; margin-bottom: .6em; }
 .hero__title{ font-size: clamp(2rem, 6vw, 3.2rem); margin-bottom: .5em; }
@@ -114,10 +110,11 @@ p{ margin: 0 0 1em; }
 .hero__facts li::before{ content: '\2022'; position: absolute; left: 0; color: var(--teal); }
 
 @media (min-width: 900px){
-  .hero__wrap{ display: grid; grid-template-columns: 1.1fr .9fr; gap: 0; align-items: center; }
-  .hero__frame{ order: 2; margin-left: -4rem; }
-  .hero__frame img{ height: 34rem; }
-  .hero__panel{ order: 1; margin: 0; max-width: 30rem; padding: 3rem 2.6rem; z-index: 3; }
+  .hero__media{ height: 78vh; min-height: 480px; max-height: 760px; }
+  .hero__panel{
+    position: absolute; left: 3rem; bottom: 3rem; margin: 0;
+    max-width: 30rem; padding: 3rem 2.6rem;
+  }
 }
 
 /* ---------- Proof strip ---------- */
@@ -135,24 +132,26 @@ p{ margin: 0 0 1em; }
 .frame figcaption{ font-size: .82rem; color: var(--ink-45); padding: .5em .1em 0; }
 .frame--wide{ max-width: none; }
 
-/* ---------- Rooms (single-column editorial rows) ---------- */
+/* ---------- Rooms (broken-asymmetric rows, rolled) ---------- */
 .rooms{ background: var(--white); }
-.room-row{ display: block; margin-bottom: 2.2rem; }
+.room-row{ display: block; margin-bottom: 2.2rem; padding: 0 1.25rem; }
 .room-row__specs{ color: var(--ink-70); font-size: .92rem; }
 .room-row__cta{ font-weight: 700; color: var(--coral-dark); }
 @media (min-width: 760px){
-  .room-row{ max-width: var(--wrap-max); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding: 0 1.25rem; }
+  .room-row{ display: grid; grid-template-columns: 7fr 5fr; gap: 2rem; align-items: center; }
+  .room-row--rev{ grid-template-columns: 5fr 7fr; }
   .room-row .frame{ margin: 0; }
   .room-row--rev .frame{ order: 2; }
   .room-row--rev .room-row__body{ order: 1; }
 }
 
-/* ---------- Vignettes ---------- */
+/* ---------- Vignettes (broken-asymmetric, rolled) ---------- */
 .vignettes{ background: var(--cream-2); }
-.vignette{ margin-bottom: 2rem; }
+.vignette{ margin-bottom: 2rem; padding: 0 1.25rem; }
 .vignette__body p{ color: var(--ink-70); }
 @media (min-width: 760px){
-  .vignette{ max-width: var(--wrap-max); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; padding: 0 1.25rem; }
+  .vignette{ display: grid; grid-template-columns: 8fr 4fr; gap: 2rem; align-items: center; }
+  .vignette--rev{ grid-template-columns: 4fr 8fr; }
   .vignette .frame{ margin: 0; }
   .vignette--rev .frame{ order: 2; }
   .vignette--rev .vignette__body{ order: 1; }
@@ -272,8 +271,12 @@ p{ margin: 0 0 1em; }
   .dock__book{ margin: 0 0 0 .3rem; }
 }
 
-/* ---------- Motion: subtle fade (rolled) ---------- */
-.reveal{ opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s ease; }
+/* ---------- Motion: staggered reveal (rolled) ---------- */
+.reveal{
+  opacity: 0; transform: translateY(16px);
+  transition: opacity .55s ease, transform .55s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
 .reveal.is-visible{ opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce){
   .reveal{ opacity: 1; transform: none; transition: none; }
