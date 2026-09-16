@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 154 | inn-on-the-hudson | 2026-09-16 | full-bleed | hero,fact-strip,welcome,view-story,rooms,amenities,gallery,discover,visit,cta | broken-asymmetric | top-sticky | staggered-reveal | condensed-display-editorial | Staatliches | Urbanist | river-slate+clapboard-white+colonial-brick+pine-shadow+brass-signal |
 | 153 | islander-hotel-emerald-isle | 2026-09-16 | split-screen | hero,ticker,welcome,rooms,beach-pool-life,ballroom,gallery,voices,location,cta | symmetric-12col | hamburger-only | marquee-ticker | rounded-coastal-display | Fredoka | Epilogue | ocean-teal+emerald-isle-green+sunset-coral+brass-gold+sand-cream+ink-navy |
 | 152 | jetty-motel | 2026-09-16 | off-center-framed | hero,story,rooms,amenities,gallery,location,reviews,cta | bento-overlapping | side-rail | subtle-fade | vintage-signage-postcard-script | Rye | Barlow | ink-navy+motel-teal+sun-coral+sand-cream+brass-gold+faded-denim |
 | 151 | little-sweden | 2026-09-15 | asymmetric-collage | hero,heritage,villas,good-life,gallery,voices,visit,cta | single-column-editorial | centered-split-logo | parallax | geometric-display-rule-lines | Unbounded | Inter Tight | falu-red+door-county-pine+nordic-slate+brass-gold+birch-cream+timber-ink |
