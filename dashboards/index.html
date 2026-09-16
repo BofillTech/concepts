@@ -1,1 +1,385 @@
-FILE_CONTENT_PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Dashboards — Bofill Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FFFFFF;
+    --surface: #F7F7F8;
+    --surface-hover: #F0F1F3;
+    --border: #E3E4E8;
+    --border-soft: #ECEDF0;
+    --text: #14161C;
+    --text-dim: #63677A;
+    --text-faint: #9497A6;
+    --accent: #1F9D6E;
+    --accent-dim: rgba(31, 157, 110, 0.10);
+    --warn: #B4791E;
+    --warn-dim: rgba(180, 121, 30, 0.08);
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap{
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 64px 28px 96px;
+  }
+
+  header.page-head{
+    margin-bottom: 56px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 28px;
+  }
+
+  h1{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 2.1rem;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    color: var(--text);
+  }
+
+  .page-head p{
+    margin: 0;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    max-width: 46ch;
+    line-height: 1.5;
+  }
+
+  .updated{
+    font-size: 0.8rem;
+    color: var(--text-faint);
+    white-space: nowrap;
+  }
+
+  section.group{
+    margin-bottom: 48px;
+  }
+
+  .group-head{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .group-head h2{
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+    color: var(--text);
+  }
+
+  .group-head .count{
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+
+  .grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  @media (max-width: 640px){
+    .grid{ grid-template-columns: 1fr; }
+    .wrap{ padding: 40px 18px 72px; }
+    h1{ font-size: 1.7rem; }
+  }
+
+  a.card{
+    display: block;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    text-decoration: none;
+    color: var(--text);
+    transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+    position: relative;
+  }
+
+  a.card:hover{
+    background: var(--surface-hover);
+    border-color: #C7C9D1;
+    transform: translateY(-1px);
+  }
+
+  a.card:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  .card-name{
+    font-weight: 600;
+    font-size: 0.94rem;
+    margin-bottom: 3px;
+  }
+
+  .card-desc{
+    font-size: 0.79rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .card-url{
+    font-size: 0.74rem;
+    color: var(--text-faint);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .card-url svg{ flex-shrink: 0; opacity: 0.7; }
+
+  /* TBD / missing-link cards */
+  .card.tbd{
+    background: transparent;
+    border: 1px dashed var(--border);
+    cursor: default;
+  }
+  .card.tbd:hover{
+    background: var(--warn-dim);
+    border-color: var(--warn);
+    transform: none;
+  }
+  .card.tbd .card-name{ color: var(--text-dim); }
+  .badge{
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--warn);
+    background: var(--warn-dim);
+    border-radius: 5px;
+    padding: 2px 7px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* Quick links strip */
+  .quicklinks{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 640px){
+    .quicklinks{ grid-template-columns: repeat(2, 1fr); }
+  }
+
+  a.qlink{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  a.qlink:hover{
+    background: var(--surface-hover);
+    border-color: #C7C9D1;
+  }
+  a.qlink:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  a.qlink svg{ opacity: 0.5; flex-shrink: 0; }
+
+  footer.page-foot{
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-soft);
+    font-size: 0.78rem;
+    color: var(--text-faint);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    a.card, a.qlink{ transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="page-head">
+    <div>
+      <h1>Dashboards</h1>
+      <p>Every monitoring, reporting, and client dashboard in one place — grouped by what they're for.</p>
+    </div>
+    <div class="updated">Last updated September 16, 2026</div>
+  </header>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Site &amp; Uptime Monitoring</h2>
+      <span class="count">2</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://bofilltech.github.io/bofilltech-monitor/" target="_blank" rel="noopener">
+        <div class="card-name">VisualMonitor</div>
+        <div class="card-desc">Uptime and visual-diff monitoring across all hosted client sites.</div>
+        <div class="card-url">bofilltech.github.io/bofilltech-monitor</div>
+      </a>
+      <a class="card tbd" href="#" onclick="return false;">
+        <div class="card-name">Captcha Monitor <span class="badge">add link</span></div>
+        <div class="card-desc">Link not on hand yet — drop it in and this card goes live.</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Ads &amp; Marketing Reporting</h2>
+      <span class="count">3</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://bofilltech.com/ads/hotel-online-booking-conversions/" target="_blank" rel="noopener">
+        <div class="card-name">Hotel Online Booking Conversions</div>
+        <div class="card-desc">Booking conversion reporting for hotel ad campaigns.</div>
+        <div class="card-url">bofilltech.com/ads/hotel-online-booking-conversions</div>
+      </a>
+      <a class="card" href="https://whatconverts-report.vercel.app/" target="_blank" rel="noopener">
+        <div class="card-name">Phone Call Conversions</div>
+        <div class="card-desc">WhatConverts call-tracking data feeding client Swydo reports.</div>
+        <div class="card-url">whatconverts-report.vercel.app</div>
+      </a>
+      <a class="card tbd" href="#" onclick="return false;">
+        <div class="card-name">Google Ads Change History Dashboard <span class="badge">add link</span></div>
+        <div class="card-desc">Change-history archive across ~32 MCC client accounts. Vercel URL still needed.</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Client Dashboards</h2>
+      <span class="count">2</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://bofilltech.github.io/concepts/clients/wbv-dashboards/" target="_blank" rel="noopener">
+        <div class="card-name">White Bay Villas — Dashboard Hub</div>
+        <div class="card-desc">Cloudbeds, Looker Studio, and other WBV reporting tiles.</div>
+        <div class="card-url">bofilltech.github.io/concepts/clients/wbv-dashboards</div>
+      </a>
+      <a class="card" href="https://401.bofilltech.com/" target="_blank" rel="noopener">
+        <div class="card-name">401 Leads</div>
+        <div class="card-desc">Lead tracking dashboard for 401 Homebuilders.</div>
+        <div class="card-url">401.bofilltech.com</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Call Agents</h2>
+      <span class="count">2</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://callagent.bofilltech.com/" target="_blank" rel="noopener">
+        <div class="card-name">Call Agents</div>
+        <div class="card-desc">AI voice call-agent management.</div>
+        <div class="card-url">callagent.bofilltech.com</div>
+      </a>
+      <a class="card" href="https://retell-dashboard-sbofills-projects.vercel.app/" target="_blank" rel="noopener">
+        <div class="card-name">Retell AI Dashboard — Bofill Technologies</div>
+        <div class="card-desc">Custom Retell reporting view for Bofill Technologies.</div>
+        <div class="card-url">retell-dashboard-sbofills-projects.vercel.app</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Sales &amp; Call Analytics</h2>
+      <span class="count">1</span>
+    </div>
+    <div class="grid">
+      <a class="card" href="https://bofilltech.github.io/coldcaller-dashboard" target="_blank" rel="noopener">
+        <div class="card-name">Cold Caller Dashboard</div>
+        <div class="card-desc">Quo call-coaching dashboard for outbound sales calls.</div>
+        <div class="card-url">bofilltech.github.io/coldcaller-dashboard</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <div class="group-head">
+      <h2>Quick Links</h2>
+      <span class="count">9</span>
+    </div>
+    <div class="quicklinks">
+      <a class="qlink" href="https://app.modulards.com/" target="_blank" rel="noopener">
+        ModularDS
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://app.malcare.com/app" target="_blank" rel="noopener">
+        MalCare
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://qbo.intuit.com/app/homepage" target="_blank" rel="noopener">
+        QuickBooks
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://bofilltech.app.n8n.cloud/workflow/" target="_blank" rel="noopener">
+        n8n
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://dashboard.retellai.com/" target="_blank" rel="noopener">
+        Retell
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://app.getflywheel.com/sites" target="_blank" rel="noopener">
+        Flywheel
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://login.siteground.com/" target="_blank" rel="noopener">
+        SiteGround
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://app.slack.com/client/T07KPT8DF5Y/C08DB76ANLE" target="_blank" rel="noopener">
+        Slack — BookifyPro
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+      <a class="qlink" href="https://dash.cloudflare.com/" target="_blank" rel="noopener">
+        Cloudflare
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <footer class="page-foot">
+    Internal use only — Bofill Technologies.
+  </footer>
+
+</div>
+</body>
+</html>
