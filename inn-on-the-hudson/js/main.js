@@ -40,12 +40,12 @@
     });
   }
 
-  /* Highlight current section in the side rail as the guest scrolls */
+  /* Highlight current section in the top nav as the guest scrolls */
   var sections = document.querySelectorAll("main [id]");
-  var railLinks = document.querySelectorAll(".rail-nav__link");
-  if (sections.length && railLinks.length && "IntersectionObserver" in window) {
+  var navLinks = document.querySelectorAll(".topbar-nav__link");
+  if (sections.length && navLinks.length && "IntersectionObserver" in window) {
     var map = {};
-    railLinks.forEach(function (link) {
+    navLinks.forEach(function (link) {
       var id = link.getAttribute("href").replace("#", "");
       map[id] = link;
     });
@@ -55,7 +55,7 @@
           var link = map[entry.target.id];
           if (!link) return;
           if (entry.isIntersecting) {
-            railLinks.forEach(function (l) { l.removeAttribute("aria-current"); });
+            navLinks.forEach(function (l) { l.removeAttribute("aria-current"); });
             link.setAttribute("aria-current", "page");
           }
         });
