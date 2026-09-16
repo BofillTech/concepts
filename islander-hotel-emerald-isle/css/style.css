@@ -1,9 +1,9 @@
 /* ==========================================================================
-   Islander Hotel & Resort — concept #152
+   Islander Hotel & Resort — concept #153
    Palette: ocean-teal / emerald-isle-green / sunset-coral / brass-gold / sand-cream / ink-navy
    Type: Fredoka (display) + Epilogue (body)
-   Structure: off-center-framed hero · bento-overlapping grid ·
-              hamburger-only nav · subtle-fade motion · badge decorative system
+   Structure: split-screen hero · symmetric-12col grid ·
+              hamburger-only nav · marquee-ticker motion · badge/ticker decorative system
    ========================================================================== */
 
 :root{
@@ -113,45 +113,34 @@ p{ margin: 0 0 1em; }
   .navbar__panel{ position: absolute; right: 1.25rem; top: 100%; width: 16rem; border-radius: 0 0 12px 12px; box-shadow: 0 14px 30px rgba(22,35,43,.22); }
 }
 
-/* ---------- Hero — off-center-framed (rolled) ---------- */
-.hero{ padding: 2.6rem 0 2.8rem; background: var(--sand); overflow: hidden; }
-.hero__wrap{ display: flex; flex-direction: column; gap: 2rem; }
+/* ---------- Hero — split-screen (rolled) ---------- */
+.hero{ background: var(--sand); }
+.hero__grid{ display: flex; flex-direction: column; }
+.hero__text{ padding: 2.6rem 1.25rem 2.4rem; }
 .hero__eyebrow{ font-family: var(--font-display); font-size: .78rem; font-weight: 600; color: var(--emerald); margin-bottom: 1em; }
-.hero__title{ font-size: clamp(2.5rem, 9vw, 4.2rem); color: var(--teal-dark); margin-bottom: .35em; }
-.hero__lede{ max-width: 30rem; color: var(--ink-70); font-size: 1.08rem; }
+.hero__title{ font-size: clamp(2.5rem, 9vw, 3.6rem); color: var(--teal-dark); margin-bottom: .35em; }
+.hero__lede{ max-width: 28rem; color: var(--ink-70); font-size: 1.08rem; }
 .hero__cta{ display: flex; flex-wrap: wrap; gap: .8em; margin-top: 1.3em; }
-
-.hero__frame{
-  margin: 0; align-self: flex-end; width: 88%;
-  border: 8px solid var(--white); box-shadow: 0 16px 34px rgba(22,35,43,.2);
-  position: relative;
-}
-.hero__frame::before{
-  content: ''; position: absolute; inset: -8px; border: 2px solid var(--gold); pointer-events: none; opacity: .7;
-}
-.hero__frame img{ width: 100%; height: 56vw; max-height: 360px; min-height: 220px; object-fit: cover; }
+.hero__photo img{ width: 100%; height: 58vw; max-height: 380px; min-height: 220px; object-fit: cover; display: block; }
 
 @media (min-width: 860px){
-  .hero{ padding: 4rem 0 4.6rem; }
-  .hero__wrap{ flex-direction: row; align-items: flex-end; gap: 2.5rem; }
-  .hero__text{ flex: 0 0 38%; padding-bottom: 2.2rem; }
-  .hero__frame{ flex: 1; width: auto; align-self: flex-start; margin-top: 0; }
-  .hero__frame img{ height: 30rem; max-height: none; }
+  .hero__grid{ flex-direction: row; min-height: 34rem; }
+  .hero__text{ flex: 0 0 44%; display: flex; flex-direction: column; justify-content: center; padding: 2rem 3rem; }
+  .hero__photo{ flex: 1; }
+  .hero__photo img{ height: 100%; max-height: none; min-height: 100%; }
 }
 
-/* ---------- Badges / trust strip (decorative system, rolled) ---------- */
-.badges{ background: var(--teal-dark); }
-.badges__row{
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem;
-  padding: 1.6rem 1.25rem; text-align: center;
-}
-.badge{ display: flex; flex-direction: column; align-items: center; gap: .5em; color: var(--sand); }
-.badge img{ height: 44px; width: auto; border-radius: 6px; background: var(--white); padding: 4px; }
-.badge span{ font-size: .78rem; line-height: 1.3; }
-.badge--text strong{ font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); }
-@media (min-width: 700px){ .badges__row{ grid-template-columns: repeat(4, 1fr); } }
+/* ---------- Ticker — marquee-ticker (rolled: the site's motion signature) ---------- */
+.ticker{ background: var(--teal-dark); overflow: hidden; padding: .9rem 0; border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold); }
+.ticker__track{ display: flex; width: max-content; animation: ticker-scroll 30s linear infinite; }
+.ticker__group{ display: flex; align-items: center; flex-shrink: 0; }
+.ticker__group span{ color: var(--sand); font-family: var(--font-display); font-size: .82rem; font-weight: 500; white-space: nowrap; display: inline-flex; align-items: center; padding: 0 .9rem; }
+.ticker__dot{ color: var(--gold); padding: 0 !important; }
+.ticker__badge{ height: 18px; width: auto; border-radius: 3px; background: var(--white); padding: 2px; margin-right: .5em; }
+@keyframes ticker-scroll{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce){ .ticker__track{ animation: none; } }
 
-/* ---------- Frames (photo-frame motif) ---------- */
+/* ---------- Frames (photo-frame motif for interior imagery) ---------- */
 .frame{ margin: 0; overflow: hidden; border: 6px solid var(--white); background: var(--white); box-shadow: 0 1px 0 rgba(22,35,43,.1), 0 10px 24px rgba(22,35,43,.12); }
 .frame img{ width: 100%; height: auto; display: block; }
 
@@ -170,10 +159,10 @@ p{ margin: 0 0 1em; }
   .welcome__frame{ margin-top: 0; }
 }
 
-/* ---------- Rooms — bento-overlapping (rolled) ---------- */
+/* ---------- Rooms — symmetric-12col (rolled) ---------- */
 .rooms{ background: var(--sand-2); }
-.room-grid{ margin-top: 2rem; display: grid; grid-template-columns: 1fr; gap: 1.4rem; }
-.room-card{ background: var(--white); border: 2px solid var(--ink); position: relative; }
+.room-grid{ margin-top: 2rem; display: grid; grid-template-columns: 1fr; gap: 1.6rem; }
+.room-card{ background: var(--white); border: 2px solid var(--ink); }
 .room-card figure{ margin: 0; aspect-ratio: 4/3; overflow: hidden; }
 .room-card img{ width: 100%; height: 100%; object-fit: cover; }
 .room-card__body{ padding: 1.1rem 1.2rem 1.3rem; }
@@ -181,22 +170,11 @@ p{ margin: 0 0 1em; }
 .room-card__tag{ display: inline-block; font-family: var(--font-body); font-size: .68rem; font-weight: 700; color: var(--emerald); border: 1.5px solid var(--emerald); border-radius: 999px; padding: .1em .6em; vertical-align: middle; margin-left: .4em; }
 
 @media (min-width: 700px){
-  .room-grid{ grid-template-columns: repeat(6, 1fr); gap: 1.6rem 1.4rem; }
-  .room-card--lg{ grid-column: span 4; }
-  .room-card--lg figure{ aspect-ratio: 16/9; }
-  .room-card--md{ grid-column: span 3; }
-  .room-card--sm{ grid-column: span 2; }
-  /* bento overlap: Coastal Corner card pinned over the High Tide King card's corner */
-  .room-card--overlap{
-    grid-column: 5 / span 2; grid-row: 1;
-    margin-top: 4.2rem; z-index: 3; box-shadow: 0 16px 30px rgba(22,35,43,.22);
-  }
+  .room-grid{ grid-template-columns: repeat(12, 1fr); gap: 1.6rem 1.4rem; }
+  .room-card{ grid-column: span 6; }
 }
-@media (min-width: 700px) and (max-width: 999px){
-  .room-card--lg{ grid-column: span 6; }
-  .room-card--md{ grid-column: span 3; }
-  .room-card--sm{ grid-column: span 3; }
-  .room-card--overlap{ grid-column: span 3; margin-top: 0; z-index: auto; box-shadow: none; }
+@media (min-width: 1000px){
+  .room-card{ grid-column: span 4; }
 }
 .rooms__cta{ margin-top: 2.4rem; text-align: center; max-width: none; }
 
@@ -277,16 +255,6 @@ p{ margin: 0 0 1em; }
 .footer a:hover{ color: var(--gold); }
 .footer__legal{ margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid rgba(251,242,228,.14); font-size: .78rem; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5em; color: rgba(251,242,228,.5); }
 @media (min-width: 700px){ .footer__grid{ grid-template-columns: repeat(3, 1fr); } }
-
-/* ---------- Motion: subtle-fade only (rolled) ---------- */
-.reveal{
-  opacity: 0; transform: translateY(12px);
-  transition: opacity .5s ease, transform .5s ease;
-}
-.reveal.is-visible{ opacity: 1; transform: none; }
-@media (prefers-reduced-motion: reduce){
-  .reveal{ opacity: 1; transform: none; transition: none; }
-}
 
 /* Focus visibility */
 a:focus-visible, button:focus-visible{ outline: 3px solid var(--coral); outline-offset: 2px; }
