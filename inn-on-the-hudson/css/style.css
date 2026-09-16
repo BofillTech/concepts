@@ -314,20 +314,18 @@ p { margin: 0; }
 }
 
 /* --------------------------------------------------------------------
-   Hero — split screen
+   Hero — full-bleed image with a solid info panel overlapping the
+   bottom edge (never a gradient/scrim over the photo)
    -------------------------------------------------------------------- */
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  min-height: 640px;
-}
-@media (min-width: 900px) {
-  .hero { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); min-height: 88vh; }
+  position: relative;
 }
 
 .hero__media {
   position: relative;
-  min-height: 340px;
+  height: 62vh;
+  min-height: 380px;
+  max-height: 640px;
   overflow: hidden;
 }
 .hero__media img {
@@ -338,15 +336,24 @@ p { margin: 0; }
 }
 
 .hero__panel {
+  position: relative;
   background: var(--clapboard);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--space-xl) var(--space-md);
   gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-md) var(--space-xl);
+  margin: 0 var(--space-md);
+  margin-top: -3.5rem;
+  box-shadow: 0 -6px 24px rgba(32,29,24,0.12);
+  border-top: 4px solid var(--colonial-brick);
 }
-@media (min-width: 900px) {
-  .hero__panel { padding: var(--space-2xl) var(--space-xl); }
+@media (min-width: 720px) {
+  .hero__panel {
+    max-width: 640px;
+    margin-left: var(--space-xl);
+    margin-top: -4.5rem;
+    padding: var(--space-xl);
+  }
 }
 
 .hero__kicker {
@@ -382,23 +389,22 @@ p { margin: 0; }
 }
 
 /* --------------------------------------------------------------------
-   Ticker strip (marquee)
+   Fact strip (static — no marquee; that motion belongs to #153)
    -------------------------------------------------------------------- */
 .ticker {
   background: var(--pine-shadow);
   color: var(--clapboard);
-  overflow: hidden;
-  padding: 0.9rem 0;
+  padding: 1.1rem var(--space-md);
   border-top: 1px solid rgba(247,243,234,0.15);
   border-bottom: 1px solid rgba(247,243,234,0.15);
 }
 .ticker__track {
+  max-width: var(--max-content);
+  margin: 0 auto;
   display: flex;
-  width: max-content;
-  animation: ticker-scroll 32s linear infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .ticker__track { animation: none; overflow-x: auto; }
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 0.5rem;
 }
 .ticker__item {
   display: flex;
@@ -413,9 +419,26 @@ p { margin: 0; }
   color: var(--brass);
   margin-left: var(--space-lg);
 }
-@keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.ticker__item:last-child::after { content: none; margin-left: 0; }
+/* the second, duplicated set (previously used for the marquee loop)
+   is hidden now that the strip is static */
+.ticker__item--dup { display: none; }
+
+/* --------------------------------------------------------------------
+   Staggered reveal — sections fade + rise into place once, on first
+   scroll into view (single orchestrated motion, not per-card chaos)
+   -------------------------------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 /* --------------------------------------------------------------------
@@ -479,16 +502,15 @@ p { margin: 0; }
 }
 
 /* --------------------------------------------------------------------
-   Room grid — symmetric 12-column system: every card is an equal
-   track, no overlapping spans, rows stay even.
+   Room grid — broken/asymmetric: uneven column widths and a
+   deliberately offset row, not a symmetric equal-width track.
    -------------------------------------------------------------------- */
 .room-grid {
   display: grid;
   gap: var(--space-md);
-  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
 }
 .room-card {
-  grid-column: span 12;
   position: relative;
   background: var(--white);
   border-radius: var(--radius);
@@ -498,13 +520,23 @@ p { margin: 0; }
   box-shadow: 0 1px 0 rgba(38,51,42,0.08);
 }
 @media (min-width: 720px) {
-  .room-card { grid-column: span 6; }
+  .room-grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    grid-template-areas:
+      "a b"
+      "a c"
+      "d d";
+  }
+  .room-grid .room-card:nth-of-type(1) { grid-area: a; }
+  .room-grid .room-card:nth-of-type(2) { grid-area: b; margin-top: 2.5rem; }
+  .room-grid .room-card:nth-of-type(3) { grid-area: c; }
+  .room-grid .room-card:nth-of-type(1) .room-card__media { flex: 1; height: auto; min-height: 320px; }
+  .room-grid .room-card:nth-of-type(4) { grid-area: d; flex-direction: row; }
+  .room-card--feature .room-card__media { width: 42%; }
+  .room-card--feature .room-card__body { width: 58%; }
 }
 @media (min-width: 1100px) {
-  .room-card { grid-column: span 4; }
-  .room-card--feature { grid-column: span 12; flex-direction: row; }
-  .room-card--feature .room-card__media { width: 45%; }
-  .room-card--feature .room-card__body { width: 55%; }
+  .room-grid { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
 }
 
 .room-card__media { overflow: hidden; height: 240px; }
