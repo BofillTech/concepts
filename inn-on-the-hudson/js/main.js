@@ -65,12 +65,23 @@
     sections.forEach(function (s) { observer.observe(s); });
   }
 
-  /* Pause the fact ticker on hover/focus for readability */
-  var ticker = document.querySelector(".ticker__track");
-  if (ticker) {
-    ticker.addEventListener("mouseenter", function () { ticker.style.animationPlayState = "paused"; });
-    ticker.addEventListener("mouseleave", function () { ticker.style.animationPlayState = "running"; });
-    ticker.addEventListener("focusin", function () { ticker.style.animationPlayState = "paused"; });
-    ticker.addEventListener("focusout", function () { ticker.style.animationPlayState = "running"; });
+  /* Staggered reveal — each section fades + rises into place once,
+     the first time it scrolls into view */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length && "IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 })();
