@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuillStay vs WebRezPro — Hotel PMS &amp; Booking Engine Comparison</title>
+<meta name="description" content="How QuillStay compares to WebRezPro — pricing model, owner reporting, condo-hotel support, and what's included.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/img/quillstay-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002b84;
+  --navy-deep:#001d5c;
+  --blue:#0386f8;
+  --blue-dark:#0267c0;
+  --paper:#f6fbff;
+  --ink:#0e1f4d;
+  --muted:#4d5b7c;
+  --line:#dbe6f5;
+  --white:#ffffff;
+  --green:#1a9c5c;
+  --amber:#b8860b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Public Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16.5px;
+}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;line-height:1.12;letter-spacing:-0.015em}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-dark)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,251,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:32px;height:74px}
+.nav .logo img{height:38px;width:auto;transition:opacity .15s}
+.nav .logo:hover img{opacity:.72}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15.5px}
+.nav-links a:hover{color:var(--blue-dark)}
+.nav-phone{color:var(--muted);text-decoration:none;font-weight:600;font-size:15.5px;white-space:nowrap}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:600;
+  font-family:'Schibsted Grotesk',sans-serif;
+  padding:13px 26px;border-radius:10px;font-size:16px;
+  transition:background .15s,color .15s;
+}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-solid:hover{background:var(--blue-dark)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark)}
+.btn-ghost{border:1.5px solid var(--navy);color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.nav .btn{padding:10px 20px;font-size:15px}
+
+section{padding:70px 0}
+.kicker{color:var(--blue-dark);font-weight:600;font-size:15.5px;margin-bottom:10px}
+.sec-head{max-width:44em;margin-bottom:40px}
+.sec-head h2{font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;color:var(--navy-deep)}
+.sec-head p{margin-top:12px;color:var(--muted);font-size:1.08rem}
+
+.demo{background:#fff;border-top:1px solid var(--line)}
+.demo .wrap{text-align:center;max-width:760px}
+.demo h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy-deep);font-weight:700}
+.demo p{color:var(--muted);margin:16px auto 30px;max-width:36em}
+.demo .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.demo .phone-big{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy);text-decoration:none;align-self:center}
+.demo .perks{margin-top:22px;color:var(--muted);font-size:15px;font-weight:600}
+
+footer{background:var(--navy-deep);color:#b9cbf0;padding:56px 0 40px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer img{height:40px;width:auto;margin-bottom:14px}
+footer a{color:#dbe6fb;text-decoration:none;font-size:15px}
+footer a:hover{text-decoration:underline}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap}
+.foot-meta{margin-top:34px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:14px;color:#8ba3d8;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.mini-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+.mini-card h3{font-size:1.08rem;color:var(--navy-deep);margin-bottom:8px}
+.mini-card p{color:var(--muted);font-size:15px}
+.card-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;padding:12px 18px;z-index:200;border-radius:0 0 10px 0;text-decoration:none}
+.skip:focus{left:0}
+.draft-banner{background:#fff7db;border-bottom:1px solid #f0d98a;text-align:center;padding:9px;font-size:13.5px;color:#7a5c00;font-weight:600}
+@media (max-width:900px){
+  .nav-links,.nav-phone{display:none}
+  .card-grid3{grid-template-columns:1fr}
+}
+</style>
+<style>
+.subhero{padding:56px 0 44px;background:linear-gradient(180deg,#eef5ff 0%,var(--paper) 100%)}
+.subhero .kicker{margin-bottom:14px}
+.subhero h1{font-size:clamp(2rem,4vw,2.7rem);font-weight:800;color:var(--navy-deep);max-width:20em}
+.subhero p.lead{margin-top:18px;font-size:1.08rem;color:var(--muted);max-width:42em}
+.breadcrumb{font-size:14px;color:var(--muted);margin-bottom:18px}
+.breadcrumb a{color:var(--blue-dark);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.vs-badge{
+  display:inline-flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);
+  border-radius:99px;padding:10px 22px 10px 10px;margin-top:26px;
+}
+.vs-badge .side{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px;padding:6px 14px;border-radius:99px}
+.vs-badge .us{background:var(--navy);color:#fff}
+.vs-badge .them{color:var(--muted)}
+.vs-badge .x{color:var(--muted);font-weight:600;font-size:13px}
+
+/* Comparison table */
+.cmp-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.cmp-table th,.cmp-table td{padding:16px 20px;text-align:left;font-size:15px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp-table th{background:var(--navy);color:#fff;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:14.5px}
+.cmp-table th.us-col{background:var(--blue)}
+.cmp-table tr:last-child td{border-bottom:none}
+.cmp-table td.feature{font-weight:600;color:var(--navy-deep);width:22%}
+.cmp-table td.us{background:#f2f8ff}
+.cmp-note{font-size:12.5px;color:var(--muted);font-style:italic;display:block;margin-top:4px}
+
+.sources-box{
+  background:var(--paper);border:1px dashed var(--line);border-radius:12px;
+  padding:20px 24px;margin-top:28px;font-size:13.5px;color:var(--muted);
+}
+.sources-box b{color:var(--ink)}
+
+@media (max-width:900px){
+  .cmp-table{display:block;overflow-x:auto}
+}
+</style>
+</head>
+<body>
+<div class="draft-banner">DRAFT — work in progress. Comparison points are drawn from WebRezPro's own public marketing pages, third-party review sites (Capterra, G2, Hotel Tech Report), and pricing aggregators as of Sept 2026 — not independently verified with WebRezPro, and their offering may have changed. Confirm anything specific before sending to a prospect.</div>
+<a class="skip" href="#top">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/#top" aria-label="QuillStay home"><img src="/img/quillstay-logo-light.png" alt="QuillStay"></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/#guests">For guests</a>
+      <a href="/#owners">For owners</a>
+      <a href="/#integrations">Integrations</a>
+      <a href="/#pricing">Pricing</a>
+    </nav>
+    <a class="nav-phone" href="tel:203-457-8550">203-457-8550</a>
+    <a class="btn btn-solid" href="/#demo">Book a demo</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="subhero">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/">QuillStay</a> / Compare / WebRezPro</p>
+    <p class="kicker">Comparison</p>
+    <h1>QuillStay vs WebRezPro</h1>
+    <p class="lead">WebRezPro (by World Web Technologies) is a well-regarded cloud-based PMS with a commission-free booking engine and a large integration library, popular with independent hotels, inns, and vacation rental operators.</p>
+    <div class="vs-badge">
+      <span class="side us">QuillStay</span>
+      <span class="x">vs</span>
+      <span class="side them">WebRezPro</span>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Side by side</p>
+      <h2>How they compare</h2>
+    </div>
+    <table class="cmp-table">
+      <tr><th>&nbsp;</th><th class="us-col">QuillStay</th><th>WebRezPro</th></tr>
+      <tr>
+        <td class="feature">Core platform</td>
+        <td class="us">Cloud-based, all-in-one PMS + booking engine + channel manager</td>
+        <td>Cloud-based, well-reviewed, broad integration library (125+ partners)</td>
+      </tr>
+      <tr>
+        <td class="feature">Interface</td>
+        <td class="us">Built to be understood in minutes — front desk staff typically trained in under 4 hours</td>
+        <td>Generally praised as clean and modern, though some reviewers note group bookings and advanced setup take more time to learn<span class="cmp-note">Per Capterra: "some users find advanced setup, group bookings, housekeeping functions... more complicated than expected"</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Owner portals &amp; statements</td>
+        <td class="us">Built-in owner portal and per-room financial statements, standard on every plan — purpose-built for condo-hotels and co-op resorts</td>
+        <td>Not part of WebRezPro's published feature set; built for hotels, inns, and vacation rentals rather than owner-reported condo-hotels</td>
+      </tr>
+      <tr>
+        <td class="feature">Pricing model</td>
+        <td class="us">One flat price: $10 per room, per month — everything included, no tiers</td>
+        <td>Usage-based, priced per unit/room per month; custom quote based on property type and size<span class="cmp-note">Per pricingnow.com: "WebRezPro does not have tiered plans... pricing is customized based on property size and type"</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Setup &amp; data migration</td>
+        <td class="us">Free, done by QuillStay's team, with no downtime</td>
+        <td>No setup fees; roughly 5 hours of complimentary training included<span class="cmp-note">Per pricingnow.com TCO breakdown</span></td>
+      </tr>
+      <tr>
+        <td class="feature">Support</td>
+        <td class="us">24/7 phone support, live person almost always answers</td>
+        <td>Email and phone support included</td>
+      </tr>
+      <tr>
+        <td class="feature">Contract</td>
+        <td class="us">Month-to-month, no long-term contract</td>
+        <td>Cancel with 30 days' written notice, no penalty<span class="cmp-note">Per pricingnow.com</span></td>
+      </tr>
+      <tr>
+        <td class="feature">AI features</td>
+        <td class="us">AI dynamic pricing and an AI guest-facing chatbot included</td>
+        <td>Not part of WebRezPro's published feature set</td>
+      </tr>
+    </table>
+    <div class="sources-box"><b>Sources:</b> webrezpro.com, hoteltechreport.com, capterra.com, g2.com, and pricingnow.com pricing breakdowns, all as of 2026.</div>
+  </div>
+</section>
+
+<section style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Why properties switch</p>
+      <h2>What WebRezPro properties tell us when they switch</h2>
+    </div>
+    <div class="card-grid3">
+      <div class="mini-card"><h3>Built for owners, not just guests</h3><p>If your property has individual room owners, QuillStay's owner portals and per-room statements are standard — not a workaround.</p></div>
+      <div class="mini-card"><h3>One flat, predictable price</h3><p>$10 per room per month, no custom quote process and no separate pricing tiers to grow into.</p></div>
+      <div class="mini-card"><h3>AI built in</h3><p>Dynamic pricing and a 24/7 guest-facing AI chatbot come standard, not as a bolt-on.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <h2>See QuillStay on your own property</h2>
+    <p>Book a free demo — we'll walk through your specific setup, and handle the entire migration from WebRezPro for free if you decide to switch.</p>
+    <div class="cta-row">
+      <a class="btn btn-blue" href="mailto:steve@quillstay.com?subject=Demo%20request%20—%20QuillStay">Request a demo</a>
+      <a class="phone-big" href="tel:203-457-8550">or call 203-457-8550</a>
+    </div>
+    <p class="perks">Free demo &nbsp;•&nbsp; Free migration &nbsp;•&nbsp; No contracts</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="/img/quillstay-logo-dark.png" alt="QuillStay">
+        <p style="max-width:30em;font-size:15px">The simple, intuitive property management system and booking engine for independent hotels, co-op resorts, and condo-hotels.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/#features">Features</a>
+        <a href="/#guests">For guests</a>
+        <a href="/#integrations">Integrations</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#demo">Book a demo</a>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 QuillStay Inc. All rights reserved.</span>
+      <a href="tel:203-457-8550">203-457-8550</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
