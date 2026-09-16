@@ -27,6 +27,7 @@
       var pic = cell.querySelector('img');
       img.setAttribute('src', cell.getAttribute('data-full'));
       img.setAttribute('alt', pic ? pic.getAttribute('alt') : 'Photograph of Village by the Sea');
+      img.setAttribute('title', pic && pic.getAttribute('title') ? pic.getAttribute('title') : 'Village by the Sea in Wells Maine');
       cap.textContent = cell.getAttribute('data-cap') + ' · ' + (idx + 1) + ' of ' + list.length;
     }
 
