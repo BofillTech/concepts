@@ -380,6 +380,47 @@ button { font-family: inherit; cursor: pointer; }
 .location__cta { display: flex; flex-wrap: wrap; gap: .9rem; }
 
 /* --------------------------------------------------------------------------
+   Press & Media page — coverage feed
+   -------------------------------------------------------------------------- */
+.press-feed { display: grid; gap: 1.75rem; }
+.press-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2rem 2.2rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
+}
+.press-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.press-card--featured { border-color: var(--crystal-300); }
+.press-card__meta {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .85rem;
+  color: var(--muted);
+  margin-bottom: .9rem;
+}
+.press-card__meta .badge { font-size: .8rem; padding: .1rem .7rem; }
+.press-card__meta .outlet { font-weight: 600; color: var(--navy-700); }
+.press-card__title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--navy-800);
+  margin-bottom: .7rem;
+}
+.press-card__title a { text-decoration: none; }
+.press-card__title a:hover { color: var(--crystal-ink); }
+.press-card__excerpt { color: var(--muted); margin-bottom: 1.1rem; }
+.press-card__link {
+  font-weight: 700;
+  font-size: .85rem;
+  letter-spacing: .04em;
+  color: var(--crystal-ink);
+}
+.press-card__link:hover { color: var(--navy-800); }
+
+/* --------------------------------------------------------------------------
    Inquiry form
    -------------------------------------------------------------------------- */
 .inquiry { background: var(--navy-800); color: #fff; position: relative; overflow: hidden; }
@@ -494,7 +535,7 @@ button { font-family: inherit; cursor: pointer; }
    Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .inquiry__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .inquiry__grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
