@@ -1635,7 +1635,7 @@ a.contact-list__v:hover{color:var(--tide);}
    ========================================================================== */
 :root{--wrap-wide:1680px;}
 
-.hero--bleed{padding:0 0 var(--pad-y);background:var(--shell);overflow:visible;}
+.hero--bleed{position:relative;padding:0 0 var(--pad-y);background:var(--shell);overflow:visible;}
 .hero--bleed .hero__bleed{
   margin:0;line-height:0;background:var(--mist);
   width:100%;
@@ -1930,6 +1930,40 @@ a.contact-list__v:hover{color:var(--tide);}
 .doc__link:hover .doc__title{color:var(--tide-deep);}
 .doc--post .post__meta{color:var(--tide-deep);}
 .doc__link:hover .doc--post .post__meta{color:var(--spartina);}
+
+
+/* --------------------------------------------------- hero side card (rooms) */
+/* Fills the otherwise-empty area beside the hero panel with the booking
+   notice and the "choose a building" intro, so neither needs its own
+   full-width section below the hero. Stacks as a normal block on narrow
+   screens; floats into the photo's empty upper-right area from 1040px up. */
+.hero__side{
+  background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);
+  padding:26px 24px;margin:24px 0 0;max-width:460px;
+}
+.hero__side .notice--onhero{
+  background:none;border:0;border-left:3px solid var(--tide);
+  padding:0 0 0 18px;margin:0 0 22px;max-width:none;border-radius:0;
+}
+.hero__side .hero__pickerhead{border-top:1px solid var(--line);padding-top:20px;}
+.hero__side .hero__pickerhead .minor-title{margin-bottom:10px;}
+.hero__side .picker__note{margin:0;font-size:14.5px;line-height:1.6;color:var(--egret);}
+
+@media (min-width:1200px){
+  /* Anchored to the outer .hero--bleed SECTION (not .hero__lower — that
+     container's effective top shifts unpredictably because .hero__panel's
+     negative margin-top collapses through it). The section's own top edge
+     is stable and equals the image's top edge, so a flat px offset here
+     reliably clears the fixed transparent header regardless of viewport
+     height or the image's fluid clamp() height. */
+  .hero--bleed .hero__side{
+    position:absolute;
+    top:150px;right:var(--gutter);width:340px;max-width:340px;margin:0;
+  }
+}
+@media (min-width:1400px){
+  .hero--bleed .hero__side{width:360px;max-width:360px;}
+}
 
 /* ------------------------------------------------------- reduced motion (last) */
 @media (prefers-reduced-motion:reduce){
