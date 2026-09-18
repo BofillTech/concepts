@@ -1950,19 +1950,24 @@ a.contact-list__v:hover{color:var(--tide);}
 .hero__side .picker__note{margin:0;font-size:14.5px;line-height:1.6;color:var(--egret);}
 
 @media (min-width:1200px){
-  /* Anchored to the outer .hero--bleed SECTION (not .hero__lower — that
-     container's effective top shifts unpredictably because .hero__panel's
-     negative margin-top collapses through it). The section's own top edge
-     is stable and equals the image's top edge, so a flat px offset here
-     reliably clears the fixed transparent header regardless of viewport
-     height or the image's fluid clamp() height. */
+  /* .hero__panel sits in the same row as .hero__side, both bottom-aligned
+     via flex so they share the same visual band next to the copy panel,
+     to the right of it, over the photo — rather than floating separately
+     near the top of the hero. Using flex here (instead of block flow)
+     means .hero__panel's negative margin-top no longer collapses through
+     to its parent, so this is also a more predictable layout than the
+     plain-block version. */
+  .hero--bleed .hero__lower{
+    display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
+  }
+  .hero--bleed .hero__panel{flex:0 1 auto;}
   .hero--bleed .hero__side{
-    position:absolute;
-    top:150px;right:var(--gutter);width:340px;max-width:340px;margin:0;
+    position:static;flex:0 0 340px;width:340px;max-width:340px;
+    margin:0 0 clamp(-40px,-4vw,-90px);
   }
 }
 @media (min-width:1400px){
-  .hero--bleed .hero__side{width:360px;max-width:360px;}
+  .hero--bleed .hero__side{flex-basis:360px;width:360px;max-width:360px;margin-bottom:-130px;}
 }
 
 /* ------------------------------------------------------- reduced motion (last) */
