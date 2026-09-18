@@ -167,7 +167,7 @@
       if (guests && guests.value) lines.push('Approx. guests: ' + guests.value);
       if (note && note.value) lines.push('', note.value);
 
-      var subject = 'Wedding inquiry' + (date && date.value ? ' — ' + date.value : '');
+      var subject = 'Wedding inquiry' + (date && date.value ? ', ' + date.value : '');
       var href = 'mailto:eventplanner@vbts.com'
         + '?subject=' + encodeURIComponent(subject)
         + '&body=' + encodeURIComponent(lines.join('\n'));
@@ -184,4 +184,35 @@
   /* ------------------------------------------------------------- dynamic year */
   var yearEl = document.querySelector('[data-year]');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* --------------------------------------------------------- hero photo slider */
+  var slider = document.getElementById('heroSlider');
+  if (slider) {
+    var slides = Array.prototype.slice.call(slider.querySelectorAll('.hero__slide'));
+    var dots = Array.prototype.slice.call(slider.querySelectorAll('.hero__dot'));
+    var current = 0;
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (s, idx) { s.classList.toggle('is-active', idx === current); });
+      dots.forEach(function (d, idx) {
+        var on = idx === current;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+    }
+
+    dots.forEach(function (d, idx) {
+      d.addEventListener('click', function () { show(idx); resetTimer(); });
+    });
+
+    var timer;
+    function resetTimer() {
+      if (reduceMotion || slides.length < 2) return;
+      clearInterval(timer);
+      timer = setInterval(function () { show(current + 1); }, 6000);
+    }
+    resetTimer();
+  }
 }());
