@@ -1641,7 +1641,7 @@ a.contact-list__v:hover{color:var(--tide);}
   width:100%;
 }
 .hero--bleed .hero__bleed img{
-  width:100%;display:block;object-fit:cover;
+  width:100%;display:block;object-fit:cover;object-position:center 72%;
   height:clamp(420px,64vh,760px);
 }
 .hero--bleed .hero__lower{position:relative;}
@@ -1676,6 +1676,14 @@ a.contact-list__v:hover{color:var(--tide);}
 }
 @media (min-width:1440px){
   .hero--bleed .hero__panel{margin-top:-130px;}
+}
+
+/* homepage only: wider panel so the lede wraps to fewer lines (shorter hero).
+   Scoped via #heroSlider (unique to the homepage) rather than the shared
+   .hero--bleed rule, since rooms.html's hero uses a flex row where the
+   panel shares space with a second card and can't take this much width. */
+@media (min-width:1040px){
+  .hero--bleed .hero__panel--wide{width:min(1020px,84%);}
 }
 
 
@@ -1957,10 +1965,13 @@ a.contact-list__v:hover{color:var(--tide);}
      means .hero__panel's negative margin-top no longer collapses through
      to its parent, so this is also a more predictable layout than the
      plain-block version. */
-  .hero--bleed .hero__lower{
+  /* :has() guards this so pages without a .hero__side (e.g. the homepage)
+     keep plain block layout for .hero__panel instead of picking up flex
+     sizing unintentionally. */
+  .hero--bleed .hero__lower:has(.hero__side){
     display:flex;align-items:flex-end;justify-content:space-between;gap:40px;
   }
-  .hero--bleed .hero__panel{flex:0 1 auto;}
+  .hero--bleed .hero__lower:has(.hero__side) .hero__panel{flex:0 1 auto;}
   .hero--bleed .hero__side{
     position:static;flex:0 0 340px;width:340px;max-width:340px;margin:0;
   }
