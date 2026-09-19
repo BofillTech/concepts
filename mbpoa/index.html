@@ -131,7 +131,7 @@ h1,h2,h3{font-family:'Besley',Georgia,serif;line-height:1.06;color:var(--ink);fo
 .drawer__foot a{color:#F2A879;font-weight:700}
 
 /* ---------- EDITORIAL OPEN (no hero band — a front page) ---------- */
-.front{padding:clamp(44px,7vw,96px) 0 0}
+.front{padding:clamp(28px,4.5vw,56px) 0 0}
 .front__head{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:end}
 .front h1{font-size:clamp(2.5rem,6.2vw,5.3rem);font-weight:800;max-width:15ch}
 .front h1 em{font-style:italic;color:var(--orange)}
@@ -139,10 +139,38 @@ h1,h2,h3{font-family:'Besley',Georgia,serif;line-height:1.06;color:var(--ink);fo
 .front__lede p{font-size:1.08rem;color:var(--body)}
 .front__lede .since{display:block;margin-top:14px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--meta);font-weight:600}
 .front__cta{display:flex;flex-wrap:wrap;gap:14px;margin:clamp(26px,4vw,40px) 0}
-.front__photo{margin:clamp(10px,3vw,26px) 0 0}
-.front__photo img{width:100%;height:clamp(320px,52vh,560px);object-fit:cover;object-position:center 62%}
+.front__photo{margin:clamp(8px,2vw,18px) 0 0}
+.front__photo img{width:100%;height:clamp(220px,34vh,360px);object-fit:cover;object-position:center 62%}
 .front__caption{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:12px 2px 0;font-size:13px;color:var(--meta)}
 .front__caption strong{color:var(--ink)}
+
+/* ---------- LEAD EVENTS — horizontal card strip, right under the hero ---------- */
+.lead-events{padding:clamp(30px,4.4vw,52px) 0 clamp(36px,5vw,60px);border-bottom:1px solid var(--sand)}
+.lead-events__head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(18px,2.6vw,28px)}
+.lead-events__head h2{font-size:clamp(1.5rem,2.8vw,2.1rem)}
+.lead-events__row{
+  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,272px);gap:clamp(14px,1.8vw,20px);
+  overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad);
+  scrollbar-width:thin;scrollbar-color:var(--sand) transparent;
+}
+.lead-events__row::-webkit-scrollbar{height:6px}
+.lead-events__row::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
+.lcard{scroll-snap-align:start;background:#fff;border:1px solid var(--sand);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.lcard:hover{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(20,50,74,.35)}
+.lcard__img{aspect-ratio:4/3;overflow:hidden;background:var(--mist)}
+.lcard__img img{width:100%;height:100%;object-fit:cover}
+.lcard__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.lcard__tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;padding:5px 11px;border-radius:3px}
+.lcard__tag--cleanup{background:var(--orange)}
+.lcard__tag--social{background:var(--ink)}
+.lcard__tag--info{background:var(--dune)}
+.lcard__date{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--meta)}
+.lcard h3{font-size:1.08rem;line-height:1.2}
+.lcard a.lcard__cta{margin-top:auto;font-weight:700;color:var(--orange);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.lcard a.lcard__cta:hover{color:var(--orange-deep)}
+.lcard--view{align-items:center;justify-content:center;text-align:center;background:var(--ink);border-color:var(--ink);color:#fff;padding:18px;gap:10px;display:flex;flex-direction:column}
+.lcard--view span{font-family:'Besley',serif;font-weight:700;font-size:1.1rem}
+.lcard--view small{color:#9FB2BF;font-size:12.5px}
 
 /* ---------- TICKER (rolled motion personality) ---------- */
 .ticker{background:var(--orange);color:#fff;overflow:hidden;border-top:1px solid var(--orange-deep);border-bottom:1px solid var(--orange-deep)}
@@ -333,6 +361,7 @@ footer{background:var(--ink-deep);color:#9FB2BF;padding:clamp(48px,6vw,72px) 0 1
   body{font-size:16px}
   .history__art{grid-template-columns:1fr}
   .coast__fallback ul{columns:1}
+  .lead-events__row{grid-auto-columns:minmax(210px,78vw)}
 }
 body.is-locked{overflow:hidden}
 .no-js .drawer{position:static;transform:none;background:var(--ink-deep)}
@@ -401,7 +430,61 @@ body.is-locked{overflow:hidden}
       <img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="The ocean beach below the bluffs of Hither Hills, Montauk" width="2560" height="1707" loading="eager">
     </figure>
     <div class="wrap">
-      <p class="front__caption"><span><strong>The Ocean View Beach,</strong> Old Montauk Highway — the association and its members own and care for the beach, its cliffs and vegetation, the parking lots, and the pathways down from the highway.</span><span>Anyone can access the ocean beach across MBPOA property.</span></p>
+      <p class="front__caption"><span><strong>The Ocean View Beach,</strong> Old Montauk Highway.</span><span>Anyone can access the ocean beach across MBPOA property.</span></p>
+    </div>
+  </section>
+
+  <!-- LEAD EVENTS — leads with events, right under the hero -->
+  <section class="lead-events" aria-label="Upcoming events">
+    <div class="wrap">
+      <div class="lead-events__head">
+        <div>
+          <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>On the beach this season</span>
+          <h2>Come and help — or come celebrate.</h2>
+        </div>
+      </div>
+      <div class="lead-events__row" tabindex="0" role="region" aria-label="Scrollable list of upcoming events">
+        <article class="lcard">
+          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="Volunteers on the MBPOA beach clean-up" loading="lazy" width="550" height="412"></div>
+          <div class="lcard__body">
+            <span class="lcard__tag lcard__tag--cleanup">Clean-up</span>
+            <span class="lcard__date">Monthly · Sunday, September 13</span>
+            <h3>Community Beach Clean-up</h3>
+            <a class="lcard__cta" href="https://mbpoa.com/event/monthly-community-beach-clean-ups-august-9th/">Details →</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/MPBOA-Map-2.png" alt="The MBPOA coastline where summer beach events are held" loading="lazy" width="550" height="412"></div>
+          <div class="lcard__body">
+            <span class="lcard__tag lcard__tag--social">Social</span>
+            <span class="lcard__date">All season</span>
+            <h3>Summer Beach Events</h3>
+            <a class="lcard__cta" href="https://mbpoa.com/event/summer-beach-events/">Lineup →</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_2-241x300.jpg" alt="MBPOA Annual Cocktail Party" loading="lazy" width="412" height="550"></div>
+          <div class="lcard__body">
+            <span class="lcard__tag lcard__tag--social">Social</span>
+            <span class="lcard__date">Tickets on sale</span>
+            <h3>2026 Annual Cocktail Party</h3>
+            <a class="lcard__cta" href="https://mbpoa.com/product/mbpoa-2026-annual-cocktail-party/">Buy tickets →</a>
+          </div>
+        </article>
+        <article class="lcard">
+          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_1-228x300.jpg" alt="Members gathered on the MBPOA beach" loading="lazy" width="412" height="550"></div>
+          <div class="lcard__body">
+            <span class="lcard__tag lcard__tag--info">Members &amp; Guests</span>
+            <span class="lcard__date">Before you plan</span>
+            <h3>Beach Rules &amp; Party Guidelines</h3>
+            <a class="lcard__cta" href="https://mbpoa.com/beach-rules-party-guidelines/">Read guidelines →</a>
+          </div>
+        </article>
+        <a class="lcard lcard--view" href="galleries.html">
+          <span>See all events &amp; galleries</span>
+          <small>21 albums · 2002 – 2026</small>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -528,45 +611,6 @@ body.is-locked{overflow:hidden}
             <li>Engaging with local government to understand laws and possible developments impacting the Association's property rights</li>
             <li>Active civic participation across the Montauk community</li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EVENTS -->
-  <section class="sec" aria-label="Events and galleries">
-    <div class="wrap">
-      <div class="sec__head">
-        <div>
-          <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Events &amp; galleries</span>
-          <h2>Come and help — or come celebrate.</h2>
-        </div>
-        <a class="btn btn--ghost" href="galleries.html">All Events &amp; Galleries</a>
-      </div>
-      <div class="events">
-        <div class="event event--feature">
-          <span class="event__date">Monthly · Next: Sunday, September 13</span>
-          <h3>Community Beach Clean-ups</h3>
-          <p>Monthly clean-ups keep our beach and bluffs beautiful. Reminders are sent by email and signs are posted at the beach. Please come and help — then find yourself in the photo gallery after.</p>
-          <a class="more" href="https://mbpoa.com/event/monthly-community-beach-clean-ups-august-9th/">Details &amp; past clean-up galleries →</a>
-        </div>
-        <div class="event">
-          <span class="event__date">Summer 2026</span>
-          <h3>Summer Beach Events</h3>
-          <p>Members gather on the beach all season for sponsored activities and socials. Every event gets its own photo gallery.</p>
-          <a class="more" href="https://mbpoa.com/event/summer-beach-events/">Lineup &amp; galleries →</a>
-        </div>
-        <div class="event">
-          <span class="event__date">Tickets on sale</span>
-          <h3>2026 Annual Cocktail Party</h3>
-          <p>The members' cocktail party returns. Purchase your tickets online.</p>
-          <a class="more" href="https://mbpoa.com/product/mbpoa-2026-annual-cocktail-party/">Buy tickets →</a>
-        </div>
-        <div class="event">
-          <span class="event__date">Members &amp; guests</span>
-          <h3>Beach Rules &amp; Party Guidelines</h3>
-          <p>Planning a gathering on the sand? Review the beach rules and party guidelines before you go.</p>
-          <a class="more" href="https://mbpoa.com/beach-rules-party-guidelines/">Read the guidelines →</a>
         </div>
       </div>
     </div>
