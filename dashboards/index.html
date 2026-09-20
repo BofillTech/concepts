@@ -156,6 +156,21 @@
 
   .card-url svg{ flex-shrink: 0; opacity: 0.7; }
 
+  .status-badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+  .status-badge.ok{ color: var(--accent); background: var(--accent-dim); }
+  .status-badge.warn{ color: var(--warn); background: var(--warn-dim); }
+  .status-badge.bad{ color: #B4321E; background: rgba(180, 50, 30, 0.08); }
+  .status-badge.loading{ color: var(--text-faint); background: var(--surface-hover); }
+
   /* TBD / missing-link cards */
   .card.tbd{
     background: transparent;
@@ -248,6 +263,7 @@
         <div class="card-name">VisualMonitor</div>
         <div class="card-desc">Uptime and visual-diff monitoring across all hosted client sites.</div>
         <div class="card-url">bofilltech.github.io/bofilltech-monitor</div>
+        <div class="status-badge loading" data-status="visualmonitor">checking…</div>
       </a>
       <a class="card tbd" href="#" onclick="return false;">
         <div class="card-name">Captcha Monitor <span class="badge">add link</span></div>
@@ -389,5 +405,40 @@
   </footer>
 
 </div>
+
+<script>
+  // Pulls live counts from dashboards that already publish public status data,
+  // so issues surface here without opening each tool. Each entry is self-contained —
+  // add a new one to extend this to another dashboard later.
+  const STATUS_SOURCES = {
+    visualmonitor: {
+      url: "https://raw.githubusercontent.com/BofillTech/bofilltech-monitor/main/data/status.json",
+      summarize(data){
+        const sites = Object.values(data.sites || {});
+        const down = sites.filter(s => s.status === "down").length;
+        const warn = sites.filter(s => s.status === "warning").length;
+        if (down > 0) return { level: "bad", text: `${down} down${warn ? `, ${warn} warning${warn===1?"":"s"}` : ""}` };
+        if (warn > 0) return { level: "warn", text: `${warn} warning${warn===1?"":"s"}` };
+        return { level: "ok", text: `All ${sites.length} sites clear` };
+      }
+    }
+  };
+
+  Object.entries(STATUS_SOURCES).forEach(([key, source]) => {
+    const el = document.querySelector(`[data-status="${key}"]`);
+    if (!el) return;
+    fetch(source.url)
+      .then(r => { if (!r.ok) throw new Error("bad response"); return r.json(); })
+      .then(data => {
+        const { level, text } = source.summarize(data);
+        el.className = "status-badge " + level;
+        el.textContent = text;
+      })
+      .catch(() => {
+        el.className = "status-badge warn";
+        el.textContent = "status unavailable";
+      });
+  });
+</script>
 </body>
 </html>
