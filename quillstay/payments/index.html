@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Payment Gateway &amp; Processing | QuillStay</title>
+<meta name="description" content="QuillStay's booking engine runs on the Fluid Pay payment gateway, with merchant accounts and processing set up through Host Merchant Services — PCI-compliant, next-day funding, free setup.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/img/quillstay-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002b84;
+  --navy-deep:#001d5c;
+  --blue:#0386f8;
+  --blue-dark:#0267c0;
+  --paper:#f6fbff;
+  --ink:#0e1f4d;
+  --muted:#4d5b7c;
+  --line:#dbe6f5;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Public Sans',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.6;
+  font-size:16.5px;
+}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;line-height:1.12;letter-spacing:-0.015em}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-dark)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,251,255,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:32px;height:74px}
+.nav .logo img{height:38px;width:auto;transition:opacity .15s}
+.nav .logo:hover img{opacity:.72}
+.nav-links{display:flex;gap:28px;margin-left:auto}
+.nav-links a{color:var(--ink);text-decoration:none;font-weight:500;font-size:15.5px}
+.nav-links a:hover{color:var(--blue-dark)}
+.nav-phone{color:var(--muted);text-decoration:none;font-weight:600;font-size:15.5px;white-space:nowrap}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:600;
+  font-family:'Schibsted Grotesk',sans-serif;
+  padding:13px 26px;border-radius:10px;font-size:16px;
+  transition:background .15s,color .15s;
+}
+.btn-solid{background:var(--navy);color:#fff}
+.btn-solid:hover{background:var(--blue-dark)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-dark)}
+.btn-ghost{border:1.5px solid var(--navy);color:var(--navy)}
+.btn-ghost:hover{background:var(--navy);color:#fff}
+.nav .btn{padding:10px 20px;font-size:15px}
+
+section{padding:80px 0}
+.kicker{color:var(--blue-dark);font-weight:600;font-size:15.5px;margin-bottom:10px}
+.sec-head{max-width:44em;margin-bottom:48px}
+.sec-head h2{font-size:clamp(1.7rem,3vw,2.35rem);font-weight:700;color:var(--navy-deep)}
+.sec-head p{margin-top:12px;color:var(--muted);font-size:1.08rem}
+
+.demo{background:#fff;border-top:1px solid var(--line)}
+.demo .wrap{text-align:center;max-width:760px}
+.demo h2{font-size:clamp(1.8rem,3vw,2.4rem);color:var(--navy-deep);font-weight:700}
+.demo p{color:var(--muted);margin:16px auto 30px;max-width:36em}
+.demo .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.demo .phone-big{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:1.25rem;color:var(--navy);text-decoration:none;align-self:center}
+.demo .perks{margin-top:22px;color:var(--muted);font-size:15px;font-weight:600}
+
+footer{background:var(--navy-deep);color:#b9cbf0;padding:56px 0 40px}
+.foot-grid{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+footer img{height:40px;width:auto;margin-bottom:14px}
+footer a{color:#dbe6fb;text-decoration:none;font-size:15px}
+footer a:hover{text-decoration:underline}
+.foot-links{display:flex;gap:26px;flex-wrap:wrap;max-width:340px}
+.foot-meta{margin-top:34px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;font-size:14px;color:#8ba3d8;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+.checks{list-style:none;margin-top:18px}
+.checks li{padding-left:26px;position:relative;margin-bottom:9px;color:var(--ink)}
+.checks li::before{content:"";position:absolute;left:0;top:7px;width:14px;height:14px;border-radius:4px;background:var(--blue);clip-path:polygon(14% 44%, 0 62%, 40% 100%, 100% 16%, 84% 2%, 40% 68%)}
+
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;padding:12px 18px;z-index:200;border-radius:0 0 10px 0;text-decoration:none}
+.skip:focus{left:0}
+.draft-banner{background:#fff7db;border-bottom:1px solid #f0d98a;text-align:center;padding:9px;font-size:13.5px;color:#7a5c00;font-weight:600}
+@media (max-width:900px){
+  .nav-links,.nav-phone{display:none}
+}
+</style>
+<style>
+.subhero{padding:56px 0 44px;background:linear-gradient(180deg,#eef5ff 0%,var(--paper) 100%)}
+.subhero .kicker{margin-bottom:14px}
+.subhero h1{font-size:clamp(2rem,4vw,2.9rem);font-weight:800;color:var(--navy-deep);max-width:20em}
+.subhero p.lead{margin-top:18px;font-size:1.1rem;color:var(--muted);max-width:44em}
+.breadcrumb{font-size:14px;color:var(--muted);margin-bottom:18px}
+.breadcrumb a{color:var(--blue-dark);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* Flow diagram */
+.flow{display:flex;align-items:stretch;gap:0;margin-top:10px}
+.flow-step{
+  flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:26px 22px;text-align:center;position:relative;
+}
+.flow-step .num{
+  width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 14px;
+  font-family:'Schibsted Grotesk',sans-serif;font-weight:800;font-size:15px;
+}
+.flow-step h3{font-size:1.05rem;color:var(--navy-deep);margin-bottom:8px}
+.flow-step p{color:var(--muted);font-size:14.5px}
+.flow-arrow{
+  flex:none;width:44px;display:flex;align-items:center;justify-content:center;
+  color:var(--blue);
+}
+@media (max-width:900px){
+  .flow{flex-direction:column;gap:14px}
+  .flow-arrow{width:auto;height:24px;transform:rotate(90deg)}
+}
+
+/* Provider cards */
+.provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.provider-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 32px}
+.provider-card .role-tag{
+  display:inline-block;background:var(--paper);border:1px solid var(--line);color:var(--navy);
+  border-radius:99px;font-size:12.5px;font-weight:700;padding:4px 13px;margin-bottom:16px;
+  text-transform:uppercase;letter-spacing:.03em;
+}
+.provider-card h3{font-size:1.4rem;color:var(--navy-deep);margin-bottom:6px}
+.provider-card .sub{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.provider-card p.desc{color:var(--ink);font-size:15.5px;margin-bottom:16px}
+.provider-card a.site-link{font-size:14.5px;font-weight:600}
+@media (max-width:900px){
+  .provider-grid{grid-template-columns:1fr}
+}
+
+/* Compatibility table */
+.compat-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.compat-table th,.compat-table td{padding:14px 18px;text-align:left;font-size:15px;border-bottom:1px solid var(--line)}
+.compat-table th{background:var(--paper);color:var(--navy-deep);font-family:'Schibsted Grotesk',sans-serif;font-size:14px}
+.compat-table tr:last-child td{border-bottom:none}
+.compat-table td.yes{color:var(--blue-dark);font-weight:700}
+
+.guests{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.mini-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 24px}
+.mini-card h3{font-size:1.08rem;color:var(--navy-deep);margin-bottom:8px}
+.mini-card p{color:var(--muted);font-size:15px}
+.card-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:900px){
+  .card-grid3{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="draft-banner">DRAFT — internal review only, not linked from the live site yet</div>
+<a class="skip" href="#top">Skip to content</a>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="/#top" aria-label="QuillStay home"><img src="/img/quillstay-logo-light.png" alt="QuillStay"></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="/#features">Features</a>
+      <a href="/#guests">For guests</a>
+      <a href="/#owners">For owners</a>
+      <a href="/#integrations">Integrations</a>
+      <a href="/#pricing">Pricing</a>
+      <a href="/support/">Support</a>
+    </nav>
+    <a class="nav-phone" href="tel:203-457-8550">203-457-8550</a>
+    <a class="btn btn-solid" href="/#demo">Book a demo</a>
+  </div>
+</header>
+
+<main id="top">
+<div class="subhero">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/">QuillStay</a> / Payment Gateway &amp; Processing</p>
+    <p class="kicker">How guests pay, and how you get funded</p>
+    <h1>One payment gateway, one processor — set up for you, not by you</h1>
+    <p class="lead">Every card a guest enters into your QuillStay booking engine runs through the same PCI-compliant path: Fluid Pay as the gateway, and a merchant account set up through Host Merchant Services as the processor. We configure both during onboarding — free, and included with every property.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">How a payment actually moves</p>
+      <h2>Gateway and processor are two different jobs</h2>
+      <p>It's a common mix-up, so here's the short version: the gateway is the secure pipe that carries the card data from your booking engine to the card networks. The processor is who actually moves the money and deposits it in your bank account. QuillStay connects both automatically.</p>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <h3>Guest checks out</h3>
+        <p>A guest enters their card on your QuillStay booking page, or your front desk keys it in at check-in.</p>
+      </div>
+      <div class="flow-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <h3>Fluid Pay — the gateway</h3>
+        <p>The card is securely authorized and tokenized, then passed to the card networks and your processor for approval.</p>
+      </div>
+      <div class="flow-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <h3>Host Merchant Services — the processor</h3>
+        <p>Your merchant account settles the transaction and deposits funds into your bank, typically the next business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guests">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">The two providers, in plain terms</p>
+      <h2>What each one does for your property</h2>
+    </div>
+    <div class="provider-grid">
+      <div class="provider-card">
+        <span class="role-tag">Payment Gateway</span>
+        <h3>Fluid Pay</h3>
+        <p class="sub">PCI DSS Level 1 · partner-only, never boards merchants directly</p>
+        <p class="desc">Fluid Pay is the secure connection between your QuillStay booking engine and the card networks — it authorizes, tokenizes, and routes every transaction without ever putting raw card data through your own systems. It's built specifically for software platforms like QuillStay, running on modern cloud infrastructure rather than legacy, on-premise gateway hardware.</p>
+        <ul class="checks">
+          <li>PCI DSS Level 1 service provider</li>
+          <li>Card tokenization keeps guest card data out of QuillStay's own systems</li>
+          <li>EMV, contactless, and card-not-present transactions all run through the same connection</li>
+          <li>Built-in fraud detection tuned to the transaction, not generic rules</li>
+        </ul>
+        <p style="margin-top:18px"><a class="site-link" href="https://www.fluidpay.com/" target="_blank" rel="noopener">fluidpay.com →</a></p>
+      </div>
+      <div class="provider-card">
+        <span class="role-tag">Payment Processor</span>
+        <h3>Host Merchant Services</h3>
+        <p class="sub">Registered ISO of PNC Bank, Synovus Bank &amp; Wells Fargo · founded 2010</p>
+        <p class="desc">Host Merchant Services sets up and manages the actual merchant account behind your property — the relationship with the banks that move money from a guest's card into your account. Our team works directly with Host Merchant Services to get every new QuillStay property boarded, so this is handled for you during setup, not something you have to arrange yourself.</p>
+        <ul class="checks">
+          <li>Merchant account setup, handled as part of your QuillStay onboarding</li>
+          <li>Next-day funding to your existing business bank account</li>
+          <li>Interchange-plus pricing — transparent, no hidden markups</li>
+          <li>24/7/365 US-based support, with a dedicated account manager</li>
+        </ul>
+        <p style="margin-top:18px"><a class="site-link" href="https://hostmerchantservices.com/" target="_blank" rel="noopener">hostmerchantservices.com →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">What's supported</p>
+      <h2>Compatibility at a glance</h2>
+    </div>
+    <table class="compat-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Support</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Major card networks (Visa, Mastercard, Amex, Discover)</td><td class="yes">Supported</td></tr>
+        <tr><td>Guest booking-engine payments (card-not-present)</td><td class="yes">Supported</td></tr>
+        <tr><td>Front-desk EMV / chip &amp; contactless terminals</td><td class="yes">Supported</td></tr>
+        <tr><td>Card tokenization &amp; secure vaulting</td><td class="yes">Supported</td></tr>
+        <tr><td>Next-day funding to your bank account</td><td class="yes">Supported</td></tr>
+        <tr><td>PCI DSS compliant processing path</td><td class="yes">Supported</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:18px;color:var(--muted);font-size:14.5px">Exact terminal models and any property-specific requirements (high-risk categories, international cards, etc.) are confirmed with you directly during setup.</p>
+  </div>
+</section>
+
+<section class="guests">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="kicker">Getting set up</p>
+      <h2>You don't manage any of this yourself</h2>
+    </div>
+    <div class="card-grid3">
+      <div class="mini-card"><h3>One onboarding conversation</h3><p>We gather what Host Merchant Services needs to open your merchant account as part of your regular QuillStay setup — no separate application process to chase.</p></div>
+      <div class="mini-card"><h3>Fluid Pay connects automatically</h3><p>Once your merchant account is active, your QuillStay booking engine is wired to Fluid Pay's gateway — nothing to configure on your end.</p></div>
+      <div class="mini-card"><h3>One team if something needs attention</h3><p>Questions about a transaction, a payout, or your rate? Reach out to QuillStay support and we coordinate directly with Host Merchant Services on your behalf.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <h2>Have questions about your specific setup?</h2>
+    <p>Book a demo and we'll walk through exactly how payments would work for your property.</p>
+    <div class="cta-row">
+      <a class="btn btn-blue" href="mailto:steve@quillstay.com?subject=Demo%20request%20—%20QuillStay">Request a demo</a>
+      <a class="phone-big" href="tel:203-457-8550">or call 203-457-8550</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="/img/quillstay-logo-dark.png" alt="QuillStay">
+        <p style="max-width:30em;font-size:15px">The simple, intuitive property management system and booking engine for independent hotels, co-op resorts, and condo-hotels.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/#features">Features</a>
+        <a href="/#guests">For guests</a>
+        <a href="/#integrations">Integrations</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#demo">Book a demo</a>
+        <a href="/condo-hotels/">Condo-Hotels</a>
+        <a href="/first-booking-engine/">First Booking Engine</a>
+        <a href="/switch/">Why Switch</a>
+        <a href="/case-studies/royal-atlantic/">Case Study: Royal Atlantic</a>
+        <a href="/how-to-videos/">How-To Videos</a>
+        <a href="/support/">Support</a>
+        <a href="/team/">Our Team</a>
+        <a href="/payments/">Payments</a>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 QuillStay Inc. All rights reserved.</span>
+      <a href="tel:203-457-8550">203-457-8550</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
