@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Payment Gateway &amp; Processing | QuillStay</title>
-<meta name="description" content="QuillStay's booking engine runs on the Fluid Pay payment gateway, with merchant accounts and processing set up through Host Merchant Services — PCI-compliant, next-day funding, free setup.">
+<meta name="description" content="QuillStay's booking engine runs on the Fluid Pay payment gateway, with merchant accounts and processing set up through Host Merchant Services — PCI-compliant, next-day funding, and access to a wide range of gateways.">
 <meta name="robots" content="noindex">
 <link rel="icon" href="/img/quillstay-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -147,6 +147,34 @@ footer a:hover{text-decoration:underline}
   .provider-grid{grid-template-columns:1fr}
 }
 
+/* Gateway lineup */
+.gateway-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gateway-tile{
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  padding:18px 18px;display:flex;align-items:flex-start;gap:13px;
+}
+.gateway-tile .gic{
+  flex:none;width:38px;height:38px;border-radius:9px;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+}
+.gateway-tile .gname{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;color:var(--navy-deep);font-size:15px}
+.gateway-tile .gname .current{
+  display:inline-block;margin-left:7px;background:var(--blue);color:#fff;font-size:10.5px;font-weight:700;
+  padding:2px 8px;border-radius:99px;vertical-align:middle;text-transform:uppercase;letter-spacing:.03em;
+}
+.gateway-tile .gdesc{color:var(--muted);font-size:13.5px;margin-top:3px}
+.gateway-more{
+  background:var(--paper);border:1.5px dashed var(--line);border-radius:12px;
+  padding:18px;display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--muted);font-size:14px;font-weight:600;
+}
+@media (max-width:900px){
+  .gateway-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .gateway-grid{grid-template-columns:1fr}
+}
+
 /* Compatibility table */
 .compat-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .compat-table th,.compat-table td{padding:14px 18px;text-align:left;font-size:15px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -191,8 +219,8 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <p class="breadcrumb"><a href="/">QuillStay</a> / Payment Gateway &amp; Processing</p>
     <p class="kicker">How guests pay, and how you get funded</p>
-    <h1>One payment gateway, one processor — set up for you, not by you</h1>
-    <p class="lead">Every card a guest enters into your QuillStay booking engine runs through the same PCI-compliant path: Fluid Pay as the gateway, and a merchant account set up through Host Merchant Services as the processor. We configure both during onboarding — free, and included with every property.</p>
+    <h1>One merchant account, a wide range of gateways — set up for you, not by you</h1>
+    <p class="lead">Every card a guest enters into your QuillStay booking engine runs through a PCI-compliant path built on Fluid Pay as the gateway, with your merchant account set up through Host Merchant Services. Because Host Merchant Services powers the processing side, your property also has access to a broad lineup of other leading gateways under the same relationship. We configure everything during onboarding — free, and included with every property.</p>
   </div>
 </div>
 
@@ -267,6 +295,55 @@ footer a:hover{text-decoration:underline}
 <section>
   <div class="wrap">
     <div class="sec-head">
+      <p class="kicker">Not locked into one gateway</p>
+      <h2>Host Merchant Services opens the door to a wide range of gateways</h2>
+      <p>Fluid Pay is what QuillStay is built on today, and it's the default for every new property. But because Host Merchant Services holds the underlying merchant account, your property isn't tied to a single gateway — HMS supports a broad lineup of leading payment gateways under that same relationship, useful if a specific system, feature, or existing setup ever calls for a different one.</p>
+    </div>
+    <div class="gateway-grid">
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="#0386f8" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+        <div><div class="gname">Fluid Pay <span class="current">QuillStay default</span></div><div class="gdesc">Cloud-native, white-label gateway — what QuillStay runs on today</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="#0386f8" stroke-width="1.8"/><path d="M3 10.5h18" stroke="#0386f8" stroke-width="1.8"/></svg></span>
+        <div><div class="gname">HMS Pay</div><div class="gdesc">Host Merchant Services' own in-house virtual terminal &amp; gateway</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0386f8" stroke-width="1.8"/><path d="M8.5 12h7M12 8.5v7" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div><div class="gname">Authorize.Net</div><div class="gdesc">One of the most widely used ecommerce gateways, with built-in fraud tools</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2" stroke="#0386f8" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#0386f8" stroke-width="1.8"/></svg></span>
+        <div><div class="gname">NMI</div><div class="gdesc">Network Merchants — white-label capable, broad integration support</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><div class="gname">SwipeSimple</div><div class="gdesc">Mobile-first gateway for in-store, on-the-go, and invoicing payments</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#0386f8" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><div class="gname">TransIT (TSYS)</div><div class="gdesc">TSYS's native gateway, built for scalable, enterprise-level processing</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#0386f8" stroke-width="1.8"/><rect x="6.5" y="8.5" width="4" height="3.2" rx="0.8" stroke="#0386f8" stroke-width="1.5"/></svg></span>
+        <div><div class="gname">Dejavoo iPOSpays</div><div class="gdesc">Omni-commerce gateway spanning online, POS, and virtual terminal</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3.5 8-7 10-3.5-2-7-5-7-10V6l7-3Z" stroke="#0386f8" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12.2l2 2 4-4.2" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><div class="gname">Valor</div><div class="gdesc">Unified commerce gateway with tokenization and offline authorization</div></div>
+      </div>
+      <div class="gateway-tile">
+        <span class="gic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="#0386f8" stroke-width="1.8"/><path d="M8 21h8M12 18v3" stroke="#0386f8" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <div><div class="gname">CardConnect CardPointe</div><div class="gdesc">Real-time reporting, recurring billing, and PCI compliance tools</div></div>
+      </div>
+    </div>
+    <p style="margin-top:16px;color:var(--muted);font-size:14.5px">Beyond this lineup, Host Merchant Services supports dozens of additional gateways and platforms. If your property runs on something specific, ask us — there's a good chance it's already supported.</p>
+  </div>
+</section>
+
+<section class="guests">
+  <div class="wrap">
+    <div class="sec-head">
       <p class="kicker">What's supported</p>
       <h2>Compatibility at a glance</h2>
     </div>
@@ -308,7 +385,7 @@ footer a:hover{text-decoration:underline}
   </div>
 </section>
 
-<section class="guests">
+<section>
   <div class="wrap">
     <div class="sec-head">
       <p class="kicker">Getting set up</p>
