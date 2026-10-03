@@ -1,4 +1,4 @@
-/* Custom Windows & Upholstery — concept #156 — Bofill Technologies */
+/* Custom Windows LLC — concept #156 rev. 2 — Bofill Technologies */
 (() => {
   'use strict';
   document.documentElement.classList.remove('no-js');
@@ -22,6 +22,17 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !drawer.hidden) { setDrawer(false); burger.focus(); } });
   window.addEventListener('resize', () => { if (window.innerWidth >= 1120 && !drawer.hidden) setDrawer(false); });
 
+  // Desktop: floating call-to-action appears once the hero form is out of view
+  const bar = document.getElementById('actionBar');
+  const card = document.getElementById('consult');
+  if ('IntersectionObserver' in window && bar && card) {
+    new IntersectionObserver(([entry]) => {
+      bar.classList.toggle('is-visible', !entry.isIntersecting);
+    }, { threshold: 0 }).observe(card);
+  } else if (bar) {
+    bar.classList.add('is-visible');
+  }
+
   // Logo fallback + broken photo handling (class toggles only)
   const brand = document.querySelector('.brand');
   const logo = document.querySelector('.brand__logo');
@@ -44,13 +55,13 @@
   const note = document.getElementById('studioNote');
   const chips = document.querySelectorAll('.chip');
   const TYPES = {
-    sheer:    { block: 0.45, verb: 'Close it',  name: 'Silhouette® sheer shadings', text: 'soften daylight and keep your view.' },
-    cellular: { block: 0.8,  verb: 'Lower it',  name: 'Duette® honeycomb shades',   text: 'trap air in their cells to keep rooms warmer in winter and cooler in summer.' },
-    roman:    { block: 0.9,  verb: 'Lower it',  name: 'Vignette® modern Roman shades', text: 'fold into soft, even tiers with no exposed cords.' },
-    shutter:  { block: 0.85, verb: 'Close it',  name: 'Wood, composite and vinyl shutters', text: 'are built for each window and last for decades.' },
-    drape:    { block: 0.95, verb: 'Draw them', name: 'Custom drapery', text: 'sewn to order, in fabrics that can match your upholstery.' }
+    roller:   { block: 0.85, verb: 'Lower it',  name: 'Roller shades', text: 'give the cleanest line, from light-filtering to full blackout.' },
+    cellular: { block: 0.8,  verb: 'Lower it',  name: 'Duette® honeycomb shades', text: 'trap air in their cells to keep rooms warmer in winter and cooler in summer.' },
+    sheer:    { block: 0.45, verb: 'Close it',  name: 'Silhouette® shadings', text: 'soften daylight and keep your view.' },
+    shutter:  { block: 0.85, verb: 'Close it',  name: 'Custom shutters', text: 'are built for one window and last for decades.' },
+    drape:    { block: 0.95, verb: 'Draw them', name: 'Custom drapery', text: 'in almost any fabric, on almost any hardware.' }
   };
-  let current = 'sheer';
+  let current = 'roller';
 
   const render = () => {
     const drop = Number(range.value);
@@ -77,16 +88,16 @@
   range.addEventListener('input', render);
   render();
 
-  // Consultation form (concept: no endpoint yet)
+  // Consultation form. FORM_ENDPOINT: wire to the WordPress form handler at launch.
   const form = document.getElementById('consultForm');
   const status = document.getElementById('formStatus');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
-      status.textContent = 'Add your name, email and phone so we can reach you.';
+      status.textContent = 'Add your name, phone, email and town so we can reach you.';
       return;
     }
-    status.textContent = 'Request received. We will call you to set up a visit.';
+    status.textContent = 'Thank you. We will call you to set up your visit.';
     form.reset();
   });
 
