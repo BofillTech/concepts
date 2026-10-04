@@ -369,3 +369,110 @@ h2 em,h1 em{font-style:italic}
   .book-bar__field input{max-width:118px}
   .book-bar__go{flex:1;min-width:0;padding:11px 10px}
 }
+
+/* ==========================================================================
+   Rev 2 — Vimeo hero + inner pages
+   ========================================================================== */
+
+/* Hero video (Vimeo background embed over an aerial poster; no scrims) */
+.hero__media{position:relative;overflow:hidden}
+.hero__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+iframe.hero__video{
+  position:absolute;top:50%;left:50%;border:0;
+  width:100vw;height:56.25vw;min-height:100%;min-width:177.78vh;
+  transform:translate(-50%,-50%);
+}
+@media (prefers-reduced-motion:reduce){iframe.hero__video{display:none}}
+
+/* Center the orphan card when the collection grid ends on a single item */
+@media (min-width:1024px){
+  .collection__grid > .card:last-child:nth-child(3n+1){grid-column:2}
+}
+
+/* Active nav state */
+.menu-item.current-menu-item a::after{width:100%}
+.menu-item.current-menu-item a{color:var(--roof)}
+
+/* Inner page hero: photo + solid panel beside it (never text over the image) */
+.page-hero{margin-top:78px;background:var(--cream)}
+.page-hero__grid{display:grid;grid-template-columns:minmax(0,1fr)}
+.page-hero__grid > *{min-width:0}
+.page-hero__media{min-height:300px;background:var(--mist)}
+.page-hero__media img{width:100%;height:100%;object-fit:cover}
+.page-hero__panel{padding:clamp(44px,6vw,80px) clamp(24px,6vw,72px);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.page-hero__panel h1{font-size:clamp(2.1rem,5vw,3.4rem)}
+.page-hero__panel p{max-width:52ch;color:var(--muted)}
+.page-hero__panel .btn{align-self:flex-start}
+@media (min-width:900px){
+  .page-hero__grid{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  .page-hero__media{min-height:460px}
+}
+
+/* Breadcrumb */
+.crumb{background:var(--navy-deep);color:var(--mist);font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:10px 0}
+.crumb a{color:var(--sand)}
+.crumb a:hover{color:#fff}
+.crumb span{opacity:.6;margin:0 8px}
+
+/* Property / venue rows (alternating editorial rows with a thumb strip) */
+.rows{padding:clamp(56px,7vw,96px) 0}
+.row-item{display:grid;grid-template-columns:minmax(0,1fr);gap:0;background:var(--paper);box-shadow:var(--shadow);margin-bottom:clamp(34px,4vw,56px)}
+.row-item__media{aspect-ratio:4/3;overflow:hidden;background:var(--mist)}
+.row-item__media img{width:100%;height:100%;object-fit:cover}
+.row-item__body{padding:32px 28px 36px;display:flex;flex-direction:column;gap:13px;justify-content:center}
+.row-item__body h2{font-size:clamp(1.55rem,2.8vw,2.1rem)}
+.row-item__body p{color:var(--muted)}
+.row-item__meta{font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--roof)}
+.row-item__actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-top:6px}
+.row-item__note{font-size:.82rem;color:var(--muted);border-left:2px solid var(--sand);padding-left:12px}
+.menus{display:flex;gap:10px;flex-wrap:wrap}
+.menus a{
+  font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  border:1px solid var(--sand);padding:8px 14px;border-radius:2px;color:var(--navy);
+}
+.menus a:hover{border-color:var(--roof);color:var(--roof)}
+.thumbs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:0 28px 28px}
+.thumbs img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:var(--mist)}
+@media (min-width:900px){
+  .row-item{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
+  .row-item--rev{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}
+  .row-item--rev .row-item__media{order:2}
+  .row-item__media{aspect-ratio:auto;min-height:380px}
+  .row-item__body{padding:40px 42px}
+  .thumbs{grid-column:1 / -1;padding:0 42px 34px}
+}
+
+/* Wedding gallery band */
+.wed-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:clamp(40px,5vw,64px) 0 0}
+.wed-gallery img{width:100%;aspect-ratio:3/2;object-fit:cover;display:block;background:var(--mist)}
+@media (min-width:900px){.wed-gallery{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.credits{text-align:center;font-size:.8rem;color:var(--muted);padding:18px 0 0}
+.credits a{border-bottom:1px solid var(--sand)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:start}
+.contact-card{background:var(--cream);padding:34px 30px;box-shadow:var(--shadow)}
+.contact-card h2{margin-bottom:16px}
+.contact-card address{font-style:normal;color:var(--muted);line-height:1.85;margin-bottom:14px}
+.contact-card a[href^="tel"]{font-weight:500}
+.contact-card__actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
+.contact-map iframe{width:100%;height:440px;border:0;display:block;background:var(--mist)}
+@media (min-width:900px){.contact-grid{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}}
+
+/* Generic light/dark alternating content blocks on inner pages */
+.block{padding:clamp(56px,7vw,96px) 0}
+.block--cream{background:var(--cream)}
+.block--navy{background:var(--navy);color:var(--mist)}
+.block--navy h2{color:#fff}
+.block--navy .kicker{color:var(--sand)}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:34px;align-items:center}
+.split figure{background:var(--mist)}
+.split img{width:100%;height:100%;object-fit:cover;display:block}
+.split .btn{align-self:flex-start}
+.split > div{display:flex;flex-direction:column;gap:16px}
+.split > div p{color:var(--muted);max-width:56ch}
+.block--navy .split > div p{color:var(--mist)}
+@media (min-width:900px){
+  .split{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
+  .split--rev figure{order:2}
+}
