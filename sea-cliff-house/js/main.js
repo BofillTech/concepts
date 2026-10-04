@@ -25,6 +25,42 @@
     }
   });
 
+  /* 1b. Hero drone video (addresses live in js/photos.js) */
+  var hero = document.querySelector('.hero');
+  var video = document.querySelector('.hero__video');
+  var pauseBtn = document.querySelector('.hero__pause');
+  var videos = window.SEA_CLIFF_VIDEOS || {};
+  var saveData = navigator.connection && navigator.connection.saveData;
+  if (hero && video && !reduceMotion && !saveData) {
+    var cfg = videos[video.getAttribute('data-video')] || {};
+    var isPhone = window.matchMedia('(max-width: 767px)').matches;
+    var src = isPhone ? cfg.mobile : cfg.desktop;
+    if (src) {
+      video.muted = true;
+      video.setAttribute('autoplay', '');
+      if (cfg.label) { video.setAttribute('title', cfg.label); }
+      video.src = src;
+      video.addEventListener('playing', function () { hero.classList.add('is-playing'); });
+      video.addEventListener('error', function () { hero.classList.remove('is-playing'); pauseBtn.hidden = true; });
+      var attempt = video.play();
+      if (attempt && attempt.catch) { attempt.catch(function () { pauseBtn.hidden = true; }); }
+      pauseBtn.hidden = false;
+      pauseBtn.addEventListener('click', function () {
+        var paused = pauseBtn.getAttribute('aria-pressed') === 'true';
+        if (paused) { video.play(); } else { video.pause(); }
+        pauseBtn.setAttribute('aria-pressed', String(!paused));
+        pauseBtn.textContent = paused ? 'Pause video' : 'Play video';
+      });
+      if (showSlots) {
+        var vt = document.createElement('span');
+        vt.className = 'slot-tag';
+        vt.textContent = 'hero-video (see SEA_CLIFF_VIDEOS)';
+        vt.style.marginTop = '1.9rem';
+        video.parentElement.appendChild(vt);
+      }
+    }
+  }
+
   /* 2. Header state on scroll */
   var header = document.querySelector('.site-header');
   var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 40); };

@@ -14,10 +14,6 @@ window.SEA_CLIFF_PHOTOS = {
     alt: "Sea Cliff House" },
   'hero-1': { src: 'https://www.mainevisitorattractions.com/wp-content/uploads/poolindexbanner.jpg',
     alt: "The heated pool, hot tub and dunes at Sea Cliff House with the ocean beyond" },
-  'hero-2': { src: 'https://www.seacliffhouse.com/wp-content/uploads/slidebuildingandbeach.jpg',
-    alt: "Aerial view of Sea Cliff House and the wide sand of Old Orchard Beach" },
-  'hero-3': { src: 'https://www.seacliffhouse.com/wp-content/uploads/slidepoolfromabove.jpg',
-    alt: "The pool deck from above, looking toward the beach" },
   'welcome-main': { src: 'https://www.mainevisitorattractions.com/wp-content/uploads/honeymoonsidedeckend.jpg',
     alt: "View from a deck over the pool and lounge chairs to the ocean" },
   'welcome-inset': { src: 'https://www.mainevisitorattractions.com/wp-content/uploads/hottubandflowers.jpg',
@@ -60,4 +56,22 @@ window.SEA_CLIFF_PHOTOS = {
     alt: "Ocean view from a guest deck at Sea Cliff House" },
   'explore-tour': { src: 'https://www.seacliffhouse.com/wp-content/uploads/slidehottubtowardpool.jpg',
     alt: "Hot tub and pool deck" },
+};
+
+/* =====================================================================
+   HERO DRONE VIDEO
+   desktop: shown on screens 768px and wider
+   mobile:  shown on phones. Leave it as '' to show the still photo
+            (slot 'hero-1' above) on phones instead of the video.
+   The video always plays muted and loops. Visitors who ask their device
+   for reduced motion, or who have data saver on, see the still photo.
+   Best practice: use a compressed, sound-free copy (under about 8 MB)
+   rather than the original 91 MB file.
+   ===================================================================== */
+window.SEA_CLIFF_VIDEOS = {
+  'hero-video': {
+    desktop: 'https://www.seacliffhouse.com/dronevideoseacliffmotel.mp4',
+    mobile: '',
+    label: 'Aerial drone video of Sea Cliff House and Old Orchard Beach'
+  }
 };
