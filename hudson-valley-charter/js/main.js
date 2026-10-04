@@ -1,8 +1,18 @@
 (function () {
   'use strict';
 
-  var toggle = document.querySelector('.rail__toggle');
+  var header = document.getElementById('site-header');
+  var toggle = document.querySelector('.site-header__toggle');
   var nav = document.getElementById('primary-menu');
+
+  if (header) {
+    var onScroll = function () {
+      header.classList.toggle('is-scrolled', window.scrollY > 10);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
   if (!toggle || !nav) { return; }
 
   toggle.addEventListener('click', function () {
