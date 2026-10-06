@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 159 | applewood-inn | 2026-10-06 | editorial-open | hero,story,rooms,amenities,packages,location,voices,cta | single-column-editorial | persistent-bottom-bar | staggered-reveal | victorian-serif-editorial | Playfair Display | Lato | forest-deep+brick-aged+gold-antique+cream+ink |
 | 158 | hudson-valley-charter | 2026-10-04 | full-bleed | hero,trust-strip,services-grid,fleet,about,reviews,cta,contact | symmetric-12col | top-sticky | subtle-fade | standard-condensed-headings | Saira Condensed | Overpass | sign-green+green-deep+lane-yellow+ink+slate+mist |
 | 157 | stone-harbor-inn | 2026-09-28 | split-screen | hero,ticker,room-key-finder,pool-deck-narrative,gallery,voices,good-to-know,location,sister-motels,cta | symmetric-12col | hamburger-only | marquee-ticker | giant-retro-display-with-key-tag-badges | Shrikhand | Onest | bay-ink+inn-sky+sky-wash+beach-sand+salmon |
 | 156 | custom-windows-upholstery | 2026-09-26 | off-center-framed | hero,workrooms,premier-bento,automation-offer,process,ideas-by-room,finder,dealer-team,visit,consult | bento-overlapping | centered-split-logo | none | quiet-high-contrast-serif-with-interactive-window-demo | Gloock | Red Hat Text | window-ink+morning-sky+drapery-brass+linen-white+fabric-sage |
