@@ -1,24 +1,21 @@
 # Applewood Inn Images
 
-All images are self-hosted to ensure HTTPS compatibility on GitHub Pages.
+Real property photos from TripAdvisor gallery for Applewood Inn, Freeport, Maine.
 
 ## Sources
 
-**Royalty-free photos from Unsplash:**
-- `hero-exterior.jpg` - Resort/inn exterior (Victorian architecture)
-- `inn-facade.jpg` - Historic inn building
-- `inn-entrance.jpg` - Welcoming entrance
-- `great-room.jpg` - Dining/living area with table
-- `jacuzzi-suite.jpg` - Luxury bathroom with jacuzzi tub
-- `victorian-suite.jpg` - Elegant bedroom with period details
-- `victorian-interior.jpg` - Victorian interior details
-- `pet-friendly.jpg` - Comfortable pet-friendly room
-- `bedroom-king.jpg` - King bedroom (additional)
-- `breakfast-room.jpg` - Breakfast/dining room (additional)
-- `room-luxury.jpg` - Luxury room interior (additional)
+**TripAdvisor Photos (8 Holbrook St, Freeport, ME 04032):**
+- `hero-1.jpg` - Exterior view (72K)
+- `hero-2.jpg` - Historic architecture (39K)
+- `hero-3.jpg` - Building entrance (191K)
+- `room-1.jpg` - King room interior (234K)
+- `room-2.jpg` - Victorian suite (326K)
+- `room-3.jpg` - Guest room (127K)
+- `room-4.jpg` - Suite interior (389K)
+- `amenity-1.jpg` - Interior details (195K)
+- `amenity-2.jpg` - Breakfast/dining area (248K)
+- `amenity-3.jpg` - Great room (261K)
+- `story-1.jpg` - Dining room with harvest table (379K)
 
-All images downloaded via HTTPS from Unsplash API at 1400px width for optimal quality and performance.
-
-## License
-
-Unsplash photos are free to use under the Unsplash License (https://unsplash.com/license).
+All photos sourced from TripAdvisor listing for prospect redesign preview.
+Total: 2.46MB self-hosted for HTTPS Pages deployment.
