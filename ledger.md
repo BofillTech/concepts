@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 162 | open-hearth-inn | 2026-10-06 | framed-polaroid-stack | hero,rooms,amenities,story,reviews,gallery,cta | magazine-masonry | side-rail | horizontal-drag-gallery | soft-serif-headline | Fraunces | Nunito Sans | acadia-hearth-cream |
 | 161 | roam-inn | 2026-10-06 | split-diagonal | hero,story,rooms,dining,amenities,location,cta | bento-mosaic | hamburger-only | ken-burns-slow | condensed-caps-display | Bebas Neue | Source Sans 3 | munising-pine-bay |
 | 160 | forest-springs-resort | 2026-10-06 | asymmetric-collage | hero,wellness-ritual,story,rooms,forest-amenities,pets,gallery,location,voices,cta | broken-asymmetric | centered-split-logo | parallax | nordic-serif-editorial-with-wellness-numerals | Fraunces | Outfit | ozark-pine+sauna-cedar+spring-mist+parchment-cream+ink |
 | 159 | applewood-inn | 2026-10-06 | editorial-open | hero,story,rooms,amenities,packages,location,voices,cta | single-column-editorial | persistent-bottom-bar | staggered-reveal | victorian-serif-editorial | Playfair Display | Lato | forest-deep+brick-aged+gold-antique+cream+ink |
