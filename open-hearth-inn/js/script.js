@@ -1,84 +1,66 @@
 // Open Hearth Inn - JavaScript
-// Horizontal drag gallery, sticky booking bar, and navigation
+// Sticky booking bar, navigation, and interactions
 
 document.addEventListener('DOMContentLoaded', function() {
     
     // ========================================
-    // Horizontal Drag Gallery
-    // ========================================
-    const gallery = document.getElementById('gallery-slider');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    
-    if (gallery) {
-        gallery.addEventListener('mousedown', (e) => {
-            isDown = true;
-            gallery.style.cursor = 'grabbing';
-            startX = e.pageX - gallery.offsetLeft;
-            scrollLeft = gallery.scrollLeft;
-        });
-        
-        gallery.addEventListener('mouseleave', () => {
-            isDown = false;
-            gallery.style.cursor = 'grab';
-        });
-        
-        gallery.addEventListener('mouseup', () => {
-            isDown = false;
-            gallery.style.cursor = 'grab';
-        });
-        
-        gallery.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            e.preventDefault();
-            const x = e.pageX - gallery.offsetLeft;
-            const walk = (x - startX) * 2;
-            gallery.scrollLeft = scrollLeft - walk;
-        });
-        
-        // Touch support for mobile
-        let touchStartX = 0;
-        let touchScrollLeft = 0;
-        
-        gallery.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].pageX - gallery.offsetLeft;
-            touchScrollLeft = gallery.scrollLeft;
-        }, { passive: true });
-        
-        gallery.addEventListener('touchmove', (e) => {
-            const x = e.touches[0].pageX - gallery.offsetLeft;
-            const walk = (x - touchStartX) * 2;
-            gallery.scrollLeft = touchScrollLeft - walk;
-        }, { passive: true });
-    }
-    
-    // ========================================
-    // Sticky Booking Bar
+    // Sticky Booking Bar - Show After Hero
     // ========================================
     const bookingBar = document.getElementById('bookingBar');
-    let lastScrollTop = 0;
-    let scrollThreshold = 500;
+    const hero = document.querySelector('.hero');
     
     function toggleBookingBar() {
+        if (!hero || !bookingBar) return;
+        
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        if (scrollTop > scrollThreshold) {
+        // Show booking bar when user scrolls past the hero
+        if (scrollTop > heroBottom - 100) {
             bookingBar.classList.add('visible');
         } else {
             bookingBar.classList.remove('visible');
         }
-        
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     }
     
     window.addEventListener('scroll', toggleBookingBar, { passive: true });
+    toggleBookingBar(); // Initial check
+    
+    // ========================================
+    // Mobile Navigation Toggle
+    // ========================================
+    const hamburger = document.querySelector('.nav__hamburger');
+    const navMenu = document.querySelector('.nav__menu');
+    
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', function() {
+            const isActive = navMenu.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', isActive);
+        });
+        
+        // Close menu when clicking a link
+        const navLinks = document.querySelectorAll('.nav__link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
     
     // ========================================
     // Active Navigation Link
     // ========================================
-    const navLinks = document.querySelectorAll('.nav__link');
     const sections = document.querySelectorAll('section[id]');
+    const allNavLinks = document.querySelectorAll('.nav__link');
     
     function setActiveLink() {
         let currentSection = '';
@@ -86,13 +68,14 @@ document.addEventListener('DOMContentLoaded', function() {
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
+            const navHeight = document.querySelector('.nav').offsetHeight;
             
-            if (window.pageYOffset >= sectionTop - 200) {
+            if (window.pageYOffset >= sectionTop - navHeight - 50) {
                 currentSection = section.getAttribute('id');
             }
         });
         
-        navLinks.forEach(link => {
+        allNavLinks.forEach(link => {
             link.classList.remove('active');
             if (link.getAttribute('href') === `#${currentSection}`) {
                 link.classList.add('active');
@@ -101,52 +84,67 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addEventListener('scroll', setActiveLink, { passive: true });
-    setActiveLink();
+    setActiveLink(); // Initial check
     
     // ========================================
     // Smooth Scroll with Offset
     // ========================================
-    navLinks.forEach(link => {
+    allNavLinks.forEach(link => {
         link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
+            const href = this.getAttribute('href');
             
-            if (targetSection) {
-                const navHeight = document.querySelector('.nav').offsetHeight;
-                const targetPosition = targetSection.offsetTop - navHeight - 20;
+            // Only handle hash links
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href;
+                const targetSection = document.querySelector(targetId);
                 
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
+                if (targetSection) {
+                    const navHeight = document.querySelector('.nav').offsetHeight;
+                    const targetPosition = targetSection.offsetTop - navHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
     
     // ========================================
-    // Parallax Effect for Hero Polaroids
+    // Staggered Reveal Animation on Scroll
     // ========================================
-    const polaroids = document.querySelectorAll('[data-parallax]');
-    
-    function parallaxScroll() {
-        const scrolled = window.pageYOffset;
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
         
-        polaroids.forEach(polaroid => {
-            const rate = parseFloat(polaroid.getAttribute('data-parallax'));
-            const yPos = -(scrolled * rate);
-            polaroid.style.transform = polaroid.style.transform.replace(/translateY\([^)]*\)/, '');
-            polaroid.style.transform += ` translateY(${yPos}px)`;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for staggered reveal
+        const revealElements = document.querySelectorAll('.room-card, .amenity-card, .review-card, .gallery-grid__item');
+        revealElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
     }
     
-    // Only apply parallax on non-mobile devices
-    if (window.matchMedia('(min-width: 1024px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        window.addEventListener('scroll', parallaxScroll, { passive: true });
-    }
-    
     // ========================================
-    // Lazy Load Images (optional enhancement)
+    // Lazy Load Images
     // ========================================
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -167,24 +165,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ========================================
-    // Performance: Debounce Scroll Events
+    // Performance: Throttle Scroll Events
     // ========================================
-    function debounce(func, wait = 10) {
+    function throttle(func, wait) {
         let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                clearTimeout(timeout);
-                func(...args);
-            };
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
+        let previous = 0;
+        
+        return function executedFunction() {
+            const now = Date.now();
+            const remaining = wait - (now - previous);
+            
+            if (remaining <= 0 || remaining > wait) {
+                if (timeout) {
+                    clearTimeout(timeout);
+                    timeout = null;
+                }
+                previous = now;
+                func.apply(this, arguments);
+            } else if (!timeout) {
+                timeout = setTimeout(() => {
+                    previous = Date.now();
+                    timeout = null;
+                    func.apply(this, arguments);
+                }, remaining);
+            }
         };
     }
     
-    // Apply debounce to scroll handlers if needed for performance
-    const debouncedToggleBar = debounce(toggleBookingBar, 10);
-    const debouncedSetActive = debounce(setActiveLink, 10);
-    const debouncedParallax = debounce(parallaxScroll, 10);
+    // Apply throttle to expensive scroll handlers if needed
+    const throttledToggleBar = throttle(toggleBookingBar, 100);
+    const throttledSetActive = throttle(setActiveLink, 100);
     
     // ========================================
     // Console Log for Development
