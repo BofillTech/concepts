@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 163 | north-vancouver-hotel | 2026-10-06 | multi-panel-carousel | hero,amenities,rooms,location,renovation,gallery,cta | zigzag-alternating | floating-pill | clip-path-wipe | geometric-sans-tight | Outfit | IBM Plex Sans | capilano-slate-teal |
 | 160 | forest-springs-resort | 2026-10-06 | asymmetric-collage | hero,wellness-ritual,story,rooms,forest-amenities,pets,gallery,location,voices,cta | broken-asymmetric | centered-split-logo | parallax | nordic-serif-editorial-with-wellness-numerals | Fraunces | Outfit | ozark-pine+sauna-cedar+spring-mist+parchment-cream+ink |
 | 159 | applewood-inn | 2026-10-06 | editorial-open | hero,story,rooms,amenities,packages,location,voices,cta | single-column-editorial | persistent-bottom-bar | staggered-reveal | victorian-serif-editorial | Playfair Display | Lato | forest-deep+brick-aged+gold-antique+cream+ink |
 | 158 | hudson-valley-charter | 2026-10-04 | full-bleed | hero,trust-strip,services-grid,fleet,about,reviews,cta,contact | symmetric-12col | top-sticky | subtle-fade | standard-condensed-headings | Saira Condensed | Overpass | sign-green+green-deep+lane-yellow+ink+slate+mist |
