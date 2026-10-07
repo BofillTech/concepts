@@ -77,19 +77,25 @@
         const bookingBar = document.querySelector('.booking-bar');
         const hero = document.querySelector('.hero');
         
-        if (!bookingBar || !hero) return;
+        if (!bookingBar || !hero) {
+            console.warn('Booking bar or hero not found');
+            return;
+        }
 
         let heroHeight = hero.offsetHeight;
 
         function toggleBookingBar() {
             const scrollPosition = window.scrollY;
             
-            if (scrollPosition > heroHeight * 0.8) {
+            if (scrollPosition > heroHeight * 0.6) {
                 bookingBar.classList.add('visible');
             } else {
                 bookingBar.classList.remove('visible');
             }
         }
+
+        // Check initial state
+        toggleBookingBar();
 
         // Throttle scroll event for performance
         let ticking = false;
@@ -103,9 +109,10 @@
             }
         });
 
-        // Recalculate hero height on resize
+        // Recalculate hero height on resize and recheck visibility
         window.addEventListener('resize', function() {
             heroHeight = hero.offsetHeight;
+            toggleBookingBar();
         });
     }
 
