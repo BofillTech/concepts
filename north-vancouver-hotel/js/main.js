@@ -81,7 +81,6 @@
         constructor() {
             this.bookingBar = document.getElementById('bookingBar');
             this.hero = document.querySelector('.hero');
-            this.threshold = 100;
             
             this.init();
         }
@@ -97,7 +96,7 @@
             const heroBottom = this.hero.offsetTop + this.hero.offsetHeight;
             const scrollPosition = window.scrollY + window.innerHeight;
             
-            if (scrollPosition > heroBottom + this.threshold) {
+            if (scrollPosition > heroBottom) {
                 this.bookingBar.classList.add('booking-bar--visible');
             } else {
                 this.bookingBar.classList.remove('booking-bar--visible');
@@ -227,9 +226,9 @@
     // ============================================
     function preloadImages() {
         const criticalImages = [
-            'img/hero-main.jpg',
             'img/wix-room-deluxe.jpg',
-            'img/wix-exterior.jpg'
+            'img/room-deluxe-2.jpg',
+            'img/wix-room-king.jpg'
         ];
         
         criticalImages.forEach(src => {
