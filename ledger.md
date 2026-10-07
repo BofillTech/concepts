@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 165 | ocean-club-hotel | 2026-10-07 | full-bleed-transparent-nav | hero,story,rooms,amenities,dining,gallery,location,cta | bento-overlapping | top-transparent-to-solid | subtle-fade | serif-editorial-coastal | Crimson Pro | Montserrat | ocean-deep+pool-blue+coral-warm+sand-cream |
 | 163 | north-vancouver-hotel | 2026-10-06 | multi-panel-carousel | hero,amenities,rooms,location,renovation,gallery,cta | zigzag-alternating | floating-pill | clip-path-wipe | geometric-sans-tight | Outfit | IBM Plex Sans | capilano-slate-teal |
 | 162 | open-hearth-inn | 2026-10-06 | full-bleed | hero,rooms,story,amenities,gallery,reviews,location,cta | symmetric-12col | top-sticky | staggered-reveal | soft-serif-headline | Fraunces | Nunito Sans | acadia-hearth-cream |
 | 161 | roam-inn | 2026-10-06 | split-diagonal | hero,story,rooms,dining,amenities,location,cta | bento-mosaic | hamburger-only | ken-burns-slow | condensed-caps-display | Bebas Neue | Source Sans 3 | munising-pine-bay |
