@@ -120,6 +120,105 @@
     update();
   }
 
+  /* 6. Gallery: rebuild from js/photos.js, filter, show more, lightbox */
+  var grid = document.querySelector('[data-gallery]');
+  if (grid) {
+    var data = window.SEA_CLIFF_GALLERY;
+    if (data && data.length) {
+      grid.innerHTML = '';
+      data.forEach(function (g, i) {
+        var li = document.createElement('li');
+        li.className = 'gallery__item';
+        li.dataset.cat = g.cat;
+        var b = document.createElement('button');
+        b.className = 'gallery__open';
+        b.type = 'button';
+        b.dataset.index = i;
+        var im = document.createElement('img');
+        im.className = 'gallery__img';
+        im.src = g.src; im.alt = g.alt || ''; im.loading = 'lazy'; im.decoding = 'async';
+        b.appendChild(im); li.appendChild(b); grid.appendChild(li);
+      });
+    }
+    var items = Array.prototype.slice.call(grid.querySelectorAll('.gallery__item'));
+    var tabs = document.querySelectorAll('.gallery__tab');
+    var moreBtn = document.querySelector('.gallery__more-btn');
+    var filter = 'all';
+    var expanded = false;
+    var LIMIT = window.matchMedia('(max-width: 767px)').matches ? 8 : (window.matchMedia('(min-width: 1024px)').matches ? 16 : 15);
+    var visible = function () { return items.filter(function (li) { return filter === 'all' || li.dataset.cat === filter; }); };
+    var apply = function () {
+      var vis = visible();
+      items.forEach(function (li) { li.hidden = true; });
+      vis.forEach(function (li, n) { li.hidden = !expanded && filter === 'all' && n >= LIMIT; });
+      var more = !expanded && filter === 'all' && vis.length > LIMIT;
+      moreBtn.hidden = !more;
+      if (more) { moreBtn.textContent = 'Show all ' + vis.length + ' photos'; }
+    };
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        filter = t.dataset.filter;
+        tabs.forEach(function (o) { o.setAttribute('aria-pressed', String(o === t)); });
+        apply();
+      });
+    });
+    moreBtn.addEventListener('click', function () { expanded = true; apply(); });
+    apply();
+
+    var box = document.querySelector('.lightbox');
+    var boxImg = box.querySelector('.lightbox__img');
+    var boxCap = box.querySelector('.lightbox__cap');
+    var current = 0;
+    var lastFocus = null;
+    var list = function () { return visible().map(function (li) { return li.querySelector('img'); }); };
+    var show = function (n) {
+      var imgs = list();
+      if (!imgs.length) { return; }
+      current = (n + imgs.length) % imgs.length;
+      boxImg.src = imgs[current].src;
+      boxImg.alt = imgs[current].alt;
+      boxCap.textContent = imgs[current].alt + '  (' + (current + 1) + ' of ' + imgs.length + ')';
+    };
+    var close = function () {
+      box.hidden = true;
+      document.body.style.overflow = '';
+      if (lastFocus) { lastFocus.focus(); }
+    };
+    grid.addEventListener('click', function (e) {
+      var b = e.target.closest('.gallery__open');
+      if (!b) { return; }
+      lastFocus = b;
+      show(list().indexOf(b.querySelector('img')));
+      box.hidden = false;
+      document.body.style.overflow = 'hidden';
+      box.querySelector('.lightbox__close').focus();
+    });
+    box.querySelector('.lightbox__close').addEventListener('click', close);
+    box.querySelector('.lightbox__nav--prev').addEventListener('click', function () { show(current - 1); });
+    box.querySelector('.lightbox__nav--next').addEventListener('click', function () { show(current + 1); });
+    box.addEventListener('click', function (e) { if (e.target === box) { close(); } });
+    document.addEventListener('keydown', function (e) {
+      if (box.hidden) { return; }
+      if (e.key === 'Escape') { close(); }
+      else if (e.key === 'ArrowLeft') { show(current - 1); }
+      else if (e.key === 'ArrowRight') { show(current + 1); }
+      else if (e.key === 'Tab') {
+        var f = Array.prototype.slice.call(box.querySelectorAll('button'));
+        var i = f.indexOf(document.activeElement);
+        if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+        else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+    var touchX = null;
+    box.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; }, { passive: true });
+    box.addEventListener('touchend', function (e) {
+      if (touchX === null) { return; }
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) { show(current + (dx < 0 ? 1 : -1)); }
+      touchX = null;
+    });
+  }
+
   var y = document.querySelector('[data-year]');
   if (y) { y.textContent = new Date().getFullYear(); }
 })();
