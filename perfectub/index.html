@@ -18,14 +18,232 @@
 {"@type":"Question","name":"Is the Perfectub a walk-in tub?","acceptedAnswer":{"@type":"Answer","text":"No. It has no door. It is a standard-size alcove tub designed to be easier to get in and out of."}}
 ]}]}
 </script>
-<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+  --porcelain:#F4F7F7; --white:#FFFFFF; --ink:#14222B; --muted:#56666F;
+  --glaze:#0A86B8; --glaze-deep:#076891; --water:#D5EEF8; --tile:#DCE4E7; --brass:#A87736;
+  --radius-s:6px; --radius-l:18px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --porcelain:#0F181D; --white:#152229; --ink:#E6EEF1; --muted:#9DB0B8;
+  --glaze:#4CC3EE; --glaze-deep:#86D6F3; --water:#173D4C; --tile:#26363E; --brass:#D4A25A;}}
+:root[data-theme="dark"]{--porcelain:#0F181D; --white:#152229; --ink:#E6EEF1; --muted:#9DB0B8;
+  --glaze:#4CC3EE; --glaze-deep:#86D6F3; --water:#173D4C; --tile:#26363E; --brass:#D4A25A;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--porcelain);color:var(--ink);font:400 17px/1.6 "Albert Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+img,svg{max-width:100%;display:block}
+img{height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--glaze);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Albert Sans",system-ui,sans-serif;font-weight:700;line-height:1.05;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.6rem,6.4vw,5rem)}
+h2{font-size:clamp(2rem,4vw,3rem)}
+h3{font-size:1.3rem;letter-spacing:-.01em}
+p{margin:0 0 1rem;max-width:60ch}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--white);padding:8px 12px;z-index:10}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--porcelain) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--tile);padding-top:env(safe-area-inset-top,0px)}
+.nav__in{display:flex;align-items:center;gap:28px;height:68px}
+.brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:700;font-size:1.45rem;text-decoration:none;letter-spacing:-.03em}
+.brand small{font:500 .72rem "Albert Sans",sans-serif;color:var(--muted);letter-spacing:0;margin-left:6px}
+.nav__links{display:flex;gap:22px;margin-left:auto;list-style:none;padding:0;margin-top:0;margin-bottom:0}
+.nav__links a{text-decoration:none;font-size:.95rem;color:var(--muted)}
+.nav__links a:hover{color:var(--ink)}
+.nav__phone{text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink);transition:background .2s,color .2s}
+.btn--solid{background:var(--ink);color:var(--porcelain)}
+.btn--solid:hover{background:var(--glaze-deep);border-color:var(--glaze-deep)}
+.btn--line:hover{background:var(--ink);color:var(--porcelain)}
+.btn--sm{min-height:40px;padding:0 18px;font-size:.92rem}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.hero__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+.hero__lede{font-size:1.2rem;color:var(--muted);margin-top:22px}
+.hero__price{display:flex;gap:14px;align-items:baseline;margin:26px 0 22px;flex-wrap:wrap}
+.hero__price strong{font-family:"Bricolage Grotesque",sans-serif;font-size:2rem;letter-spacing:-.02em}
+.hero__price span{color:var(--muted)}
+.hero__cta{display:flex;gap:12px;flex-wrap:wrap}
+
+/* facts strip */
+.facts{border-top:1px solid var(--tile);border-bottom:1px solid var(--tile);margin-top:40px}
+.facts__in{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:20px 20px 20px 0}
+.fact+.fact{padding-left:20px;border-left:1px solid var(--tile)}
+.fact b{display:block;font-size:1.02rem}
+.fact span{color:var(--muted);font-size:.93rem}
+
+/* design comparison */
+.design{padding:96px 0 40px}@media (max-width:560px){.design{padding-top:56px}.video{padding:56px 0}}
+.design__head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
+.toggle{display:inline-flex;background:var(--white);border:1px solid var(--tile);border-radius:999px;padding:4px}
+.toggle button{font:600 .95rem "Albert Sans",sans-serif;border:0;background:none;color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px}
+.toggle button[aria-pressed="true"]{background:var(--ink);color:var(--porcelain)}
+.section{background:var(--white);border:1px solid var(--tile);border-radius:var(--radius-l);margin-top:28px;padding:28px}
+.section{overflow-x:auto}.section svg{width:100%;height:auto;min-width:640px}
+.profile{transition:opacity .45s ease}
+.is-standard .profile--pt{opacity:0}.is-standard .profile--std{opacity:1}
+.profile--std{opacity:0}
+.callout{fill:var(--ink);font:600 15px "Albert Sans",sans-serif}
+.callout--muted{fill:var(--muted);font-weight:400;font-size:13.5px}
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px}
+.points p{color:var(--muted);margin-top:8px}
+.points h3{display:flex;gap:10px;align-items:center}
+.points h3 i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--brass)}
+
+/* video */
+.video{padding:80px 0}
+.video__grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:center}
+.video__frame{position:relative;display:block;aspect-ratio:16/9;border-radius:var(--radius-l);background:var(--ink);overflow:hidden;text-decoration:none;color:#fff}
+.video__frame svg{position:absolute;inset:0;width:100%;height:100%}
+.video__play{position:absolute;left:28px;top:24px;display:flex;align-items:center;gap:14px;font-weight:600}
+.video__play b{display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--porcelain);color:var(--ink);font-size:1.1rem}
+.big-num{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(3rem,7vw,5.2rem);font-weight:700;letter-spacing:-.04em;line-height:1}
+
+/* models */
+.models{padding:40px 0 80px}
+.models__list{margin-top:28px;border-top:1.5px solid var(--ink)}
+.model{display:grid;grid-template-columns:1.1fr 1.6fr auto;gap:28px;align-items:center;padding:26px 0;border-bottom:1px solid var(--tile)}
+.model__size{font-family:"Bricolage Grotesque",sans-serif;font-size:2.2rem;font-weight:700;letter-spacing:-.03em}
+.model__size small{display:block;font:500 .95rem "Albert Sans",sans-serif;color:var(--muted);letter-spacing:0}
+.model ul{margin:0;padding-left:1.1rem;color:var(--muted)}
+.model__buy{text-align:right}
+.model__buy strong{display:block;font-size:1.5rem;margin-bottom:8px}
+.models__note{color:var(--muted);margin-top:18px}
+
+/* who */
+.who{padding:80px 0;background:var(--white);border-top:1px solid var(--tile);border-bottom:1px solid var(--tile)}
+.who__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.who__list{list-style:none;margin:0;padding:0}
+.who__list li{padding:20px 0;border-bottom:1px solid var(--tile)}
+.who__list li:first-child{padding-top:0}
+.who__list p{color:var(--muted);margin:4px 0 0}
+
+/* reviews */
+.reviews{padding:88px 0}
+.reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+
+/* showroom + trade */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-bottom:88px}
+.panel{border-radius:var(--radius-l);padding:40px}
+.panel--ink{background:var(--ink);color:var(--porcelain)}
+.panel--ink p{color:color-mix(in srgb,var(--porcelain) 78%,transparent)}
+.panel--ink .btn{border-color:var(--porcelain);color:var(--porcelain)}
+.panel--ink .btn:hover{background:var(--porcelain);color:var(--ink)}
+.panel--glaze{background:var(--water)}
+.panel h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-bottom:14px}
+.panel ul{padding-left:1.1rem;margin:0 0 24px}
+
+
+.trade__photo{margin:0 0 24px}
+.trade__photo img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 38%;border-radius:var(--radius-s)}
+.trade__photo figcaption{font-size:.88rem;margin-top:8px;color:color-mix(in srgb,var(--porcelain) 70%,transparent)}
+.panel--glaze{display:flex;flex-direction:column;align-items:flex-start}
+.showroom__tub{margin-top:auto;padding-top:32px;width:100%}
+.showroom__tub img{width:100%;max-width:520px;height:auto;margin:0 auto;filter:drop-shadow(0 18px 22px rgba(20,34,43,.18))}
+/* faq */
+.faq{padding:0 0 96px}
+.faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+details{border-bottom:1px solid var(--tile);padding:18px 0}
+summary{cursor:pointer;font-weight:600;font-size:1.08rem;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.4rem;line-height:1;color:var(--glaze)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);margin:10px 0 0}
+
+footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.foot{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.foot p,.foot a{color:color-mix(in srgb,var(--porcelain) 78%,transparent);font-size:.95rem}
+.foot b{display:block;margin-bottom:8px}
+.concept-note{margin-top:36px;font-size:.85rem;color:color-mix(in srgb,var(--porcelain) 55%,transparent)}
+
+
+/* logo: two renders so the black parts of the mark stay visible on dark grounds */
+.logo{display:block;height:auto}
+.logo--on-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo--on-light{display:none}:root:not([data-theme="light"]) .logo--on-dark{display:block}}
+:root[data-theme="dark"] .logo--on-light{display:none}:root[data-theme="dark"] .logo--on-dark{display:block}
+.brand{display:block;line-height:0}
+.brand .logo{width:172px}
+/* footer sits on --ink, so it flips the other way */
+.foot__logo .logo{width:190px;margin-bottom:12px}
+.foot__logo .logo--on-light{display:none}.foot__logo .logo--on-dark{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .foot__logo .logo--on-light{display:block}:root:not([data-theme="light"]) .foot__logo .logo--on-dark{display:none}}
+:root[data-theme="dark"] .foot__logo .logo--on-light{display:block}:root[data-theme="dark"] .foot__logo .logo--on-dark{display:none}
+
+/* hero photo */
+.hero__photo{margin:0}
+.hero__photo img{width:100%;aspect-ratio:4/3.4;object-fit:cover;object-position:62% 50%;border-radius:var(--radius-l);background:var(--tile)}
+.hero__photo figcaption{color:var(--muted);font-size:.93rem;margin-top:12px;max-width:52ch}
+
+/* real-photo proof under the diagram, swaps with the toggle */
+.proof{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px}
+.proof figure{margin:0}
+.proof__frame{position:relative;aspect-ratio:468/590;border-radius:var(--radius-l);overflow:hidden;background:var(--tile)}
+.proof__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.proof figcaption{position:relative;margin-top:12px;min-height:3.2em}
+.proof figcaption span{position:absolute;inset:0}
+.proof figcaption b{display:block}
+.proof figcaption em{font-style:normal;color:var(--muted);font-size:.93rem}
+.is-standard .proof .profile--pt{opacity:0}.is-standard .proof .profile--std{opacity:1}
+@media (min-width:961px){.proof{grid-template-columns:repeat(3,1fr);gap:32px;align-items:start}.proof__lead{order:-1}}
+.proof__lead{color:var(--muted);margin:0;padding-top:6px}
+.proof__lead b{display:block;color:var(--ink);font-size:1.08rem;margin-bottom:6px}
+@media (max-width:960px){.proof__lead{grid-column:1/-1}}
+
+/* video still */
+.video__frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.video__frame::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,20,26,.62),rgba(10,20,26,0) 45%)}
+.video__play{z-index:1}
+
+/* product shot */
+.models__head{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:center}
+.models__head img{width:100%;height:auto}
+.models__head p{color:var(--muted);margin-top:14px}
+
+/* reviews */
+.review{margin:0;border-top:1.5px solid var(--ink);padding-top:20px;display:flex;flex-direction:column;gap:14px}
+.review img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 88%;border-radius:var(--radius-s);background:var(--tile)}
+.review blockquote{margin:0;font-size:1.08rem;line-height:1.5}
+.review figcaption{color:var(--muted);font-size:.93rem}
+.review figcaption b{color:var(--ink);display:block}
+.review--quote{background:var(--water);border-top:0;border-radius:var(--radius-s);padding:28px;justify-content:space-between}
+.review--quote blockquote{font-family:"Bricolage Grotesque","Albert Sans",system-ui,sans-serif;font-size:1.45rem;line-height:1.25;letter-spacing:-.01em}
+@media (max-width:960px){.models__head{grid-template-columns:1fr}}
+@media (max-width:560px){.proof{gap:12px}.proof figcaption{min-height:4.6em}}
+
+@media (max-width:960px){
+  .nav__links{display:none}
+  .hero__grid,.video__grid,.who__grid,.faq__grid,.split,.foot{grid-template-columns:1fr}
+  .points,.reviews__grid{grid-template-columns:1fr}
+  .facts__in{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--tile)}
+  .model{grid-template-columns:1fr}
+  .model__buy{text-align:left}
+}
+@media (max-width:560px){
+  .nav__phone{display:none}
+  .facts__in{grid-template-columns:1fr}
+  .fact,.fact+.fact{padding-left:0;border-left:0}
+  .fact+.fact{border-top:1px solid var(--tile)}
+  .panel{padding:28px}
+  .section{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
   <div class="wrap nav__in">
-    <a class="brand" href="#top">Perfectub<small>by Brak Tub</small></a>
+    <a class="brand" href="#top"><img class="logo logo--on-light" src="img/logo.webp" width="720" height="186" alt="Perfectub by Braktub, home"><img class="logo logo--on-dark" src="img/logo-on-dark.webp" width="720" height="186" alt=""></a>
     <ul class="nav__links">
       <li><a href="#design">How it works</a></li>
       <li><a href="#models">Sizes</a></li>
@@ -50,27 +268,10 @@
         <a class="btn btn--line" href="#showrooms">Find a showroom</a>
       </div>
     </div>
-    <div class="hero__art" aria-hidden="true">
-      <svg viewBox="0 0 560 420">
-        <defs><pattern id="tiles" width="56" height="28" patternUnits="userSpaceOnUse"><rect width="56" height="28" fill="none" stroke="var(--tile)" stroke-width="1.5"/></pattern></defs>
-        <rect x="0" y="0" width="560" height="300" fill="url(#tiles)"/>
-        <line x1="0" y1="300" x2="560" y2="300" stroke="var(--tile)" stroke-width="2"/>
-        <!-- shower fixtures -->
-        <path d="M430 40 v36 h-26" fill="none" stroke="var(--brass)" stroke-width="7" stroke-linecap="round"/>
-        <rect x="380" y="70" width="40" height="14" rx="7" fill="var(--brass)"/>
-        <circle cx="430" cy="196" r="13" fill="none" stroke="var(--brass)" stroke-width="6"/>
-        <path d="M430 222 v14 h-34" fill="none" stroke="var(--brass)" stroke-width="7" stroke-linecap="round"/>
-        <!-- water -->
-        <rect x="34" y="248" width="492" height="22" fill="var(--water)"/>
-        <!-- rim and apron -->
-        <rect x="20" y="236" width="520" height="16" rx="5" fill="var(--white)" stroke="var(--ink)" stroke-width="2"/>
-        <path d="M24 252 H536 V372 H504 V392 H56 V372 H24 Z" fill="var(--white)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>
-        <line x1="24" y1="372" x2="536" y2="372" stroke="var(--ink)" stroke-width="1" opacity=".35"/>
-        <line x1="0" y1="392" x2="560" y2="392" stroke="var(--ink)" stroke-width="2"/>
-        <text x="280" y="320" text-anchor="middle" font-family="Bricolage Grotesque, sans-serif" font-weight="700" font-size="30" fill="var(--ink)" letter-spacing="-1">Perfectub</text>
-        <text x="280" y="346" text-anchor="middle" font-family="Albert Sans, sans-serif" font-size="13" fill="var(--muted)">60 x 30 | 60 x 32 acrylic alcove tub</text>
-      </svg>
-    </div>
+    <figure class="hero__photo">
+      <img src="img/hero-cutaway.webp" width="1286" height="700" alt="A Perfectub cut in half, with one foot inside on the flat floor and one foot outside tucked into the 3-inch undercut below the rim">
+      <figcaption>A real Perfectub, cut in half. Your outside foot slides into the 3-inch undercut, so your feet end up only about 3 inches apart as you step over. No reaching out to brace yourself.</figcaption>
+    </figure>
   </div>
   <div class="facts">
     <div class="wrap facts__in">
@@ -87,7 +288,7 @@
     <div class="design__head">
       <div>
         <h2>Same alcove. A different shape inside.</h2>
-        <p class="hero__lede hero__lede--tight">Most tubs curve in at the sides and round off at the bottom. Perfectub doesn't.</p>
+        <p class="hero__lede" style="margin-top:14px">Most tubs curve in at the sides and round off at the bottom. Perfectub doesn't.</p>
       </div>
       <div class="toggle" role="group" aria-label="Compare tub shapes">
         <button type="button" data-shape="pt" aria-pressed="true">Perfectub</button>
@@ -128,6 +329,29 @@
         </g>
       </svg>
     </div>
+    <div class="proof" id="proof">
+      <p class="proof__lead"><b>Same test, real tubs.</b>Both tubs were cut in half to show the shape. Use the switch above to compare the Perfectub with a typical tub.</p>
+      <figure>
+        <div class="proof__frame">
+          <img class="profile profile--pt" src="img/compare-step-perfectub.webp" width="468" height="590" alt="Feet stepping out of a cut-away Perfectub, standing close to the tub">
+          <img class="profile profile--std" src="img/compare-step-typical.webp" width="468" height="590" alt="Feet stepping out of a cut-away ordinary tub, legs spread wide over the side">
+        </div>
+        <figcaption>
+          <span class="profile profile--pt"><b>Stepping out</b><em>Feet stay close together, close to the edge.</em></span>
+          <span class="profile profile--std"><b>Stepping out</b><em>A wide straddle over a sloped wall.</em></span>
+        </figcaption>
+      </figure>
+      <figure>
+        <div class="proof__frame">
+          <img class="profile profile--pt" src="img/compare-chair-perfectub.webp" width="468" height="590" alt="A standard shower chair standing on the flat floor of a cut-away Perfectub">
+          <img class="profile profile--std" src="img/compare-chair-typical.webp" width="468" height="590" alt="A standard shower chair in a cut-away ordinary tub, legs on the curved floor">
+        </div>
+        <figcaption>
+          <span class="profile profile--pt"><b>Shower chair</b><em>All four legs on one flat floor.</em></span>
+          <span class="profile profile--std"><b>Shower chair</b><em>Legs land on a curved bottom.</em></span>
+        </figcaption>
+      </figure>
+    </div>
     <div class="points">
       <div><h3><i></i>Step out standing</h3><p>The undercut lets your feet slide under the edge, so you can stand straight up instead of leaning out over the side.</p></div>
       <div><h3><i></i>A level place to sit or stand</h3><p>The flat floor gives steadier footing and lets a standard shower chair sit level.</p></div>
@@ -140,15 +364,11 @@
   <div class="wrap video__grid">
     <div>
       <p class="big-num">163,000+</p>
-      <h2 class="video__title">people watched Studpak install one.</h2>
-      <p class="hero__lede hero__lede--mid">See how a Perfectub goes into a standard alcove, start to finish.</p>
+      <h2 style="margin-top:10px">people watched Studpak install one.</h2>
+      <p class="hero__lede" style="margin-top:16px">See how a Perfectub goes into a standard alcove, start to finish.</p>
     </div>
     <a class="video__frame" href="https://www.youtube.com/results?search_query=studpak+perfectub" target="_blank" rel="noopener">
-      <svg viewBox="0 0 640 360" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
-        <defs><pattern id="tiles2" width="64" height="32" patternUnits="userSpaceOnUse"><rect width="64" height="32" fill="none" stroke="#2A3B45" stroke-width="1.5"/></pattern></defs>
-        <rect width="640" height="360" fill="#18262E"/><rect width="640" height="240" fill="url(#tiles2)"/>
-        <path d="M80 270 H560 V340 H80 Z" fill="#E9F0F2"/><rect x="70" y="258" width="500" height="12" rx="4" fill="#F6F9FA"/>
-      </svg>
+      <img src="img/studpak-paul-selleck.webp" width="680" height="680" alt="Paul Selleck of Studpak, six feet tall, lying stretched out in a Perfectub during the install">
       <span class="video__play"><b aria-hidden="true">&#9654;</b>Watch the installation</span>
     </a>
   </div>
@@ -156,7 +376,13 @@
 
 <section class="models" id="models">
   <div class="wrap">
-    <h2>Choose your size</h2>
+    <div class="models__head">
+      <div>
+        <h2>Choose your size</h2>
+        <p>Both sizes fit a standard 60-inch alcove. Pick the depth front to back, then the drain side.</p>
+      </div>
+      <img src="img/tub-left-drain.webp" width="700" height="381" alt="Perfectub 60 x 30 alcove tub with left-hand drain and linear overflow, white high-gloss acrylic">
+    </div>
     <div class="models__list">
       <div class="model">
         <div class="model__size">60 x 30<small>Standard alcove depth</small></div>
@@ -165,7 +391,7 @@
       </div>
       <div class="model">
         <div class="model__size">60 x 32<small>Extra depth, front to back</small></div>
-        <ul><li>Left or right drain</li><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
+        <ul><li>Meets ADA (Americans with Disabilities Act) height guidelines</li><li>Left or right drain</li><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
         <div class="model__buy"><strong>$1,496</strong><a class="btn btn--solid" href="#models">Add to cart</a></div>
       </div>
     </div>
@@ -177,7 +403,7 @@
   <div class="wrap who__grid">
     <div>
       <h2>Made for the people who share your bathroom.</h2>
-      <p class="hero__lede hero__lede--mid">A tub that's easier to get out of helps more people than you'd think.</p>
+      <p class="hero__lede" style="margin-top:16px">A tub that's easier to get out of helps more people than you'd think.</p>
     </div>
     <ul class="who__list">
       <li><h3>Aging in place</h3><p>A safer everyday bath without the cost or look of a walk-in tub.</p></li>
@@ -190,11 +416,22 @@
 
 <section class="reviews">
   <div class="wrap">
-    <h2>What owners say</h2>
+    <h2>What people say after using one</h2>
     <div class="reviews__grid">
-      <div class="review-slot"><b>Customer review</b>Add a real review here, with the customer's first name and town.</div>
-      <div class="review-slot"><b>Customer review</b>Add a real review here, with the customer's first name and town.</div>
-      <div class="review-slot"><b>Customer review</b>Add a real review here, with the customer's first name and town.</div>
+      <figure class="review">
+        <img src="img/review-install-gray-tile.webp" width="480" height="640" alt="A Perfectub installed in a gray tiled shower alcove" loading="lazy">
+        <blockquote>Thank you SO MUCH for being the only person with some sense to design a tub without all that wasted space. I've been looking for a tub like this everywhere.</blockquote>
+        <figcaption><b>April Moore</b>South Carolina</figcaption>
+      </figure>
+      <figure class="review">
+        <img src="img/review-install-marble.webp" width="480" height="640" alt="A Perfectub installed in a white marble-tile bathroom with black fixtures" loading="lazy">
+        <blockquote>The design of the tub is indeed user friendly and saves lives.</blockquote>
+        <figcaption><b>Eugene (Evgheni) Curdov</b>Principal Architect, Cube Architecture</figcaption>
+      </figure>
+      <figure class="review review--quote">
+        <blockquote>I'm 6 feet tall and 200 pounds, and I fit in it perfectly. The undercut design makes it easy to get in and out without taking a huge step or risking a fall.</blockquote>
+        <figcaption><b>Paul Selleck</b>Studpak</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -204,14 +441,20 @@
     <h2>See one in person</h2>
     <p>Perfectub is on display at more than 35 kitchen and bath showrooms. Sit in it, check the depth, then buy locally or online.</p>
     <a class="btn btn--line" href="#showrooms">Find a showroom near you</a>
+    <div class="showroom__tub"><img src="img/tub-right-drain.webp" width="665" height="377" alt="Perfectub with right-hand drain and linear overflow" loading="lazy"></div>
   </section>
   <section class="panel panel--ink" id="trade">
+    <figure class="trade__photo">
+      <img src="img/founders-convention.webp" width="720" height="960" alt="Brak Tub founders Bruce and Jerry shaking hands at their Perfectub booth at an architects' convention, with a tub on display" loading="lazy">
+      <figcaption>Founders Bruce and Jerry at an architects' convention.</figcaption>
+    </figure>
     <h2>For showrooms, contractors and projects</h2>
     <ul>
       <li>Dealer and project pricing</li>
       <li>Cut sheets and installation guides</li>
       <li>Container orders for multi-unit and hospitality work</li>
     </ul>
+    <p>Perfectub was invented by Bruce Ahmes, whose father helped engineer the Apollo Lunar Module. Call and you speak with a founding team member.</p>
     <a class="btn" href="mailto:sales@braktub.com?subject=Trade%20pricing">Request trade pricing</a>
   </section>
 </div>
@@ -233,14 +476,25 @@
 <footer>
   <div class="wrap">
     <div class="foot">
-      <div><b>Perfectub by Brak Tub Corp.</b><p>4046 Robert Place, Seaford, NY 11783</p></div>
+      <div class="foot__logo"><img class="logo logo--on-light" src="img/logo.webp" width="720" height="186" alt="Perfectub by Braktub"><img class="logo logo--on-dark" src="img/logo-on-dark.webp" width="720" height="186" alt=""><p>Perfectub by Brak Tub Corp.<br>4046 Robert Place, Seaford, NY 11783</p></div>
       <div><b>Talk to us</b><p><a href="tel:+15162174599">(516) 217-4599</a><br><a href="mailto:sales@braktub.com">sales@braktub.com</a></p></div>
       <div><b>Shop</b><p><a href="#models">Sizes and prices</a><br><a href="#showrooms">Showrooms</a><br><a href="#trade">Trade pricing</a></p></div>
     </div>
-    <p class="concept-note">Homepage concept prepared by Bofill Technologies. Illustrations stand in for product photography; review slots are placeholders for real customer reviews.</p>
+    <p class="concept-note">Homepage concept prepared by Bofill Technologies. Logo, photos and product details are from braktub.com and Brak Tub's shared asset folder; the cross-section diagram was drawn for this concept.</p>
   </div>
 </footer>
 
-<script src="js/main.js" defer></script>
+<script>
+(function(){
+  var shape=document.getElementById('shape'),proof=document.getElementById('proof');
+  var btns=document.querySelectorAll('.toggle button');
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
+      var std=b.dataset.shape==='std';shape.classList.toggle('is-standard',std);proof.classList.toggle('is-standard',std);
+    });
+  });
+})();
+</script>
 </body>
 </html>
