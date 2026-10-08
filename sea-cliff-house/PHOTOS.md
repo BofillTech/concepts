@@ -2,13 +2,12 @@
 
 Source: Google Drive folder https://drive.google.com/drive/folders/11b5o2T-PH81mP1CeDM5Dyb9ds6OeRzju (262 files).
 Live copies: https://www.mainevisitorattractions.com/wp-content/uploads/<file name>. All but 23 files are already uploaded there; the homepage uses those addresses.
+Room types follow the photos on each room page linked from https://www.mainevisitorattractions.com/accommodations/
 
 Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-width banners). *dup* = a duplicate copy of another file (same name with -1, -2, 0 or -e###### added, same size). *not on site* = not yet in Brian's uploads folder.
 
-## Pool, hot tub, grounds and building (41)
+## Pool, hot tub, grounds and building (26)
 
-- 2ndfloordeck-1.jpg (700x452) *dup*
-- 2ndfloordeck.jpg (700x452) **USED**
 - buildinglongview-1.jpg (700x325) *dup*
 - buildinglongview.jpg (700x325) **USED**
 - buildinglongviewreversed.jpg (700x467)
@@ -16,9 +15,6 @@ Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-
 - grillarea.jpg (700x467) *not on site*
 - grillcanopytowardhouse.jpg (700x467) **USED**
 - homepagepanorama.jpg (1920x650) **USED** *wide*
-- honeymoonpageheaderimage.jpg (1920x750) **USED** *wide*
-- honeymoonsidedeckend-1.jpg (688x411) *dup*
-- honeymoonsidedeckend.jpg (688x411)
 - hottubandflowers.jpg (700x442)
 - hottubandflowerslocationpage.jpg (1920x750) **USED** *wide*
 - hottubroomsbuilding.jpg (700x470) **USED**
@@ -33,21 +29,11 @@ Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-
 - poolpatioandgrills.jpg (700x454) **USED**
 - poolpatiotowardbuilding.jpg (700x467)
 - pooltabletowardhouse.jpg (700x467)
-- secondfloordeckandview.jpg (700x467)
-- sidebuilding-1.jpg (700x467) *dup*
-- sidebuilding.jpg (700x467)
-- sidebuildingdeck-1.jpg (432x481)
-- sidebuildingdeck.jpg (432x550)
-- sidedeckshowingcooperroof-1.jpg (700x487) *dup*
-- sidedeckshowingcooperroof.jpg (700x487)
 - signandlighthouseforwebsite-1.jpg (364x550) *dup*
 - signandlighthouseforwebsite.jpg (364x550) **USED**
 - slidehottubandpool-1024x445-1.jpg (1024x445) *not on site*
 - slidehottubtowardpool.jpg (1150x500)
 - slidepoolfromabove.jpg (1150x500)
-- uppersidedeck-1.jpg (700x467) *dup*
-- uppersidedeck-2.jpg (700x467) *dup*
-- uppersidedeck.jpg (700x467) **USED**
 
 ## Beach, aerials and town (21)
 
@@ -73,94 +59,53 @@ Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-
 - slidesunrise.jpg (1150x500) **USED**
 - The_Beach_At_Sunrise.jpg (800x533) **USED**
 
-## Grand Suite (24)
+## Two-Room Kitchenettes (rooms 16, 33, 34 and their shared decks; no ocean view) (40)
 
-- grandsuite4.jpeg (700x400)
-- grandsuitebannerimage.jpg (1920x750) *wide*
-- grandsuitebath.jpg (700x1044)
-- grandsuitebedroom.jpeg (700x380)
-- grandsuitebedroom.jpg (700x441) **USED**
-- grandsuitebedroom2beds.jpg (700x467)
-- grandsuitebedroomreversed.jpg (700x470)
-- grandsuitebunkroom.jpg (700x441) **USED**
-- grandsuitebunkroomreversed.jpg (700x470)
-- grandsuitedeck.jpg (700x442) **USED**
-- grandsuitedecktohottub.jpg (700x421)
-- grandsuitediningtable.jpg (700x420) **USED**
-- grandsuitefromhottub.jpg (700x476) **USED**
-- grandsuitehalfbath.jpg (700x951)
-- grandsuitehalltokitchen.jpg (700x442)
-- grandsuitekitchen.jpg (700x457) **USED**
-- grandsuitelivingroom.jpeg (700x451) **USED**
-- grandsuitelivingroom.jpg (700x449)
-- grandsuitelivingroom700.jpg (700x444)
-- grandsuitetvroom-1.jpg (700x412) *dup*
-- grandsuitetvroom.jpg (700x412)
-- grandsuitetvroomindex.jpg (700x438)
-- grandsuiteviewtopoolthruscreen.jpg (700x447)
-- lowerdeck.jpeg (700x468)
+- 34-1.jpg (700x459) *dup*
+- 34.jpg (700x459)
+- 34bath-1.jpg (371x500) *dup*
+- 34bath-2.jpg (410x550)
+- 34bath.jpg (371x500)
+- 34bedroom-1.jpg (700x448)
+- 34bedroom.jpg (700x457)
+- 34bedroomreversed.jpg (700x451)
+- 34fromdoor-1.jpg (700x467) *dup*
+- 34fromdoor.jpg (700x467)
+- 34kitchenette-1.jpg (700x466) *dup*
+- 34kitchenette-2.jpg (700x427)
+- 34kitchenette.jpg (700x466) **USED**
+- 34kitchenettetodoor-1.jpg (700x466) *dup*
+- 34kitchenettetodoor.jpg (700x466)
+- 34towarddoor.jpg (700x452)
+- cryoutcolumn34fromdoor.jpg (318x201)
+- room16accommodationsheader.jpg (1920x750) **USED** *wide*
+- room16bedroom.jpg (682x432) **USED**
+- room16bedroomtodoor.jpg (700x441)
+- room16fromdoor-1.jpg (700x459) *dup*
+- room16fromdoor.jpg (700x459)
+- room16towarddoor.jpg (700x422)
+- room33-1.jpg (700x423) *dup*
+- room33.jpg (700x423) **USED**
+- room33bath-1.jpg (397x550)
+- room33bath-e1790974126316.jpg (375x550)
+- room33bedroom-1.jpg (700x457) *dup*
+- room33bedroom.jpg (700x457) **USED**
+- room33bedroomtowarddoor-1.jpg (700x466) *dup*
+- room33bedroomtowarddoor.jpg (700x466)
+- room33shower-1.jpg (340x550)
+- room33shower-e1790972784969.jpg (340x550)
+- room33towarddoor-1.jpg (700x454) *dup*
+- room33towarddoor.jpg (700x454)
+- sidedeckshowingcooperroof-1.jpg (700x487) *dup*
+- sidedeckshowingcooperroof.jpg (700x487)
+- uppersidedeck-1.jpg (700x467) *dup*
+- uppersidedeck-2.jpg (700x467) *dup*
+- uppersidedeck.jpg (700x467) **USED**
 
-## Penthouse Suite (22)
+## Ocean View Rooms (rooms 5 to 9 in the main house, plus their decks) (36)
 
-- penthouse-and-honeymoon-suite-view-1.jpg (700x482) *dup*
-- penthouse-and-honeymoon-suite-view-2.jpg (700x482) *dup*
-- penthouse-and-honeymoon-suite-view.jpg (700x482)
-- penthousebath-e1791059685397.jpg (360x550)
-- penthousebedroom.jpg (700x448) **USED**
-- penthousebedroomwithslider.jpg (700x467)
-- penthousedeck.jpg (700x467)
-- penthousedeckandview-1.jpg (700x426) *dup*
-- penthousedeckandview.jpg (700x426)
-- penthousedeckandview1.jpg (700x467)
-- penthousedeckbannerimage.jpg (1920x750) **USED** *wide*
-- penthousedeckretouched-1.jpg (700x468) *dup*
-- penthousedeckretouched.jpg (700x468)
-- penthousekitchen.jpg (700x467) **USED**
-- penthouselivingroom.jpg (700x441) **USED**
-- penthousesidedeck.jpg (700x459) **USED**
-- penthouseview.jpg (700x514)
-- phbedroom.jpeg (700x413)
-- phbedroom2.jpeg (700x432)
-- phkitchen.jpeg (700x467)
-- phlivingroom.jpeg (700x432)
-- phview.jpeg (700x467)
-
-## Honeymoon Suite (11)
-
-- honeymoonbath-e1791058890426.jpg (367x550)
-- honeymoonbedroom.jpg (700x441) **USED**
-- honeymoondeck.jpg (700x442) **USED**
-- honeymoonedroomtowardslider.jpg (700x443)
-- honeymoonkitchen.jpg (700x480) **USED**
-- honeymoonlivingroom.jpg (700x450) **USED**
-- honeymoonlivingroomsideways.jpg (700x456)
-- honeymoonsidedeck.jpg (700x974)
-- honeymoonsuitebedroom-1.jpg (700x467) *dup*
-- honeymoonsuitebedroom.jpg (700x467)
-- honeymoonview.jpg (700x645) **USED**
-
-## Whirlpool tub rooms (rooms 1 to 4) (17)
-
-- room1bath-1.jpg (307x419)
-- room1bath.jpg (700x1011)
-- room1deck.jpeg (633x691)
-- room1fromdoor.jpg (700x430)
-- room1jacuzzi.jpg (700x429) **USED**
-- room1towardjacuzzi-1.jpg (700x448)
-- room1towardocean.jpg (700x428)
-- room4-1.jpg (700x445) *dup*
-- room4.jpg (700x445) **USED**
-- room4bath.jpg (341x500)
-- room4deck.jpg (700x437)
-- room4deckview-1.jpg (700x439) *dup*
-- room4deckview-2.jpg (700x439) *dup*
-- room4deckview.jpg (700x439) **USED**
-- room4deckview0.jpg (700x467) *not on site*
-- room4view.jpg (700x528)
-- room4whirlpooltub.jpg (700x466)
-
-## Ocean view rooms (rooms 5 to 9) (33)
-
+- 2ndfloordeck-1.jpg (700x452) *dup*
+- 2ndfloordeck.jpg (700x452)
 - oceanfrontdeck.jpeg (700x390)
 - oceanfrontroom8.jpeg (700x416)
 - oceanfrontroom8toslider.jpeg (700x337)
@@ -194,8 +139,102 @@ Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-
 - room9deck.jpg (700x467)
 - room9deckpoolview.jpg (700x436) **USED**
 - room9towardslider.jpg (700x460)
+- secondfloordeckandview.jpg (700x467) **USED**
 
-## Kitchenettes and efficiencies (rooms 16, 17, 19, 33, 34) (50)
+## Whirlpool Tub Rooms (rooms 1 to 4 and their building) (21)
+
+- room1bath-1.jpg (307x419)
+- room1bath.jpg (700x1011)
+- room1deck.jpeg (633x691) **USED**
+- room1fromdoor.jpg (700x430)
+- room1jacuzzi.jpg (700x429) **USED**
+- room1towardjacuzzi-1.jpg (700x448)
+- room1towardocean.jpg (700x428)
+- room4-1.jpg (700x445) *dup*
+- room4.jpg (700x445) **USED**
+- room4bath.jpg (341x500)
+- room4deck.jpg (700x437)
+- room4deckview-1.jpg (700x439) *dup*
+- room4deckview-2.jpg (700x439) *dup*
+- room4deckview.jpg (700x439) **USED**
+- room4deckview0.jpg (700x467) *not on site*
+- room4view.jpg (700x528)
+- room4whirlpooltub.jpg (700x466)
+- sidebuilding-1.jpg (700x467) *dup*
+- sidebuilding.jpg (700x467)
+- sidebuildingdeck-1.jpg (432x481)
+- sidebuildingdeck.jpg (432x550)
+
+## Honeymoon Suite (14)
+
+- honeymoonbath-e1791058890426.jpg (367x550)
+- honeymoonbedroom.jpg (700x441) **USED**
+- honeymoondeck.jpg (700x442) **USED**
+- honeymoonedroomtowardslider.jpg (700x443)
+- honeymoonkitchen.jpg (700x480) **USED**
+- honeymoonlivingroom.jpg (700x450) **USED**
+- honeymoonlivingroomsideways.jpg (700x456)
+- honeymoonpageheaderimage.jpg (1920x750) **USED** *wide*
+- honeymoonsidedeck.jpg (700x974)
+- honeymoonsidedeckend-1.jpg (688x411) *dup*
+- honeymoonsidedeckend.jpg (688x411)
+- honeymoonsuitebedroom-1.jpg (700x467) *dup*
+- honeymoonsuitebedroom.jpg (700x467)
+- honeymoonview.jpg (700x645)
+
+## Penthouse Suite (22)
+
+- penthouse-and-honeymoon-suite-view-1.jpg (700x482) *dup*
+- penthouse-and-honeymoon-suite-view-2.jpg (700x482) *dup*
+- penthouse-and-honeymoon-suite-view.jpg (700x482)
+- penthousebath-e1791059685397.jpg (360x550)
+- penthousebedroom.jpg (700x448) **USED**
+- penthousebedroomwithslider.jpg (700x467)
+- penthousedeck.jpg (700x467)
+- penthousedeckandview-1.jpg (700x426) *dup*
+- penthousedeckandview.jpg (700x426)
+- penthousedeckandview1.jpg (700x467)
+- penthousedeckbannerimage.jpg (1920x750) **USED** *wide*
+- penthousedeckretouched-1.jpg (700x468) *dup*
+- penthousedeckretouched.jpg (700x468)
+- penthousekitchen.jpg (700x467) **USED**
+- penthouselivingroom.jpg (700x441) **USED**
+- penthousesidedeck.jpg (700x459) **USED**
+- penthouseview.jpg (700x514)
+- phbedroom.jpeg (700x413)
+- phbedroom2.jpeg (700x432)
+- phkitchen.jpeg (700x467)
+- phlivingroom.jpeg (700x432)
+- phview.jpeg (700x467)
+
+## Grand Suite (24)
+
+- grandsuite4.jpeg (700x400)
+- grandsuitebannerimage.jpg (1920x750) *wide*
+- grandsuitebath.jpg (700x1044)
+- grandsuitebedroom.jpeg (700x380)
+- grandsuitebedroom.jpg (700x441) **USED**
+- grandsuitebedroom2beds.jpg (700x467)
+- grandsuitebedroomreversed.jpg (700x470)
+- grandsuitebunkroom.jpg (700x441) **USED**
+- grandsuitebunkroomreversed.jpg (700x470)
+- grandsuitedeck.jpg (700x442) **USED**
+- grandsuitedecktohottub.jpg (700x421)
+- grandsuitediningtable.jpg (700x420) **USED**
+- grandsuitefromhottub.jpg (700x476) **USED**
+- grandsuitehalfbath.jpg (700x951)
+- grandsuitehalltokitchen.jpg (700x442)
+- grandsuitekitchen.jpg (700x457) **USED**
+- grandsuitelivingroom.jpeg (700x451)
+- grandsuitelivingroom.jpg (700x449)
+- grandsuitelivingroom700.jpg (700x444)
+- grandsuitetvroom-1.jpg (700x412) *dup*
+- grandsuitetvroom.jpg (700x412) **USED**
+- grandsuitetvroomindex.jpg (700x438)
+- grandsuiteviewtopoolthruscreen.jpg (700x447)
+- lowerdeck.jpeg (700x468)
+
+## Room type not confirmed (not shown on any accommodations page) (19)
 
 - 17bedroom-1.jpg (700x521) *dup*
 - 17bedroom.jpg (700x521)
@@ -203,53 +242,15 @@ Legend: **USED** = on the homepage now. *wide* = 1600px or wider (good for full-
 - 17bedroomreversed.jpg (700x462)
 - 19bath-1-1.jpg (359x500) *dup*
 - 19bath-1.jpg (359x500)
-- 19bedroom.jpg (700x467) **USED**
+- 19bedroom.jpg (700x467)
 - 19fromdoor.jpg (700x467)
 - 19kitchenette.jpg (700x472)
 - 19towarddoor.jpg (699x455)
-- 34-1.jpg (700x459) *dup*
-- 34.jpg (700x459)
-- 34bath-1.jpg (371x500) *dup*
-- 34bath-2.jpg (410x550)
-- 34bath.jpg (371x500)
-- 34bedroom-1.jpg (700x448)
-- 34bedroom.jpg (700x457)
-- 34bedroomreversed.jpg (700x451)
-- 34fromdoor-1.jpg (700x467) *dup*
-- 34fromdoor.jpg (700x467)
-- 34kitchenette-1.jpg (700x466) *dup*
-- 34kitchenette-2.jpg (700x427)
-- 34kitchenette.jpg (700x466) **USED**
-- 34kitchenettetodoor-1.jpg (700x466) *dup*
-- 34kitchenettetodoor.jpg (700x466)
-- 34towarddoor.jpg (700x452)
-- cryoutcolumn34fromdoor.jpg (318x201)
 - efficiencyfromdoor.jpg (700x460)
 - efficiencyfromdoor0.jpg (1977x1179) *wide* *not on site*
-- efficiencykitchen.jpg (700x455) **USED**
+- efficiencykitchen.jpg (700x455)
 - efficiencytowarddoor-1.jpg (700x467) *dup*
 - efficiencytowarddoor.jpg (700x467)
-- room16accommodationsheader.jpg (1920x750) **USED** *wide*
-- room16bedroom.jpg (682x432)
-- room16bedroomtodoor.jpg (700x441)
-- room16fromdoor-1.jpg (700x459) *dup*
-- room16fromdoor.jpg (700x459)
-- room16towarddoor.jpg (700x422)
-- room33-1.jpg (700x423) *dup*
-- room33.jpg (700x423)
-- room33bath-1.jpg (397x550)
-- room33bath-e1790974126316.jpg (375x550)
-- room33bedroom-1.jpg (700x457) *dup*
-- room33bedroom.jpg (700x457) **USED**
-- room33bedroomtowarddoor-1.jpg (700x466) *dup*
-- room33bedroomtowarddoor.jpg (700x466)
-- room33shower-1.jpg (340x550)
-- room33shower-e1790972784969.jpg (340x550)
-- room33towarddoor-1.jpg (700x454) *dup*
-- room33towarddoor.jpg (700x454)
-
-## Other suite living rooms (4)
-
 - sacolivingroom700-1.jpeg (700x431) *dup*
 - sacolivingroom700-2.jpeg (700x431) *dup*
 - sacolivingroom700.jpeg (700x431)
