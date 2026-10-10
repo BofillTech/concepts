@@ -603,3 +603,32 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
 /* Video page header (Dine) — homepage hero pattern at inner-page height */
 .hero--page .hero__media{height:min(58vh,560px);position:relative}
 .hero--page .hero__panel{max-width:760px;padding:42px 40px 46px}
+
+/* Gift card page — card visual */
+.gc-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:44px;align-items:center}
+@media (min-width:1024px){.gc-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px}.gc-layout .gc{margin:0}}
+.gc-visual{position:relative;max-width:460px;margin:0 auto;padding:40px 0 26px}
+.gc-card{
+  position:relative;aspect-ratio:1.586/1;border-radius:14px;
+  background:linear-gradient(135deg,#FBF8F1 0%,var(--cream) 55%,#F0E9DA 100%);
+  border:1px solid var(--sand);
+  box-shadow:0 24px 54px rgba(16,40,56,.28),0 4px 14px rgba(16,40,56,.14);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  transform:rotate(-4deg);z-index:2;padding:20px;
+}
+.gc-card img{max-width:52%;height:auto}
+.gc-card__label{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,2.6vw,1.7rem);color:var(--roof);letter-spacing:.04em}
+.gc-card__foot{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.6rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);opacity:.75}
+.gc-card--back{
+  position:absolute;inset:40px 0 26px;aspect-ratio:1.586/1;border-radius:14px;
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-deep) 100%);
+  transform:rotate(5deg) translate(16px,10px);z-index:1;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 18px 40px rgba(16,40,56,.22);
+}
+.gc-card--back span{font-family:var(--serif);color:var(--sand);font-size:1.05rem;letter-spacing:.2em;text-transform:uppercase}
+.gc-visual__hint{position:relative;z-index:3;text-align:center;font-size:.78rem;color:var(--muted);margin-top:30px}
+@media (max-width:640px){
+  .gc-visual{padding-left:10px;padding-right:14px}
+  .gc-card--back{transform:rotate(4deg) translate(8px,8px)}
+}

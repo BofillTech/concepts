@@ -114,10 +114,23 @@
 
   <section class="block">
     <div class="wrap">
+      <div class="gc-layout">
+      <!-- GIFT CARD VISUAL: branded mockup built from the client's real logo.
+           TODO (CARD ART): if the client has actual gift card artwork/photography,
+           swap this .gc-visual block for an <img> of the real card. -->
+      <div class="gc-visual reveal" aria-hidden="true">
+        <div class="gc-card--back"><span>Spring House</span></div>
+        <div class="gc-card">
+          <img src="https://springhouseblockisland.com/wp-content/uploads/logo.png" alt="" width="220" height="60" loading="lazy">
+          <span class="gc-card__label">Gift Card</span>
+          <span class="gc-card__foot">The Spring House Hotel &middot; Block Island, RI &middot; Est. 1852</span>
+        </div>
+        <p class="gc-visual__hint">Delivered as an e-gift card by email, or pick up a physical card at the front desk.</p>
+      </div>
       <form class="gc reveal" id="gc-form" novalidate>
         <p class="kicker">Give the Island</p>
         <h2>Spring House <em>gift cards.</em></h2>
-        <p>Good toward stays, dinners at the Main Restaurant and the Barn, and mornings at The Coffee Bar.</p>
+        <p>Good at the hotel&rsquo;s on-site restaurants and toward rooms in the Main Building, Mott House, Barn Apartments, the Inn at Spring House, and Spring House in New Harbor.</p>
 
         <label>Amount</label>
         <div class="gc-amounts">
@@ -143,11 +156,12 @@
         <textarea id="gc-msg" rows="3" placeholder="A note to go with it"></textarea>
 
         <button class="btn btn--book" type="submit">Continue to Checkout</button>
-        <p class="gc__note">Checkout is handled by our gift card provider.
+        <p class="gc__note">Checkout is handled by our gift card provider. Gift cards cannot be applied to nightly rates for the Seaside Homes or Seawinds Townhomes, or to event billing.
           <!-- TODO (PAYMENT PROVIDER): the submit handler in js/main.js currently logs the payload
                and hands off to the live Givex storefront. Wire the real provider there. -->
         </p>
       </form>
+      </div>
     </div>
   </section>
 
