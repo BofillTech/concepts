@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 171 | silver-creek-hotel | 2026-10-10 | full-bleed-left-title-gradient | hero,story,rooms,amenities,gallery,location,cta | three-col-uniform-cards | top-sticky-logo-left-cta-right | hover-zoom-reveal | mountain-modern-clean | Raleway | Open Sans | wood-river-slate+aspen-gold+creek-blue+sage-meadow+snow-cream+timber-ink |
 | 170 | ocean-sands-resort | 2026-10-10 | full-bleed-slideshow-dots | hero,intro,suites,oceanfront,rooms-showcase,amenities,gallery,location,cta | tiled-mosaic | top-sticky-shrink | slide-in-sides | coastal-sans-display | Sora | Karla | atlantic-slate+seafoam-teal+sunset-amber+dune-cream+whitecap |
 | 169 | coyote-mountain-lodge | 2026-10-10 | full-bleed-panorama-bottom-title | hero,welcome,rooms,amenities,location,gallery,contact | split-50-50-alternating | top-solid-dark | parallax-layers | geometric-display-serif-body | Sora | Lora | charcoal-ink+sky-blue+aspen-gold+evergreen+stone+snow-cream |
 | 168 | dutchland-motel | 2026-10-10 | fullbleed-ken-burns | hero,welcome,rooms,amenities,gallery,location,cta | card-masonry | top-two-tier-centered | fade-up | warm-serif-lancaster-hospitality | Lora | Open Sans | hex-barn-red+pennsylvania-gold+amish-cream+farmland-green+ink-charcoal |
