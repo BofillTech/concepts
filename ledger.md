@@ -15,6 +15,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 169 | coyote-mountain-lodge | 2026-10-10 | full-bleed-panorama-bottom-title | hero,welcome,rooms,amenities,location,gallery,contact | split-50-50-alternating | top-solid-dark | parallax-layers | geometric-display-serif-body | Sora | Lora | charcoal-ink+sky-blue+aspen-gold+evergreen+stone+snow-cream |
 | 168 | dutchland-motel | 2026-10-10 | fullbleed-ken-burns | hero,welcome,rooms,amenities,gallery,location,cta | card-masonry | top-two-tier-centered | fade-up | warm-serif-lancaster-hospitality | Lora | Open Sans | hex-barn-red+pennsylvania-gold+amish-cream+farmland-green+ink-charcoal |
 | 167 | rsvp-hotel | 2026-10-07 | full-bleed-offset-title | hero,rooms,story,gallery,amenities,location,cta | horizontal-scroll-rooms | top-sticky-minimal | staggered-reveal | mural-inspired-bold-display | Epilogue | Inter | bozeman-ink-teal-magenta-coral-forest-cream |
 | 166 | hotel-chalet | 2026-10-07 | full-bleed-cinematic | hero,ticker,rooms,story,amenities,dining,location,gallery | full-width-photo-bands | top-utility-bar | marquee-ticker | railroad-terminal-industrial-condensed | Teko | Work Sans | locomotive-green+brass+burgundy+parchment+cream |
