@@ -138,3 +138,146 @@
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 }());
+
+/* ==========================================================================
+   Rev 3 — property-grid ordering, slideshows, lazy video embeds, nav dropdowns
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- PROPERTY ORDER (EDIT ME) ----------
+     One config array controls the order of the property grid on BOTH the
+     homepage and the Stay page. Cards carry data-prop="<key>"; list keys
+     here closest-to-the-main-Spring-House first. */
+  var PROPERTY_ORDER = [
+    'main',      // Spring House Main Building (the anchor)
+    'barn',      // Barn Apartments — on the hotel property
+    'seaside',   // Seaside Homes — on the property
+    'mott',      // Mott House — directly across from the main building
+    'inn',       // The Inn at Spring House — just down the driveway
+    'seawinds',  // Seawinds Townhouses — 5-minute walk, High Street
+    'newharbor', // Spring House in New Harbor — 585 Beach Ave
+    'cooneymus'  // The Cooneymus Cottage — west side of the island
+  ];
+
+  document.querySelectorAll('[data-ordered-grid]').forEach(function (grid) {
+    var cards = {};
+    grid.querySelectorAll('[data-prop]').forEach(function (c) { cards[c.getAttribute('data-prop')] = c; });
+    PROPERTY_ORDER.forEach(function (key) { if (cards[key]) grid.appendChild(cards[key]); });
+  });
+
+  /* ---------- Crossfade slideshows ----------
+     <div class="slideshow" data-interval="4500"><img class="is-active">… */
+  document.querySelectorAll('.slideshow').forEach(function (show) {
+    var slides = show.querySelectorAll('img');
+    if (slides.length < 2) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var i = 0;
+    var delay = parseInt(show.getAttribute('data-interval') || '4500', 10);
+    slides[0].classList.add('is-active');
+    setInterval(function () {
+      slides[i].classList.remove('is-active');
+      i = (i + 1) % slides.length;
+      slides[i].classList.add('is-active');
+    }, delay);
+  });
+
+  /* ---------- Lazy video embeds ----------
+     <div class="video-embed" data-src="https://drive.google.com/file/d/ID/preview">
+     The iframe is only created when scrolled near the viewport. */
+  var embeds = document.querySelectorAll('.video-embed[data-src]');
+  function loadEmbed(el) {
+    if (el.dataset.loaded) return;
+    el.dataset.loaded = '1';
+    var f = document.createElement('iframe');
+    f.src = el.getAttribute('data-src');
+    f.setAttribute('title', el.getAttribute('data-title') || 'Video');
+    f.setAttribute('allow', 'autoplay; fullscreen');
+    f.setAttribute('allowfullscreen', '');
+    f.setAttribute('loading', 'lazy');
+    el.appendChild(f);
+    el.classList.add('is-loaded');
+  }
+  if ('IntersectionObserver' in window) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { loadEmbed(e.target); vio.unobserve(e.target); } });
+    }, { rootMargin: '300px' });
+    embeds.forEach(function (e) { vio.observe(e); });
+  } else {
+    embeds.forEach(loadEmbed);
+  }
+
+  /* ---------- Lazy autoplay loop stubs (short dining clips) ----------
+     <video class="loop-clip" data-clip-src="TODO.mp4" poster="…" muted loop playsinline> */
+  var clips = document.querySelectorAll('video.loop-clip[data-clip-src]');
+  function loadClip(v) {
+    var src = v.getAttribute('data-clip-src');
+    if (!src || src.indexOf('TODO') === 0 || v.dataset.loaded) return;
+    v.dataset.loaded = '1';
+    v.src = src;
+    v.muted = true;
+    v.play().catch(function () {});
+  }
+  if ('IntersectionObserver' in window) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { loadClip(e.target); cio.unobserve(e.target); } });
+    }, { rootMargin: '200px' });
+    clips.forEach(function (c) { cio.observe(c); });
+  }
+
+  /* ---------- Nav dropdowns (touch/click toggle; hover handled in CSS) ---------- */
+  document.querySelectorAll('.menu-item--has-sub > a').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      var li = a.parentElement;
+      var isDesktopHover = window.matchMedia('(min-width: 1024px) and (hover: hover)').matches;
+      if (!isDesktopHover) {
+        if (!li.classList.contains('is-open')) {
+          ev.preventDefault();
+          document.querySelectorAll('.menu-item--has-sub.is-open').forEach(function (o) { o.classList.remove('is-open'); });
+          li.classList.add('is-open');
+        }
+      }
+    });
+  });
+  document.addEventListener('click', function (ev) {
+    if (!ev.target.closest('.menu-item--has-sub')) {
+      document.querySelectorAll('.menu-item--has-sub.is-open').forEach(function (o) { o.classList.remove('is-open'); });
+    }
+  });
+
+  /* ---------- Gift card checkout hook ---------- */
+  var gcForm = document.getElementById('gc-form');
+  if (gcForm) {
+    var gcAmount = { value: 100 };
+    gcForm.querySelectorAll('.gc-amounts button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        gcForm.querySelectorAll('.gc-amounts button').forEach(function (x) { x.classList.remove('is-selected'); });
+        b.classList.add('is-selected');
+        var custom = document.getElementById('gc-custom');
+        if (b.dataset.amount === 'custom') { custom.hidden = false; custom.focus(); }
+        else { document.getElementById('gc-custom').hidden = true; gcAmount.value = parseInt(b.dataset.amount, 10); }
+      });
+    });
+    gcForm.addEventListener('submit', function (ev) {
+      ev.preventDefault();
+      var custom = document.getElementById('gc-custom');
+      var amount = (!custom.hidden && custom.value) ? parseFloat(custom.value) : gcAmount.value;
+      var payload = {
+        amount: amount,
+        quantity: parseInt(document.getElementById('gc-qty').value, 10) || 1,
+        recipientName: document.getElementById('gc-to').value,
+        recipientEmail: document.getElementById('gc-email').value,
+        message: document.getElementById('gc-msg').value
+      };
+      /* TODO (PAYMENT INTEGRATION): wire this payload into the payment provider.
+         The hotel currently sells gift cards through Givex:
+         https://wwws-usa2.givex.com/cws4.0/springhouse/
+         Options: (a) keep Givex and deep-link/redirect with amount,
+         (b) Stripe Checkout session via a small serverless endpoint,
+         (c) the booking engine's voucher module if direct-book supports it.
+         Until then we hand off to the live Givex storefront: */
+      console.log('GIFT CARD CHECKOUT PAYLOAD (stub):', payload);
+      window.open('https://wwws-usa2.givex.com/cws4.0/springhouse/', '_blank', 'noopener');
+    });
+  }
+}());
