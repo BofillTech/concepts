@@ -159,7 +159,7 @@
       if (moreBtn) {
         var more = !expanded && filter === 'all' && vis.length > LIMIT;
         moreBtn.hidden = !more;
-        if (more) { moreBtn.textContent = 'Show all ' + vis.length + ' photos'; }
+        if (more) { moreBtn.textContent = 'Show All ' + vis.length + ' Photos'; }
       }
     };
     Array.prototype.forEach.call(tabs, function (t) {
