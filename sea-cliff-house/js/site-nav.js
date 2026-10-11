@@ -7,31 +7,31 @@
   'use strict';
   var WEBCAM = 'https://webcam.seacliffhouse.com/camera/index.html#/video';
   var ROOMS = [
-    ['accommodations', 'All rooms & suites'],
+    ['accommodations', 'All Rooms & Suites'],
     ['old-orchard-beach-maine-kitchenette-motel-rooms', 'Two-Room Kitchenettes'],
     ['old-orchard-beach-maine-oceanview-rooms', 'Ocean View Rooms'],
     ['old-orchard-beach-maine-whirlpool-hot-tub-motel-rooms', 'Whirlpool Tub Rooms'],
-    ['old-orchard-beach-maine-honeymoon-suite', 'Honeymoon Suite'],
     ['old-orchard-beach-maine-penthouse-suite', 'Penthouse Suite'],
+    ['old-orchard-beach-maine-honeymoon-suite', 'Honeymoon Suite'],
     ['old-orchard-beach-maine-grand-suite', 'Grand Suite']
   ];
   var AMENITIES = [
-    ['location-and-amenities', 'Location & amenities'],
-    ['old-orchard-beach-attractions', 'Nearby attractions'],
+    ['location-and-amenities', 'Location & Amenities'],
+    ['old-orchard-beach-attractions', 'Nearby Attractions'],
     ['ocean-park-maine-hotels-vacation-rentals-motels', 'Ocean Park']
   ];
   var TOURS = [
-    ['old-orchard-beach-motel-virtual-photo-tour', 'Virtual tour'],
-    ['old-orchard-beach-motel-drone-video', 'Drone aerial video'],
-    [WEBCAM, 'Live beach webcam']
+    ['old-orchard-beach-motel-virtual-photo-tour', 'Virtual Tour'],
+    ['old-orchard-beach-motel-drone-video', 'Drone Aerial Video'],
+    [WEBCAM, 'Live Beach Webcam']
   ];
   var SPECIALS = [
-    ['old-orchard-beach-maine-motel-specials', 'Seasonal specials'],
-    ['old-orchard-beach-maine-motel-rates', 'Reservation policies']
+    ['old-orchard-beach-maine-motel-specials', 'Seasonal Specials'],
+    ['old-orchard-beach-maine-motel-rates', 'Reservation Policies']
   ];
   var CONTACT = [
-    ['old-orchard-beach-motel-contact-information', 'Contact & directions'],
-    ['old-orchard-beach-maine-motel-accessibility-statement', 'Accessibility statement']
+    ['old-orchard-beach-motel-contact-information', 'Contact & Directions'],
+    ['old-orchard-beach-maine-motel-accessibility-statement', 'Accessibility Statement']
   ];
 
   var body = document.body;
@@ -57,7 +57,7 @@
   var left = document.querySelector('[data-nav="left"]');
   if (left) {
     left.innerHTML =
-      parent('accommodations', 'Rooms & suites', ROOMS) +
+      parent('accommodations', 'Rooms & Suites', ROOMS) +
       parent('location-and-amenities', 'Amenities', AMENITIES) +
       '<li class="menu-item"><a href="' + photos + '">Photos</a></li>' +
       parent('old-orchard-beach-motel-virtual-photo-tour', 'Tours', TOURS) +
