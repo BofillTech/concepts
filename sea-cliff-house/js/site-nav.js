@@ -34,6 +34,14 @@
     ['old-orchard-beach-maine-motel-accessibility-statement', 'Accessibility Statement']
   ];
 
+  /* Make sure the menu font is loaded on every page */
+  if (!document.querySelector('link[href*="family=Ubuntu"]')) {
+    var fl = document.createElement('link');
+    fl.rel = 'stylesheet';
+    fl.href = 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap';
+    document.head.appendChild(fl);
+  }
+
   var body = document.body;
   var root = body.getAttribute('data-root') || '';
   var page = body.getAttribute('data-page') || '';
