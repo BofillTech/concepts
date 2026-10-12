@@ -45,7 +45,7 @@
     }
 
     // ========================================
-    // Sticky Bottom Booking Bar
+    // Sticky Bottom Booking Bar with Date Picker
     // Shows after scrolling past hero section
     // ========================================
     
@@ -53,6 +53,58 @@
     const hero = document.getElementById('hero');
     
     if (bookingBar && hero) {
+        // Initialize date picker
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        const guestsSelect = document.getElementById('guests');
+        
+        if (checkinInput && checkoutInput) {
+            // Set default dates (tomorrow and day after)
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date();
+            dayAfter.setDate(dayAfter.getDate() + 2);
+            
+            checkinInput.value = tomorrow.toISOString().split('T')[0];
+            checkoutInput.value = dayAfter.toISOString().split('T')[0];
+            checkinInput.min = tomorrow.toISOString().split('T')[0];
+            
+            // Ensure checkout is always after checkin
+            checkinInput.addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                const checkoutDate = new Date(checkoutInput.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    checkoutInput.value = newCheckout.toISOString().split('T')[0];
+                }
+                
+                checkoutInput.min = this.value;
+            });
+            
+            checkoutInput.addEventListener('change', function() {
+                const checkinDate = new Date(checkinInput.value);
+                const checkoutDate = new Date(this.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    this.value = newCheckout.toISOString().split('T')[0];
+                }
+            });
+        }
+        
+        // Handle booking button click (link-only)
+        const bookingButton = document.getElementById('booking-bar-submit');
+        if (bookingButton) {
+            bookingButton.addEventListener('click', function() {
+                const bookingUrl = 'https://www.silvercreek-granby.com/book-now/';
+                console.log('Silver Creek Hotel booking URL:', bookingUrl);
+                window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+            });
+        }
+        
         let heroBottom = hero.offsetHeight;
         
         // Recalculate on resize
