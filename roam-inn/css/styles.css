@@ -921,7 +921,7 @@ ul, ol {
 }
 
 /* ============================================
-   Sticky Booking Bar
+   Sticky Booking Bar with Date Picker
    ============================================ */
 
 .booking-bar {
@@ -941,21 +941,54 @@ ul, ol {
     transform: translateY(0);
 }
 
+body.booking-bar-visible {
+    padding-bottom: 72px;
+}
+
 .booking-bar__content {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0.65rem var(--space-md);
+    padding: 1rem var(--space-md);
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--space-md);
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.booking-bar__text {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    letter-spacing: 0.05em;
+.booking-bar__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.booking-bar__label {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-cream);
+    opacity: 0.9;
+}
+
+.booking-bar__input,
+.booking-bar__select {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--color-cream);
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    border-radius: 4px;
+    min-width: 140px;
+    transition: border-color var(--transition-fast);
+}
+
+.booking-bar__input:focus,
+.booking-bar__select:focus {
+    outline: none;
+    border-color: var(--color-lumber-wood);
 }
 
 .booking-bar__button {
@@ -965,10 +998,13 @@ ul, ol {
     text-transform: uppercase;
     background-color: var(--color-cream);
     color: var(--color-bay-blue);
-    padding: 0.5rem 1.25rem;
+    padding: 0.65rem 1.5rem;
     white-space: nowrap;
     transition: all var(--transition-base);
     border: 2px solid var(--color-cream);
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: auto;
 }
 
 .booking-bar__button:hover {
@@ -977,19 +1013,65 @@ ul, ol {
     border-color: var(--color-lumber-wood);
 }
 
-@media (max-width: 640px) {
-    .booking-bar__content {
-        padding: 0.5rem var(--space-sm);
-        gap: var(--space-sm);
+.booking-bar__phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-cream);
+    font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: opacity var(--transition-fast);
+}
+
+.booking-bar__phone:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    body.booking-bar-visible {
+        padding-bottom: 120px;
     }
     
-    .booking-bar__text {
+    .booking-bar__content {
+        padding: 0.75rem var(--space-sm);
+        gap: 0.5rem;
+    }
+    
+    .booking-bar__field {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 120px;
+    }
+    
+    .booking-bar__label {
+        font-size: 0.7rem;
+    }
+    
+    .booking-bar__input,
+    .booking-bar__select {
         font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+        min-width: unset;
     }
     
     .booking-bar__button {
-        font-size: 0.85rem;
-        padding: 0.4rem 1rem;
+        flex: 1 1 100%;
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+    
+    .booking-bar__phone {
+        order: -1;
+        font-size: 1.1rem;
+        width: 36px;
+        height: 36px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .booking-bar {
+        transition: none;
     }
 }
 
