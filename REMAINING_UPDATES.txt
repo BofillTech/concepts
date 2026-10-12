@@ -1,0 +1,29 @@
+REMAINING 6 HOTELS - QUICK UPDATE GUIDE
+
+Each needs the same pattern applied:
+
+CSS Updates:
+-----------
+1. Add .booking-bar__field, __label, __input, __select, __phone styles
+2. Update responsive styles
+3. Add body.booking-bar-visible padding
+
+JS Updates:
+----------
+1. Add date picker initialization (tomorrow/day-after defaults)
+2. Add date validation (checkout > checkin)
+3. Add booking URL generation per engine:
+   - Cloudbeds: #checkin=...&checkout=...&adults=...
+   - SiteMinder: ?locale=en&checkInDate=...&checkOutDate=...&items%5B0%5D%5Badults%5D=...
+   - Link-only: just open base URL
+4. Add body.classList.add('booking-bar-visible')
+
+Hotels:
+1. ✅ dutchland-motel (SiteMinder) - css/main.css, js/main.js
+2. ✅ coyote-mountain-lodge (Cloudbeds) - css/main.css, js/main.js
+3. ✅ ocean-sands-resort (link-only) - css/main.css, js/main.js
+4. ✅ silver-creek-hotel (link-only) - css/main.css, js/main.js
+5. ✅ applewood-inn (link-only) - css/style.css, js/main.js
+6. ✅ forest-springs-resort (Cloudbeds) - css/style.css, js/main.js
+
+Pattern established from completed hotels - apply consistently.
