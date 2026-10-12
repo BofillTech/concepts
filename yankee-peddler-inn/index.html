@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yankee Peddler Inn — Historic Newport, RI Bed & Breakfast</title>
+    <meta name="description" content="An oasis of calm, comfortable, casual charm in Newport's Historic Hill. 19 guestrooms with private baths, rooftop deck, complimentary breakfast, and free parking.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Yankee Peddler Inn",
+      "image": "https://bofilltech.github.io/concepts/yankee-peddler-inn/img/exterior-main-house-flag.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "113 Touro Street",
+        "addressLocality": "Newport",
+        "addressRegion": "RI",
+        "postalCode": "02840",
+        "addressCountry": "US"
+      },
+      "telephone": "+14018461323",
+      "email": "reservations@yankeepeddlerinn.com",
+      "url": "https://www.yankeepeddlerinn.com/",
+      "priceRange": "$$",
+      "amenityFeature": [
+        {"@type": "LocationFeatureSpecification", "name": "Free WiFi"},
+        {"@type": "LocationFeatureSpecification", "name": "Free Parking"},
+        {"@type": "LocationFeatureSpecification", "name": "Continental Breakfast"},
+        {"@type": "LocationFeatureSpecification", "name": "24-Hour Front Desk"},
+        {"@type": "LocationFeatureSpecification", "name": "Rooftop Deck"}
+      ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="mainNav">
+        <div class="nav__container">
+            <a href="tel:+14018461323" class="nav__phone">
+                <svg class="nav__phone-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                </svg>
+                <span class="nav__phone-text">(401) 846-1323</span>
+            </a>
+            
+            <div class="nav__logo">
+                <span class="nav__logo-text">Yankee Peddler Inn</span>
+            </div>
+            
+            <div class="nav__actions">
+                <a href="https://guest.rezstream.com/search/yankee-peddler-inn" target="_blank" rel="noopener" class="nav__cta">Book Now</a>
+                <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+                    <span class="nav__hamburger-line"></span>
+                    <span class="nav__hamburger-line"></span>
+                    <span class="nav__hamburger-line"></span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="nav__menu" id="navMenu">
+            <a href="#story" class="nav__link">Our Story</a>
+            <a href="#rooms" class="nav__link">Rooms</a>
+            <a href="#amenities" class="nav__link">Amenities</a>
+            <a href="#location" class="nav__link">Location</a>
+            <a href="#gallery" class="nav__link">Gallery</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <picture>
+            <source media="(max-width: 768px)" srcset="img/exterior-front-door.jpg">
+            <img src="img/exterior-main-house-flag.jpg" alt="Yankee Peddler Inn - Historic Victorian main house" class="hero__image">
+        </picture>
+        
+        <div class="hero__content">
+            <h1 class="hero__title">An Oasis of Calm in Newport's Historic Hill</h1>
+            <p class="hero__subtitle">19 charming guestrooms • Rooftop deck • Complimentary breakfast</p>
+        </div>
+
+        <!-- Inline Booking Widget -->
+        <div class="hero__booking">
+            <form method="post" action="https://guest.rezstream.com/search/yankee-peddler-inn" target="_blank" class="booking-form" id="heroBookingForm">
+                <input type="hidden" name="BusinessSlug" value="yankee-peddler-inn">
+                <input type="hidden" name="SearchType" value="ByIndividualUnit">
+                <input type="hidden" name="Locale" value="en-us">
+                <input type="hidden" name="NumberOfRooms" value="1">
+                <input type="hidden" name="SelectedGuests[0].Id" value="d2476b18-f152-41db-9924-e0535d54ff5f">
+                <input type="hidden" name="Arrival" id="heroArrivalHidden">
+                <input type="hidden" name="Departure" id="heroDepartureHidden">
+                
+                <div class="booking-form__fields">
+                    <div class="booking-form__field">
+                        <label for="heroArrival" class="booking-form__label">Check In</label>
+                        <input type="date" id="heroArrival" class="booking-form__input" required>
+                    </div>
+                    
+                    <div class="booking-form__field">
+                        <label for="heroDeparture" class="booking-form__label">Check Out</label>
+                        <input type="date" id="heroDeparture" class="booking-form__input" required>
+                    </div>
+                    
+                    <div class="booking-form__field">
+                        <label for="heroGuests" class="booking-form__label">Guests</label>
+                        <select id="heroGuests" name="SelectedGuests[0].NumberOfGuests" class="booking-form__input">
+                            <option value="1">1 Adult</option>
+                            <option value="2" selected>2 Adults</option>
+                            <option value="3">3 Adults</option>
+                            <option value="4">4 Adults</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="booking-form__submit">Check Availability</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="section section--story" id="story">
+        <div class="container">
+            <div class="editorial">
+                <div class="editorial__text">
+                    <h2 class="section__title">A Victorian Treasure in Newport's Heart</h2>
+                    <p class="section__lead">Built in the 1800s for a Boston mariner and naval officer, our early Victorian home offers an oasis of calm, comfortable, casual charm in Newport's Historic Hill neighborhood.</p>
+                    <p>Just uphill from the waterfront and downhill from Bellevue Avenue, we're perfectly positioned for exploring Newport's legendary mansions, harbor, and dining scene — while providing a peaceful retreat from the bustle.</p>
+                </div>
+                <div class="editorial__image">
+                    <img src="img/exterior-front-door.jpg" alt="White columned entry with red front door" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms -->
+    <section class="section section--rooms" id="rooms">
+        <div class="container">
+            <h2 class="section__title section__title--centered">19 Charming Guestrooms</h2>
+            <p class="section__intro">All with private baths, many featuring canopy beds and decorative fireplaces</p>
+            
+            <div class="rooms-grid">
+                <article class="room-card">
+                    <div class="room-card__image">
+                        <img src="img/room-superior-two-queens.jpg" alt="Superior Two Queens room with portraits" loading="lazy">
+                    </div>
+                    <div class="room-card__content">
+                        <h3 class="room-card__title">Superior Two Queens</h3>
+                        <p class="room-card__description">Spacious accommodations with two queen beds, perfect for families or friends traveling together.</p>
+                    </div>
+                </article>
+                
+                <article class="room-card">
+                    <div class="room-card__image">
+                        <img src="img/room-carriage-house-queen.jpg" alt="Carriage House Queen room" loading="lazy">
+                    </div>
+                    <div class="room-card__content">
+                        <h3 class="room-card__title">Carriage House Queen</h3>
+                        <p class="room-card__description">Five charming rooms across the garden from the Main House, offering peaceful garden views.</p>
+                    </div>
+                </article>
+                
+                <article class="room-card">
+                    <div class="room-card__image">
+                        <img src="img/room-queen-bright.jpg" alt="Bright queen room with white bedding" loading="lazy">
+                    </div>
+                    <div class="room-card__content">
+                        <h3 class="room-card__title">Superior One Queen</h3>
+                        <p class="room-card__description">Elegant rooms featuring canopy beds and decorative fireplaces, blending historic charm with modern comfort.</p>
+                    </div>
+                </article>
+                
+                <article class="room-card">
+                    <div class="room-card__image">
+                        <img src="img/room-two-queen-suite-canopy.jpg" alt="Canopy bed in Two-Queen Suite" loading="lazy">
+                    </div>
+                    <div class="room-card__content">
+                        <h3 class="room-card__title">Superior Two-Queen Suite</h3>
+                        <p class="room-card__description">Two separate bedrooms with full bath, ideal for extended stays or small groups seeking extra space.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities -->
+    <section class="section section--amenities" id="amenities">
+        <div class="container">
+            <div class="amenities-split">
+                <div class="amenities-split__content">
+                    <h2 class="section__title">Thoughtful Touches & Modern Comforts</h2>
+                    
+                    <ul class="amenities-list">
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                            </svg>
+                            <div>
+                                <strong>Third-Story Rooftop Deck</strong>
+                                <p>Relax with sweeping views over Newport rooftops</p>
+                            </div>
+                        </li>
+                        
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                            </svg>
+                            <div>
+                                <strong>Complimentary Continental Breakfast</strong>
+                                <p>Start your day in our breakfast room with stone fireplace</p>
+                            </div>
+                        </li>
+                        
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <div>
+                                <strong>Free On-Site Parking</strong>
+                                <p>One car per reservation — a rare Newport convenience</p>
+                            </div>
+                        </li>
+                        
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                            </svg>
+                            <div>
+                                <strong>Free WiFi Throughout</strong>
+                                <p>Stay connected during your Newport getaway</p>
+                            </div>
+                        </li>
+                        
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <div>
+                                <strong>24-Hour Front Desk</strong>
+                                <p>We're here whenever you need us</p>
+                            </div>
+                        </li>
+                        
+                        <li class="amenities-list__item">
+                            <svg class="amenities-list__icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2a10 10 0 1 0 0 20 10 10 0 1 0 0-20z"></path>
+                                <path d="M12 6v6l4 2"></path>
+                            </svg>
+                            <div>
+                                <strong>Friday Wine Hour</strong>
+                                <p>Complimentary wine on Friday evenings</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="amenities-split__images">
+                    <img src="img/rooftop-deck.jpg" alt="Rooftop deck with Adirondack chairs" loading="lazy" class="amenities-split__image amenities-split__image--primary">
+                    <img src="img/breakfast-room.jpg" alt="Breakfast room with stone fireplace" loading="lazy" class="amenities-split__image amenities-split__image--secondary">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="section section--gallery" id="gallery">
+        <div class="container">
+            <h2 class="section__title section__title--centered">A Gallery of Charm</h2>
+            
+            <div class="gallery">
+                <div class="gallery__item gallery__item--large">
+                    <img src="img/exterior-carriage-house-ivy.jpg" alt="Ivy-covered Carriage House with garden" loading="lazy">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/exterior-carriage-house-porch.jpg" alt="Carriage House porch seating" loading="lazy">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/exterior-front-steps.jpg" alt="Front steps with flower urns" loading="lazy">
+                </div>
+                <div class="gallery__item gallery__item--tall">
+                    <img src="img/rooftop-deck-flowers.jpg" alt="Rooftop deck with flower pots" loading="lazy">
+                </div>
+                <div class="gallery__item">
+                    <img src="img/exterior-garden-hedges.jpg" alt="Garden path and hedges" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="section section--location" id="location">
+        <div class="container">
+            <div class="location">
+                <div class="location__content">
+                    <h2 class="section__title">Perfectly Positioned in Newport's Historic Hill</h2>
+                    <p class="section__lead">Just uphill from the waterfront and downhill from Bellevue Avenue, we're a few blocks from Newport's best attractions.</p>
+                    
+                    <div class="location__details">
+                        <div class="location__detail">
+                            <h3 class="location__detail-title">Walking Distance To:</h3>
+                            <ul class="location__list">
+                                <li>Newport Harbor & Waterfront</li>
+                                <li>Bellevue Avenue Mansions</li>
+                                <li>Thames Street Dining & Shopping</li>
+                                <li>Colonial Newport Historic District</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="location__detail">
+                            <h3 class="location__detail-title">Visit Us:</h3>
+                            <address class="location__address">
+                                113 Touro Street<br>
+                                Newport, RI 02840<br>
+                                <a href="tel:+14018461323" class="location__phone">(401) 846-1323</a>
+                            </address>
+                        </div>
+                    </div>
+                    
+                    <div class="location__area">
+                        <h3 class="location__detail-title">Explore Newport</h3>
+                        <div class="location__area-grid">
+                            <div class="location__area-item">
+                                <img src="img/area-newport-mansion.jpg" alt="Newport mansion and gardens" loading="lazy">
+                                <p>Gilded Age Mansions</p>
+                            </div>
+                            <div class="location__area-item">
+                                <img src="img/area-newport-lighthouse.jpg" alt="Newport Harbor lighthouse" loading="lazy">
+                                <p>Harbor & Lighthouse</p>
+                            </div>
+                            <div class="location__area-item">
+                                <img src="img/area-newport-park.jpg" alt="Newport park" loading="lazy">
+                                <p>Historic Parks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="location__map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2995.5859318247754!2d-71.31495!3d41.48837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e5b0c3f3f3f3f3%3A0x0!2s113%20Touro%20St%2C%20Newport%2C%20RI%2002840!5e0!3m2!1sen!2sus!4v1234567890" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Yankee Peddler Inn location map"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section--cta">
+        <div class="container">
+            <div class="cta">
+                <h2 class="cta__title">Experience Newport's Historic Charm</h2>
+                <p class="cta__text">Book your stay at Yankee Peddler Inn and discover why guests return year after year.</p>
+                <a href="https://guest.rezstream.com/search/yankee-peddler-inn" target="_blank" rel="noopener" class="cta__button">Check Availability</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sticky Booking Bar -->
+    <div class="booking-bar" id="bookingBar">
+        <div class="booking-bar__container">
+            <form method="post" action="https://guest.rezstream.com/search/yankee-peddler-inn" target="_blank" class="booking-bar__form" id="stickyBookingForm">
+                <input type="hidden" name="BusinessSlug" value="yankee-peddler-inn">
+                <input type="hidden" name="SearchType" value="ByIndividualUnit">
+                <input type="hidden" name="Locale" value="en-us">
+                <input type="hidden" name="NumberOfRooms" value="1">
+                <input type="hidden" name="SelectedGuests[0].Id" value="d2476b18-f152-41db-9924-e0535d54ff5f">
+                <input type="hidden" name="Arrival" id="stickyArrivalHidden">
+                <input type="hidden" name="Departure" id="stickyDepartureHidden">
+                
+                <div class="booking-bar__fields">
+                    <div class="booking-bar__field">
+                        <label for="stickyArrival" class="booking-bar__label">Check In</label>
+                        <input type="date" id="stickyArrival" class="booking-bar__input" required>
+                    </div>
+                    
+                    <div class="booking-bar__field">
+                        <label for="stickyDeparture" class="booking-bar__label">Check Out</label>
+                        <input type="date" id="stickyDeparture" class="booking-bar__input" required>
+                    </div>
+                    
+                    <div class="booking-bar__field">
+                        <label for="stickyGuests" class="booking-bar__label">Guests</label>
+                        <select id="stickyGuests" name="SelectedGuests[0].NumberOfGuests" class="booking-bar__input">
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="booking-bar__submit">Book Now</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h3 class="footer__title">Yankee Peddler Inn</h3>
+                    <address class="footer__address">
+                        113 Touro Street<br>
+                        Newport, RI 02840<br>
+                        <a href="tel:+14018461323">(401) 846-1323</a><br>
+                        <a href="mailto:reservations@yankeepeddlerinn.com">reservations@yankeepeddlerinn.com</a>
+                    </address>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Quick Links</h3>
+                    <nav class="footer__nav">
+                        <a href="#story" class="footer__link">Our Story</a>
+                        <a href="#rooms" class="footer__link">Rooms</a>
+                        <a href="#amenities" class="footer__link">Amenities</a>
+                        <a href="#location" class="footer__link">Location</a>
+                    </nav>
+                </div>
+                
+                <div class="footer__section">
+                    <h3 class="footer__title">Book Your Stay</h3>
+                    <p class="footer__text">Experience Newport's charm in our Victorian inn.</p>
+                    <a href="https://guest.rezstream.com/search/yankee-peddler-inn" target="_blank" rel="noopener" class="footer__cta">Check Availability</a>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">&copy; 2026 Yankee Peddler Inn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
