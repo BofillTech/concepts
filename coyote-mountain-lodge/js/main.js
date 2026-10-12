@@ -33,7 +33,7 @@
   }
 
   /**
-   * Sticky bottom booking bar
+   * Sticky bottom booking bar with date picker
    * Appears after scrolling past hero
    */
   const bookingBar = document.getElementById('booking-bar');
@@ -56,6 +56,64 @@
 
   window.addEventListener('scroll', toggleBookingBar);
   toggleBookingBar(); // Check on load
+
+  // Initialize date picker
+  const checkinInput = document.getElementById('checkin');
+  const checkoutInput = document.getElementById('checkout');
+  const guestsSelect = document.getElementById('guests');
+
+  if (checkinInput && checkoutInput) {
+    // Set default dates (tomorrow and day after)
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const dayAfter = new Date();
+    dayAfter.setDate(dayAfter.getDate() + 2);
+
+    checkinInput.value = tomorrow.toISOString().split('T')[0];
+    checkoutInput.value = dayAfter.toISOString().split('T')[0];
+    checkinInput.min = tomorrow.toISOString().split('T')[0];
+
+    // Ensure checkout is always after checkin
+    checkinInput.addEventListener('change', function() {
+      const checkinDate = new Date(this.value);
+      const checkoutDate = new Date(checkoutInput.value);
+
+      if (checkoutDate <= checkinDate) {
+        const newCheckout = new Date(checkinDate);
+        newCheckout.setDate(newCheckout.getDate() + 1);
+        checkoutInput.value = newCheckout.toISOString().split('T')[0];
+      }
+
+      checkoutInput.min = this.value;
+    });
+
+    checkoutInput.addEventListener('change', function() {
+      const checkinDate = new Date(checkinInput.value);
+      const checkoutDate = new Date(this.value);
+
+      if (checkoutDate <= checkinDate) {
+        const newCheckout = new Date(checkinDate);
+        newCheckout.setDate(newCheckout.getDate() + 1);
+        this.value = newCheckout.toISOString().split('T')[0];
+      }
+    });
+  }
+
+  // Handle booking button click (Cloudbeds with date params)
+  const bookingButton = document.getElementById('booking-bar-submit');
+  if (bookingButton) {
+    bookingButton.addEventListener('click', function() {
+      const checkin = checkinInput ? checkinInput.value : '';
+      const checkout = checkoutInput ? checkoutInput.value : '';
+      const guests = guestsSelect ? guestsSelect.value : '2';
+
+      const baseUrl = 'https://hotels.cloudbeds.com/reservation/4CMdnA';
+      const bookingUrl = baseUrl + '#checkin=' + checkin + '&checkout=' + checkout + '&adults=' + guests;
+
+      console.log('Coyote Mountain Lodge booking URL:', bookingUrl);
+      window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+    });
+  }
 
   /**
    * Parallax layers

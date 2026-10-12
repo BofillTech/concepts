@@ -164,6 +164,99 @@
   }
   
   // ==========================================================================
+  // Booking Bar with Date Picker
+  // ==========================================================================
+
+  const bookingBar = document.getElementById('bookingBar');
+  const hero = document.querySelector('.hero');
+
+  if (bookingBar && hero) {
+    // Initialize date picker
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    const guestsSelect = document.getElementById('guests');
+
+    if (checkinInput && checkoutInput) {
+      // Set default dates (tomorrow and day after)
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dayAfter = new Date();
+      dayAfter.setDate(dayAfter.getDate() + 2);
+
+      checkinInput.value = tomorrow.toISOString().split('T')[0];
+      checkoutInput.value = dayAfter.toISOString().split('T')[0];
+      checkinInput.min = tomorrow.toISOString().split('T')[0];
+
+      // Ensure checkout is always after checkin
+      checkinInput.addEventListener('change', function() {
+        const checkinDate = new Date(this.value);
+        const checkoutDate = new Date(checkoutInput.value);
+
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          checkoutInput.value = newCheckout.toISOString().split('T')[0];
+        }
+
+        checkoutInput.min = this.value;
+      });
+
+      checkoutInput.addEventListener('change', function() {
+        const checkinDate = new Date(checkinInput.value);
+        const checkoutDate = new Date(this.value);
+
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          this.value = newCheckout.toISOString().split('T')[0];
+        }
+      });
+    }
+
+    // Handle booking button click (link-only)
+    const bookingButton = document.getElementById('booking-bar-submit');
+    if (bookingButton) {
+      bookingButton.addEventListener('click', function() {
+        const bookingUrl = 'https://www.applewoodbb.com/book-now/';
+        console.log('Applewood Inn booking URL:', bookingUrl);
+        window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
+
+    // Show/hide booking bar on scroll
+    function toggleBookingBar() {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > heroBottom) {
+        bookingBar.classList.add('booking-bar--visible');
+      } else {
+        bookingBar.classList.remove('booking-bar--visible');
+      }
+    }
+
+    // Initial check
+    toggleBookingBar();
+
+    // Listen to scroll events with throttle
+    let bookingTicking = false;
+    window.addEventListener('scroll', function() {
+      if (!bookingTicking) {
+        window.requestAnimationFrame(function() {
+          toggleBookingBar();
+          bookingTicking = false;
+        });
+        bookingTicking = true;
+      }
+    });
+
+    // Recalculate on resize
+    window.addEventListener('resize', function() {
+      toggleBookingBar();
+    });
+  }
+
+  // ==========================================================================
   // Prefers reduced motion - disable animations
   // ==========================================================================
   

@@ -291,19 +291,75 @@ ul {
     font-weight: 400;
 }
 
-.booking-bar__btn {
-    padding: 0.625rem 1.5rem;
-    background-color: var(--color-aspen-gold);
+.booking-bar__phone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-white);
+    font-size: 1.25rem;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.booking-bar__phone:hover {
+    opacity: 0.8;
+}
+
+.booking-bar__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.booking-bar__label {
     color: var(--color-white);
     font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+}
+
+.booking-bar__input,
+.booking-bar__select {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--color-white);
+    background-color: var(--color-white);
+    color: var(--color-timber-ink);
+    border-radius: var(--radius-sm);
+    min-width: 140px;
+    transition: border-color 0.2s ease;
+}
+
+.booking-bar__input:focus,
+.booking-bar__select:focus {
+    outline: none;
+    border-color: var(--color-aspen-gold);
+}
+
+.booking-bar__btn {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
     font-weight: 700;
+    color: var(--color-white);
+    background-color: var(--color-aspen-gold);
+    padding: 0.75rem 1.75rem;
     border-radius: var(--radius-sm);
     white-space: nowrap;
-    transition: background-color var(--transition-base);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+    border: 2px solid var(--color-aspen-gold);
 }
 
 .booking-bar__btn:hover {
     background-color: var(--color-creek-blue);
+    border-color: var(--color-creek-blue);
 }
 
 /* ========================================
@@ -944,5 +1000,50 @@ ul {
     
     .cta-final__title {
         font-size: 3rem;
+    }
+}
+
+/* ========================================
+   Mobile Booking Bar Styles
+   ======================================== */
+
+@media (max-width: 767px) {
+    .booking-bar__container {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.75rem var(--spacing-sm);
+    }
+
+    .booking-bar__text {
+        display: none;
+    }
+
+    .booking-bar__phone {
+        order: -1;
+        font-size: 1.1rem;
+        width: 36px;
+        height: 36px;
+    }
+
+    .booking-bar__field {
+        flex: 1 1 calc(50% - 0.5rem);
+        min-width: 110px;
+    }
+
+    .booking-bar__label {
+        font-size: 0.65rem;
+    }
+
+    .booking-bar__input,
+    .booking-bar__select {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+        min-width: unset;
+    }
+
+    .booking-bar__btn {
+        flex: 1 1 100%;
+        font-size: 0.9rem;
+        padding: 0.65rem 1rem;
     }
 }

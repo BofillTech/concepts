@@ -125,7 +125,7 @@
         }
     };
 
-    // Booking Bar
+    // Booking Bar with Date Picker
     const bookingBar = {
         bar: document.getElementById('booking-bar'),
         hero: document.querySelector('.hero'),
@@ -134,8 +134,64 @@
         init() {
             if (!this.bar || !this.hero) return;
             
+            // Initialize date picker
+            this.initDatePicker();
+            
             window.addEventListener('scroll', () => this.handleScroll(), { passive: true });
             this.handleScroll(); // Check initial state
+        },
+        
+        initDatePicker() {
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+            const guestsSelect = document.getElementById('guests');
+            
+            if (checkinInput && checkoutInput) {
+                // Set default dates (tomorrow and day after)
+                const tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                const dayAfter = new Date();
+                dayAfter.setDate(dayAfter.getDate() + 2);
+                
+                checkinInput.value = tomorrow.toISOString().split('T')[0];
+                checkoutInput.value = dayAfter.toISOString().split('T')[0];
+                checkinInput.min = tomorrow.toISOString().split('T')[0];
+                
+                // Ensure checkout is always after checkin
+                checkinInput.addEventListener('change', function() {
+                    const checkinDate = new Date(this.value);
+                    const checkoutDate = new Date(checkoutInput.value);
+                    
+                    if (checkoutDate <= checkinDate) {
+                        const newCheckout = new Date(checkinDate);
+                        newCheckout.setDate(newCheckout.getDate() + 1);
+                        checkoutInput.value = newCheckout.toISOString().split('T')[0];
+                    }
+                    
+                    checkoutInput.min = this.value;
+                });
+                
+                checkoutInput.addEventListener('change', function() {
+                    const checkinDate = new Date(checkinInput.value);
+                    const checkoutDate = new Date(this.value);
+                    
+                    if (checkoutDate <= checkinDate) {
+                        const newCheckout = new Date(checkinDate);
+                        newCheckout.setDate(newCheckout.getDate() + 1);
+                        this.value = newCheckout.toISOString().split('T')[0];
+                    }
+                });
+            }
+            
+            // Handle booking button click (link-only with adcid=2417)
+            const bookingButton = document.getElementById('booking-bar-submit');
+            if (bookingButton) {
+                bookingButton.addEventListener('click', function() {
+                    const bookingUrl = 'https://www.oceansandsresort.com/reservations/?adcid=2417';
+                    console.log('Ocean Sands Resort booking URL:', bookingUrl);
+                    window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+                });
+            }
         },
         
         handleScroll() {
