@@ -42,11 +42,69 @@
   // ========================================
   const bookingBar = document.getElementById('booking-bar');
   const hero = document.querySelector('.hero');
+  const body = document.body;
   let heroHeight = 0;
 
   if (bookingBar && hero) {
     // Calculate hero height
     heroHeight = hero.offsetHeight;
+
+    // Initialize date inputs with tomorrow and day after
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    const guestsSelect = document.getElementById('guests');
+    
+    if (checkinInput && checkoutInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dayAfter = new Date();
+      dayAfter.setDate(dayAfter.getDate() + 2);
+      
+      checkinInput.value = tomorrow.toISOString().split('T')[0];
+      checkoutInput.value = dayAfter.toISOString().split('T')[0];
+      checkinInput.min = tomorrow.toISOString().split('T')[0];
+      
+      // Ensure checkout is always after checkin
+      checkinInput.addEventListener('change', function() {
+        const checkinDate = new Date(this.value);
+        const checkoutDate = new Date(checkoutInput.value);
+        
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          checkoutInput.value = newCheckout.toISOString().split('T')[0];
+        }
+        
+        checkoutInput.min = this.value;
+      });
+      
+      checkoutInput.addEventListener('change', function() {
+        const checkinDate = new Date(checkinInput.value);
+        const checkoutDate = new Date(this.value);
+        
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          this.value = newCheckout.toISOString().split('T')[0];
+        }
+      });
+    }
+    
+    // Handle booking submission - SiteMinder with date params
+    const submitButton = document.getElementById('booking-bar-submit');
+    if (submitButton) {
+      submitButton.addEventListener('click', function() {
+        const checkin = checkinInput.value;
+        const checkout = checkoutInput.value;
+        const adults = guestsSelect.value;
+        const bookingUrl = 'https://direct-book.com/properties/RSVPMotelDirect?locale=en&checkInDate=' + checkin + 
+            '&checkOutDate=' + checkout + 
+            '&items%5B0%5D%5Badults%5D=' + adults + 
+            '&items%5B0%5D%5Bchildren%5D=0&items%5B0%5D%5Binfants%5D=0&currency=USD';
+        console.log('Booking URL (SiteMinder):', bookingUrl);
+        window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
 
     window.addEventListener('scroll', function() {
       const scrollY = window.scrollY || window.pageYOffset;
@@ -54,9 +112,11 @@
       if (scrollY > heroHeight) {
         bookingBar.classList.add('is-visible');
         bookingBar.setAttribute('aria-hidden', 'false');
+        body.classList.add('booking-bar-visible');
       } else {
         bookingBar.classList.remove('is-visible');
         bookingBar.setAttribute('aria-hidden', 'true');
+        body.classList.remove('booking-bar-visible');
       }
     });
 
