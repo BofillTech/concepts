@@ -260,7 +260,7 @@
     // === STICKY BOOKING BAR ===
     function initBookingBar() {
         const bookingBar = document.getElementById('bookingBar');
-        const hero = document.querySelector('.hero');
+        const hero = document.querySelector('.hero-asymmetric-collage, .hero, #hero');
         
         if (!bookingBar || !hero) return;
         
