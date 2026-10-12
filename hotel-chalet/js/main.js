@@ -59,9 +59,65 @@
         // Show booking bar after scrolling past hero
         if (scrollTop > heroBottom - headerHeight) {
             bookingBar.classList.add('booking-bar--visible');
+            document.body.classList.add('booking-bar-visible');
         } else {
             bookingBar.classList.remove('booking-bar--visible');
+            document.body.classList.remove('booking-bar-visible');
         }
+    }
+
+    // Initialize date inputs with tomorrow and day after
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    const guestsSelect = document.getElementById('guests');
+    
+    if (checkinInput && checkoutInput) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const dayAfter = new Date();
+        dayAfter.setDate(dayAfter.getDate() + 2);
+        
+        checkinInput.value = tomorrow.toISOString().split('T')[0];
+        checkoutInput.value = dayAfter.toISOString().split('T')[0];
+        checkinInput.min = tomorrow.toISOString().split('T')[0];
+        
+        // Ensure checkout is always after checkin
+        checkinInput.addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            const checkoutDate = new Date(checkoutInput.value);
+            
+            if (checkoutDate <= checkinDate) {
+                const newCheckout = new Date(checkinDate);
+                newCheckout.setDate(newCheckout.getDate() + 1);
+                checkoutInput.value = newCheckout.toISOString().split('T')[0];
+            }
+            
+            checkoutInput.min = this.value;
+        });
+        
+        checkoutInput.addEventListener('change', function() {
+            const checkinDate = new Date(checkinInput.value);
+            const checkoutDate = new Date(this.value);
+            
+            if (checkoutDate <= checkinDate) {
+                const newCheckout = new Date(checkinDate);
+                newCheckout.setDate(newCheckout.getDate() + 1);
+                this.value = newCheckout.toISOString().split('T')[0];
+            }
+        });
+    }
+    
+    // Handle booking submission - SynXis with date params
+    const submitButton = document.getElementById('booking-bar-submit');
+    if (submitButton) {
+        submitButton.addEventListener('click', function() {
+            const checkin = checkinInput.value;
+            const checkout = checkoutInput.value;
+            const adults = guestsSelect.value;
+            const bookingUrl = 'https://reservations.thehotelchalet.com/?chain=31107&hotel=42145&arrive=' + checkin + '&depart=' + checkout + '&adult=' + adults + '&rooms=1';
+            console.log('Booking URL (SynXis):', bookingUrl);
+            window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+        });
     }
 
     // Throttle function for scroll performance

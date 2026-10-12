@@ -18,20 +18,77 @@ function initHeroCrossfade() {
     }, fadeInterval);
 }
 
-// Sticky Booking Bar
+// Sticky Booking Bar with Date Picker
 function initBookingBar() {
     const bookingBar = document.getElementById('bookingBar');
     const hero = document.getElementById('hero');
+    const body = document.body;
     
     if (!bookingBar || !hero) return;
+    
+    // Initialize date inputs with tomorrow and day after
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    const guestsSelect = document.getElementById('guests');
+    
+    if (checkinInput && checkoutInput) {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const dayAfter = new Date();
+        dayAfter.setDate(dayAfter.getDate() + 2);
+        
+        checkinInput.value = tomorrow.toISOString().split('T')[0];
+        checkoutInput.value = dayAfter.toISOString().split('T')[0];
+        checkinInput.min = tomorrow.toISOString().split('T')[0];
+        
+        // Ensure checkout is always after checkin
+        checkinInput.addEventListener('change', function() {
+            const checkinDate = new Date(this.value);
+            const checkoutDate = new Date(checkoutInput.value);
+            
+            if (checkoutDate <= checkinDate) {
+                const newCheckout = new Date(checkinDate);
+                newCheckout.setDate(newCheckout.getDate() + 1);
+                checkoutInput.value = newCheckout.toISOString().split('T')[0];
+            }
+            
+            checkoutInput.min = this.value;
+        });
+        
+        checkoutInput.addEventListener('change', function() {
+            const checkinDate = new Date(checkinInput.value);
+            const checkoutDate = new Date(this.value);
+            
+            if (checkoutDate <= checkinDate) {
+                const newCheckout = new Date(checkinDate);
+                newCheckout.setDate(newCheckout.getDate() + 1);
+                this.value = newCheckout.toISOString().split('T')[0];
+            }
+        });
+    }
+    
+    // Handle booking submission - Cloudbeds with date params
+    const submitButton = document.getElementById('booking-bar-submit');
+    if (submitButton) {
+        submitButton.addEventListener('click', function() {
+            const checkin = checkinInput.value;
+            const checkout = checkoutInput.value;
+            const adults = guestsSelect.value;
+            const bookingUrl = 'https://hotels.cloudbeds.com/en/reservation/cwKUgx#checkin=' + checkin + '&checkout=' + checkout + '&adults=' + adults;
+            console.log('Booking URL (Cloudbeds):', bookingUrl);
+            window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+        });
+    }
     
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) {
                     bookingBar.classList.add('is-visible');
+                    body.classList.add('booking-bar-visible');
                 } else {
                     bookingBar.classList.remove('is-visible');
+                    body.classList.remove('booking-bar-visible');
                 }
             });
         },

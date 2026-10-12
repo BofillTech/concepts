@@ -81,6 +81,7 @@
         constructor() {
             this.bookingBar = document.getElementById('bookingBar');
             this.hero = document.querySelector('.hero');
+            this.body = document.body;
             
             this.init();
         }
@@ -88,8 +89,62 @@
         init() {
             if (!this.bookingBar || !this.hero) return;
             
+            this.initDatePicker();
+            this.initBookingSubmit();
+            
             window.addEventListener('scroll', () => this.handleScroll());
             this.handleScroll();
+        }
+        
+        initDatePicker() {
+            const checkinInput = document.getElementById('checkin');
+            const checkoutInput = document.getElementById('checkout');
+            
+            if (!checkinInput || !checkoutInput) return;
+            
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date();
+            dayAfter.setDate(dayAfter.getDate() + 2);
+            
+            checkinInput.value = tomorrow.toISOString().split('T')[0];
+            checkoutInput.value = dayAfter.toISOString().split('T')[0];
+            checkinInput.min = tomorrow.toISOString().split('T')[0];
+            
+            checkinInput.addEventListener('change', () => {
+                const checkinDate = new Date(checkinInput.value);
+                const checkoutDate = new Date(checkoutInput.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    checkoutInput.value = newCheckout.toISOString().split('T')[0];
+                }
+                
+                checkoutInput.min = checkinInput.value;
+            });
+            
+            checkoutInput.addEventListener('change', () => {
+                const checkinDate = new Date(checkinInput.value);
+                const checkoutDate = new Date(checkoutInput.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    checkoutInput.value = newCheckout.toISOString().split('T')[0];
+                }
+            });
+        }
+        
+        initBookingSubmit() {
+            const submitButton = document.getElementById('booking-bar-submit');
+            if (!submitButton) return;
+            
+            submitButton.addEventListener('click', () => {
+                const bookingUrl = 'https://secure.guestcentric.net/api/bg/book.php?apikey=dd316346d1bac05fb6c4f288787dac0c&s=default&l=en_US';
+                console.log('Booking URL (link only):', bookingUrl);
+                window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+            });
         }
         
         handleScroll() {
@@ -98,8 +153,10 @@
             
             if (scrollPosition > heroBottom) {
                 this.bookingBar.classList.add('booking-bar--visible');
+                this.body.classList.add('booking-bar-visible');
             } else {
                 this.bookingBar.classList.remove('booking-bar--visible');
+                this.body.classList.remove('booking-bar-visible');
             }
         }
     }

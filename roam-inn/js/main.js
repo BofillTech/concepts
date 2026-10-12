@@ -70,12 +70,13 @@
     }
 
     /**
-     * Sticky Booking Bar
+     * Sticky Booking Bar with Date Picker
      * Shows after scrolling past hero section
      */
     function initBookingBar() {
         const bookingBar = document.querySelector('.booking-bar');
         const hero = document.querySelector('.hero');
+        const body = document.body;
         
         if (!bookingBar || !hero) {
             console.warn('Booking bar or hero not found');
@@ -84,13 +85,65 @@
 
         let heroHeight = hero.offsetHeight;
 
+        // Initialize date inputs with tomorrow and day after
+        const checkinInput = document.getElementById('checkin');
+        const checkoutInput = document.getElementById('checkout');
+        
+        if (checkinInput && checkoutInput) {
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayAfter = new Date();
+            dayAfter.setDate(dayAfter.getDate() + 2);
+            
+            checkinInput.value = tomorrow.toISOString().split('T')[0];
+            checkoutInput.value = dayAfter.toISOString().split('T')[0];
+            checkinInput.min = tomorrow.toISOString().split('T')[0];
+            
+            // Ensure checkout is always after checkin
+            checkinInput.addEventListener('change', function() {
+                const checkinDate = new Date(this.value);
+                const checkoutDate = new Date(checkoutInput.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    checkoutInput.value = newCheckout.toISOString().split('T')[0];
+                }
+                
+                checkoutInput.min = this.value;
+            });
+            
+            checkoutInput.addEventListener('change', function() {
+                const checkinDate = new Date(checkinInput.value);
+                const checkoutDate = new Date(this.value);
+                
+                if (checkoutDate <= checkinDate) {
+                    const newCheckout = new Date(checkinDate);
+                    newCheckout.setDate(newCheckout.getDate() + 1);
+                    this.value = newCheckout.toISOString().split('T')[0];
+                }
+            });
+        }
+        
+        // Handle booking submission - link only (no date params)
+        const submitButton = document.getElementById('booking-bar-submit');
+        if (submitButton) {
+            submitButton.addEventListener('click', function() {
+                const bookingUrl = 'https://roam-inn.com/accommodations/';
+                console.log('Booking URL (link only):', bookingUrl);
+                window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+            });
+        }
+
         function toggleBookingBar() {
             const scrollPosition = window.scrollY;
             
             if (scrollPosition > heroHeight * 0.6) {
                 bookingBar.classList.add('visible');
+                body.classList.add('booking-bar-visible');
             } else {
                 bookingBar.classList.remove('visible');
+                body.classList.remove('booking-bar-visible');
             }
         }
 

@@ -71,8 +71,60 @@
   function initBookingBar() {
     const bookingBar = document.getElementById('bookingBar');
     const hero = document.getElementById('hero');
+    const body = document.body;
     
     if (!bookingBar || !hero) return;
+
+    // Initialize date inputs with tomorrow and day after
+    const checkinInput = document.getElementById('checkin');
+    const checkoutInput = document.getElementById('checkout');
+    const guestsSelect = document.getElementById('guests');
+    
+    if (checkinInput && checkoutInput) {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const dayAfter = new Date();
+      dayAfter.setDate(dayAfter.getDate() + 2);
+      
+      checkinInput.value = tomorrow.toISOString().split('T')[0];
+      checkoutInput.value = dayAfter.toISOString().split('T')[0];
+      checkinInput.min = tomorrow.toISOString().split('T')[0];
+      
+      // Ensure checkout is always after checkin
+      checkinInput.addEventListener('change', function() {
+        const checkinDate = new Date(this.value);
+        const checkoutDate = new Date(checkoutInput.value);
+        
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          checkoutInput.value = newCheckout.toISOString().split('T')[0];
+        }
+        
+        checkoutInput.min = this.value;
+      });
+      
+      checkoutInput.addEventListener('change', function() {
+        const checkinDate = new Date(checkinInput.value);
+        const checkoutDate = new Date(this.value);
+        
+        if (checkoutDate <= checkinDate) {
+          const newCheckout = new Date(checkinDate);
+          newCheckout.setDate(newCheckout.getDate() + 1);
+          this.value = newCheckout.toISOString().split('T')[0];
+        }
+      });
+    }
+    
+    // Handle booking submission - link only (no date params)
+    const submitButton = document.getElementById('booking-bar-submit');
+    if (submitButton) {
+      submitButton.addEventListener('click', function() {
+        const bookingUrl = 'https://www.reseze.net/servlet/WebresResDesk?hotelid=1620';
+        console.log('Booking URL (link only):', bookingUrl);
+        window.open(bookingUrl, '_blank', 'noopener,noreferrer');
+      });
+    }
 
     function toggleBookingBar() {
       const heroBottom = hero.offsetTop + hero.offsetHeight;
@@ -80,8 +132,10 @@
       
       if (scrollTop > heroBottom) {
         bookingBar.classList.add('booking-bar--visible');
+        body.classList.add('booking-bar-visible');
       } else {
         bookingBar.classList.remove('booking-bar--visible');
+        body.classList.remove('booking-bar-visible');
       }
     }
 
