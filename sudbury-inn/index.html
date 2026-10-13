@@ -55,7 +55,27 @@
 
 <main id="main">
   <section class="hero hero--photo" aria-labelledby="hero-title">
-    <img class="hero__bg" src="https://lh3.googleusercontent.com/d/1Lw0moT3H1tXDo2EqcNZknDjzq6h5A5CT=w2400" data-fallback="https://drive.google.com/thumbnail?id=1Lw0moT3H1tXDo2EqcNZknDjzq6h5A5CT&amp;sz=w2400" alt="A deluxe suite at the Sudbury Inn with a four-poster bed and warm lamplight" width="2400" height="1600" fetchpriority="high">
+    <div class="hero__slides" aria-roledescription="carousel" aria-label="Photos of the Sudbury Inn">
+      <img class="hero__bg is-active" fetchpriority="high" src="https://lh3.googleusercontent.com/d/1Lw0moT3H1tXDo2EqcNZknDjzq6h5A5CT=w2400" data-fallback="https://drive.google.com/thumbnail?id=1Lw0moT3H1tXDo2EqcNZknDjzq6h5A5CT&amp;sz=w2400" alt="A deluxe suite at the Sudbury Inn with a four-poster bed and warm lamplight" width="2400" height="1600">
+      <img class="hero__bg" loading="lazy" aria-hidden="true" src="https://lh3.googleusercontent.com/d/1s_55f051sVU3Vg0unb7Hjr05iuFK4IW8=w2400" data-fallback="https://drive.google.com/thumbnail?id=1s_55f051sVU3Vg0unb7Hjr05iuFK4IW8&amp;sz=w2400" alt="A deluxe suite with a sleigh bed and floral wallpaper" width="2400" height="1600">
+      <img class="hero__bg" loading="lazy" aria-hidden="true" src="https://lh3.googleusercontent.com/d/1RtR15XSfBeu_knNO61R3sXv140T67f3e=w2400" data-fallback="https://drive.google.com/thumbnail?id=1RtR15XSfBeu_knNO61R3sXv140T67f3e&amp;sz=w2400" alt="The stone hearth in the three-bedroom apartment" width="2400" height="1600">
+      <img class="hero__bg" loading="lazy" aria-hidden="true" src="https://lh3.googleusercontent.com/d/1E_iIxAZwAcTzpdMEkq9a217r2O54Diwy=w2400" data-fallback="https://drive.google.com/thumbnail?id=1E_iIxAZwAcTzpdMEkq9a217r2O54Diwy&amp;sz=w2400" alt="The lobby fireplace and sitting area" width="2400" height="1600">
+      <img class="hero__bg" loading="lazy" aria-hidden="true" src="https://lh3.googleusercontent.com/d/1lwOJlOqDVesadWKsMHdWDYOf-Y2CA6CL=w2400" data-fallback="https://drive.google.com/thumbnail?id=1lwOJlOqDVesadWKsMHdWDYOf-Y2CA6CL&amp;sz=w2400" alt="The Sudbury Inn lit up at night on Main Street" width="2400" height="1600">
+      <img class="hero__bg" loading="lazy" aria-hidden="true" src="https://lh3.googleusercontent.com/d/1ng2PlGApMol2jGXhRvi_pM0Ur8LZ3YRu=w2400" data-fallback="https://drive.google.com/thumbnail?id=1ng2PlGApMol2jGXhRvi_pM0Ur8LZ3YRu&amp;sz=w2400" alt="The long wooden bar at Suds Pub" width="2400" height="1600">
+    </div>
+    <div class="hero__controls">
+      <button class="hero__arrow" type="button" data-dir="-1" aria-label="Previous photo">&#8249;</button>
+      <div class="hero__dots">
+        <button class="hero__dot is-active" type="button" aria-label="Show photo 1 of 6" aria-current="true"></button>
+        <button class="hero__dot" type="button" aria-label="Show photo 2 of 6"></button>
+        <button class="hero__dot" type="button" aria-label="Show photo 3 of 6"></button>
+        <button class="hero__dot" type="button" aria-label="Show photo 4 of 6"></button>
+        <button class="hero__dot" type="button" aria-label="Show photo 5 of 6"></button>
+        <button class="hero__dot" type="button" aria-label="Show photo 6 of 6"></button>
+      </div>
+      <button class="hero__arrow" type="button" data-dir="1" aria-label="Next photo">&#8250;</button>
+      <button class="hero__pause" type="button" aria-pressed="false">Pause</button>
+    </div>
     <div class="hero__panel">
       <h1 class="hero__title" id="hero-title">
         <span class="hero__line">Sleep upstairs.</span>
@@ -247,13 +267,11 @@
   </div>
 </footer>
 
-<div class="book-bar" role="region" aria-label="Book a stay">
-  <div class="wrap book-bar__inner">
-    <p class="book-bar__text"><strong>Stay on Main Street</strong> in Bethel</p>
-    <a class="book-bar__phone" href="tel:+12078242174">207-824-2174</a>
-    <a class="btn btn--book" href="https://secure.thinkreservations.com/thesudburyinn/reservations">Book now</a>
-  </div>
-</div>
+<form class="book-bar" action="https://secure.thinkreservations.com/thesudburyinn/reservations/availability" method="get" aria-label="Check availability">
+  <label class="book-bar__field"><span>Check in</span><input type="date" name="start_date" required></label>
+  <label class="book-bar__field"><span>Check out</span><input type="date" name="end_date" required></label>
+  <button class="btn btn--book" type="submit">Book now</button>
+</form>
 
 <script src="js/main.js" defer></script>
 </body>
