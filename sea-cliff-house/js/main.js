@@ -29,6 +29,20 @@
   var hero = document.querySelector('.hero');
   var video = document.querySelector('.hero__video');
   var pauseBtn = document.querySelector('.hero__pause');
+  if (hero && !video) {
+    var media = hero.querySelector('.hero__media');
+    video = document.createElement('video');
+    video.className = 'hero__video';
+    video.setAttribute('data-video', 'hero-video');
+    video.muted = true; video.loop = true; video.playsInline = true;
+    video.setAttribute('muted', ''); video.setAttribute('loop', ''); video.setAttribute('playsinline', '');
+    video.setAttribute('preload', 'none'); video.setAttribute('aria-hidden', 'true'); video.tabIndex = -1;
+    if (media) { media.appendChild(video); }
+    pauseBtn = document.createElement('button');
+    pauseBtn.className = 'hero__pause'; pauseBtn.type = 'button';
+    pauseBtn.setAttribute('aria-pressed', 'false'); pauseBtn.hidden = true; pauseBtn.textContent = 'Pause Video';
+    hero.appendChild(pauseBtn);
+  }
   var videos = window.SEA_CLIFF_VIDEOS || {};
   var saveData = navigator.connection && navigator.connection.saveData;
   if (hero && video && !reduceMotion && !saveData) {
@@ -49,7 +63,7 @@
         var paused = pauseBtn.getAttribute('aria-pressed') === 'true';
         if (paused) { video.play(); } else { video.pause(); }
         pauseBtn.setAttribute('aria-pressed', String(!paused));
-        pauseBtn.textContent = paused ? 'Pause video' : 'Play video';
+        pauseBtn.textContent = paused ? 'Pause Video' : 'Play Video';
       });
       if (showSlots) {
         var vt = document.createElement('span');

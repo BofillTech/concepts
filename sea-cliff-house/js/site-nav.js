@@ -6,6 +6,13 @@
 (function () {
   'use strict';
   var WEBCAM = 'https://webcam.seacliffhouse.com/camera/index.html#/video';
+  /* Booking engine. The two date names are how the dates are passed to
+     RezStream; change them here if RezStream uses different names. */
+  var BOOKING = {
+    url: 'https://guest.rezstream.com/search/sea-cliff-house-motel',
+    checkIn: 'arrival',
+    checkOut: 'departure'
+  };
   var ROOMS = [
     ['accommodations', 'All Rooms & Suites'],
     ['old-orchard-beach-maine-kitchenette-motel-rooms', 'Two-Room Kitchenettes'],
@@ -90,4 +97,43 @@
         c[1].map(function (i) { return '<li class="menu-item">' + link(i[0], i[1]) + '</li>'; }).join('') + '</ul></div>';
     }).join('');
   }
+  /* Compact booking bar: check-in, check-out, check availability */
+  function iso(d) {
+    var m = d.getMonth() + 1, day = d.getDate();
+    return d.getFullYear() + '-' + (m < 10 ? '0' : '') + m + '-' + (day < 10 ? '0' : '') + day;
+  }
+  function addDays(str, n) {
+    var p = str.split('-'), d = new Date(+p[0], +p[1] - 1, +p[2]);
+    d.setDate(d.getDate() + n);
+    return iso(d);
+  }
+  var today = iso(new Date());
+  var bar = document.createElement('form');
+  bar.className = 'book-bar';
+  bar.setAttribute('aria-label', 'Check availability');
+  bar.innerHTML =
+    '<a class="book-bar__call" href="tel:+12079344874" aria-label="Call Sea Cliff House"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>' +
+    '<label class="book-bar__field"><span class="book-bar__label">Check-In</span><input class="book-bar__date" type="date" name="in" required min="' + today + '" value="' + today + '"></label>' +
+    '<label class="book-bar__field"><span class="book-bar__label">Check-Out</span><input class="book-bar__date" type="date" name="out" required min="' + addDays(today, 1) + '" value="' + addDays(today, 1) + '"></label>' +
+    '<button class="book-bar__go" type="submit">Check Availability</button>';
+  document.body.appendChild(bar);
+  document.body.classList.add('has-book-bar');
+  var inEl = bar.querySelector('[name="in"]'), outEl = bar.querySelector('[name="out"]');
+  inEl.addEventListener('change', function () {
+    if (!inEl.value) { return; }
+    var next = addDays(inEl.value, 1);
+    outEl.min = next;
+    if (!outEl.value || outEl.value <= inEl.value) { outEl.value = next; }
+  });
+  bar.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var url = BOOKING.url;
+    if (inEl.value && outEl.value) {
+      url += '?' + BOOKING.checkIn + '=' + encodeURIComponent(inEl.value) + '&' + BOOKING.checkOut + '=' + encodeURIComponent(outEl.value);
+    }
+    window.open(url, '_blank', 'noopener');
+  });
+  var showBar = function () { bar.classList.toggle('is-visible', window.scrollY > 240 || !document.querySelector('.hero')); };
+  window.addEventListener('scroll', showBar, { passive: true });
+  showBar();
 })();
