@@ -188,10 +188,31 @@ body{
   'use strict';
 
   /* ============================================================
+     GOOGLE MAPS (OPTIONAL) — paste a Google "Maps JavaScript API"
+     key below and this widget renders the same 8 pins on Google's
+     basemap (info windows, numbered red pins, sidebar intact).
+     Leave it empty and the widget uses the free OpenStreetMap /
+     Leaflet basemap — no key, no billing, works today.
+
+     Key setup (once, ~5 min):
+       1. https://console.cloud.google.com/  → create/select a project
+       2. Enable "Maps JavaScript API":
+          https://console.cloud.google.com/apis/library/maps-backend.googleapis.com
+       3. Billing must be attached (Google's free monthly tier covers
+          roughly 10,000 map loads/month — this site won't get near it)
+       4. Credentials → Create API key → restrict to HTTP referrers:
+          bofilltech.github.io/*  and  springhouseblockisland.com/*
+       5. Paste the key between the quotes below.
+     If the key is invalid or over quota the widget automatically
+     falls back to the OpenStreetMap basemap.
+     ============================================================ */
+  var GOOGLE_MAPS_API_KEY = '';
+
+  /* ============================================================
      PROPERTY CONFIG — edit coordinates / copy / photos here.
      Coords for Main, Inn, New Harbor & Seawinds are from Google
-     Places. Mott House, Barn, Seaside Homes & Cooneymus Cottage are placed relative/approximately
-     to the main building — nudge lat/lng to taste.
+     Places. Mott House, Barn, Seaside Homes & Cooneymus Cottage
+     are placed relative/approximately — nudge lat/lng to taste.
      ============================================================ */
   var BOOK = 'https://direct-book.com/properties/SpringHouseHotelDIRECT';
   var PROPS = [
@@ -253,62 +274,132 @@ body{
     }
   ];
 
-  var map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
-  map.zoomControl.setPosition('topright');
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains:'abcd', maxZoom:19
-  }).addTo(map);
-
   var listEl = document.getElementById('propList');
-  var markers = [];
-  var bounds = L.latLngBounds([]);
 
-  PROPS.forEach(function(p, i){
-    var n = i + 1;
-    var icon = L.divIcon({
-      className:'sh-marker',
-      html:'<div class="pin"><span>'+n+'</span></div>',
-      iconSize:[36,36], iconAnchor:[7,34], popupAnchor:[11,-32]
-    });
-    var popup =
-      '<div class="pop">' +
-        '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'">' +
-        '<div class="pop-body">' +
-          '<h3>'+p.name+'</h3>' +
-          '<div class="addr">'+p.sub+'</div>' +
-          '<p>'+p.blurb+'</p>' +
-          '<a href="'+p.link+'" target="_blank" rel="noopener">'+p.cta+'</a>' +
-        '</div>' +
-      '</div>';
-    var m = L.marker([p.lat, p.lng], { icon:icon, title:p.name })
-      .addTo(map).bindPopup(popup, { maxWidth:290 });
-    m.on('click', function(){ setActive(i); });
-    markers.push(m);
-    bounds.extend([p.lat, p.lng]);
+  function popupHTML(p){
+    return '<div class="pop">' +
+      '<img src="'+p.img+'" alt="'+p.name+'" loading="lazy" onerror="this.style.display=\'none\'">' +
+      '<div class="pop-body">' +
+        '<h3>'+p.name+'</h3>' +
+        '<div class="addr">'+p.sub+'</div>' +
+        '<p>'+p.blurb+'</p>' +
+        '<a href="'+p.link+'" target="_blank" rel="noopener">'+p.cta+'</a>' +
+      '</div></div>';
+  }
 
-    var btn = document.createElement('button');
-    btn.className = 'prop'; btn.type = 'button';
-    btn.setAttribute('aria-label', 'Show '+p.name+' on the map');
-    btn.innerHTML =
-      '<span class="prop-pin"><span>'+n+'</span></span>' +
-      '<span><span class="prop-name">'+p.name+'</span><br>' +
-      '<span class="prop-sub">'+p.sub+'</span></span>';
-    btn.addEventListener('click', function(){
-      setActive(i);
-      map.flyTo([p.lat, p.lng], 16, { duration:.9 });
-      markers[i].openPopup();
+  function buildList(onSelect){
+    PROPS.forEach(function(p, i){
+      var btn = document.createElement('button');
+      btn.className = 'prop'; btn.type = 'button';
+      btn.setAttribute('aria-label', 'Show '+p.name+' on the map');
+      btn.innerHTML =
+        '<span class="prop-pin"><span>'+(i+1)+'</span></span>' +
+        '<span><span class="prop-name">'+p.name+'</span><br>' +
+        '<span class="prop-sub">'+p.sub+'</span></span>';
+      btn.addEventListener('click', function(){ onSelect(i); });
+      listEl.appendChild(btn);
     });
-    listEl.appendChild(btn);
-  });
+  }
 
   function setActive(i){
     var items = listEl.children;
     for (var k = 0; k < items.length; k++) items[k].classList.toggle('active', k === i);
   }
 
-  map.fitBounds(bounds, { padding:[70,70] });
+  /* ---------------- Leaflet (default, no key) ---------------- */
+  function initLeaflet(){
+    var map = L.map('map', { zoomControl:true, scrollWheelZoom:true });
+    map.zoomControl.setPosition('topright');
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains:'abcd', maxZoom:19
+    }).addTo(map);
+
+    var markers = [];
+    var bounds = L.latLngBounds([]);
+    PROPS.forEach(function(p, i){
+      var icon = L.divIcon({
+        className:'sh-marker',
+        html:'<div class="pin"><span>'+(i+1)+'</span></div>',
+        iconSize:[36,36], iconAnchor:[7,34], popupAnchor:[11,-32]
+      });
+      var mk = L.marker([p.lat, p.lng], { icon:icon, title:p.name })
+        .addTo(map).bindPopup(popupHTML(p), { maxWidth:290 });
+      mk.on('click', function(){ setActive(i); });
+      markers.push(mk);
+      bounds.extend([p.lat, p.lng]);
+    });
+    buildList(function(i){
+      setActive(i);
+      map.flyTo([PROPS[i].lat, PROPS[i].lng], 16, { duration:.9 });
+      markers[i].openPopup();
+    });
+    map.fitBounds(bounds, { padding:[70,70] });
+  }
+
+  /* ---------------- Google Maps (key required) ---------------- */
+  var fellBack = false;
+  function fallBack(){
+    if (fellBack) return;
+    fellBack = true;
+    document.getElementById('map').innerHTML = '';
+    listEl.innerHTML = '';
+    initLeaflet();
+  }
+
+  function initGoogle(){
+    var gmap = new google.maps.Map(document.getElementById('map'), {
+      center: { lat:41.168, lng:-71.555 }, zoom: 14,
+      mapTypeControl:false, streetViewControl:false, fullscreenControl:true,
+      zoomControlOptions:{ position: google.maps.ControlPosition.RIGHT_TOP }
+    });
+    var pinSvg = function(n){
+      return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="44" viewBox="0 0 36 44">' +
+        '<path d="M18 0C8 0 0 8 0 18c0 12 18 26 18 26s18-14 18-26C36 8 28 0 18 0z" fill="#A6392E"/>' +
+        '<circle cx="18" cy="17" r="11" fill="#F8F4EB"/>' +
+        '<text x="18" y="22" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#16384E">'+n+'</text></svg>'
+      );
+    };
+    var info = new google.maps.InfoWindow({ maxWidth: 300 });
+    var markers = [];
+    var bounds = new google.maps.LatLngBounds();
+    PROPS.forEach(function(p, i){
+      var mk = new google.maps.Marker({
+        position:{ lat:p.lat, lng:p.lng }, map:gmap, title:p.name,
+        icon:{ url:pinSvg(i+1), scaledSize:new google.maps.Size(36,44), anchor:new google.maps.Point(18,44) }
+      });
+      mk.addListener('click', function(){
+        setActive(i);
+        info.setContent(popupHTML(p));
+        info.open({ map:gmap, anchor:mk });
+      });
+      markers.push(mk);
+      bounds.extend({ lat:p.lat, lng:p.lng });
+    });
+    buildList(function(i){
+      setActive(i);
+      gmap.panTo({ lat:PROPS[i].lat, lng:PROPS[i].lng });
+      gmap.setZoom(16);
+      info.setContent(popupHTML(PROPS[i]));
+      info.open({ map:gmap, anchor:markers[i] });
+    });
+    gmap.fitBounds(bounds, 70);
+  }
+
+  if (GOOGLE_MAPS_API_KEY) {
+    /* gm_authFailure fires on invalid/over-quota keys → fall back to the free map */
+    window.gm_authFailure = fallBack;
+    window.__shInitGMap = function(){ if (!fellBack) initGoogle(); };
+    var s = document.createElement('script');
+    s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(GOOGLE_MAPS_API_KEY) + '&callback=__shInitGMap&loading=async&v=weekly';
+    s.async = true;
+    s.onerror = fallBack;
+    document.head.appendChild(s);
+    setTimeout(function(){ if (!window.google || !window.google.maps) fallBack(); }, 6000);
+  } else {
+    initLeaflet();
+  }
 })();
 </script>
 </body>
