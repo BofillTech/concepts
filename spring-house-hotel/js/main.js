@@ -188,6 +188,8 @@
   var embeds = document.querySelectorAll('.video-embed[data-src]');
   function loadEmbed(el) {
     if (el.dataset.loaded) return;
+    var src = el.getAttribute('data-src');
+    if (!src || src.indexOf('TODO') === 0) return; /* stub tile — poster + badge only until a real file ID is set */
     el.dataset.loaded = '1';
     var f = document.createElement('iframe');
     f.src = el.getAttribute('data-src');
