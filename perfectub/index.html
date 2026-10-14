@@ -168,6 +168,29 @@ p{margin:0 0 1rem;max-width:60ch}
 .option--pt .yes::before{color:var(--water)}
 .option__price{margin:18px 0 0;font-weight:600}
 @media (max-width:960px){.compare__grid{grid-template-columns:1fr}}
+
+/* animated step: in, then back out (alternate). Final pose is the default, so reduced motion shows it still */
+.shoe--a{fill:var(--brass)}
+.shoe--b{fill:var(--ink);opacity:.85}
+.anim-on .pt-a{animation:ptA 8s ease-in-out infinite alternate}
+.anim-on .pt-b{animation:ptB 8s ease-in-out infinite alternate}
+.anim-on .std-b{animation:stdB 8s ease-in-out infinite alternate}
+.anim-on .step-label{animation:stepLabel 8s ease-in-out infinite alternate}
+@keyframes ptA{0%,12%{transform:translate(-60px,0)}30%,100%{transform:translate(0,0)}}
+@keyframes ptB{0%,30%{transform:translate(-231px,40px)}42%{transform:translate(-231px,-220px)}62%{transform:translate(0,-220px)}74%,100%{transform:translate(0,0)}}
+@keyframes stdB{0%,30%{transform:translate(-361px,40px)}42%{transform:translate(-361px,-220px)}62%{transform:translate(0,-220px)}74%,100%{transform:translate(0,0)}}
+@keyframes stepLabel{0%,78%{opacity:0}90%,100%{opacity:1}}
+/* real footage */
+.footage{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:36px;align-items:start}
+.footage figure{margin:0}
+.footage video{display:block;width:100%;aspect-ratio:9/16;max-height:520px;object-fit:cover;border-radius:var(--radius-l);background:var(--tile)}
+.footage figcaption{margin-top:12px}
+.footage figcaption b{display:block}
+.footage figcaption em{font-style:normal;color:var(--muted);font-size:.93rem}
+.footage__lead{color:var(--muted);margin:0;padding-top:6px}
+.footage__lead b{display:block;color:var(--ink);font-size:1.08rem;margin-bottom:6px}
+@media (max-width:960px){.footage{grid-template-columns:1fr 1fr;gap:16px}.footage__lead{grid-column:1/-1}}
+@media (prefers-reduced-motion:reduce){.anim-on .foot,.anim-on .step-label{animation:none}}
 /* faq */
 .faq{padding:0 0 96px}
 .faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
@@ -328,12 +351,13 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
           <path d="M210 120 L214 300 L786 300 L790 120 Z" fill="var(--water)"/>
           <path d="M180 92 H820 V340 H240 V300 H180 Z" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
           <path d="M206 92 L210 300 L790 300 L794 92" fill="none" stroke="var(--glaze-deep)" stroke-width="3"/>
-          <path d="M196 340 l-40 0" stroke="var(--brass)" stroke-width="10" stroke-linecap="round"/>
-          <line x1="198" y1="306" x2="198" y2="336" stroke="var(--brass)" stroke-width="2" stroke-dasharray="4 4"/>
-          <text x="40" y="270" class="callout">Undercut</text>
-          <text x="40" y="290" class="callout--muted">room for your toes,</text>
-          <text x="40" y="307" class="callout--muted">so you stand upright</text>
-          <text x="500" y="270" text-anchor="middle" class="callout">Flat floor</text>
+          <text x="40" y="200" class="callout">Undercut</text>
+          <text x="40" y="220" class="callout--muted">room for your toes,</text>
+          <text x="40" y="237" class="callout--muted">so you stand upright</text>
+          <text x="660" y="270" text-anchor="middle" class="callout">Flat floor</text>
+          <g class="foot foot--a pt-a"><path class="shoe shoe--a" d="M0 -1 Q1 -11 -8 -16 Q-24 -23 -48 -26 L-90 -36 Q-102 -47 -120 -47 L-135 -47 Q-141 -47 -141 -40 L-141 -4 Q-141 0 -137 0 Z" transform="translate(236 340)"/></g>
+          <g class="foot foot--b pt-b"><path class="shoe shoe--b" d="M0 -1 Q1 -11 -8 -16 Q-24 -23 -48 -26 L-90 -36 Q-102 -47 -120 -47 L-135 -47 Q-141 -47 -141 -40 L-141 -4 Q-141 0 -137 0 Z" transform="translate(391 300)"/></g>
+          <text x="250" y="232" class="callout step-label">Feet about 3 inches apart</text>
           <text x="845" y="160" class="callout">Straight sides</text>
           <text x="845" y="180" class="callout--muted">more room at hip</text>
           <text x="845" y="197" class="callout--muted">and shoulder height</text>
@@ -343,10 +367,13 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
           <path d="M235 140 C268 140 300 262 360 284 L640 284 C700 262 732 140 765 140 Z" fill="var(--water)"/>
           <path d="M180 92 H820 V340 H180 Z" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>
           <path d="M206 92 C250 92 290 260 360 300 L640 300 C710 260 750 92 794 92" fill="none" stroke="var(--muted)" stroke-width="3"/>
-          <text x="40" y="270" class="callout">Flat apron</text>
-          <text x="40" y="290" class="callout--muted">you lean over it</text>
-          <text x="40" y="307" class="callout--muted">to climb out</text>
-          <text x="500" y="270" text-anchor="middle" class="callout">Curved bottom</text>
+          <text x="40" y="200" class="callout">Flat apron</text>
+          <text x="40" y="220" class="callout--muted">you lean over it</text>
+          <text x="40" y="237" class="callout--muted">to climb out</text>
+          <text x="660" y="270" text-anchor="middle" class="callout">Curved bottom</text>
+          <g class="foot foot--a"><path class="shoe shoe--a" d="M0 -1 Q1 -11 -8 -16 Q-24 -23 -48 -26 L-90 -36 Q-102 -47 -120 -47 L-135 -47 Q-141 -47 -141 -40 L-141 -4 Q-141 0 -137 0 Z" transform="translate(176 340)"/></g>
+          <g class="foot foot--b std-b"><path class="shoe shoe--b" d="M0 -1 Q1 -11 -8 -16 Q-24 -23 -48 -26 L-90 -36 Q-102 -47 -120 -47 L-135 -47 Q-141 -47 -141 -40 L-141 -4 Q-141 0 -137 0 Z" transform="translate(521 300)"/></g>
+          <text x="380" y="232" class="callout step-label">A wide straddle</text>
           <text x="845" y="160" class="callout">Sloped sides</text>
           <text x="845" y="180" class="callout--muted">narrow where</text>
           <text x="845" y="197" class="callout--muted">you sit</text>
@@ -374,6 +401,18 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
           <span class="profile profile--pt"><b>Shower chair</b><em>All four legs on one flat floor.</em></span>
           <span class="profile profile--std"><b>Shower chair</b><em>Legs land on a curved bottom.</em></span>
         </figcaption>
+      </figure>
+    </div>
+
+    <div class="footage" id="footage">
+      <p class="footage__lead"><b>The same thing, in a real tub.</b>Real phone footage of a Perfectub on a job site, trimmed to a few seconds.</p>
+      <figure>
+        <video src="media/real-step-out.mp4" poster="media/real-step-out-poster.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="A person in a Perfectub lifting one foot over the apron and stepping out, then standing with one foot inside and one outside, close together"></video>
+        <figcaption><b>Stepping out</b><em>Lift, step over, and you're standing.</em></figcaption>
+      </figure>
+      <figure>
+        <video src="media/real-step-in.mp4" poster="media/real-step-in-poster.jpg" muted loop playsinline preload="none" width="540" height="960" aria-label="A person standing beside a Perfectub lifting one foot over the apron to step in"></video>
+        <figcaption><b>Stepping in</b><em>No climbing over a curved wall.</em></figcaption>
       </figure>
     </div>
     <div class="points">
@@ -551,6 +590,20 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
 </footer>
 
 <script>
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var shapeEl=document.getElementById('shape');
+  var vids=[].slice.call(document.querySelectorAll('#footage video'));
+  if(reduce){vids.forEach(function(v){v.controls=true;});}
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.target===shapeEl){shapeEl.classList.toggle('anim-on',e.isIntersecting);return;}
+      if(reduce)return;
+      if(e.isIntersecting){e.target.preload='auto';var p=e.target.play();if(p&&p.catch)p.catch(function(){});}else{e.target.pause();}
+    });},{threshold:.35});
+    io.observe(shapeEl);vids.forEach(function(v){io.observe(v);});
+  }else{shapeEl.classList.add('anim-on');}
+})();
 (function(){
   var shape=document.getElementById('shape'),proof=document.getElementById('proof');
   var btns=document.querySelectorAll('.toggle button');
