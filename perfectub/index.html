@@ -15,7 +15,9 @@
 {"@type":"FAQPage","mainEntity":[
 {"@type":"Question","name":"Will the Perfectub fit my existing alcove?","acceptedAnswer":{"@type":"Answer","text":"Yes, if your alcove is the standard 60 inches long. Choose the 30 or 32 inch depth to match your space."}},
 {"@type":"Question","name":"Can I use a shower chair in it?","acceptedAnswer":{"@type":"Answer","text":"Yes. The flat floor and straight sides leave room for a standard shower chair to sit level."}},
-{"@type":"Question","name":"Is the Perfectub a walk-in tub?","acceptedAnswer":{"@type":"Answer","text":"No. It has no door. It is a standard-size alcove tub designed to be easier to get in and out of."}}
+{"@type":"Question","name":"Is the Perfectub a walk-in tub?","acceptedAnswer":{"@type":"Answer","text":"No. It has no door. It is a standard-size alcove tub designed to be easier to get in and out of."}},
+{"@type":"Question","name":"Is the Perfectub deep enough for an ice bath?","acceptedAnswer":{"@type":"Answer","text":"Yes. The 60 x 32 holds up to 15 inches of water to the overflow, and the 60 x 30 about 13 inches."}},
+{"@type":"Question","name":"Does the Perfectub keep water off the floor?","acceptedAnswer":{"@type":"Answer","text":"Yes. Its undercut apron works as a built-in splash guard, so water stays in the tub instead of running onto the bathroom floor."}}
 ]}]}
 </script>
 <style>
@@ -120,7 +122,7 @@ p{margin:0 0 1rem;max-width:60ch}
 .who{padding:80px 0;background:var(--white);border-top:1px solid var(--tile);border-bottom:1px solid var(--tile)}
 .who__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
 .who__list{list-style:none;margin:0;padding:0}
-.who__photo{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:60% 55%;border-radius:var(--radius-l);margin-top:28px}
+.who__photo{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 50%;border-radius:var(--radius-l);margin-top:28px}
 .who__list li{padding:20px 0;border-bottom:1px solid var(--tile)}
 .who__list li:first-child{padding-top:0}
 .who__list p{color:var(--muted);margin:4px 0 0}
@@ -147,6 +149,25 @@ p{margin:0 0 1rem;max-width:60ch}
 .panel--glaze{display:flex;flex-direction:column;align-items:flex-start}
 .showroom__tub{margin-top:auto;padding-top:32px;width:100%}
 .showroom__tub img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-s)}
+
+/* points: four across on wide screens */
+.points{grid-template-columns:repeat(4,1fr);gap:28px}
+@media (max-width:1100px) and (min-width:961px){.points{grid-template-columns:repeat(2,1fr)}}
+/* shower vs walk-in vs Perfectub */
+.compare{padding:0 0 88px}
+.compare__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px}
+.option{background:var(--white);border:1px solid var(--tile);border-radius:var(--radius-l);padding:28px}
+.option h3{margin-bottom:14px}
+.option ul{list-style:none;margin:0;padding:0}
+.option li{position:relative;padding:11px 0 11px 28px;border-top:1px solid var(--tile);color:var(--muted)}
+.option li::before{position:absolute;left:0;top:11px;font-weight:700}
+.option .yes::before{content:"\2713";color:var(--glaze-deep)}
+.option .no::before{content:"\2013";color:var(--muted)}
+.option--pt{background:var(--ink);color:var(--porcelain);border-color:var(--ink)}
+.option--pt li{color:color-mix(in srgb,var(--porcelain) 82%,transparent);border-top-color:color-mix(in srgb,var(--porcelain) 18%,transparent)}
+.option--pt .yes::before{color:var(--water)}
+.option__price{margin:18px 0 0;font-weight:600}
+@media (max-width:960px){.compare__grid{grid-template-columns:1fr}}
 /* faq */
 .faq{padding:0 0 96px}
 .faq__grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
@@ -359,6 +380,7 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
       <div><h3><i></i>Step out standing</h3><p>The undercut lets your feet slide under the edge, so you can stand straight up instead of leaning out over the side.</p></div>
       <div><h3><i></i>A level place to sit or stand</h3><p>The flat floor gives steadier footing and lets a standard shower chair sit level.</p></div>
       <div><h3><i></i>About 30% more room</h3><p>Straight walls add floor space and water volume in the same 60-inch footprint.</p></div>
+      <div><h3><i></i>Water stays in the tub</h3><p>The undercut doubles as a built-in splash guard, keeping water off the bathroom floor, a common cause of slips.</p></div>
     </div>
   </div>
 </section>
@@ -413,6 +435,7 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
       <li><h3>Aging in place</h3><p>A safer everyday bath without the cost or look of a walk-in tub.</p></li>
       <li><h3>Shower-chair users</h3><p>The flat floor keeps a standard chair level and steady.</p></li>
       <li><h3>Parents and pet owners</h3><p>Straight sides let you kneel closer when bathing kids or dogs.</p></li>
+      <li><h3>Ice baths and fitness</h3><p>Extra depth for a cold plunge after a workout, and a deep basin that can hold water in an emergency.</p></li>
       <li><h3>Remodelers and contractors</h3><p>Drops into a standard alcove, with the install kit in the box.</p></li>
     </ul>
   </div>
@@ -440,6 +463,40 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
   </div>
 </section>
 
+<section class="compare" id="compare">
+  <div class="wrap">
+    <h2>Shower, walk-in tub, or Perfectub?</h2>
+    <p class="hero__lede" style="margin-top:14px">Planning a remodel? Here's what each choice gives up.</p>
+    <div class="compare__grid">
+      <article class="option">
+        <h3>Shower only</h3>
+        <ul>
+          <li class="yes">Nothing to step over</li>
+          <li class="no">No way to soak or take an ice bath</li>
+          <li class="no">Harder to bathe small children or pets</li>
+        </ul>
+      </article>
+      <article class="option">
+        <h3>Walk-in tub</h3>
+        <ul>
+          <li class="yes">A door, so there's no step over the side</li>
+          <li class="no">You sit inside while it fills and drains</li>
+          <li class="no">Usually costs far more, often with extra plumbing or electrical work</li>
+        </ul>
+      </article>
+      <article class="option option--pt">
+        <h3>Perfectub</h3>
+        <ul>
+          <li class="yes">Step out standing, feet about 3 inches apart</li>
+          <li class="yes">A full soak, an ice bath, or a shower with a chair</li>
+          <li class="yes">Fits a standard 60-inch alcove, no door to seal</li>
+        </ul>
+        <p class="option__price">From $1,389, shipping included</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <div class="wrap split">
   <section class="panel panel--glaze" id="showrooms">
     <h2>See one in person</h2>
@@ -452,11 +509,12 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
       <img src="img/founders-convention.webp" width="720" height="960" alt="Brak Tub founders Bruce and Jerry shaking hands at their Perfectub booth at an architects' convention, with a tub on display" loading="lazy">
       <figcaption>Founders Bruce and Jerry at an architects' convention.</figcaption>
     </figure>
-    <h2>For showrooms, contractors and projects</h2>
+    <h2>For trade, projects and showrooms</h2>
     <ul>
-      <li>Dealer and project pricing</li>
+      <li>Architects and builders working on aging-in-place, healthcare and hospitality projects</li>
+      <li>Plumbing wholesalers, and home centers or lumber yards with showrooms</li>
+      <li>Dealer, project and container pricing</li>
       <li>Cut sheets and installation guides</li>
-      <li>Container orders for multi-unit and hospitality work</li>
     </ul>
     <p>Perfectub was invented by Bruce Ahmes, whose father helped engineer the Apollo Lunar Module. Call and you speak with a founding team member.</p>
     <a class="btn" href="mailto:sales@braktub.com?subject=Trade%20pricing">Request trade pricing</a>
@@ -470,6 +528,9 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
       <details open><summary>Will it fit my existing alcove?</summary><p>Yes, if your alcove is the standard 60 inches long. Pick the 30 or 32 inch depth to match your space.</p></details>
       <details><summary>Can I use a shower chair in it?</summary><p>Yes. The flat floor and straight sides leave room for a standard shower chair to sit level.</p></details>
       <details><summary>Is it a walk-in tub?</summary><p>No. There's no door. It's a standard-size alcove tub shaped to be easier to get in and out of.</p></details>
+      <details><summary>Is it deep enough for an ice bath?</summary><p>Yes. The 60 x 32 holds up to 15 inches of water to the overflow, and the 60 x 30 about 13 inches. The linear overflow lets you fill higher than a standard overflow plate.</p></details>
+      <details><summary>Does it keep water off the floor?</summary><p>Yes. The undercut works as a built-in splash guard, so water stays in the tub instead of running onto the bathroom floor.</p></details>
+      <details><summary>Is it good for bathing kids or dogs?</summary><p>Yes. Straight sides let you kneel closer to the water, and the flat floor gives small children and pets steady footing.</p></details>
       <details><summary>What comes in the box?</summary><p>The tub, a linear overflow and the installation kit, including the drain and toe-cap.</p></details>
       <details><summary>How is it shipped?</summary><p>By freight on a pallet, with shipping included in the price anywhere in the U.S.</p></details>
       <details><summary>What is the warranty?</summary><p>A limited lifetime warranty for the original owner in a home. Commercial installations are covered for one year.</p></details>
