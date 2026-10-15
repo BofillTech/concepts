@@ -169,6 +169,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | 35 | Capri Southampton | Southampton, NY | [caprisouthampton.com](https://www.caprisouthampton.com/) | [View →](https://bofilltech.github.io/concepts/capri-southampton/) | A — Magazine/Editorial (Italian Riviera meets Hamptons) — yellow awning stripe motif, six-chapter editorial structure, Cabana magazine reference, base64-embedded photography, Maison Close Summer 2026 | Bodoni Moda + Work Sans | Apr 29 |
 
+| 36 | Elk Trace Bed & Breakfast | Pagosa Springs, CO | [elktracebedandbreakfast.com](http://elktracebedandbreakfast.com/) | [View →](https://bofilltech.github.io/concepts/elk-trace-bb/) | Split-Screen Ranch Heritage — full-bleed hero, sticky booking bar with native date inputs, phone booking (no online engine), real property photos, LodgingBusiness schema | Georgia + System | Oct 15 |
+
 
 
 **Rev. 17 &mdash; SEO / AEO / standards pass:** removed "family-run" everywhere; upgraded homepage LodgingBusiness/Resort JSON-LD (real 4.6/746 rating, amenities, check-in/out, pets, email, sameAs incl. Tripadvisor); added a visible FAQ section with FAQPage schema on Contact (9 Q&As) for answer engines; added BreadcrumbList schema to all inner pages; completed social meta (og:image/og:url, Twitter cards, robots, theme-color) on every page; added a WCAG skip-link and :focus-visible styles; and added a production sitemap.xml and robots.txt.
@@ -176,3 +178,4 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 **Rev. 19 &mdash; real store products:** replaced the placeholder shop/gift-card products with the actual Briney Breezes store items (The Gift Card, The Oil, The Candle, The Hat) using their real titles, prices, descriptions, and product images (referenced from brineybreezes.com), with View & buy links to the real product pages and real Product/ItemList schema.
 
 **Rev. 20 &mdash; Specials + Around the Area pages:** built the two missing pages. Specials (book-direct banner + this season's offers: Labor Day free-night, September mid-week from $599, Pre-Columbus Day from $499, each with promo code + Book Now) and Around the Area (Montauk activities reorganized into clean categories with tag chips). Added Specials to the nav, Around the Area to the drawer/footer, updated the sitemap, and both carry full SEO meta + BreadcrumbList schema. 11 pages total.
+| 36 | The Summit Resort | Laconia, NH | [summitresortnh.com](https://summitresortnh.com/) | [View →](https://bofilltech.github.io/concepts/summit-resort-nh/) | Full-Bleed Image-Heavy (Lakes Region Family Resort) — sticky bottom booking bar with native date inputs, spacious 2-bedroom suites, 25,000 sq ft amenities center, pools and waterslides | System Sans | Oct 15 |

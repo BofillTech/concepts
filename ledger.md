@@ -12,6 +12,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 181 | garden-house-key-west | 2026-10-15 | type-only-centered | hero,intro,rooms,amenities,gallery,location,cta | photo-masonry | hamburger-only | parallax-hero | island-serif-elegant | Lora | Inter | garden-pine+gold-sand+cream-linen |
 | 178 | malaga-inn | 2026-10-15 | editorial-open | hero,intro,rooms,amenities,location,reviews,cta | single-column-editorial | persistent-bottom-bar | none | heritage-serif-editorial | Cormorant Garamond | Karla | timber-ink+aged-brass+parchment-cream+brown-oak |
+| 180 | summit-resort-nh | 2026-10-15 | full-bleed | hero,intro,accommodations,amenities,location,gallery,footer | broken-asymmetric | hamburger-only | staggered-reveal | clean-modern-sans | System Sans | System Sans | lakes-pine+forest-green+waterslide-teal+autumn-gold+cream |
 | 176 | mountainview-lodge | 2026-10-15 | full-bleed-bottom-left-overlay | hero,intro,rooms,amenities,gallery,location | card-grid-hover-lift | top-sticky-split-actions | sticky-booking-bar | sans-serif-clean | System | System | mountain-sage+pine-green+stone-gray+snow-white |
 | 177 | blu-mar-hamptons | 2026-10-15 | editorial-open | hero,welcome,rooms,gallery,dining,amenities,location,cta | symmetric-two-col-alternating | top-sticky | sticky-booking-bar | luxury-serif-sans | Playfair Display | Lato | navy-ink+sand-cream+seafoam-teal+gold-brass |
 | 175 | bear-creek-lodge | 2026-10-14 | asymmetric-collage | hero,welcome,rooms,amenities,events,location,cta | four-col-card-grid | split-logo-actions | staggered-reveal | bold-condensed-all-caps | Archivo Black | Outfit | forest-ink+lodge-pine+creek-blue+mountain-gold+snow-cream |
@@ -78,3 +79,4 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 | 114 | lazy-cloud-lodge | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 113 | wanderers-rest | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 112 | grand-marais-inn | 2026-09-11 | — | — | — | — | — | — | — | — | — |
+| 179 | elk-trace-bb | 2026-10-15 | split-screen | bento-overlapping | hamburger-only | subtle-fade | rustic-ranch-serif | Georgia | System | ranch-pine+saddle-brown+mountain-slate+sky-blue+cream-parchment |
