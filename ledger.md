@@ -10,6 +10,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 ## Ledger
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 181 | garden-house-key-west | 2026-10-15 | type-only-centered | hero,intro,rooms,amenities,gallery,location,cta | photo-masonry | hamburger-only | parallax-hero | island-serif-elegant | Lora | Inter | garden-pine+gold-sand+cream-linen |
 | 178 | malaga-inn | 2026-10-15 | editorial-open | hero,intro,rooms,amenities,location,reviews,cta | single-column-editorial | persistent-bottom-bar | none | heritage-serif-editorial | Cormorant Garamond | Karla | timber-ink+aged-brass+parchment-cream+brown-oak |
 | 180 | summit-resort-nh | 2026-10-15 | full-bleed | hero,intro,accommodations,amenities,location,gallery,footer | broken-asymmetric | hamburger-only | staggered-reveal | clean-modern-sans | System Sans | System Sans | lakes-pine+forest-green+waterslide-teal+autumn-gold+cream |
 | 176 | mountainview-lodge | 2026-10-15 | full-bleed-bottom-left-overlay | hero,intro,rooms,amenities,gallery,location | card-grid-hover-lift | top-sticky-split-actions | sticky-booking-bar | sans-serif-clean | System | System | mountain-sage+pine-green+stone-gray+snow-white |
