@@ -10,6 +10,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 ## Ledger
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 181 | garden-house-key-west | 2026-10-15 | type-only-centered | hero,intro,rooms,amenities,gallery,location,cta | photo-masonry | hamburger-only | parallax-hero | island-serif-elegant | Lora | Inter | garden-pine+gold-sand+cream-linen |
 | 178 | malaga-inn | 2026-10-15 | editorial-open | hero,intro,rooms,amenities,location,reviews,cta | single-column-editorial | persistent-bottom-bar | none | heritage-serif-editorial | Cormorant Garamond | Karla | timber-ink+aged-brass+parchment-cream+brown-oak |
 | 176 | mountainview-lodge | 2026-10-15 | full-bleed-bottom-left-overlay | hero,intro,rooms,amenities,gallery,location | card-grid-hover-lift | top-sticky-split-actions | sticky-booking-bar | sans-serif-clean | System | System | mountain-sage+pine-green+stone-gray+snow-white |
 | 177 | blu-mar-hamptons | 2026-10-15 | editorial-open | hero,welcome,rooms,gallery,dining,amenities,location,cta | symmetric-two-col-alternating | top-sticky | sticky-booking-bar | luxury-serif-sans | Playfair Display | Lato | navy-ink+sand-cream+seafoam-teal+gold-brass |
