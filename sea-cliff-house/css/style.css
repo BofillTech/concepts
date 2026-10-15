@@ -41,7 +41,7 @@ h1, h2, h3 { margin: 0; font-weight: 400; }
 p { margin: 0 0 1em; }
 
 .screen-reader-text { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
-.skip-link:focus { clip: auto; width: auto; height: auto; z-index: 999; top: 10px; left: 10px; padding: .75rem 1rem; background: var(--white); color: var(--ink); }
+.skip:focus, .skip-link:focus { clip: auto; width: auto; height: auto; z-index: 999; top: 10px; left: 10px; padding: .75rem 1rem; background: var(--white); color: var(--ink); }
 
 /* ---------- Buttons ---------- */
 .button { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .7rem 1.4rem; font-family: var(--f-body); font-weight: 600; font-size: .95rem; text-decoration: none; border: 2px solid transparent; border-radius: 2px; transition: background-color .25s, color .25s, transform .25s, box-shadow .25s; }
@@ -500,9 +500,31 @@ body.has-book-bar { padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px)
   .book-bar__go::after { content: 'Search'; font-size: .88rem; }
 }
 @media (min-width: 768px) {
-  body.has-book-bar { padding-bottom: 0; }
+  body.has-book-bar { padding-bottom: 5.5rem; }
+  body.has-book-bar .site-footer { margin-bottom: -5.5rem; padding-bottom: 5.5rem; }
   .book-bar { left: 50%; right: auto; bottom: 1.25rem; width: min(560px, calc(100% - 2rem)); padding: .5rem; gap: .45rem; border-top: 0; border-radius: 12px; box-shadow: 0 18px 44px -14px rgba(1,30,40,.55), 0 0 0 1px rgba(1,117,113,.12); transform: translate(-50%, 160%); }
   .book-bar.is-visible { transform: translate(-50%, 0); }
   .book-bar__call { display: none; }
   .book-bar__go { padding: 0 1.15rem; }
 }
+
+/* =====================================================================
+   SEO / AEO pass: FAQ and helper classes (replace former inline styles)
+   ===================================================================== */
+.faq { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter) var(--section); }
+.faq .section-title { margin-bottom: 2rem; }
+.faq__list { max-width: 56rem; }
+.faq__answer { margin: 0; color: var(--text); font-size: 1rem; line-height: 1.65; }
+.page-hero--focus-upper { --pos: 50% 40%; }
+.page-hero--focus-right { --pos: 84% 50%; }
+.page-hero--focus-lower { --pos: 50% 70%; }
+.prose--spaced { margin-bottom: 2rem; }
+.book-card__note { margin-top: 1rem; }
+.book-card__call--left { text-align: left; margin-top: 1rem; }
+.book-card__text { margin: 0 0 .5rem; }
+.book-card--map { padding: 0; overflow: hidden; }
+.book-card__body { padding: 1.25rem 1.4rem 1.5rem; }
+.book-card__title--tight { margin-bottom: .4rem; }
+.book-card__addr { margin: 0; }
+.figure--flush { margin: 0; }
+.notice--first { margin-top: 0; }
