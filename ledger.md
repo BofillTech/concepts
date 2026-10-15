@@ -77,3 +77,4 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 | 114 | lazy-cloud-lodge | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 113 | wanderers-rest | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 112 | grand-marais-inn | 2026-09-11 | — | — | — | — | — | — | — | — | — |
+| 179 | elk-trace-bb | 2026-10-15 | split-screen | bento-overlapping | hamburger-only | subtle-fade | rustic-ranch-serif | Georgia | System | ranch-pine+saddle-brown+mountain-slate+sky-blue+cream-parchment |
