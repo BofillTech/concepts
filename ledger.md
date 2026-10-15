@@ -1,25 +1,21 @@
 # Structure Ledger (Phase 2.5)
 
 Machine-readable structure history for the anti-sameness roll. **This file — not README.md — is what Phase 2.5 reads and appends.** The README stays the human-facing prose tracker.
-
 ## Rules
-
 1. **Read before rolling.** Load the last 5 rows. History-filtered axes (hero, section-order, grid, nav, motion) must not match any of the last 3 rows.
 2. **Append immediately after every concept push, before starting the next build.** A concept without a ledger row is an incomplete delivery. In same-day batches, siblings already built count toward the last-3 filter.
 3. **Numbering:** next `#` = top row's `#` + 1. Never reuse or share a number.
 4. Newest first. Use `—` for unknown backfilled fields; never leave a field blank on a new row.
-
 Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key`
-
 ## Ledger
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | 178 | malaga-inn | 2026-10-15 | editorial-open | hero,intro,rooms,amenities,location,reviews,cta | single-column-editorial | persistent-bottom-bar | none | heritage-serif-editorial | Cormorant Garamond | Karla | timber-ink+aged-brass+parchment-cream+brown-oak |
 | 176 | mountainview-lodge | 2026-10-15 | full-bleed-bottom-left-overlay | hero,intro,rooms,amenities,gallery,location | card-grid-hover-lift | top-sticky-split-actions | sticky-booking-bar | sans-serif-clean | System | System | mountain-sage+pine-green+stone-gray+snow-white |
+| 177 | blu-mar-hamptons | 2026-10-15 | editorial-open | hero,welcome,rooms,gallery,dining,amenities,location,cta | symmetric-two-col-alternating | top-sticky | sticky-booking-bar | luxury-serif-sans | Playfair Display | Lato | navy-ink+sand-cream+seafoam-teal+gold-brass |
 | 175 | bear-creek-lodge | 2026-10-14 | asymmetric-collage | hero,welcome,rooms,amenities,events,location,cta | four-col-card-grid | split-logo-actions | staggered-reveal | bold-condensed-all-caps | Archivo Black | Outfit | forest-ink+lodge-pine+creek-blue+mountain-gold+snow-cream |
 | 174 | hotel-captain-cook | 2026-10-14 | full-bleed-center-overlay | hero,welcome,rooms,dining,amenities,gallery,location,cta | three-col-card-lift | top-fixed-phone-book | sticky-booking-bar | alaska-luxury-serif | Crimson Text | Montserrat | navy-midnight+gold-brass+cream-parchment+slate-ink |
 | 173 | reform-club | 2026-10-14 | full-bleed-centered-overlay | hero,intro,accommodations,amenities,dining,location | card-grid-equal | top-fixed-white | parallax-hero | hamptons-serif-refined | Georgia | System | cream+sage+charcoal+sand+accent-green |
-| 172 | yankee-peddler-inn | 2026-10-12 | full-bleed-inline-booking-widget | hero,story,rooms,amenities,gallery,location,cta | editorial-overlap-two-col | top-classic-logo-center | soft-scale-in | colonial-nautical-serif-display | Merriweather | Source Sans 3 | colonial-navy+newport-brass+fog-pewter+sailcloth-cream+harbor-teal |
 | 172 | yankee-peddler-inn | 2026-10-12 | full-bleed-inline-booking-widget | hero,story,rooms,amenities,gallery,location,cta | editorial-overlap-two-col | top-classic-logo-center | soft-scale-in | colonial-nautical-serif-display | Merriweather | Source Sans 3 | colonial-navy+newport-brass+fog-pewter+sailcloth-cream+harbor-teal |
 | 171 | silver-creek-hotel | 2026-10-10 | full-bleed-left-title-gradient | hero,story,rooms,amenities,gallery,location,cta | three-col-uniform-cards | top-sticky-logo-left-cta-right | hover-zoom-reveal | mountain-modern-clean | Raleway | Open Sans | wood-river-slate+aspen-gold+creek-blue+sage-meadow+snow-cream+timber-ink |
 | 170 | ocean-sands-resort | 2026-10-10 | full-bleed-slideshow-dots | hero,intro,suites,oceanfront,rooms-showcase,amenities,gallery,location,cta | tiled-mosaic | top-sticky-shrink | slide-in-sides | coastal-sans-display | Sora | Karla | atlantic-slate+seafoam-teal+sunset-amber+dune-cream+whitecap |
@@ -29,7 +25,6 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 | 166 | hotel-chalet | 2026-10-07 | full-bleed-cinematic | hero,ticker,rooms,story,amenities,dining,location,gallery | full-width-photo-bands | top-utility-bar | marquee-ticker | railroad-terminal-industrial-condensed | Teko | Work Sans | locomotive-green+brass+burgundy+parchment+cream |
 | 165 | ocean-club-hotel | 2026-10-07 | full-bleed-transparent-nav | hero,story,rooms,amenities,dining,gallery,location,cta | bento-overlapping | top-transparent-to-solid | subtle-fade | serif-editorial-coastal | Crimson Pro | Montserrat | ocean-deep+pool-blue+coral-warm+sand-cream |
 | 164 | general-palmer-hotel | 2026-10-07 | fullbleed-crossfade | hero,story,rooms,amenities,gallery,location,cta | broken-asymmetric | centered-split-logo | parallax | victorian-railroad-script-serif | Covered By Your Grace+Libre Baskerville | Crimson Text | railroad-ink+burgundy+gold+sage+cream+patina |
-| 163 | north-vancouver-hotel | 2026-10-06 | multi-panel-carousel | hero,amenities,rooms,location,renovation,gallery,cta | zigzag-alternating | floating-pill | clip-path-wipe | geometric-sans-tight | Outfit | IBM Plex Sans | capilano-slate-teal |
 | 163 | north-vancouver-hotel | 2026-10-06 | multi-panel-carousel | hero,amenities,rooms,location,renovation,gallery,cta | zigzag-alternating | floating-pill | clip-path-wipe | geometric-sans-tight | Outfit | IBM Plex Sans | capilano-slate-teal |
 | 162 | open-hearth-inn | 2026-10-06 | full-bleed | hero,rooms,story,amenities,gallery,reviews,location,cta | symmetric-12col | top-sticky | staggered-reveal | soft-serif-headline | Fraunces | Nunito Sans | acadia-hearth-cream |
 | 161 | roam-inn | 2026-10-06 | split-diagonal | hero,story,rooms,dining,amenities,location,cta | bento-mosaic | hamburger-only | ken-burns-slow | condensed-caps-display | Bebas Neue | Source Sans 3 | munising-pine-bay |
