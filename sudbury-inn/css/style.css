@@ -423,3 +423,30 @@ p{max-width:68ch}
   .tribe-events-c-view-selector{display:none}
   .tribe-events-c-top-bar__datepicker{font-size:1.4rem}
 }
+
+/* ===== Dropdown: Suds Pub > About / Pub calendar ===== */
+.menu-item-has-children{position:relative}
+.menu-item-has-children > a::after{content:"";display:inline-block;width:.38em;height:.38em;margin-left:.45em;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-.2em) rotate(45deg)}
+.sub-menu{list-style:none;margin:0;padding:0}
+.current-menu-ancestor > a{border-color:var(--spruce)}
+@media (min-width:1024px){
+  .sub-menu{position:absolute;left:-1rem;top:100%;min-width:13rem;padding:.4rem 0;background:var(--clapboard);border-top:2px solid var(--spruce);box-shadow:0 14px 28px rgba(58,11,4,.16);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s,transform .18s,visibility .18s;z-index:60}
+  .menu-item-has-children:hover > .sub-menu,.menu-item-has-children:focus-within > .sub-menu{opacity:1;visibility:visible;transform:none}
+  .sub-menu .menu-item a{display:block;padding:.65rem 1rem;border-bottom:0;white-space:nowrap}
+  .sub-menu .menu-item a:hover,.sub-menu .menu-item a[aria-current="page"]{background:#F4E6CB}
+}
+@media (max-width:1023px){
+  .site-nav.is-open .sub-menu{padding-left:1rem}
+  .site-nav.is-open .sub-menu .menu-item a{font-size:1rem;color:var(--birch)}
+}
+
+/* ===== Split inner-page hero: copy + photo side by side ===== */
+.page-hero--split{display:grid;gap:2rem;padding-bottom:clamp(2.5rem,6vw,4rem)}
+.page-hero__media{margin:0}
+.page-hero__img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--fog)}
+.page-hero__media figcaption{font-size:.9rem;color:var(--birch);padding-top:.6rem}
+@media (min-width:1024px){
+  .page-hero--split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:clamp(2.5rem,4vw,4rem);align-items:center}
+  .page-hero--split .page-hero__title{font-size:clamp(2.6rem,5vw,4.6rem)}
+  .page-hero__img{aspect-ratio:auto;height:clamp(360px,36vw,540px)}
+}
