@@ -3,602 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SkySprayer — Autonomous Exterior Cleaning Drone</title>
-<meta name="description" content="SkySprayer scans the facade, detects every window, and flies the cleaning path itself. Autonomous soft-wash and window cleaning up to 150 ft — for a fraction of the cost of manual-flight drones.">
+<meta name="robots" content="noindex, nofollow">
+<title>SkySprayer — Private concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --navy:#0F1B2D;
-  --navy-2:#15263F;
-  --paper:#F3F6F9;
-  --white:#FFFFFF;
-  --ink:#16202F;
-  --slate:#46536A;
-  --line:#D8E0EA;
-  --line-dark:#28394F;
-  --amber:#FFB224;
-  --amber-deep:#E89A00;
-  --glass:#7FB2E5;
-  --radius:6px;
-}
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Archivo',sans-serif;
-  font-variation-settings:'wdth' 100;
-  color:var(--ink);
-  background:var(--paper);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
-.mono{font-family:'JetBrains Mono',monospace}
-a{color:inherit}
-img,svg{display:block;max-width:100%}
-.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-weight:800;line-height:1.08;letter-spacing:-0.015em}
-h2{font-size:clamp(30px,4.2vw,46px);margin-bottom:16px}
-.section-intro{max-width:620px;color:var(--slate);font-size:18px}
-.btn{
-  display:inline-block;font-weight:700;font-size:16px;text-decoration:none;
-  padding:14px 26px;border-radius:var(--radius);border:2px solid transparent;
-  transition:background-color .15s ease,color .15s ease,border-color .15s ease;
-}
-.btn-amber{background:var(--amber);color:var(--navy)}
-.btn-amber:hover{background:var(--amber-deep)}
-.btn-ghost-dark{border-color:var(--line-dark);color:var(--white)}
-.btn-ghost-dark:hover{border-color:var(--amber);color:var(--amber)}
-.btn-ghost-light{border-color:var(--ink);color:var(--ink)}
-.btn-ghost-light:hover{background:var(--ink);color:var(--white)}
-
-/* ============ announcement + nav ============ */
-.announce{
-  background:var(--amber);color:var(--navy);
-  font-weight:700;font-size:14px;text-align:center;padding:9px 16px;
-}
-.announce a{color:var(--navy);text-decoration:underline;text-underline-offset:3px}
-header{
-  background:var(--navy);position:sticky;top:0;z-index:50;
-  border-bottom:1px solid var(--line-dark);
-}
-.nav{
-  display:flex;align-items:center;justify-content:space-between;
-  height:68px;
-}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--white)}
-.logo-mark{width:32px;height:32px}
-.logo-word{font-weight:800;font-size:20px;letter-spacing:-0.02em}
-.logo-word span{color:var(--amber)}
-.nav-links{display:flex;gap:30px;align-items:center;list-style:none}
-.nav-links a{color:#C6D2E2;text-decoration:none;font-size:15px;font-weight:600}
-.nav-links a:hover{color:var(--white)}
-.nav-cta{background:var(--amber);color:var(--navy)!important;padding:9px 18px;border-radius:var(--radius);font-weight:700!important}
-.nav-cta:hover{background:var(--amber-deep)}
-.nav-toggle{display:none;background:none;border:1px solid var(--line-dark);color:var(--white);border-radius:var(--radius);padding:8px 12px;font-size:15px;font-family:inherit;cursor:pointer}
-
-/* ============ hero ============ */
-.hero{background:var(--navy);color:var(--white);overflow:hidden}
-.hero-grid{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
-  padding:84px 0 88px;
-}
-.hero h1{
-  font-size:clamp(40px,5.6vw,66px);
-  font-variation-settings:'wdth' 112;
-}
-.hero h1 em{font-style:normal;color:var(--amber)}
-.hero-sub{color:#B9C7DA;font-size:19px;max-width:520px;margin:22px 0 32px}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-note{margin-top:18px;font-size:13px;color:#7E90A9}
-.hero-note .mono{color:#9FB2CC}
-
-/* facade panel */
-.facade-panel{
-  background:var(--navy-2);border:1px solid var(--line-dark);border-radius:10px;
-  padding:18px 18px 14px;
-}
-.facade-head{
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:#8FA2BC;margin-bottom:12px;
-}
-.facade-head .live{color:var(--amber);font-weight:600}
-.facade-svg{width:100%;height:auto}
-.facade-foot{
-  display:flex;gap:18px;margin-top:12px;padding-top:12px;
-  border-top:1px solid var(--line-dark);
-  font-size:12px;color:#8FA2BC;flex-wrap:wrap;
-}
-.facade-foot b{color:var(--white);font-weight:600}
-
-/* scan animation */
-.scan-path{
-  stroke:var(--amber);stroke-width:2.5;fill:none;
-  stroke-dasharray:1400;stroke-dashoffset:1400;
-  animation:draw 7s ease-in-out .6s forwards;
-}
-.win{fill:rgba(127,178,229,.14);stroke:rgba(127,178,229,.45);stroke-width:1}
-.win-hit{animation:hit .5s ease forwards;animation-delay:var(--d)}
-@keyframes draw{to{stroke-dashoffset:0}}
-@keyframes hit{to{stroke:var(--amber);fill:rgba(255,178,36,.16)}}
-@media (prefers-reduced-motion:reduce){
-  .scan-path{animation:none;stroke-dashoffset:0}
-  .win-hit{animation:none;stroke:var(--amber);fill:rgba(255,178,36,.16)}
-}
-
-/* ============ stats strip ============ */
-.stats{background:var(--white);border-bottom:1px solid var(--line)}
-.stats-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-}
-.stat{
-  padding:34px 28px;border-left:1px solid var(--line);
-}
-.stat:first-child{border-left:none}
-.stat .num{font-size:34px;font-weight:700;color:var(--ink)}
-.stat .num sup{font-size:16px;color:var(--slate)}
-.stat .lbl{font-size:14px;color:var(--slate);margin-top:4px}
-
-/* ============ sections ============ */
-.section{padding:96px 0}
-.section-dark{background:var(--navy);color:var(--white)}
-.section-dark .section-intro{color:#B9C7DA}
-.section-white{background:var(--white)}
-
-/* how it works */
-.steps{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-  border:1px solid var(--line);background:var(--white);margin-top:48px;
-}
-.step{padding:36px 32px;border-left:1px solid var(--line)}
-.step:first-child{border-left:none}
-.step .step-n{
-  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
-  color:var(--amber-deep);margin-bottom:14px;
-}
-.step h3{font-size:22px;margin-bottom:10px}
-.step p{color:var(--slate);font-size:15.5px}
-.step .modes{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px}
-.mode{
-  font-family:'JetBrains Mono',monospace;font-size:12px;
-  border:1px solid var(--line);border-radius:4px;padding:4px 8px;color:var(--slate);
-}
-
-/* jobsite grid */
-.jobsite{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--white);margin-top:48px}
-.job{padding:36px 32px;border-left:1px solid var(--line);border-top:1px solid var(--line)}
-.job:nth-child(1),.job:nth-child(2){border-top:none}
-.job:nth-child(odd){border-left:none}
-.job h3{font-size:20px;margin-bottom:8px;display:flex;align-items:center;gap:10px}
-.job h3 svg{width:22px;height:22px;flex:none}
-.job p{color:var(--slate);font-size:15.5px}
-
-/* app section */
-.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.app-copy ul{list-style:none;margin-top:26px}
-.app-copy li{
-  padding:14px 0;border-top:1px solid var(--line-dark);
-  display:flex;gap:12px;font-size:16px;color:#D5DEEB;
-}
-.app-copy li:last-child{border-bottom:1px solid var(--line-dark)}
-.app-copy li b{color:var(--white)}
-.tick{color:var(--amber);font-weight:700;flex:none}
-.app-shot{
-  background:var(--navy-2);border:1px solid var(--line-dark);border-radius:12px;
-  padding:16px;
-}
-.app-shot svg{width:100%;height:auto}
-
-/* academy */
-.acad-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
-.acad-list{margin-top:26px;border-top:1px solid var(--line)}
-.acad-item{padding:18px 0;border-bottom:1px solid var(--line)}
-.acad-item h3{font-size:17px;margin-bottom:4px}
-.acad-item p{color:var(--slate);font-size:15px}
-.acad-card{
-  background:var(--navy);color:var(--white);border-radius:10px;padding:36px;
-  position:sticky;top:100px;
-}
-.acad-card h3{font-size:22px;margin-bottom:8px}
-.acad-card .cert{color:#B9C7DA;font-size:15px;margin-bottom:22px}
-.acad-facts{list-style:none;margin-bottom:26px}
-.acad-facts li{
-  display:flex;justify-content:space-between;gap:16px;
-  padding:11px 0;border-bottom:1px solid var(--line-dark);font-size:14.5px;
-}
-.acad-facts li span:first-child{color:#8FA2BC}
-.acad-facts li span:last-child{font-weight:600;text-align:right}
-
-/* pricing */
-.price-band{background:var(--navy);color:var(--white)}
-.price-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.price-num{
-  font-family:'JetBrains Mono',monospace;font-weight:700;
-  font-size:clamp(48px,6vw,74px);color:var(--amber);letter-spacing:-0.03em;
-}
-.price-sub{color:#B9C7DA;font-size:17px;margin:10px 0 30px;max-width:440px}
-.compare{list-style:none;border-top:1px solid var(--line-dark)}
-.compare li{
-  display:flex;justify-content:space-between;gap:20px;
-  padding:15px 0;border-bottom:1px solid var(--line-dark);font-size:15.5px;
-}
-.compare li span:first-child{color:#B9C7DA}
-.compare li span:last-child{font-weight:600}
-.compare .them span:last-child{color:#8FA2BC;font-weight:400}
-.fine{font-size:12.5px;color:#7E90A9;margin-top:16px}
-
-/* footer */
-footer{background:#0A1220;color:#8FA2BC;padding:56px 0 40px;font-size:14px}
-.foot-grid{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px}
-.foot-links{display:flex;gap:28px;list-style:none;flex-wrap:wrap}
-.foot-links a{text-decoration:none;color:#C6D2E2}
-.foot-links a:hover{color:var(--white)}
-.foot-base{border-top:1px solid var(--line-dark);padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
-/* focus */
-a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
-
-/* ============ responsive ============ */
-@media (max-width:920px){
-  .hero-grid,.app-grid,.acad-grid,.price-grid{grid-template-columns:1fr;gap:44px}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .stat{border-left:none;border-top:1px solid var(--line)}
-  .stat:nth-child(even){border-left:1px solid var(--line)}
-  .stat:nth-child(-n+2){border-top:none}
-  .steps{grid-template-columns:1fr}
-  .step{border-left:none;border-top:1px solid var(--line)}
-  .step:first-child{border-top:none}
-  .jobsite{grid-template-columns:1fr}
-  .job{border-left:none!important}
-  .job:nth-child(2){border-top:1px solid var(--line)}
-  .acad-card{position:static}
-  .nav-links{
-    display:none;position:absolute;top:68px;left:0;right:0;
-    background:var(--navy);flex-direction:column;align-items:flex-start;
-    padding:20px 24px 26px;gap:18px;border-bottom:1px solid var(--line-dark);
-  }
-  .nav-links.open{display:flex}
-  .nav-toggle{display:block}
-  .section{padding:72px 0}
-  .hero-grid{padding:56px 0 64px}
-}
+html,body{height:100%}
+body{font-family:'Archivo',sans-serif;background:#0F1B2D;color:#fff;display:flex;align-items:center;justify-content:center;padding:24px}
+.gate{width:100%;max-width:400px;background:#15263F;border:1px solid #28394F;border-radius:10px;padding:40px 36px}
+.mark{display:flex;align-items:center;gap:10px;margin-bottom:26px}
+.mark svg{width:30px;height:30px}
+.mark b{font-weight:800;font-size:19px;letter-spacing:-0.02em}
+.mark b span{color:#FFB224}
+h1{font-size:18px;font-weight:600;margin-bottom:6px}
+p.sub{color:#8FA2BC;font-size:14px;margin-bottom:24px}
+input[type=password]{width:100%;background:#0F1B2D;border:1px solid #28394F;border-radius:6px;color:#fff;font-size:16px;font-family:inherit;padding:13px 14px;margin-bottom:14px}
+input[type=password]:focus{outline:2px solid #FFB224;outline-offset:1px;border-color:#FFB224}
+label{display:flex;align-items:center;gap:9px;color:#8FA2BC;font-size:13.5px;margin-bottom:18px;cursor:pointer}
+button{width:100%;background:#FFB224;color:#0F1B2D;border:0;border-radius:6px;font-family:inherit;font-weight:700;font-size:15px;padding:13px;cursor:pointer}
+button:hover{background:#E89A00}
+button:disabled{opacity:.6;cursor:wait}
+.err{color:#FF7A6B;font-size:13.5px;margin-top:12px;display:none}
 </style>
 </head>
 <body>
-
-<div class="announce">
-  Live autonomy demo, every month over video. <a href="#demo">Save a seat at the next one</a>
+<div class="gate">
+  <div class="mark">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="2" y="2" width="28" height="28" rx="6" fill="#FFB224"/><path d="M9 21 L16 8 L23 21" stroke="#0F1B2D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="23" r="2.2" fill="#0F1B2D"/></svg>
+    <b>Sky<span>Sprayer</span></b>
+  </div>
+  <h1>Private concept</h1>
+  <p class="sub">Enter the access password to view this page.</p>
+  <form id="f">
+    <input id="pw" type="password" placeholder="Password" autofocus autocomplete="current-password">
+    <label><input id="rm" type="checkbox" checked> Remember me on this device (30 days)</label>
+    <button id="go" type="submit">Unlock</button>
+    <div class="err" id="err">Wrong password — try again.</div>
+  </form>
 </div>
-
-<header>
-  <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="SkySprayer home">
-      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-        <rect x="2" y="2" width="28" height="28" rx="6" fill="#FFB224"/>
-        <path d="M9 21 L16 8 L23 21" stroke="#0F1B2D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="16" cy="23" r="2.2" fill="#0F1B2D"/>
-      </svg>
-      <span class="logo-word">Sky<span>Sprayer</span></span>
-    </a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="navlinks" onclick="var n=document.getElementById('navlinks');n.classList.toggle('open');this.setAttribute('aria-expanded',n.classList.contains('open'))">Menu</button>
-    <ul class="nav-links" id="navlinks">
-      <li><a href="#autonomy">Autonomy</a></li>
-      <li><a href="#drone">The drone</a></li>
-      <li><a href="#app">App</a></li>
-      <li><a href="#academy">Academy</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a class="nav-cta" href="#demo">Get a demo</a></li>
-    </ul>
-  </div>
-</header>
-
-<main id="top">
-
-<!-- ================= HERO ================= -->
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>Scan the building.<br>Press <em>start</em>.</h1>
-      <p class="hero-sub">SkySprayer maps the facade, finds every window, and flies the cleaning path itself. The first exterior-cleaning drone that doesn't need a pilot on the sticks — soft wash and window cleaning up to 150 feet.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-amber" href="#demo">Get a demo</a>
-        <a class="btn btn-ghost-dark" href="#autonomy">See how it flies itself</a>
-      </div>
-      <p class="hero-note">FAA Part 107 operation with one pilot supervising. <span class="mono">Radar standoff active at all times.</span></p>
-    </div>
-
-    <figure class="facade-panel" aria-label="Illustration of SkySprayer scanning a building facade and planning its cleaning path">
-      <div class="facade-head mono">
-        <span>MISSION 0043 &mdash; EAST FACADE</span>
-        <span class="live">PATH: AUTO</span>
-      </div>
-      <svg class="facade-svg" viewBox="0 0 380 300" role="img" aria-hidden="true">
-        <!-- facade -->
-        <rect x="22" y="30" width="336" height="252" fill="#101E33" stroke="#28394F"/>
-        <!-- window rows -->
-        <g>
-          <!-- row 1 -->
-          <rect class="win win-hit" style="--d:1.0s" x="52" y="48" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:1.3s" x="122" y="48" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:1.6s" x="192" y="48" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:1.9s" x="262" y="48" width="42" height="26"/>
-          <!-- row 2 -->
-          <rect class="win win-hit" style="--d:2.6s" x="52" y="98" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:2.9s" x="122" y="98" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:3.2s" x="192" y="98" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:3.5s" x="262" y="98" width="42" height="26"/>
-          <!-- row 3 -->
-          <rect class="win win-hit" style="--d:4.2s" x="52" y="148" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:4.5s" x="122" y="148" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:4.8s" x="192" y="148" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:5.1s" x="262" y="148" width="42" height="26"/>
-          <!-- row 4 -->
-          <rect class="win win-hit" style="--d:5.8s" x="52" y="198" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:6.1s" x="122" y="198" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:6.4s" x="192" y="198" width="42" height="26"/>
-          <rect class="win win-hit" style="--d:6.7s" x="262" y="198" width="42" height="26"/>
-          <!-- ground row (doors) -->
-          <rect class="win" x="90" y="244" width="34" height="38"/>
-          <rect class="win" x="176" y="238" width="42" height="44"/>
-          <rect class="win" x="262" y="244" width="34" height="38"/>
-        </g>
-        <!-- lawnmower scan path -->
-        <path class="scan-path" d="M40 60 H340 M340 60 V110 H40 M40 110 V160 H340 M340 160 V210 H40" pathLength="1400"/>
-        <!-- standoff ticks -->
-        <g class="mono" fill="#5E7290" font-size="9">
-          <text x="26" y="24">ALT 42.6m</text>
-          <text x="300" y="24">STANDOFF 1.8m</text>
-        </g>
-      </svg>
-      <figcaption class="facade-foot mono">
-        <span>WINDOWS <b>16 / 16</b></span>
-        <span>MODE <b>WINDOW-ONLY</b></span>
-        <span>COVERAGE <b>92%</b></span>
-        <span>FLOW <b>3.4 GPM</b></span>
-      </figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- ================= STATS ================= -->
-<section class="stats" aria-label="Key specifications">
-  <div class="wrap stats-grid">
-    <div class="stat"><div class="num mono">150<sup>ft</sup></div><div class="lbl">Working height, soft wash and windows</div></div>
-    <div class="stat"><div class="num mono">12<sup>GPM</sup></div><div class="lbl">Soft-wash flow, runs off your pump</div></div>
-    <div class="stat"><div class="num mono">0<sup>min</sup></div><div class="lbl">Downtime between packs — batteries hot-swap</div></div>
-    <div class="stat"><div class="num mono">&lt;$20<sup>K</sup></div><div class="lbl">Complete system — less than half the going rate</div></div>
-  </div>
-</section>
-
-<!-- ================= AUTONOMY ================= -->
-<section class="section" id="autonomy">
-  <div class="wrap">
-    <h2>Other cleaning drones are flown.<br>SkySprayer flies.</h2>
-    <p class="section-intro">Every other drone on the market puts an operator on the sticks for the whole job. SkySprayer turns the job into a mission: it builds a model of the facade, plans the spray path, and executes it — while your pilot supervises with a finger on pause.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-n">STEP 01</div>
-        <h3>Scan</h3>
-        <p>Stereo vision and mmWave radar sweep the facade and build a working model of the surface — glass, stone, stucco, EIFS. Onboard AI detects every window and panel, even in glare radar-only sensors miss.</p>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 02</div>
-        <h3>Plan</h3>
-        <p>SkySprayer lays out a coverage path over the model and assigns a spray mode to each surface, so glass and masonry each get the right treatment in a single flight.</p>
-        <div class="modes">
-          <span class="mode">FULL-SURFACE</span>
-          <span class="mode">WINDOW-ONLY</span>
-          <span class="mode">WINDOW-AVOID</span>
-        </div>
-      </div>
-      <div class="step">
-        <div class="step-n">STEP 03</div>
-        <h3>Clean</h3>
-        <p>The drone flies the path on its own, holding a fixed standoff from the wall by radar the entire time. Your pilot supervises and can pause or take over instantly. Every pass is logged.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= THE DRONE ================= -->
-<section class="section section-white" id="drone">
-  <div class="wrap">
-    <h2>Built for the jobsite, not the showroom.</h2>
-    <p class="section-intro">Heavy-lift hexacopter airframe, corrosion-treated hardware, and the details that decide whether a machine earns its keep on a wash crew.</p>
-
-    <div class="jobsite">
-      <div class="job">
-        <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          Batteries that hot-swap
-        </h3>
-        <p>Dual 12S smart packs with ideal-diode power management. Swap one pack while the other carries the load and get back in the air in seconds — no pairing rules, no balance anxiety, no bench time between flights.</p>
-      </div>
-      <div class="job">
-        <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 5a7 7 0 0 1 7 7M12 1a11 11 0 0 1 11 11"/></svg>
-          Radar that trusts nothing
-        </h3>
-        <p>mmWave radar holds a fixed standoff from the wall at all times — including against specular glass and mirrored curtain walls where cameras and lidar get fooled. The drone physically cannot drift into the building.</p>
-      </div>
-      <div class="job">
-        <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3v6a4 4 0 0 0 8 0V3M12 13v8M8 21h8"/></svg>
-          Your chemicals, your pump
-        </h3>
-        <p>Standard downstream injection and cam-and-groove fittings. Run the soaps and sealants you already buy through the soft-wash pump you already own. No proprietary solution, no captive consumables.</p>
-      </div>
-      <div class="job">
-        <h3>
-          <svg viewBox="0 0 24 24" fill="none" stroke="#E89A00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M12 15c-3 0-4 2-4 4v2M12 15c3 0 4 2 4 4v2"/><circle cx="12" cy="3" r="1.6"/></svg>
-          Tether-ready
-        </h3>
-        <p>Add the ground-power tether for effectively unlimited flight time on big commercial jobs — or fly on packs and hot-swap your way through the day. Your call, per job.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= APP ================= -->
-<section class="section section-dark" id="app">
-  <div class="wrap app-grid">
-    <div class="app-copy">
-      <h2>Every flight becomes a report.</h2>
-      <p class="section-intro">The SkySprayer app syncs with the drone's flight log, so proof of work writes itself. Quote the job, fly the job, send the report — from one place.</p>
-      <ul>
-        <li><span class="tick">&#10003;</span><span><b>Job tracker</b> — every property, mission, and crew in one timeline</span></li>
-        <li><span class="tick">&#10003;</span><span><b>Coverage maps</b> — the actual flight path over the actual facade, per job</span></li>
-        <li><span class="tick">&#10003;</span><span><b>Client-ready reports</b> — surface area cleaned, chemicals used, before and after, exported to PDF</span></li>
-        <li><span class="tick">&#10003;</span><span><b>Fleet health</b> — battery cycles, pump hours, and maintenance due dates, pulled from telemetry</span></li>
-      </ul>
-    </div>
-    <div class="app-shot" aria-label="Illustration of the SkySprayer app job report screen">
-      <svg viewBox="0 0 420 340" role="img" aria-hidden="true">
-        <rect x="0" y="0" width="420" height="340" rx="8" fill="#0F1B2D"/>
-        <!-- header -->
-        <text x="24" y="38" fill="#FFFFFF" font-family="Archivo,sans-serif" font-weight="700" font-size="17">Harbor Plaza — East Facade</text>
-        <text x="24" y="58" fill="#8FA2BC" font-family="JetBrains Mono,monospace" font-size="10">MISSION 0043 &middot; COMPLETED 09:41</text>
-        <rect x="330" y="24" width="66" height="22" rx="11" fill="rgba(255,178,36,.15)"/>
-        <text x="363" y="39" fill="#FFB224" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle">CLEANED</text>
-        <!-- coverage map -->
-        <rect x="24" y="76" width="230" height="150" rx="6" fill="#15263F" stroke="#28394F"/>
-        <g stroke="#FFB224" stroke-width="2" fill="none" opacity=".9">
-          <path d="M40 100 H238 M238 100 V130 H40 M40 130 V160 H238 M238 160 V190 H40"/>
-        </g>
-        <g fill="rgba(127,178,229,.25)">
-          <rect x="52" y="92" width="24" height="14"/><rect x="102" y="92" width="24" height="14"/><rect x="152" y="92" width="24" height="14"/><rect x="202" y="92" width="24" height="14"/>
-          <rect x="52" y="140" width="24" height="14"/><rect x="102" y="140" width="24" height="14"/><rect x="152" y="140" width="24" height="14"/><rect x="202" y="140" width="24" height="14"/>
-        </g>
-        <text x="34" y="216" fill="#5E7290" font-family="JetBrains Mono,monospace" font-size="9">FLIGHT PATH &middot; ACTUAL</text>
-        <!-- side stats -->
-        <g font-family="JetBrains Mono,monospace">
-          <rect x="270" y="76" width="126" height="44" rx="6" fill="#15263F"/>
-          <text x="282" y="95" fill="#8FA2BC" font-size="9">AREA CLEANED</text>
-          <text x="282" y="112" fill="#FFFFFF" font-size="14" font-weight="700">5,820 sqft</text>
-          <rect x="270" y="129" width="126" height="44" rx="6" fill="#15263F"/>
-          <text x="282" y="148" fill="#8FA2BC" font-size="9">FLIGHT TIME</text>
-          <text x="282" y="165" fill="#FFFFFF" font-size="14" font-weight="700">21m 08s</text>
-          <rect x="270" y="182" width="126" height="44" rx="6" fill="#15263F"/>
-          <text x="282" y="201" fill="#8FA2BC" font-size="9">SOLUTION USED</text>
-          <text x="282" y="218" fill="#FFFFFF" font-size="14" font-weight="700">14.2 gal</text>
-        </g>
-        <!-- report row -->
-        <rect x="24" y="244" width="372" height="66" rx="6" fill="#15263F" stroke="#28394F"/>
-        <text x="40" y="272" fill="#FFFFFF" font-family="Archivo,sans-serif" font-size="13" font-weight="600">Job report — Harbor Plaza, May 12</text>
-        <text x="40" y="292" fill="#8FA2BC" font-family="Archivo,sans-serif" font-size="11.5">Coverage map, 14 photos, chemical log</text>
-        <rect x="292" y="260" width="88" height="32" rx="5" fill="#FFB224"/>
-        <text x="336" y="280" fill="#0F1B2D" font-family="Archivo,sans-serif" font-size="12" font-weight="700" text-anchor="middle">Send PDF</text>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ACADEMY ================= -->
-<section class="section" id="academy">
-  <div class="wrap acad-grid">
-    <div>
-      <h2>SkySprayer Academy</h2>
-      <p class="section-intro">Self-paced online training that takes your team from unboxing to confident supervised-autonomy operations. Because the drone flies the path, your crew learns to run missions — not to be stunt pilots.</p>
-      <div class="acad-list">
-        <div class="acad-item">
-          <h3>Safety and airspace fundamentals</h3>
-          <p>Jobsite safety workflow, exclusion zones, and how to verify airspace authorization for legal, compliant operations.</p>
-        </div>
-        <div class="acad-item">
-          <h3>System and mission basics</h3>
-          <p>Hands-on with the ground station: scanning a facade, reviewing the planned path, choosing spray modes, and launching a mission.</p>
-        </div>
-        <div class="acad-item">
-          <h3>Supervision and takeover</h3>
-          <p>What the pilot watches during an autonomous mission, when to pause, and how to take manual control instantly.</p>
-        </div>
-        <div class="acad-item">
-          <h3>Care and maintenance</h3>
-          <p>Daily flight checklist, battery and pump care, and keeping the drone healthy between jobs.</p>
-        </div>
-      </div>
-    </div>
-    <aside class="acad-card">
-      <h3>Included with every drone</h3>
-      <p class="cert">Finish the course, earn your operator certificate, and add unlimited team seats.</p>
-      <ul class="acad-facts">
-        <li><span>Format</span><span>Self-paced, online</span></li>
-        <li><span>Time to complete</span><span>About 2 hours</span></li>
-        <li><span>Certificate</span><span>Required to operate</span></li>
-        <li><span>Team seats</span><span>Unlimited</span></li>
-        <li><span>Licensing</span><span>FAA Part 107 required for commercial ops</span></li>
-      </ul>
-      <a class="btn btn-amber" href="#demo">Enroll your team</a>
-    </aside>
-  </div>
-</section>
-
-<!-- ================= PRICING ================= -->
-<section class="section price-band" id="pricing">
-  <div class="wrap price-grid">
-    <div>
-      <h2>Half the price.<br>None of the stick time.</h2>
-      <p class="price-sub">Manual-flight cleaning drones run $45,000 and up before you add payloads — and then you still have to fly them. SkySprayer ships complete, with autonomy, the app, and Academy included.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-amber" href="#demo">Get a quote</a>
-        <a class="btn btn-ghost-dark" href="#demo">Reserve a build slot</a>
-      </div>
-      <p class="fine">Introductory pricing for early operators. Financing available.</p>
-    </div>
-    <div>
-      <div class="price-num">$19,995</div>
-      <ul class="compare">
-        <li><span>SkySprayer, complete system</span><span class="mono">$19,995</span></li>
-        <li><span>Autonomy, app, and Academy</span><span>Included</span></li>
-        <li><span>Window-cleaning payload</span><span>Included</span></li>
-        <li class="them"><span>Manual-flight drones, entry price</span><span class="mono">$45,000+</span></li>
-        <li class="them"><span>Manual-flight drones, fully loaded</span><span class="mono">~$75,000</span></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ================= DEMO CTA ================= -->
-<section class="section section-white" id="demo">
-  <div class="wrap" style="max-width:720px;text-align:left">
-    <h2>See it plan a path over your building.</h2>
-    <p class="section-intro" style="margin-bottom:30px">Book a live demo and we'll scan a facade, show you the mission plan, and walk through the numbers for your operation.</p>
-    <div class="hero-ctas">
-      <a class="btn btn-amber" href="mailto:hello@skysprayer.com?subject=Demo%20request">Book a live demo</a>
-      <a class="btn btn-ghost-light" href="mailto:hello@skysprayer.com?subject=Webinar%20seat">Join the monthly webinar</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <a class="logo" href="#top" aria-label="SkySprayer home">
-        <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect x="2" y="2" width="28" height="28" rx="6" fill="#FFB224"/>
-          <path d="M9 21 L16 8 L23 21" stroke="#0F1B2D" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="16" cy="23" r="2.2" fill="#0F1B2D"/>
-        </svg>
-        <span class="logo-word">Sky<span>Sprayer</span></span>
-      </a>
-      <ul class="foot-links">
-        <li><a href="#autonomy">Autonomy</a></li>
-        <li><a href="#drone">The drone</a></li>
-        <li><a href="#app">App</a></li>
-        <li><a href="#academy">Academy</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="mailto:hello@skysprayer.com">Contact</a></li>
-      </ul>
-    </div>
-    <div class="foot-base">
-      <span>&copy; 2026 SkySprayer &middot; Stamford, CT</span>
-      <span>Design concept by Bofill Technologies</span>
-    </div>
-  </div>
-</footer>
-
+<script>
+const SALT="dt8utQ5BR43mbIKENy5GWQ==",IV="pFECxFL9G46DImO8",CT="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",ITER=600000,LS="ss_concept_key",LSX="ss_concept_exp";
+const un=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function derive(pw){
+  const km=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveBits"]);
+  return new Uint8Array(await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt:un(SALT),iterations:ITER},km,256));
+}
+async function open(raw){
+  const key=await crypto.subtle.importKey("raw",raw,"AES-GCM",false,["decrypt"]);
+  const plain=await crypto.subtle.decrypt({name:"AES-GCM",iv:un(IV)},key,un(CT));
+  const html=await new Response(new Blob([plain]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+  document.open();document.write(html);document.close();
+}
+function savedKey(){
+  try{
+    const x=localStorage.getItem(LSX);
+    if(x&&Date.now()>+x){localStorage.removeItem(LS);localStorage.removeItem(LSX);return null}
+    const h=localStorage.getItem(LS);
+    return h?Uint8Array.from(h.match(/../g).map(b=>parseInt(b,16))):null;
+  }catch(e){return null}
+}
+(async()=>{const k=savedKey();if(k){try{await open(k)}catch(e){try{localStorage.removeItem(LS);localStorage.removeItem(LSX)}catch(_){}}}})();
+document.getElementById("f").addEventListener("submit",async ev=>{
+  ev.preventDefault();
+  const go=document.getElementById("go"),err=document.getElementById("err");
+  go.disabled=true;go.textContent="Unlocking…";err.style.display="none";
+  try{
+    const raw=await derive(document.getElementById("pw").value);
+    await open(raw);
+    if(document.getElementById("rm")&&document.getElementById("rm").checked){
+      try{
+        localStorage.setItem(LS,[...raw].map(b=>b.toString(16).padStart(2,"0")).join(""));
+        localStorage.setItem(LSX,String(Date.now()+30*24*60*60*1000));
+      }catch(e){}
+    }
+  }catch(e){
+    err.style.display="block";go.disabled=false;go.textContent="Unlock";
+  }
+});
+</script>
 </body>
 </html>
