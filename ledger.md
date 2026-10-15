@@ -14,6 +14,7 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 ## Ledger
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 176 | mountainview-lodge | 2026-10-15 | full-bleed-bottom-left-overlay | hero,intro,rooms,amenities,gallery,location | card-grid-hover-lift | top-sticky-split-actions | sticky-booking-bar | sans-serif-clean | System | System | mountain-sage+pine-green+stone-gray+snow-white |
 | 175 | bear-creek-lodge | 2026-10-14 | asymmetric-collage | hero,welcome,rooms,amenities,events,location,cta | four-col-card-grid | split-logo-actions | staggered-reveal | bold-condensed-all-caps | Archivo Black | Outfit | forest-ink+lodge-pine+creek-blue+mountain-gold+snow-cream |
 | 174 | hotel-captain-cook | 2026-10-14 | full-bleed-center-overlay | hero,welcome,rooms,dining,amenities,gallery,location,cta | three-col-card-lift | top-fixed-phone-book | sticky-booking-bar | alaska-luxury-serif | Crimson Text | Montserrat | navy-midnight+gold-brass+cream-parchment+slate-ink |
 | 173 | reform-club | 2026-10-14 | full-bleed-centered-overlay | hero,intro,accommodations,amenities,dining,location | card-grid-equal | top-fixed-white | parallax-hero | hamptons-serif-refined | Georgia | System | cream+sage+charcoal+sand+accent-green |
