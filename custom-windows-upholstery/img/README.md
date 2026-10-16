@@ -1,22 +1,22 @@
-# Image manifest — Custom Windows LLC (#156, rev. 2)
+# Image manifest — Custom Windows LLC (#156, rev. 3)
 
-Photos are hotlinked from the client's two current sites (customwindowsllc.com and the Hunter Douglas dealer site on cdn.sanity.io). Re-host into WordPress media before launch.
+Client job photos are served from the client's shared Google Drive folder
+(https://drive.google.com/drive/folders/16qwH64GEM2iwBHl6DbJOiXrgE86lEAE5) via
+`drive.google.com/thumbnail?id=<file id>&sz=w1600`. The folder must stay shared as
+"Anyone with the link". At WordPress launch, upload these into the media library.
 
-## In use
-| Slot | Source |
+| Slot | Drive file |
 |---|---|
-| Header logo | cdn.sanity.io … 6123e6231451c4883b0fa36596a8d19f2ef9fc6e-200x100.png |
-| Hero | cdn.sanity.io … c00bc7aabe952ec010039746b891f61ce65fe6ed-2560x1714.jpg |
-| Brands strip | customwindowsllc.com/wp-content/uploads/2024/07/hd-logo.png |
-| Shades: Duette | customwindowsllc.com/wp-content/uploads/2024/07/custom-window-treatments.jpg |
-| Shades: Silhouette | cdn.sanity.io … 580c9c2e4b7068c2b13c44ee3d839ba40ae5c095-2050x1025.jpg |
-| Shutters band | customwindowsllc.com/wp-content/uploads/2024/07/bedroom-blind-and-shades-hybridshtters.jpg |
-| Drapery | customwindowsllc.com/wp-content/uploads/2025/04/2018_VIG_LUM_PV_WHS_SheerLinen_LivingRoom.jpg |
-| PowerView offer | cdn.sanity.io … 258b43be82c734a62f4ba85dac48017e16631d93-2880x1576.png |
+| Hero | 2023-09-28_131142_Janis_Hayes_2.jpg (striped Romans, harbor view) |
+| Shades: roller | 2023-12-08_155727_Installer_1.jpg (roller + drapery, city view) |
+| Shades: honeycomb | 2024-01-24_151242_Installer_1.jpg |
+| Shutters band | 2025-03-07_103411_Installer_2.jpg (plantation shutters) |
+| Drapery | 2024-03-01_175628_Installer_1.jpg (ripplefold) |
+| Recent work | 2023-09-28_131142_Janis_Hayes_5, 2025-04-11_095528_Installer_1, 2023-08-03_133239_Janis_Hayes_1, 2024-05-23_224801_Installer_2, 2026-07-15_162013_Janis_Hayes_3, 2023-10-27_143648_Installer_1 |
 
-## Needed from the client (dashed placeholders on the page)
-1. Owners: one portrait-orientation photo, ideally at a client's home with sample books. Also their names and a one or two sentence quote.
-2. Roller shades: a finished job.
-3. Shutters: their best 2 or 3 jobs (the hero and shutters band should become their own work).
-4. Drapery: 2 or 3 finished rod-and-drapery installs.
-5. Reviews: 3 real Google reviews with first name, last initial and town, plus the current Google rating and count.
+Still stock (Hunter Douglas imagery from the old sites): Silhouette card, PowerView offer, header logo, Hunter Douglas mark.
+
+## Still needed from the client
+1. Owners photo (portrait orientation), names, and a one or two sentence quote.
+2. A Silhouette or Pirouette job photo to replace the stock image.
+3. Three real Google reviews with first name, last initial and town, plus rating and count.

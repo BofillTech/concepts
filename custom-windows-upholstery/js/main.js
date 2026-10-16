@@ -41,7 +41,7 @@
     logo.addEventListener('error', failLogo);
     if (logo.complete && logo.naturalWidth === 0) failLogo();
   }
-  document.querySelectorAll('.frame img').forEach((img) => {
+  document.querySelectorAll('.frame img, .work__item img').forEach((img) => {
     const fail = () => img.classList.add('is-broken');
     img.addEventListener('error', fail);
     if (img.complete && img.naturalWidth === 0) fail();

@@ -87,6 +87,7 @@ body.is-locked{overflow:hidden}
 .hero__trust li{padding-left:28px;position:relative;font-weight:500}
 .hero__trust li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:2.5px solid var(--brass);border-bottom:2.5px solid var(--brass);transform:rotate(-45deg)}
 .hero__frame{aspect-ratio:16/10}
+.hero__frame img{object-position:50% 72%}
 @media (min-width:980px){
   .hero__grid{grid-template-columns:1.15fr .85fr;grid-template-areas:"copy card" "frame card";gap:28px 56px}
   .hero__copy{grid-area:copy}
@@ -171,7 +172,17 @@ body.is-locked{overflow:hidden}
 @media (min-width:900px){.drapery__grid{grid-template-columns:1fr 1.15fr;gap:64px}}
 .drapery h2{margin-bottom:18px}
 .drapery p{color:var(--ink-soft)}
-.drapery__frame{aspect-ratio:3/2}
+.drapery__frame{aspect-ratio:4/5;max-height:640px}
+
+/* recent work: client job photos, natural aspect ratios */
+.work{background:var(--white);padding:96px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.work__grid{columns:1;column-gap:20px}
+@media (min-width:640px){.work__grid{columns:2}}
+@media (min-width:980px){.work__grid{columns:3}}
+.work__item{margin:0 0 20px;break-inside:avoid}
+.work__item img{width:100%;height:auto;background:var(--sky-deep)}
+.work__item figcaption{padding:10px 2px 0;font-weight:700;font-size:.95rem}
+.work__item img.is-broken{visibility:hidden}
 
 /* try it */
 .tryit{background:var(--sky);padding:88px 0}
