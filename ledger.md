@@ -80,6 +80,6 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 | 113 | wanderers-rest | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 112 | grand-marais-inn | 2026-09-11 | — | — | — | — | — | — | — | — | — |
 | 179 | elk-trace-bb | 2026-10-15 | split-screen | bento-overlapping | hamburger-only | subtle-fade | rustic-ranch-serif | Georgia | System | ranch-pine+saddle-brown+mountain-slate+sky-blue+cream-parchment |
-| 180 | the-birchwood | 2026-10-16 | full-bleed | single-column-editorial | top-sticky | none | art-deco-modern | Helvetica Neue | Helvetica Neue | navy+gold+cream+seafoam+white |
-| 181 | seahorse-oceanfront-lodging | 2026-10-16 | asymmetric-collage | broken-asymmetric | hamburger-only | staggered-reveal | coastal-bright-sans | System | System | ocean-blue+sand-beige+seafoam-green+sunset-coral+white |
-| 182 | arlington-inn-vt | 2026-10-16 | off-center-framed | symmetric-12col | side-rail | parallax | historic-serif-refined | Georgia | Georgia | forest-green+burgundy+cream+gold-accent+charcoal |
+| 182 | the-birchwood | 2026-10-16 | full-bleed | single-column-editorial | top-sticky | none | art-deco-modern | Helvetica Neue | Helvetica Neue | navy+gold+cream+seafoam+white |
+| 183 | seahorse-oceanfront-lodging | 2026-10-16 | asymmetric-collage | broken-asymmetric | hamburger-only | staggered-reveal | coastal-bright-sans | System | System | ocean-blue+sand-beige+seafoam-green+sunset-coral+white |
+| 184 | arlington-inn-vt | 2026-10-16 | off-center-framed | symmetric-12col | top-sticky | parallax | historic-serif-refined | Georgia | Georgia | forest-green+burgundy+cream+gold-accent+charcoal |
