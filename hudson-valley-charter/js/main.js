@@ -69,6 +69,7 @@
     update();
   }
 
+<<<<<<< HEAD
   /* Quote forms (in-hero strip + sticky bar): same fields, same validation, same submit.
      Both submit as GET /get-a-quote/?passengers=..&date=..&pickup_town=.. */
   var forms = Array.prototype.slice.call(doc.querySelectorAll('.js-quote-form'));
@@ -76,6 +77,15 @@
   var today = t.toISOString().slice(0, 10);
   doc.querySelectorAll('.js-quote-form input[type="date"]').forEach(function (d) { d.min = today; });
 
+=======
+  /* Quick quote: validate, save, carry values to /get-a-quote/ */
+  var form = doc.getElementById('quick-quote');
+  var dateInput = doc.getElementById('qq-date');
+  if (dateInput) {
+    var t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset());
+    dateInput.min = t.toISOString().slice(0, 10);
+  }
+>>>>>>> origin/main
   function check(input) {
     var err = doc.getElementById(input.id + '-err');
     var ok = input.value.trim() !== '' && input.checkValidity();
@@ -83,6 +93,7 @@
     if (err) err.hidden = ok;
     return ok;
   }
+<<<<<<< HEAD
   function errorText(input) {
     var err = doc.getElementById(input.id + '-err');
     return err ? err.textContent : 'Check this field.';
@@ -108,15 +119,28 @@
         if (form.id === 'qb-form') showToast(errorText(bad[0]));
         return;
       }
+=======
+  if (form) {
+    var inputs = Array.prototype.slice.call(form.querySelectorAll('input'));
+    inputs.forEach(function (i) { i.addEventListener('blur', function () { if (i.value) check(i); }); });
+    form.addEventListener('submit', function (e) {
+      var bad = inputs.filter(function (i) { return !check(i); });
+      if (bad.length) { e.preventDefault(); bad[0].focus(); return; }
+>>>>>>> origin/main
       var data = {};
       inputs.forEach(function (i) { data[i.name] = i.value.trim(); });
       try { sessionStorage.setItem('hvc-quote-start', JSON.stringify(data)); } catch (err) { /* storage unavailable: URL params still carry the values */ }
       if (PHASE1) {
         e.preventDefault();
+<<<<<<< HEAD
+=======
+        var status = doc.getElementById('qq-status');
+>>>>>>> origin/main
         var d = new Date(data.date + 'T12:00:00');
         var nice = isNaN(d) ? data.date : d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
         var msg = 'Got it: ' + data.passengers + ' passengers on ' + nice + ' from ' + data.pickup_town +
           '. On the live site this opens Get a Quote with these details filled in (that page is built in Phase 2).';
+<<<<<<< HEAD
         var status = doc.getElementById('qq-status');
         if (form.id === 'quick-quote' && status) status.textContent = msg; else showToast(msg);
       }
@@ -160,6 +184,12 @@
     doc.addEventListener('keydown', function (e) { if (e.key === 'Escape' && bar.classList.contains('is-open')) setOpen(false); });
     if (mobileMQ.addEventListener) mobileMQ.addEventListener('change', syncBar);
     syncBar();
+=======
+        if (status) status.textContent = msg;
+      }
+      // Otherwise the form submits normally: /get-a-quote/?passengers=..&date=..&pickup_town=..
+    });
+>>>>>>> origin/main
   }
 
   /* Phase 1 only: inner pages don't exist yet */

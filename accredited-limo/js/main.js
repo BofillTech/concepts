@@ -70,6 +70,7 @@
   document.querySelectorAll('.js-outbound-hv').forEach(function (a) {
     a.addEventListener('click', function () { track('outbound_hudson_valley'); });
   });
+<<<<<<< HEAD
   /* Booking forms: hero, header bar, sticky bar. All submit to the same Limo Anywhere flow. */
   var today = new Date();
   var minDate = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
@@ -105,6 +106,18 @@
       dock.classList.toggle('is-open', !open);
       if (!open) { track('click_book', { source: 'sticky_bar_mobile' }); var f = document.getElementById('d-pickup'); if (f) { f.focus(); } }
     });
+=======
+  var quote = document.getElementById('quick-quote');
+  if (quote) {
+    var started = false;
+    quote.addEventListener('focusin', function () { if (!started) { started = true; track('quote_start'); } });
+    quote.addEventListener('submit', function () { track('click_book', { source: 'hero_quote' }); });
+    var date = document.getElementById('q-date');
+    if (date) {
+      var d = new Date();
+      date.min = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+>>>>>>> origin/main
   }
 
   /* Limo Anywhere reservation confirmation (iframe postMessage).

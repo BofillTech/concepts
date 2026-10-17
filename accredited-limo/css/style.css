@@ -47,9 +47,16 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background: var(--white);
+<<<<<<< HEAD
   padding-bottom: calc(64px + var(--safe-bottom)); /* room for the sticky booking dock */
   overflow-x: hidden;
 }
+=======
+  padding-bottom: calc(64px + var(--safe-bottom));
+  overflow-x: hidden;
+}
+@media (min-width: 960px) { body { padding-bottom: 0; } }
+>>>>>>> origin/main
 img, video, iframe { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; }
@@ -130,7 +137,11 @@ abbr[title] { text-decoration: none; }
   height: var(--header-h); padding: 0 var(--gutter);
 }
 .site-header__actions { display: flex; align-items: center; gap: 1.25rem; margin-left: auto; }
+<<<<<<< HEAD
 .header-phone { display: none; text-decoration: none; line-height: 1.15; text-align: right; white-space: nowrap; }
+=======
+.header-phone { display: none; text-decoration: none; line-height: 1.15; text-align: right; }
+>>>>>>> origin/main
 .header-phone__label { display: block; font-size: .72rem; color: var(--swoosh-deep); font-weight: 600; }
 .header-phone__number { font-weight: 600; font-size: 1.05rem; }
 @media (min-width: 640px) { .header-phone { display: block; } }
@@ -443,6 +454,7 @@ abbr[title] { text-decoration: none; }
 @media (min-width: 760px) { .site-footer__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } .site-footer__brand { grid-column: 1 / -1; } }
 @media (min-width: 1100px) { .site-footer__grid { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; } .site-footer__brand { grid-column: auto; } }
 
+<<<<<<< HEAD
 /* ---------- Header booking bar (wide desktop only) ---------- */
 .hbook { display: none; }
 @media (min-width: 1340px) {
@@ -522,6 +534,20 @@ abbr[title] { text-decoration: none; }
   .dock__input { min-height: 42px; height: 42px; padding: 0 .7rem; font-size: .92rem; }
   .dock__submit { min-height: 42px; height: 42px; white-space: nowrap; }
 }
+=======
+/* ---------- Mobile action bar ---------- */
+.action-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-bottom: var(--safe-bottom); background: var(--ink);
+}
+.action-bar__btn {
+  display: flex; align-items: center; justify-content: center; min-height: 64px;
+  font-weight: 600; text-decoration: none; color: var(--white);
+}
+.action-bar__btn--book { background: var(--swoosh-deep); }
+@media (min-width: 960px) { .action-bar { display: none; } }
+>>>>>>> origin/main
 
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
