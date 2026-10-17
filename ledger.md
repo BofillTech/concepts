@@ -10,6 +10,9 @@ Columns: `# | slug | date | hero | section-order | grid | nav | motion | type-tr
 ## Ledger
 | # | slug | date | hero | section-order | grid | nav | motion | type-treatment | display-font | body-font | palette-key |
 |---|---|---|---|---|---|---|---|---|---|---|---|
+| 184 | stagecoach-hotel-casino | 2026-10-17 | split-screen | hero,welcome,rooms,pool,casino,death-valley,reviews,visit,cta | three-col-uniform-cards | top-fixed-phone-book | fade-up | western-slab-display | Ultra | Barlow | desert-night-ink+sunset-orange+marquee-gold+sage+adobe-cream |
+| 183 | stanford-court | 2026-10-17 | full-bleed-center-overlay | hero,welcome,rooms,amenities,dining,offers,neighborhood,cta | tiled-mosaic | top-utility-bar | soft-scale-in | nob-hill-classical-serif | Marcellus | Jost | nob-ink+courtyard-teal+persimmon+brass+fog-ivory |
+| 182 | terrace-bay-hotel | 2026-10-17 | full-bleed-bottom-left-overlay | hero,facts,intro,rooms,dining,adventure,weddings,gallery,reviews,location,cta | split-50-50-alternating | top-transparent-to-solid | clip-path-wipe | lakeside-serif-display | DM Serif Display | Manrope | lake-navy+bay-blue+sunrise-amber+driftwood+sand-cream |
 | 181 | garden-house-key-west | 2026-10-15 | type-only-centered | hero,intro,rooms,amenities,gallery,location,cta | photo-masonry | hamburger-only | parallax-hero | island-serif-elegant | Lora | Inter | garden-pine+gold-sand+cream-linen |
 | 178 | malaga-inn | 2026-10-15 | editorial-open | hero,intro,rooms,amenities,location,reviews,cta | single-column-editorial | persistent-bottom-bar | none | heritage-serif-editorial | Cormorant Garamond | Karla | timber-ink+aged-brass+parchment-cream+brown-oak |
 | 180 | summit-resort-nh | 2026-10-15 | full-bleed | hero,intro,accommodations,amenities,location,gallery,footer | broken-asymmetric | hamburger-only | staggered-reveal | clean-modern-sans | System Sans | System Sans | lakes-pine+forest-green+waterslide-teal+autumn-gold+cream |
