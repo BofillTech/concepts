@@ -1,0 +1,73 @@
+/* Perfectub site chrome: shared header (with Resources dropdown), breadcrumbs, footer, PDF button.
+   Uses the design tokens defined on :root by landing.css or the homepage. */
+.sh{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--porcelain) 94%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--tile);padding-top:env(safe-area-inset-top,0px)}
+.sh__in{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:20px;min-height:68px}
+.sh__brand{display:block;line-height:0;margin-right:auto}
+.sh__brand img{width:160px;height:auto}
+.sh__brand .logo--on-dark{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sh__brand .logo--on-light{display:none}:root:not([data-theme="light"]) .sh__brand .logo--on-dark{display:block}}
+:root[data-theme="dark"] .sh__brand .logo--on-light{display:none}:root[data-theme="dark"] .sh__brand .logo--on-dark{display:block}
+.sh__nav ul{list-style:none;margin:0;padding:0}
+.sh__menu{display:flex;align-items:center;gap:4px}
+.sh__menu>li{position:relative}
+.sh__menu a,.sh__sub-btn{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px;border-radius:8px;text-decoration:none;color:var(--muted);font:inherit;font-size:.95rem;background:none;border:0;cursor:pointer}
+.sh__menu a:hover,.sh__sub-btn:hover,.sh__menu a[aria-current="page"]{color:var(--ink)}
+.sh__menu a[aria-current="page"]{font-weight:600}
+.sh__sub-btn::after{content:"";width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg) translateY(-2px)}
+.sh__sub{position:absolute;left:0;top:100%;min-width:230px;background:var(--white);border:1px solid var(--tile);border-radius:12px;padding:8px;box-shadow:0 18px 40px rgba(20,34,43,.14);display:none}
+.sh__sub a{display:flex;width:100%;min-height:42px}
+.sh__item--sub:hover .sh__sub,.sh__item--sub:focus-within .sh__sub,.sh__item--sub.is-open .sh__sub{display:block}
+.sh__phone{text-decoration:none;font-weight:600;font-size:.95rem;white-space:nowrap;color:var(--ink)}
+.sh__buy{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;background:var(--ink);color:var(--porcelain);font-weight:600;font-size:.92rem;text-decoration:none;white-space:nowrap}
+.sh__buy:hover{background:var(--glaze-deep)}
+.sh__toggle{display:none;min-height:44px;padding:0 14px;border:1.5px solid var(--ink);border-radius:999px;background:none;color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
+@media (max-width:1080px){
+  .sh__toggle{display:inline-flex;align-items:center}
+  .sh__nav{position:absolute;left:0;right:0;top:100%;background:var(--white);border-bottom:1px solid var(--tile);display:none;max-height:calc(100vh - 68px);overflow:auto}
+  .sh__nav.is-open{display:block}
+  .sh__menu{flex-direction:column;align-items:stretch;padding:12px 24px 20px}
+  .sh__menu a,.sh__sub-btn{width:100%;justify-content:space-between;font-size:1.02rem;color:var(--ink)}
+  .sh__sub{position:static;display:block;box-shadow:none;border:0;padding:0 0 0 14px;background:none}
+  .sh__sub-btn::after{display:none}
+  .sh__phone{display:none}
+}
+@media (max-width:420px){.sh__brand img{width:128px}.sh__buy{padding:0 14px}}
+
+/* breadcrumbs */
+.crumbs{max-width:1180px;margin:0 auto;padding:18px 24px 0;font-size:.9rem;color:var(--muted)}
+.crumbs ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.crumbs li+li::before{content:"\203A";margin-right:6px;color:var(--muted)}
+.crumbs a{color:var(--muted)}
+.crumbs [aria-current="page"]{color:var(--ink)}
+
+/* footer */
+.sf{background:var(--ink);color:var(--porcelain);padding:56px 0 calc(40px + env(safe-area-inset-bottom,0px));margin-top:0}
+.sf__in{max-width:1180px;margin:0 auto;padding:0 24px}
+.sf__top{display:grid;grid-template-columns:1.3fr repeat(4,1fr);gap:32px}
+.sf p,.sf a,.sf li{color:color-mix(in srgb,var(--porcelain) 78%,transparent);font-size:.93rem}
+.sf a:hover{color:var(--porcelain)}
+.sf b{display:block;color:var(--porcelain);margin-bottom:10px;font-size:.95rem}
+.sf ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.sf__logo img{width:180px;height:auto;margin-bottom:12px}
+.sf__logo .logo--on-light{display:none}.sf__logo .logo--on-dark{display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sf__logo .logo--on-light{display:block}:root:not([data-theme="light"]) .sf__logo .logo--on-dark{display:none}}
+:root[data-theme="dark"] .sf__logo .logo--on-light{display:block}:root[data-theme="dark"] .sf__logo .logo--on-dark{display:none}
+.sf__social{display:flex;gap:10px;margin-top:12px}
+.sf__social a{display:inline-flex;align-items:center;min-height:36px;padding:0 12px;border:1px solid color-mix(in srgb,var(--porcelain) 30%,transparent);border-radius:999px;text-decoration:none}
+.sf__bottom{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid color-mix(in srgb,var(--porcelain) 18%,transparent)}
+.pdf-btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 18px;border-radius:999px;background:var(--porcelain);color:var(--ink)!important;font-weight:600;text-decoration:none;font-size:.95rem}
+.pdf-btn:hover{background:var(--glaze);color:#fff!important}
+.pdf-btn svg{width:18px;height:18px}
+.sf__note{font-size:.8rem!important;color:color-mix(in srgb,var(--porcelain) 55%,transparent)!important;margin:0}
+@media (max-width:960px){.sf__top{grid-template-columns:1fr 1fr}.sf__brand{grid-column:1/-1}}
+@media (max-width:480px){.sf__top{grid-template-columns:1fr}}
+/* compact PDF strip for pages that keep their own footer */
+.pdf-strip{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:20px}
+
+/* homepage: live-site sections added for search continuity */
+.home-seo{padding:80px 0;border-top:1px solid var(--tile)}
+.home-seo__grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.home-seo p,.home-seo li{color:var(--muted)}
+.home-seo ul{padding-left:1.1rem;display:grid;gap:10px;margin:0}
+.home-seo__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+@media (max-width:960px){.home-seo__grid{grid-template-columns:1fr;gap:20px}}
