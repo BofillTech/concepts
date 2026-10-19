@@ -6,6 +6,8 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 197 | La Petite Sedona | Sedona, AZ | lapetitesedona.com | https://bofilltech.github.io/concepts/la-petite-sedona/ | Arch-window hero, marquee strip, arched room row, good-to-know board, review rail, numbered explore list | Gloock / DM Sans | 2026-10-19 |
+| 196 | Bay Harbor & Coconut Bay Resort | Key Largo, FL | bayharborkeylargo.com | https://bofilltech.github.io/concepts/bay-harbor-coconut-bay-resort/ | Stacked type over inset beach photo, 12-col cottage bento, polaroid story, sunset band with overlapping quotes, masonry gallery | Yeseva One / Figtree | 2026-10-19 |
 | 195 | Granite Town Hotel | St. George, NB | granitetownhotel.com | https://bofilltech.github.io/concepts/granite-town-hotel/ | Bottom-left lawn hero, meeting-room band | Merriweather / Open Sans | 2026-10-19 |
 | 194 | Boulder Dam Hotel | Boulder City, NV | boulderdamhotel.com | https://bofilltech.github.io/concepts/boulder-dam-hotel/ | Split-screen facade hero, 1933 history band | Cinzel / Lato | 2026-10-19 |
 | 193 | The Lodge at Riverside | Grants Pass, OR | thelodgeatriverside.com | https://bofilltech.github.io/concepts/the-lodge-at-riverside/ | Split-screen riverfront-lawn hero, Rogue River band | Spectral / Work Sans | 2026-10-19 |
