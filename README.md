@@ -6,6 +6,14 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 195 | Granite Town Hotel | St. George, NB | granitetownhotel.com | https://bofilltech.github.io/concepts/granite-town-hotel/ | Bottom-left lawn hero, meeting-room band | Merriweather / Open Sans | 2026-10-19 |
+| 194 | Boulder Dam Hotel | Boulder City, NV | boulderdamhotel.com | https://bofilltech.github.io/concepts/boulder-dam-hotel/ | Split-screen facade hero, 1933 history band | Cinzel / Lato | 2026-10-19 |
+| 193 | The Lodge at Riverside | Grants Pass, OR | thelodgeatriverside.com | https://bofilltech.github.io/concepts/the-lodge-at-riverside/ | Split-screen riverfront-lawn hero, Rogue River band | Spectral / Work Sans | 2026-10-19 |
+| 192 | The Shallows Resort | Egg Harbor, WI | shallows.com | https://bofilltech.github.io/concepts/the-shallows-resort/ | Aerial resort hero, lodging splits, sunsets & bonfires band | Lora / Mulish | 2026-10-19 |
+| 191 | Lake Shore Resort | Saugatuck, MI | lakeshoreresortsaugatuck.com | https://bofilltech.github.io/concepts/lake-shore-resort-saugatuck/ | Centered bluff hero, Full Moon Dinner band, press strip | Bodoni Moda / Jost | 2026-10-19 |
+| 190 | Sundown Inn | Morro Bay, CA | sundowninn.com | https://bofilltech.github.io/concepts/sundown-inn/ | Split-screen garden-path hero, Morro Rock sunset band | Fraunces / Nunito Sans | 2026-10-19 |
+| 189 | Pacific Reef Hotel | Gold Beach, OR | pacificreefhotel.com | https://bofilltech.github.io/concepts/pacific-reef-hotel/ | Aerial coast hero, ocean-view room splits, light-show band | Playfair Display / Source Sans 3 | 2026-10-19 |
+| 188 | Inn on the Alameda | Santa Fe, NM | innonthealameda.com | https://bofilltech.github.io/concepts/inn-on-the-alameda/ | Centered firelit room hero, alternating room splits, Joe's Tequila Bar band | Cormorant Garamond / Karla | 2026-10-19 |
 | 187 | StageCoach Hotel & Casino | Beatty, NV | stagecoachhotelandcasino.com | https://bofilltech.github.io/concepts/stagecoach-hotel-casino/ | Split-screen hero, uniform room cards, mileage board | Ultra / Barlow | 2026-10-17 |
 | 186 | Stanford Court | San Francisco, CA | stanfordcourt.com | https://bofilltech.github.io/concepts/stanford-court/ | Centered overlay hero, tiled room mosaic, utility-bar nav | Marcellus / Jost | 2026-10-17 |
 | 185 | Terrace Bay Hotel | Gladstone, MI | terracebayhotel.com | https://bofilltech.github.io/concepts/terrace-bay-hotel/ | Full-bleed hero, alternating 50/50 splits, clip-path wipes | DM Serif Display / Manrope | 2026-10-17 |
