@@ -1,6 +1,6 @@
 # Photo manifest: lava-hot-springs-inn
 
-Real property photos downloaded from lavahotspringsinn.com (Weebly site) and supplemental images.
+Real property photos downloaded from lavahotspringsinn.com (Weebly site).
 
 | File | Source |
 |---|---|
@@ -10,11 +10,10 @@ Real property photos downloaded from lavahotspringsinn.com (Weebly site) and sup
 | aladdin-building.jpg | lavahotspringsinn.com |
 | mineral-pools.jpg | lavahotspringsinn.com |
 | pool-umbrella-seating.jpg | lavahotspringsinn.com |
-| room-basic.jpg | Generated placeholder (historic inn room style) |
-| spa-suite.jpg | Generated placeholder (spa room with jetted tub) |
-| building-exterior.jpg | Generated placeholder (vacation rental building) |
+| room-basic.jpg | lavahotspringsinn.com (Inn basic room - msh-lavainnspa-9854.jpg) |
+| spa-suite.jpg | lavahotspringsinn.com (Spa room with heart-shaped tub - 7097231.jpg) |
+| building-exterior.jpg | lavahotspringsinn.com (Spa building exterior - spa-building-2_orig.jpg) |
 
-Note: Lava Hot Springs Inn's Weebly site had good quality photos of their historic 1924 building, 
-hot springs pools, and rooms. We successfully downloaded 6 actual property photos. Created 3 styled 
-placeholders for rooms and vacation rentals to fill out the design. A production site would include 
-their complete photo library.
+All images are real property photos from Lava Hot Springs Inn's official Weebly website,
+showing the historic 1924 building, natural mineral hot springs pools, Inn rooms, Spa rooms,
+and vacation rental buildings.
