@@ -6,6 +6,9 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 200 | Lava Hot Springs Inn | Lava Hot Springs, ID | lavahotspringsinn.com | https://bofilltech.github.io/concepts/lava-hot-springs-inn/ | Type-over-full-bleed hero with rust tint, alternating room blocks, hot pools grid, area cards | Spectral / Karla | 2026-10-20 |
+| 199 | Shashi Hotel | Mountain View, CA | shashihotel.com | https://bofilltech.github.io/concepts/shashi-hotel-mountain-view/ | Side-by-side split hero, alternating room showcase, hamburger-only nav, midnight rituals box | Outfit / Assistant | 2026-10-20 |
+| 198 | Eagle House Motel | Rockport, MA | eaglehousemotel.com | https://bofilltech.github.io/concepts/eagle-house-motel/ | Centered minimal hero with white content box, top solid nav, 4-col room cards, coastal colors | Crimson Pro / Inter | 2026-10-20 |
 | 197 | La Petite Sedona | Sedona, AZ | lapetitesedona.com | https://bofilltech.github.io/concepts/la-petite-sedona/ | Arch-window hero, marquee strip, arched room row, good-to-know board, review rail, numbered explore list | Gloock / DM Sans | 2026-10-19 |
 | 196 | Bay Harbor & Coconut Bay Resort | Key Largo, FL | bayharborkeylargo.com | https://bofilltech.github.io/concepts/bay-harbor-coconut-bay-resort/ | Stacked type over inset beach photo, 12-col cottage bento, polaroid story, sunset band with overlapping quotes, masonry gallery | Yeseva One / Figtree | 2026-10-19 |
 | 195 | Granite Town Hotel | St. George, NB | granitetownhotel.com | https://bofilltech.github.io/concepts/granite-town-hotel/ | Bottom-left lawn hero, meeting-room band | Merriweather / Open Sans | 2026-10-19 |
