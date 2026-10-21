@@ -1,0 +1,528 @@
+/* Duplin Inn - Minimal Typography Design */
+
+:root {
+  --black: #1a1a1a;
+  --gray: #6b6b6b;
+  --light: #f8f8f8;
+  --white: #ffffff;
+  --accent: #8b4513;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--black);
+  background: var(--white);
+}
+
+h1, h2, h3, h4 {
+  font-family: 'EB Garamond', serif;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--black);
+}
+
+h1 { font-size: clamp(3rem, 7vw, 6rem); letter-spacing: -1px; }
+h2 { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; letter-spacing: -0.5px; }
+h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); margin-bottom: 1rem; }
+h4 { font-size: 1.25rem; margin-bottom: 0.75rem; font-weight: 600; }
+
+.intro {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.tagline {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+a:hover {
+  opacity: 0.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid var(--black);
+  background: var(--black);
+  color: var(--white);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background: var(--white);
+  color: var(--black);
+  opacity: 1;
+}
+
+.btn-large {
+  padding: 1rem 3rem;
+  font-size: 1rem;
+}
+
+/* Header */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-bottom: 1px solid #e0e0e0;
+  z-index: 1000;
+}
+
+.header .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.logo {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav a {
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.tel {
+  font-weight: 500;
+}
+
+.toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.toggle span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--black);
+}
+
+/* Hero */
+.hero {
+  margin-top: 75px;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__img {
+  flex: 1;
+  min-height: 50vh;
+}
+
+.hero__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__text {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero__text h1 {
+  margin-bottom: 1rem;
+}
+
+.hero__contact {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+
+.hero__contact p {
+  margin: 0.5rem 0;
+}
+
+/* Welcome */
+.welcome {
+  padding: 6rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.welcome__text {
+  text-align: center;
+}
+
+.welcome__text h2 {
+  margin-bottom: 2rem;
+}
+
+.welcome__text .intro {
+  margin-bottom: 1.5rem;
+}
+
+/* Rooms */
+.rooms {
+  padding: 6rem 0;
+  background: var(--light);
+}
+
+.rooms h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.room-grid {
+  display: grid;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.room-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.room-card__img {
+  overflow: hidden;
+}
+
+.room-card__text h3 {
+  margin-bottom: 1rem;
+}
+
+.room-card__text p {
+  margin-bottom: 1.5rem;
+  color: var(--gray);
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.features li:last-child {
+  border-bottom: none;
+}
+
+.room-info {
+  text-align: center;
+  padding: 3rem;
+  background: var(--white);
+}
+
+.room-info h3 {
+  margin-bottom: 2rem;
+}
+
+.amenity-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.amenity-list span {
+  padding: 0.5rem 1.25rem;
+  border: 1px solid #e0e0e0;
+  font-size: 0.9rem;
+}
+
+/* Amenities */
+.amenities {
+  padding: 6rem 0;
+}
+
+.amenities__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.amenities__text h2 {
+  margin-bottom: 1.5rem;
+}
+
+.amenities__text p {
+  margin-bottom: 2rem;
+  color: var(--gray);
+}
+
+.amenities__text ul {
+  list-style: none;
+  padding: 0;
+}
+
+.amenities__text li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Location */
+.location {
+  padding: 6rem 0;
+  background: var(--light);
+}
+
+.location__grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.location__text h2 {
+  margin-bottom: 1.5rem;
+}
+
+.location__text .intro {
+  margin-bottom: 2rem;
+}
+
+.location__text h3 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.address-block {
+  font-style: normal;
+  margin: 2rem 0;
+  padding: 2rem;
+  background: var(--white);
+  border-left: 3px solid var(--black);
+}
+
+.address-block strong {
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.nearby-list {
+  list-style: none;
+  padding: 0;
+}
+
+.nearby-list li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.location__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Book */
+.book {
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.book h2 {
+  margin-bottom: 1.5rem;
+}
+
+.book p {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  color: var(--gray);
+}
+
+.book__actions {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Footer */
+.footer {
+  padding: 4rem 0 2rem;
+  background: var(--black);
+  color: var(--white);
+}
+
+.footer__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.footer h4 {
+  color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer li {
+  margin-bottom: 0.5rem;
+}
+
+.footer a {
+  color: rgba(255,255,255,0.8);
+}
+
+.footer a:hover {
+  color: var(--white);
+  opacity: 1;
+}
+
+.footer__bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Booking Bar */
+.booking-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-top: 1px solid #e0e0e0;
+  padding: 1rem 0;
+  z-index: 999;
+}
+
+.booking-bar .wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
+.field input,
+.field select {
+  padding: 0.625rem;
+  border: 1px solid #e0e0e0;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.booking-bar .btn {
+  padding: 0.75rem 2rem;
+  white-space: nowrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav {
+    position: fixed;
+    top: 75px;
+    left: -100%;
+    right: 0;
+    bottom: 0;
+    background: var(--white);
+    flex-direction: column;
+    padding: 2rem;
+    transition: left 0.3s;
+    border-right: 1px solid #e0e0e0;
+  }
+
+  .nav.active {
+    left: 0;
+  }
+
+  .toggle {
+    display: flex;
+  }
+
+  .room-card,
+  .amenities__content,
+  .location__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__content {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-bar .wrapper {
+    flex-wrap: wrap;
+  }
+
+  .field {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+
+  .booking-bar .btn {
+    flex: 0 0 100%;
+  }
+}
