@@ -128,9 +128,6 @@ img {
 .nav__logo-img {
   height: 48px;
   width: auto;
-  background: var(--white);
-  padding: 6px 10px;
-  border-radius: 2px;
 }
 
 .nav__links {
@@ -179,33 +176,42 @@ img {
 /* Masthead */
 .masthead {
   margin-top: 80px;
-  background: var(--white);
-  padding-bottom: 80px;
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .masthead__media {
-  height: auto;
-  min-height: 400px;
-  max-height: 600px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--mist);
 }
 
 .masthead__media img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  max-height: 600px;
+  height: 100%;
+  object-fit: cover;
 }
 
 .masthead__content {
+  position: relative;
+  z-index: 1;
   max-width: 1400px;
   margin: 0 auto;
   padding: 4rem 2rem;
   text-align: center;
+  color: var(--white);
+}
+
+.masthead__content h1,
+.masthead__content p,
+.masthead__content a {
+  color: var(--white);
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
 .masthead__title {
