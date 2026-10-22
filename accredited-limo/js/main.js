@@ -70,43 +70,6 @@
   document.querySelectorAll('.js-outbound-hv').forEach(function (a) {
     a.addEventListener('click', function () { track('outbound_hudson_valley'); });
   });
-<<<<<<< HEAD
-  /* Booking forms: hero, header bar, sticky bar. All submit to the same Limo Anywhere flow. */
-  var today = new Date();
-  var minDate = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
-  document.querySelectorAll('.js-date-min').forEach(function (el) { el.min = minDate; });
-  var quoteStarted = false;
-  document.querySelectorAll('.js-quote-form').forEach(function (form) {
-    form.addEventListener('focusin', function () {
-      if (!quoteStarted) { quoteStarted = true; track('quote_start', { source: form.getAttribute('data-source') }); }
-    });
-    form.addEventListener('submit', function () { track('click_book', { source: form.getAttribute('data-source') }); });
-  });
-
-  /* Sticky booking bar */
-  var dock = document.getElementById('booking-dock');
-  var heroForm = document.getElementById('quick-quote');
-  var dockToggle = document.querySelector('.dock__toggle');
-  var dockForm = document.getElementById('dock-form');
-  if (dock && heroForm && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        var past = !en.isIntersecting && en.boundingClientRect.bottom < 0;
-        dock.classList.toggle('is-visible', past);
-      });
-    }).observe(heroForm);
-  } else if (dock) {
-    dock.classList.add('is-visible');
-  }
-  if (dockToggle && dockForm) {
-    dockToggle.addEventListener('click', function () {
-      var open = dockToggle.getAttribute('aria-expanded') === 'true';
-      dockToggle.setAttribute('aria-expanded', String(!open));
-      dockToggle.textContent = open ? 'Book a ride' : 'Close';
-      dock.classList.toggle('is-open', !open);
-      if (!open) { track('click_book', { source: 'sticky_bar_mobile' }); var f = document.getElementById('d-pickup'); if (f) { f.focus(); } }
-    });
-=======
   var quote = document.getElementById('quick-quote');
   if (quote) {
     var started = false;
@@ -117,7 +80,7 @@
       var d = new Date();
       date.min = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     }
->>>>>>> origin/main
+  }
   }
 
   /* Limo Anywhere reservation confirmation (iframe postMessage).
