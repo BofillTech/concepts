@@ -76,18 +76,19 @@ def screenshot_site(url, output_path, hide_css="", wait_time=7):
 
 
 def compose_image(before_path, after_path, output_path):
-    """Compose before/after comparison image."""
-    W = 1200
-    pad = 24
-    top = 70
+    """Compose before/after comparison image at 2x resolution."""
+    # Work at 2x for crispness: 2400px wide
+    W = 2400
+    pad = 48
+    top = 140
     cw = (W - pad * 3) // 2
     ch = int(cw * 800 / 1280)
-    H = top + ch + 30 + 56 + 28
+    H = top + ch + 60 + 112 + 56
     
     img = Image.new("RGB", (W, H), "#f4f1ea")
     d = ImageDraw.Draw(img)
     
-    f = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 26)
+    f = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 52)
     
     for i, (p, label, col) in enumerate([
         (before_path, "YOUR SITE TODAY", "#8a8a8a"),
@@ -95,17 +96,17 @@ def compose_image(before_path, after_path, output_path):
     ]):
         x = pad + i * (cw + pad)
         s = Image.open(p).convert("RGB").crop((0, 0, 1280, 800)).resize((cw, ch), Image.LANCZOS)
-        d.text((x, top - 44), label, font=f, fill=col)
+        d.text((x, top - 88), label, font=f, fill=col)
         img.paste(s, (x, top))
-        d.rectangle([x - 1, top - 1, x + cw, top + ch], outline="#cccccc")
+        d.rectangle([x - 2, top - 2, x + cw + 1, top + ch + 1], outline="#cccccc", width=2)
     
-    y = top + ch + 30
-    f2 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 24)
+    y = top + ch + 60
+    f2 = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 48)
     t = "Click to see your full redesigned homepage, live"
     w = d.textlength(t, font=f2)
-    bw = w + 60
-    d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + 56], 12, fill="#1f5c3a")
-    d.text(((W - w) / 2, y + 14), t, font=f2, fill="white")
+    bw = w + 120
+    d.rounded_rectangle([(W - bw) / 2, y, (W + bw) / 2, y + 112], 24, fill="#1f5c3a")
+    d.text(((W - w) / 2, y + 28), t, font=f2, fill="white")
     
     img.save(output_path, optimize=True)
 
@@ -138,7 +139,7 @@ def main():
         screenshot_site(
             concept_url,
             after_temp,
-            hide_css="[data-book-bar]{display:none!important}"
+            hide_css=""  # Keep booking bar visible
         )
     except Exception as e:
         print(f"FAILED: Could not screenshot concept site", file=sys.stderr)
