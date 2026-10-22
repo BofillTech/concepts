@@ -37,8 +37,8 @@ def capture_real_site(url, output_path):
         page = browser.new_page(viewport={'width': 1200, 'height': 750})
         
         try:
-            page.goto(url, wait_until='networkidle', timeout=15000)
-            page.wait_for_timeout(1000)
+            page.goto(url, wait_until='domcontentloaded', timeout=20000)
+            page.wait_for_timeout(8000)
             page.screenshot(path=output_path, full_page=False)
             browser.close()
             print(f"✓ Captured real site: {url}")
