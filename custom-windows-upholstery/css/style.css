@@ -1,14 +1,18 @@
-/* Custom Windows LLC — concept #156 rev. 2 — Bofill Technologies */
+/* Custom Windows LLC — concept #156 rev. 4 — Bofill Technologies */
 :root{
-  --sky:#DCE6EC;
-  --sky-deep:#C5D4DD;
-  --linen:#F7F8F6;
-  --ink:#1E3342;
-  --ink-2:#243C4D;
-  --ink-soft:#4A5E6C;
-  --brass:#A9803F;
-  --brass-hi:#C79C57;
-  --line:#C7D2D9;
+  /* palette taken from the Custom Windows & Upholstery logo */
+  --sky:#E4E9EF;
+  --sky-deep:#CBD4DE;
+  --linen:#F7F7F4;
+  --ink:#2B3846;
+  --ink-2:#364556;
+  --ink-soft:#56606B;
+  --brass:#634E6D;      /* logo plum: primary action colour */
+  --brass-hi:#C4CCA6;   /* logo sage, lightened: accents on dark */
+  --slate:#4F6177;      /* logo slate */
+  --sage:#A3A985;       /* logo sage */
+  --taupe:#676058;      /* logo taupe */
+  --line:#CDD3DA;
   --white:#FFFFFF;
   --display:"Gloock", "Didot", "Bodoni 72", Georgia, serif;
   --body:"Red Hat Text", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -36,15 +40,15 @@ p{margin:0 0 1em;max-width:62ch}
 .btn--line{background:transparent;color:var(--ink)}
 .btn--line:hover{background:var(--ink);color:var(--linen)}
 .btn--brass{background:var(--brass);border-color:var(--brass);color:var(--white)}
-.btn--brass:hover{background:#8E6A31;border-color:#8E6A31}
-.btn--ghost{background:transparent;color:var(--linen);border-color:#5D7584}
+.btn--brass:hover{background:#4D3C56;border-color:#4D3C56}
+.btn--ghost{background:transparent;color:var(--linen);border-color:#6A7B8D}
 .btn--ghost:hover{border-color:var(--linen)}
 .link-more{font-weight:700;color:var(--brass);text-decoration-thickness:1.5px;text-underline-offset:4px}
 
 /* placeholders for client-supplied content */
-.placeholder,.frame.placeholder{border:2px dashed var(--brass);background:repeating-linear-gradient(-45deg,#EFE7D8 0 10px,#F6F0E4 10px 20px);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
-.placeholder__label{margin:0;font-weight:700;color:#7A5C2C;max-width:30ch}
-.placeholder-inline{color:#7A5C2C;font-weight:700}
+.placeholder,.frame.placeholder{border:2px dashed var(--brass);background:repeating-linear-gradient(-45deg,#ECE8EF 0 10px,#F5F2F6 10px 20px);display:flex;align-items:center;justify-content:center;text-align:center;padding:20px}
+.placeholder__label{margin:0;font-weight:700;color:var(--brass);max-width:30ch}
+.placeholder-inline{color:var(--brass);font-weight:700}
 
 /* header: centred split logo */
 .site-header{position:sticky;top:0;z-index:40;background:var(--linen);border-bottom:1px solid var(--line)}
@@ -55,10 +59,11 @@ p{margin:0 0 1em;max-width:62ch}
 .menu-item a{text-decoration:none;font-weight:500;white-space:nowrap}
 .menu-item a:hover{color:var(--brass)}
 .brand{display:flex;align-items:center;text-decoration:none}
-.brand__logo{height:52px;width:auto}
-.brand__word{display:none;font-family:var(--display);font-size:1.4rem;line-height:1;white-space:nowrap}
-.brand.is-fallback .brand__logo{display:none}
-.brand.is-fallback .brand__word{display:block}
+.brand{gap:12px}
+.brand__mark{height:48px;width:auto}
+.brand__name{display:flex;flex-direction:column;color:var(--brass);text-transform:uppercase;letter-spacing:.08em;font-weight:500;font-size:.82rem;line-height:1.25;white-space:nowrap}
+.brand__name span:first-child{font-size:1.02rem;letter-spacing:.06em}
+@media (max-width:420px){.brand__name{display:none}}
 .site-header__cta{display:flex;align-items:center;gap:14px}
 .site-header__phone{font-weight:700;text-decoration:none;white-space:nowrap}
 .site-header__book{display:none;padding:11px 18px}
@@ -67,7 +72,7 @@ p{margin:0 0 1em;max-width:62ch}
 .drawer{position:fixed;top:76px;left:0;right:0;bottom:0;background:var(--ink);color:var(--linen);padding:32px 24px;z-index:39;overflow-y:auto}
 .drawer[hidden]{display:none}
 .drawer ul{list-style:none;margin:0 0 28px;padding:0}
-.drawer li a{display:block;padding:14px 0;border-bottom:1px solid #35505F;font-family:var(--display);font-size:1.6rem;text-decoration:none}
+.drawer li a{display:block;padding:14px 0;border-bottom:1px solid #465566;font-family:var(--display);font-size:1.6rem;text-decoration:none}
 body.is-locked{overflow:hidden}
 @media (min-width:760px){.site-header__book{display:inline-block}}
 @media (min-width:1120px){
@@ -104,10 +109,10 @@ body.is-locked{overflow:hidden}
 .form{display:grid;gap:14px}
 .form__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form label{display:block;font-size:.86rem;font-weight:700;margin-bottom:5px}
-.form input,.form select{width:100%;font:inherit;padding:12px;border:1px solid #4A6272;background:var(--ink-2);color:var(--linen);border-radius:2px}
+.form input,.form select{width:100%;font:inherit;padding:12px;border:1px solid #56677A;background:var(--ink-2);color:var(--linen);border-radius:2px}
 .form input::placeholder{color:#8DA2AF}
 .form__submit{width:100%;margin-top:6px;font-size:1.05rem}
-.form__status{margin:0;font-weight:700;color:#E9D3A8}
+.form__status{margin:0;font-weight:700;color:var(--brass-hi)}
 
 /* brands strip */
 .brands{background:var(--white);border-bottom:1px solid var(--line);padding:22px 0}
@@ -154,6 +159,7 @@ body.is-locked{overflow:hidden}
 .shutters{background:var(--ink);color:var(--linen);padding:0}
 .shutters__grid{display:grid;align-items:stretch;padding:0}
 .shutters__frame{aspect-ratio:4/3}
+.shutters__frame img{object-position:50% 25%}
 .shutters__copy{padding:56px 24px 64px}
 .shutters__copy h2{font-size:clamp(2.2rem,4.8vw,3.6rem);margin-bottom:18px}
 .shutters__copy p{color:var(--line);font-size:1.08rem}
@@ -172,7 +178,7 @@ body.is-locked{overflow:hidden}
 @media (min-width:900px){.drapery__grid{grid-template-columns:1fr 1.15fr;gap:64px}}
 .drapery h2{margin-bottom:18px}
 .drapery p{color:var(--ink-soft)}
-.drapery__frame{aspect-ratio:4/5;max-height:640px}
+.drapery__frame{aspect-ratio:1/1}
 
 /* recent work: client job photos, natural aspect ratios */
 .work{background:var(--white);padding:96px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
@@ -221,12 +227,12 @@ body.is-locked{overflow:hidden}
 .value{background:var(--ink);color:var(--linen);padding:96px 0}
 .compare-wrap{overflow-x:auto;margin-bottom:56px}
 .compare{width:100%;min-width:560px;border-collapse:collapse;font-size:1rem}
-.compare th,.compare td{text-align:left;padding:15px 16px;border-bottom:1px solid #35505F;vertical-align:top}
+.compare th,.compare td{text-align:left;padding:15px 16px;border-bottom:1px solid #465566;vertical-align:top}
 .compare thead th{font-family:var(--display);font-weight:400;font-size:1.3rem}
 .compare thead th:nth-child(2){color:var(--brass-hi)}
 .compare tbody th{font-weight:500;width:38%}
-.compare td:nth-child(2){font-weight:700;background:rgba(169,128,63,.12)}
-.compare td:nth-child(3){color:#9DB0BC}
+.compare td:nth-child(2){font-weight:700;background:rgba(196,204,166,.12)}
+.compare td:nth-child(3){color:#A7B2BE}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:28px;counter-reset:step}
 @media (min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
 .steps li{counter-increment:step;border-top:2px solid var(--brass);padding-top:16px}
@@ -270,11 +276,18 @@ body.is-locked{overflow:hidden}
 .area__map{width:100%;min-height:380px;height:100%;border:1px solid var(--line)}
 
 /* final cta */
-.final{background:var(--ink);color:var(--linen);padding:88px 0;text-align:center}
-.final__inner{display:flex;flex-direction:column;align-items:center}
+.final{background:var(--ink);color:var(--linen)}
+.final__grid{display:grid}
+.final__frame{aspect-ratio:4/3}
+.final__copy{padding:56px 24px 64px}
 .final h2{font-size:clamp(2.2rem,4.6vw,3.4rem);margin-bottom:14px}
-.final p{color:var(--line);margin:0 auto 28px}
-.final__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.final p{color:var(--line);margin:0 0 28px}
+.final__actions{display:flex;flex-wrap:wrap;gap:12px}
+@media (min-width:900px){
+  .final__grid{grid-template-columns:1fr 1fr}
+  .final__frame{aspect-ratio:auto;min-height:520px}
+  .final__copy{padding:96px 64px;align-self:center;max-width:640px}
+}
 
 /* footer */
 .footer{padding:64px 0 40px;font-size:.93rem;color:var(--ink-soft)}
@@ -285,6 +298,7 @@ body.is-locked{overflow:hidden}
 .footer li{padding:3px 0}
 .footer a{text-decoration:none}
 .footer a:hover{color:var(--brass)}
+.footer__logo{width:150px;height:auto;margin-bottom:16px}
 .footer__base{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:.85rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
 /* sticky action bar: phones always, desktop once the hero form scrolls away */
@@ -335,3 +349,7 @@ body.is-locked{overflow:hidden}
 .shade.shade--drape{height:100%;background:none}
 .shade.shade--drape::after{display:none}
 .shade--drape .drape{display:block}
+
+/* on dark panels the plum button loses contrast: switch to logo sage */
+.value .btn--brass,.shutters .btn--brass,.final .btn--brass,.consult-card .btn--brass,.action-bar .btn--brass,.drawer .btn--brass{background:var(--brass-hi);border-color:var(--brass-hi);color:var(--ink)}
+.value .btn--brass:hover,.shutters .btn--brass:hover,.final .btn--brass:hover,.consult-card .btn--brass:hover,.action-bar .btn--brass:hover,.drawer .btn--brass:hover{background:#D7DCC2;border-color:#D7DCC2}

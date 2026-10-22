@@ -1,4 +1,4 @@
-/* Custom Windows LLC — concept #156 rev. 2 — Bofill Technologies */
+/* Custom Windows LLC — concept #156 rev. 4 — Bofill Technologies */
 (() => {
   'use strict';
   document.documentElement.classList.remove('no-js');
@@ -33,14 +33,7 @@
     bar.classList.add('is-visible');
   }
 
-  // Logo fallback + broken photo handling (class toggles only)
-  const brand = document.querySelector('.brand');
-  const logo = document.querySelector('.brand__logo');
-  const failLogo = () => brand.classList.add('is-fallback');
-  if (logo) {
-    logo.addEventListener('error', failLogo);
-    if (logo.complete && logo.naturalWidth === 0) failLogo();
-  }
+  // Broken photo handling (class toggles only)
   document.querySelectorAll('.frame img, .work__item img').forEach((img) => {
     const fail = () => img.classList.add('is-broken');
     img.addEventListener('error', fail);

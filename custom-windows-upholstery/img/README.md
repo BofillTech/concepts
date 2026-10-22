@@ -1,22 +1,31 @@
-# Image manifest — Custom Windows LLC (#156, rev. 3)
+# Image manifest — Custom Windows & Upholstery (#156, rev. 4)
 
-Client job photos are served from the client's shared Google Drive folder
-(https://drive.google.com/drive/folders/16qwH64GEM2iwBHl6DbJOiXrgE86lEAE5) via
-`drive.google.com/thumbnail?id=<file id>&sz=w1600`. The folder must stay shared as
-"Anyone with the link". At WordPress launch, upload these into the media library.
+All images are now stored in this folder as WebP (resized and compressed), taken from the
+client's Google Drive folder https://drive.google.com/drive/folders/16qwH64GEM2iwBHl6DbJOiXrgE86lEAE5
+and the logo file the client supplied (high_res_windows_only.jpg).
 
-| Slot | Drive file |
+| File | Source in Drive |
 |---|---|
-| Hero | 2023-09-28_131142_Janis_Hayes_2.jpg (striped Romans, harbor view) |
-| Shades: roller | 2023-12-08_155727_Installer_1.jpg (roller + drapery, city view) |
-| Shades: honeycomb | 2024-01-24_151242_Installer_1.jpg |
-| Shutters band | 2025-03-07_103411_Installer_2.jpg (plantation shutters) |
-| Drapery | 2024-03-01_175628_Installer_1.jpg (ripplefold) |
-| Recent work | 2023-09-28_131142_Janis_Hayes_5, 2025-04-11_095528_Installer_1, 2023-08-03_133239_Janis_Hayes_1, 2024-05-23_224801_Installer_2, 2026-07-15_162013_Janis_Hayes_3, 2023-10-27_143648_Installer_1 |
+| logo-full.webp / logo-mark.webp | high_res_windows_only.jpg (mark = the four window icons) |
+| hero-porch-drapery.webp | 9FE1174A-E55A-400E-BC86-8058B518BE9F.heic |
+| roller-solar.webp | 2024-05-03_121824_Installer_2.jpg |
+| honeycomb.webp | 2024-01-24_151242_Installer_1.jpg |
+| sheers-luminette.webp | Lumonettes.jpg |
+| shutters-stained.webp | handcrafted.jpg |
+| drapery-dining.webp | newport.jpg |
+| cta-ripplefold.webp | 2024-03-01_175628_Installer_1.jpg |
+| work-roman-waterview.webp | 2025-05-21_125535_Installer_2.jpg |
+| work-roman-bath.webp | 2026-05-13_135024_Installer_1.jpg |
+| work-roman-kitchen.webp | 2026-08-20_203833_Installer_4.jpg |
+| work-roman-navy.webp | 2023-06-23_125910_Installer_1_(1).jpg |
+| work-shutters-wall.webp | Shutters_2.jpg |
+| work-shutters-arched.webp | arched_shutters.jpg |
+| work-shutters-bath.webp | tub.jpg |
+| work-drapery-dining.webp | Bouthillier_dining.jpg |
+| work-drapery-pattern.webp | parker.PNG (phone status bar cropped off) |
 
-Still stock (Hunter Douglas imagery from the old sites): Silhouette card, PowerView offer, header logo, Hunter Douglas mark.
+Still stock: the PowerView offer image (Hunter Douglas) and the Hunter Douglas mark in the brand strip.
 
 ## Still needed from the client
 1. Owners photo (portrait orientation), names, and a one or two sentence quote.
-2. A Silhouette or Pirouette job photo to replace the stock image.
-3. Three real Google reviews with first name, last initial and town, plus rating and count.
+2. Three Google reviews (first name, last initial, town) and the current rating and review count.
