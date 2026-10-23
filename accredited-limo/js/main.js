@@ -1,4 +1,4 @@
-/* Accredited Limousine Service — homepage behavior (vanilla ES6, no dependencies) */
+/* Accredited Limousine Service — site behavior (vanilla ES6, no dependencies) */
 (function () {
   'use strict';
 
@@ -81,13 +81,42 @@
       date.min = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
     }
   }
-  }
+
+  /* ---- Date fields: no past dates ---- */
+  var today = new Date();
+  var todayStr = today.getFullYear() + '-' + String(today.getMonth() + 1).padStart(2, '0') + '-' + String(today.getDate()).padStart(2, '0');
+  document.querySelectorAll('input[type="date"]').forEach(function (el) { el.min = todayStr; });
+
+  /* ---- Preview forms: prefill from the query string, then show a notice instead of sending ---- */
+  var params;
+  try { params = new URLSearchParams(window.location.search); } catch (err) { params = null; }
+  document.querySelectorAll('.js-preview-form').forEach(function (form) {
+    if (params) {
+      form.querySelectorAll('[data-prefill]').forEach(function (el) {
+        var v = params.get(el.getAttribute('data-prefill'));
+        if (v) { el.value = v; }
+      });
+    }
+    var begun = false;
+    form.addEventListener('focusin', function () { if (!begun) { begun = true; track('form_start', { form: form.id }); } });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (form.reportValidity && !form.reportValidity()) { return; }
+      track('form_submit_preview', { form: form.id });
+      var note = form.querySelector('.js-form-notice');
+      if (note) {
+        note.textContent = 'Thank you. This page is a preview, so the form has not been sent. To reach dispatch now, call 914-725-9444 (toll free 888-444-3108) or book online at book.mylimobiz.com/v4/als.';
+        note.hidden = false;
+        note.focus();
+      }
+    });
+  });
 
   /* Limo Anywhere reservation confirmation (iframe postMessage).
      Message format still to be verified with Limo Anywhere. Never forward PII. */
   window.addEventListener('message', function (e) {
     if (e.origin !== 'https://book.mylimobiz.com') { return; }
-    // TODO: inspect the real confirmation payload, then: track('reservation_complete');
+    // Confirmation payload to be verified before launch; then track('reservation_complete').
   });
 
   /* ---- Hero video: desktop only, after load, respects reduced motion + save-data ---- */
