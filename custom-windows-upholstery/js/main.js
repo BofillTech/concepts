@@ -1,4 +1,4 @@
-/* Custom Windows LLC — concept #156 rev. 4 — Bofill Technologies */
+/* Custom Windows LLC — concept #156 rev. 5 — Bofill Technologies */
 (() => {
   'use strict';
   document.documentElement.classList.remove('no-js');
@@ -40,54 +40,13 @@
     if (img.complete && img.naturalWidth === 0) fail();
   });
 
-  // Try-a-treatment studio
-  const shade = document.getElementById('shade');
-  const floor = document.getElementById('floor');
-  const range = document.getElementById('drop');
-  const label = document.getElementById('dropLabel');
-  const note = document.getElementById('studioNote');
-  const chips = document.querySelectorAll('.chip');
-  const TYPES = {
-    roller:   { block: 0.85, verb: 'Lower it',  name: 'Roller shades', text: 'give the cleanest line, from light-filtering to full blackout.' },
-    cellular: { block: 0.8,  verb: 'Lower it',  name: 'Duette® honeycomb shades', text: 'trap air in their cells to keep rooms warmer in winter and cooler in summer.' },
-    sheer:    { block: 0.45, verb: 'Close it',  name: 'Silhouette® shadings', text: 'soften daylight and keep your view.' },
-    shutter:  { block: 0.85, verb: 'Close it',  name: 'Custom shutters', text: 'are built for one window and last for decades.' },
-    drape:    { block: 0.95, verb: 'Draw them', name: 'Custom drapery', text: 'in almost any fabric, on almost any hardware.' }
-  };
-  let current = 'roller';
-
-  const render = () => {
-    const drop = Number(range.value);
-    shade.dataset.drop = String(drop);
-    floor.dataset.glow = String(Math.round(10 * (1 - (drop / 100) * TYPES[current].block)));
-  };
-  const describe = () => {
-    const t = TYPES[current];
-    note.textContent = '';
-    const strong = document.createElement('strong');
-    strong.textContent = t.name;
-    note.append(strong, ' ' + t.text);
-    label.textContent = t.verb;
-  };
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      current = chip.dataset.type;
-      chips.forEach((c) => c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'));
-      shade.className = 'shade shade--' + current;
-      describe();
-      render();
-    });
-  });
-  range.addEventListener('input', render);
-  render();
-
   // Consultation form. FORM_ENDPOINT: wire to the WordPress form handler at launch.
   const form = document.getElementById('consultForm');
   const status = document.getElementById('formStatus');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
-      status.textContent = 'Add your name, phone, email and town so we can reach you.';
+      status.textContent = 'Add your name, phone and town so we can reach you.';
       return;
     }
     status.textContent = 'Thank you. We will call you to set up your visit.';
