@@ -287,30 +287,6 @@ h2 em,h1 em{font-style:italic}
 .site-footer__legal a{color:var(--sand)}
 .site-footer__legal a:hover{color:#fff}
 
-/* ---------- Booking bar ---------- */
-.book-bar{
-  position:fixed;left:0;right:0;bottom:0;z-index:98;
-  background:var(--navy);color:#fff;
-  display:flex;align-items:center;justify-content:center;gap:14px;
-  padding:9px 16px;
-  transform:translateY(110%);transition:transform .4s ease;
-  border-top:2px solid var(--roof);
-}
-.book-bar.is-visible{transform:translateY(0)}
-.book-bar__label{
-  font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--sand);
-  white-space:nowrap;
-}
-.book-bar__field{display:flex;flex-direction:column;gap:1px}
-.book-bar__field span{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mist)}
-.book-bar__field input,
-.book-bar__field select{
-  font-family:var(--body);font-size:.85rem;color:var(--navy);
-  border:0;border-radius:2px;padding:5px 8px;background:var(--cream);
-}
-.book-bar__call{display:none;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid rgba(255,255,255,.4);border-radius:50%;color:#fff}
-.book-bar__go{padding:11px 22px;font-size:.76rem}
-
 /* ---------- Reveal motion (subtle fade) ---------- */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.is-in,
@@ -360,14 +336,7 @@ h2 em,h1 em{font-style:italic}
 }
 
 @media (max-width:767.98px){
-  body{padding-bottom:78px}
   .hero__panel{margin:-56px 16px 0;padding:36px 22px 40px}
-  .book-bar{gap:9px;padding:8px 10px}
-  .book-bar__label{display:none}
-  .book-bar__field--guests{display:none}
-  .book-bar__call{display:inline-flex}
-  .book-bar__field input{max-width:118px}
-  .book-bar__go{flex:1;min-width:0;padding:11px 10px}
 }
 
 /* ==========================================================================
@@ -641,3 +610,95 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
   .prop-card__body h3{font-size:1.42rem}
   .prop-card__body p{font-size:.95rem}
 }
+
+/* ==========================================================================
+   Rev 4 — Oct 22, 2026 client review
+   ========================================================================== */
+/* Property cards: Gallery + Inquire */
+.prop-card__actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.prop-card__actions .btn{align-self:auto}
+
+/* Photo lightbox */
+.has-lightbox,.has-lightbox body{overflow:hidden}
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(15,40,56,.94);display:flex;align-items:center;justify-content:center;padding:56px 12px}
+.lightbox[hidden]{display:none}
+.lightbox__figure{margin:0;max-width:min(1200px,100%);display:flex;flex-direction:column;align-items:center;gap:12px}
+.lightbox__img{max-width:100%;max-height:calc(100vh - 150px);width:auto;height:auto;object-fit:contain;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.lightbox__cap{display:flex;gap:18px;justify-content:space-between;width:100%;color:var(--mist);font-size:.82rem;letter-spacing:.04em}
+.lightbox__title{font-family:var(--display);font-style:italic;font-size:1.05rem;color:var(--sand)}
+.lightbox__count{white-space:nowrap}
+.lightbox__close,.lightbox__nav{position:absolute;background:transparent;border:1px solid rgba(255,255,255,.45);color:#fff;border-radius:50%;width:46px;height:46px;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s ease,background .2s ease}
+.lightbox__close:hover,.lightbox__nav:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.lightbox__close{top:12px;right:12px}
+.lightbox__nav{top:50%;transform:translateY(-50%)}
+.lightbox__nav--prev{left:12px}
+.lightbox__nav--next{right:12px}
+@media (max-width:767.98px){
+  .lightbox__nav{top:auto;bottom:10px;transform:none}
+  .lightbox__nav--prev{left:calc(50% - 56px)}
+  .lightbox__nav--next{right:calc(50% - 56px)}
+}
+
+/* Footer CTA, social, Instagram mockup */
+.site-footer__cta{text-align:center;padding:0 0 clamp(40px,5vw,56px);border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:clamp(40px,5vw,56px)}
+.site-footer__cta-title{font-family:var(--display);font-size:clamp(1.8rem,3.6vw,2.6rem);color:#fff;line-height:1.15;margin:6px 0 22px}
+.site-footer__cta-title em{color:var(--sand)}
+.site-footer__cta-actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.site-footer__insta{padding-bottom:clamp(40px,5vw,56px)}
+.site-footer__insta-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+.site-footer__insta-handle{display:inline-flex;align-items:center;gap:10px;color:#fff;font-family:var(--display);font-size:1.3rem}
+.site-footer__insta-handle:hover{color:var(--sand)}
+.site-footer__insta-head .ph-flag{margin-bottom:0}
+.site-footer__insta svg,.site-footer__social svg{width:20px;height:20px;fill:currentColor;flex:none}
+.insta-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media (min-width:768px){.insta-strip{grid-template-columns:repeat(6,minmax(0,1fr))}}
+.insta-tile{display:block;aspect-ratio:1/1;overflow:hidden;background:var(--navy)}
+.insta-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,opacity .3s ease}
+.insta-tile:hover img{transform:scale(1.05);opacity:.9}
+.site-footer__social{display:flex;gap:12px;margin-top:18px}
+.site-footer__social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border:1px solid rgba(255,255,255,.35);border-radius:50%;color:#fff}
+.site-footer__social a:hover{border-color:#fff;color:var(--sand)}
+
+/* Photo credits (Mist + Moss photos only) */
+.photo-credit{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+.weddings__media{position:relative}
+.weddings__media .photo-credit,.photo-credit--overlay{position:absolute;right:10px;bottom:10px;margin:0;background:rgba(15,40,56,.7);color:#fff;padding:5px 10px}
+.page-hero__media{position:relative}
+.photo-credit--block{text-align:right;margin-top:12px}
+
+/* Stay: video hero */
+.page-hero--video .page-hero__media--video{min-height:0;display:flex;align-items:center;background:var(--navy-deep)}
+.page-hero__media--video .video-embed{width:100%}
+.page-hero__panel .btn + .link-more{align-self:flex-start}
+
+/* Dine */
+.venue__photo{margin:0;background:var(--mist);aspect-ratio:3/2;overflow:hidden}
+.venue__photo img{width:100%;height:100%;object-fit:cover}
+.slideshow--portrait::before{padding-top:100%}
+.season-note{font-family:var(--display);font-style:italic;font-size:1.4rem;color:var(--roof)}
+
+/* Private events */
+.ev-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media (min-width:768px){.ev-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.ev-gallery__item{display:block;padding:0;border:0;background:var(--mist);aspect-ratio:1/1;overflow:hidden;cursor:zoom-in}
+.ev-gallery__item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.ev-gallery__item:hover img{transform:scale(1.04)}
+.venue-cards{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+@media (min-width:768px){.venue-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.venue-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.venue-card{background:var(--paper);box-shadow:var(--shadow);border-top:2px solid var(--roof);padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px}
+.venue-card h3{font-size:1.4rem}
+.venue-card p{color:var(--muted);font-size:.92rem}
+
+/* About & History */
+.history-copy{margin:0 auto clamp(32px,4vw,48px);display:flex;flex-direction:column;gap:14px;color:var(--muted)}
+.archive-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:900px){.archive-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.archive-grid__item{margin:0;aspect-ratio:4/3;overflow:hidden;background:var(--sand)}
+.archive-grid__item img{width:100%;height:100%;object-fit:cover;filter:sepia(.15)}
+
+/* Utility */
+.block--tight{padding:clamp(40px,5vw,64px) 0}
+.section-head--left{text-align:left;margin-left:0;margin-bottom:24px}
+.redirect-stub{max-width:640px;margin:0 auto;padding:120px 24px;text-align:center;display:flex;flex-direction:column;gap:16px}
+@media (min-width:900px){#reviews .quotes{grid-template-columns:repeat(2,minmax(0,1fr));max-width:880px;margin:0 auto}}

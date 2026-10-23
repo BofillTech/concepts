@@ -80,60 +80,6 @@
     reveals.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* ---------- Bottom booking bar ---------- */
-  const bar = document.getElementById('book-bar');
-  const inEl = document.getElementById('bb-in');
-  const outEl = document.getElementById('bb-out');
-  const guestsEl = document.getElementById('bb-guests');
-  const goBtn = document.getElementById('bb-go');
-  const fmt = (d) => d.toISOString().slice(0, 10);
-
-  if (inEl && outEl) {
-    const today = new Date();
-    const tomorrow = new Date(today);
-    tomorrow.setDate(today.getDate() + 1);
-    inEl.value = fmt(today);
-    inEl.min = fmt(today);
-    outEl.value = fmt(tomorrow);
-    outEl.min = fmt(tomorrow);
-    inEl.addEventListener('change', () => {
-      const next = new Date(inEl.value);
-      next.setDate(next.getDate() + 1);
-      outEl.min = fmt(next);
-      if (outEl.value <= inEl.value) outEl.value = fmt(next);
-    });
-  }
-
-  if (goBtn) {
-    goBtn.addEventListener('click', () => {
-      /* ENGINE HOOK: direct-book.com accepts the property slug; the date/guest
-         param names below are the engine's common format — confirm against a
-         live booking and correct here if it rewrites them upstream. */
-      const base = 'https://direct-book.com/properties/SpringHouseHotelDIRECT';
-      const params = new URLSearchParams({
-        locale: 'en',
-        checkInDate: inEl ? inEl.value : '',
-        checkOutDate: outEl ? outEl.value : ''
-      });
-      if (guestsEl) params.set('items[0][adults]', guestsEl.value);
-      window.open(base + '?' + params.toString(), '_blank', 'noopener');
-    });
-  }
-
-  if (bar) {
-    const hero = document.querySelector('.hero');
-    if ('IntersectionObserver' in window && hero) {
-      const barIO = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          bar.classList.toggle('is-visible', !entry.isIntersecting);
-        });
-      }, { threshold: 0.05 });
-      barIO.observe(hero);
-    } else {
-      bar.classList.add('is-visible');
-    }
-  }
-
   /* ---------- Dynamic year ---------- */
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
@@ -247,39 +193,146 @@
     }
   });
 
-  /* ---------- Gift card checkout hook ---------- */
-  var gcForm = document.getElementById('gc-form');
-  if (gcForm) {
-    var gcAmount = { value: 100 };
-    gcForm.querySelectorAll('.gc-amounts button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        gcForm.querySelectorAll('.gc-amounts button').forEach(function (x) { x.classList.remove('is-selected'); });
-        b.classList.add('is-selected');
-        var custom = document.getElementById('gc-custom');
-        if (b.dataset.amount === 'custom') { custom.hidden = false; custom.focus(); }
-        else { document.getElementById('gc-custom').hidden = true; gcAmount.value = parseInt(b.dataset.amount, 10); }
-      });
+  /* ---------- Photo galleries + lightbox ----------
+     Property galleries: edit the photo lists below (paths are relative to the site root).
+     Any other data-gallery="name" group (e.g. the Private Events grid) is built from the
+     <img> elements inside the matching triggers on the page. "all" = every property photo. */
+  var GALLERIES = {
+    main: { title: 'Spring House Main Building', photos: [
+      { src: 'img/stay/main-exterior.jpg', alt: 'The Spring House Hotel main building' },
+      { src: 'img/stay/main-room-bed.jpg', alt: 'A guest room in the main building' },
+      { src: 'img/stay/main-room-window.jpg', alt: 'A main-building guest room with a window view' },
+      { src: 'img/stay/main-lawn.jpg', alt: 'Adirondack chairs on the Spring House lawn' }
+    ] },
+    barn: { title: 'Barn Apartments', photos: [
+      { src: 'img/stay/barn-apt-3.jpg', alt: 'A bedroom in the Barn Apartments' },
+      { src: 'img/stay/barn-apt-2.jpg', alt: 'Inside the Barn Apartments' },
+      { src: 'img/stay/barn-apt-4.jpg', alt: 'Inside the Barn Apartments' }
+    ] },
+    seaside: { title: 'Seaside Homes', photos: [
+      { src: 'img/stay/seaside-exterior.jpg', alt: 'A Seaside Home on the Spring House property' },
+      { src: 'img/stay/seaside-living.jpg', alt: 'A Seaside Home living room' },
+      { src: 'img/stay/seaside-dining.jpg', alt: 'A Seaside Home dining area' },
+      { src: 'img/stay/seaside-bedroom.jpg', alt: 'A Seaside Home bedroom' },
+      { src: 'img/stay/chaffee-30.jpg', alt: 'Chaffee House exterior' },
+      { src: 'img/stay/chaffee-31.jpg', alt: 'Chaffee House exterior' },
+      { src: 'img/stay/chaffee-32.jpg', alt: 'Chaffee House exterior' },
+      { src: 'img/stay/chaffee-01.jpg', alt: 'The deck at Chaffee House' },
+      { src: 'img/stay/chaffee-33.jpg', alt: 'Deck chairs at Chaffee House' },
+      { src: 'img/stay/chaffee-38.jpg', alt: 'The living room at Chaffee House' },
+      { src: 'img/stay/chaffee-39.jpg', alt: 'The living room at Chaffee House' },
+      { src: 'img/stay/chaffee-36.jpg', alt: 'The dining area at Chaffee House' },
+      { src: 'img/stay/chaffee-37.jpg', alt: 'The dining area at Chaffee House' },
+      { src: 'img/stay/chaffee-34.jpg', alt: 'The kitchen at Chaffee House' },
+      { src: 'img/stay/chaffee-35.jpg', alt: 'The kitchen at Chaffee House' },
+      { src: 'img/stay/chaffee-26.jpg', alt: 'A bedroom at Chaffee House' },
+      { src: 'img/stay/chaffee-27.jpg', alt: 'A bedroom at Chaffee House' },
+      { src: 'img/stay/chaffee-28.jpg', alt: 'A bedroom at Chaffee House' },
+      { src: 'img/stay/chaffee-29.jpg', alt: 'A bedroom at Chaffee House' }
+    ] },
+    mott: { title: 'The Mott House', photos: [
+      { src: 'img/stay/mott-exterior.jpg', alt: 'The Mott House framed by hydrangeas' },
+      { src: 'img/stay/mott-room.jpg', alt: 'A guest room in the Mott House' }
+    ] },
+    inn: { title: 'The Inn at the Spring House', photos: [
+      { src: 'img/stay/inn-exterior.jpg', alt: 'The Inn at the Spring House' },
+      { src: 'img/stay/inn-sign.jpg', alt: 'The Inn at Spring House sign' },
+      { src: 'img/stay/inn-balcony.jpg', alt: 'A balcony at the Inn' },
+      { src: 'img/stay/inn-room.jpg', alt: 'A guest room at the Inn' }
+    ] },
+    seawinds: { title: 'Seawinds Townhouses', photos: [
+      { src: 'img/stay/seawinds-front.jpg', alt: 'The front of the Seawinds Townhouses' },
+      { src: 'img/stay/seawinds-view.jpg', alt: 'The view from Seawinds' },
+      { src: 'img/stay/seawinds-living.jpg', alt: 'A Seawinds living room' },
+      { src: 'img/stay/seawinds-kitchen.jpg', alt: 'A Seawinds kitchen' }
+    ] },
+    newharbor: { title: 'The Spring House in New Harbor', photos: [
+      { src: 'img/stay/newharbor-exterior.jpg', alt: 'The Spring House in New Harbor' },
+      { src: 'img/stay/newharbor-lobby.jpg', alt: 'The New Harbor lobby' },
+      { src: 'img/stay/newharbor-room.jpg', alt: 'A guest room in New Harbor' }
+    ] },
+    cooneymus: { title: 'The Cooneymus Cottage', photos: [
+      { src: 'img/stay/cooneymus-3.jpg', alt: 'The Cooneymus Cottage' },
+      { src: 'img/stay/cooneymus-1.jpg', alt: 'The Cooneymus Cottage' },
+      { src: 'img/stay/cooneymus-2.jpg', alt: 'The Cooneymus Cottage' },
+      { src: 'img/stay/cooneymus-4.jpg', alt: 'The Cooneymus Cottage' }
+    ] }
+  };
+  (function () {
+    var all = [];
+    Object.keys(GALLERIES).forEach(function (k) {
+      GALLERIES[k].photos.forEach(function (p) { all.push({ src: p.src, alt: p.alt, caption: GALLERIES[k].title }); });
     });
-    gcForm.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      var custom = document.getElementById('gc-custom');
-      var amount = (!custom.hidden && custom.value) ? parseFloat(custom.value) : gcAmount.value;
-      var payload = {
-        amount: amount,
-        quantity: parseInt(document.getElementById('gc-qty').value, 10) || 1,
-        recipientName: document.getElementById('gc-to').value,
-        recipientEmail: document.getElementById('gc-email').value,
-        message: document.getElementById('gc-msg').value
-      };
-      /* TODO (PAYMENT INTEGRATION): wire this payload into the payment provider.
-         The hotel currently sells gift cards through Givex:
-         https://wwws-usa2.givex.com/cws4.0/springhouse/
-         Options: (a) keep Givex and deep-link/redirect with amount,
-         (b) Stripe Checkout session via a small serverless endpoint,
-         (c) the booking engine's voucher module if direct-book supports it.
-         Until then we hand off to the live Givex storefront: */
-      console.log('GIFT CARD CHECKOUT PAYLOAD (stub):', payload);
-      window.open('https://wwws-usa2.givex.com/cws4.0/springhouse/', '_blank', 'noopener');
+    GALLERIES.all = { title: 'The Spring House Collection', photos: all };
+  }());
+
+  var lb = null, lbImg, lbCap, lbCount, lbList = [], lbIdx = 0, lbReturn = null;
+  function buildLightbox() {
+    lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.setAttribute('role', 'dialog');
+    lb.setAttribute('aria-modal', 'true');
+    lb.setAttribute('aria-label', 'Photo gallery');
+    lb.hidden = true;
+    lb.innerHTML =
+      '<button class="lightbox__close" type="button" aria-label="Close gallery">&times;</button>' +
+      '<button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Previous photo">&#8249;</button>' +
+      '<figure class="lightbox__figure"><img class="lightbox__img" alt=""><figcaption class="lightbox__cap"><span class="lightbox__title"></span><span class="lightbox__count"></span></figcaption></figure>' +
+      '<button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Next photo">&#8250;</button>';
+    document.body.appendChild(lb);
+    lbImg = lb.querySelector('.lightbox__img');
+    lbCap = lb.querySelector('.lightbox__title');
+    lbCount = lb.querySelector('.lightbox__count');
+    lb.querySelector('.lightbox__close').addEventListener('click', closeLightbox);
+    lb.querySelector('.lightbox__nav--prev').addEventListener('click', function () { showPhoto(lbIdx - 1); });
+    lb.querySelector('.lightbox__nav--next').addEventListener('click', function () { showPhoto(lbIdx + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb || lb.hidden) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowLeft') showPhoto(lbIdx - 1);
+      else if (e.key === 'ArrowRight') showPhoto(lbIdx + 1);
     });
   }
+  function showPhoto(i) {
+    if (!lbList.length) return;
+    lbIdx = (i + lbList.length) % lbList.length;
+    var p = lbList[lbIdx];
+    lbImg.src = p.src;
+    lbImg.alt = p.alt || '';
+    lbCap.textContent = p.caption || '';
+    lbCount.textContent = (lbIdx + 1) + ' / ' + lbList.length;
+  }
+  function openLightbox(list, start, trigger) {
+    if (!list.length) return;
+    if (!lb) buildLightbox();
+    lbList = list;
+    lbReturn = trigger || null;
+    lb.hidden = false;
+    document.documentElement.classList.add('has-lightbox');
+    showPhoto(start || 0);
+    lb.querySelector('.lightbox__close').focus();
+  }
+  function closeLightbox() {
+    lb.hidden = true;
+    document.documentElement.classList.remove('has-lightbox');
+    if (lbReturn) lbReturn.focus();
+  }
+  document.querySelectorAll('[data-gallery]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var key = btn.getAttribute('data-gallery');
+      var list;
+      if (GALLERIES[key]) {
+        list = GALLERIES[key].photos.map(function (p) { return { src: p.src, alt: p.alt, caption: p.caption || GALLERIES[key].title }; });
+      } else {
+        list = [];
+        var holder = btn.closest('[data-credit]');
+        var credit = holder ? ' \u00b7 ' + holder.getAttribute('data-credit') : '';
+        document.querySelectorAll('[data-gallery="' + key + '"] img').forEach(function (im) {
+          list.push({ src: im.getAttribute('src'), alt: im.getAttribute('alt'), caption: im.getAttribute('alt') + credit });
+        });
+      }
+      openLightbox(list, parseInt(btn.getAttribute('data-index') || '0', 10), btn);
+    });
+  });
 }());
