@@ -1,4 +1,4 @@
-/* Hudson Valley Charter Bus & Van Services, site JS (vanilla, no dependencies) */
+/* Hudson Valley Coach, site JS (vanilla, no dependencies) */
 (function () {
   'use strict';
   var doc = document;
