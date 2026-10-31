@@ -515,3 +515,19 @@ p{max-width:68ch}
 @media (max-width:480px){.brand__logo{height:58px;width:82px}}
 @media (max-width:359px){.site-header__phone{font-size:.76rem}}
 .welcome + .roof{padding-top:clamp(1rem,3vw,2rem)}
+
+/* ===== Oct 31 trial: wider frame + Brian-style hero (delete this block to revert) ===== */
+:root{--frame:1560px;--gutter:clamp(1.25rem,4vw,4.5rem);--wrap:min(var(--frame),100% - var(--gutter)*2);--col:min(var(--frame),100% - var(--gutter)*2)}
+.gallery__track{padding:0 max(var(--gutter),calc((100vw - var(--frame))/2)) 1rem;scroll-padding-inline:max(var(--gutter),calc((100vw - var(--frame))/2))}
+.hero__controls{right:max(var(--gutter),calc((100vw - var(--frame))/2))}
+@media (min-width:1024px){
+  #downstairs .pub > div,#downstairs .pub > dl{padding-right:max(var(--gutter),calc((100vw - var(--frame))/2))}
+}
+@media (min-width:900px){
+  .home-hero{grid-template-columns:minmax(0,5fr) minmax(0,7fr)}
+  .home-hero__panel{gap:1.75rem;padding:clamp(2rem,4vw,3.5rem) clamp(1.5rem,3vw,3rem) clamp(2rem,4vw,3.5rem) max(var(--gutter),calc((100vw - var(--frame))/2))}
+  .home-hero__title{gap:.9rem}
+  .home-hero__name{font-size:clamp(2.4rem,3vw,3.75rem);text-wrap:balance}
+  .home-hero__tag{font-size:clamp(1.35rem,2vw,2.1rem);line-height:1.2;text-wrap:balance}
+}
+
