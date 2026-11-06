@@ -6,6 +6,7 @@
    ========================================================================== */
 
 :root{
+  --header-h:104px;
   --navy:#16384E;
   --navy-deep:#0F2838;
   --roof:#A6392E;
@@ -25,7 +26,7 @@
 *,
 *::before,
 *::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h,104px) + 12px)}
 html:focus-within{scroll-behavior:smooth}
 body{
   font-family:var(--body);
@@ -92,6 +93,7 @@ h2 em,h1 em{font-style:italic}
 
 /* ---------- Header ---------- */
 .site-header{
+  --header-h:104px;
   position:fixed;top:0;left:0;right:0;z-index:100;
   background:var(--cream);
   border-bottom:1px solid rgba(22,56,78,.08);
@@ -100,7 +102,7 @@ h2 em,h1 em{font-style:italic}
 .site-header.is-scrolled{box-shadow:0 10px 30px -18px rgba(22,56,78,.4)}
 .site-header__inner{
   max-width:1360px;margin:0 auto;padding:0 22px;
-  display:flex;align-items:center;gap:26px;height:78px;
+  display:flex;align-items:center;gap:26px;height:var(--header-h,104px);
 }
 .site-header__brand{display:flex;align-items:center;min-width:0}
 .site-header__logo{max-height:89px;width:auto}
@@ -129,7 +131,7 @@ h2 em,h1 em{font-style:italic}
 
 /* ---------- Drawer ---------- */
 .drawer{
-  position:fixed;inset:78px 0 0 0;z-index:99;background:var(--navy-deep);
+  position:fixed;inset:var(--header-h,104px) 0 0 0;z-index:99;background:var(--navy-deep);
   padding:48px 28px;overflow-y:auto;
 }
 .drawer__menu a{
@@ -141,7 +143,7 @@ h2 em,h1 em{font-style:italic}
 .drawer__foot a[href^="tel"]{color:var(--cream);font-size:1.05rem;letter-spacing:.05em}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;margin-top:78px}
+.hero{position:relative;margin-top:var(--header-h,104px)}
 .hero__media{height:min(72vh,720px);overflow:hidden;background:var(--mist)}
 .hero__video{width:100%;height:100%;object-fit:cover}
 .hero__panel{
@@ -365,7 +367,7 @@ iframe.hero__video{
 .menu-item.current-menu-item a{color:var(--roof)}
 
 /* Inner page hero: photo + solid panel beside it (never text over the image) */
-.page-hero{margin-top:78px;background:var(--cream)}
+.page-hero{margin-top:var(--header-h,104px);background:var(--cream)}
 .page-hero__grid{display:grid;grid-template-columns:minmax(0,1fr)}
 .page-hero__grid > *{min-width:0}
 .page-hero__media{min-height:300px;background:var(--mist)}
@@ -710,6 +712,7 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
 .site-header__actions{gap:12px}
 .site-header__actions .site-header__phone{margin-right:4px}
 @media (min-width:1024px) and (max-width:1279.98px){
+  :root,.site-header{--header-h:88px}
   .menu-primary{gap:20px}
   .menu-item a{letter-spacing:.1em;font-size:.74rem}
   .site-header__inner{gap:18px}
@@ -718,6 +721,7 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
   .site-header__actions .btn--hdr{padding:11px 14px;font-size:.7rem;min-width:0}
 }
 @media (max-width:640px){
+  :root,.site-header{--header-h:82px}
   .site-header__inner{padding:0 12px;gap:8px}
   .site-header__logo{max-height:67px}
   .site-header__actions{gap:6px;margin-left:auto}
