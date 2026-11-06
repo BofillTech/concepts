@@ -103,7 +103,7 @@ h2 em,h1 em{font-style:italic}
   display:flex;align-items:center;gap:26px;height:78px;
 }
 .site-header__brand{display:flex;align-items:center;min-width:0}
-.site-header__logo{max-height:74px;width:auto}
+.site-header__logo{max-height:89px;width:auto}
 .site-header__wordmark{
   font-family:var(--display);font-size:1.35rem;font-weight:600;color:var(--navy);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
@@ -713,13 +713,13 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
   .menu-primary{gap:20px}
   .menu-item a{letter-spacing:.1em;font-size:.74rem}
   .site-header__inner{gap:18px}
-  .site-header__logo{max-height:60px}
+  .site-header__logo{max-height:72px}
   .site-header__phone-num{display:none}
   .site-header__actions .btn--hdr{padding:11px 14px;font-size:.7rem;min-width:0}
 }
 @media (max-width:640px){
   .site-header__inner{padding:0 12px;gap:8px}
-  .site-header__logo{max-height:56px}
+  .site-header__logo{max-height:67px}
   .site-header__actions{gap:6px;margin-left:auto}
   .site-header__actions .site-header__phone{margin-right:0;width:34px;height:34px}
   .site-header__actions .btn--hdr{padding:9px 8px;font-size:.62rem;letter-spacing:.05em;min-width:0}
@@ -741,3 +741,41 @@ video.loop-clip{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;backg
 .faq__item:first-of-type{border-top:1px solid var(--sand)}
 .faq__q{font-size:1.18rem;margin-bottom:8px}
 .faq__a{color:var(--muted);max-width:62ch;overflow-wrap:break-word}
+
+/* Restaurant film (homepage dine band) */
+.dine__film{margin:0 0 42px;box-shadow:var(--shadow)}
+.dine__film video{display:block;width:100%;height:auto;aspect-ratio:1280/604;object-fit:cover}
+@media (prefers-reduced-motion:reduce){video.hero__video,.dine__film{display:none}}
+/* native video in page heroes fills like the iframe trick */
+video.hero__video{position:absolute;inset:0;width:100%;height:100%}
+/* Coffee Bar logo card stand-in */
+.card__media--logo{background:var(--cream);display:flex;align-items:center;justify-content:center;aspect-ratio:3/2}
+.card__media--logo img{width:min(62%,300px);height:auto;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(16,40,56,.14))}
+
+/* Press & Reviews: compact header + publisher logos */
+.page-hero--compact{background:var(--cream)}
+.page-hero--compact .page-hero__panel{max-width:var(--maxw,1180px);margin:0 auto;padding:clamp(26px,4vw,46px) clamp(24px,5vw,48px)}
+.page-hero--compact h1{font-size:clamp(1.9rem,4vw,2.7rem)}
+.press-row__logo{height:24px;width:auto;max-width:200px;object-fit:contain;display:block}
+@media (max-width:640px){.press-row__logo{height:20px}}
+
+/* Private Events venue photos */
+.venue-card__media{margin:0 0 16px;aspect-ratio:3/2;overflow:hidden;background:var(--mist)}
+.venue-card__media img{width:100%;height:100%;object-fit:cover}
+
+/* FAQ two-column layout */
+.faq__grid{display:grid;grid-template-columns:1fr 1fr;gap:0 56px}
+.faq__grid .faq__item:first-of-type{border-top:0}
+.faq__grid .faq__item:nth-of-type(2){border-top:0}
+.faq__grid .faq__q{font-size:1.12rem}
+@media (max-width:900px){.faq__grid{grid-template-columns:1fr}.faq__grid .faq__item:nth-of-type(2){border-top:1px solid var(--sand)}}
+
+/* Promotional pop-up (capability; disabled until a campaign is configured) */
+.promo{position:fixed;inset:0;z-index:999;background:rgba(15,40,56,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.promo__dialog{position:relative;background:var(--cream);max-width:520px;width:100%;box-shadow:var(--shadow)}
+.promo__img{width:100%;height:auto;display:block}
+.promo__body{padding:28px 30px 32px;text-align:center}
+.promo__body h3{font-size:1.6rem;margin-bottom:10px}
+.promo__body p{color:var(--muted);margin-bottom:18px}
+.promo__close{position:absolute;top:8px;right:8px;background:none;border:0;font-size:1.9rem;line-height:1;color:var(--navy);cursor:pointer;padding:6px 10px}
+.promo__close:hover{color:var(--mansard,#A6392E)}

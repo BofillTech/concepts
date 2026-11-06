@@ -193,6 +193,60 @@
     }
   });
 
+
+  /* ---------- Promotional pop-up (capability only — NO campaign is live) ----------
+     EDIT ME to launch a promotion. Set enabled:true and fill in the fields.
+     - pages: which pages show it ('index.html' = homepage; '' matches the homepage path too)
+     - delayMs: how long after page load it appears
+     - frequency: 'once-per-session' (sessionStorage) or 'once-per-visitor' (localStorage) or 'always'
+     - ctaHref: where the button goes (e.g. the Cyber Monday page or the booking engine)
+     Example (Cyber Monday, DO NOT enable until Frank approves creative/dates):
+       enabled:true, pages:['index.html'], delayMs:4000, frequency:'once-per-session',
+       title:'...', body:'...', ctaLabel:'...', ctaHref:'...', image:'' */
+  var PROMO_POPUP = {
+    enabled: false,
+    pages: ['index.html'],
+    delayMs: 4000,
+    frequency: 'once-per-session',
+    title: '',
+    body: '',
+    ctaLabel: '',
+    ctaHref: '',
+    image: ''
+  };
+  (function () {
+    if (!PROMO_POPUP.enabled || !PROMO_POPUP.title) return;
+    var here = (location.pathname.split('/').pop() || 'index.html');
+    if (PROMO_POPUP.pages.length && PROMO_POPUP.pages.indexOf(here) === -1) return;
+    var KEY = 'shh-promo-seen';
+    var store = null;
+    try {
+      if (PROMO_POPUP.frequency === 'once-per-session') store = window.sessionStorage;
+      if (PROMO_POPUP.frequency === 'once-per-visitor') store = window.localStorage;
+      if (store && store.getItem(KEY)) return;
+    } catch (e) { store = null; }
+    setTimeout(function () {
+      var ov = document.createElement('div');
+      ov.className = 'promo';
+      var img = PROMO_POPUP.image ? '<img class="promo__img" src="' + PROMO_POPUP.image + '" alt="">' : '';
+      var cta = PROMO_POPUP.ctaHref ? '<a class="btn btn--book" href="' + PROMO_POPUP.ctaHref + '">' + PROMO_POPUP.ctaLabel + '</a>' : '';
+      ov.innerHTML = '<div class="promo__dialog" role="dialog" aria-modal="true" aria-label="' + PROMO_POPUP.title + '">' +
+        '<button class="promo__close" type="button" aria-label="Close">&times;</button>' + img +
+        '<div class="promo__body"><h3>' + PROMO_POPUP.title + '</h3><p>' + PROMO_POPUP.body + '</p>' + cta + '</div></div>';
+      document.body.appendChild(ov);
+      function close() {
+        ov.remove();
+        try { if (store) store.setItem(KEY, '1'); } catch (e) {}
+        document.removeEventListener('keydown', onKey);
+      }
+      function onKey(ev) { if (ev.key === 'Escape') close(); }
+      ov.querySelector('.promo__close').addEventListener('click', close);
+      ov.addEventListener('click', function (ev) { if (ev.target === ov) close(); });
+      document.addEventListener('keydown', onKey);
+      ov.querySelector('.promo__close').focus();
+    }, PROMO_POPUP.delayMs);
+  }());
+
   /* ---------- Photo galleries + lightbox ----------
      Property galleries: edit the photo lists below (paths are relative to the site root).
      Any other data-gallery="name" group (e.g. the Private Events grid) is built from the
@@ -318,6 +372,19 @@
     document.documentElement.classList.remove('has-lightbox');
     if (lbReturn) lbReturn.focus();
   }
+  /* Deep link: stay.html#gallery-<key> opens that property's gallery (used by the map widget). */
+  (function () {
+    var m = (location.hash || '').match(/^#gallery-([a-z]+)$/);
+    if (!m || !GALLERIES[m[1]]) return;
+    var key = m[1];
+    var card = document.querySelector('[data-prop="' + key + '"]');
+    if (card) card.scrollIntoView({ block: 'center' });
+    setTimeout(function () {
+      var list = GALLERIES[key].photos.map(function (p) { return { src: p.src, alt: p.alt, caption: GALLERIES[key].title }; });
+      openLightbox(list, 0, card ? card.querySelector('[data-gallery]') : null);
+    }, 350);
+  }());
+
   document.querySelectorAll('[data-gallery]').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var key = btn.getAttribute('data-gallery');

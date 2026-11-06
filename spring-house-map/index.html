@@ -162,6 +162,7 @@ body{
   #map{bottom:0}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
+.pop-body a.pop-gal{display:inline-block;margin-left:10px;background:none;color:var(--navy,#16384E);text-decoration:underline;padding:10px 0}
 </style>
 </head>
 <body>
@@ -217,58 +218,58 @@ body{
   var BOOK = 'https://direct-book.com/properties/SpringHouseHotelDIRECT';
   var PROPS = [
     {
-      name:'Spring House Main Building', sub:'52 Spring St · 32 Guest Rooms',
+      name:'Spring House Main Building', gal:'main', sub:'52 Spring St · 32 Guest Rooms',
       lat:41.16800, lng:-71.55483,
       img:'https://springhouseblockisland.com/wp-content/uploads/Main-Building-Exterior-436x378.jpg',
       blurb:'Block Island\u2019s oldest and largest hotel, built in 1852. Kings, Queens, Studios and Suites with panoramic island or ocean views.',
       link:BOOK, cta:'Book Now'
     },
     {
-      name:'Mott House', sub:'Across from the Main Building · 17 Rooms',
+      name:'Mott House', gal:'mott', sub:'Across from the Main Building · 17 Rooms',
       lat:41.16862, lng:-71.55440,
       img:'https://springhouseblockisland.com/wp-content/uploads/The-Mott-House.jpg',
       blurb:'A quieter retreat nestled in the Spring House gardens, with a farmer\u2019s porch, rocking chairs, and a breathtaking ocean view.',
       link:BOOK, cta:'Book Now'
     },
     {
-      name:'The Inn at the Spring House', sub:'260 Spring St · Adults 21+',
+      name:'The Inn at the Spring House', gal:'inn', sub:'260 Spring St · Adults 21+',
       lat:41.16899, lng:-71.55634,
       img:'https://springhouseblockisland.com/wp-content/uploads/Inn-At-Spring-House-436x378.png',
       blurb:'Impeccably furnished rooms with rain-head showers, private balconies, and scenic island views. Unlike any other inn on the island.',
       link:BOOK, cta:'Book Now'
     },
     {
-      name:'The Spring House in New Harbor', sub:'585 Beach Ave · 10 Custom Suites',
+      name:'The Spring House in New Harbor', gal:'newharbor', sub:'585 Beach Ave · 10 Custom Suites',
       lat:41.17673, lng:-71.57194,
       img:'https://springhouseblockisland.com/wp-content/uploads/Outside-6-436x378.jpg',
       blurb:'The newest hotel on Block Island \u2014 ten upscale custom suites with the finest furnishings and services.',
       link:BOOK, cta:'Book Now'
     },
     {
-      name:'The Barn Apartments', sub:'On the Spring House Property · Year-Round',
+      name:'The Barn Apartments', gal:'barn', sub:'On the Spring House Property · Year-Round',
       lat:41.16745, lng:-71.55560,
       img:'https://springhouseblockisland.com/wp-content/uploads/Barn-Apartments.jpg',
       blurb:'Three luxury apartments above the Barn Restaurant, each with dining areas, central air, and DIRECTV. Open all year.',
       link:BOOK, cta:'Book Now'
     },
     {
-      name:'Seawinds Townhouses', sub:'1800 High St · Sleeps 4\u20136',
+      name:'Seawinds Townhouses', gal:'seawinds', sub:'1800 High St · Sleeps 4\u20136',
       lat:41.16498, lng:-71.56009,
       img:'https://springhouseblockisland.com/wp-content/uploads/Seawinds-front-436x378.jpg',
       blurb:'Four three-bedroom townhomes with full kitchens, 2.5 baths, and panoramic island views \u2014 a five-minute walk to the hotel.',
       link:'https://springhouseblockisland.com/seawindsrentals/seawinds-house-rental-inquiry/', cta:'Inquire'
     },
     {
-      name:'Seaside Homes', sub:'Chaffee · Bristol · Wickford',
+      name:'Seaside Homes', gal:'seaside', sub:'Chaffee · Bristol · Wickford',
       lat:41.16720, lng:-71.55415,
       img:'https://springhouseblockisland.com/wp-content/uploads/Seaside-Homes.jpg',
       blurb:'Three ocean-view rental homes right on the property \u2014 three bedrooms and three baths each. Wickford is pet friendly.',
       link:'https://springhouseblockisland.com/seasidehomes/seaside-homes-rental-inquiry/', cta:'Inquire'
     },
     {
-      name:'The Cooneymus Cottage', sub:'New to the collection \u00b7 location approximate',
+      name:'The Cooneymus Cottage', gal:'cooneymus', sub:'New to the collection \u00b7 location approximate',
       lat:41.15850, lng:-71.59240,
-      img:'https://springhouseblockisland.com/wp-content/uploads/IMG_5932-436x378.jpg',
+      img:'https://bofilltech.github.io/concepts/spring-house-hotel/img/thumbs/cooneymus-3.jpg',
       blurb:'The newest addition to the Spring House collection \u2014 reach out to the team to ask about availability.',
       link:'https://springhouseblockisland.com/contact/', cta:'Ask About Availability'
     }
@@ -284,6 +285,7 @@ body{
         '<div class="addr">'+p.sub+'</div>' +
         '<p>'+p.blurb+'</p>' +
         '<a href="'+p.link+'" target="_blank" rel="noopener">'+p.cta+'</a>' +
+        '<a class="pop-gal" href="https://bofilltech.github.io/concepts/spring-house-hotel/stay.html#gallery-'+p.gal+'" target="_top">Photos &amp; Details &rarr;</a>' +
       '</div></div>';
   }
 
