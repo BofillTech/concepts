@@ -143,6 +143,23 @@ footer a:hover{text-decoration:underline}
 .pill:hover{border-color:var(--blue)}
 .pill.on{background:var(--navy);border-color:var(--navy);color:#fff}
 
+/* Second row: smaller filters shown under Reservations / Reports / Set-Up & Settings */
+.subfilters{
+  display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+  padding:0 0 16px;margin-top:-4px;
+}
+.subfilters[hidden]{display:none}
+.subfilters .sub-label{
+  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--muted);margin-right:4px;
+}
+.pill.sub{
+  padding:5px 14px;font-size:13px;border-width:1.5px;
+  background:var(--paper);
+}
+.pill.sub:hover{border-color:var(--blue)}
+.pill.sub.on{background:var(--blue-dark);border-color:var(--blue-dark);color:#fff}
+
 @media (max-width:640px){
   .toolbar-inner{padding:14px 0}
   .search-box{max-width:none}
@@ -258,15 +275,20 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <div class="toolbar">
-  <div class="wrap toolbar-inner">
-    <div class="search-box">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#8ea0c4" stroke-width="2"/><path d="M20 20L16.5 16.5" stroke="#8ea0c4" stroke-width="2" stroke-linecap="round"/></svg>
-      <input type="search" id="searchInput" placeholder="Search videos by title or topic..." aria-label="Search how-to videos" autocomplete="off">
-      <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
-    </div>
+  <div class="wrap">
+    <div class="toolbar-inner">
+      <div class="search-box">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="#8ea0c4" stroke-width="2"/><path d="M20 20L16.5 16.5" stroke="#8ea0c4" stroke-width="2" stroke-linecap="round"/></svg>
+        <input type="search" id="searchInput" placeholder="Search videos by title or topic..." aria-label="Search how-to videos" autocomplete="off">
+        <button type="button" class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+      </div>
 
-    <div class="filter-row" id="filterRow" role="tablist" aria-label="Filter videos by category">
-      <!-- Populated by JS from the categories used in the VIDEOS list below -->
+      <div class="filter-row" id="filterRow" role="tablist" aria-label="Filter videos by category">
+        <!-- Populated by JS from the categories used in the VIDEOS list below -->
+      </div>
+    </div>
+    <div class="subfilters" id="subFilterRow" role="tablist" aria-label="Narrow the category" hidden>
+      <!-- Populated by JS when a category with sub-groups is selected -->
     </div>
   </div>
 </div>
@@ -363,6 +385,10 @@ footer a:hover{text-decoration:underline}
      category — must match one of CATEGORIES below (or add a new one there too)
      id       — the YouTube video ID (the part after "v=" in the URL,
                 e.g. for https://youtube.com/watch?v=WpvbpnG37xM the id is "WpvbpnG37xM")
+     sub      — optional. The smaller second-row filter inside a category.
+                Only categories listed in SUBCATEGORIES below have one, and the value
+                must match a name in that list. A video with no "sub" in such a
+                category is treated as general and shows under every second-row filter.
      keywords — optional, extra search terms not shown on the card
                 (e.g. "OTA channel manager" for a video titled "Basic OTA Settings")
      slug     — optional. Every video has its own link on quillstay.com:
@@ -375,8 +401,8 @@ footer a:hover{text-decoration:underline}
    quillstay/_redirects — nothing needs to change there when a video is added.
 
    The filter pills, thumbnails, search, share-link buttons and video counts
-   are all generated automatically from this list. A category pill only
-   appears once at least one video is filed under it.
+   are all generated automatically from this list. A category (or second-row
+   filter) only appears once at least one video is filed under it.
    ============================================================ */
 
 const CATEGORIES = [
@@ -398,17 +424,24 @@ const CATEGORIES = [
   "Extras"
 ];
 
+/* Second-row filters shown under a category once it is selected */
+const SUBCATEGORIES = {
+  "Reservations": ["Create & Find", "Check-In & Check-Out", "Payments & Billing", "Changing a Reservation", "Rooms & Blocks", "Guest Details"],
+  "Reports": ["Performance", "Front Desk", "Accounting", "Co-Op"],
+  "Set-Up & Settings": ["Policies & Rules", "Rooms & Rates Setup", "Property Info"]
+};
+
 const VIDEOS = [
   { title: "How to Toggle Between Properties", category: "Getting Started", id: "CahXc3oQuuo" },
   { title: "Dashboard Overview", category: "Getting Started", id: "HklfnhZX2KM" },
   { title: "How to Manage Calendar View", category: "Getting Started", id: "luf__PvREPM" },
-  { title: "How to Set Up your Property and Add Rooms", category: "Set-Up & Settings", id: "eK-AQtKCsm8" },
-  { title: "How to Add Deposit Policy, Taxes & Checkin, Checkout Times", category: "Set-Up & Settings", id: "onkutG4RiLg" },
-  { title: "How to Update Property Basic Info", category: "Set-Up & Settings", id: "yVVVaqtDRds", keywords: "property description general settings profile" },
-  { title: "How to Add a Charge Item", category: "Set-Up & Settings", id: "tj3z5wSDkpk", keywords: "extras charge items catalog" },
-  { title: "How to Add a Booking Source", category: "Set-Up & Settings", id: "WvdfAXvBHBQ", keywords: "custom booking sources channel" },
-  { title: "How to Access and Manage Property Settings", category: "Set-Up & Settings", id: "bjZUO5bCRLc" },
-  { title: "How to Turn Property Off for Booking and Manage Those Settings", category: "Set-Up & Settings", id: "2FDgVn3h-hg" },
+  { title: "How to Set Up your Property and Add Rooms", category: "Set-Up & Settings", sub: "Rooms & Rates Setup", id: "eK-AQtKCsm8" },
+  { title: "How to Add a Charge Item", category: "Set-Up & Settings", sub: "Rooms & Rates Setup", id: "tj3z5wSDkpk", keywords: "extras charge items catalog" },
+  { title: "How to Add Deposit Policy, Taxes & Checkin, Checkout Times", category: "Set-Up & Settings", sub: "Policies & Rules", id: "onkutG4RiLg" },
+  { title: "How to Update Property Basic Info", category: "Set-Up & Settings", sub: "Property Info", id: "yVVVaqtDRds", keywords: "property description general settings profile" },
+  { title: "How to Add a Booking Source", category: "Set-Up & Settings", sub: "Property Info", id: "WvdfAXvBHBQ", keywords: "custom booking sources channel" },
+  { title: "How to Access and Manage Property Settings", category: "Set-Up & Settings", sub: "Property Info", id: "bjZUO5bCRLc" },
+  { title: "How to Turn Property Off for Booking and Manage Those Settings", category: "Set-Up & Settings", sub: "Property Info", id: "2FDgVn3h-hg" },
   { title: "Update Email Template (General)", category: "Email Templates", id: "jc1ak6Sm_qE", keywords: "updating email templates auto emails sent to guests edit" },
   { title: "How to Update the Confirmation Email Template", category: "Email Templates", id: "kCVKSqEOZv4", keywords: "booking confirmation email edit guest template" },
   { title: "How to Schedule Reminder and Post-stay Emails", category: "Email Templates", id: "2WF7h4nO3_Q", keywords: "automatic guest emails schedule days before after stay thank you" },
@@ -419,25 +452,25 @@ const VIDEOS = [
   { title: "How to Manually Edit Nightly Rate and View Invoice", category: "Rates", id: "VOi0v179vCs" },
   { title: "How to Update the Percentage on a Linked Rate Plan", category: "Rates", id: "ZnwGy8Cmzf0" },
   { title: "Turn Off Availability for a Certain Rate Plan", category: "Rates", id: "5VAUykrLsCg" },
-  { title: "How to Make a New Reservation", category: "Reservations", id: "hxJULMpjhU4" },
-  { title: "How to Search for a Reservation", category: "Reservations", id: "qLa4Zo3pyd4" },
-  { title: "How to Pre-Auth and Check In a Reservation", category: "Reservations", id: "ucAFMwEBsvQ" },
-  { title: "How to Check Someone Out", category: "Reservations", id: "OVe4O_CgKw8" },
-  { title: "How to Cancel a Reservation", category: "Reservations", id: "cQIVIFuwPgY" },
-  { title: "How to Issue a Refund", category: "Reservations", id: "U8AStFxYlLw" },
-  { title: "How to Process Payments on Reservations", category: "Reservations", id: "dBGJlaFopa4" },
-  { title: "How to Re-send Invoice", category: "Reservations", id: "5e9YyQD1lg8" },
-  { title: "How to Add a Discount or Deduction to an Invoice", category: "Reservations", id: "rIWJUqMp8lc" },
-  { title: "How to Send a Confirmation with a Personal Note", category: "Reservations", id: "nAyjghBhb88" },
-  { title: "How to Block Room for Maintenance", category: "Reservations", id: "ABRSM9qsebk" },
-  { title: "How to Release a Maintenance Block", category: "Reservations", id: "JlC4LRi32U4" },
-  { title: "How to Work with Registration Forms", category: "Reservations", id: "7nE-OE_QSI8" },
-  { title: "How to Move and Assign Rooms via Booking Calendar", category: "Reservations", id: "hahquTqeTEo" },
-  { title: "Moving Unassigned Into Rooms", category: "Reservations", id: "WX9KzolbPpE" },
-  { title: "Moving Around/Shifting a Reservation", category: "Reservations", id: "OuX9kisWLzQ" },
-  { title: "How To Add Additional Guests", category: "Reservations", id: "TkoFYlfyq2w" },
-  { title: "How to Add Guest Details: ID, License Plate, Notes, Special Requests & Arrival Time", category: "Reservations", id: "xiEO4S34Tmo" },
-  { title: "How to Request Early Check-In or Late Checkout", category: "Reservations", id: "I3nmLS98gDE" },
+  { title: "How to Make a New Reservation", category: "Reservations", sub: "Create & Find", id: "hxJULMpjhU4" },
+  { title: "How to Search for a Reservation", category: "Reservations", sub: "Create & Find", id: "qLa4Zo3pyd4" },
+  { title: "How to Pre-Auth and Check In a Reservation", category: "Reservations", sub: "Check-In & Check-Out", id: "ucAFMwEBsvQ" },
+  { title: "How to Check Someone Out", category: "Reservations", sub: "Check-In & Check-Out", id: "OVe4O_CgKw8" },
+  { title: "How to Request Early Check-In or Late Checkout", category: "Reservations", sub: "Check-In & Check-Out", id: "I3nmLS98gDE" },
+  { title: "How to Work with Registration Forms", category: "Reservations", sub: "Check-In & Check-Out", id: "7nE-OE_QSI8" },
+  { title: "How to Process Payments on Reservations", category: "Reservations", sub: "Payments & Billing", id: "dBGJlaFopa4" },
+  { title: "How to Issue a Refund", category: "Reservations", sub: "Payments & Billing", id: "U8AStFxYlLw" },
+  { title: "How to Re-send Invoice", category: "Reservations", sub: "Payments & Billing", id: "5e9YyQD1lg8" },
+  { title: "How to Add a Discount or Deduction to an Invoice", category: "Reservations", sub: "Payments & Billing", id: "rIWJUqMp8lc" },
+  { title: "How to Cancel a Reservation", category: "Reservations", sub: "Changing a Reservation", id: "cQIVIFuwPgY" },
+  { title: "Moving Around/Shifting a Reservation", category: "Reservations", sub: "Changing a Reservation", id: "OuX9kisWLzQ" },
+  { title: "How to Move and Assign Rooms via Booking Calendar", category: "Reservations", sub: "Rooms & Blocks", id: "hahquTqeTEo" },
+  { title: "Moving Unassigned Into Rooms", category: "Reservations", sub: "Rooms & Blocks", id: "WX9KzolbPpE" },
+  { title: "How to Block Room for Maintenance", category: "Reservations", sub: "Rooms & Blocks", id: "ABRSM9qsebk" },
+  { title: "How to Release a Maintenance Block", category: "Reservations", sub: "Rooms & Blocks", id: "JlC4LRi32U4" },
+  { title: "How to Add Guest Details: ID, License Plate, Notes, Special Requests & Arrival Time", category: "Reservations", sub: "Guest Details", id: "xiEO4S34Tmo" },
+  { title: "How To Add Additional Guests", category: "Reservations", sub: "Guest Details", id: "TkoFYlfyq2w" },
+  { title: "How to Send a Confirmation with a Personal Note", category: "Reservations", sub: "Guest Details", id: "nAyjghBhb88" },
   { title: "Viewing the Daily Check-Ins and Check-Outs", category: "Daily Operations", id: "fT16ogRCfvM" },
   { title: "How to Check that Reservations are Fully Paid (Check-Ins, Check-Outs)", category: "Daily Operations", id: "a6SC-NbUg9c" },
   { title: "Daily Front Desk Checklist – Confirming All Check-Ins & Check-Outs Are Paid", category: "Daily Operations", id: "Y4Z949kN4VI" },
@@ -451,20 +484,20 @@ const VIDEOS = [
   { title: "How to Use the Housekeeping Module (Status: Clean, Dirty, etc.)", category: "Housekeeping", id: "-5E5Qt_7J-o" },
   { title: "Time Clock: How Staff Clock In and Out", category: "Back Office", id: "0BtOPGdOieg" },
   { title: "How to Access and View Reports", category: "Reports", id: "gFA2iCCsA88" },
-  { title: "Daily Report", category: "Reports", id: "-ZX2GjfUEVg" },
-  { title: "Day/MTD/YTD Revenue Report", category: "Reports", id: "noq1xK9e4Hs", keywords: "month to date year to date mtd ytd revenue" },
-  { title: "Sales Report", category: "Reports", id: "EKPnP1j4KOU" },
-  { title: "Extras Report", category: "Reports", id: "2UnLHY8iPT0" },
-  { title: "Occupancy Report", category: "Reports", id: "jVMogcBN7aw" },
-  { title: "Cashier Report", category: "Reports", id: "vD7z26v0IkI" },
-  { title: "Shift Report", category: "Reports", id: "4xyJQws9Auo" },
-  { title: "Guest Listing Report", category: "Reports", id: "RuIxc37kVb4" },
-  { title: "Advance Deposits Report", category: "Reports", id: "IHMnv-Kc3NQ" },
-  { title: "Group / Block Report", category: "Reports", id: "9inNBw11Gww" },
-  { title: "Rate Variance Report", category: "Reports", id: "nNrg6hDSIj0" },
-  { title: "Trial Balance Report", category: "Reports", id: "21XAUyESFVI" },
-  { title: "Night Audit Log: When Was the Audit Run?", category: "Reports", id: "aBOqUglBZP8" },
-  { title: "Working with Logs, History, etc.", category: "Reports", id: "hc47Rv7v52A" },
+  { title: "Daily Report", category: "Reports", sub: "Performance", id: "-ZX2GjfUEVg", keywords: "daily flash" },
+  { title: "Day/MTD/YTD Revenue Report", category: "Reports", sub: "Performance", id: "noq1xK9e4Hs", keywords: "month to date year to date mtd ytd revenue" },
+  { title: "Sales Report", category: "Reports", sub: "Performance", id: "EKPnP1j4KOU" },
+  { title: "Occupancy Report", category: "Reports", sub: "Performance", id: "jVMogcBN7aw" },
+  { title: "Group / Block Report", category: "Reports", sub: "Performance", id: "9inNBw11Gww", keywords: "group blocks" },
+  { title: "Rate Variance Report", category: "Reports", sub: "Performance", id: "nNrg6hDSIj0" },
+  { title: "Shift Report", category: "Reports", sub: "Front Desk", id: "4xyJQws9Auo" },
+  { title: "Guest Listing Report", category: "Reports", sub: "Front Desk", id: "RuIxc37kVb4" },
+  { title: "Night Audit Log: When Was the Audit Run?", category: "Reports", sub: "Front Desk", id: "aBOqUglBZP8" },
+  { title: "Working with Logs, History, etc.", category: "Reports", sub: "Front Desk", id: "hc47Rv7v52A", keywords: "reservation history" },
+  { title: "Cashier Report", category: "Reports", sub: "Accounting", id: "vD7z26v0IkI" },
+  { title: "Advance Deposits Report", category: "Reports", sub: "Accounting", id: "IHMnv-Kc3NQ" },
+  { title: "Trial Balance Report", category: "Reports", sub: "Accounting", id: "21XAUyESFVI" },
+  { title: "Extras Report", category: "Reports", sub: "Accounting", id: "2UnLHY8iPT0" },
   { title: "How to Add a Charge to Owner Reports", category: "Owner Reports", id: "CJvGV-WltoM" },
   { title: "How to Add an Owner to Each Room", category: "Owner Reports", id: "RFkPlX3WttA" },
   { title: "How to Find the Owner Info for Each Room #", category: "Owner Reports", id: "bfjbRjknT9Y" },
@@ -482,6 +515,7 @@ const LIST_PATH = (function(){
 
 const grid = document.getElementById('videoGrid');
 const filterRow = document.getElementById('filterRow');
+const subFilterRow = document.getElementById('subFilterRow');
 const emptyState = document.getElementById('emptyState');
 const noResults = document.getElementById('noResults');
 const linkNotice = document.getElementById('linkNotice');
@@ -495,6 +529,7 @@ const searchInput = document.getElementById('searchInput');
 const searchClear = document.getElementById('searchClear');
 
 let activeCategory = 'All';
+let activeSub = 'All';
 let searchTerm = '';
 let currentVideo = null;
 let lastFocus = null;
@@ -557,11 +592,21 @@ async function copyLinkFor(v, btn){
   }, 1700);
 }
 
-/* ---------- Rendering ---------- */
+/* ---------- Filtering ---------- */
 function matchesSearch(v, term){
   if (!term) return true;
-  const haystack = [v.title, v.category, v.keywords || ''].join(' ').toLowerCase();
+  const haystack = [v.title, v.category, v.sub || '', v.keywords || ''].join(' ').toLowerCase();
   return haystack.includes(term);
+}
+/* Second-row filters that actually have videos in the chosen category */
+function subsFor(cat){
+  const defined = SUBCATEGORIES[cat];
+  if (!defined) return [];
+  return defined.filter(s => VIDEOS.some(v => v.category === cat && v.sub === s));
+}
+function matchesSub(v){
+  if (activeCategory === 'All' || activeSub === 'All') return true;
+  return v.sub === activeSub || !v.sub;     /* general videos (no sub) show under every second-row filter */
 }
 
 function renderPills(){
@@ -574,15 +619,38 @@ function renderPills(){
     btn.textContent = cat;
     btn.setAttribute('role', 'tab');
     btn.setAttribute('aria-selected', cat === activeCategory ? 'true' : 'false');
-    btn.addEventListener('click', () => { activeCategory = cat; render(); });
+    btn.addEventListener('click', () => { activeCategory = cat; activeSub = 'All'; render(); });
     filterRow.appendChild(btn);
   });
 }
 
+function renderSubPills(){
+  const subs = activeCategory === 'All' ? [] : subsFor(activeCategory);
+  subFilterRow.innerHTML = '';
+  if (subs.length < 2) { subFilterRow.hidden = true; return; }
+  subFilterRow.hidden = false;
+  const label = document.createElement('span');
+  label.className = 'sub-label';
+  label.textContent = activeCategory + ':';
+  subFilterRow.appendChild(label);
+  ['All', ...subs].forEach(s => {
+    const btn = document.createElement('button');
+    btn.className = 'pill sub' + (s === activeSub ? ' on' : '');
+    btn.type = 'button';
+    btn.textContent = s === 'All' ? 'All' : s;
+    btn.setAttribute('role', 'tab');
+    btn.setAttribute('aria-selected', s === activeSub ? 'true' : 'false');
+    btn.addEventListener('click', () => { activeSub = s; render(); });
+    subFilterRow.appendChild(btn);
+  });
+}
+
+/* ---------- Rendering ---------- */
 function render(){
   if (VIDEOS.length === 0){
     grid.style.display = 'none';
     filterRow.style.display = 'none';
+    subFilterRow.hidden = true;
     noResults.style.display = 'none';
     emptyState.style.display = 'block';
     return;
@@ -591,9 +659,11 @@ function render(){
   filterRow.style.display = 'flex';
   grid.style.display = 'grid';
   renderPills();
+  renderSubPills();
 
   const list = VIDEOS.filter(v =>
     (activeCategory === 'All' || v.category === activeCategory) &&
+    matchesSub(v) &&
     matchesSearch(v, searchTerm)
   );
   grid.innerHTML = '';
