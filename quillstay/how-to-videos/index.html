@@ -375,21 +375,25 @@ footer a:hover{text-decoration:underline}
    quillstay/_redirects — nothing needs to change there when a video is added.
 
    The filter pills, thumbnails, search, share-link buttons and video counts
-   are all generated automatically from this list.
+   are all generated automatically from this list. A category pill only
+   appears once at least one video is filed under it.
    ============================================================ */
 
 const CATEGORIES = [
   "Getting Started",
   "Reservations",
   "Daily Operations",
+  "Night Audit",
   "Rates",
   "Housekeeping",
   "Reports",
   "Owner Reports",
+  "Guests",
   "OTAs",
   "Group Bookings",
   "Set-Up & Settings",
   "Email Templates",
+  "Booking Engine",
   "Back Office",
   "Extras"
 ];
@@ -400,13 +404,18 @@ const VIDEOS = [
   { title: "How to Manage Calendar View", category: "Getting Started", id: "luf__PvREPM" },
   { title: "How to Set Up your Property and Add Rooms", category: "Set-Up & Settings", id: "eK-AQtKCsm8" },
   { title: "How to Add Deposit Policy, Taxes & Checkin, Checkout Times", category: "Set-Up & Settings", id: "onkutG4RiLg" },
+  { title: "How to Update Property Basic Info", category: "Set-Up & Settings", id: "yVVVaqtDRds", keywords: "property description general settings profile" },
+  { title: "How to Add a Charge Item", category: "Set-Up & Settings", id: "tj3z5wSDkpk", keywords: "extras charge items catalog" },
+  { title: "How to Add a Booking Source", category: "Set-Up & Settings", id: "WvdfAXvBHBQ", keywords: "custom booking sources channel" },
   { title: "How to Access and Manage Property Settings", category: "Set-Up & Settings", id: "bjZUO5bCRLc" },
   { title: "How to Turn Property Off for Booking and Manage Those Settings", category: "Set-Up & Settings", id: "2FDgVn3h-hg" },
   { title: "Update Email Template (General)", category: "Email Templates", id: "jc1ak6Sm_qE", keywords: "updating email templates auto emails sent to guests edit" },
   { title: "How to Update the Confirmation Email Template", category: "Email Templates", id: "kCVKSqEOZv4", keywords: "booking confirmation email edit guest template" },
+  { title: "How to Schedule Reminder and Post-stay Emails", category: "Email Templates", id: "2WF7h4nO3_Q", keywords: "automatic guest emails schedule days before after stay thank you" },
   { title: "How to Update Rates, Min/Max Nights & Stop Sells (Monthly and Yearly View)", category: "Rates", id: "m9-EiFCvY70" },
   { title: "How to Create Room Types and Link Rate Plans", category: "Rates", id: "u_Fp-LFfIGw" },
   { title: "Add a Stop Sell & Manually Override", category: "Rates", id: "_E_-15PAHgI" },
+  { title: "How to Close Reservations (Stop Sell) for the Evening", category: "Rates", id: "j0_11_cUpf8" },
   { title: "How to Manually Edit Nightly Rate and View Invoice", category: "Rates", id: "VOi0v179vCs" },
   { title: "How to Update the Percentage on a Linked Rate Plan", category: "Rates", id: "ZnwGy8Cmzf0" },
   { title: "Turn Off Availability for a Certain Rate Plan", category: "Rates", id: "5VAUykrLsCg" },
@@ -423,21 +432,21 @@ const VIDEOS = [
   { title: "How to Block Room for Maintenance", category: "Reservations", id: "ABRSM9qsebk" },
   { title: "How to Release a Maintenance Block", category: "Reservations", id: "JlC4LRi32U4" },
   { title: "How to Work with Registration Forms", category: "Reservations", id: "7nE-OE_QSI8" },
-  { title: "How to Check that Reservations are Fully Paid (Check-Ins, Check-Outs)", category: "Reservations", id: "a6SC-NbUg9c" },
   { title: "How to Move and Assign Rooms via Booking Calendar", category: "Reservations", id: "hahquTqeTEo" },
   { title: "Moving Unassigned Into Rooms", category: "Reservations", id: "WX9KzolbPpE" },
   { title: "Moving Around/Shifting a Reservation", category: "Reservations", id: "OuX9kisWLzQ" },
-  { title: "Viewing the Daily Check-Ins and Check-Outs", category: "Reservations", id: "fT16ogRCfvM" },
-  { title: "How to Close Reservations (Stop Sell) for the Evening", category: "Reservations", id: "j0_11_cUpf8" },
-  { title: "How to Add an Extra to a Room", category: "Reservations", id: "CjTY5zfXnjQ" },
   { title: "How To Add Additional Guests", category: "Reservations", id: "TkoFYlfyq2w" },
   { title: "How to Add Guest Details: ID, License Plate, Notes, Special Requests & Arrival Time", category: "Reservations", id: "xiEO4S34Tmo" },
   { title: "How to Request Early Check-In or Late Checkout", category: "Reservations", id: "I3nmLS98gDE" },
+  { title: "Viewing the Daily Check-Ins and Check-Outs", category: "Daily Operations", id: "fT16ogRCfvM" },
+  { title: "How to Check that Reservations are Fully Paid (Check-Ins, Check-Outs)", category: "Daily Operations", id: "a6SC-NbUg9c" },
   { title: "Daily Front Desk Checklist – Confirming All Check-Ins & Check-Outs Are Paid", category: "Daily Operations", id: "Y4Z949kN4VI" },
   { title: "Daily Front Desk Checklist – Confirming All Rooms Are Cleaned", category: "Daily Operations", id: "LXuXKpRL6Ko" },
+  { title: "How to Choose Nightly Audit Reports", category: "Night Audit", id: "mEqryIw5Ef8", keywords: "night audit default reports print automatically" },
   { title: "How to Set Up a Group Block", category: "Group Bookings", id: "MR1mSP-An2E" },
   { title: "Claiming a Room in a Room Block", category: "Group Bookings", id: "_T0wvOsSiLw" },
   { title: "How to Add an Extra Charge", category: "Extras", id: "kaOZ7BjXRGk" },
+  { title: "How to Add an Extra to a Room", category: "Extras", id: "CjTY5zfXnjQ" },
   { title: "How to Hold Back Inventory from the OTA via Rate Plan", category: "OTAs", id: "rdOvGuWxpyY" },
   { title: "How to Use the Housekeeping Module (Status: Clean, Dirty, etc.)", category: "Housekeeping", id: "-5E5Qt_7J-o" },
   { title: "Time Clock: How Staff Clock In and Out", category: "Back Office", id: "0BtOPGdOieg" },
