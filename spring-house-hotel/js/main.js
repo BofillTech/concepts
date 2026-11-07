@@ -253,6 +253,10 @@
      <img> elements inside the matching triggers on the page. "all" = every property photo. */
   var GALLERIES = {
     main: { title: 'Spring House Main Building', photos: [
+      { src: 'img/stay/main-exterior-2026.jpg', alt: 'The Spring House Hotel main building, August 2026' },
+      { src: 'img/stay/main-room-2026a.jpg', alt: 'A refreshed guest room in the Main Building' },
+      { src: 'img/stay/main-room-2026b.jpg', alt: 'A Main Building guest room' },
+      { src: 'img/stay/main-hotel-lawn-2026.jpg', alt: 'Adirondack chairs on the hotel lawn above the Atlantic' },
       { src: 'img/stay/main-exterior.jpg', alt: 'The Spring House Hotel main building' },
       { src: 'img/stay/main-room-bed.jpg', alt: 'A guest room in the main building' },
       { src: 'img/stay/main-room-window.jpg', alt: 'A main-building guest room with a window view' },
@@ -264,6 +268,11 @@
       { src: 'img/stay/barn-apt-4.jpg', alt: 'Inside the Barn Apartments' }
     ] },
     seaside: { title: 'Seaside Homes', photos: [
+      { src: 'img/stay/seaside-chaffee.jpg', alt: 'The Chaffee Seaside Home' },
+      { src: 'img/stay/seaside-2026a.jpg', alt: 'A Seaside Home on the property' },
+      { src: 'img/stay/seaside-2026b.jpg', alt: 'A Seaside Home on the property' },
+      { src: 'img/stay/seaside-2026c.jpg', alt: 'Inside a Seaside Home' },
+      { src: 'img/stay/seaside-2026d.jpg', alt: 'A Seaside Home' },
       { src: 'img/stay/seaside-exterior.jpg', alt: 'A Seaside Home on the Spring House property' },
       { src: 'img/stay/seaside-living.jpg', alt: 'A Seaside Home living room' },
       { src: 'img/stay/seaside-dining.jpg', alt: 'A Seaside Home dining area' },
@@ -285,10 +294,16 @@
       { src: 'img/stay/chaffee-29.jpg', alt: 'A bedroom at Chaffee House' }
     ] },
     mott: { title: 'The Mott House', photos: [
+      { src: 'img/stay/mott-exterior-2026.jpg', alt: 'The Mott House exterior' },
+      { src: 'img/stay/mott-room-2026.jpg', alt: 'A guest room in the Mott House' },
       { src: 'img/stay/mott-exterior.jpg', alt: 'The Mott House framed by hydrangeas' },
       { src: 'img/stay/mott-room.jpg', alt: 'A guest room in the Mott House' }
     ] },
     inn: { title: 'The Inn at the Spring House', photos: [
+      { src: 'img/stay/inn-exterior-2026.jpg', alt: 'The Inn at Spring House exterior' },
+      { src: 'img/stay/inn-room-2026.jpg', alt: 'A guest room at the Inn' },
+      { src: 'img/stay/inn-balcony.jpg', alt: 'A balcony at the Inn at Spring House' },
+      { src: 'img/stay/inn-2026.jpg', alt: 'The Inn at Spring House' },
       { src: 'img/stay/inn-exterior.jpg', alt: 'The Inn at the Spring House' },
       { src: 'img/stay/inn-sign.jpg', alt: 'The Inn at Spring House sign' },
       { src: 'img/stay/inn-balcony.jpg', alt: 'A balcony at the Inn' },
