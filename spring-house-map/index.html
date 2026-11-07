@@ -336,7 +336,8 @@ body{
       map.flyTo([PROPS[i].lat, PROPS[i].lng], 16, { duration:.9 });
       markers[i].openPopup();
     });
-    map.fitBounds(bounds, { padding:[70,70] });
+    map.fitBounds(bounds, { padding:[28,28], maxZoom:13 });
+    map.setMinZoom(11);
   }
 
   /* ---------------- Google Maps (key required) ---------------- */
@@ -386,7 +387,7 @@ body{
       info.setContent(popupHTML(PROPS[i]));
       info.open({ map:gmap, anchor:markers[i] });
     });
-    gmap.fitBounds(bounds, 70);
+    gmap.fitBounds(bounds, 28);
   }
 
   if (GOOGLE_MAPS_API_KEY) {
