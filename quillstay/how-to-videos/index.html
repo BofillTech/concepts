@@ -148,6 +148,13 @@ footer a:hover{text-decoration:underline}
   .search-box{max-width:none}
 }
 
+/* Notice shown when a shared video link can't be matched */
+.link-notice{
+  background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);
+  border-radius:10px;padding:14px 18px;margin-bottom:22px;color:var(--ink);font-size:15.5px;
+}
+.link-notice[hidden]{display:none}
+
 /* Video grid */
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
 .video-card{
@@ -266,6 +273,7 @@ footer a:hover{text-decoration:underline}
 
 <section style="padding-top:34px">
   <div class="wrap">
+    <p class="link-notice" id="linkNotice" hidden>We couldn’t find that video link — it may have been renamed. Browse the full library below, or search for the topic.</p>
     <div class="video-grid" id="videoGrid"></div>
     <p class="no-results" id="noResults">No videos match your search — try a different term or category.</p>
 
@@ -357,15 +365,17 @@ footer a:hover{text-decoration:underline}
                 e.g. for https://youtube.com/watch?v=WpvbpnG37xM the id is "WpvbpnG37xM")
      keywords — optional, extra search terms not shown on the card
                 (e.g. "OTA channel manager" for a video titled "Basic OTA Settings")
-     slug     — optional. Every video has a shareable link of the form
-                https://quillstay.com/how-to-videos/#<slug>. The slug is made from the
-                title automatically. If you ever rename a video's title, add its OLD
-                slug here so links already sent in emails keep working.
-                (A link using the YouTube id, #<id>, always works too.)
+     slug     — optional. Every video has its own link on quillstay.com:
+                https://quillstay.com/how-to-videos/<slug>
+                The slug is made from the title automatically. If you ever rename a
+                video's title, add its OLD slug here so links already sent in emails
+                keep working. (A link using the YouTube id also always works.)
+
+   The URL rewrite that makes /how-to-videos/<slug> work lives in the file
+   quillstay/_redirects — nothing needs to change there when a video is added.
 
    The filter pills, thumbnails, search, copy-link buttons and video counts
-   are all generated automatically from this list — nothing else on the page
-   needs to change when you add a video.
+   are all generated automatically from this list.
    ============================================================ */
 
 const CATEGORIES = [
@@ -453,12 +463,19 @@ const VIDEOS = [
 
 /* ============================================================ */
 
-const BASE_URL = 'https://quillstay.com/how-to-videos/';
+const SITE_ORIGIN = 'https://quillstay.com';
+const BASE_TITLE = document.title;
+/* Path of this page, e.g. "/how-to-videos/" (works even when a video slug is already in the address bar) */
+const LIST_PATH = (function(){
+  const i = location.pathname.indexOf('/how-to-videos/');
+  return i >= 0 ? location.pathname.slice(0, i) + '/how-to-videos/' : '/how-to-videos/';
+})();
 
 const grid = document.getElementById('videoGrid');
 const filterRow = document.getElementById('filterRow');
 const emptyState = document.getElementById('emptyState');
 const noResults = document.getElementById('noResults');
+const linkNotice = document.getElementById('linkNotice');
 const modal = document.getElementById('videoModal');
 const modalFrame = document.getElementById('videoModalFrame');
 const modalClose = document.getElementById('videoModalClose');
@@ -487,12 +504,21 @@ function slugify(s){
     v.slug = s;
   });
 })();
-function linkFor(v){ return BASE_URL + '#' + v.slug; }
-function videoFromHash(){
-  let h = location.hash.replace(/^#/, '');
-  try { h = decodeURIComponent(h); } catch (e) {}
-  if (!h) return null;
-  return VIDEOS.find(v => v.slug === h) || VIDEOS.find(v => v.id === h) || null;
+function linkFor(v){ return SITE_ORIGIN + '/how-to-videos/' + v.slug; }
+
+/* Reads the requested video from the address: /how-to-videos/<slug>  (or the older #<slug> form) */
+function readLocation(){
+  let key = '';
+  let fromPath = false;
+  if (location.pathname.indexOf(LIST_PATH) === 0) {
+    const rest = location.pathname.slice(LIST_PATH.length).replace(/\/+$/, '');
+    if (rest && rest.indexOf('/') === -1 && rest !== 'index.html') { key = rest; fromPath = true; }
+  }
+  if (!key) key = location.hash.replace(/^#/, '');
+  try { key = decodeURIComponent(key); } catch (e) {}
+  if (!key) return { key: '', fromPath: false, video: null };
+  const video = VIDEOS.find(v => v.slug === key) || VIDEOS.find(v => v.id === key) || null;
+  return { key, fromPath, video };
 }
 
 async function copyText(text){
@@ -512,13 +538,12 @@ async function copyLinkFor(v, btn){
   const ok = await copyText(url);
   if (!ok) { window.prompt('Copy this link:', url); return; }
   const lbl = btn.querySelector('.lbl');
-  const original = 'Copy link';
   btn.classList.add('done');
   if (lbl) lbl.textContent = 'Copied!';
   liveMsg.textContent = 'Link copied: ' + v.title;
   setTimeout(() => {
     btn.classList.remove('done');
-    if (lbl) lbl.textContent = original;
+    if (lbl) lbl.textContent = 'Copy link';
   }, 1700);
 }
 
@@ -603,14 +628,15 @@ function render(){
 }
 
 /* ---------- Video modal ---------- */
-function openVideo(v, opts){
-  opts = opts || {};
+function openVideo(v){
   currentVideo = v;
   lastFocus = document.activeElement;
+  linkNotice.hidden = true;
   modalTitle.textContent = v.title;
   modalFrame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1" title="QuillStay how-to video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   modal.classList.add('on');
-  if (!opts.noHash) history.replaceState(null, '', '#' + v.slug);
+  document.title = v.title + ' | QuillStay How-To Videos';
+  history.replaceState(null, '', LIST_PATH + v.slug);   /* address bar becomes /how-to-videos/<slug> */
   modalClose.focus();
 }
 function closeVideo(opts){
@@ -618,9 +644,8 @@ function closeVideo(opts){
   modal.classList.remove('on');
   modalFrame.innerHTML = '';
   currentVideo = null;
-  if (!opts.keepHash && videoFromHash()) {
-    history.replaceState(null, '', location.pathname + location.search);
-  }
+  document.title = BASE_TITLE;
+  if (!opts.keepUrl) history.replaceState(null, '', LIST_PATH);
   if (lastFocus && document.contains(lastFocus)) { try { lastFocus.focus(); } catch (e) {} }
   lastFocus = null;
 }
@@ -629,11 +654,10 @@ modalCopy.addEventListener('click', () => { if (currentVideo) copyLinkFor(curren
 modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('on')) closeVideo(); });
 
-/* Opening a shared link (or pressing back/forward onto one) */
+/* Older #<slug> links (and Back/Forward onto one) still open the video */
 window.addEventListener('hashchange', () => {
-  const v = videoFromHash();
-  if (v) { openVideo(v, { noHash: true }); }
-  else if (modal.classList.contains('on')) { closeVideo({ keepHash: true }); }
+  const loc = readLocation();
+  if (loc.video && !loc.fromPath) { openVideo(loc.video); }
 });
 
 /* ---------- Search ---------- */
@@ -651,8 +675,16 @@ searchClear.addEventListener('click', () => {
 });
 
 render();
-const initial = videoFromHash();
-if (initial) openVideo(initial, { noHash: true });
+
+/* Opening the page from a shared video link */
+(function openFromLink(){
+  const loc = readLocation();
+  if (loc.video) { openVideo(loc.video); }
+  else if (loc.key && loc.fromPath) {
+    linkNotice.hidden = false;                 /* unknown /how-to-videos/<something> */
+    history.replaceState(null, '', LIST_PATH);
+  }
+})();
 </script>
 </body>
 </html>
