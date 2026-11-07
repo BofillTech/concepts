@@ -182,7 +182,7 @@ footer a:hover{text-decoration:underline}
   text-transform:uppercase;letter-spacing:.03em;
 }
 
-/* Copy-link buttons */
+/* Share-link buttons */
 .copy-link{
   position:absolute;right:12px;bottom:12px;
   display:inline-flex;align-items:center;gap:6px;
@@ -345,7 +345,7 @@ footer a:hover{text-decoration:underline}
     <div class="video-modal-bar">
       <h2 id="videoModalTitle"></h2>
       <div class="video-modal-actions">
-        <button id="videoModalCopy" type="button"><span class="lbl">Copy link</span></button>
+        <button id="videoModalCopy" type="button"><span class="lbl">Share link</span></button>
         <button id="videoModalClose" type="button">Close ✕</button>
       </div>
     </div>
@@ -374,7 +374,7 @@ footer a:hover{text-decoration:underline}
    The URL rewrite that makes /how-to-videos/<slug> work lives in the file
    quillstay/_redirects — nothing needs to change there when a video is added.
 
-   The filter pills, thumbnails, search, copy-link buttons and video counts
+   The filter pills, thumbnails, search, share-link buttons and video counts
    are all generated automatically from this list.
    ============================================================ */
 
@@ -533,17 +533,18 @@ async function copyText(text){
     return ok;
   } catch (e) { return false; }
 }
+/* "Share link" copies the video's own link (https://quillstay.com/how-to-videos/<slug>) to the clipboard */
 async function copyLinkFor(v, btn){
   const url = linkFor(v);
   const ok = await copyText(url);
   if (!ok) { window.prompt('Copy this link:', url); return; }
   const lbl = btn.querySelector('.lbl');
   btn.classList.add('done');
-  if (lbl) lbl.textContent = 'Copied!';
+  if (lbl) lbl.textContent = 'Link copied!';
   liveMsg.textContent = 'Link copied: ' + v.title;
   setTimeout(() => {
     btn.classList.remove('done');
-    if (lbl) lbl.textContent = 'Copy link';
+    if (lbl) lbl.textContent = 'Share link';
   }, 1700);
 }
 
@@ -617,8 +618,8 @@ function render(){
     const copy = document.createElement('button');
     copy.type = 'button';
     copy.className = 'copy-link';
-    copy.setAttribute('aria-label', 'Copy link to ' + v.title);
-    copy.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">Copy link</span>';
+    copy.setAttribute('aria-label', 'Share link to ' + v.title);
+    copy.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">Share link</span>';
     copy.addEventListener('click', () => copyLinkFor(v, copy));
 
     card.appendChild(open);
