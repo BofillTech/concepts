@@ -86,6 +86,7 @@ footer a:hover{text-decoration:underline}
 :focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
 .skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;padding:12px 18px;z-index:200;border-radius:0 0 10px 0;text-decoration:none}
 .skip:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media (max-width:900px){
   .nav-links,.nav-phone{display:none}
 }
@@ -150,11 +151,17 @@ footer a:hover{text-decoration:underline}
 /* Video grid */
 .video-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
 .video-card{
+  position:relative;
   background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;
-  cursor:pointer;transition:box-shadow .15s,transform .15s;text-align:left;
+  transition:box-shadow .15s,transform .15s;text-align:left;
   display:flex;flex-direction:column;
 }
 .video-card:hover{box-shadow:0 18px 40px -18px rgba(0,43,132,.3);transform:translateY(-2px)}
+.video-open{
+  display:flex;flex-direction:column;flex:1;width:100%;
+  background:none;border:none;padding:0;margin:0;
+  text-align:left;cursor:pointer;font:inherit;color:inherit;
+}
 .video-thumb{position:relative;aspect-ratio:16/9;background:var(--line);overflow:hidden}
 .video-thumb img{width:100%;height:100%;object-fit:cover}
 .play-badge{
@@ -167,6 +174,19 @@ footer a:hover{text-decoration:underline}
   font-size:12px;font-weight:600;color:var(--blue-dark);padding:0 18px 16px;
   text-transform:uppercase;letter-spacing:.03em;
 }
+
+/* Copy-link buttons */
+.copy-link{
+  position:absolute;right:12px;bottom:12px;
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--paper);border:1.5px solid var(--line);color:var(--navy);
+  border-radius:99px;padding:5px 12px;
+  font-family:'Public Sans',sans-serif;font-weight:600;font-size:12.5px;line-height:1.3;
+  cursor:pointer;transition:background .15s,border-color .15s,color .15s;
+}
+.copy-link:hover{border-color:var(--blue)}
+.copy-link.done{background:var(--navy);border-color:var(--navy);color:#fff}
+.copy-link svg{flex:none}
 
 /* Empty state */
 .empty-state{
@@ -188,20 +208,26 @@ footer a:hover{text-decoration:underline}
 .video-modal-inner{width:100%;max-width:900px}
 .video-modal-frame{position:relative;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}
 .video-modal-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.video-modal-close{
-  display:flex;justify-content:flex-end;margin-bottom:10px;
+.video-modal-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  margin-bottom:10px;
 }
-.video-modal-close button{
+.video-modal-bar h2{font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:-0.005em;line-height:1.25}
+.video-modal-actions{display:flex;gap:8px;flex:none}
+.video-modal-actions button{
   background:rgba(255,255,255,.14);color:#fff;border:none;border-radius:8px;
   padding:8px 14px;font-weight:600;cursor:pointer;font-family:'Public Sans',sans-serif;
+  white-space:nowrap;
 }
-.video-modal-close button:hover{background:rgba(255,255,255,.24)}
+.video-modal-actions button:hover{background:rgba(255,255,255,.24)}
+.video-modal-actions button.done{background:var(--blue)}
 
 @media (max-width:900px){
   .video-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
   .video-grid{grid-template-columns:1fr}
+  .video-modal-bar{flex-direction:column;align-items:flex-start}
 }
 </style>
 <link rel="stylesheet" href="/css/header.css">
@@ -306,12 +332,19 @@ footer a:hover{text-decoration:underline}
 </footer>
 
 <!-- Video lightbox modal -->
-<div class="video-modal" id="videoModal">
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
   <div class="video-modal-inner">
-    <div class="video-modal-close"><button id="videoModalClose" type="button">Close ✕</button></div>
+    <div class="video-modal-bar">
+      <h2 id="videoModalTitle"></h2>
+      <div class="video-modal-actions">
+        <button id="videoModalCopy" type="button"><span class="lbl">Copy link</span></button>
+        <button id="videoModalClose" type="button">Close ✕</button>
+      </div>
+    </div>
     <div class="video-modal-frame" id="videoModalFrame"></div>
   </div>
 </div>
+<div class="sr-only" id="liveMsg" aria-live="polite"></div>
 
 <script>
 /* ============================================================
@@ -324,9 +357,14 @@ footer a:hover{text-decoration:underline}
                 e.g. for https://youtube.com/watch?v=WpvbpnG37xM the id is "WpvbpnG37xM")
      keywords — optional, extra search terms not shown on the card
                 (e.g. "OTA channel manager" for a video titled "Basic OTA Settings")
+     slug     — optional. Every video has a shareable link of the form
+                https://quillstay.com/how-to-videos/#<slug>. The slug is made from the
+                title automatically. If you ever rename a video's title, add its OLD
+                slug here so links already sent in emails keep working.
+                (A link using the YouTube id, #<id>, always works too.)
 
-   The filter pills, thumbnails, search, and video counts are all
-   generated automatically from this list — nothing else on the page
+   The filter pills, thumbnails, search, copy-link buttons and video counts
+   are all generated automatically from this list — nothing else on the page
    needs to change when you add a video.
    ============================================================ */
 
@@ -341,6 +379,7 @@ const CATEGORIES = [
   "OTAs",
   "Group Bookings",
   "Set-Up & Settings",
+  "Email Templates",
   "Back Office",
   "Extras"
 ];
@@ -351,9 +390,10 @@ const VIDEOS = [
   { title: "How to Manage Calendar View", category: "Getting Started", id: "luf__PvREPM" },
   { title: "How to Set Up your Property and Add Rooms", category: "Set-Up & Settings", id: "eK-AQtKCsm8" },
   { title: "How to Add Deposit Policy, Taxes & Checkin, Checkout Times", category: "Set-Up & Settings", id: "onkutG4RiLg" },
-  { title: "Updating Email Templates (Auto Emails Sent to Guests)", category: "Set-Up & Settings", id: "jc1ak6Sm_qE" },
   { title: "How to Access and Manage Property Settings", category: "Set-Up & Settings", id: "bjZUO5bCRLc" },
   { title: "How to Turn Property Off for Booking and Manage Those Settings", category: "Set-Up & Settings", id: "2FDgVn3h-hg" },
+  { title: "Update Email Template (General)", category: "Email Templates", id: "jc1ak6Sm_qE", keywords: "updating email templates auto emails sent to guests edit" },
+  { title: "How to Update the Confirmation Email Template", category: "Email Templates", id: "kCVKSqEOZv4", keywords: "booking confirmation email edit guest template" },
   { title: "How to Update Rates, Min/Max Nights & Stop Sells (Monthly and Yearly View)", category: "Rates", id: "m9-EiFCvY70" },
   { title: "How to Create Room Types and Link Rate Plans", category: "Rates", id: "u_Fp-LFfIGw" },
   { title: "Add a Stop Sell & Manually Override", category: "Rates", id: "_E_-15PAHgI" },
@@ -413,6 +453,8 @@ const VIDEOS = [
 
 /* ============================================================ */
 
+const BASE_URL = 'https://quillstay.com/how-to-videos/';
+
 const grid = document.getElementById('videoGrid');
 const filterRow = document.getElementById('filterRow');
 const emptyState = document.getElementById('emptyState');
@@ -420,12 +462,67 @@ const noResults = document.getElementById('noResults');
 const modal = document.getElementById('videoModal');
 const modalFrame = document.getElementById('videoModalFrame');
 const modalClose = document.getElementById('videoModalClose');
+const modalCopy = document.getElementById('videoModalCopy');
+const modalTitle = document.getElementById('videoModalTitle');
+const liveMsg = document.getElementById('liveMsg');
 const searchInput = document.getElementById('searchInput');
 const searchClear = document.getElementById('searchClear');
 
 let activeCategory = 'All';
 let searchTerm = '';
+let currentVideo = null;
+let lastFocus = null;
 
+/* ---------- Shareable links ---------- */
+function slugify(s){
+  return s.toLowerCase().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+}
+(function assignSlugs(){
+  const used = new Set();
+  VIDEOS.forEach(v => {
+    const base = v.slug || slugify(v.title);
+    let s = base, n = 2;
+    while (used.has(s)) { s = base + '-' + n++; }
+    used.add(s);
+    v.slug = s;
+  });
+})();
+function linkFor(v){ return BASE_URL + '#' + v.slug; }
+function videoFromHash(){
+  let h = location.hash.replace(/^#/, '');
+  try { h = decodeURIComponent(h); } catch (e) {}
+  if (!h) return null;
+  return VIDEOS.find(v => v.slug === h) || VIDEOS.find(v => v.id === h) || null;
+}
+
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+  try {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    const ok = document.execCommand('copy');
+    document.body.removeChild(ta);
+    return ok;
+  } catch (e) { return false; }
+}
+async function copyLinkFor(v, btn){
+  const url = linkFor(v);
+  const ok = await copyText(url);
+  if (!ok) { window.prompt('Copy this link:', url); return; }
+  const lbl = btn.querySelector('.lbl');
+  const original = 'Copy link';
+  btn.classList.add('done');
+  if (lbl) lbl.textContent = 'Copied!';
+  liveMsg.textContent = 'Link copied: ' + v.title;
+  setTimeout(() => {
+    btn.classList.remove('done');
+    if (lbl) lbl.textContent = original;
+  }, 1700);
+}
+
+/* ---------- Rendering ---------- */
 function matchesSearch(v, term){
   if (!term) return true;
   const haystack = [v.title, v.category, v.keywords || ''].join(' ').toLowerCase();
@@ -469,36 +566,77 @@ function render(){
   grid.style.display = list.length === 0 ? 'none' : 'grid';
 
   list.forEach(v => {
-    const card = document.createElement('button');
-    card.type = 'button';
+    const card = document.createElement('div');
     card.className = 'video-card';
-    card.innerHTML = `
+
+    const open = document.createElement('button');
+    open.type = 'button';
+    open.className = 'video-open';
+    open.innerHTML = `
       <div class="video-thumb">
-        <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title} thumbnail" loading="lazy">
+        <img loading="lazy" alt="">
         <div class="play-badge">
           <svg width="52" height="52" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="rgba(0,43,132,.85)"/><path d="M10 8.5v7l6-3.5-6-3.5Z" fill="#fff"/></svg>
         </div>
       </div>
-      <h3>${v.title}</h3>
-      <span class="cat-tag">${v.category}</span>
+      <h3></h3>
+      <span class="cat-tag"></span>
     `;
-    card.addEventListener('click', () => openVideo(v.id));
+    const img = open.querySelector('img');
+    img.src = 'https://img.youtube.com/vi/' + v.id + '/hqdefault.jpg';
+    img.alt = v.title + ' thumbnail';
+    open.querySelector('h3').textContent = v.title;
+    open.querySelector('.cat-tag').textContent = v.category;
+    open.addEventListener('click', () => openVideo(v));
+
+    const copy = document.createElement('button');
+    copy.type = 'button';
+    copy.className = 'copy-link';
+    copy.setAttribute('aria-label', 'Copy link to ' + v.title);
+    copy.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span class="lbl">Copy link</span>';
+    copy.addEventListener('click', () => copyLinkFor(v, copy));
+
+    card.appendChild(open);
+    card.appendChild(copy);
     grid.appendChild(card);
   });
 }
 
-function openVideo(id){
-  modalFrame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1" title="QuillStay how-to video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+/* ---------- Video modal ---------- */
+function openVideo(v, opts){
+  opts = opts || {};
+  currentVideo = v;
+  lastFocus = document.activeElement;
+  modalTitle.textContent = v.title;
+  modalFrame.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1" title="QuillStay how-to video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   modal.classList.add('on');
+  if (!opts.noHash) history.replaceState(null, '', '#' + v.slug);
+  modalClose.focus();
 }
-function closeVideo(){
+function closeVideo(opts){
+  opts = opts || {};
   modal.classList.remove('on');
   modalFrame.innerHTML = '';
+  currentVideo = null;
+  if (!opts.keepHash && videoFromHash()) {
+    history.replaceState(null, '', location.pathname + location.search);
+  }
+  if (lastFocus && document.contains(lastFocus)) { try { lastFocus.focus(); } catch (e) {} }
+  lastFocus = null;
 }
-modalClose.addEventListener('click', closeVideo);
+modalClose.addEventListener('click', () => closeVideo());
+modalCopy.addEventListener('click', () => { if (currentVideo) copyLinkFor(currentVideo, modalCopy); });
 modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('on')) closeVideo(); });
 
+/* Opening a shared link (or pressing back/forward onto one) */
+window.addEventListener('hashchange', () => {
+  const v = videoFromHash();
+  if (v) { openVideo(v, { noHash: true }); }
+  else if (modal.classList.contains('on')) { closeVideo({ keepHash: true }); }
+});
+
+/* ---------- Search ---------- */
 searchInput.addEventListener('input', () => {
   searchTerm = searchInput.value.trim().toLowerCase();
   searchClear.classList.toggle('on', searchTerm.length > 0);
@@ -513,6 +651,8 @@ searchClear.addEventListener('click', () => {
 });
 
 render();
+const initial = videoFromHash();
+if (initial) openVideo(initial, { noHash: true });
 </script>
 </body>
 </html>
