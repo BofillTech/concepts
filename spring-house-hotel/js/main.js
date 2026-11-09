@@ -263,6 +263,8 @@
       { src: 'img/stay/main-lawn.jpg', alt: 'Adirondack chairs on the Spring House lawn' }
     ] },
     barn: { title: 'Barn Apartments', photos: [
+      { src: 'img/stay/barn-exterior.jpg', alt: 'The Barn at Spring House exterior' },
+      { src: 'img/stay/barn-sign.jpg', alt: 'The Barn at Spring House sign' },
       { src: 'img/stay/barn-apt-3.jpg', alt: 'A bedroom in the Barn Apartments' },
       { src: 'img/stay/barn-apt-2.jpg', alt: 'Inside the Barn Apartments' },
       { src: 'img/stay/barn-apt-4.jpg', alt: 'Inside the Barn Apartments' }
