@@ -28,6 +28,7 @@
     { label: 'Resources', items: [
       ['FAQ', 'Straight answers', '/faq/'],
       ['How-To Videos', 'Short training walkthroughs', '/how-to-videos/'],
+      ['Training Course', 'Step-by-step client training (login required)', '/training/'],
       ['Onboarding Guide', 'How we get you live', '/onboarding/'],
       ['Intro Video', 'QuillStay in 3 minutes', '/introvideo/'],
       ['Support', 'Call or email, 24/7 phone', '/support/']
