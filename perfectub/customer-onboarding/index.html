@@ -67,7 +67,7 @@ if (location.hostname === 'braktub.com') {
 <div class="wrap page"><div class="page-hero"><div><h1>New Customer Onboarding</h1><p class="lede">Wholesale and dealer account setup for Perfectub by Brak Tub. Contact Rosemarie Torla, Office Manager — <a href="mailto:sales@braktub.com">sales@braktub.com</a> · <a href="tel:+15162174599">(516) 217-4599</a>, option 3.</p></div><figure><img src="../img/founders-convention.webp" width="960" height="640" alt="Brak Tub founders at a trade show with Perfectub displays"></figure></div>
 
 <div class="layout"><div class="prose">
-<p>Use this form to open a new wholesale or dealer account. After we receive your details, Rosemarie will confirm your account and payment setup. Cut sheets and the product flyer are on the <a href="../downloads/">PDF Downloads</a> page; trade pricing is available on request via the <a href="../trade.html">For trade</a> page.</p>
+<p>Use this form to open a new wholesale or dealer account. It matches Rosemarie’s current Brak Application, including the 48-hour shipping-damage clause. After we receive your details, Rosemarie will confirm your account and payment setup. You can also <a href="../downloads/Brak-Application-Fillable.pdf">download the fillable PDF application</a>. Cut sheets and the product flyer are on the <a href="../downloads/">PDF Downloads</a> page; trade pricing is available on request via the <a href="../trade.html">For trade</a> page.</p>
 <p class="muted">Concept note: this page opens a prepared email to sales@braktub.com (same pattern as other concept forms). At launch it will be replaced with a WordPress form handler.</p>
 </div></div>
 
@@ -77,19 +77,18 @@ if (location.hostname === 'braktub.com') {
     <h2 id="onboard-form-h">Customer onboarding form</h2>
     <form class="form" id="onboarding-form" data-mailto="sales@braktub.com" data-subject="New customer onboarding form">
       <h3>Business</h3>
-      <label>Business name<input name="business-name" required data-label="Business name"></label>
-      <label>DBA<input name="dba" data-label="DBA"></label>
-      <label>Federal Tax ID or reseller number<input name="tax-id" data-label="Federal Tax ID or reseller number"></label>
-      <label>Tax / reseller state<input name="tax-state" data-label="Tax/reseller state"></label>
+      <label class="full">Business name<input name="business-name" required data-label="Business name"></label>
+      <label>Federal Tax ID or reseller #<input name="tax-id" data-label="Federal Tax ID or reseller number"></label>
+      <label>State<input name="tax-state" data-label="Tax/reseller state"></label>
       <label class="full">Business address<input name="bus-address" data-label="Business address" autocomplete="street-address"></label>
       <label>City<input name="bus-city" data-label="Business city" autocomplete="address-level2"></label>
       <label>State<input name="bus-state" data-label="Business state" autocomplete="address-level1"></label>
       <label>ZIP<input name="bus-zip" data-label="Business ZIP" autocomplete="postal-code"></label>
-      <label>Account contact<input name="account-contact" required data-label="Account contact"></label>
-      <label>Account contact email<input name="account-email" type="email" required data-label="Account contact email" autocomplete="email"></label>
-      <label>Phone<input name="account-phone" type="tel" data-label="Account phone" autocomplete="tel"></label>
+      <label>Main contact<input name="main-contact" required data-label="Main contact"></label>
+      <label>Email<input name="main-email" type="email" required data-label="Main contact email" autocomplete="email"></label>
+      <label>Phone<input name="main-phone" type="tel" data-label="Main contact phone" autocomplete="tel"></label>
 
-      <h3>Accounts payable contacts</h3>
+      <h3>Accounts payable information</h3>
       <label>AP contact 1 name<input name="ap1-name" data-label="AP contact 1 name"></label>
       <label>AP contact 1 title<input name="ap1-title" data-label="AP contact 1 title"></label>
       <label>AP contact 1 email<input name="ap1-email" type="email" data-label="AP contact 1 email"></label>
@@ -100,32 +99,42 @@ if (location.hostname === 'braktub.com') {
       <label>AP contact 2 phone<input name="ap2-phone" type="tel" data-label="AP contact 2 phone"></label>
 
       <h3>Business reference</h3>
-      <p class="note">Please provide at least one reference you have done business with for at least two years.</p>
+      <p class="note">Please provide at least one reference that you have done business with for at least two years.</p>
       <label>Company name<input name="ref-company" data-label="Reference company"></label>
       <label>Contact<input name="ref-contact" data-label="Reference contact"></label>
       <label>Phone<input name="ref-phone" type="tel" data-label="Reference phone"></label>
       <label>Email<input name="ref-email" type="email" data-label="Reference email"></label>
 
       <h3>Showroom locations</h3>
-      <p class="note">List up to three showrooms here. Attach a separate sheet or online listing later if you need more.</p>
+      <p class="note">List up to four showrooms here. Attach a separate sheet or provide an online listing if you need more.</p>
       <label class="full">Showroom 1 address<input name="show1-address" data-label="Showroom 1 address"></label>
       <label>Showroom 1 city<input name="show1-city" data-label="Showroom 1 city"></label>
-      <label>Showroom 1 state / ZIP<input name="show1-state-zip" data-label="Showroom 1 state/ZIP"></label>
+      <label>Showroom 1 state<input name="show1-state" data-label="Showroom 1 state"></label>
+      <label>Showroom 1 ZIP<input name="show1-zip" data-label="Showroom 1 ZIP"></label>
       <label>Showroom 1 main contact<input name="show1-contact" data-label="Showroom 1 contact"></label>
       <label>Showroom 1 email<input name="show1-email" type="email" data-label="Showroom 1 email"></label>
       <label>Showroom 1 phone<input name="show1-phone" type="tel" data-label="Showroom 1 phone"></label>
       <label class="full">Showroom 2 address<input name="show2-address" data-label="Showroom 2 address"></label>
       <label>Showroom 2 city<input name="show2-city" data-label="Showroom 2 city"></label>
-      <label>Showroom 2 state / ZIP<input name="show2-state-zip" data-label="Showroom 2 state/ZIP"></label>
+      <label>Showroom 2 state<input name="show2-state" data-label="Showroom 2 state"></label>
+      <label>Showroom 2 ZIP<input name="show2-zip" data-label="Showroom 2 ZIP"></label>
       <label>Showroom 2 main contact<input name="show2-contact" data-label="Showroom 2 contact"></label>
       <label>Showroom 2 email<input name="show2-email" type="email" data-label="Showroom 2 email"></label>
       <label>Showroom 2 phone<input name="show2-phone" type="tel" data-label="Showroom 2 phone"></label>
       <label class="full">Showroom 3 address<input name="show3-address" data-label="Showroom 3 address"></label>
       <label>Showroom 3 city<input name="show3-city" data-label="Showroom 3 city"></label>
-      <label>Showroom 3 state / ZIP<input name="show3-state-zip" data-label="Showroom 3 state/ZIP"></label>
+      <label>Showroom 3 state<input name="show3-state" data-label="Showroom 3 state"></label>
+      <label>Showroom 3 ZIP<input name="show3-zip" data-label="Showroom 3 ZIP"></label>
       <label>Showroom 3 main contact<input name="show3-contact" data-label="Showroom 3 contact"></label>
       <label>Showroom 3 email<input name="show3-email" type="email" data-label="Showroom 3 email"></label>
       <label>Showroom 3 phone<input name="show3-phone" type="tel" data-label="Showroom 3 phone"></label>
+      <label class="full">Showroom 4 address<input name="show4-address" data-label="Showroom 4 address"></label>
+      <label>Showroom 4 city<input name="show4-city" data-label="Showroom 4 city"></label>
+      <label>Showroom 4 state<input name="show4-state" data-label="Showroom 4 state"></label>
+      <label>Showroom 4 ZIP<input name="show4-zip" data-label="Showroom 4 ZIP"></label>
+      <label>Showroom 4 main contact<input name="show4-contact" data-label="Showroom 4 contact"></label>
+      <label>Showroom 4 email<input name="show4-email" type="email" data-label="Showroom 4 email"></label>
+      <label>Showroom 4 phone<input name="show4-phone" type="tel" data-label="Showroom 4 phone"></label>
 
       <h3>Disclosures &amp; invoicing</h3>
       <fieldset class="full"><legend>Showroom listing</legend>
@@ -136,12 +145,11 @@ if (location.hostname === 'braktub.com') {
           <label><input type="radio" name="sales-tax" value="Yes" data-label="Charge sales tax"><span>Yes</span></label>
           <label><input type="radio" name="sales-tax" value="No" data-label="Charge sales tax" checked><span>No</span></label>
         </div>
-        <p class="note" style="margin-top:8px">Sales tax will be applied if a resale tax ID number is not provided.</p>
       </fieldset>
-      <p class="note full">Invoices are emailed to the accounts payable contact above and can be paid online or through QuickBooks. Credit-card payments: contact Rosemarie at sales@braktub.com — invoices will reflect a partial fee for transaction costs. Checks: Brak Tub Corp, 4046 Robert Place, Seaford, NY 11783. Payment terms: 15 days net.</p>
-      <p class="note full"><strong>Orders and delivery:</strong> All orders must be requested by email to sales@braktub.com with quantity by size/orientation, PO or internal reference, expected delivery date and location, receiving contact, location type (residential, apartment, warehouse, storefront), liftgate / freight elevator / cargo / blackout times, and any delivery constraints. Deliveries are set to threshold; white-glove services add fees. Failed deliveries caused by misinformation or an unavailable contact may incur additional fees.</p>
+      <p class="note full">Invoices are emailed to the accounts payable contact specified above. We’re currently accepting checks mailed to the address below. If you are interested in paying by credit card or making electronic payments online through your bank account, please contact Sales@Braktub.com and your invoicing will reflect a partial fee to cover the transaction cost. Checks should be mailed to: Brak Tub Corp, 4046 Robert Place, Seaford, NY 11783. Payment terms are set to 15 days net.</p>
+      <p class="note full"><strong>Orders and delivery:</strong> To place an order with Brak Tub, please email Sales@braktub.com and provide the delivery details below and copy Bruce@braktub.com on the email. You will be contacted by Bruce by phone, and he will discuss the details of your delivery. Include: quantity of left and right tubs; delivery location; delivery date; contact person to accept delivery; and delivery instructions (freight elevator, cargo area, blacked out times for delivery, and any details pertaining to the delivery). Deliveries will be made according to your instructions. If the delivery fails due to the customer’s fault or misinformation, additional delivery fees may be applied.</p>
       <fieldset class="full"><legend>Shipping damage acknowledgement</legend>
-        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input type="checkbox" name="shipping-damage-ack" value="Acknowledged" required data-label="Shipping damage acknowledgement"><span>I acknowledge that all shipping damage must be reported within 48 hours and any obviously compromised boxes or pallets must be noted on the receiving document or refused outright.</span></label>
+        <label style="display:flex;gap:10px;align-items:flex-start;font-weight:400"><input type="checkbox" name="shipping-damage-ack" value="Acknowledged" required data-label="Shipping damage acknowledgement"><span>I acknowledge that all orders must be inspected upon delivery. The distributor/recipient is responsible for noting any damage to boxes, or shipments that arrived without pallets, on the Proof of Delivery (POD) document at the time of delivery. I will not sign off on the POD that the shipment arrived in good or acceptable condition if the boxes are damaged. Shipping damage must be reported within 48 hours. The distributor/recipient has the right to refuse the delivery if significant damage is noted.</span></label>
       </fieldset>
       <label class="full">Additional notes<textarea name="notes" rows="4" data-label="Additional notes"></textarea></label>
       <div class="full"><button class="btn btn--solid" type="submit">Submit onboarding form</button></div>
