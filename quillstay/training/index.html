@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuillStay Training Course</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="https://quillstay.com/img/quillstay-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#002b84;--navy-deep:#001d5c;--blue:#0386f8;--blue-dark:#0267c0;--paper:#f6fbff;--ink:#0e1f4d;--muted:#4d5b7c;--line:#dbe6f5;--white:#fff;--green:#12a150;--green-bg:#e7f7ee}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.5;font-size:16px}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;letter-spacing:-.015em;line-height:1.15}
+button{font:inherit;cursor:pointer}
+a{color:var(--blue-dark)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+
+/* Header */
+.top{position:sticky;top:0;z-index:50;background:rgba(246,251,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1380px;margin:0 auto;padding:0 24px;height:70px;display:flex;align-items:center;gap:18px}
+.top img{height:34px;width:auto;display:block}
+.top .tag{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;color:var(--navy);font-size:15px;padding-left:16px;border-left:1.5px solid var(--line)}
+.top .overall{margin-left:auto;display:flex;align-items:center;gap:12px;min-width:0}
+.top .overall .lbl{font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+.bar{height:8px;background:#e3ecf8;border-radius:99px;overflow:hidden}
+.bar > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--navy));border-radius:99px;transition:width .35s}
+.top .overall .bar{width:180px}
+.bar.done > i{background:var(--green)}
+
+/* Layout */
+.wrap{max-width:1380px;margin:0 auto;padding:26px 24px 60px;display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+aside{position:sticky;top:90px;max-height:calc(100vh - 110px);overflow:auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:8px 0}
+aside::-webkit-scrollbar{width:8px}aside::-webkit-scrollbar-thumb{background:#d6e2f3;border-radius:8px}
+.side-head{padding:12px 18px 10px;display:flex;align-items:center;justify-content:space-between}
+.side-head h2{font-size:16px;color:var(--navy-deep)}
+.side-head .count{font-size:13px;color:var(--muted);font-weight:600}
+.chap{border-top:1px solid var(--line)}
+.chap-btn{width:100%;background:none;border:0;text-align:left;padding:14px 18px 12px;display:grid;grid-template-columns:30px 1fr 16px;gap:10px;align-items:center;color:var(--ink)}
+.chap-btn:hover{background:#f3f8ff}
+.chap-num{width:30px;height:30px;border-radius:50%;background:#eaf3ff;color:var(--navy);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;font-family:'Schibsted Grotesk',sans-serif}
+.chap.complete .chap-num{background:var(--green);color:#fff}
+.chap-title{font-weight:700;font-size:15px;color:var(--navy-deep);line-height:1.25}
+.chap-meta{display:flex;align-items:center;gap:8px;margin-top:6px}
+.chap-meta .bar{flex:1;height:5px}
+.chap-meta span{font-size:12px;color:var(--muted);font-weight:600;white-space:nowrap}
+.caret{width:8px;height:8px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .15s;justify-self:center}
+.chap.open .caret{transform:rotate(-135deg)}
+.chap-list{display:none;padding:0 0 10px}
+.chap.open .chap-list{display:block}
+.sec-name{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px 18px 4px 58px}
+.vid{width:100%;background:none;border:0;text-align:left;display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:start;padding:8px 18px 8px 22px;color:var(--ink);font-size:14px;line-height:1.35;border-left:3px solid transparent}
+.vid:hover{background:#f3f8ff}
+.vid.current{background:#eaf3ff;border-left-color:var(--blue);font-weight:600}
+.vid .dot{width:18px;height:18px;border-radius:50%;border:2px solid #b9c9e2;margin-top:1px;display:flex;align-items:center;justify-content:center;flex:none}
+.vid.watched .dot{background:var(--green);border-color:var(--green)}
+.vid.watched .dot::after{content:"";width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.vid.current:not(.watched) .dot{border-color:var(--blue);box-shadow:inset 0 0 0 3px #fff;background:var(--blue)}
+.vid .dur{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1px}
+.vid.watched .ttl{color:var(--muted)}
+
+/* Main */
+main{min-width:0}
+.crumb{font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--blue-dark)}
+.v-title{font-size:clamp(1.4rem,2.6vw,2rem);font-weight:800;color:var(--navy-deep);margin:6px 0 16px}
+.player{position:relative;aspect-ratio:16/9;background:#0b1633;border-radius:16px;overflow:hidden;box-shadow:0 24px 50px -28px rgba(0,43,132,.55)}
+.player iframe,.player > div{position:absolute;inset:0;width:100%;height:100%;border:0}
+.controls{margin-top:18px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.check{display:inline-flex;align-items:center;gap:12px;padding:12px 20px 12px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-weight:700;color:var(--navy-deep);user-select:none;cursor:pointer;transition:border-color .15s,background .15s}
+.check input{position:absolute;opacity:0;pointer-events:none}
+.check .box{width:24px;height:24px;border-radius:7px;border:2px solid #9fb3d3;display:flex;align-items:center;justify-content:center;transition:all .15s;background:#fff}
+.check input:checked + .box{background:var(--green);border-color:var(--green)}
+.check input:checked + .box::after{content:"";width:6px;height:12px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check:hover{border-color:var(--blue)}
+.check.is-done{background:var(--green-bg);border-color:#b5e4c8}
+.check:focus-within{outline:3px solid var(--blue);outline-offset:2px}
+.check.nudge{animation:nudge 1.2s ease-in-out 3;border-color:var(--blue)}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 rgba(3,134,248,.0)}50%{box-shadow:0 0 0 7px rgba(3,134,248,.22)}}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-family:'Schibsted Grotesk',sans-serif;padding:12px 20px;border-radius:11px;font-size:15px;border:none;transition:background .15s,color .15s}
+.btn-solid{background:var(--navy);color:#fff}.btn-solid:hover{background:var(--blue-dark)}
+.btn-ghost{border:1.5px solid var(--line);color:var(--navy);background:#fff}.btn-ghost:hover{border-color:var(--navy)}
+.btn[disabled]{opacity:.4;cursor:default}
+.spacer{flex:1}
+.upnext{margin-top:16px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px}
+.upnext img{width:112px;aspect-ratio:16/9;object-fit:cover;border-radius:8px;flex:none;background:var(--line)}
+.upnext small{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.upnext b{display:block;color:var(--navy-deep);font-size:15px;line-height:1.3;margin-top:2px}
+.upnext button{margin-left:auto}
+.opts{margin-top:18px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.opts label{display:inline-flex;align-items:center;gap:8px;cursor:pointer}
+.opts input{accent-color:var(--navy);width:16px;height:16px}
+.linkish{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:14px;padding:0}
+.linkish:hover{color:#b42318}
+.chapter-card{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.chapter-card h3{font-size:17px;color:var(--navy-deep)}
+.chapter-card p{color:var(--muted);font-size:15px;margin-top:6px}
+.chapter-card .row{display:flex;align-items:center;gap:12px;margin-top:14px}
+.chapter-card .row .bar{flex:1;height:10px}
+.chapter-card .row span{font-weight:700;font-size:14px;color:var(--navy);white-space:nowrap}
+.done-panel{display:none;margin-top:18px;background:linear-gradient(135deg,var(--navy) 0%,var(--blue-dark) 100%);color:#fff;border-radius:16px;padding:24px 26px}
+.done-panel.on{display:block}
+.done-panel h3{font-size:22px}
+.done-panel p{opacity:.9;margin-top:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy-deep);color:#fff;padding:12px 20px;border-radius:12px;font-weight:600;font-size:15px;opacity:0;transition:all .25s;pointer-events:none;z-index:99;box-shadow:0 14px 30px -12px rgba(0,0,0,.4)}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.mobile-toggle{display:none}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:0 24px 40px}
+
+@media (max-width:980px){
+  .wrap{grid-template-columns:1fr;padding:16px 16px 50px;gap:18px}
+  aside{position:static;max-height:none;order:2}
+  main{order:1}
+  .top-in{padding:0 16px;height:62px;gap:12px}
+  .top img{height:28px}
+  .top .tag{display:none}
+  .top .overall .bar{width:90px}
+  .mobile-toggle{display:flex;width:100%;justify-content:space-between;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-weight:700;color:var(--navy-deep);margin-top:16px}
+  aside.collapsed{display:none}
+}
+@media (max-width:560px){
+  .controls .btn-ghost .t{display:none}
+  .check{flex:1 1 100%;justify-content:center}
+  .upnext img{width:84px}
+  .upnext{flex-wrap:wrap}
+  .upnext button{margin-left:0;width:100%;justify-content:center}
+  .top .overall .lbl .long{display:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a href="https://quillstay.com/" aria-label="QuillStay home"><img src="https://quillstay.com/img/quillstay-logo-dark.png" alt="QuillStay"></a>
+    <span class="tag">Training Course</span>
+    <div class="overall" aria-label="Overall course progress">
+      <span class="lbl"><span id="ovCount">0 of 0</span><span class="long"> videos watched</span></span>
+      <div class="bar" id="ovBar"><i></i></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside id="side" aria-label="Course contents">
+    <div class="side-head"><h2>Course contents</h2><span class="count" id="sideCount"></span></div>
+    <nav id="chapters"></nav>
+  </aside>
+
+  <main>
+    <div class="crumb" id="crumb"></div>
+    <h1 class="v-title" id="vTitle">Loading…</h1>
+    <div class="player"><div id="player"></div></div>
+
+    <div class="controls">
+      <label class="check" id="checkWrap"><input type="checkbox" id="watched"><span class="box"></span><span id="checkLbl">Mark as watched</span></label>
+      <span class="spacer"></span>
+      <button class="btn btn-ghost" id="prevBtn" type="button">← <span class="t">Previous</span></button>
+      <button class="btn btn-solid" id="nextBtn" type="button"><span class="t">Next video</span> →</button>
+    </div>
+
+    <div class="upnext" id="upnext">
+      <img id="upImg" alt="">
+      <div><small id="upLbl">Up next</small><b id="upTitle"></b></div>
+      <button class="btn btn-ghost" id="upBtn" type="button">Play</button>
+    </div>
+
+    <div class="done-panel" id="donePanel">
+      <h3>🎉 Course complete!</h3>
+      <p>You've watched every QuillStay training video. Questions? Call 203-457-8550 or email support — we're happy to help.</p>
+    </div>
+
+    <div class="opts">
+      <label><input type="checkbox" id="autoAdv" checked> Go to the next video when I mark one watched</label>
+      <button class="linkish" id="resetBtn" type="button">Reset my progress</button>
+    </div>
+
+    <div class="chapter-card" id="chapCard"></div>
+    <button class="mobile-toggle" id="mobToggle" type="button" aria-controls="side" aria-expanded="true"><span>Course contents</span><span id="mobCount"></span></button>
+  </main>
+</div>
+<footer>Progress is saved in this browser. © QuillStay</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const COURSE = [{"id":"getting-started","title":"Getting Started","desc":"Find your way around QuillStay: the dashboard, switching properties and the booking calendar.","sections":[{"name":null,"videos":[{"id":"HklfnhZX2KM","t":"Dashboard Overview","s":56},{"id":"CahXc3oQuuo","t":"How to Toggle Between Properties","s":27},{"id":"luf__PvREPM","t":"How to Manage Calendar View","s":59}]}]},{"id":"property-setup","title":"Property Setup","desc":"Set up your property, policies, taxes and the guest emails QuillStay sends for you.","sections":[{"name":"Property & policies","videos":[{"id":"bjZUO5bCRLc","t":"How to Access and Manage Property Settings","s":110},{"id":"yVVVaqtDRds","t":"How to Update Property Basic Info","s":30},{"id":"eK-AQtKCsm8","t":"How to Set Up your Property and Add Rooms","s":153},{"id":"onkutG4RiLg","t":"How to Add Deposit Policy, Taxes & Checkin, Checkout Times","s":149},{"id":"PXdv2PQ9LYQ","t":"How to Update Cancellation Policy Text","s":32},{"id":"WvdfAXvBHBQ","t":"How to Add a Booking Source","s":27},{"id":"tj3z5wSDkpk","t":"How to Add a Charge Item","s":28},{"id":"2FDgVn3h-hg","t":"How to Turn Property Off for Booking and Manage Those Settings","s":92}]},{"name":"Guest emails & alerts","videos":[{"id":"TftfUZ_K9NA","t":"How to Choose Booking Alert Types","s":30},{"id":"jc1ak6Sm_qE","t":"Update Email Template (General)","s":27},{"id":"kCVKSqEOZv4","t":"How to Update the Confirmation Email Template","s":35},{"id":"2WF7h4nO3_Q","t":"How to Schedule Reminder and Post-stay Emails","s":38}]}]},{"id":"rates","title":"Rates, Availability & Online Booking","desc":"Room types, rate plans, stop sells and what your booking engine and OTAs can sell.","sections":[{"name":null,"videos":[{"id":"u_Fp-LFfIGw","t":"How to Create Room Types and Link Rate Plans","s":342},{"id":"m9-EiFCvY70","t":"How to Update Rates, Min/Max Nights & Stop Sells (Monthly and Yearly View)","s":223},{"id":"ZnwGy8Cmzf0","t":"How to Update the Percentage on a Linked Rate Plan","s":74},{"id":"5VAUykrLsCg","t":"Turn Off Availability for a Certain Rate Plan","s":41},{"id":"_E_-15PAHgI","t":"Add a Stop Sell & Manually Override","s":29},{"id":"j0_11_cUpf8","t":"How to Close Reservations (Stop Sell) for the Evening","s":60},{"id":"rdOvGuWxpyY","t":"How to Hold Back Inventory from the OTA via Rate Plan","s":105}]}]},{"id":"reservations","title":"Reservations","desc":"Create, find, change and move reservations, plus maintenance blocks and groups.","sections":[{"name":"Create & find","videos":[{"id":"hxJULMpjhU4","t":"How to Make a New Reservation","s":76},{"id":"qLa4Zo3pyd4","t":"How to Search for a Reservation","s":56},{"id":"TkoFYlfyq2w","t":"How to Add Additional Guests","s":45},{"id":"nAyjghBhb88","t":"How to Send a Confirmation with a Personal Note","s":29}]},{"name":"Rooms & changes","videos":[{"id":"hahquTqeTEo","t":"How to Move and Assign Rooms via Booking Calendar","s":133},{"id":"WX9KzolbPpE","t":"Moving Unassigned Into Rooms","s":48},{"id":"OuX9kisWLzQ","t":"Moving Around/Shifting a Reservation","s":165},{"id":"cQIVIFuwPgY","t":"How to Cancel a Reservation","s":55},{"id":"ABRSM9qsebk","t":"How to Block Room for Maintenance","s":92},{"id":"JlC4LRi32U4","t":"How to Release a Maintenance Block","s":13}]},{"name":"Groups","videos":[{"id":"MR1mSP-An2E","t":"How to Set Up a Group Block","s":164},{"id":"_T0wvOsSiLw","t":"Claiming a Room in a Room Block","s":102}]}]},{"id":"front-desk","title":"Front Desk & Housekeeping","desc":"The day-to-day: arrivals, check-in, check-out, room status and the daily checklist.","sections":[{"name":"Check-in & check-out","videos":[{"id":"fT16ogRCfvM","t":"Viewing the Daily Check-Ins and Check-Outs","s":74},{"id":"ucAFMwEBsvQ","t":"How to Pre-Auth and Check In a Reservation","s":74},{"id":"7nE-OE_QSI8","t":"How to Work with Registration Forms","s":55},{"id":"I3nmLS98gDE","t":"How to Request Early Check-In or Late Checkout","s":92},{"id":"OVe4O_CgKw8","t":"How to Check Someone Out","s":64}]},{"name":"Housekeeping & daily checklist","videos":[{"id":"-5E5Qt_7J-o","t":"How to Use the Housekeeping Module (Status: Clean, Dirty, etc.)","s":164},{"id":"LXuXKpRL6Ko","t":"Daily Front Desk Checklist – Confirming All Rooms Are Cleaned","s":113},{"id":"a6SC-NbUg9c","t":"How to Check that Reservations are Fully Paid (Check-Ins, Check-Outs)","s":90},{"id":"Y4Z949kN4VI","t":"Daily Front Desk Checklist – Confirming All Check-Ins & Check-Outs Are Paid","s":99},{"id":"0BtOPGdOieg","t":"Time Clock: How Staff Clock In and Out","s":22}]}]},{"id":"billing","title":"Billing, Folios & Payments","desc":"Take payments, adjust rates, add extras and discounts, refund and resend invoices.","sections":[{"name":null,"videos":[{"id":"dBGJlaFopa4","t":"How to Process Payments on Reservations","s":100},{"id":"VOi0v179vCs","t":"How to Manually Edit Nightly Rate and View Invoice","s":47},{"id":"kaOZ7BjXRGk","t":"How to Add an Extra Charge","s":29},{"id":"CjTY5zfXnjQ","t":"How to Add an Extra to a Room","s":45},{"id":"rIWJUqMp8lc","t":"How to Add a Discount or Deduction to an Invoice","s":50},{"id":"U8AStFxYlLw","t":"How to Issue a Refund","s":49},{"id":"5e9YyQD1lg8","t":"How to Re-send Invoice","s":47}]}]},{"id":"night-audit","title":"Night Audit & Front Desk Reports","desc":"Close the day with night audit, then the reports the front desk uses every shift.","sections":[{"name":"Night audit","videos":[{"id":"Vhyo1tdHQ8Q","t":"How to Run Night Audit","s":133},{"id":"mEqryIw5Ef8","t":"How to Choose Nightly Audit Reports","s":31},{"id":"aBOqUglBZP8","t":"Night Audit Log: When Was the Audit Run?","s":41}]},{"name":"Front desk reports","videos":[{"id":"gFA2iCCsA88","t":"How to Access and View Reports","s":154},{"id":"4xyJQws9Auo","t":"Shift Report","s":37},{"id":"5gLcE9xyttc","t":"How to View the Check In Report","s":33},{"id":"RuIxc37kVb4","t":"Guest Listing Report","s":41},{"id":"0PPH6nXoPCY","t":"How to Run the Housekeeping Report","s":38},{"id":"bzewVN6fJoY","t":"How to Run the Reservation History Report","s":38},{"id":"hc47Rv7v52A","t":"Working with Logs, History, etc.","s":70},{"id":"D2gvh0sMU00","t":"How to View the Do Not Rent List","s":40}]}]},{"id":"reports","title":"Performance & Accounting Reports","desc":"Revenue, occupancy and forecasting, then the accounting reports your bookkeeper will ask for.","sections":[{"name":"Performance","videos":[{"id":"-ZX2GjfUEVg","t":"Daily Report (Daily Flash)","s":154},{"id":"noq1xK9e4Hs","t":"Day/MTD/YTD Revenue Report","s":154},{"id":"jVMogcBN7aw","t":"Occupancy Report","s":112},{"id":"EKPnP1j4KOU","t":"Sales Report","s":74},{"id":"-0f3iSN06sY","t":"How to Run the Net Sales Report","s":32},{"id":"E1GWE8h8lzQ","t":"How to View Revenue by Source","s":36},{"id":"lbpJNi52H0Q","t":"How to View the Room Forecast","s":40},{"id":"KMi2lVzrWHo","t":"How to Run the Pickup Report","s":33},{"id":"YSj3QO-5jlA","t":"How to Run the Year Over Year Pace Report","s":32},{"id":"9inNBw11Gww","t":"Group / Block Report","s":68},{"id":"nNrg6hDSIj0","t":"Rate Variance Report","s":54}]},{"name":"Accounting","videos":[{"id":"Tv4SX1FjeNA","t":"How to Read the Manager’s Report","s":59},{"id":"1581VYyV3PI","t":"How to Read the Daily Account Summary","s":51},{"id":"f0bmsOUVLkI","t":"How to Run the Transactions Report","s":48},{"id":"vD7z26v0IkI","t":"Cashier Report","s":24},{"id":"cUnd6IDDnHI","t":"How to View the CC Payment Settlement Report","s":49},{"id":"IHMnv-Kc3NQ","t":"Advance Deposits Report","s":40},{"id":"GMwWo_K9Qgc","t":"How to Run the Account Balances Report","s":48},{"id":"y9kfMcT-H-4","t":"How to Run the Folio Balances Report","s":44},{"id":"iHoTi6RKN5A","t":"How to Run the Ledger Balances Report","s":44},{"id":"6HDleqMQAhI","t":"How to View the Folio Audit Trail","s":52},{"id":"Bfk6fHq6gnU","t":"How to Read the Accommodations Report","s":61},{"id":"2UnLHY8iPT0","t":"Extras Report","s":96},{"id":"21XAUyESFVI","t":"Trial Balance Report","s":37}]}]},{"id":"owners","title":"Owners (Condo-Hotels & Co-Ops)","desc":"Assign owners to rooms, book owner stays and run owner statements.","sections":[{"name":null,"videos":[{"id":"RFkPlX3WttA","t":"How to Add an Owner to Each Room","s":40},{"id":"bfjbRjknT9Y","t":"How to Find the Owner Info for Each Room #","s":23},{"id":"NsZINhJH86A","t":"How to Create an Owner Reservation","s":72},{"id":"CJvGV-WltoM","t":"How to Add a Charge to Owner Reports","s":106},{"id":"w7--cpSdxlY","t":"How to Run the Owners Monthly Report","s":86}]}]}];
+const KEY = 'quillstay-training-v1';
+
+/* ---------- flatten ---------- */
+const FLAT = [];
+COURSE.forEach((c, ci) => c.sections.forEach(s => s.videos.forEach(v => FLAT.push(Object.assign(v, {ci, sec: s.name})))));
+const BY_ID = Object.fromEntries(FLAT.map((v, i) => [v.id, Object.assign(v, {i})]));
+
+/* ---------- state ---------- */
+let state = {watched: {}, current: null, auto: true, open: {}};
+try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+const isW = id => !!state.watched[id];
+const fmt = s => Math.floor(s/60) + ':' + String(s%60).padStart(2,'0');
+const $ = id => document.getElementById(id);
+
+function firstUnwatched(after){
+  const n = FLAT.length, start = after == null ? 0 : after + 1;
+  for (let k = 0; k < n; k++){ const v = FLAT[(start + k) % n]; if (!isW(v.id)) return v; }
+  return null;
+}
+
+/* ---------- player (YouTube IFrame API, plain iframe fallback) ---------- */
+let yt = null, ytReady = false, pending = null;
+function embed(id, autoplay){
+  if (ytReady){
+    if (!yt){
+      yt = new YT.Player('player', {host:'https://www.youtube-nocookie.com', videoId:id,
+        playerVars:{rel:0, modestbranding:1, playsinline:1, autoplay: autoplay?1:0},
+        events:{onStateChange: e => { if (e.data === YT.PlayerState.ENDED) onEnded(); }}});
+    } else if (autoplay) yt.loadVideoById(id); else yt.cueVideoById(id);
+  } else {
+    pending = {id, autoplay};
+    $('player').outerHTML = '<iframe id="player" src="https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&playsinline=1' + (autoplay?'&autoplay=1':'') + '" title="QuillStay training video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+  }
+}
+window.onYouTubeIframeAPIReady = function(){
+  ytReady = true;
+  const cur = state.current;
+  const el = $('player'); if (el && el.tagName === 'IFRAME') el.outerHTML = '<div id="player"></div>';
+  embed(cur, pending && pending.autoplay);
+};
+(function(){ const s = document.createElement('script'); s.src = 'https://www.youtube.com/iframe_api'; document.head.appendChild(s); })();
+
+function onEnded(){
+  const v = BY_ID[state.current];
+  if (!isW(v.id)){ const w = $('checkWrap'); w.classList.remove('nudge'); void w.offsetWidth; w.classList.add('nudge'); toast('Finished? Check “Mark as watched” to move on.'); }
+}
+
+/* ---------- render ---------- */
+function chapStats(ci){
+  const vs = FLAT.filter(v => v.ci === ci); const w = vs.filter(v => isW(v.id)).length;
+  return {w, n: vs.length, pct: vs.length ? Math.round(100*w/vs.length) : 0};
+}
+function renderSide(){
+  const nav = $('chapters'); nav.innerHTML = '';
+  COURSE.forEach((c, ci) => {
+    const st = chapStats(ci);
+    const cur = BY_ID[state.current];
+    const open = state.open[c.id] ?? (cur && cur.ci === ci);
+    const d = document.createElement('div');
+    d.className = 'chap' + (open ? ' open' : '') + (st.w === st.n ? ' complete' : '');
+    d.innerHTML = `<button class="chap-btn" type="button" aria-expanded="${open}">
+        <span class="chap-num">${st.w === st.n ? '✓' : ci+1}</span>
+        <span><span class="chap-title">${c.title}</span>
+          <span class="chap-meta"><span class="bar ${st.w===st.n?'done':''}"><i style="width:${st.pct}%"></i></span><span>${st.w}/${st.n}</span></span></span>
+        <span class="caret"></span></button><div class="chap-list"></div>`;
+    d.querySelector('.chap-btn').onclick = () => { state.open[c.id] = !d.classList.contains('open'); save(); renderSide(); };
+    const list = d.querySelector('.chap-list');
+    c.sections.forEach(s => {
+      if (s.name){ const h = document.createElement('div'); h.className = 'sec-name'; h.textContent = s.name; list.appendChild(h); }
+      s.videos.forEach(v => {
+        const b = document.createElement('button'); b.type = 'button';
+        b.className = 'vid' + (isW(v.id) ? ' watched' : '') + (v.id === state.current ? ' current' : '');
+        b.innerHTML = `<span class="dot" aria-hidden="true"></span><span class="ttl"></span><span class="dur">${fmt(v.s)}</span>`;
+        b.querySelector('.ttl').textContent = v.t;
+        b.setAttribute('aria-label', v.t + (isW(v.id) ? ' (watched)' : ''));
+        if (v.id === state.current) b.setAttribute('aria-current', 'true');
+        b.onclick = () => { go(v.id, true); if (matchMedia('(max-width:980px)').matches) scrollTo({top:0, behavior:'smooth'}); };
+        list.appendChild(b);
+      });
+    });
+    nav.appendChild(d);
+  });
+  const w = FLAT.filter(v => isW(v.id)).length, n = FLAT.length;
+  $('ovCount').textContent = w + ' of ' + n;
+  $('ovBar').querySelector('i').style.width = (100*w/n) + '%';
+  $('ovBar').classList.toggle('done', w === n);
+  const mins = Math.round(FLAT.reduce((a, v) => a + v.s, 0) / 60);
+  $('sideCount').textContent = COURSE.length + ' chapters · ' + n + ' videos · ~' + mins + ' min';
+  $('mobCount').textContent = w + '/' + n + ' watched';
+  $('donePanel').classList.toggle('on', w === n);
+}
+function renderMain(){
+  const v = BY_ID[state.current], c = COURSE[v.ci];
+  const inChap = FLAT.filter(x => x.ci === v.ci);
+  $('crumb').textContent = 'Chapter ' + (v.ci+1) + ' · ' + c.title + (v.sec ? ' · ' + v.sec : '') + ' · Video ' + (inChap.indexOf(v)+1) + ' of ' + inChap.length;
+  $('vTitle').textContent = v.t;
+  document.title = v.t + ' | QuillStay Training';
+  $('watched').checked = isW(v.id);
+  $('checkWrap').classList.toggle('is-done', isW(v.id));
+  $('checkLbl').textContent = isW(v.id) ? 'Watched' : 'Mark as watched';
+  $('prevBtn').disabled = v.i === 0;
+  $('nextBtn').disabled = v.i === FLAT.length - 1;
+  const nx = firstUnwatched(v.i);
+  const up = nx && nx.id !== v.id ? nx : (FLAT[v.i+1] || null);
+  if (up){
+    $('upnext').style.display = '';
+    $('upImg').src = 'https://img.youtube.com/vi/' + up.id + '/mqdefault.jpg';
+    $('upLbl').textContent = (up.ci !== v.ci ? 'Next chapter · ' + COURSE[up.ci].title : 'Up next') + ' · ' + fmt(up.s);
+    $('upTitle').textContent = up.t;
+    $('upBtn').onclick = () => go(up.id, true);
+  } else $('upnext').style.display = 'none';
+  const st = chapStats(v.ci);
+  $('chapCard').innerHTML = `<h3>Chapter ${v.ci+1}: ${c.title}</h3><p>${c.desc}</p>
+    <div class="row"><div class="bar ${st.w===st.n?'done':''}"><i style="width:${st.pct}%"></i></div><span>${st.w} of ${st.n} watched</span></div>`;
+}
+function go(id, autoplay){
+  if (!BY_ID[id]) return;
+  state.current = id; save();
+  if (history.replaceState) history.replaceState(null, '', '#' + id);
+  embed(id, autoplay);
+  renderSide(); renderMain();
+}
+function toast(msg){ const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), 2600); }
+
+/* ---------- events ---------- */
+$('watched').onchange = e => {
+  const v = BY_ID[state.current];
+  if (e.target.checked) state.watched[v.id] = Date.now(); else delete state.watched[v.id];
+  save();
+  const st = chapStats(v.ci);
+  if (e.target.checked){
+    const nx = firstUnwatched(v.i);
+    if (!nx){ renderSide(); renderMain(); toast('🎉 You finished the whole course!'); return; }
+    if (st.w === st.n) toast('Chapter ' + (v.ci+1) + ' complete! ✓');
+    if (state.auto){ setTimeout(() => go(nx.id, true), 450); renderSide(); renderMain(); return; }
+  }
+  renderSide(); renderMain();
+};
+$('prevBtn').onclick = () => { const v = BY_ID[state.current]; if (v.i > 0) go(FLAT[v.i-1].id, true); };
+$('nextBtn').onclick = () => { const v = BY_ID[state.current]; if (v.i < FLAT.length-1) go(FLAT[v.i+1].id, true); };
+$('autoAdv').checked = state.auto !== false;
+$('autoAdv').onchange = e => { state.auto = e.target.checked; save(); };
+$('resetBtn').onclick = () => {
+  if (!confirm('Reset your progress? All videos will be marked unwatched.')) return;
+  state = {watched: {}, current: FLAT[0].id, auto: state.auto, open: {}}; save(); go(FLAT[0].id, false); toast('Progress reset');
+};
+$('mobToggle').onclick = () => { const s = $('side'); const c = s.classList.toggle('collapsed'); $('mobToggle').setAttribute('aria-expanded', String(!c)); };
+
+/* ---------- start ---------- */
+const fromHash = location.hash.replace('#', '');
+const startId = BY_ID[fromHash] ? fromHash : (BY_ID[state.current] ? state.current : (firstUnwatched() || FLAT[0]).id);
+go(startId, false);
+</script>
+</body>
+</html>
