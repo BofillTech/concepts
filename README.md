@@ -6,6 +6,7 @@ Production-quality homepage redesign concepts for prospective hotel clients.
 
 | # | Property | Location | URL | Live Concept | Layout Style | Fonts | Date |
 |---|---|---|---|---|---|---|---|
+| 202 | Avondale by the Sea | Cape May, NJ | avondalebythesea.com | https://bofilltech.github.io/concepts/avondale-by-the-sea/ | Asymmetric-collage hero with oval office-door inset, two-tier masthead, amenity marquee ticker, ocean-view bento, 4-room bento, oval cartouche statement, good-to-know + off-season packages, real map, email-request booking bar | Rufina / Lexend | 2026-11-10 |
 | 201 | The Ocean Resort Inn | Montauk, NY | oceanresortinn.com | https://bofilltech.github.io/concepts/ocean-resort-inn/ | Full-bleed pool hero, sticky header, floating check-in/check-out booking box, 3 room cards, 8-icon amenities, pool feature, gallery, reviews, location | Young Serif / Instrument Sans | 2026-11-06 |
 | 200 | Lava Hot Springs Inn | Lava Hot Springs, ID | lavahotspringsinn.com | https://bofilltech.github.io/concepts/lava-hot-springs-inn/ | Type-over-full-bleed hero with rust tint, alternating room blocks, hot pools grid, area cards | Spectral / Karla | 2026-10-20 |
 | 199 | Shashi Hotel | Mountain View, CA | shashihotel.com | https://bofilltech.github.io/concepts/shashi-hotel-mountain-view/ | Side-by-side split hero, alternating room showcase, hamburger-only nav, midnight rituals box | Outfit / Assistant | 2026-10-20 |
