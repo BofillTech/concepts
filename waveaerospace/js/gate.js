@@ -16,7 +16,7 @@
     gate.id = 'wa-gate';
     gate.innerHTML =
       '<form class="wa-gate__box" autocomplete="off">' +
-      '<img src="img/wa-logo.png" alt="WaveAerospace" class="wa-gate__logo">' +
+      '<img src="waveaerospace-img/img/wa-logo.png" alt="WaveAerospace" class="wa-gate__logo">' +
       '<p class="wa-gate__label">Restricted preview</p>' +
       '<label class="wa-gate__field">Password<input type="password" name="pw" required autofocus></label>' +
       '<button type="submit" class="wa-gate__btn">Enter</button>' +
