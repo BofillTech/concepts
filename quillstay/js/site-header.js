@@ -34,6 +34,9 @@
       ['Support', 'Call or email, 24/7 phone', '/support/']
     ]}
   ];
+  /* If /img/quillstay-logo-light.png is ever missing, the header loads this backup copy instead
+     (a pinned copy kept in the repository's history). It is only used when the normal file fails to load. */
+  var LOGO_BACKUP = 'https://raw.githubusercontent.com/BofillTech/concepts/ac8bf39e42776b1b0d30b0049778ef82624cd767/quillstay/img/quillstay-logo-light.png';
   /* ----------------------------------------------------- */
 
   var isHome = host.hasAttribute('data-home');
@@ -69,7 +72,7 @@
 
   host.innerHTML =
     '<div class="sh-bar">' +
-      '<a class="sh-logo" href="' + (isHome ? '#top' : '/') + '" aria-label="QuillStay home"><img src="/img/quillstay-logo-light.png" alt="QuillStay"></a>' +
+      '<a class="sh-logo" href="' + (isHome ? '#top' : '/') + '" aria-label="QuillStay home"><img src="/img/quillstay-logo-light.png" alt="QuillStay" onerror="this.onerror=null;this.src=\'' + LOGO_BACKUP + '\'"></a>' +
       '<nav aria-label="Main" style="display:contents"><ul class="sh-links">' + desktop + '</ul></nav>' +
       '<div class="sh-actions">' +
         '<a class="sh-phone" href="' + CONFIG.phoneHref + '" aria-label="Call ' + CONFIG.phoneDisplay + '">' + phoneIcon +
@@ -137,5 +140,14 @@
       }
     });
   }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+  /* Footer logo safety net (same idea as the header logo) */
+  var FOOTER_LOGO_BACKUP = 'https://raw.githubusercontent.com/BofillTech/concepts/ac8bf39e42776b1b0d30b0049778ef82624cd767/quillstay/img/quillstay-logo-dark.png';
+  function fixFooterLogo() {
+    var img = document.querySelector('footer .foot-brand img');
+    if (!img || img.src === FOOTER_LOGO_BACKUP) return;
+    function swap() { img.onerror = null; img.src = FOOTER_LOGO_BACKUP; }
+    if (img.complete && img.naturalWidth === 0) swap(); else img.onerror = swap;
+  }
+  function start() { run(); fixFooterLogo(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
