@@ -111,3 +111,31 @@
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { closeDropdowns(); setPanel(false); } });
   window.addEventListener('resize', function () { if (window.innerWidth >= 1100) setPanel(false); });
 })();
+
+
+/* ---------- Extra footer links ----------
+   Adds links to the footer columns on every page from this one file.
+   Format: [column heading, link text, address, put it after this existing link's address]
+   (If a page's footer already has the link, nothing is added twice.) */
+(function () {
+  var FOOTER_EXTRA = [
+    ['Resources', 'Training Course', '/training/', '/how-to-videos/']
+  ];
+  function run() {
+    FOOTER_EXTRA.forEach(function (x) {
+      var cols = document.querySelectorAll('footer .foot-col');
+      for (var i = 0; i < cols.length; i++) {
+        var h = cols[i].querySelector('h4');
+        if (!h || h.textContent.trim() !== x[0]) continue;
+        if (cols[i].querySelector('a[href="' + x[2] + '"]')) return;
+        var a = document.createElement('a');
+        a.href = x[2];
+        a.textContent = x[1];
+        var after = x[3] && cols[i].querySelector('a[href="' + x[3] + '"]');
+        if (after) after.parentNode.insertBefore(a, after.nextSibling); else cols[i].appendChild(a);
+        return;
+      }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run); else run();
+})();
