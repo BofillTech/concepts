@@ -80,6 +80,7 @@ p{margin:0 0 1rem;max-width:60ch}
 .hero{padding:56px 0 40px}
 .hero__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
 .hero__lede{font-size:1.2rem;color:var(--muted);margin-top:22px}
+.hero__sub{font-family:"Poppins","Open Sans",system-ui,sans-serif;font-weight:600;font-size:clamp(1.15rem,2.2vw,1.55rem);line-height:1.25;letter-spacing:-.02em;margin:18px 0 0;max-width:36ch;color:var(--ink)}
 .hero__price{display:flex;gap:14px;align-items:baseline;margin:26px 0 22px;flex-wrap:wrap}
 .hero__price strong{font-family:"Poppins",sans-serif;font-size:2rem;letter-spacing:-.02em}
 .hero__price span{color:var(--muted)}
@@ -94,7 +95,7 @@ p{margin:0 0 1rem;max-width:60ch}
 .fact span{color:var(--muted);font-size:.93rem}
 
 /* design comparison */
-.design{padding:96px 0 40px}@media (max-width:560px){.design{padding-top:56px}.video{padding:56px 0}}
+.design{padding:72px 0 40px}@media (max-width:560px){.design{padding-top:48px}.video{padding:56px 0}}
 .design__head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
 .toggle{display:inline-flex;background:var(--white);border:1px solid var(--tile);border-radius:999px;padding:4px}
 .toggle button{font:600 .95rem "Open Sans",sans-serif;border:0;background:none;color:var(--muted);padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px}
@@ -296,6 +297,24 @@ footer{background:var(--ink);color:var(--porcelain);padding:48px 0 calc(40px + e
 .review--quote blockquote{font-family:"Poppins","Open Sans",system-ui,sans-serif;font-size:1.45rem;line-height:1.25;letter-spacing:-.01em}
 @media (max-width:960px){.models__head{grid-template-columns:1fr}}
 @media (max-width:560px){.proof{gap:12px}.proof figcaption{min-height:4.6em}}
+/* Rosemarie Nov 11: side-by-side diagrams, no toggle; smaller proof photos */
+.shape-compare{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;margin-top:8px}
+.shape-compare figure{margin:0}
+.shape-compare__svg{overflow:hidden}
+.shape-compare__svg svg{width:100%;height:auto;min-width:0;display:block}
+.shape-compare .profile{opacity:1}
+.shape-compare figcaption{margin-top:12px}
+.shape-compare figcaption b{display:block;font-size:1.05rem}
+@media (max-width:700px){.shape-compare{grid-template-columns:1fr}}
+.proof{grid-template-columns:1fr 1fr;gap:24px;margin-top:28px;max-width:820px}
+.proof__frame{aspect-ratio:468/590;max-height:320px}
+@media (min-width:961px){.proof{grid-template-columns:1fr 1fr;gap:24px}}
+@media (max-width:560px){.proof{grid-template-columns:1fr;max-width:360px}.proof__frame{max-height:none}}
+/* Comparison card: white background so the Perfectub column stays readable */
+.option--pt{background:var(--white);color:var(--ink);border-color:var(--ink)}
+.option--pt li{color:var(--muted);border-top-color:var(--tile)}
+.option--pt .yes::before{color:var(--glaze-deep)}
+
 
 @media (max-width:960px){
  .nav__links{display:none}
@@ -349,23 +368,50 @@ if (location.hostname === 'braktub.com') {
 </header>
 
 <main id="main">
+<section class="hero" id="top">
+ <div class="wrap hero__grid">
+ <div>
+ <h1>Smarter Design. More Bathing Space. Deeper Soaking. Safer Egress.</h1>
+ <p class="hero__sub">The bathtub hasn&rsquo;t changed in 100 years &mdash; until now.</p>
+ <p class="hero__lede">When the shower head was added to the bathtub, the bathtub should have been redesigned. Perfectub&reg; reimagines the traditional alcove bathtub. Its innovative interior design makes better use of a standard 60-inch footprint, combining a spacious, flat bathing floor with deeper soaking comfort, contemporary styling and thoughtful everyday functionality.</p>
+ <p class="hero__lede">Explore the 60 &times; 30 and 60 &times; 32 Perfectub models.</p>
+ <div class="hero__price"><strong>From $1,389</strong><span>Shipping included anywhere in the U.S.</span></div>
+ <div class="hero__cta">
+ <a class="btn btn--solid" href="product/perfectub/">Buy online</a>
+ <a class="btn btn--line" href="perfectub-showroom-locations/">Find a Showroom</a>
+ </div>
+ </div>
+ <figure class="hero__photo">
+ <img src="img/hero-cutaway.webp" width="1286" height="700" alt="A Perfectub cut in half, with one foot inside stepped forward under the undercut and the other foot outside right beside the apron">
+ <figcaption>A real Perfectub, cut in half. Your inside foot steps forward under the undercut, bringing your feet closer together as you step over. The interior toe-kick helps reduce the distance between feet while exiting the tub.</figcaption>
+ </figure>
+ </div>
+ <div class="facts">
+ <div class="wrap facts__in">
+ <div class="fact"><b>Fits a 60-inch alcove</b><span>No reframing or new plumbing</span></div>
+ <div class="fact"><b>Patented design</b><span>Perfectub is a registered trademark</span></div>
+ <div class="fact"><b>Install kit included</b><span>Linear overflow, drain and toe-cap</span></div>
+ <div class="fact"><b>Limited lifetime warranty</b><span>For the original owner, residential use</span></div>
+ </div>
+ </div>
+</section>
+
 <section class="design" id="design">
  <div class="wrap">
  <div class="design__head">
  <div>
- <h2>A Better Bath Without a Bigger Footprint</h2>
- <p class="hero__lede" style="margin-top:14px">The textured floor and practical shape provide room to stand and move. Traditional alcove bathtubs often give up usable interior room to curved surfaces and shallow soaking depth; Perfectub is designed to turn more of its footprint into a comfortable bathing experience.</p>
- <p class="hero__lede" style="margin-top:14px">A wider, flatter floor and a high-positioned linear overflow work together to increase usable bathing volume — up to 30% more bathing volume, depending on the tub you compare ours to.</p>
- </div>
- <div class="toggle" role="group" aria-label="Compare tub shapes">
- <button type="button" data-shape="pt" aria-pressed="true">Perfectub</button>
- <button type="button" data-shape="std" aria-pressed="false">Typical tub</button>
+ <h2>The Patented Interior Toe-Kick in a Standard Alcove Tub</h2>
+ <p class="hero__lede" style="margin-top:14px">The recessed toe-kick, also called the undercut, is built into the inside of Perfectub&rsquo;s front apron wall. Its distinctive concave contour lets the bather bring a foot closer to the exterior apron when stepping out. The contour also redirects splashing water back into the bathtub basin, preventing water on the bathroom floor.</p>
  </div>
  </div>
- <div class="section" id="shape">
- <svg viewBox="0 0 1000 380" role="img" aria-labelledby="shapeTitle">
- <title id="shapeTitle">Cross-section of the Perfectub compared with a typical tub. The Perfectub has a 1.25-inch steel-reinforced back wall, a flat shower floor with narrow-radius corners, and the patented Brak Undercut: the front wall angles in under the rim, so your inside foot can step forward right up to the apron. A typical tub has sloped walls and a curved bottom.</title>
- <line x1="20" y1="360" x2="980" y2="360" stroke="var(--tile)" stroke-width="3"/>
+ <div class="shape-compare" id="shape">
+ <figure>
+ <div class="section shape-compare__svg">
+ <svg viewBox="0 0 1000 380" role="img" aria-labelledby="shapeTitlePt">
+ <title id="shapeTitlePt">Cross-section of the Perfectub. It has a 1.25-inch steel-reinforced back wall, a flat shower floor with narrow-radius corners, and the patented Brak Undercut: the front wall angles in under the rim, so your inside foot can step forward right up to the apron.</title>
+ 
+<line x1="20" y1="360" x2="980" y2="360" stroke="var(--tile)" stroke-width="3"/>
+ 
  <!-- Perfectub, drawn from Brak Tub's own cross-section: back wall left, apron right -->
  <g class="profile profile--pt">
  <path d="M170 110 H739 L760 150 V336 Q760 354 742 354 H188 Q170 354 170 336 Z" fill="var(--water)"/>
@@ -386,10 +432,21 @@ if (location.hostname === 'braktub.com') {
  <text x="885" y="270" text-anchor="middle" class="callout step-label">Feet about</text>
  <text x="885" y="290" text-anchor="middle" class="callout step-label">3 inches apart </text>
  </g>
+ </svg>
+ </div>
+ <figcaption><b>Perfectub</b></figcaption>
+ </figure>
+ <figure>
+ <div class="section shape-compare__svg">
+ <svg viewBox="0 0 1000 380" role="img" aria-labelledby="shapeTitleStd">
+ <title id="shapeTitleStd">Cross-section of a typical tub, with sloped walls and a curved bottom.</title>
+ 
+<line x1="20" y1="360" x2="980" y2="360" stroke="var(--tile)" stroke-width="3"/>
+ 
  <!-- typical tub, same orientation -->
  <g class="profile profile--std">
- <clipPath id="stdInside"><path d="M170 76 C210 76 250 300 320 336 Q330 344 345 344 H585 Q600 344 610 336 C690 300 720 76 760 76 Z"/></clipPath>
- <rect x="150" y="110" width="660" height="250" fill="var(--water)" clip-path="url(#stdInside)"/>
+ <clipPath id="stdInsideTypical"><path d="M170 76 C210 76 250 300 320 336 Q330 344 345 344 H585 Q600 344 610 336 C690 300 720 76 760 76 Z"/></clipPath>
+ <rect x="150" y="110" width="660" height="250" fill="var(--water)" clip-path="url(#stdInsideTypical)"/>
  <path d="M150 62 V76 H170 C210 76 250 300 320 336 Q330 344 345 344 H585 Q600 344 610 336 C690 300 720 76 760 76 H800 V360" fill="none" stroke="var(--muted)" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
  <text x="14" y="128" class="callout">Sloped walls</text>
  <text x="14" y="148" class="callout--muted">narrow where</text>
@@ -404,46 +461,19 @@ if (location.hostname === 'braktub.com') {
  </g>
  </svg>
  </div>
- <div class="proof" id="proof">
-<p class="proof__lead"><b>Side-by-side: ordinary tub versus Perfectub.</b>The same stepping-out test in both cutaway tubs, shown together so the difference is clear without using a toggle.</p>
-<figure><div class="proof__frame"><img src="img/compare-step-typical.webp" width="468" height="590" alt="Feet stepping out of a cut-away ordinary tub, legs spread wide over the side"></div><figcaption><b>Ordinary tub — wide straddle</b><em>Legs are spread over the curved wall.</em></figcaption></figure>
-<figure><div class="proof__frame"><img class="is-standard-img" src="img/compare-step-perfectub.webp" width="468" height="590" alt="Feet stepping out of a cut-away Perfectub, standing close to the tub"></div><figcaption><b>Perfectub — closer footing</b><em>Feet stay close together, close to the edge.</em></figcaption></figure>
-<figure class="profile profile--pt"><div class="proof__frame"><img src="img/compare-chair-perfectub.webp" width="468" height="590" alt="A standard shower chair standing on the flat floor of a cut-away Perfectub"></div><figcaption><b>Perfectub shower chair</b><em>All four legs on one flat floor.</em></figcaption></figure>
-<figure class="profile profile--std"><div class="proof__frame"><img src="img/compare-chair-typical.webp" width="468" height="590" alt="A standard shower chair in a cut-away ordinary tub, legs on the curved floor"></div><figcaption><b>Ordinary tub shower chair</b><em>Legs land on a curved bottom.</em></figcaption></figure>
+ <figcaption><b>Typical tub</b></figcaption>
+ </figure>
 </div>
 
- <div class="points">
+ <div class="proof" id="proof">
+ <figure><div class="proof__frame"><img class="is-standard-img" src="img/compare-step-perfectub.webp" width="468" height="590" alt="Feet stepping out of a cut-away Perfectub, standing close to the tub"></div><figcaption><b>Perfectub — closer footing</b><em>Feet stay close together, close to the edge.</em></figcaption></figure>
+ <figure><div class="proof__frame"><img src="img/compare-step-typical.webp" width="468" height="590" alt="Feet stepping out of a cut-away ordinary tub, legs spread wide over the side"></div><figcaption><b>Ordinary tub — wide straddle</b><em>Legs are spread over the curved wall.</em></figcaption></figure>
+</div>
+<div class="points">
  <div><h3><i></i>The Patented Interior Toe-Kick</h3><p>The recessed toe-kick—also called the undercut—is built into the inside of Perfectub's front apron wall. Its distinctive concave contour lets the bather bring a foot closer to the exterior apron when stepping out. The contour also helps redirect splashing water toward the bathtub basin.</p></div>
  <div><h3><i></i>Deeper Soaking with a Linear Overflow</h3><p>Perfectub's slim linear overflow is located near the top of the tub, allowing a higher water level than many conventional overflow configurations. Enjoy a deeper soak in a bathtub designed for everyday showering as well as relaxing baths.</p></div>
- <div><h3><i></i>Room to Stand, Shower and Bathe</h3><p>The textured bubble floor has a practical, non-gloss finish. The 26-inch-wide flat bathing floor provides room to move freely while showering and allows a standard shower chair to sit level. The wide floor also provides more usable room for bathing children or pets. Its practical shape also gives homeowners more flexibility when planning for changing household needs.</p></div>
- <div><h3><i></i>Contemporary Details That Matter</h3><p>A narrow rear rim creates a clean transition from the finished wall to the tub basin. High-gloss acrylic and a streamlined silhouette complement a wide range of bathroom designs.</p></div>
- </div>
- </div>
-</section>
-
-<section class="hero" id="top">
- <div class="wrap hero__grid">
- <div>
- <h1>More Bathing Space. Deeper Soaking. Smarter Design.</h1>
- <p class="hero__lede">Perfectub&reg; reimagines the traditional alcove bathtub. Its innovative interior design makes better use of a standard 60-inch footprint, combining a spacious, flat bathing floor with deeper soaking comfort, contemporary styling and thoughtful everyday functionality.</p>
- <p class="hero__lede">Explore the 60 &times; 30 and 60 &times; 32 Perfectub models.</p>
- <div class="hero__price"><strong>From $1,389</strong><span>Shipping included anywhere in the U.S.</span></div>
- <div class="hero__cta">
- <a class="btn btn--solid" href="#models">Buy online</a>
- <a class="btn btn--line" href="#showrooms">Find a Showroom</a>
- </div>
- </div>
- <figure class="hero__photo">
- <img src="img/hero-cutaway.webp" width="1286" height="700" alt="A Perfectub cut in half, with one foot inside stepped forward under the undercut and the other foot outside right beside the apron">
- <figcaption>A real Perfectub, cut in half. Your inside foot steps forward under the undercut, bringing your feet closer together as you step over. The interior toe-kick helps reduce the distance between feet during exit.</figcaption>
- </figure>
- </div>
- <div class="facts">
- <div class="wrap facts__in">
- <div class="fact"><b>Fits a 60-inch alcove</b><span>No reframing or new plumbing</span></div>
- <div class="fact"><b>Patented design</b><span>Perfectub is a registered trademark</span></div>
- <div class="fact"><b>Install kit included</b><span>Linear overflow, drain and toe-cap</span></div>
- <div class="fact"><b>Limited lifetime warranty</b><span>For the original owner, residential use</span></div>
+ <div><h3><i></i>Room to Stand, Shower and Bathe</h3><p>The wide floor also provides more usable room for showering, brings children and pets closer to the edge while bathing, and offers flexibility to homeowners when planning for changing household needs and aging-in-place family members.</p></div>
+ <div><h3><i></i>Contemporary Details That Matter</h3><p>Perfectub offers a streamlined alcove appearance, a narrow rear rim, and a standard 60-inch alcove size. Installing the tub with a one-quarter-inch shim on the rear wall will eliminate the back ledge completely.</p></div>
  </div>
  </div>
 </section>
@@ -470,9 +500,9 @@ if (location.hostname === 'braktub.com') {
  <h2>Contemporary Design for Any Bathroom</h2>
  <p class="hero__lede" style="margin-top:14px">Perfectub is beautiful. A design-forward tub that is as good to use as it is to look at, its clean lines and enhanced appearance create a better space for living.</p>
  <ul class="beauty__list">
- <li><b>More Bathing Volume</b><span>A wider, flatter floor and deeper soaking capability. Up to 30% more bathing volume, depending on the tub you compare ours to.</span></li>
- <li><b>Clean lines</b><span>A slim linear overflow positioned near the rim with no metal trim.</span></li>
- <li><b>Narrow rear rim</b><span>Approximately 1¼ inches for a clean wall-to-basin transition.</span></li>
+ <li><b>More Bathing Volume</b><span>A wider, flatter floor and deeper soaking capability. Up to 30% more bathing volume.</span></li>
+ <li><b>Linear Overflow</b><span>A slim linear overflow positioned near the rim with no metal trim.</span></li>
+ <li><b>Narrow rear rim</b><span>The narrow rear rim supports a streamlined visual transition from tiled wall to bathtub basin.</span></li>
  </ul>
  </div>
  </div>
@@ -483,19 +513,19 @@ if (location.hostname === 'braktub.com') {
  <div class="models__head">
  <div>
  <h2>Choose your size</h2>
- <p>Perfectub comes in both a 30-inch and 32-inch wide model. Choose your orientation: left-hand or right-hand.</p>
+ <p>Perfectub comes in both a 30-inch and 32-inch wide model.</p>
  </div>
  <img class="models__photo" src="img/installed-blue-green-tile.webp" width="640" height="480" alt="Perfectub installed in a blue-green tiled alcove with a glass splash panel and matte black fixtures">
  </div>
  <div class="models__list">
  <div class="model">
  <div class="model__size">60 x 30<small>Standard alcove depth</small></div>
- <ul><li>Left-hand (LH) or right-hand (RH) drain</li><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
+ <ul><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
  <div class="model__buy"><strong>$1,389</strong><a class="btn btn--solid" href="#models">Add to cart</a></div>
  </div>
  <div class="model">
  <div class="model__size">60 x 32<small>Extra depth, front to back</small></div>
- <ul><li>The 32-inch model was designed with an accessibility-related rim-height consideration; whether an installation meets ADA requirements depends on the applicable standard, confirmed product dimensions and the entire bathroom design.</li><li>Left-hand (LH) or right-hand (RH) drain</li><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
+ <ul><li>The 32-inch model was designed to meet the ADA height requirements for an ADA-compliant installation.</li><li>Linear overflow and installation kit included</li><li>High-gloss acrylic</li></ul>
  <div class="model__buy"><strong>$1,496</strong><a class="btn btn--solid" href="#models">Add to cart</a></div>
  </div>
  </div>
@@ -581,7 +611,6 @@ if (location.hostname === 'braktub.com') {
  <h2>See one in person</h2>
  <p>Perfectub is on display at more than 35 kitchen and bath showrooms. Sit in it, check the depth, then buy locally or online.</p>
  <a class="btn btn--line" href="perfectub-showroom-locations/">Find a Showroom near you</a>
- <div class="showroom__tub showroom__tub--product"><img src="img/tub-right-drain.webp" width="665" height="377" alt="Perfectub with a right-hand drain and linear overflow" loading="lazy"></div>
  </section>
  <section class="panel panel--ink" id="founders">
  <figure class="trade__photo">
@@ -595,7 +624,7 @@ if (location.hostname === 'braktub.com') {
  </section>
 </div>
 
-<section class="home-seo" id="reasons"><div class="wrap home-seo__grid"><h2>Why Choose Perfectub</h2><div><ul><li>More bathing volume: Perfectub offers up to 30% more bathing volume, which would allow larger bathers to stretch out and sit comfortably below water level with both arms by their side. This is a relative benchmark because it depends on the tub you compare ours to.</li><li>Deeper soaking comfort: The slim linear overflow is positioned near the top of the tub, allowing a higher water level than many conventional overflow configurations.</li><li>High-gloss acrylic: Durable acrylic reinforced with fiberglass is smooth and easy to clean; the material helps retain water temperature.</li><li>Patented interior toe-kick: The recessed contour on the inside of the front apron wall lets the bather position a foot closer to the exterior apron when stepping out.</li><li>Contemporary design: High-gloss acrylic, a narrow rear rim, and streamlined appearance complement a wide range of bathroom designs.</li><li>Thoughtful installation: Solid underside designed to sit on a properly level floor without a separately applied wet mortar bed, when installed per manufacturer instructions. Six-piece installation kit included.</li><li>Everyday versatility: Practical for showering, soaking, and bathing children or pets, with a flat floor that provides more usable room.</li></ul><div class="home-seo__links"><a class="btn btn--line btn--sm" href="why-perfectub/">Why Perfectub</a><a class="btn btn--line btn--sm" href="a-safer-bathtub/">Thoughtful Design</a><a class="btn btn--line btn--sm" href="perfectub-vs-walk-in-tubs/">Perfectub vs. walk-in tubs</a></div></div></div></section>
+<section class="home-seo" id="reasons"><div class="wrap home-seo__grid"><h2>Why Choose Perfectub</h2><div><ul><li>More bathing volume: Perfectub offers up to 30% more bathing volume, which would allow larger bathers to stretch out and sit comfortably below water level with both arms by their side.</li><li>Deeper soaking comfort: The slim linear overflow is positioned near the top of the tub, allowing a higher water level than many conventional overflow configurations.</li><li>High-gloss acrylic: Durable acrylic reinforced with fiberglass is smooth and easy to clean; acrylic helps retain water temperature.</li><li>Patented interior toe-kick: The recessed contour on the inside of the front apron wall lets the bather position a foot closer to the exterior apron when stepping out.</li><li>Contemporary design: High-gloss acrylic, a narrow rear rim, and streamlined appearance complement a wide range of bathroom designs.</li><li>Time-saving installation: Solid underside designed to sit on a properly level floor without a separately applied wet mortar bed, when installed per manufacturer instructions. Six-piece installation kit included.</li><li>Everyday versatility: Practical for showering, soaking, and bathing children or pets, with a flat floor that provides more usable room.</li></ul><div class="home-seo__links"><a class="btn btn--line btn--sm" href="why-perfectub/">Why Perfectub</a><a class="btn btn--line btn--sm" href="a-safer-bathtub/">Patented Design</a><a class="btn btn--line btn--sm" href="perfectub-vs-walk-in-tubs/">Perfectub vs. walk-in tubs</a></div></div></div></section>
 <section class="home-seo" id="designed-for"><div class="wrap home-seo__grid"><h2>A Practical Bathtub for Your Household</h2><div><p>Perfectub is designed for homeowners who want more from a standard 60-inch alcove bathtub. Its innovative interior design makes better use of the footprint, combining spacious bathing room with deeper soaking comfort and contemporary styling.</p>
 <p>The wide, flat bathing floor and thoughtful design features serve everyday routines—whether you are showering, relaxing in the tub, or bathing children or pets. The interior toe-kick and practical shape offer everyday convenience for the whole household.</p>
 <p>For those planning a bathroom that can adapt over time, Perfectub offers features worth evaluating as part of a broader aging-in-place design, alongside grab bars, appropriate lighting, seating, and other accessibility considerations based on individual needs.</p>
@@ -631,7 +660,7 @@ if (location.hostname === 'braktub.com') {
  <p><a href="tel:+15162174599">(516) 217-4599</a><br><a href="mailto:sales@braktub.com">sales@braktub.com</a></p>
  <div class="sf__social"><a href="https://www.facebook.com/braktub" rel="noopener">Facebook</a><a href="https://www.linkedin.com/in/bruce-ahmes-97675686/" rel="noopener">LinkedIn</a></div></div>
  <div><b>Shop</b><ul><li><a href="shop-perfectub/">Shop</a></li><li><a href="product/perfectub/">Perfectub by BRAK Tub</a></li><li><a href="retail-customers/">Retail customers</a></li><li><a href="wholesale-customers/">Wholesale customers</a></li><li><a href="distributors/">Distributors</a></li><li><a href="trade.html">For trade</a></li></ul></div>
- <div><b>Why Perfectub</b><ul><li><a href="why-perfectub/">Why Perfectub</a></li><li><a href="a-safer-bathtub/">Thoughtful Design</a></li><li><a href="perfectub-vs-walk-in-tubs/">Perfectub vs. walk-in tubs</a></li><li><a href="the-perfectub/">Bathtub and shower combo</a></li><li><a href="the-perfectub-for-ice-baths/">Ice baths</a></li><li><a href="blogs/">Blog</a></li></ul></div>
+ <div><b>Why Perfectub</b><ul><li><a href="why-perfectub/">Why Perfectub</a></li><li><a href="a-safer-bathtub/">Patented Design</a></li><li><a href="perfectub-vs-walk-in-tubs/">Perfectub vs. walk-in tubs</a></li><li><a href="the-perfectub/">Bathtub and shower combo</a></li><li><a href="the-perfectub-for-ice-baths/">Ice baths</a></li><li><a href="blogs/">Blog</a></li></ul></div>
  <div><b>Resources</b><ul><li><a href="resources/">Resources</a></li><li><a href="install-warranty/">Install &amp; Warranty</a></li><li><a href="installing-a-perfectub/">Installing a Perfectub</a></li><li><a href="perfectub-warranty/">Perfectub Warranty</a></li><li><a href="cleaning-and-maintenance/">Cleaning and maintenance</a></li><li><a href="swapping-tubs-without-damaging-floors/">Swapping tubs</a></li><li><a href="faqs/">FAQs</a></li><li><a href="testimonials-reviews/">Testimonials &amp; Reviews</a></li></ul></div>
  <div><b>About</b><ul><li><a href="about/">About</a></li><li><a href="about/about-the-inventor/">About the Inventor</a></li><li><a href="customer-service/">Contact Us</a></li><li><a href="perfectub-showroom-locations/">Find a Showroom</a></li><li><a href="map/">Our Locations</a></li><li><a href="privacy-policy/">Privacy Policy</a></li><li><a href="return-policy/">Delivery, Repair &amp; Replacement Policy</a></li><li><a href="wholesale-shipping-policy/">Wholesale Shipping Policy</a></li></ul></div>
  </div>
@@ -658,16 +687,7 @@ if (location.hostname === 'braktub.com') {
  io.observe(shapeEl);vids.forEach(function(v){io.observe(v);});
  }else{shapeEl.classList.add('anim-on');}
 })();
-(function(){
- var shape=document.getElementById('shape'),proof=document.getElementById('proof');
- var btns=document.querySelectorAll('.toggle button');
- btns.forEach(function(b){
- b.addEventListener('click',function(){
- btns.forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false');});
- var std=b.dataset.shape==='std';shape.classList.toggle('is-standard',std);proof.classList.toggle('is-standard',std);
- });
- });
-})();
+
 </script>
 </body>
 </html>
