@@ -419,4 +419,20 @@
       openLightbox(list, parseInt(btn.getAttribute('data-index') || '0', 10), btn);
     });
   });
+
+  // Contact form: composes an email to the hotel's public inbox (concept has no backend;
+  // production swaps this for a WordPress form)
+  var cform = document.getElementById('message-form');
+  if (cform) {
+    cform.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!cform.checkValidity()) { cform.reportValidity(); return; }
+      var g = function (n) { return (cform.elements[n].value || '').trim(); };
+      var subj = 'Website inquiry \u2014 ' + g('topic') + ' (' + g('name') + ')';
+      var body = g('message') + '\n\n\u2014\n' + g('name') + '\n' + g('email') + (g('phone') ? '\n' + g('phone') : '');
+      window.location.href = 'mailto:info@SpringHouseHotel.com?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(body);
+      var note = document.getElementById('cform-note');
+      if (note) note.hidden = false;
+    });
+  }
 }());
