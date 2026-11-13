@@ -15,6 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Motel","name":"Astronaut Oceanfront Resort Motel","url":"https://astronautoceanfrontresort.com/","telephone":"+1-609-522-6981","address":{"@type":"PostalAddress","streetAddress":"511 E. Stockton Road","addressLocality":"Wildwood Crest","addressRegion":"NJ","postalCode":"08260","addressCountry":"US"},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Oceanfront pool and sun deck","value":true},{"@type":"LocationFeatureSpecification","name":"Separate kiddie pool","value":true},{"@type":"LocationFeatureSpecification","name":"Rooftop deck","value":true},{"@type":"LocationFeatureSpecification","name":"Free wireless internet","value":true},{"@type":"LocationFeatureSpecification","name":"Parking","value":true}],"sameAs":["https://www.instagram.com/AstronautOceanfrontMotel","https://www.facebook.com/profile.php?id=61589438883975"]}
 </script>
@@ -231,6 +232,26 @@ footer a:hover{color:var(--teal-ink)}
 @media (min-width:481px){.bookbar .btn .short{display:none}}
 
 /* ATTRACTIONS PAGE */
+.mapsec{padding:clamp(40px,6vw,70px) 0 0}
+.map-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;margin-bottom:20px}
+.map-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.legend{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:0;padding:0;font-weight:500;font-size:.95rem}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid #fff;box-shadow:0 0 0 1px rgba(0,0,0,.25)}
+#attractions-map{height:clamp(380px,60vh,560px);border-radius:28px;overflow:hidden;border:1px solid var(--line);background:#dfeef2;z-index:1}
+.map-fallback{display:grid;place-items:center;height:100%;color:var(--muted);padding:20px;text-align:center}
+.pin{width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.35)}
+.pin-home{width:48px;height:38px;background:#fff;border-radius:14px;box-shadow:0 6px 16px rgba(0,0,0,.35);display:grid;place-items:center;padding:3px}
+.leaflet-container .pin-home img{width:42px!important;height:32px!important;max-width:none!important;object-fit:contain}
+.map-views{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.map-views button{font:500 .95rem var(--sans);color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px;cursor:pointer}
+.map-views button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.leaflet-popup-content-wrapper{border-radius:16px;font-family:var(--sans)}
+.leaflet-popup-content{margin:14px 16px;font-size:.95rem;line-height:1.45}
+.leaflet-popup-content strong{display:block;padding-right:18px;font-size:1.05rem;margin-bottom:2px}
+.leaflet-popup-content a{color:#00687A;font-weight:600}
+.leaflet-container a.leaflet-popup-close-button{top:6px;right:6px}
+
 .page-hero{position:relative;min-height:clamp(380px,58vh,560px);display:flex;align-items:flex-end;color:#fff;overflow:hidden;background:#0E1D29}
 .page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
 .page-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,29,41,.55) 0%,rgba(14,29,41,0) 60%),linear-gradient(180deg,rgba(14,29,41,0) 40%,rgba(14,29,41,.75) 100%)}
@@ -355,6 +376,26 @@ footer a:hover{color:var(--teal-ink)}
     </ul>
   </nav>
 
+
+  <section class="mapsec" aria-labelledby="map-title">
+    <div class="wrap">
+      <div class="map-head">
+        <h2 id="map-title">Everything on one map.</h2>
+        <ul class="legend">
+          <li><img src="../img/logo.png" alt="" width="26" height="21" style="width:26px;height:21px">The Astronaut</li>
+          <li><i style="background:#D40404"></i>The Wildwoods</li>
+          <li><i style="background:#FCC917"></i>Cape May and beyond</li>
+        </ul>
+      </div>
+      <div id="attractions-map" role="region" aria-label="Map of the Astronaut Motel and nearby attractions"><div class="map-fallback">Loading the map…</div></div>
+      <div class="map-views" role="group" aria-label="Map view">
+        <button type="button" data-view="all" aria-pressed="true">Show everything</button>
+        <button type="button" data-view="wildwoods" aria-pressed="false">Zoom to the Wildwoods</button>
+        <button type="button" data-view="capemay" aria-pressed="false">Zoom to Cape May</button>
+      </div>
+    </div>
+  </section>
+
   <section class="zone" id="crest" aria-labelledby="crest-title">
     <div class="wrap">
       <div class="zone-head">
@@ -362,7 +403,7 @@ footer a:hover{color:var(--teal-ink)}
         <p>Start with what’s already yours: the beach out front and a pool deck that looks right over it.</p>
       </div>
       <div class="spots">
-        <article class="spot">
+        <article id="spot-beach" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-beach"/></svg>
           <div>
             <h3>The beach <span class="free">Free</span></h3>
@@ -370,7 +411,7 @@ footer a:hover{color:var(--teal-ink)}
             <p>Wide, soft sand on the oceanfront with a southern exposure. The Wildwoods’ beaches don’t require beach tags, so just grab a chair and go.</p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-deck" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-boardwalk"/></svg>
           <div>
             <h3>Our pool deck</h3>
@@ -390,7 +431,7 @@ footer a:hover{color:var(--teal-ink)}
         <p>The boardwalk, the piers and the neon that made this island famous in the 1950s and ’60s, all a short drive or tram ride north.</p>
       </div>
       <div class="spots three">
-        <article class="spot feature">
+        <article id="spot-boardwalk" class="spot feature">
           <img src="../img/wildwoods-ball.webp" alt="The Wildwoods beach ball plaza near the boardwalk" loading="lazy" width="700" height="500">
           <div class="body">
             <h3>The Wildwood boardwalk</h3>
@@ -400,7 +441,7 @@ footer a:hover{color:var(--teal-ink)}
             <p class="links"><a href="https://wildwoodsnj.com/">The Wildwoods visitor guide</a></p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-moreys" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-wheel"/></svg>
           <div>
             <h3>Morey’s Piers and Waterparks</h3>
@@ -410,7 +451,7 @@ footer a:hover{color:var(--teal-ink)}
             <p class="links"><a href="https://www.moreyspiers.com/">Morey’s Piers tickets and hours</a></p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-doowop" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-neon"/></svg>
           <div>
             <h3>Doo Wop Experience Museum <span class="free">Free</span></h3>
@@ -420,7 +461,7 @@ footer a:hover{color:var(--teal-ink)}
             <p class="links"><a href="https://www.doowopusa.org">Doo Wop Preservation League</a></p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-hereford" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-light"/></svg>
           <div>
             <h3>Hereford Inlet Lighthouse <span class="free">Free grounds</span></h3>
@@ -441,7 +482,7 @@ footer a:hover{color:var(--teal-ink)}
         <p>Head south to the tip of New Jersey for Victorian streets, a lighthouse climb and the island’s best sunset, or inland to one of the best free zoos in the country.</p>
       </div>
       <div class="spots">
-        <article class="spot">
+        <article id="spot-capemay" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-victorian"/></svg>
           <div>
             <h3>Historic Cape May</h3>
@@ -449,7 +490,7 @@ footer a:hover{color:var(--teal-ink)}
             <p>Gingerbread Victorian houses, a beautiful beach and the Washington Street Mall, an outdoor pedestrian mall full of independent shops and restaurants.</p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-cmlight" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-light"/></svg>
           <div>
             <h3>Cape May Lighthouse</h3>
@@ -458,7 +499,7 @@ footer a:hover{color:var(--teal-ink)}
             <p class="good">Good to know: there’s a fee to climb. Watch for special full-moon evening climbs.</p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-sunset" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-flag"/></svg>
           <div>
             <h3>Sunset Beach flag ceremony <span class="free">Free</span></h3>
@@ -468,7 +509,7 @@ footer a:hover{color:var(--teal-ink)}
             <p class="links"><a href="https://sunsetbeachnj.com">Sunset Beach</a></p>
           </div>
         </article>
-        <article class="spot">
+        <article id="spot-zoo" class="spot">
           <svg class="icon" aria-hidden="true"><use href="#i-paw"/></svg>
           <div>
             <h3>Cape May County Park and Zoo <span class="free">Free</span></h3>
@@ -528,6 +569,55 @@ footer a:hover{color:var(--teal-ink)}
   var d=new Date(),iso=function(x){return new Date(x.getTime()-x.getTimezoneOffset()*6e4).toISOString().slice(0,10)};
   ci.min=iso(d);co.min=iso(new Date(d.getTime()+864e5));
   ci.addEventListener('change',function(){if(!ci.value)return;var n=new Date(ci.value+'T12:00:00');n.setDate(n.getDate()+1);co.min=iso(n);if(!co.value||co.value<=ci.value)co.value=iso(n)});
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+/* Map data: edit coordinates or add stops here. zone: crest | wildwoods | capemay */
+var HOME={name:"Astronaut Oceanfront Resort Motel",addr:"511 E. Stockton Road, Wildwood Crest, NJ",lat:38.96806,lng:-74.83583};
+var STOPS=[
+ {name:"Wildwoods Beach Ball Sign and the boardwalk",zone:"wildwoods",lat:38.98015,lng:-74.81995,card:"spot-boardwalk"},
+ {name:"Morey’s Piers and Waterparks",zone:"wildwoods",lat:38.98571,lng:-74.80941,card:"spot-moreys"},
+ {name:"Doo Wop Experience Museum",zone:"wildwoods",lat:38.98279,lng:-74.81789,card:"spot-doowop"},
+ {name:"Hereford Inlet Lighthouse",zone:"wildwoods",lat:39.00681,lng:-74.79155,card:"spot-hereford"},
+ {name:"Washington Street Mall, Cape May",zone:"capemay",lat:38.93263,lng:-74.92293,card:"spot-capemay"},
+ {name:"Cape May Lighthouse",zone:"capemay",lat:38.93301,lng:-74.96039,card:"spot-cmlight"},
+ {name:"Sunset Beach",zone:"capemay",lat:38.94430,lng:-74.97020,card:"spot-sunset"},
+ {name:"Cape May County Park and Zoo",zone:"capemay",lat:39.10232,lng:-74.81231,card:"spot-zoo"}
+];
+var COLORS={crest:"#00A9C7",wildwoods:"#D40404",capemay:"#FCC917"};
+(function(){
+  var el=document.getElementById('attractions-map');
+  if(!window.L){el.innerHTML='<div class="map-fallback">The map couldn’t load. Use the list below for every stop.</div>';return}
+  el.innerHTML='';
+  var map=L.map(el,{scrollWheelZoom:false,zoomControl:true});
+  var dark=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches&&document.documentElement.getAttribute('data-theme')!=='light';
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/'+(dark?'dark_all':'rastertiles/voyager')+'/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',
+    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(map);
+  var origin=encodeURIComponent(HOME.addr);
+  function dir(s){return 'https://www.google.com/maps/dir/?api=1&origin='+origin+'&destination='+s.lat+','+s.lng}
+  var home=L.marker([HOME.lat,HOME.lng],{zIndexOffset:1000,title:HOME.name,
+    icon:L.divIcon({className:'',html:'<div class="pin-home"><img src="../img/logo.png" alt=""></div>',iconSize:[48,38],iconAnchor:[24,38],popupAnchor:[0,-36]})}).addTo(map)
+    .bindPopup('<strong>You’re here: the Astronaut</strong>'+HOME.addr+'<br><a href="https://astronautoceanfrontresort.com/book">Book your stay</a>');
+  var pts=[[HOME.lat,HOME.lng]];
+  STOPS.forEach(function(s){
+    var icon=L.divIcon({className:'',html:'<div class="pin" style="background:'+COLORS[s.zone]+'"></div>',iconSize:[26,26],iconAnchor:[13,26],popupAnchor:[0,-26]});
+    L.marker([s.lat,s.lng],{icon:icon,title:s.name,alt:s.name}).addTo(map)
+     .bindPopup('<strong>'+s.name+'</strong><a href="'+dir(s)+'" target="_blank" rel="noopener">Directions from the motel</a><br><a href="#'+s.card+'">Read more below</a>');
+    pts.push([s.lat,s.lng]);
+  });
+  var views={all:pts,
+    wildwoods:[[HOME.lat,HOME.lng]].concat(STOPS.filter(function(s){return s.zone==='wildwoods'}).map(function(s){return[s.lat,s.lng]})),
+    capemay:STOPS.filter(function(s){return s.zone==='capemay'&&s.card!=='spot-zoo'}).map(function(s){return[s.lat,s.lng]})};
+  map.fitBounds(pts,{padding:[40,40]});
+  [].forEach.call(document.querySelectorAll('.map-views button'),function(b,_,all){
+    b.addEventListener('click',function(){
+      [].forEach.call(document.querySelectorAll('.map-views button'),function(x){x.setAttribute('aria-pressed',x===b)});
+      map.flyToBounds(views[b.dataset.view],{padding:[50,50],duration:.8});
+    });
+  });
+  map.on('focus',function(){map.scrollWheelZoom.enable()});
+  map.on('blur',function(){map.scrollWheelZoom.disable()});
 })();
 </script>
 </body>
