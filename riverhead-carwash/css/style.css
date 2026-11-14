@@ -219,7 +219,7 @@ address { font-style: normal; }
 }
 .visit__inner {
   max-width: var(--max); margin: 0 auto;
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 0;
 }
 .visit a, .visit p, .visit address { color: var(--white); text-decoration: none; margin: 0; }
@@ -237,6 +237,9 @@ address { font-style: normal; }
 .visit__value { font-weight: 700; font-size: 1.08rem; }
 .visit__note { display: block; font-size: .88rem; color: #c9d4e3; font-weight: 500; }
 
+@media (max-width: 900px) {
+  .visit__inner { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 700px) {
   .visit__inner { grid-template-columns: 1fr; }
   .visit__item { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.08); }
@@ -408,6 +411,16 @@ h3 {
   display: grid; grid-template-columns: 1fr 1.1fr; gap: 1.5rem; align-items: stretch;
 }
 .location img, .location .map-frame { height: 100%; min-height: 16rem; object-fit: cover; border-radius: var(--radius); }
+.location__logo {
+  display: block;
+  width: auto;
+  max-width: 18rem;
+  height: auto !important;
+  min-height: 0 !important;
+  object-fit: contain;
+  margin: 0 auto 1rem;
+  border-radius: 0;
+}
 @media (max-width: 800px) {
   .location { grid-template-columns: 1fr; }
 }
