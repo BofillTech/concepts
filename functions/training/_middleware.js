@@ -4,6 +4,7 @@
 //   TRAINING_PASSWORD       the shared password you give clients
 //   TRAINING_COOKIE_SECRET  any long random string (signs the 30-day login cookie)
 // Changing TRAINING_PASSWORD logs everyone out.
+// Cookie path is '/' so the same session works for /training/ and /how-to-videos/
 
 const COOKIE = 'qs_training';
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
@@ -42,7 +43,7 @@ button{margin-top:16px;width:100%;padding:13px;border:0;border-radius:11px;backg
 .err{background:#fdecea;color:#b42318;border-radius:9px;padding:10px 12px;font-size:14px;margin-bottom:14px}.foot{margin-top:18px;font-size:13px;color:#4d5b7c}</style></head>
 <body><form class="card" method="POST" action="/training/"><img src="/img/quillstay-logo-dark.png" alt="QuillStay">
 <h1>Training Course</h1><p>Enter the password QuillStay gave you to start your training.</p>
-${error ? '<div class="err">That password didn’t work. Please try again.</div>' : ''}
+${error ? '<div class="err">That password didn&apos;t work. Please try again.</div>' : ''}
 <label for="pw">Password</label><input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
 <button type="submit">Start training</button><div class="foot">Need access? Call 203-457-8550.</div></form></body></html>`;
   return new Response(html, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
@@ -54,7 +55,7 @@ export async function onRequest(context) {
   const url = new URL(request.url);
 
   if (url.pathname.replace(/\/+$/, '') === '/training/logout') {
-    return new Response(null, { status: 303, headers: { Location: '/training/', 'Set-Cookie': `${COOKIE}=; Path=/training; Max-Age=0; HttpOnly; Secure; SameSite=Lax` } });
+    return new Response(null, { status: 303, headers: { Location: '/training/', 'Set-Cookie': `${COOKIE}=; Path=/; Max-Age=0; HttpOnly; Secure; SameSite=Lax` } });
   }
 
   if (request.method === 'POST') {
@@ -66,7 +67,7 @@ export async function onRequest(context) {
     }
     const exp = Math.floor(Date.now() / 1000) + MAX_AGE;
     const token = exp + '.' + (await sign(env, exp));
-    return new Response(null, { status: 303, headers: { Location: '/training/', 'Set-Cookie': `${COOKIE}=${token}; Path=/training; Max-Age=${MAX_AGE}; HttpOnly; Secure; SameSite=Lax` } });
+    return new Response(null, { status: 303, headers: { Location: '/training/', 'Set-Cookie': `${COOKIE}=${token}; Path=/; Max-Age=${MAX_AGE}; HttpOnly; Secure; SameSite=Lax` } });
   }
 
   if (!(await validCookie(request, env))) return loginPage(false, 401);
