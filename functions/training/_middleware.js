@@ -43,7 +43,7 @@ button{margin-top:16px;width:100%;padding:13px;border:0;border-radius:11px;backg
 .err{background:#fdecea;color:#b42318;border-radius:9px;padding:10px 12px;font-size:14px;margin-bottom:14px}.foot{margin-top:18px;font-size:13px;color:#4d5b7c}</style></head>
 <body><form class="card" method="POST" action="/training/"><img src="/img/quillstay-logo-dark.png" alt="QuillStay">
 <h1>Training Course</h1><p>Enter the password QuillStay gave you to start your training.</p>
-${error ? '<div class="err">That password didn't work. Please try again.</div>' : ''}
+${error ? '<div class="err">That password didn&apos;t work. Please try again.</div>' : ''}
 <label for="pw">Password</label><input id="pw" name="password" type="password" autocomplete="current-password" required autofocus>
 <button type="submit">Start training</button><div class="foot">Need access? Call 203-457-8550.</div></form></body></html>`;
   return new Response(html, { status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' } });
