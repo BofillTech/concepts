@@ -435,4 +435,32 @@
       if (note) note.hidden = false;
     });
   }
+
+  // Gallery page: scroll-spy ON state for the property submenu pills
+  var galPills = Array.prototype.slice.call(document.querySelectorAll('.gal-nav__pill'));
+  if (galPills.length) {
+    var galMap = galPills.map(function (p) {
+      return { pill: p, sec: document.getElementById((p.getAttribute('href') || '').slice(1)) };
+    }).filter(function (m) { return m.sec; });
+    var setOn = function (pill) {
+      galPills.forEach(function (p) { p.classList.toggle('is-on', p === pill); });
+    };
+    var spyTick = false;
+    var spy = function () {
+      spyTick = false;
+      var fold = (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 104) + 150;
+      var current = galMap.length ? galMap[0] : null;
+      galMap.forEach(function (m) {
+        if (m.sec.getBoundingClientRect().top <= fold) current = m;
+      });
+      if (current) setOn(current.pill);
+    };
+    window.addEventListener('scroll', function () {
+      if (!spyTick) { spyTick = true; requestAnimationFrame(spy); }
+    }, { passive: true });
+    galPills.forEach(function (p) {
+      p.addEventListener('click', function () { setOn(p); });
+    });
+    spy();
+  }
 }());
