@@ -18,35 +18,6 @@
     });
   }
 
-  function check(el) {
-    if (!el.hasAttribute('required')) return true;
-    if (el.type === 'checkbox' || el.type === 'radio') return el.checked;
-    return String(el.value || '').trim().length > 0 && el.checkValidity();
-  }
-
-  Array.prototype.forEach.call(doc.querySelectorAll('.js-preview-form'), function (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var hp = form.querySelector('input[name="website"]');
-      if (hp && hp.value) return;
-      var fields = Array.prototype.filter.call(form.querySelectorAll('input, select, textarea'), function (i) {
-        return i.name !== 'website';
-      });
-      var bad = fields.filter(function (i) { return !check(i); });
-      if (bad.length) {
-        bad[0].focus();
-        if (bad[0].reportValidity) bad[0].reportValidity();
-        return;
-      }
-      var status = form.querySelector('[data-form-status]');
-      if (status) {
-        status.hidden = false;
-        status.setAttribute('tabindex', '-1');
-        status.focus();
-      }
-    });
-  });
-
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
