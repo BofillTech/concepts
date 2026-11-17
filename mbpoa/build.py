@@ -126,7 +126,8 @@ def header(current):
 """
 
 
-def footer():
+def footer(leaflet=False):
+    lj = '<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>\n' if leaflet else ""
     return f"""
 <footer class="site-foot" aria-label="Site footer">
   <div class="wrap">
@@ -161,7 +162,7 @@ def footer():
     </div>
   </div>
 </footer>
-<script src="js/events-data.js"></script>
+{lj}<script src="js/events-data.js"></script>
 <script src="js/site.js"></script>
 </body>
 </html>
@@ -393,7 +394,7 @@ def build_home():
 
 </main>
 """
-    h += footer()
+    h += footer(leaflet=True)
     write("index.html", h)
 
 
