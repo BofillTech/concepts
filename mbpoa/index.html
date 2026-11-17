@@ -3,20 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Montauk Beach Property Owners Association — Stewards of the Ocean View Beach since 1942</title>
-<meta name="description" content="For 84 years the MBPOA has been the sole steward of 30+ acres of deeded oceanfront in Montauk's Hither Hills. It cannot be bought, sold, or given away. Our beach, as deeded, is for all to enjoy all the time.">
-<link rel="canonical" href="https://mbpoa.com/">
-<meta property="og:title" content="Montauk Beach Property Owners Association">
-<meta property="og:description" content="84 years as the sole steward of 30+ acres of deeded oceanfront in Hither Hills, Montauk. Our beach, as deeded, is for all to enjoy all the time.">
+<title>Montauk Beach Property Owners Association — MBPOA</title>
+<meta name="description" content="MBPOA has been the steward of 30+ acres of deeded Montauk oceanfront since 1942. Events, beach rules, resources and more.">
+<meta name="theme-color" content="#14324A">
+<link rel="canonical" href="https://bofilltech.github.io/concepts/mbpoa/index.html">
+<meta property="og:title" content="Montauk Beach Property Owners Association — MBPOA">
+<meta property="og:description" content="MBPOA has been the steward of 30+ acres of deeded Montauk oceanfront since 1942. Events, beach rules, resources and more.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://mbpoa.com/">
 <meta property="og:image" content="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Besley:wght@600;700&amp;family=Public+Sans:wght@400;600;700&amp;display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+<link rel="stylesheet" href="css/style.css">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -27,736 +26,294 @@
   "logo": "https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png",
   "foundingDate": "1942-06-17",
   "email": "MBPOAINC@gmail.com",
-  "description": "A 501(c)(7) social organization and the sole steward of 30+ acres of deeded oceanfront property in Hither Hills, Montauk, New York, since 1942.",
   "address": {
     "@type": "PostalAddress",
-    "postOfficeBoxNumber": "PO Box 792",
+    "streetAddress": "PO Box 792",
     "addressLocality": "Montauk",
     "addressRegion": "NY",
     "postalCode": "11954",
     "addressCountry": "US"
   },
-  "sameAs": ["https://shop.mbpoa.com/", "https://www.instagram.com/mbpoa.montauk/"]
+  "sameAs": [
+    "https://shop.mbpoa.com/",
+    "https://www.instagram.com/mbpoa.montauk/"
+  ]
 }
 </script>
-<style>
-:root{
-  --ink:#14324A;          /* Atlantic ink — deep marine blue */
-  --ink-deep:#0D2333;
-  --ink-soft:#33556C;
-  --orange:#E8611C;       /* the Orange M beach-location signs */
-  --orange-deep:#C74C0F;
-  --dune:#7A8459;         /* dune grass */
-  --paper:#F9F8F4;
-  --mist:#EFF2F1;         /* cool sea mist band */
-  --sand:#E2D9C4;         /* sand borders / rules */
-  --body:#22333F;
-  --meta:#5E7180;
-  --maxw:1280px;
-  --pad:clamp(20px,5vw,72px);
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-body{
-  background:var(--paper);
-  color:var(--body);
-  font-family:'Public Sans',system-ui,sans-serif;
-  font-size:17px;line-height:1.65;
-  -webkit-font-smoothing:antialiased;
-}
-img{display:block;max-width:100%;height:auto}
-a{color:var(--ink);text-decoration:none}
-h1,h2,h3{font-family:'Besley',Georgia,serif;line-height:1.06;color:var(--ink);font-weight:700;letter-spacing:-.01em}
-.wrap{max-width:var(--maxw);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
-.skip{position:absolute;left:-999px;top:0;background:var(--ink);color:#fff;padding:10px 16px;z-index:200}
-.skip:focus{left:12px;top:12px}
-.eyebrow{
-  display:inline-flex;align-items:center;gap:10px;
-  font-size:12px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-soft);
-}
-.m-glyph{
-  width:20px;height:20px;flex:none;border-radius:3px;background:var(--orange);
-  color:#fff;font-family:'Besley',serif;font-weight:800;font-size:13px;line-height:20px;text-align:center;
-}
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-family:'Public Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-  padding:15px 26px;border-radius:3px;border:2px solid var(--orange);
-  transition:background .25s,color .25s,border-color .25s,transform .25s;cursor:pointer;
-}
-.btn--solid{background:var(--orange);color:#fff}
-.btn--solid:hover{background:var(--orange-deep);border-color:var(--orange-deep);transform:translateY(-2px)}
-.btn--ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn--ghost:hover{background:var(--ink);color:#fff}
-.btn--white{background:#fff;color:var(--ink);border-color:#fff}
-.btn--white:hover{background:var(--sand);border-color:var(--sand)}
-
-/* ---------- NAV (hamburger-only: the real site runs 11 items) ---------- */
-.nav-primary{
-  position:sticky;top:0;z-index:100;background:var(--paper);
-  border-bottom:1px solid var(--sand);transition:box-shadow .3s;
-}
-.nav-primary.is-scrolled{box-shadow:0 4px 18px rgba(20,50,74,.10)}
-.nav__inner{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;justify-content:space-between;gap:18px}
-.nav__brand{display:flex;align-items:center;gap:14px;min-width:0}
-.nav__brand img{height:54px;width:auto}
-.nav__brand-name{font-family:'Besley',serif;font-weight:700;font-size:15px;line-height:1.25;color:var(--ink);max-width:24ch}
-.nav__right{display:flex;align-items:center;gap:14px;flex:none}
-.nav__donate{padding:12px 20px;font-size:13px}
-.nav__burger{
-  display:flex;flex-direction:column;justify-content:center;gap:5px;
-  width:48px;height:48px;padding:12px;background:transparent;border:2px solid var(--ink);border-radius:3px;cursor:pointer;
-}
-.nav__burger span{display:block;height:2px;background:var(--ink);transition:transform .3s,opacity .3s}
-.nav__burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav__burger[aria-expanded="true"] span:nth-child(2){opacity:0}
-.nav__burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-.drawer{
-  position:fixed;inset:0;z-index:99;background:var(--ink-deep);
-  transform:translateY(-102%);transition:transform .45s cubic-bezier(.2,.8,.2,1);
-  overflow-y:auto;padding:110px var(--pad) 48px;
-}
-.drawer.is-open{transform:translateY(0)}
-.menu-primary{list-style:none;max-width:680px;margin:0 auto}
-.menu-primary .menu-item a{
-  display:flex;align-items:baseline;justify-content:space-between;gap:16px;
-  font-family:'Besley',serif;font-weight:600;font-size:clamp(1.35rem,3.4vw,2rem);
-  color:var(--paper);padding:16px 4px;border-bottom:1px solid rgba(226,217,196,.18);
-}
-.menu-primary .menu-item a:hover{color:#F2A879}
-.menu-primary .menu-item small{font-family:'Public Sans',sans-serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8FA6B5}
-.drawer__foot{max-width:680px;margin:26px auto 0;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;color:#8FA6B5;font-size:14px}
-.drawer__foot a{color:#F2A879;font-weight:700}
-
-/* ---------- EDITORIAL OPEN (no hero band — a front page) ---------- */
-.front{padding:clamp(28px,4.5vw,56px) 0 0}
-.front__head{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:end}
-.front h1{font-size:clamp(2.5rem,6.2vw,5.3rem);font-weight:800;max-width:15ch}
-.front h1 em{font-style:italic;color:var(--orange)}
-.front__lede{border-left:3px solid var(--orange);padding-left:22px}
-.front__lede p{font-size:1.08rem;color:var(--body)}
-.front__lede .since{display:block;margin-top:14px;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--meta);font-weight:600}
-.front__cta{display:flex;flex-wrap:wrap;gap:14px;margin:clamp(26px,4vw,40px) 0}
-.front__photo{margin:clamp(8px,2vw,18px) 0 0}
-.front__photo img{width:100%;height:clamp(220px,34vh,360px);object-fit:cover;object-position:center 62%}
-.front__caption{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:12px 2px 0;font-size:13px;color:var(--meta)}
-.front__caption strong{color:var(--ink)}
-
-/* ---------- LEAD EVENTS — horizontal card strip, right under the hero ---------- */
-.lead-events{padding:clamp(30px,4.4vw,52px) 0 clamp(36px,5vw,60px);border-bottom:1px solid var(--sand)}
-.lead-events__head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:clamp(18px,2.6vw,28px)}
-.lead-events__head h2{font-size:clamp(1.5rem,2.8vw,2.1rem)}
-.lead-events__row{
-  display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,272px);gap:clamp(14px,1.8vw,20px);
-  overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;margin:0 calc(var(--pad) * -1);padding-left:var(--pad);padding-right:var(--pad);
-  scrollbar-width:thin;scrollbar-color:var(--sand) transparent;
-}
-.lead-events__row::-webkit-scrollbar{height:6px}
-.lead-events__row::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
-.lcard{scroll-snap-align:start;background:#fff;border:1px solid var(--sand);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
-.lcard:hover{transform:translateY(-3px);box-shadow:0 14px 28px -18px rgba(20,50,74,.35)}
-.lcard__img{aspect-ratio:4/3;overflow:hidden;background:var(--mist)}
-.lcard__img img{width:100%;height:100%;object-fit:cover}
-.lcard__body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
-.lcard__tag{align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;padding:5px 11px;border-radius:3px}
-.lcard__tag--cleanup{background:var(--orange)}
-.lcard__tag--social{background:var(--ink)}
-.lcard__tag--info{background:var(--dune)}
-.lcard__date{font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--meta)}
-.lcard h3{font-size:1.08rem;line-height:1.2}
-.lcard a.lcard__cta{margin-top:auto;font-weight:700;color:var(--orange);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
-.lcard a.lcard__cta:hover{color:var(--orange-deep)}
-.lcard--view{align-items:center;justify-content:center;text-align:center;background:var(--ink);border-color:var(--ink);color:#fff;padding:18px;gap:10px;display:flex;flex-direction:column}
-.lcard--view span{font-family:'Besley',serif;font-weight:700;font-size:1.1rem}
-.lcard--view small{color:#9FB2BF;font-size:12.5px}
-
-/* ---------- TICKER (rolled motion personality) ---------- */
-.ticker{background:var(--orange);color:#fff;overflow:hidden;border-top:1px solid var(--orange-deep);border-bottom:1px solid var(--orange-deep)}
-.ticker__track{display:flex;width:max-content;animation:tick 38s linear infinite}
-.ticker:hover .ticker__track{animation-play-state:paused}
-.ticker__seq{display:flex;align-items:center;gap:0;padding:13px 0}
-.ticker__seq span{font-family:'Besley',serif;font-weight:600;font-size:15px;letter-spacing:.04em;white-space:nowrap;padding:0 22px;position:relative}
-.ticker__seq span::after{content:"◆";position:absolute;right:-7px;font-size:9px;opacity:.7;top:50%;transform:translateY(-50%)}
-@keyframes tick{to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ticker__track{animation:none}}
-.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-/* ---------- SECTION SHELL ---------- */
-.sec{padding:clamp(64px,9vw,120px) 0}
-.sec--mist{background:var(--mist)}
-.sec__head{display:flex;align-items:flex-end;justify-content:space-between;gap:26px;flex-wrap:wrap;margin-bottom:clamp(34px,5vw,58px)}
-.sec__head h2{font-size:clamp(1.9rem,4vw,3.1rem);max-width:18ch}
-.sec__head .eyebrow{margin-bottom:14px}
-
-/* ---------- THE DEED (broken-asymmetric) ---------- */
-.deed{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,70px);align-items:start}
-.deed__year{
-  font-family:'Besley',serif;font-weight:800;font-size:clamp(5rem,12vw,9.5rem);line-height:.9;
-  color:transparent;-webkit-text-stroke:2px var(--orange);letter-spacing:-.02em;
-}
-.deed__copy h2{font-size:clamp(1.8rem,3.6vw,2.8rem);margin:18px 0 16px}
-.deed__copy p{margin-bottom:16px;max-width:56ch}
-.deed__facts{list-style:none;margin-top:22px;border-top:2px solid var(--ink)}
-.deed__facts li{display:flex;justify-content:space-between;gap:18px;padding:13px 2px;border-bottom:1px solid var(--sand);font-size:15px}
-.deed__facts strong{font-family:'Besley',serif;color:var(--ink);font-size:16px}
-.deed__map{position:relative;margin-top:clamp(6px,2vw,40px)}
-.deed__map img{width:100%;border:1px solid var(--sand);background:#fff}
-.deed__map figcaption{font-size:13px;color:var(--meta);padding-top:10px}
-
-/* ---------- ORANGE M SAFETY BAND ---------- */
-.safety{background:var(--ink);color:#DCE6EC}
-.safety .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:center;padding-top:clamp(44px,6vw,70px);padding-bottom:clamp(44px,6vw,70px)}
-.safety__m{
-  width:clamp(88px,11vw,132px);height:clamp(88px,11vw,132px);flex:none;border-radius:8px;background:var(--orange);
-  color:#fff;font-family:'Besley',serif;font-weight:800;font-size:clamp(3.2rem,6vw,5rem);
-  display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -12px rgba(0,0,0,.5);
-}
-.safety h2{color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:10px}
-.safety p{max-width:58ch;font-size:15.5px}
-.safety__call{text-align:center}
-.safety__call a.btn{white-space:nowrap}
-.safety__call .num{display:block;font-family:'Besley',serif;font-weight:800;font-size:clamp(1.5rem,3vw,2.1rem);color:#fff;margin-bottom:12px}
-
-/* ---------- WHAT WE DO (broken-asymmetric cells) ---------- */
-.work{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
-.work__cell{background:#fff;border:1px solid var(--sand);border-top:3px solid var(--orange);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px}
-.work__cell:nth-child(1){grid-column:span 7}
-.work__cell:nth-child(2){grid-column:span 5}
-.work__cell:nth-child(3){grid-column:span 5}
-.work__cell:nth-child(4){grid-column:span 7}
-.work__cell h3{font-size:1.35rem}
-.work__cell ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.work__cell li{position:relative;padding-left:22px;font-size:15px}
-.work__cell li::before{content:"";position:absolute;left:0;top:.66em;width:12px;height:2px;background:var(--orange)}
-
-/* ---------- EVENTS ---------- */
-.events{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(16px,2.4vw,28px)}
-.event{background:var(--paper);border:1px solid var(--sand);padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:12px}
-.event--feature{grid-column:span 7;background:var(--ink);border-color:var(--ink)}
-.event--feature h3,.event--feature .event__date{color:#fff}
-.event--feature p{color:#C6D4DD}
-.event:nth-child(2){grid-column:span 5}
-.event:nth-child(3){grid-column:span 5}
-.event:nth-child(4){grid-column:span 7}
-.event__date{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--orange)}
-.event h3{font-size:clamp(1.25rem,2.4vw,1.7rem)}
-.event p{font-size:15px}
-.event a.more{font-weight:700;color:var(--orange);font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-top:auto}
-.event a.more:hover{color:var(--orange-deep)}
-.event--feature a.more{color:#F2A879}
-
-/* ---------- HISTORY ---------- */
-.history{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);gap:clamp(28px,5vw,70px);align-items:start}
-.history__h{font-size:clamp(1.8rem,3.6vw,2.8rem);margin:16px 0 18px}
-.history__copy p{margin-bottom:16px;max-width:58ch}
-.history__pull{
-  font-family:'Besley',serif;font-style:italic;font-weight:600;font-size:clamp(1.4rem,2.8vw,2rem);
-  color:var(--ink);border-left:3px solid var(--orange);padding-left:22px;margin:26px 0;
-}
-.history__art{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:clamp(4px,2vw,34px)}
-.history__art figure{background:#fff;border:1px solid var(--sand);padding:12px}
-.history__art img{width:100%}
-.history__art figcaption{font-size:12.5px;color:var(--meta);padding-top:9px;line-height:1.5}
-
-/* ---------- SUPPORT ---------- */
-.support{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(16px,2.4vw,28px)}
-.support__panel{padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:16px}
-.support__panel--donate{background:var(--orange);color:#fff}
-.support__panel--donate h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.5rem);max-width:18ch}
-.support__panel--donate p{max-width:52ch;font-size:15.5px}
-.support__panel--merch{background:#fff;border:1px solid var(--sand)}
-.support__panel--merch h3{font-size:clamp(1.3rem,2.4vw,1.7rem)}
-.support__panel--merch p{font-size:15px}
-.support__panel .btn{align-self:flex-start;margin-top:auto}
-
-/* ---------- VISIT / CONTACT ---------- */
-.visit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
-.visit__map iframe{width:100%;height:min(440px,60vw);border:1px solid var(--sand);display:block}
-.visit__info h2{font-size:clamp(1.7rem,3.2vw,2.5rem);margin-bottom:20px}
-.visit__block{border-top:2px solid var(--ink);padding:16px 2px 20px}
-.visit__block h3{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-family:'Public Sans',sans-serif;font-weight:700;color:var(--ink-soft);margin-bottom:10px}
-.visit__block ul{list-style:none;display:flex;flex-direction:column;gap:7px;font-size:15px}
-.visit__block a{font-weight:700;color:var(--orange)}
-.visit__block a:hover{color:var(--orange-deep)}
-.roles li{display:flex;justify-content:space-between;gap:16px}
-.roles .role{color:var(--meta)}
-
-/* ---------- COASTLINE MAP ---------- */
-.coast__intro{max-width:64ch;margin-bottom:26px}
-.coast__map{height:clamp(380px,56vh,540px);border:1px solid var(--sand);background:var(--mist);position:relative;z-index:1}
-.coast__fallback{padding:clamp(22px,3vw,34px)}
-.coast__fallback h3{font-size:1.2rem;margin-bottom:12px}
-.coast__fallback ul{list-style:none;columns:2;gap:32px;font-size:14.5px}
-.coast__fallback li{padding:5px 0;break-inside:avoid}
-.coast__legend{display:flex;flex-wrap:wrap;gap:18px 30px;padding:16px 2px 0;font-size:14px;color:var(--meta);align-items:center}
-.coast__legend span{display:inline-flex;align-items:center;gap:9px}
-.pin{width:26px;height:26px;flex:none;border-radius:4px;color:#fff;font-family:'Besley',serif;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(13,35,51,.35)}
-.pin--m{background:var(--orange)}
-.pin--p{background:var(--ink)}
-.pin--s{background:var(--dune)}
-.coast__note{font-size:13px;color:var(--meta);padding-top:10px;max-width:70ch}
-.leaflet-container{font-family:'Public Sans',sans-serif}
-.leaflet-div-icon{background:transparent;border:0}
-.map-pin{width:26px;height:26px;border-radius:4px;color:#fff;font-family:'Besley',serif;font-weight:800;font-size:11px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(13,35,51,.4);border:2px solid #fff}
-.map-pin--m{background:#E8611C}
-.map-pin--p{background:#14324A}
-.map-pin--s{background:#7A8459}
-
-/* ---------- INSTAGRAM ---------- */
-.insta{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,56px);align-items:center}
-.insta__panel{background:var(--ink);color:#DCE6EC;padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:16px}
-.insta__panel h2{color:#fff;font-size:clamp(1.7rem,3.2vw,2.4rem)}
-.insta__panel p{font-size:15.5px;max-width:46ch}
-.insta__qr{display:flex;align-items:center;gap:20px;margin-top:6px}
-.insta__qr img{width:clamp(110px,13vw,150px);height:auto;border:6px solid #fff;border-radius:6px;background:#fff}
-.insta__qr-copy{font-size:13.5px;color:#9FB2BF;max-width:24ch}
-.insta__handle{font-family:'Besley',serif;font-weight:700;font-size:1.1rem;color:#F2A879}
-.insta__feed{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.insta__tile{aspect-ratio:1/1;background:var(--mist);border:1px solid var(--sand);display:flex;align-items:center;justify-content:center}
-.insta__tile img{width:100%;height:100%;object-fit:cover}
-.insta__tile .m-glyph{width:30px;height:30px;font-size:17px;line-height:30px;opacity:.35}
-.insta__feed-note{grid-column:1/-1;font-size:13px;color:var(--meta);padding-top:4px}
-
-/* ---------- FOOTER ---------- */
-footer{background:var(--ink-deep);color:#9FB2BF;padding:clamp(48px,6vw,72px) 0 100px}
-.foot{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px;padding-bottom:44px;border-bottom:1px solid rgba(226,217,196,.15)}
-.foot__brand img{height:60px;width:auto;background:#fff;border-radius:6px;padding:6px}
-.foot__brand p{font-size:14px;max-width:36ch;margin-top:16px}
-.foot h4{font-family:'Public Sans',sans-serif;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#F2A879;margin-bottom:16px}
-.foot ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-.foot a{color:#C9D6DE;font-size:14.5px}
-.foot a:hover{color:#fff}
-.foot__bottom{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:26px;font-size:13px}
-.foot__bottom a{color:#F2A879}
-
-/* ---------- MOBILE ACTION BAR ---------- */
-.action-bar{
-  position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;
-  background:rgba(13,35,51,.96);backdrop-filter:blur(10px);border-top:2px solid var(--orange);
-  padding:10px 14px;gap:12px;align-items:center;
-}
-.action-bar__call{display:flex;flex-direction:column;color:#fff;font-size:11px;letter-spacing:.14em;text-transform:uppercase;line-height:1.3}
-.action-bar__call strong{font-family:'Besley',serif;font-size:16px;letter-spacing:0;text-transform:none}
-.action-bar .btn{flex:1;padding:13px}
-
-/* ---------- RESPONSIVE ---------- */
-@media (max-width:980px){
-  .front__head,.deed,.history,.visit,.support,.insta{grid-template-columns:1fr}
-  .front__lede{border-left:0;border-top:3px solid var(--orange);padding:18px 0 0}
-  .safety .wrap{grid-template-columns:auto minmax(0,1fr)}
-  .safety__call{grid-column:1/-1;text-align:left;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-  .safety__call .num{margin-bottom:0}
-}
-@media (max-width:760px){
-  .work__cell,.event{grid-column:1/-1 !important}
-  .foot{grid-template-columns:1fr}
-  .nav__brand-name{display:none}
-  .nav__donate{display:none}
-  .action-bar{display:flex}
-  footer{padding-bottom:130px}
-}
-@media (max-width:560px){
-  body{font-size:16px}
-  .history__art{grid-template-columns:1fr}
-  .coast__fallback ul{columns:1}
-  .lead-events__row{grid-auto-columns:minmax(210px,78vw)}
-}
-body.is-locked{overflow:hidden}
-.no-js .drawer{position:static;transform:none;background:var(--ink-deep)}
-</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to main content</a>
-
-<!-- NAV: the live site carries 11 items — hamburger-only keeps the bar honest -->
-<header class="nav-primary" id="nav">
-  <div class="nav__inner">
-    <a class="nav__brand" href="https://mbpoa.com/" aria-label="MBPOA home">
-      <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="120" height="54">
-      <span class="nav__brand-name">Montauk Beach Property Owners Association</span>
+<header class="site-head">
+  <div class="wrap site-head__inner">
+    <a class="brand" href="index.html" aria-label="MBPOA home">
+      <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="102" height="46">
+      <span class="brand__name">Montauk Beach Property Owners Association</span>
     </a>
-    <div class="nav__right">
-      <a class="btn btn--solid nav__donate" href="https://mbpoa.com/donation/">Make a Donation</a>
-      <button class="nav__burger" id="burger" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
-        <span></span><span></span><span></span>
+    <div class="head-actions">
+      <a class="btn btn--solid" href="https://shop.mbpoa.com/" aria-label="Make a Donation (opens the MBPOA shop)"><span class="hide-sm">Make a Donation</span><span class="show-sm">Donate</span></a>
+      <a class="btn btn--ink" href="https://shop.mbpoa.com/">Merch</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="drawer">
+        <span class="menu-btn__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="menu-btn__label">Menu</span>
       </button>
     </div>
   </div>
 </header>
 
-<!-- FULL-SCREEN DRAWER -->
-<nav class="drawer" id="drawer" aria-label="Primary">
-  <ul class="menu genesis-nav-menu menu-primary">
-    <li class="menu-item"><a href="https://mbpoa.com/">Home</a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/letter-from-your-board/">Welcome <small>Letter from your Board</small></a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/what-we-do/">What We Do</a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/history/">History <small>Since 1942</small></a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/beach-rules-party-guidelines/">Beach Rules &amp; Party Guidelines</a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/resources/">Resources</a></li>
-    <li class="menu-item"><a href="galleries.html">Events &amp; Galleries <small>One section &mdash; every event, every album</small></a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/contact-us/">Contact</a></li>
-    <li class="menu-item"><a href="https://shop.mbpoa.com/">Merch <small>shop.mbpoa.com</small></a></li>
-    <li class="menu-item"><a href="https://mbpoa.com/donation/">Make a Donation</a></li>
-  </ul>
-  <div class="drawer__foot">
-    <span>Beach emergencies: <a href="tel:631-537-7575">631-537-7575</a></span>
-    <span>MBPOA Inc. · PO Box 792, Montauk, NY 11954</span>
+<nav class="drawer" id="drawer" aria-label="Main menu">
+  <div class="wrap">
+    <div class="drawer__top">
+      <span class="drawer__title">MBPOA</span>
+      <button class="menu-btn" id="menuClose" type="button"><span aria-hidden="true">✕</span> Close</button>
+    </div>
+    <ul>
+      <li><a href="index.html" aria-current="page">Home</a></li>
+      <li><a href="welcome.html">Welcome<small>Letter from your Board</small></a></li>
+      <li><a href="mission-history.html">Mission &amp; History<small>What we do · Since 1942</small></a></li>
+      <li><a href="beach-rules.html">Beach Rules &amp; Party Guidelines</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="galleries.html">Events &amp; Galleries<small>Upcoming events and every album</small></a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="drawer__foot">
+      <span>Beach emergencies: <a href="tel:631-537-7575">631-537-7575</a></span>
+      <span>MBPOA Inc. · PO Box 792, Montauk, NY 11954</span>
+    </div>
   </div>
 </nav>
 
 <main id="main">
 
-  <!-- EDITORIAL OPEN — the page starts like a front page, not a hero band -->
-  <section class="front" aria-label="Introduction">
-    <div class="wrap">
-      <div class="front__head">
-        <div>
-          <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Hither Hills · Montauk, New York · Est. 1942</span>
-          <h1>It cannot be bought, sold, or <em>given away.</em></h1>
-        </div>
-        <div class="front__lede">
-          <p>For 84 years, our association has been the sole steward of 30+ acres of beautiful oceanfront property. Our beach, as deeded, is for all to enjoy all the time.</p>
-          <span class="since">The Ocean View Beach · Deeded July 15, 1942</span>
-        </div>
+  <!-- HERO: ocean photo is the background; copy sits in a solid panel -->
+  <section class="hero" aria-label="Welcome">
+    <img class="hero__bg" src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="The ocean beach below the bluffs at Hither Hills, Montauk" width="2560" height="1707" fetchpriority="high">
+    <div class="wrap hero__inner">
+      <div class="hero__panel">
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Hither Hills · Montauk · Est. 1942</span>
+        <h1>It cannot be bought, sold, or <em>given away.</em></h1>
+        <p>For 84 years our association has been the sole steward of 30+ acres of oceanfront. Our beach, as deeded, is for all to enjoy all the time.</p>
       </div>
-      <div class="front__cta">
-        <a class="btn btn--solid" href="https://mbpoa.com/donation/">Help Protect the Beach</a>
-        <a class="btn btn--ghost" href="https://mbpoa.com/what-we-do/">What We Do</a>
-      </div>
-    </div>
-    <figure class="front__photo">
-      <img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="The ocean beach below the bluffs of Hither Hills, Montauk" width="2560" height="1707" loading="eager">
-    </figure>
-    <div class="wrap">
-      <p class="front__caption"><span><strong>The Ocean View Beach,</strong> Old Montauk Highway.</span><span>Anyone can access the ocean beach across MBPOA property.</span></p>
-    </div>
-  </section>
-
-  <!-- LEAD EVENTS — leads with events, right under the hero -->
-  <section class="lead-events" aria-label="Upcoming events">
-    <div class="wrap">
-      <div class="lead-events__head">
-        <div>
-          <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>On the beach this season</span>
-          <h2>Come and help — or come celebrate.</h2>
-        </div>
-      </div>
-      <div class="lead-events__row" tabindex="0" role="region" aria-label="Scrollable list of upcoming events">
-        <article class="lcard">
-          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="Volunteers on the MBPOA beach clean-up" loading="lazy" width="550" height="412"></div>
-          <div class="lcard__body">
-            <span class="lcard__tag lcard__tag--cleanup">Clean-up</span>
-            <span class="lcard__date">Monthly · Sunday, September 13</span>
-            <h3>Community Beach Clean-up</h3>
-            <a class="lcard__cta" href="https://mbpoa.com/event/monthly-community-beach-clean-ups-august-9th/">Details →</a>
-          </div>
-        </article>
-        <article class="lcard">
-          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/MPBOA-Map-2.png" alt="The MBPOA coastline where summer beach events are held" loading="lazy" width="550" height="412"></div>
-          <div class="lcard__body">
-            <span class="lcard__tag lcard__tag--social">Social</span>
-            <span class="lcard__date">All season</span>
-            <h3>Summer Beach Events</h3>
-            <a class="lcard__cta" href="https://mbpoa.com/event/summer-beach-events/">Lineup →</a>
-          </div>
-        </article>
-        <article class="lcard">
-          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_2-241x300.jpg" alt="MBPOA Annual Cocktail Party" loading="lazy" width="412" height="550"></div>
-          <div class="lcard__body">
-            <span class="lcard__tag lcard__tag--social">Social</span>
-            <span class="lcard__date">Tickets on sale</span>
-            <h3>2026 Annual Cocktail Party</h3>
-            <a class="lcard__cta" href="https://mbpoa.com/product/mbpoa-2026-annual-cocktail-party/">Buy tickets →</a>
-          </div>
-        </article>
-        <article class="lcard">
-          <div class="lcard__img"><img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_1-228x300.jpg" alt="Members gathered on the MBPOA beach" loading="lazy" width="412" height="550"></div>
-          <div class="lcard__body">
-            <span class="lcard__tag lcard__tag--info">Members &amp; Guests</span>
-            <span class="lcard__date">Before you plan</span>
-            <h3>Beach Rules &amp; Party Guidelines</h3>
-            <a class="lcard__cta" href="https://mbpoa.com/beach-rules-party-guidelines/">Read guidelines →</a>
-          </div>
-        </article>
-        <a class="lcard lcard--view" href="galleries.html">
-          <span>See all events &amp; galleries</span>
-          <small>21 albums · 2002 – 2026</small>
-        </a>
+      <div class="hotspots">
+        <a class="hot hot--events" href="#events"><span class="hot__label">Events</span><small>What’s coming up</small><span class="hot__arrow" aria-hidden="true">↓</span></a>
+        <a class="hot hot--merch" href="https://shop.mbpoa.com/"><span class="hot__label">Merch</span><small>MBPOA shop</small><span class="hot__arrow" aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
 
-  <!-- TICKER — the rolled motion personality -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker__track" id="tickerTrack">
-      <div class="ticker__seq">
-        <span>84 years of stewardship</span>
-        <span>30+ acres of deeded oceanfront</span>
-        <span>500+ member households</span>
-        <span>The largest active civic association in Montauk</span>
-        <span>Incorporated June 17, 1942</span>
-        <span>A 501(c)(7) social organization</span>
+  <!-- EVENTS: the next 4 active events; each drops off at midnight after it ends -->
+  <section class="events" id="events" aria-labelledby="events-h">
+    <div class="wrap">
+      <div class="sec__head">
+        <h2 id="events-h">Upcoming events</h2>
+        <a class="btn btn--ghost" href="galleries.html">All events &amp; galleries</a>
+      </div>
+      <div class="event-grid" id="eventGrid" aria-live="polite">
+        <article class="ecard ecard--social">
+          <div class="ecard__img"><img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_2-241x300.jpg" alt="" width="400" height="224" loading="lazy" data-plate></div>
+          <div class="ecard__body">
+            <span class="ecard__date">Saturday, December 12</span>
+            <h3><a href="event-holiday-cocktail-party-2026.html">Holiday Cocktail Party</a></h3>
+            <p class="ecard__meta">6–9 PM · Location to be announced</p>
+            <span class="badge badge--sample">Sample event</span>
+            <span class="ecard__cta">Details &amp; gallery →</span>
+          </div>
+        </article>
+        <article class="ecard ecard--cleanup">
+          <div class="ecard__img"><img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="" width="400" height="224" loading="lazy" data-plate></div>
+          <div class="ecard__body">
+            <span class="ecard__date">Sunday, April 11</span>
+            <h3><a href="event-spring-beach-cleanup-2027.html">Spring Beach Clean-up</a></h3>
+            <p class="ecard__meta">9–11 AM · Meet at your nearest beach entrance</p>
+            <span class="badge badge--sample">Sample event</span>
+            <span class="ecard__cta">Details &amp; gallery →</span>
+          </div>
+        </article>
+        <article class="ecard ecard--cleanup">
+          <div class="ecard__img"><img src="https://mbpoa.com/wp-content/uploads/shutterstock_728974066-scaled.jpg" alt="" width="400" height="224" loading="lazy" data-plate></div>
+          <div class="ecard__body">
+            <span class="ecard__date">Saturday, May 8</span>
+            <h3><a href="event-beach-grass-planting-2027.html">Beach Grass Planting</a></h3>
+            <p class="ecard__meta">9 AM–12 PM · Bluffs along Old Montauk Highway</p>
+            <span class="badge badge--sample">Sample event</span>
+            <span class="ecard__cta">Details &amp; gallery →</span>
+          </div>
+        </article>
+        <article class="ecard ecard--social">
+          <div class="ecard__img"><img src="https://mbpoa.com/wp-content/uploads/MPBOA-Map-2.png" alt="" width="400" height="224" loading="lazy" data-plate></div>
+          <div class="ecard__body">
+            <span class="ecard__date">Sunday, June 13</span>
+            <h3><a href="event-summer-kickoff-social-2027.html">Summer Kickoff Social</a></h3>
+            <p class="ecard__meta">5–7 PM · On the beach</p>
+            <span class="badge badge--sample">Sample event</span>
+            <span class="ecard__cta">Details &amp; gallery →</span>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-  <p class="visually-hidden">84 years of stewardship. 30+ acres of deeded oceanfront. 500+ member households. The largest active civic association in Montauk. Incorporated June 17, 1942. A 501(c)(7) social organization.</p>
+  </section>
 
-  <!-- THE DEED -->
-  <section class="sec" aria-label="The deed">
-    <div class="wrap deed">
+  <!-- MISSION & HISTORY teaser -->
+  <section class="sec sec--mist" aria-labelledby="mh-h">
+    <div class="wrap teaser">
       <div>
-        <div class="deed__year" aria-hidden="true">1942</div>
-        <figure class="deed__map">
-          <img src="https://mbpoa.com/wp-content/uploads/MPBOA-Map-2.png" alt="Map of the MBPOA property along Old Montauk Highway" width="1200" height="800" loading="lazy">
-          <figcaption>The MBPOA property along Old Montauk Highway — beach, bluffs, pathways, and member parking lots.</figcaption>
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Mission &amp; history</span>
+        <h2 id="mh-h">A safe, enjoyable beach — held in trust since 1942.</h2>
+        <p>Our mission is to afford a safe and enjoyable beach experience for all, to preserve and protect the environment we love, and to bring members together. The association took title to the Ocean View Beach on July 15, 1942, and our dues have kept it ours ever since.</p>
+        <blockquote class="pull">We are the only homeowners in Montauk with access to our own privately deeded ocean beach — right down the street.</blockquote>
+        <a class="btn btn--solid" href="mission-history.html">Read More</a>
+      </div>
+      <div class="teaser__art">
+        <figure>
+          <div class="art-plate"><img src="https://mbpoa.com/wp-content/uploads/shutterstock_652348687-scaled.jpg" alt="The MBPOA oceanfront bluffs at Hither Hills" width="640" height="480" loading="lazy" data-plate></div>
+          <figcaption>The Ocean View Beach, Old Montauk Highway.</figcaption>
         </figure>
       </div>
-      <div class="deed__copy">
-        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Why the association exists</span>
-        <h2>Formed so the deed to the Ocean View Beach could be held forever.</h2>
-        <p>The MBPOA was formed so that the deed to the Ocean View Beach could be transferred to our association. The association and its members own — and are responsible for — the designated area, its cliffs and vegetation, as well as the MBPOA parking lots for members' use. We also maintain the pathways leading to the beach from Old Montauk Highway.</p>
-        <p>We are a social organization where members gather on the beach and at sponsored activities. Our dues allow us to maintain the property and advocate for our homeowners. We love our beach and hope you do too.</p>
-        <ul class="deed__facts">
-          <li><strong>Deeded</strong><span>July 15, 1942 — the Ocean View Beach</span></li>
-          <li><strong>Incorporated</strong><span>June 17, 1942</span></li>
-          <li><strong>Members</strong><span>500+ home &amp; property owners along Old Montauk Highway</span></li>
-          <li><strong>Access</strong><span>Anyone can reach the ocean beach across MBPOA property</span></li>
+    </div>
+  </section>
+
+  <!-- BEACH RULES teaser -->
+  <section class="sec" aria-labelledby="rules-h">
+    <div class="wrap teaser teaser--flip">
+      <div>
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Members &amp; guests</span>
+        <h2 id="rules-h">Beach rules &amp; party guidelines.</h2>
+        <p>Leave no trace. No animals on the beach 10 AM–6 PM, May 15–September 15. Fires in a metal container, out by midnight. Parking lots need a valid, visible MBPOA permit. Planning a party? Read the permit and insurance rules first.</p>
+        <a class="btn btn--solid" href="beach-rules.html">Read More</a>
+      </div>
+      <div class="teaser__art">
+        <ul class="facts">
+          <li><strong>Dogs</strong>Not on the beach 10 AM–6 PM, May 15–Sep 15</li>
+          <li><strong>Fires</strong>Metal container, out by midnight</li>
+          <li><strong>Parking</strong>Valid, visible MBPOA permit only</li>
+          <li><strong>Parties</strong>Town permit at 20+ guests</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- ORANGE M SAFETY -->
+  <!-- ORANGE M -->
   <section class="safety" aria-label="Beach emergencies">
-    <div class="wrap">
+    <div class="wrap safety__in">
       <div class="safety__m" aria-hidden="true">M</div>
       <div>
         <h2>Look for the Orange M.</h2>
-        <p>Orange M beach-location signs stand at the top and bottom of every beach path and parking lot. In an emergency, use the sign nearest you to relay your exact location to Public Safety.</p>
+        <p>Orange M Beach Location Signs stand at the top and bottom of all beach paths and parking lots. Use the sign nearest you to relay your location to Public Safety.</p>
       </div>
       <div class="safety__call">
-        <span class="num">631-537-7575</span>
-        <a class="btn btn--white" href="tel:631-537-7575">Call Marine Patrol</a>
+        <span class="safety__num">631-537-7575</span>
+        <a class="btn btn--white" href="tel:631-537-7575">Call for beach emergencies</a>
       </div>
     </div>
   </section>
 
-  <!-- THE COASTLINE — interactive map (Leaflet, real map tiles per the maps rule) -->
-  <section class="sec" aria-label="The MBPOA coastline">
+  <!-- MAP -->
+  <section class="sec" aria-labelledby="map-h">
     <div class="wrap">
       <div class="sec__head">
         <div>
           <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>One mile of oceanfront</span>
-          <h2>Know your beach — every entrance, lot, and project.</h2>
+          <h2 id="map-h">Know your beach — every entrance, lot, and project.</h2>
         </div>
       </div>
-      <p class="coast__intro">The MBPOA coastline runs roughly one mile along Old Montauk Highway. Nine numbered beach entrances (the Orange M signs), four member parking lots, and the SUNY marine erosion study sites are mapped below — tap any marker for details. In an emergency, give rescue services the entrance number on the nearest Orange M sign.</p>
-      <div class="coast__map" id="coastMap">
+      <p class="coast__intro">Nine numbered beach entrances (the Orange M signs), four member parking lots, and the SUNY marine erosion study sites. Tap any marker for details.</p>
+      <div class="coast__map" id="coastMap" role="region" aria-label="Interactive map of the MBPOA coastline">
         <div class="coast__fallback" id="coastFallback">
           <h3>The coastline at a glance</h3>
           <ul>
             <li><strong>1M – 9M</strong> — nine numbered beach entrances with Orange M location signs</li>
-            <li><strong>P1 – P4</strong> — four MBPOA member parking lots (locks &amp; keys via the association)</li>
+            <li><strong>P1 – P4</strong> — four MBPOA member parking lots</li>
             <li><strong>S1 – S2</strong> — SUNY marine erosion study sites along the bluffs</li>
-            <li><strong>Pathways</strong> — maintained steps and paths from Old Montauk Highway to the sand</li>
           </ul>
         </div>
       </div>
       <div class="coast__legend" aria-hidden="true">
-        <span><span class="pin pin--m">M</span> Numbered beach entrance</span>
+        <span><span class="pin pin--m">M</span> Beach entrance</span>
         <span><span class="pin pin--p">P</span> Member parking lot</span>
         <span><span class="pin pin--s">S</span> SUNY erosion study site</span>
       </div>
-      <p class="coast__note">Draft map — marker positions and entrance numbering are approximate pending the confirmed sign inventory and project locations from the Communications committee.</p>
+      <p class="coast__note">Draft map — marker positions and numbering are approximate until the Communications committee confirms the sign inventory.</p>
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
-  <section class="sec sec--mist" id="what-we-do" aria-label="What we do">
-    <div class="wrap">
-      <div class="sec__head">
-        <div>
-          <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Our mission</span>
-          <h2>A safe, enjoyable beach — preserved and protected for all.</h2>
-        </div>
-        <a class="btn btn--ghost" href="https://mbpoa.com/what-we-do/">Full Mission &amp; Work</a>
+  <!-- WELCOME + RESOURCES teasers -->
+  <section class="sec sec--mist" aria-label="Welcome and resources">
+    <div class="wrap twin">
+      <div class="tcard">
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Welcome</span>
+        <h2>Letter from your Board</h2>
+        <p>The MBPOA is an assembly of approximately 500 property owners along Old Montauk Highway in Hither Hills. This year we are fortifying the beach with sand fences and beach grass to protect our bluffs.</p>
+        <a class="btn btn--ghost" href="welcome.html">Read More</a>
       </div>
-      <div class="work">
-        <div class="work__cell">
-          <h3>Maintenance</h3>
-          <ul>
-            <li>Preventive maintenance of the pathways and steps leading to the beach, with ongoing repairs when needed</li>
-            <li>Parking lot locks maintained, keys provided to members, chains replaced as needed</li>
-            <li>MBPOA signage provided, updated, and maintained</li>
-          </ul>
-        </div>
-        <div class="work__cell">
-          <h3>Social Events</h3>
-          <ul>
-            <li>Beach and property clean-ups, with Board Directors and member volunteers</li>
-            <li>Social events for MBPOA members and their guests</li>
-          </ul>
-        </div>
-        <div class="work__cell">
-          <h3>Legal</h3>
-          <ul>
-            <li>Representation retained when needed to protect the property rights of MBPOA-owned property</li>
-          </ul>
-        </div>
-        <div class="work__cell">
-          <h3>Local Government &amp; Civic Organizations</h3>
-          <ul>
-            <li>Engaging with local government to understand laws and possible developments impacting the Association's property rights</li>
-            <li>Active civic participation across the Montauk community</li>
-          </ul>
-        </div>
+      <div class="tcard">
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Resources</span>
+        <h2>Montauk information you need</h2>
+        <p>Town code on beach fires, noise and rentals, emergency alert sign-up, local organizations and helpful hints — gathered in one place.</p>
+        <a class="btn btn--ghost" href="resources.html">Read More</a>
       </div>
     </div>
   </section>
 
-  <!-- HISTORY -->
-  <section class="sec sec--mist" aria-label="History">
-    <div class="wrap history">
-      <div class="history__copy">
-        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Since 1942</span>
-        <h2 class="history__h">From the "Miami Beach of the North" to a beach held in trust.</h2>
-        <p>Carl Fisher's original plan for our corner of Montauk was an 18-hole golf course — part of his vision to make Montauk the "Miami Beach of the North." The Great Depression ended that dream, and the land passed through the Montauk Beach Development Corporation and the Mirror Holding Corporation, which sold 100' × 25' lots for $100 each.</p>
-        <p>On July 15, 1942, the newly incorporated MBPOA took title to what was then known as the Ocean View Beach. The association once owned the Playhouse below Montauk Manor, and twice nearly lost the beach itself — at one point almost transferring the property to the Town of East Hampton. The deal was cancelled just before it closed. Our dues have kept the beach ours ever since.</p>
-        <blockquote class="history__pull">We are the only homeowners in Montauk with access to our own privately deeded ocean beach — right down the street.</blockquote>
-        <a class="btn btn--ghost" href="https://mbpoa.com/history/">Read the Full History</a>
-      </div>
-      <div class="history__art">
-        <figure>
-          <img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_2-241x300.jpg" alt="A Daily Mirror offer to purchase Montauk property for $100 a lot" width="241" height="300" loading="lazy">
-          <figcaption>A member's "artifact": The Daily Mirror's offer — Montauk lots for as little as $100.</figcaption>
-        </figure>
-        <figure>
-          <img src="https://mbpoa.com/wp-content/uploads/2020/12/525_Montauk_property_offer_1-228x300.jpg" alt="An early Montauk Beach property offer advertisement" width="228" height="300" loading="lazy">
-          <figcaption>Early Montauk Beach property offers. Bring back the Daily Mirror deal, please.</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSTAGRAM — @mbpoa.montauk -->
-  <section class="sec sec--mist" aria-label="MBPOA on Instagram">
+  <!-- INSTAGRAM -->
+  <section class="sec" aria-labelledby="ig-h">
     <div class="wrap insta">
       <div class="insta__panel">
-        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span><span>@mbpoa.montauk</span></span>
-        <h2>Follow the beach, all year long.</h2>
-        <p>Clean-ups, sunrises, socials, and storm reports — the association posts it all. Scan the code with your phone camera to follow <span class="insta__handle">@mbpoa.montauk</span> on Instagram.</p>
+        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>@mbpoa.montauk</span>
+        <h2 id="ig-h">Follow the beach, all year long.</h2>
+        <p>Clean-ups, sunrises, socials and storm reports. Scan the code with your phone camera to follow us on Instagram.</p>
         <div class="insta__qr">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEICAIAAAAslP2oAAAFEUlEQVR4nO3d0W0tNRRAUYJogUoog3opg0oo4vIBP0/aFrJkyzZZ6xPlTSaXbFnyyYy/Pp/PT8CPfj59A3AjYUAQBgRhQBAGBGFAEAYEYUAQBgRhQBAGBGFAEAYEYUAQBoRfZv/Br7/9vuM+lvvrzz+mvn7255q9/qnve9v1T5n9uawYEIQBQRgQhAFBGBCEAUEYEKbnGCOr9vVn7d5HX7WvP7rO6L+PrrPq+ru9/vtgxYAgDAjCgCAMCMKAIAwIwoCwbI4xsmpfefe++Ow8YdXcYPb6q67zyvMnI7t/H6wYEIQBQRgQhAFBGBCEAUEYELbPMV6xan9991xiZNUchn9YMSAIA4IwIAgDgjAgCAOCMCCYY/yH2f3+VfOE2TnGbXOY11kxIAgDgjAgCAOCMCAIA4IwIGyfY9y2/717n/7UeR2r5h6n3t91GysGBGFAEAYEYUAQBgRhQBAGhGVzjN3796es2u/f/ZzGqa8fef33wYoBQRgQhAFBGBCEAUEYEIQBYXqO8crf04+cmj+ssup5jFVe/30YsWJAEAYEYUAQBgRhQBAGBGFAmJ5j7P57/VX79LfNH3afd3Hq87/tc17FigFBGBCEAUEYEIQBQRgQhAFh+3ulVu1b37b/fWr/ftVzF7eds3HbdawYEIQBQRgQhAFBGBCEAUEYELa/V+qV8xZOvZfptudDXv//supzs2JAEAYEYUAQBgRhQBAGBGFA+Pp8Pqfv4Qe37euP7H7/1cju93GN7J5vnPo8R6wYEIQBQRgQhAFBGBCEAUEYEJbNMU7t36+6/iqnnuuY9crc49R8w4oBQRgQhAFBGBCEAUEYEIQB4brnMXa77XmP1+ctzvmGb0QYEIQBQRgQhAFBGBCEAWH78xi7/57+1HV2X/+2/f5Xzi8f8TwGLCAMCMKAIAwIwoAgDAjCgDB9zvfsfvNt7wt65b1Pt+3rj+yeb5x63sOKAUEYEIQBQRgQhAFBGBCEAWF6jnFq//vUuQ0jo/s5NX9Y9XnOfj6rrn/b8ydWDAjCgCAMCMKAIAwIwoAgDAjTc4xZt50bPWv3fOCVec7u+1k191g1n7FiQBAGBGFAEAYEYUAQBgRhQFj2XqlV+8277+fUORWn3r/0itveD2bFgCAMCMKAIAwIwoAgDAjCgLDsnO9X7J4nnPq+r5ynscrueZQVA4IwIAgDgjAgCAOCMCAIA8L0HOPU8w+nzv8+Nd+Y9co8ZOTUed4jVgwIwoAgDAjCgCAMCMKAIAwInsf416k5zCvnpr9ynyOex4AFhAFBGBCEAUEYEIQBQRgQlj2PcZtT70Have9+6vqnvn5k91zIigFBGBCEAUEYEIQBQRgQhAFh+pzvkVfmBrv33W/b79/t9fdZjVgxIAgDgjAgCAOCMCAIA4IwICybY4zcdv7D7jnDK9931nc7R9yKAUEYEIQBQRgQhAFBGBCEAWH7HOM2u5/fWPV9R2bnG7edj77qPke8Vwo2EgYEYUAQBgRhQBAGBGFA+HZzjN3zh//r+6Bu+7l2v4/LigFBGBCEAUEYEIQBQRgQhAFh+xzjtv37kVX736eeZ5i9n1Pvp1p1fed8wwHCgCAMCMKAIAwIwoAgDAjL5hi3ndM8sntuMHLqXPDZ+1n1877y+zBixYAgDAjCgCAMCMKAIAwIwoDw9fl8Tt8DXMeKAUEYEIQBQRgQhAFBGBCEAUEYEIQBQRgQhAFBGBCEAUEYEIQB4W8QOEAGCQuGRQAAAABJRU5ErkJggg==" alt="QR code linking to the MBPOA Instagram page" width="150" height="150">
-          <p class="insta__qr-copy">Point your phone camera here — no app searching needed.</p>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQgAAAEICAIAAAAslP2oAAAFEUlEQVR4nO3d0W0tNRRAUYJogUoog3opg0oo4vIBP0/aFrJkyzZZ6xPlTSaXbFnyyYy/Pp/PT8CPfj59A3AjYUAQBgRhQBAGBGFAEAYEYUAQBgRhQBAGBGFAEAYEYUAQBoRfZv/Br7/9vuM+lvvrzz+mvn7255q9/qnve9v1T5n9uawYEIQBQRgQhAFBGBCEAUEYEKbnGCOr9vVn7d5HX7WvP7rO6L+PrrPq+ru9/vtgxYAgDAjCgCAMCMKAIAwIwoCwbI4xsmpfefe++Ow8YdXcYPb6q67zyvMnI7t/H6wYEIQBQRgQhAFBGBCEAUEYELbPMV6xan9991xiZNUchn9YMSAIA4IwIAgDgjAgCAOCMCCYY/yH2f3+VfOE2TnGbXOY11kxIAgDgjAgCAOCMCAIA4IwIGyfY9y2/717n/7UeR2r5h6n3t91GysGBGFAEAYEYUAQBgRhQBAGhGVzjN3796es2u/f/ZzGqa8fef33wYoBQRgQhAFBGBCEAUEYEIQBYXqO8crf04+cmj+ssup5jFVe/30YsWJAEAYEYUAQBgRhQBAGBGFAmJ5j7P57/VX79LfNH3afd3Hq87/tc17FigFBGBCEAUEYEIQBQRgQhAFh+3ulVu1b37b/fWr/ftVzF7eds3HbdawYEIQBQRgQhAFBGBCEAUEYELa/V+qV8xZOvZfptudDXv//supzs2JAEAYEYUAQBgRhQBAGBGFA+Pp8Pqfv4Qe37euP7H7/1cju93GN7J5vnPo8R6wYEIQBQRgQhAFBGBCEAUEYEJbNMU7t36+6/iqnnuuY9crc49R8w4oBQRgQhAFBGBCEAUEYEIQB4brnMXa77XmP1+ctzvmGb0QYEIQBQRgQhAFBGBCEAWH78xi7/57+1HV2X/+2/f5Xzi8f8TwGLCAMCMKAIAwIwoAgDAjCgDB9zvfsfvNt7wt65b1Pt+3rj+yeb5x63sOKAUEYEIQBQRgQhAFBGBCEAWF6jnFq//vUuQ0jo/s5NX9Y9XnOfj6rrn/b8ydWDAjCgCAMCMKAIAwIwoAgDAjTc4xZt50bPWv3fOCVec7u+1k191g1n7FiQBAGBGFAEAYEYUAQBgRhQFj2XqlV+8277+fUORWn3r/0itveD2bFgCAMCMKAIAwIwoAgDAjCgLDsnO9X7J4nnPq+r5ynscrueZQVA4IwIAgDgjAgCAOCMCAIA8L0HOPU8w+nzv8+Nd+Y9co8ZOTUed4jVgwIwoAgDAjCgCAMCMKAIAwInsf416k5zCvnpr9ynyOex4AFhAFBGBCEAUEYEIQBQRgQlj2PcZtT70Have9+6vqnvn5k91zIigFBGBCEAUEYEIQBQRgQhAFh+pzvkVfmBrv33W/b79/t9fdZjVgxIAgDgjAgCAOCMCAIA4IwICybY4zcdv7D7jnDK9931nc7R9yKAUEYEIQBQRgQhAFBGBCEAWH7HOM2u5/fWPV9R2bnG7edj77qPke8Vwo2EgYEYUAQBgRhQBAGBGFA+HZzjN3zh//r+6Bu+7l2v4/LigFBGBCEAUEYEIQBQRgQhAFh+xzjtv37kVX736eeZ5i9n1Pvp1p1fed8wwHCgCAMCMKAIAwIwoAgDAjL5hi3ndM8sntuMHLqXPDZ+1n1877y+zBixYAgDAjCgCAMCMKAIAwIwoDw9fl8Tt8DXMeKAUEYEIQBQRgQhAFBGBCEAUEYEIQBQRgQhAFBGBCEAUEYEIQB4W8QOEAGCQuGRQAAAABJRU5ErkJggg==" alt="QR code linking to the MBPOA Instagram page" width="128" height="128">
+          <p>Point your phone camera here.</p>
         </div>
         <a class="btn btn--white" href="https://www.instagram.com/mbpoa.montauk/">Follow on Instagram</a>
       </div>
-      <div class="insta__feed" aria-label="Latest posts from @mbpoa.montauk">
-        <!-- IG-FEED-HOOK: replace these tiles with a live feed embed (Behold / LightWidget / Smash Balloon) for the production build -->
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
-        <p class="insta__feed-note">Live feed from @mbpoa.montauk — the six most recent posts appear here automatically.</p>
+      <div class="insta__feed" aria-label="Latest Instagram posts">
+        <!-- IG-FEED-HOOK: replace with a live feed embed (Behold / LightWidget / Smash Balloon) at launch -->
+        <div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div><div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div><div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div><div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div><div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div><div class="insta__tile"><span class="m-glyph" aria-hidden="true">M</span></div>
+        <p class="insta__note">The six most recent @mbpoa.montauk posts appear here automatically at launch.</p>
       </div>
     </div>
   </section>
 
-  <!-- SUPPORT -->
-  <section class="sec" aria-label="Support the association">
-    <div class="wrap support">
-      <div class="support__panel support__panel--donate">
-        <h2>Your donations help us protect our beach and bluffs.</h2>
-        <p>This year we're making a concerted effort to fortify the beach — placing sand fences and planting beach grass to protect our precious bluffs. Every contribution goes directly to the taxes, insurance, maintenance, and advocacy that keep the Ocean View Beach cared for.</p>
-        <a class="btn btn--white" href="https://mbpoa.com/donation/">Make a Donation</a>
+  <!-- SUPPORT: buttons only — purchases happen in Shopify -->
+  <section class="support" aria-label="Support the association">
+    <div class="wrap support__in">
+      <div>
+        <h2>Help protect our beach and bluffs.</h2>
+        <p>Donations go to taxes, insurance, maintenance and advocacy. Merch supports the beach too.</p>
       </div>
-      <div class="support__panel support__panel--merch">
-        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Wear the beach</span>
-        <h3>MBPOA Merch</h3>
-        <p>Association gear for members and family — every purchase supports the beach.</p>
-        <a class="btn btn--solid" href="https://shop.mbpoa.com/">Visit the Shop</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- VISIT / CONTACT -->
-  <section class="sec sec--mist" aria-label="Contact and location">
-    <div class="wrap visit">
-      <div class="visit__map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d48147.30320973302!2d-71.9911039058902!3d41.04261414998872!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sPO%20Box%20792%20Montauk%2C%20NY%2011954!5e0!3m2!1sen!2sus!4v1609235250459!5m2!1sen!2sus" loading="lazy" title="Map of Montauk, New York" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-      </div>
-      <div class="visit__info">
-        <span class="eyebrow"><span class="m-glyph" aria-hidden="true">M</span>Get in touch</span>
-        <h2>MBPOA, Montauk, New York</h2>
-        <div class="visit__block">
-          <h3>Officers</h3>
-          <ul class="roles">
-            <li><span>Bruce Curtis</span><span class="role">President</span></li>
-            <li><span>Brian Harris</span><span class="role">Vice-President</span></li>
-            <li><span>Nick Walsh</span><span class="role">Secretary</span></li>
-            <li><span>Steve Byrne</span><span class="role">Treasurer</span></li>
-          </ul>
-        </div>
-        <div class="visit__block">
-          <h3>Committee Chairs</h3>
-          <ul class="roles">
-            <li><span>Christopher Yula</span><span class="role">Communications</span></li>
-            <li><span>Andy Ring</span><span class="role">Maintenance</span></li>
-            <li><span>Anne Eipper</span><span class="role">Social</span></li>
-          </ul>
-        </div>
-        <div class="visit__block">
-          <h3>Mail &amp; Email</h3>
-          <ul>
-            <li>MBPOA Inc. · PO Box 792 · Montauk, NY 11954</li>
-            <li><a href="mailto:MBPOAINC@gmail.com">MBPOAINC@gmail.com</a></li>
-          </ul>
-        </div>
-        <div class="visit__block">
-          <h3>Useful Local Numbers</h3>
-          <ul>
-            <li>Marine Patrol (beach emergencies) — <a href="tel:631-537-7575">631-537-7575</a></li>
-            <li>Montauk Police Department — <a href="tel:631-668-3707">631-668-3707</a></li>
-            <li>David Lys, EH Town Board / Montauk Liaison — <a href="tel:631-324-3187">631-324-3187</a></li>
-            <li>Animal Control — <a href="tel:631-324-0085">631-324-0085</a></li>
-          </ul>
-        </div>
+      <div class="support__btns">
+        <a class="btn btn--solid" href="https://shop.mbpoa.com/">Make a Donation</a>
+        <a class="btn btn--white" href="https://shop.mbpoa.com/">Merch</a>
       </div>
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer aria-label="Site footer">
+<footer class="site-foot" aria-label="Site footer">
   <div class="wrap">
     <div class="foot">
       <div class="foot__brand">
-        <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="130" height="60" loading="lazy">
+        <img src="https://mbpoa.com/wp-content/uploads/MBPOA-2-01.png" alt="MBPOA logo" width="118" height="54" loading="lazy">
         <p>Montauk Beach Property Owners Association — a 501(c)(7) social organization and steward of the Ocean View Beach since 1942.</p>
       </div>
       <div>
         <h4>Explore</h4>
         <ul>
-          <li><a href="https://mbpoa.com/">Home</a></li>
-          <li><a href="https://mbpoa.com/news/">News</a></li>
+          <li><a href="mission-history.html">Mission &amp; History</a></li>
           <li><a href="galleries.html">Events &amp; Galleries</a></li>
-          <li><a href="https://mbpoa.com/resources/">Resources</a></li>
-          <li><a href="https://www.instagram.com/mbpoa.montauk/">Instagram — @mbpoa.montauk</a></li>
+          <li><a href="beach-rules.html">Beach Rules &amp; Party Guidelines</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h4>The Association</h4>
+        <h4>Support &amp; follow</h4>
         <ul>
-          <li><a href="https://mbpoa.com/letter-from-your-board/">Letter from Your Board</a></li>
-          <li><a href="https://mbpoa.com/beach-rules-party-guidelines/">Beach Rules &amp; Guidelines</a></li>
-          <li><a href="https://mbpoa.com/contact-us/">Contact Us</a></li>
+          <li><a href="https://shop.mbpoa.com/">Make a Donation</a></li>
           <li><a href="https://shop.mbpoa.com/">Merch</a></li>
-          <li><a href="https://mbpoa.com/donation/">Make a Donation</a></li>
+          <li><a href="https://www.instagram.com/mbpoa.montauk/">Instagram — @mbpoa.montauk</a></li>
+          <li>Beach emergencies: <a href="tel:631-537-7575">631-537-7575</a></li>
         </ul>
       </div>
     </div>
@@ -766,85 +323,7 @@ body.is-locked{overflow:hidden}
     </div>
   </div>
 </footer>
-
-<!-- MOBILE ACTION BAR -->
-<div class="action-bar">
-  <a class="action-bar__call" href="tel:631-537-7575">Beach emergency<strong>631-537-7575</strong></a>
-  <a class="btn btn--solid" href="https://mbpoa.com/donation/">Donate</a>
-</div>
-
-<script>
-(function(){
-  'use strict';
-  document.documentElement.classList.remove('no-js');
-
-  // Sticky nav shadow
-  var nav = document.getElementById('nav');
-  var onScroll = function(){ nav.classList.toggle('is-scrolled', window.scrollY > 8); };
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  // Drawer
-  var burger = document.getElementById('burger');
-  var drawer = document.getElementById('drawer');
-  function setDrawer(open){
-    drawer.classList.toggle('is-open', open);
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    document.body.classList.toggle('is-locked', open);
-  }
-  burger.addEventListener('click', function(){ setDrawer(!drawer.classList.contains('is-open')); });
-  drawer.addEventListener('click', function(e){ if (e.target.closest('a')) setDrawer(false); });
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setDrawer(false); });
-
-  // Ticker: duplicate the sequence so the 50% translate loops seamlessly
-  var track = document.getElementById('tickerTrack');
-  if (track && track.children.length === 1){
-    track.appendChild(track.children[0].cloneNode(true));
-  }
-
-
-  // Coastline map (Leaflet — real map tiles). Falls back to the static list if Leaflet is unavailable.
-  function initCoast(){
-    var el = document.getElementById('coastMap');
-    if (!el || !window.L) return;
-    var fb = document.getElementById('coastFallback');
-    if (fb) fb.remove();
-    // Draft coordinates along Old Montauk Highway — approximate, pending confirmed locations
-    var A = [41.0135, -72.0045], B = [41.0235, -71.9865]; // ~1-mile stretch, west to east
-    function lerp(t){ return [A[0] + (B[0]-A[0])*t, A[1] + (B[1]-A[1])*t]; }
-    var map = L.map(el, {scrollWheelZoom:false});
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    function pin(cls, label){
-      return L.divIcon({className:'', html:'<div class="map-pin map-pin--' + cls + '">' + label + '</div>', iconSize:[26,26], iconAnchor:[13,13]});
-    }
-    var pts = [];
-    for (var i = 0; i < 9; i++){
-      var t = i / 8, c = lerp(t);
-      pts.push(L.marker(c, {icon: pin('m', (i+1) + 'M')})
-        .bindPopup('<strong>Beach entrance ' + (i+1) + 'M</strong><br>Orange M location sign at the top and bottom of the path. In an emergency, relay this number to Public Safety: <a href="tel:631-537-7575">631-537-7575</a>.'));
-    }
-    [0.06, 0.32, 0.62, 0.9].forEach(function(t, i){
-      var c = lerp(t);
-      pts.push(L.marker([c[0] + 0.0009, c[1]], {icon: pin('p', 'P' + (i+1))})
-        .bindPopup('<strong>Member parking lot P' + (i+1) + '</strong><br>MBPOA members only — locks maintained and keys provided by the association.'));
-    });
-    [0.22, 0.74].forEach(function(t, i){
-      var c = lerp(t);
-      pts.push(L.marker([c[0] - 0.0007, c[1]], {icon: pin('s', 'S' + (i+1))})
-        .bindPopup('<strong>SUNY erosion study site S' + (i+1) + '</strong><br>Marine erosion research along the MBPOA bluffs.'));
-    });
-    var group = L.featureGroup(pts).addTo(map);
-    map.fitBounds(group.getBounds().pad(0.18));
-  }
-  if (window.L){ initCoast(); } else { window.addEventListener('load', initCoast); }
-
-  // Dynamic year
-  var y = document.getElementById('year');
-  if (y) y.textContent = String(new Date().getFullYear());
-})();
-</script>
+<script src="js/events-data.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>
