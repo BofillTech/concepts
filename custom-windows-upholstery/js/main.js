@@ -1,4 +1,4 @@
-/* Custom Windows & Upholstery — multi-page preview — Bofill Technologies */
+/* Custom Windows & Upholstery — site — Bofill Technologies */
 (() => {
   'use strict';
   document.documentElement.classList.remove('no-js');
@@ -41,23 +41,6 @@
     const fail = () => img.classList.add('is-broken');
     img.addEventListener('error', fail);
     if (img.complete && img.naturalWidth === 0) fail();
-  });
-
-  // Demo forms. FORM_ENDPOINT: wire to the client's form handler at launch; nothing is sent in this preview.
-  document.querySelectorAll('.js-demo-form').forEach((form) => {
-    const status = form.querySelector('.form__status');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (!status) return;
-      if (!form.checkValidity()) {
-        status.textContent = 'Please fill in the required fields so we can reach you.';
-        const bad = form.querySelector(':invalid');
-        if (bad) bad.focus();
-        return;
-      }
-      status.textContent = 'Thank you. This preview does not send yet; at launch we will call you to set up your visit.';
-      form.reset();
-    });
   });
 
   const year = document.getElementById('year');
