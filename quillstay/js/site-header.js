@@ -146,6 +146,26 @@
     var img = document.querySelector('footer .foot-brand img');
     if (img) img.src = LOGO_DARK;
   }
-  function start() { run(); fixFooterLogo(); }
+  /* Legal links (Privacy, Terms, Text Messaging Opt-In) in the bottom bar of every page's footer. */
+  var LEGAL_LINKS = [
+    ['Privacy Policy', '/privacy'],
+    ['Terms & Conditions', '/terms'],
+    ['Text Messaging Opt-In', '/sms-opt-in']
+  ];
+  function addLegalLinks() {
+    var meta = document.querySelector('footer .foot-meta');
+    if (!meta || meta.querySelector('.foot-legal')) return;
+    var nav = document.createElement('nav');
+    nav.className = 'foot-legal';
+    nav.setAttribute('aria-label', 'Legal');
+    LEGAL_LINKS.forEach(function (l) {
+      var a = document.createElement('a');
+      a.href = l[1];
+      a.textContent = l[0];
+      nav.appendChild(a);
+    });
+    meta.appendChild(nav);
+  }
+  function start() { run(); addLegalLinks(); fixFooterLogo(); }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
