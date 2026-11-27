@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Text Messaging Opt-In | QuillStay</title>
+<meta name="description" content="How hotel guests opt in to reservation text messages sent by hotels that use QuillStay, with an example of the booking form consent checkbox and the opt-out and help keywords.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#002b84">
+<link rel="canonical" href="https://quillstay.com/sms-opt-in">
+<link rel="icon" href="/img/quillstay-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#002b84;
+  --navy-deep:#001d5c;
+  --blue:#0386f8;
+  --blue-dark:#0267c0;
+  --paper:#f6fbff;
+  --ink:#0e1f4d;
+  --muted:#4d5b7c;
+  --line:#dbe6f5;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Public Sans',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;font-size:16.5px}
+h1,h2,h3{font-family:'Schibsted Grotesk',sans-serif;line-height:1.15;letter-spacing:-0.015em}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue-dark)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:50;background:rgba(246,251,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+
+.subhero{padding:52px 0 40px;background:linear-gradient(180deg,#eef5ff 0%,var(--paper) 100%)}
+.breadcrumb{font-size:14px;color:var(--muted);margin-bottom:18px}
+.breadcrumb a{color:var(--blue-dark);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.subhero h1{font-size:clamp(2rem,4vw,2.7rem);font-weight:800;color:var(--navy-deep)}
+.subhero p.lead{margin-top:14px;font-size:1.1rem;color:var(--muted);max-width:40em}
+
+.legal{padding:24px 0 84px}
+.doc{max-width:780px}
+.doc h2{font-size:1.4rem;font-weight:700;color:var(--navy-deep);margin:40px 0 12px}
+.doc p{margin:0 0 14px}
+.doc ul{margin:0 0 16px 22px}
+.doc li{margin-bottom:8px}
+
+/* Illustration of the booking form */
+.mock-label{font-size:13.5px;color:var(--muted);margin:0 0 10px;font-weight:600;letter-spacing:.02em}
+.frame{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px -28px rgba(0,43,132,.28);overflow:hidden;max-width:560px}
+.frame-bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line);background:#fbfdff}
+.frame-bar i{width:10px;height:10px;border-radius:50%;background:#d9e4f4}
+.frame-bar .url{margin-left:10px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:3px 14px;font-size:12.5px;color:var(--muted)}
+.form{padding:24px 26px 26px}
+.form h3{font-size:1.15rem;color:var(--navy-deep);margin-bottom:16px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.field .box{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:15px;color:var(--muted);background:#fff}
+.consent{display:flex;gap:12px;align-items:flex-start;margin:18px 0 18px;padding:14px 14px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+.consent input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--navy)}
+.consent label{font-size:14.5px;line-height:1.5;color:var(--ink)}
+.fake-btn{display:block;text-align:center;background:var(--navy);color:#fff;border-radius:10px;padding:12px;font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:16px}
+
+.kw{width:100%;max-width:640px;border-collapse:collapse;margin:0 0 20px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.kw th,.kw td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);vertical-align:top;font-size:15.5px}
+.kw th{background:#eef5ff;color:var(--navy-deep);font-size:14px}
+.kw tr:last-child td{border-bottom:0}
+.kw td:first-child{font-weight:700;color:var(--navy-deep);white-space:nowrap}
+
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:#fff;color:var(--navy);font-weight:700;padding:12px 18px;z-index:200;border-radius:0 0 10px 0;text-decoration:none}
+.skip:focus{left:0}
+@media (max-width:560px){.form{padding:20px 16px 20px}.kw td:first-child{white-space:normal}}
+footer .foot-legal{display:flex;gap:22px;flex-wrap:wrap}
+footer .foot-legal a{color:#b9cbf0;font-size:14px;text-decoration:none}
+footer .foot-legal a:hover{color:#fff;text-decoration:underline}
+</style>
+<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+<a class="skip" href="#top">Skip to content</a>
+<header id="site-header">
+  <noscript><div class="sh-noscript"><a href="/">QuillStay</a><a href="/faq/">FAQ</a><a href="/support/">Support</a><a href="tel:203-457-8550">203-457-8550</a></div></noscript>
+</header>
+<script src="/js/site-header.js"></script>
+
+<main id="top">
+<div class="subhero">
+  <div class="wrap">
+    <p class="breadcrumb"><a href="/">QuillStay</a> / Text Messaging Opt-In</p>
+    <h1>Text Messaging Opt-In</h1>
+    <p class="lead">QuillStay is a hotel property management system and booking engine operated by Bofill Technologies Inc. Hotels that use QuillStay can text their guests about a reservation, but only guests who agree to it.</p>
+  </div>
+</div>
+
+<div class="legal">
+  <div class="wrap">
+    <div class="doc">
+
+      <h2>How guests opt in</h2>
+      <p>When a guest makes a reservation on a hotel's booking page, the form asks for a mobile phone number. Under the phone field is a checkbox that is <strong>not checked by default</strong>. A guest agrees to receive texts only by checking the box themselves. The example below shows what guests see.</p>
+
+      <p class="mock-label">EXAMPLE: THE BOOKING FORM PHONE FIELD AND CONSENT CHECKBOX</p>
+      <div class="frame">
+        <div class="frame-bar"><i></i><i></i><i></i><span class="url">Hotel booking page: guest details</span></div>
+        <div class="form">
+          <h3>Guest details</h3>
+          <div class="field">
+            <label>Mobile phone</label>
+            <div class="box">(555) 555-0123</div>
+          </div>
+          <div class="consent">
+            <input type="checkbox" id="sms-consent" name="sms-consent">
+            <label for="sms-consent">I agree to receive text messages about my reservation from this hotel. Message and data rates may apply. Message frequency varies. Reply HELP for help, STOP to opt out. View our <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>.</label>
+          </div>
+          <div class="fake-btn" aria-hidden="true">Continue</div>
+        </div>
+      </div>
+
+      <h2>Opting in is optional</h2>
+      <p>Agreeing to receive text messages is optional and is not required to book a reservation. Guests who leave the box unchecked can still complete their booking and will receive no texts.</p>
+
+      <h2>What the messages are</h2>
+      <p>Texts are transactional messages from the hotel about the guest's own reservation: confirmations, pre-arrival and check-in details, and replies to the guest's questions. They are not marketing messages.</p>
+
+      <h2>Keywords</h2>
+      <table class="kw">
+        <thead><tr><th>Reply with</th><th>What happens</th></tr></thead>
+        <tbody>
+          <tr><td>STOP, UNSUBSCRIBE, CANCEL, END, QUIT</td><td>Opt out. You will receive a confirmation and no more texts.</td></tr>
+          <tr><td>HELP, INFO</td><td>Get help and contact information.</td></tr>
+          <tr><td>START</td><td>Resubscribe to reservation texts.</td></tr>
+        </tbody>
+      </table>
+      <p>Message and data rates may apply. Message frequency varies by reservation.</p>
+
+      <h2>More information</h2>
+      <p>Read our <a href="/terms#sms">SMS / Text Messaging Terms</a> and our <a href="/privacy">Privacy Policy</a>. Questions? Email <a href="mailto:support@quillstay.com">support@quillstay.com</a> or call <a href="tel:203-457-8550">203-457-8550</a>.</p>
+
+    </div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="/img/quillstay-logo-dark.png" alt="QuillStay">
+        <p>The simple, intuitive property management system and booking engine for independent hotels, co-op resorts, and condo-hotels.</p>
+        <div class="foot-contact">
+          <a href="tel:203-457-8550">203-457-8550</a>
+          <a href="mailto:support@quillstay.com">support@quillstay.com</a>
+        </div>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div class="foot-col">
+          <h4>Product</h4>
+          <a href="/#features">Features</a>
+          <a href="/#guests">For guests</a>
+          <a href="/#integrations">Integrations</a>
+          <a href="/#pricing">Pricing</a>
+          <a href="/#demo">Book a demo</a>
+        </div>
+        <div class="foot-col">
+          <h4>Solutions</h4>
+          <a href="/condo-hotels/">Condo-Hotels</a>
+          <a href="/first-booking-engine/">First Booking Engine</a>
+          <a href="/switch/">Why Switch</a>
+          <a href="/case-studies/royal-atlantic/">Case Study: Royal Atlantic</a>
+        </div>
+        <div class="foot-col">
+          <h4>Resources</h4>
+          <a href="/faq/">FAQ</a>
+          <a href="/how-to-videos/">How-To Videos</a>
+          <a href="/support/">Support</a>
+          <a href="/team/">Our Team</a>
+        </div>
+      </nav>
+    </div>
+    <div class="foot-meta">
+      <span>© 2026 QuillStay Inc. All rights reserved.</span>
+      <nav class="foot-legal" aria-label="Legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms &amp; Conditions</a>
+        <a href="/sms-opt-in">Text Messaging Opt-In</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
